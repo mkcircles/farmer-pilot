@@ -55,10 +55,10 @@ return new class extends Migration
             $table->string('estimated_produce_value_last_season')->nullable();
             $table->string('estimated_produce_value_this_season')->nullable();
 
-
-
+            //Other Information
             $table->string('rId')->nullable();
             $table->string('consumerDeviceId')->nullable();
+            $table->string('data_captured_by')->nullable();
             $table->timestamps();
         });
     }
