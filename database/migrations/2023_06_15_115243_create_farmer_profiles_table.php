@@ -48,12 +48,19 @@ return new class extends Migration
             $table->string('farm_size_under_agriculture')->nullable();
             $table->enum('land_ownership',['private','leased','rented','customary tenure'])->nullable();
 
+            //Crop Information
+            $table->string('type_of_farming',['crop','animals','mixed'])->nullable();
+            $table->string('crops_grown')->nullable();
+            $table->string('animals_kept')->nullable();
+            $table->string('estimated_produce_value_last_season')->nullable();
+            $table->string('estimated_produce_value_this_season')->nullable();
 
-
-
-
+            //Other Information
             $table->string('rId')->nullable();
             $table->string('consumerDeviceId')->nullable();
+            $table->string('data_captured_by')->nullable();
+
+            
             $table->timestamps();
         });
     }
