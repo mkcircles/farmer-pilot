@@ -59,6 +59,8 @@ return new class extends Migration
             $table->string('rId')->nullable();
             $table->string('consumerDeviceId')->nullable();
             $table->string('data_captured_by')->nullable();
+
+            
             $table->timestamps();
         });
     }
