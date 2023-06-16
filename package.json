@@ -2,7 +2,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "vite",
+        "dev": "vite --force",
         "build": "vite build"
     },
     "devDependencies": {
@@ -15,7 +15,11 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@heroicons/react": "^1.0.6",
+        "@tremor/react": "^3.1.0",
+        "clsx": "^1.2.1",
         "react": "^18.2.0",
-        "react-dom": "^18.2.0"
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^6.13.0"
     }
 }
