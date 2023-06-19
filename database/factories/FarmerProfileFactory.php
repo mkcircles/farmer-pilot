@@ -23,7 +23,7 @@ class FarmerProfileFactory extends Factory
             'gender' => $this->faker->randomElement(['male','female']),
             'education_level' => $this->faker->randomElement(['primary','secondary','tertiary','university','none']),
             'phone_number' => $this->faker->phoneNumber,
-            'id_number' => $this->faker->randomNumber($nbDigits = 12, $strict = false),
+            'id_number' => $this->faker->randomElements(['CM','CF']) . $this->faker->unique()->randomDigit,
             'marital_status' => $this->faker->randomElement(['single','married','divorced','widowed']),
             'district' => $this->faker->district,
             'county' => $this->faker->county,
