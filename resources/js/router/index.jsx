@@ -4,6 +4,7 @@ import FarmersList from "../pages/FarmersList";
 import { FARMERS_LIST, FARMER_PROFILE, HOME, REPORTS } from "./routes";
 import RootLayout from "../RootLayout";
 import Reports from "../pages/Reports";
+import FarmerProfile from "../pages/FarmerProfile";
 
 const router = createBrowserRouter([
     {
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
             },
             {
                 path: FARMER_PROFILE,
-                element: <FarmersList />,
+                element: <FarmerProfile />,
             },
             {
                 path: REPORTS,
