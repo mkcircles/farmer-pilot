@@ -67,7 +67,7 @@ return new class extends Migration
 
         //Call the seeder
         Artisan::call('db:seed', [
-            '--class' => ApiFarmerSeeder::class,
+            '--class' => ApiFarmer::class,
             '--force' => true,
         ]);
 
