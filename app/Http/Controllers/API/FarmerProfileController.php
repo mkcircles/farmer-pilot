@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
  */
 class FarmerProfileController extends Controller
 {
-   
+
     /**
      * Register Farmer
      * 
