@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\DataController;
 use App\Http\Controllers\API\FarmerProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,4 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/farmer/register', [FarmerProfileController::class, 'registerFarmer']);
-Route::get('/farmer/profiles', [FarmerProfileController::class, 'get_farmer_profiles']);
+Route::get('/farmers', [DataController::class, 'getAllFarmers']);
+Route::get('/farmer/{id}', [DataController::class, 'getFarmer']);
+

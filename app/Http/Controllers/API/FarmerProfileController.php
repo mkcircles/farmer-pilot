@@ -14,9 +14,11 @@ use Illuminate\Http\Request;
  */
 class FarmerProfileController extends Controller
 {
-   
+
     /**
      * Register Farmer
+     * 
+     * @headerParam API_KEY string required The API key of the application. Example: 123456789
      * 
      * @bodyParam first_name string required The first name of the farmer. Example: John
      * @bodyParam last_name string required The last name of the farmer. Example: Doe
@@ -125,10 +127,7 @@ class FarmerProfileController extends Controller
             ], 401);
         }
         //Validate Request Data
-
-
-
-
+        
 
         //Save Data
         $farmer = new FarmerProfile();

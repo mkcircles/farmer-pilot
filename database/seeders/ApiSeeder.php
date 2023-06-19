@@ -16,11 +16,11 @@ class ApiSeeder extends Seeder
         $keys = [
             [
                 'name' => 'Farmer Profile App',
-                'api_key' => 'kj@5$BT3B5f*QHMK979w9BgErvL',
+                'api_key' => 'Hax2jJFkWf3eL4W7w85IC6Gd',
             ],
             [
                 'name' => 'Farmer Profile Portal',
-                'api_key' => '2$!kW5Ur3SORFu!^b4jhQ%SJEtY',
+                'api_key' => 'o0k39QuFPf4BM4mTNN9l874u',
             ],
         ];
 
