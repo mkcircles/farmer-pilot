@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/farmer/register', [FarmerProfileController::class, 'registerFarmer']);
+Route::get('/farmer/profiles', [FarmerProfileController::class, 'get_farmer_profiles']);

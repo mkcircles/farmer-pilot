@@ -1,3 +1,3 @@
 
-export const BASE_API_URL = "http://localhost:8000/api"
-export const API_KEY = "2$!kW5Ur3SORFu!^b4jhQ%SJEtY"
+export const BASE_API_URL = "https://farmers.nauticaltech.ug/api"
+export const API_KEY = "o0k39QuFPf4BM4mTNN9l874u"

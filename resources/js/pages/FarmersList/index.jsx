@@ -18,72 +18,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { API_KEY, BASE_API_URL } from "../../env";
 
-const farmers = [
-    {
-        farmerID: "#123456",
-        fullname: "Lena Mayer",
-        phone: "256776896754",
-        fpo: "KYAP",
-        district: "Kabale",
-        link: "#",
-    },
-    {
-        farmerID: "#234567",
-        fullname: "Max Smith",
-        phone: "256776896754",
-        fpo: "KYAP",
-        district: "Kabale",
-        link: "#",
-    },
-    {
-        farmerID: "#345678",
-        fullname: "Anna Stone",
-        phone: "256776896754",
-        fpo: "KYAP",
-        district: "Kabale",
-        link: "#",
-    },
-    {
-        farmerID: "#4567890",
-        fullname: "Truls Cumbersome",
-        phone: "256776896754",
-        fpo: "KYAP",
-        district: "Kabale",
-        link: "#",
-    },
-    {
-        farmerID: "#5678901",
-        fullname: "Peter Pikser",
-        phone: "256776896754",
-        fpo: "KYAP",
-        district: "Kabale",
-        link: "#",
-    },
-    {
-        farmerID: "#6789012",
-        fullname: "Phlipp Forest",
-        phone: "256776896754",
-        fpo: "KYAP",
-        district: "Kabale",
-        link: "#",
-    },
-    {
-        farmerID: "#78901234",
-        fullname: "Mara Pacemaker",
-        phone: "256776896754",
-        fpo: "KYAP",
-        district: "Kabale",
-        link: "#",
-    },
-    {
-        farmerID: "#89012345",
-        fullname: "Sev Major",
-        phone: "256776896754",
-        fpo: "KYAP",
-        district: "Kabale",
-        link: "#",
-    },
-];
 
 export default function FarmersList() {
     const navigate = useNavigate();
@@ -93,7 +27,7 @@ export default function FarmersList() {
     const [profilesData, setProfilesData] = useState([]);
     const [isFetching, setIsFetching] = useState(false);
 
-    const fetchProfiles = (url = `${BASE_API_URL}/farmer/profiles`) => {
+    const fetchProfiles = (url = `${BASE_API_URL}/farmers`) => {
         setIsFetching(true);
         console.log(url);
         axios
