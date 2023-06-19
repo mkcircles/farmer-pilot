@@ -7,6 +7,61 @@ servers:
   -
     url: 'https://farmers.nauticaltech.ug'
 paths:
+  /api/farmers:
+    get:
+      summary: 'Get all farmers'
+      operationId: getAllFarmers
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n\"current_page\": 1,\n\"data\": [\n{\n\"id\": 1,\n\"first_name\": \"John\",\n\"last_name\": \"Doe\",\n\n}\n],\n\"first_page_url\": \"http://localhost:8000/api/farmers?page=1\",\n\"from\": 1,\n\"last_page\": 1,\n\"last_page_url\": \"http://localhost:8000/api/farmers?page=1\",\n\"links\": [\n{\n\"url\": null,\n\"label\": \"&laquo; Previous\",\n\"active\": false\n},\n{\n\"url\": \"http://localhost:8000/api/farmers?page=1\",\n\"label\": \"1\",\n\"active\": true\n},\n{\n\"url\": null,\n\"label\": \"Next &raquo;\",\n\"active\": false\n}\n],\n\"next_page_url\": null,\n\"path\": \"http://localhost:8000/api/farmers\",\n\"per_page\": 10,\n\"prev_page_url\": null,\n\"to\": 1,\n\"total\": 1\n}"
+      tags:
+        - 'Data Management'
+      security: []
+  '/api/farmer/{id}':
+    get:
+      summary: 'Get farmer'
+      operationId: getFarmer
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n\"id\": 1,\n\"first_name\": \"John\",\n\"last_name\": \"Doe\",\n...\n}"
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Farmer not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'Farmer not found'
+      tags:
+        - 'Data Management'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the farmer.'
+        example: '1'
+        required: true
+        schema:
+          type: string
   /api/farmer/register:
     post:
       summary: 'Register Farmer'
@@ -177,7 +232,7 @@ paths:
                 gender:
                   type: string
                   description: 'Farmer gender. Example Male/Female'
-                  example: velit
+                  example: architecto
                 education_level:
                   type: string
                   description: 'The education level of the farmer.'
@@ -344,6 +399,9 @@ paths:
                 - data_captured_by
       security: []
 tags:
+  -
+    name: 'Data Management'
+    description: "\nAPIs for managing farmer profile"
   -
     name: 'Farmer Profile'
     description: "\nAPIs for managing farmer profile"

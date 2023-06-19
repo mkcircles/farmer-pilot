@@ -66,6 +66,19 @@
                     <a href="#authenticating-requests">Authenticating requests</a>
                 </li>
                             </ul>
+                    <ul id="tocify-header-data-management" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="data-management">
+                    <a href="#data-management">Data Management</a>
+                </li>
+                                    <ul id="tocify-subheader-data-management" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="data-management-GETapi-farmers">
+                                <a href="#data-management-GETapi-farmers">Get all farmers</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="data-management-GETapi-farmer--id-">
+                                <a href="#data-management-GETapi-farmer--id-">Get farmer</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-farmer-profile" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="farmer-profile">
                     <a href="#farmer-profile">Farmer Profile</a>
@@ -103,7 +116,304 @@ You can switch the language used with the tabs at the top right (or from the nav
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>This API is not authenticated.</p>
 
-        <h1 id="farmer-profile">Farmer Profile</h1>
+        <h1 id="data-management">Data Management</h1>
+
+    <p>APIs for managing farmer profile</p>
+
+                                <h2 id="data-management-GETapi-farmers">Get all farmers</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-farmers">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://farmers.nauticaltech.ug/api/farmers" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://farmers.nauticaltech.ug/api/farmers"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-farmers">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+&quot;current_page&quot;: 1,
+&quot;data&quot;: [
+{
+&quot;id&quot;: 1,
+&quot;first_name&quot;: &quot;John&quot;,
+&quot;last_name&quot;: &quot;Doe&quot;,
+
+}
+],
+&quot;first_page_url&quot;: &quot;http://localhost:8000/api/farmers?page=1&quot;,
+&quot;from&quot;: 1,
+&quot;last_page&quot;: 1,
+&quot;last_page_url&quot;: &quot;http://localhost:8000/api/farmers?page=1&quot;,
+&quot;links&quot;: [
+{
+&quot;url&quot;: null,
+&quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+&quot;active&quot;: false
+},
+{
+&quot;url&quot;: &quot;http://localhost:8000/api/farmers?page=1&quot;,
+&quot;label&quot;: &quot;1&quot;,
+&quot;active&quot;: true
+},
+{
+&quot;url&quot;: null,
+&quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+&quot;active&quot;: false
+}
+],
+&quot;next_page_url&quot;: null,
+&quot;path&quot;: &quot;http://localhost:8000/api/farmers&quot;,
+&quot;per_page&quot;: 10,
+&quot;prev_page_url&quot;: null,
+&quot;to&quot;: 1,
+&quot;total&quot;: 1
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-farmers" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-farmers"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-farmers"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-farmers" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-farmers">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-farmers" data-method="GET"
+      data-path="api/farmers"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-farmers', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-farmers"
+                    onclick="tryItOut('GETapi-farmers');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-farmers"
+                    onclick="cancelTryOut('GETapi-farmers');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-farmers"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/farmers</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="GETapi-farmers"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="GETapi-farmers"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="data-management-GETapi-farmer--id-">Get farmer</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-farmer--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://farmers.nauticaltech.ug/api/farmer/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://farmers.nauticaltech.ug/api/farmer/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-farmer--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+&quot;id&quot;: 1,
+&quot;first_name&quot;: &quot;John&quot;,
+&quot;last_name&quot;: &quot;Doe&quot;,
+...
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Farmer not found&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-farmer--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-farmer--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-farmer--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-farmer--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-farmer--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-farmer--id-" data-method="GET"
+      data-path="api/farmer/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-farmer--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-farmer--id-"
+                    onclick="tryItOut('GETapi-farmer--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-farmer--id-"
+                    onclick="cancelTryOut('GETapi-farmer--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-farmer--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/farmer/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="GETapi-farmer--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="GETapi-farmer--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="id"                data-endpoint="GETapi-farmer--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the farmer. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                <h1 id="farmer-profile">Farmer Profile</h1>
 
     <p>APIs for managing farmer profile</p>
 
@@ -127,7 +437,7 @@ You can switch the language used with the tabs at the top right (or from the nav
     \"first_name\": \"John\",
     \"last_name\": \"Doe\",
     \"dob\": \"1990-01-01\",
-    \"gender\": \"velit\",
+    \"gender\": \"architecto\",
     \"education_level\": \"Primary\",
     \"phone_number\": \"0789123456\",
     \"id_number\": \"CM12345678\",
@@ -178,7 +488,7 @@ let body = {
     "first_name": "John",
     "last_name": "Doe",
     "dob": "1990-01-01",
-    "gender": "velit",
+    "gender": "architecto",
     "education_level": "Primary",
     "phone_number": "0789123456",
     "id_number": "CM12345678",
@@ -428,10 +738,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="gender"                data-endpoint="POSTapi-farmer-register"
-               value="velit"
+               value="architecto"
                data-component="body">
     <br>
-<p>Farmer gender. Example Male/Female Example: <code>velit</code></p>
+<p>Farmer gender. Example Male/Female Example: <code>architecto</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>education_level</code></b>&nbsp;&nbsp;
