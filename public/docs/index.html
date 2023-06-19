@@ -66,13 +66,13 @@
                     <a href="#authenticating-requests">Authenticating requests</a>
                 </li>
                             </ul>
-                    <ul id="tocify-header-endpoints" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="endpoints">
-                    <a href="#endpoints">Endpoints</a>
+                    <ul id="tocify-header-farmer-profile" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="farmer-profile">
+                    <a href="#farmer-profile">Farmer Profile</a>
                 </li>
-                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-farmer-register">
-                                <a href="#endpoints-POSTapi-farmer-register">POST api/farmer/register</a>
+                                    <ul id="tocify-subheader-farmer-profile" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="farmer-profile-POSTapi-farmer-register">
+                                <a href="#farmer-profile-POSTapi-farmer-register">Register Farmer</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -103,11 +103,11 @@ You can switch the language used with the tabs at the top right (or from the nav
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>This API is not authenticated.</p>
 
-        <h1 id="endpoints">Endpoints</h1>
+        <h1 id="farmer-profile">Farmer Profile</h1>
 
-    
+    <p>APIs for managing farmer profile</p>
 
-                                <h2 id="endpoints-POSTapi-farmer-register">POST api/farmer/register</h2>
+                                <h2 id="farmer-profile-POSTapi-farmer-register">Register Farmer</h2>
 
 <p>
 </p>
@@ -122,7 +122,46 @@ You can switch the language used with the tabs at the top right (or from the nav
     <pre><code class="language-bash">curl --request POST \
     "http://localhost/api/farmer/register" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json" \
+    --data "{
+    \"first_name\": \"John\",
+    \"last_name\": \"Doe\",
+    \"dob\": \"1990-01-01\",
+    \"gender\": \"sint\",
+    \"education_level\": \"Primary\",
+    \"phone_number\": \"0789123456\",
+    \"id_number\": \"CM12345678\",
+    \"marital_status\": \"Married\",
+    \"district\": \"Kampala\",
+    \"county\": \"Makindye\",
+    \"sub_county\": \"Kibuye\",
+    \"parish\": \"Kibuye\",
+    \"village\": \"Kibuye\",
+    \"fpo_name\": \"Kibuye Farmers Union\",
+    \"farmer_cordinates\": \"0.0000,0.0000\",
+    \"next_of_kin\": \"Jane Doe\",
+    \"next_of_kin_contact\": \"0789123456\",
+    \"next_of_kin_relationship\": \"Wife\",
+    \"male_members_in_household\": 2,
+    \"female_members_in_household\": 4,
+    \"members_above_18\": 4,
+    \"children_below_5\": 2,
+    \"school_going_children\": 2,
+    \"head_of_family\": \"John Doe\",
+    \"how_much_do_you_earn_from_agricultural_activities\": \"100000\",
+    \"how_much_do_you_earn_from_non_agricultural_activities\": \"100000\",
+    \"do_you_have_an_account_with_an_FI\": \"Yes\",
+    \"farm_size\": \"2\",
+    \"farm_size_under_agriculture\": \"2\",
+    \"land_ownership\": \"Owned\",
+    \"type_of_farming\": \"Crop\",
+    \"crops_grown\": \"Maize\",
+    \"animals_kept\": \"Cattle\",
+    \"estimated_produce_value_last_season\": \"100000\",
+    \"estimated_produce_value_this_season\": \"100000\",
+    \"data_captured_by\": \"1\"
+}"
+</code></pre></div>
 
 
 <div class="javascript-example">
@@ -135,15 +174,151 @@ const headers = {
     "Accept": "application/json",
 };
 
+let body = {
+    "first_name": "John",
+    "last_name": "Doe",
+    "dob": "1990-01-01",
+    "gender": "sint",
+    "education_level": "Primary",
+    "phone_number": "0789123456",
+    "id_number": "CM12345678",
+    "marital_status": "Married",
+    "district": "Kampala",
+    "county": "Makindye",
+    "sub_county": "Kibuye",
+    "parish": "Kibuye",
+    "village": "Kibuye",
+    "fpo_name": "Kibuye Farmers Union",
+    "farmer_cordinates": "0.0000,0.0000",
+    "next_of_kin": "Jane Doe",
+    "next_of_kin_contact": "0789123456",
+    "next_of_kin_relationship": "Wife",
+    "male_members_in_household": 2,
+    "female_members_in_household": 4,
+    "members_above_18": 4,
+    "children_below_5": 2,
+    "school_going_children": 2,
+    "head_of_family": "John Doe",
+    "how_much_do_you_earn_from_agricultural_activities": "100000",
+    "how_much_do_you_earn_from_non_agricultural_activities": "100000",
+    "do_you_have_an_account_with_an_FI": "Yes",
+    "farm_size": "2",
+    "farm_size_under_agriculture": "2",
+    "land_ownership": "Owned",
+    "type_of_farming": "Crop",
+    "crops_grown": "Maize",
+    "animals_kept": "Cattle",
+    "estimated_produce_value_last_season": "100000",
+    "estimated_produce_value_this_season": "100000",
+    "data_captured_by": "1"
+};
+
 fetch(url, {
     method: "POST",
     headers,
+    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
 <span id="example-responses-POSTapi-farmer-register">
-</span>
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+&quot;status&quot;: &quot;success&quot;,
+&quot;message&quot;: &quot;Farmer profile created successfully&quot;,
+&quot;data&quot;: {
+&quot;first_name&quot;: &quot;John&quot;,
+&quot;last_name&quot;: &quot;Doe&quot;,
+&quot;dob&quot;: &quot;1981-05-06&quot;,
+}
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: &quot;error&quot;,
+    &quot;message&quot;: &quot;Bad request&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: &quot;error&quot;,
+    &quot;message&quot;: &quot;Unauthorized&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: &quot;error&quot;,
+    &quot;message&quot;: &quot;Forbidden&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: &quot;error&quot;,
+    &quot;message&quot;: &quot;Not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (405):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: &quot;error&quot;,
+    &quot;message&quot;: &quot;Method not allowed&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: &quot;error&quot;,
+    &quot;message&quot;: &quot;Validation error&quot;,
+    &quot;errors&quot;: {}
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (429):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: &quot;error&quot;,
+    &quot;message&quot;: &quot;Too many requests&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: &quot;error&quot;,
+    &quot;message&quot;: &quot;Server error&quot;
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-POSTapi-farmer-register" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-POSTapi-farmer-register"></span>:
@@ -213,7 +388,404 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
-                        </form>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>first_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="first_name"                data-endpoint="POSTapi-farmer-register"
+               value="John"
+               data-component="body">
+    <br>
+<p>The first name of the farmer. Example: <code>John</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>last_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="last_name"                data-endpoint="POSTapi-farmer-register"
+               value="Doe"
+               data-component="body">
+    <br>
+<p>The last name of the farmer. Example: <code>Doe</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>dob</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="dob"                data-endpoint="POSTapi-farmer-register"
+               value="1990-01-01"
+               data-component="body">
+    <br>
+<p>The date of birth of the farmer. Example: <code>1990-01-01</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>gender</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+               name="gender"                data-endpoint="POSTapi-farmer-register"
+               value="sint"
+               data-component="body">
+    <br>
+<p>Farmer gender. Example Male/Female Example: <code>sint</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>education_level</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="education_level"                data-endpoint="POSTapi-farmer-register"
+               value="Primary"
+               data-component="body">
+    <br>
+<p>The education level of the farmer. Example: <code>Primary</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="phone_number"                data-endpoint="POSTapi-farmer-register"
+               value="0789123456"
+               data-component="body">
+    <br>
+<p>The phone number of the farmer. Example: <code>0789123456</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>id_number</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="id_number"                data-endpoint="POSTapi-farmer-register"
+               value="CM12345678"
+               data-component="body">
+    <br>
+<p>The national ID number of the farmer. Example: <code>CM12345678</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>marital_status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="marital_status"                data-endpoint="POSTapi-farmer-register"
+               value="Married"
+               data-component="body">
+    <br>
+<p>The marital status of the farmer. Example: <code>Married</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>district</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="district"                data-endpoint="POSTapi-farmer-register"
+               value="Kampala"
+               data-component="body">
+    <br>
+<p>The district of the farmer. Example: <code>Kampala</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>county</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="county"                data-endpoint="POSTapi-farmer-register"
+               value="Makindye"
+               data-component="body">
+    <br>
+<p>The county of the farmer. Example: <code>Makindye</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>sub_county</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="sub_county"                data-endpoint="POSTapi-farmer-register"
+               value="Kibuye"
+               data-component="body">
+    <br>
+<p>The sub county of the farmer. Example: <code>Kibuye</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>parish</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="parish"                data-endpoint="POSTapi-farmer-register"
+               value="Kibuye"
+               data-component="body">
+    <br>
+<p>The parish of the farmer. Example: <code>Kibuye</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>village</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="village"                data-endpoint="POSTapi-farmer-register"
+               value="Kibuye"
+               data-component="body">
+    <br>
+<p>The village of the farmer. Example: <code>Kibuye</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>fpo_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="fpo_name"                data-endpoint="POSTapi-farmer-register"
+               value="Kibuye Farmers Union"
+               data-component="body">
+    <br>
+<p>The FPO name of the farmer. Example: <code>Kibuye Farmers Union</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>farmer_cordinates</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="farmer_cordinates"                data-endpoint="POSTapi-farmer-register"
+               value="0.0000,0.0000"
+               data-component="body">
+    <br>
+<p>The farmer cordinates of the farmer. Example: <code>0.0000,0.0000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>next_of_kin</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="next_of_kin"                data-endpoint="POSTapi-farmer-register"
+               value="Jane Doe"
+               data-component="body">
+    <br>
+<p>The next of kin of the farmer. Example: <code>Jane Doe</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>next_of_kin_contact</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="next_of_kin_contact"                data-endpoint="POSTapi-farmer-register"
+               value="0789123456"
+               data-component="body">
+    <br>
+<p>The next of kin contact of the farmer. Example: <code>0789123456</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>next_of_kin_relationship</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="next_of_kin_relationship"                data-endpoint="POSTapi-farmer-register"
+               value="Wife"
+               data-component="body">
+    <br>
+<p>The next of kin relationship of the farmer. Example: <code>Wife</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>male_members_in_household</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="male_members_in_household"                data-endpoint="POSTapi-farmer-register"
+               value="2"
+               data-component="body">
+    <br>
+<p>Number of male members of the household. Example: <code>2</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>female_members_in_household</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="female_members_in_household"                data-endpoint="POSTapi-farmer-register"
+               value="4"
+               data-component="body">
+    <br>
+<p>Number of male members of the household. Example: <code>4</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>members_above_18</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="members_above_18"                data-endpoint="POSTapi-farmer-register"
+               value="4"
+               data-component="body">
+    <br>
+<p>Number of members above 18 years of age. Example: <code>4</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>children_below_5</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="children_below_5"                data-endpoint="POSTapi-farmer-register"
+               value="2"
+               data-component="body">
+    <br>
+<p>Number of children below 5 years of age. Example: <code>2</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>school_going_children</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="school_going_children"                data-endpoint="POSTapi-farmer-register"
+               value="2"
+               data-component="body">
+    <br>
+<p>Number of school going children. Example: <code>2</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>head_of_family</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="head_of_family"                data-endpoint="POSTapi-farmer-register"
+               value="John Doe"
+               data-component="body">
+    <br>
+<p>The head of family of the farmer. Example: <code>John Doe</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>how_much_do_you_earn_from_agricultural_activities</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="how_much_do_you_earn_from_agricultural_activities"                data-endpoint="POSTapi-farmer-register"
+               value="100000"
+               data-component="body">
+    <br>
+<p>How much do you earn from agricultural activities. Example: <code>100000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>how_much_do_you_earn_from_non_agricultural_activities</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="how_much_do_you_earn_from_non_agricultural_activities"                data-endpoint="POSTapi-farmer-register"
+               value="100000"
+               data-component="body">
+    <br>
+<p>How much do you earn from non agricultural activities. Example: <code>100000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>do_you_have_an_account_with_an_FI</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="do_you_have_an_account_with_an_FI"                data-endpoint="POSTapi-farmer-register"
+               value="Yes"
+               data-component="body">
+    <br>
+<p>Do you have an account with an FI. Example: <code>Yes</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>farm_size</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="farm_size"                data-endpoint="POSTapi-farmer-register"
+               value="2"
+               data-component="body">
+    <br>
+<p>The farm size of the farmer. Example: <code>2</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>farm_size_under_agriculture</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="farm_size_under_agriculture"                data-endpoint="POSTapi-farmer-register"
+               value="2"
+               data-component="body">
+    <br>
+<p>The farm size under agriculture of the farmer. Example: <code>2</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>land_ownership</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="land_ownership"                data-endpoint="POSTapi-farmer-register"
+               value="Owned"
+               data-component="body">
+    <br>
+<p>The land ownership of the farmer. Example: <code>Owned</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>type_of_farming</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="type_of_farming"                data-endpoint="POSTapi-farmer-register"
+               value="Crop"
+               data-component="body">
+    <br>
+<p>The type of farming of the farmer. Example: <code>Crop</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>crops_grown</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="crops_grown"                data-endpoint="POSTapi-farmer-register"
+               value="Maize"
+               data-component="body">
+    <br>
+<p>The crops grown of the farmer. Example: <code>Maize</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>animals_kept</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="animals_kept"                data-endpoint="POSTapi-farmer-register"
+               value="Cattle"
+               data-component="body">
+    <br>
+<p>The animals kept of the farmer. Example: <code>Cattle</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>estimated_produce_value_last_season</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="estimated_produce_value_last_season"                data-endpoint="POSTapi-farmer-register"
+               value="100000"
+               data-component="body">
+    <br>
+<p>The estimated produce value last season of the farmer. Example: <code>100000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>estimated_produce_value_this_season</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="estimated_produce_value_this_season"                data-endpoint="POSTapi-farmer-register"
+               value="100000"
+               data-component="body">
+    <br>
+<p>The estimated produce value this season of the farmer. Example: <code>100000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>data_captured_by</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="data_captured_by"                data-endpoint="POSTapi-farmer-register"
+               value="1"
+               data-component="body">
+    <br>
+<p>The data captured by of the farmer. Example: <code>1</code></p>
+        </div>
+        </form>
 
             
 

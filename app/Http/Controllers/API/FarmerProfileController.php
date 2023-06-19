@@ -125,10 +125,7 @@ class FarmerProfileController extends Controller
             ], 401);
         }
         //Validate Request Data
-
-
-
-
+        
 
         //Save Data
         $farmer = new FarmerProfile();

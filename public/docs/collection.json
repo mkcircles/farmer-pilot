@@ -10,17 +10,17 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "ed2ed4c2-ff51-44a3-9a29-f9e8dc5a1f69",
+        "_postman_id": "3a011bf4-73ae-4ba0-9718-8964e6ab1667",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
     "item": [
         {
-            "name": "Endpoints",
-            "description": "",
+            "name": "Farmer Profile",
+            "description": "\nAPIs for managing farmer profile",
             "item": [
                 {
-                    "name": "POST api\/farmer\/register",
+                    "name": "Register Farmer",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -39,13 +39,71 @@
                                 "value": "application\/json"
                             }
                         ],
-                        "body": null,
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"dob\":\"1990-01-01\",\"gender\":\"sint\",\"education_level\":\"Primary\",\"phone_number\":\"0789123456\",\"id_number\":\"CM12345678\",\"marital_status\":\"Married\",\"district\":\"Kampala\",\"county\":\"Makindye\",\"sub_county\":\"Kibuye\",\"parish\":\"Kibuye\",\"village\":\"Kibuye\",\"fpo_name\":\"Kibuye Farmers Union\",\"farmer_cordinates\":\"0.0000,0.0000\",\"next_of_kin\":\"Jane Doe\",\"next_of_kin_contact\":\"0789123456\",\"next_of_kin_relationship\":\"Wife\",\"male_members_in_household\":2,\"female_members_in_household\":4,\"members_above_18\":4,\"children_below_5\":2,\"school_going_children\":2,\"head_of_family\":\"John Doe\",\"how_much_do_you_earn_from_agricultural_activities\":\"100000\",\"how_much_do_you_earn_from_non_agricultural_activities\":\"100000\",\"do_you_have_an_account_with_an_FI\":\"Yes\",\"farm_size\":\"2\",\"farm_size_under_agriculture\":\"2\",\"land_ownership\":\"Owned\",\"type_of_farming\":\"Crop\",\"crops_grown\":\"Maize\",\"animals_kept\":\"Cattle\",\"estimated_produce_value_last_season\":\"100000\",\"estimated_produce_value_this_season\":\"100000\",\"data_captured_by\":\"1\"}"
+                        },
                         "description": "",
                         "auth": {
                             "type": "noauth"
                         }
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"status\": \"success\",\n\"message\": \"Farmer profile created successfully\",\n\"data\": {\n\"first_name\": \"John\",\n\"last_name\": \"Doe\",\n\"dob\": \"1981-05-06\",\n}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n\"status\": \"error\",\n\"message\": \"Bad request\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n\"status\": \"error\",\n\"message\": \"Unauthorized\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n\"status\": \"error\",\n\"message\": \"Forbidden\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n\"status\": \"error\",\n\"message\": \"Not found\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 405,
+                            "body": "{\n\"status\": \"error\",\n\"message\": \"Method not allowed\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n\"status\": \"error\",\n\"message\": \"Validation error\",\n\"errors\": {\n}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 429,
+                            "body": "{\n\"status\": \"error\",\n\"message\": \"Too many requests\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n\"status\": \"error\",\n\"message\": \"Server error\"\n}",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         }
