@@ -177,7 +177,7 @@ paths:
                 gender:
                   type: string
                   description: 'Farmer gender. Example Male/Female'
-                  example: eos
+                  example: velit
                 education_level:
                   type: string
                   description: 'The education level of the farmer.'
