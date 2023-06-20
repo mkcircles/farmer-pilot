@@ -116,6 +116,7 @@ class FarmerProfileController extends Controller
     {
         # code...
         //Validate API Key
+        dd($request);
         $apiKey = $request->header('API_KEY');
         dd($apiKey);
         //Check for API Key in DB
