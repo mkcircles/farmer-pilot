@@ -1,15 +1,26 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-125da915.css",
+    "file": "assets/app-1e306aae.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
+  "resources/js/app.css": {
+    "file": "assets/app-92700f25.css",
+    "src": "resources/js/app.css"
+  },
   "resources/js/app.jsx": {
-    "css": [
-      "assets/app-125da915.css"
+    "assets": [
+      "assets/bg-main-c1a2ca01.png"
     ],
-    "file": "assets/app-4007dfe0.js",
+    "css": [
+      "assets/app-92700f25.css"
+    ],
+    "file": "assets/app-69d064e5.js",
     "isEntry": true,
     "src": "resources/js/app.jsx"
+  },
+  "resources/js/assets/images/backgrounds/bg-main.png": {
+    "file": "assets/bg-main-c1a2ca01.png",
+    "src": "resources/js/assets/images/backgrounds/bg-main.png"
   }
 }

@@ -15,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/docs', 'scribe.index')->name('scribe');
 
-Route::get('/{path?}', function () {
+Route::get('/{any}', function () {
     return view('app');
-});
+})->where('any', '.*');
