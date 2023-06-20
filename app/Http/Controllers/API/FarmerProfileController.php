@@ -116,9 +116,7 @@ class FarmerProfileController extends Controller
     {
         # code...
         //Validate API Key
-        dd($request);
-        $apiKey = $request->header('API_KEY');
-        dd($apiKey);
+        $apiKey = $request->header('api-key');
         //Check for API Key in DB
         $key = Api::where('api_key', $apiKey)->first();
         if (!$key) {
