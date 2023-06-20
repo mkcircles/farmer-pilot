@@ -2,14 +2,14 @@ import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../pages/Dashboard";
 import FarmersList from "../pages/FarmersList";
 import { FARMERS_LIST, FARMER_PROFILE, HOME, REPORTS } from "./routes";
-import RootLayout from "../RootLayout";
 import Reports from "../pages/Reports";
 import FarmerProfile from "../pages/FarmerProfile";
+import Menu from "../layouts/SideMenu";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <RootLayout />,
+        element: <Menu />,
         children: [
             {
                 path: HOME,
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
                 element: <FarmersList />,
             },
             {
-                path: FARMER_PROFILE,
+                path: `${FARMER_PROFILE}/:id`,
                 element: <FarmerProfile />,
             },
             {

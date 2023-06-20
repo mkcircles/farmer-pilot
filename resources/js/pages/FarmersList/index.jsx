@@ -17,18 +17,21 @@ import { FARMER_PROFILE } from "../../router/routes";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { API_KEY, BASE_API_URL } from "../../env";
+import { numberFormatter } from "../../utils/numberFormatter";
+import { AppContext } from "../../context/RootContext";
+import { useContext } from "react";
 
 
 export default function FarmersList() {
     const navigate = useNavigate();
+    const { updateAppContextState } = useContext(AppContext);
     const [currentPage, setCurrentPage] = useState(1);
     const [prevPageUrl, setPrevPageUrl] = useState("");
     const [nextPageUrl, setNextPageUrl] = useState("");
-    const [profilesData, setProfilesData] = useState([]);
-    const [isFetching, setIsFetching] = useState(false);
+    const [profilesData, setProfilesData] = useState(null);
 
     const fetchProfiles = (url = `${BASE_API_URL}/farmers`) => {
-        setIsFetching(true);
+        updateAppContextState('loading', true);
         console.log(url);
         axios
             .get(url, {
@@ -40,8 +43,8 @@ export default function FarmersList() {
                 console.log("Profiles", res.data);
                 if (res?.data) {
                     setCurrentPage(res?.data?.current_page);
-                    setPrevPageUrl(profilesData?.prev_page_url);
-                    setNextPageUrl(profilesData?.next_page_url);
+                    setPrevPageUrl(res?.data?.prev_page_url);
+                    setNextPageUrl(res?.data?.next_page_url);
                     setProfilesData(res.data);
                 }
             })
@@ -49,7 +52,7 @@ export default function FarmersList() {
                 console.log(err);
             })
             .finally(() => {
-                setIsFetching(false);
+                updateAppContextState('loading', false);
             });
     };
 
@@ -58,11 +61,11 @@ export default function FarmersList() {
     }, []);
 
     return (
-        <div className="w-full h-full">
-            <Card className="bg-white h-full">
+        <div className="w-full h-full py-4">
+            <Card className="bg-white h-full w-full">
                 <Flex justifyContent="start" className="space-x-2">
                     <Title>Farmers</Title>
-                    <Badge color="gray">1,000</Badge>
+                    <Badge color="gray">{numberFormatter(parseInt(profilesData?.total || 0))}</Badge>
                 </Flex>
                 <Text className="mt-2">Overview of farmers profiled</Text>
 
@@ -99,7 +102,7 @@ export default function FarmersList() {
                                         variant="secondary"
                                         color="gray"
                                         onClick={() => {
-                                            navigate(FARMER_PROFILE);
+                                            navigate(`${FARMER_PROFILE}/${farmer.id}`);
                                         }}
                                     >
                                         See details
@@ -115,7 +118,7 @@ export default function FarmersList() {
                     </div>
 
                 <div className="flex justify-start py-2 items-center">
-                    <div className="inline-flex items-center justify-center rounded bg-blue-600 py-1 text-white">
+                    <div className="inline-flex items-center justify-center rounded bg-primary py-1 text-white">
                         <a
                             href="#"
                             className="inline-flex h-8 w-8 items-center justify-center rtl:rotate-180"
