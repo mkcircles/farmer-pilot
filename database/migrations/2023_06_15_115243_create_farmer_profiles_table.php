@@ -47,7 +47,7 @@ return new class extends Migration
             //Farm Information
             $table->string('farm_size')->nullable();
             $table->string('farm_size_under_agriculture')->nullable();
-            $table->enum('land_ownership',['private','leased','rented','customary tenure'])->nullable();
+            $table->enum('land_ownership',['private','leased','rented','customary'])->nullable();
 
             //Crop Information
             $table->enum('type_of_farming',['crop','animals','mixed'])->nullable();
