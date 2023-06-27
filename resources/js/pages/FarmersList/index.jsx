@@ -100,7 +100,7 @@ export default function FarmersList() {
                                     <Button
                                         size="xs"
                                         variant="secondary"
-                                        color="gray"
+                                        color="orange"
                                         onClick={() => {
                                             navigate(`${FARMER_PROFILE}/${farmer.id}`);
                                         }}
