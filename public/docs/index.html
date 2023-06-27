@@ -66,6 +66,19 @@
                     <a href="#authenticating-requests">Authenticating requests</a>
                 </li>
                             </ul>
+                    <ul id="tocify-header-agent-management" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="agent-management">
+                    <a href="#agent-management">Agent management</a>
+                </li>
+                                    <ul id="tocify-subheader-agent-management" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="agent-management-GETapi-agents">
+                                <a href="#agent-management-GETapi-agents">Get all agents</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="agent-management-GETapi-agent--id-">
+                                <a href="#agent-management-GETapi-agent--id-">Get Agent</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-data-management" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="data-management">
                     <a href="#data-management">Data Management</a>
@@ -98,7 +111,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: June 19, 2023</li>
+        <li>Last updated: June 27, 2023</li>
     </ul>
 </div>
 
@@ -116,7 +129,356 @@ You can switch the language used with the tabs at the top right (or from the nav
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>This API is not authenticated.</p>
 
-        <h1 id="data-management">Data Management</h1>
+        <h1 id="agent-management">Agent management</h1>
+
+    <p>APIs for managing agents</p>
+
+                                <h2 id="agent-management-GETapi-agents">Get all agents</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-agents">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://farmers.nauticaltech.ug/api/agents" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://farmers.nauticaltech.ug/api/agents"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-agents">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Agents retrieved successfully&quot;,
+    &quot;data&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;data&quot;: [
+            {
+                &quot;id&quot;: 1,
+                &quot;first_name&quot;: &quot;John&quot;,
+                &quot;last_name&quot;: &quot;Doe&quot;,
+                &quot;email&quot;: &quot;&quot;,
+                &quot;phone_number&quot;: &quot;08012345678&quot;,
+                &quot;age&quot;: &quot;30&quot;,
+                &quot;residence&quot;: &quot;Kampala&quot;,
+                &quot;referee_name&quot;: &quot;Jane Doe&quot;,
+                &quot;referee_phone_number&quot;: &quot;08012345678&quot;,
+                &quot;designation&quot;: &quot;Agro Extension Worker&quot;,
+                &quot;photo&quot;: null,
+                &quot;created_at&quot;: &quot;2021-06-27T14:56:12.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2021-06-27T14:56:12.000000Z&quot;
+            }
+        ],
+        &quot;first_page_url&quot;: &quot;http://localhost:8000/api/agents?page=1&quot;,
+        &quot;from&quot;: 1,
+        &quot;last_page&quot;: 1,
+        &quot;last_page_url&quot;: &quot;http://localhost:8000/api/agents?page=1&quot;,
+        &quot;links&quot;: [
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://localhost:8000/api/agents?page=1&quot;,
+                &quot;label&quot;: &quot;1&quot;,
+                &quot;active&quot;: true
+            },
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+                &quot;active&quot;: false
+            }
+        ],
+        &quot;next_page_url&quot;: null,
+        &quot;path&quot;: &quot;http://localhost:8000/api/agents&quot;,
+        &quot;per_page&quot;: 15,
+        &quot;prev_page_url&quot;: null,
+        &quot;to&quot;: 1,
+        &quot;total&quot;: 1
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;No agents found&quot;,
+    &quot;data&quot;: null
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-agents" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-agents"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-agents"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-agents" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-agents">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-agents" data-method="GET"
+      data-path="api/agents"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-agents', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-agents"
+                    onclick="tryItOut('GETapi-agents');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-agents"
+                    onclick="cancelTryOut('GETapi-agents');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-agents"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/agents</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="GETapi-agents"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="GETapi-agents"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="agent-management-GETapi-agent--id-">Get Agent</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-agent--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://farmers.nauticaltech.ug/api/agent/excepturi" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://farmers.nauticaltech.ug/api/agent/excepturi"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-agent--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Agent retrieved successfully&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;first_name&quot;: &quot;John&quot;,
+        &quot;last_name&quot;: &quot;Doe&quot;,
+        &quot;email&quot;: &quot;&quot;,
+        &quot;phone_number&quot;: &quot;256XXXXXXXXX&quot;,
+        &quot;age&quot;: &quot;30&quot;,
+        &quot;residence&quot;: &quot;Kampala&quot;,
+        &quot;referee_name&quot;: &quot;Jane Doe&quot;,
+        &quot;referee_phone_number&quot;: &quot;08012345678&quot;,
+        &quot;designation&quot;: &quot;Agro Extension Worker&quot;,
+        &quot;photo&quot;: &quot;http://localhost:8000/storage/agents/1624810572IMG_20210627_174358.jpg&quot;,
+        &quot;created_at&quot;: &quot;2021-06-27T17:09:32.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2021-06-27T17:09:32.000000Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Agent not found&quot;,
+    &quot;data&quot;: null
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-agent--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-agent--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-agent--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-agent--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-agent--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-agent--id-" data-method="GET"
+      data-path="api/agent/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-agent--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-agent--id-"
+                    onclick="tryItOut('GETapi-agent--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-agent--id-"
+                    onclick="cancelTryOut('GETapi-agent--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-agent--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/agent/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="GETapi-agent--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="GETapi-agent--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="id"                data-endpoint="GETapi-agent--id-"
+               value="excepturi"
+               data-component="url">
+    <br>
+<p>The ID of the agent. Example: <code>excepturi</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>agent</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="agent"                data-endpoint="GETapi-agent--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The id of the agent. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                <h1 id="data-management">Data Management</h1>
 
     <p>APIs for managing farmer profile</p>
 
@@ -437,7 +799,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"first_name\": \"John\",
     \"last_name\": \"Doe\",
     \"dob\": \"1990-01-01\",
-    \"gender\": \"architecto\",
+    \"gender\": \"nesciunt\",
     \"education_level\": \"Primary\",
     \"phone_number\": \"0789123456\",
     \"id_number\": \"CM12345678\",
@@ -488,7 +850,7 @@ let body = {
     "first_name": "John",
     "last_name": "Doe",
     "dob": "1990-01-01",
-    "gender": "architecto",
+    "gender": "nesciunt",
     "education_level": "Primary",
     "phone_number": "0789123456",
     "id_number": "CM12345678",
@@ -738,10 +1100,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="gender"                data-endpoint="POSTapi-farmer-register"
-               value="architecto"
+               value="nesciunt"
                data-component="body">
     <br>
-<p>Farmer gender. Example Male/Female Example: <code>architecto</code></p>
+<p>Farmer gender. Example Male/Female Example: <code>nesciunt</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>education_level</code></b>&nbsp;&nbsp;

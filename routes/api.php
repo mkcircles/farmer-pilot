@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AgentController;
 use App\Http\Controllers\API\DataController;
 use App\Http\Controllers\API\FarmerProfileController;
 use Illuminate\Http\Request;
@@ -19,4 +20,11 @@ use Illuminate\Support\Facades\Route;
 Route::post('/farmer/register', [FarmerProfileController::class, 'registerFarmer']);
 Route::get('/farmers', [DataController::class, 'getAllFarmers']);
 Route::get('/farmer/{id}', [DataController::class, 'getFarmer']);
+
+Route::get('/agents', [AgentController::class, 'index']);
+Route::post('/agent/register', [AgentController::class, 'store']);
+Route::get('/agent/{id}', [AgentController::class, 'show']);
+Route::post('/agent/{id}/update', [AgentController::class, 'update']);
+
+
 

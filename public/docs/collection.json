@@ -10,11 +10,107 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "1bf60f84-eecd-4b6a-87b7-25b9a3c2941f",
+        "_postman_id": "121ec601-ac6c-4728-8a2a-a2d285405dd8",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
     "item": [
+        {
+            "name": "Agent management",
+            "description": "\nAPIs for managing agents",
+            "item": [
+                {
+                    "name": "Get all agents",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/agents",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/agents"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"success\": true,\n\"message\": \"Agents retrieved successfully\",\n\"data\": {\n\"current_page\": 1,\n\"data\": [\n{\n\"id\": 1,\n\"first_name\": \"John\",\n\"last_name\": \"Doe\",\n\"email\": \"\",\n\"phone_number\": \"08012345678\",\n\"age\": \"30\",\n\"residence\": \"Kampala\",\n\"referee_name\": \"Jane Doe\",\n\"referee_phone_number\": \"08012345678\",\n\"designation\": \"Agro Extension Worker\",\n\"photo\": null,\n\"created_at\": \"2021-06-27T14:56:12.000000Z\",\n\"updated_at\": \"2021-06-27T14:56:12.000000Z\"\n}\n],\n\"first_page_url\": \"http:\/\/localhost:8000\/api\/agents?page=1\",\n\"from\": 1,\n\"last_page\": 1,\n\"last_page_url\": \"http:\/\/localhost:8000\/api\/agents?page=1\",\n\"links\": [\n{\n\"url\": null,\n\"label\": \"&laquo; Previous\",\n\"active\": false\n},\n{\n\"url\": \"http:\/\/localhost:8000\/api\/agents?page=1\",\n\"label\": \"1\",\n\"active\": true\n},\n{\n\"url\": null,\n\"label\": \"Next &raquo;\",\n\"active\": false\n}\n],\n\"next_page_url\": null,\n\"path\": \"http:\/\/localhost:8000\/api\/agents\",\n\"per_page\": 15,\n\"prev_page_url\": null,\n\"to\": 1,\n\"total\": 1\n}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n\n\"success\": false,\n\"message\": \"No agents found\",\n\"data\": null\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get Agent",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/agent\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/agent\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "excepturi",
+                                    "description": "The ID of the agent."
+                                },
+                                {
+                                    "id": "agent",
+                                    "key": "agent",
+                                    "value": "1",
+                                    "description": "The id of the agent."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"success\": true,\n\"message\": \"Agent retrieved successfully\",\n\"data\": {\n\"id\": 1,\n\"first_name\": \"John\",\n\"last_name\": \"Doe\",\n\"email\": \"\",\n\"phone_number\": \"256XXXXXXXXX\",\n\"age\": \"30\",\n\"residence\": \"Kampala\",\n\"referee_name\": \"Jane Doe\",\n\"referee_phone_number\": \"08012345678\",\n\"designation\": \"Agro Extension Worker\",\n\"photo\": \"http:\/\/localhost:8000\/storage\/agents\/1624810572IMG_20210627_174358.jpg\",\n\"created_at\": \"2021-06-27T17:09:32.000000Z\",\n\"updated_at\": \"2021-06-27T17:09:32.000000Z\"\n}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n\"success\": false,\n\"message\": \"Agent not found\",\n\"data\": null\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
         {
             "name": "Data Management",
             "description": "\nAPIs for managing farmer profile",
@@ -131,7 +227,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"dob\":\"1990-01-01\",\"gender\":\"architecto\",\"education_level\":\"Primary\",\"phone_number\":\"0789123456\",\"id_number\":\"CM12345678\",\"marital_status\":\"Married\",\"district\":\"Kampala\",\"county\":\"Makindye\",\"sub_county\":\"Kibuye\",\"parish\":\"Kibuye\",\"village\":\"Kibuye\",\"fpo_name\":\"Kibuye Farmers Union\",\"farmer_cordinates\":\"0.0000,0.0000\",\"next_of_kin\":\"Jane Doe\",\"next_of_kin_contact\":\"0789123456\",\"next_of_kin_relationship\":\"Wife\",\"male_members_in_household\":2,\"female_members_in_household\":4,\"members_above_18\":4,\"children_below_5\":2,\"school_going_children\":2,\"head_of_family\":\"John Doe\",\"how_much_do_you_earn_from_agricultural_activities\":\"100000\",\"how_much_do_you_earn_from_non_agricultural_activities\":\"100000\",\"do_you_have_an_account_with_an_FI\":\"Yes\",\"farm_size\":\"2\",\"farm_size_under_agriculture\":\"2\",\"land_ownership\":\"Owned\",\"type_of_farming\":\"Crop\",\"crops_grown\":\"Maize\",\"animals_kept\":\"Cattle\",\"estimated_produce_value_last_season\":\"100000\",\"estimated_produce_value_this_season\":\"100000\",\"data_captured_by\":\"1\"}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"dob\":\"1990-01-01\",\"gender\":\"nesciunt\",\"education_level\":\"Primary\",\"phone_number\":\"0789123456\",\"id_number\":\"CM12345678\",\"marital_status\":\"Married\",\"district\":\"Kampala\",\"county\":\"Makindye\",\"sub_county\":\"Kibuye\",\"parish\":\"Kibuye\",\"village\":\"Kibuye\",\"fpo_name\":\"Kibuye Farmers Union\",\"farmer_cordinates\":\"0.0000,0.0000\",\"next_of_kin\":\"Jane Doe\",\"next_of_kin_contact\":\"0789123456\",\"next_of_kin_relationship\":\"Wife\",\"male_members_in_household\":2,\"female_members_in_household\":4,\"members_above_18\":4,\"children_below_5\":2,\"school_going_children\":2,\"head_of_family\":\"John Doe\",\"how_much_do_you_earn_from_agricultural_activities\":\"100000\",\"how_much_do_you_earn_from_non_agricultural_activities\":\"100000\",\"do_you_have_an_account_with_an_FI\":\"Yes\",\"farm_size\":\"2\",\"farm_size_under_agriculture\":\"2\",\"land_ownership\":\"Owned\",\"type_of_farming\":\"Crop\",\"crops_grown\":\"Maize\",\"animals_kept\":\"Cattle\",\"estimated_produce_value_last_season\":\"100000\",\"estimated_produce_value_this_season\":\"100000\",\"data_captured_by\":\"1\"}"
                         },
                         "description": "",
                         "auth": {
