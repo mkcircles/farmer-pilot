@@ -66,7 +66,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Name</Bold>
@@ -82,7 +82,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>ID Number</Bold>
@@ -96,7 +96,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Date of Birth</Bold>
@@ -110,7 +110,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>FPO</Bold>
@@ -125,7 +125,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Sex</Bold>
@@ -140,7 +140,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Marital Status</Bold>
@@ -155,7 +155,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Education Level</Bold>
@@ -170,7 +170,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Phone Number</Bold>
@@ -184,7 +184,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Next of kin</Bold>
@@ -198,7 +198,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Next of kin contact</Bold>
@@ -212,7 +212,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Next of kin relationship</Bold>
@@ -226,7 +226,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Account with FI</Bold>
@@ -251,7 +251,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Type</Bold>
@@ -266,7 +266,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Farm Coordinates</Bold>
@@ -281,7 +281,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>District</Bold>
@@ -296,7 +296,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>County</Bold>
@@ -311,7 +311,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Sub County</Bold>
@@ -326,7 +326,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Parish</Bold>
@@ -341,7 +341,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Village</Bold>
@@ -356,7 +356,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Crops</Bold>
@@ -371,7 +371,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Farm Size</Bold>
@@ -386,7 +386,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Farm Size under Agric</Bold>
@@ -403,7 +403,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Land Ownership</Bold>
@@ -418,7 +418,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Animals Kept</Bold>
@@ -433,7 +433,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>
@@ -454,7 +454,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>
@@ -475,7 +475,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>
@@ -496,7 +496,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>
@@ -525,7 +525,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Head of family</Bold>
@@ -539,7 +539,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Male members</Bold>
@@ -554,7 +554,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>
@@ -572,7 +572,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Members above 18</Bold>
@@ -586,7 +586,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Children below 5</Bold>
@@ -600,7 +600,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>School going children</Bold>
@@ -623,7 +623,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Consumer Device ID</Bold>
@@ -637,7 +637,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>R_ID</Bold>
@@ -651,7 +651,7 @@ const FarmerProfile = () => {
                                 justifyContent="start"
                                 className="truncate space-x-4 px-2"
                             >
-                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
                                         <Bold>Data Captured By</Bold>
