@@ -1,11 +1,11 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-1e306aae.css",
+    "file": "assets/app-9faeac93.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
   "resources/js/app.css": {
-    "file": "assets/app-92700f25.css",
+    "file": "assets/app-40c9af33.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.jsx": {
@@ -13,9 +13,9 @@
       "assets/bg-main-c1a2ca01.png"
     ],
     "css": [
-      "assets/app-92700f25.css"
+      "assets/app-40c9af33.css"
     ],
-    "file": "assets/app-69d064e5.js",
+    "file": "assets/app-b444c6ad.js",
     "isEntry": true,
     "src": "resources/js/app.jsx"
   },
