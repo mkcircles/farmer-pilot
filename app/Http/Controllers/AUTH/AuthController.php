@@ -141,6 +141,7 @@ class AuthController extends Controller
      * @authenticated
      * 
      * 
+     * 
      */
     public function refresh(Request $request)
     {
