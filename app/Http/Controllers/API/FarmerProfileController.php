@@ -33,7 +33,7 @@ class FarmerProfileController extends Controller
      * @bodyParam sub_county string required The sub county of the farmer. Example: Kibuye
      * @bodyParam parish string required The parish of the farmer. Example: Kibuye
      * @bodyParam village string required The village of the farmer. Example: Kibuye
-     * @bodyParam fpo_name string required The FPO name of the farmer. Example: Kibuye Farmers Union
+     * @bodyParam fpo_id integer required The FPO name of the farmer. Example: Kibuye Farmers Union
      * @bodyParam farmer_cordinates string required The farmer cordinates of the farmer. Example: 0.0000,0.0000
      * @bodyParam next_of_kin string required The next of kin of the farmer. Example: Jane Doe
      * @bodyParam next_of_kin_contact string required The next of kin contact of the farmer. Example: 0789123456
@@ -144,7 +144,7 @@ class FarmerProfileController extends Controller
         $farmer->sub_county = $request->sub_county;
         $farmer->parish = $request->parish;
         $farmer->village = $request->village;
-        $farmer->fpo_name = $request->fpo_name;
+        $farmer->fpo_id = $request->fpo_id;
         $farmer->farmer_cordinates = $request->farmer_cordinates;
         $farmer->next_of_kin = $request->next_of_kin;
         $farmer->next_of_kin_contact = $request->next_of_kin_contact;

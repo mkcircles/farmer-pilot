@@ -15,14 +15,17 @@ return new class extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('email')->unique()->nullable()->default(null);
+            $table->string('email')->unique()->nullable();
             $table->string('phone_number')->unique();
             $table->string('age');
+            $table->enum('gender',['male','female']);
             $table->string('residence');
             $table->string('referee_name');
             $table->string('referee_phone_number');
-            $table->enum('designation',['Agro Extension Worker','Digital Entrepreneur']);
-            $table->string('photo')->nullable()->default(null);
+            $table->string('designation');
+            $table->string('photo')->nullable();
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('fpo_id')->nullable();
             $table->timestamps();
         });
     }

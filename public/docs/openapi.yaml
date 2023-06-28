@@ -1,11 +1,11 @@
 openapi: 3.0.3
 info:
-  title: Laravel
+  title: 'Farmer Registration Pilot'
   description: ''
   version: 1.0.0
 servers:
   -
-    url: 'https://farmers.nauticaltech.ug'
+    url: 'https://farmer-pilot.test'
 paths:
   /api/agents:
     get:
@@ -214,6 +214,251 @@ paths:
                     example: null
       tags:
         - 'Agent management'
+  /api/agent/register:
+    post:
+      summary: 'Create a new agent'
+      operationId: createANewAgent
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  message: 'Agent created successfully'
+                  data:
+                    first_name: John
+                    last_name: Doe
+                    email: ''
+                    phone_number: 256XXXXXXXXX
+                    age: '30'
+                    residence: Kampala
+                    referee_name: 'Jane Doe'
+                    referee_phone_number: '08012345678'
+                    designation: 'Agro Extension Worker'
+                    photo: 'http://localhost:8000/storage/agents/1624810572IMG_20210627_174358.jpg'
+                    updated_at: '2021-06-27T17:09:32.000000Z'
+                    created_at: '2021-06-27T17:09:32.000000Z'
+                    id: 1
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Agent created successfully'
+                  data:
+                    type: object
+                    properties:
+                      first_name:
+                        type: string
+                        example: John
+                      last_name:
+                        type: string
+                        example: Doe
+                      email:
+                        type: string
+                        example: ''
+                      phone_number:
+                        type: string
+                        example: 256XXXXXXXXX
+                      age:
+                        type: string
+                        example: '30'
+                      residence:
+                        type: string
+                        example: Kampala
+                      referee_name:
+                        type: string
+                        example: 'Jane Doe'
+                      referee_phone_number:
+                        type: string
+                        example: '08012345678'
+                      designation:
+                        type: string
+                        example: 'Agro Extension Worker'
+                      photo:
+                        type: string
+                        example: 'http://localhost:8000/storage/agents/1624810572IMG_20210627_174358.jpg'
+                      updated_at:
+                        type: string
+                        example: '2021-06-27T17:09:32.000000Z'
+                      created_at:
+                        type: string
+                        example: '2021-06-27T17:09:32.000000Z'
+                      id:
+                        type: integer
+                        example: 1
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'Bad request'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Bad request'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: Unauthorized
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Unauthorized
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: Forbidden
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Forbidden
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'Not found'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Not found'
+        405:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'Method not allowed'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Method not allowed'
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'Server error'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Server error'
+      tags:
+        - 'Agent management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  description: 'The first name of the agent.'
+                  example: John
+                last_name:
+                  type: string
+                  description: 'The last name of the agent.'
+                  example: Doe
+                email:
+                  type: string
+                  description: 'The email of the agent. Example:'
+                  example: rking@example.com
+                phone_number:
+                  type: string
+                  description: 'The phone number of the agent.'
+                  example: 256XXXXXXXXX
+                age:
+                  type: string
+                  description: 'The age of the agent.'
+                  example: '30'
+                gender:
+                  type: string
+                  description: ''
+                  example: nihil
+                residence:
+                  type: string
+                  description: 'The residence of the agent.'
+                  example: Kampala
+                referee_name:
+                  type: string
+                  description: 'The referee name of the agent.'
+                  example: 'Jane Doe'
+                referee_phone_number:
+                  type: string
+                  description: 'The referee phone number of the agent.'
+                  example: '08012345678'
+                designation:
+                  type: string
+                  description: 'The designation of the agent.'
+                  example: 'Agro Extension Worker'
+                created_by:
+                  type: integer
+                  description: ''
+                  example: 15
+                fpo_id:
+                  type: integer
+                  description: ''
+                  example: 20
+              required:
+                - first_name
+                - last_name
+                - email
+                - phone_number
+                - age
+                - gender
+                - residence
+                - referee_name
+                - referee_phone_number
+                - designation
+                - created_by
+                - fpo_id
   '/api/agent/{id}':
     get:
       summary: 'Get Agent'
@@ -320,13 +565,292 @@ paths:
         in: path
         name: id
         description: 'The ID of the agent.'
-        example: excepturi
+        example: ut
         required: true
         schema:
           type: string
       -
         in: path
         name: agent
+        description: 'The id of the agent.'
+        example: '1'
+        required: true
+        schema:
+          type: string
+  '/api/agent/{id}/update':
+    post:
+      summary: 'Update the Agent'
+      operationId: updateTheAgent
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  message: 'Agent created successfully'
+                  data:
+                    first_name: John
+                    last_name: Doe
+                    email: ''
+                    phone_number: 256XXXXXXXXX
+                    age: '30'
+                    residence: Kampala
+                    referee_name: 'Jane Doe'
+                    referee_phone_number: '08012345678'
+                    designation: 'Agro Extension Worker'
+                    photo: 'http://localhost:8000/storage/agents/1624810572IMG_20210627_174358.jpg'
+                    updated_at: '2021-06-27T17:09:32.000000Z'
+                    created_at: '2021-06-27T17:09:32.000000Z'
+                    id: 1
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Agent created successfully'
+                  data:
+                    type: object
+                    properties:
+                      first_name:
+                        type: string
+                        example: John
+                      last_name:
+                        type: string
+                        example: Doe
+                      email:
+                        type: string
+                        example: ''
+                      phone_number:
+                        type: string
+                        example: 256XXXXXXXXX
+                      age:
+                        type: string
+                        example: '30'
+                      residence:
+                        type: string
+                        example: Kampala
+                      referee_name:
+                        type: string
+                        example: 'Jane Doe'
+                      referee_phone_number:
+                        type: string
+                        example: '08012345678'
+                      designation:
+                        type: string
+                        example: 'Agro Extension Worker'
+                      photo:
+                        type: string
+                        example: 'http://localhost:8000/storage/agents/1624810572IMG_20210627_174358.jpg'
+                      updated_at:
+                        type: string
+                        example: '2021-06-27T17:09:32.000000Z'
+                      created_at:
+                        type: string
+                        example: '2021-06-27T17:09:32.000000Z'
+                      id:
+                        type: integer
+                        example: 1
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'Validation error'
+                  data:
+                    first_name:
+                      - 'The first name field is required.'
+                    last_name:
+                      - 'The last name field is required.'
+                    phone_number:
+                      - 'The phone number field is required.'
+                    age:
+                      - 'The age field is required.'
+                    residence:
+                      - 'The residence field is required.'
+                    referee_name:
+                      - 'The referee name field is required.'
+                    referee_phone_number:
+                      - 'The referee phone number field is required.'
+                    designation:
+                      - 'The designation field is required.'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Validation error'
+                  data:
+                    type: object
+                    properties:
+                      first_name:
+                        type: array
+                        example:
+                          - 'The first name field is required.'
+                        items:
+                          type: string
+                      last_name:
+                        type: array
+                        example:
+                          - 'The last name field is required.'
+                        items:
+                          type: string
+                      phone_number:
+                        type: array
+                        example:
+                          - 'The phone number field is required.'
+                        items:
+                          type: string
+                      age:
+                        type: array
+                        example:
+                          - 'The age field is required.'
+                        items:
+                          type: string
+                      residence:
+                        type: array
+                        example:
+                          - 'The residence field is required.'
+                        items:
+                          type: string
+                      referee_name:
+                        type: array
+                        example:
+                          - 'The referee name field is required.'
+                        items:
+                          type: string
+                      referee_phone_number:
+                        type: array
+                        example:
+                          - 'The referee phone number field is required.'
+                        items:
+                          type: string
+                      designation:
+                        type: array
+                        example:
+                          - 'The designation field is required.'
+                        items:
+                          type: string
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: Forbidden
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Forbidden
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'Agent not found'
+                  data: null
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Agent not found'
+                  data:
+                    type: string
+                    example: null
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'Server error'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Server error'
+      tags:
+        - 'Agent management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  description: 'The first name of the agent.'
+                  example: John
+                last_name:
+                  type: string
+                  description: 'The last name of the agent.'
+                  example: Doe
+                email:
+                  type: string
+                  description: 'The email of the agent. Example:'
+                  example: hackett.camila@example.com
+                phone_number:
+                  type: string
+                  description: 'The phone number of the agent.'
+                  example: 256XXXXXXXXX
+                age:
+                  type: string
+                  description: 'The age of the agent.'
+                  example: '30'
+                residence:
+                  type: string
+                  description: 'The residence of the agent.'
+                  example: Kampala
+                referee_name:
+                  type: string
+                  description: 'The referee name of the agent.'
+                  example: 'Jane Doe'
+                referee_phone_number:
+                  type: string
+                  description: 'The referee phone number of the agent.'
+                  example: '08012345678'
+                designation:
+                  type: string
+                  description: 'The designation of the agent.'
+                  example: 'Agro Extension Worker'
+              required:
+                - first_name
+                - last_name
+                - email
+                - phone_number
+                - age
+                - residence
+                - referee_name
+                - referee_phone_number
+                - designation
+    parameters:
+      -
+        in: path
+        name: id
         description: 'The id of the agent.'
         example: '1'
         required: true
@@ -557,7 +1081,7 @@ paths:
                 gender:
                   type: string
                   description: 'Farmer gender. Example Male/Female'
-                  example: nesciunt
+                  example: dolores
                 education_level:
                   type: string
                   description: 'The education level of the farmer.'
@@ -594,10 +1118,10 @@ paths:
                   type: string
                   description: 'The village of the farmer.'
                   example: Kibuye
-                fpo_name:
-                  type: string
+                fpo_id:
+                  type: integer
                   description: 'The FPO name of the farmer.'
-                  example: 'Kibuye Farmers Union'
+                  example: 0
                 farmer_cordinates:
                   type: string
                   description: 'The farmer cordinates of the farmer.'
@@ -699,7 +1223,7 @@ paths:
                 - sub_county
                 - parish
                 - village
-                - fpo_name
+                - fpo_id
                 - farmer_cordinates
                 - next_of_kin
                 - next_of_kin_contact

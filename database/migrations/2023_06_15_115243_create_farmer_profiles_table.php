@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('sub_county');
             $table->string('parish');
             $table->string('village');
-            $table->string('fpo_name');
+            $table->string('fpo_id')->nullable();
             $table->string('farmer_cordinates')->nullable();
             $table->string('next_of_kin')->nullable();
             $table->string('next_of_kin_contact')->nullable();
@@ -66,10 +66,10 @@ return new class extends Migration
         });
 
         //Call the seeder
-        Artisan::call('db:seed', [
-            '--class' => ApiFarmer::class,
-            '--force' => true,
-        ]);
+        // Artisan::call('db:seed', [
+        //     '--class' => ApiFarmer::class,
+        //     '--force' => true,
+        // ]);
 
     }
 

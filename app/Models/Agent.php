@@ -20,12 +20,14 @@ class Agent extends Model
         'email',
         'phone_number',
         'age',
+        'gender',
         'residence',
         'referee_name',
         'referee_phone_number',
         'designation',
         'photo',
         'created_by',
+        'fpo_id',
     ];
 
    

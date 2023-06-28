@@ -4,7 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Agent;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * @group Agent management
@@ -118,7 +121,6 @@ class AgentController extends Controller
      * @bodyParam referee_name string required The referee name of the agent. Example: Jane Doe
      * @bodyParam referee_phone_number string required The referee phone number of the agent. Example: 08012345678
      * @bodyParam designation string required The designation of the agent. Example: Agro Extension Worker
-     * @bodyParam photo file required The photo of the agent. Example: FILE
      * 
      * @response {
      * "success": true,
@@ -203,54 +205,54 @@ class AgentController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        
+        $validated =Validator::make($request->all(),[
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'email' => 'nullable|email',
             'phone_number' => 'required|string',
-            'age' => 'required|string',
+            'age' => 'required|integer',
+            'gender' => 'required|string',
             'residence' => 'required|string',
             'referee_name' => 'required|string',
             'referee_phone_number' => 'required|string',
             'designation' => 'required|string',
-            'photo' => 'nullable|image',
+            'created_by' => 'required|integer',
+            'fpo_id' => 'required|integer'
         ]);
-        if($validated->fails())
+
+        if($validated->fails()){
             return response()->json([
                 'success' => false,
                 'message' => 'Validation error',
                 'data' => $validated->errors()
             ], 400);
-
-        //If image is uploaded store it in the storage
-        if($request->hasFile('photo')){
-            $file = $request->file('photo');
-            $filename = time().$file->getClientOriginalName();
-            $file->storeAs('public/agents', $filename);
         }
-        else{
-            $filename = null;
-        }
-
+            
         $agent = new Agent();
         $agent->first_name = $request->first_name;
         $agent->last_name = $request->last_name;
         $agent->email = $request->email;
         $agent->phone_number = $request->phone_number;
         $agent->age = $request->age;
+        $agent->gender = $request->gender;
         $agent->residence = $request->residence;
         $agent->referee_name = $request->referee_name;
         $agent->referee_phone_number = $request->referee_phone_number;
         $agent->designation = $request->designation;
-        $agent->photo = $filename;
+        $agent->photo = null;
+        $agent->created_by = $request->created_by;
+        $agent->fpo_id = $request->fpo_id;
         $agent->save();
 
-        if(!$agent)
+        if(!$agent){
             return response()->json([
                 'success' => false,
                 'message' => 'Agent not created',
                 'data' => null
             ], 500);
+        }
+           
 
             //Create a user account for the agent
             $user = new User();
@@ -261,13 +263,14 @@ class AgentController extends Controller
             $user->role = 'agent';
             $user->save();
 
-            if(!$user)
+            if(!$user){
                 return response()->json([
                     'success' => false,
                     'message' => 'User account not created',
                     'data' => null
                 ], 500);
-
+            }
+            
 
         return response()->json([
             'success' => true,
@@ -341,8 +344,6 @@ class AgentController extends Controller
      * @authenticated
      * 
      * @urlParam id required The id of the agent. Example: 1
-     * @headers Accept: application/json
-     * @headers Content-Type: multipart/form-data 
      * 
      * @bodyParam first_name string required The first name of the agent. Example: John
      * @bodyParam last_name string required The last name of the agent. Example: Doe
@@ -353,7 +354,6 @@ class AgentController extends Controller
      * @bodyParam referee_name string required The referee name of the agent. Example: Jane Doe
      * @bodyParam referee_phone_number string required The referee phone number of the agent. Example: 08012345678
      * @bodyParam designation string required The designation of the agent. Example: Agro Extension Worker
-     * @bodyParam photo file required The photo of the agent. Example: FILE
      * 
       * @response {
      * "success": true,
@@ -432,17 +432,19 @@ class AgentController extends Controller
                 'data' => null
             ], 404);
 
-        $validate = $request->validate([
+        $validate = Validator($request->all(),[
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'email' => 'nullable|email',
             'phone_number' => 'required|string',
-            'age' => 'required|string',
+            'age' => 'required|integer',
+            'gender' => 'required|string',
             'residence' => 'required|string',
             'referee_name' => 'required|string',
             'referee_phone_number' => 'required|string',
             'designation' => 'required|string',
-            'photo' => 'nullable|image',
+            'created_by' => 'required|integer',
+            'fpo_id' => 'required|integer'
         ]);
 
         if($validate->fails())
@@ -452,26 +454,19 @@ class AgentController extends Controller
                 'data' => $validate->errors()
             ], 400);
 
-        //If image is uploaded store it in the storage
-        if($request->hasFile('photo')){
-            $file = $request->file('photo');
-            $filename = time().$file->getClientOriginalName();
-            $file->storeAs('public/agents/', $filename);
-        }
-        else{
-            $filename = null;
-        }
-
         $agent->first_name = $request->first_name;
         $agent->last_name = $request->last_name;
         $agent->email = $request->email;
         $agent->phone_number = $request->phone_number;
         $agent->age = $request->age;
+        $agent->gender = $request->gender;
         $agent->residence = $request->residence;
         $agent->referee_name = $request->referee_name;
         $agent->referee_phone_number = $request->referee_phone_number;
         $agent->designation = $request->designation;
-        $agent->photo = $filename;
+        $agent->photo = null;
+        $agent->created_by = $request->created_by;
+        $agent->fpo_id = $request->fpo_id;
         $agent->save();
 
         if(!$agent)

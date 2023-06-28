@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Laravel Documentation</title>
+    <title>Farmer Registration Pilot</title>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 
@@ -26,7 +26,7 @@
             </style>
 
     <script>
-        var tryItOutBaseUrl = "http://localhost";
+        var tryItOutBaseUrl = "https://farmer-pilot.test";
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
@@ -74,8 +74,14 @@
                                                     <li class="tocify-item level-2" data-unique="agent-management-GETapi-agents">
                                 <a href="#agent-management-GETapi-agents">Get all agents</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="agent-management-POSTapi-agent-register">
+                                <a href="#agent-management-POSTapi-agent-register">Create a new agent</a>
+                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="agent-management-GETapi-agent--id-">
                                 <a href="#agent-management-GETapi-agent--id-">Get Agent</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="agent-management-POSTapi-agent--id--update">
+                                <a href="#agent-management-POSTapi-agent--id--update">Update the Agent</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -111,7 +117,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: June 27, 2023</li>
+        <li>Last updated: June 28, 2023</li>
     </ul>
 </div>
 
@@ -120,7 +126,7 @@
     <div class="content">
         <h1 id="introduction">Introduction</h1>
 <aside>
-    <strong>Base URL</strong>: <code>https://farmers.nauticaltech.ug</code>
+    <strong>Base URL</strong>: <code>https://farmer-pilot.test</code>
 </aside>
 <p>This documentation aims to provide all the information you need to work with our API.</p>
 <aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
@@ -147,14 +153,14 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://farmers.nauticaltech.ug/api/agents" \
+    --get "https://farmer-pilot.test/api/agents" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmers.nauticaltech.ug/api/agents"
+    "https://farmer-pilot.test/api/agents"
 );
 
 const headers = {
@@ -310,6 +316,400 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
+                    <h2 id="agent-management-POSTapi-agent-register">Create a new agent</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-agent-register">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://farmer-pilot.test/api/agent/register" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"first_name\": \"John\",
+    \"last_name\": \"Doe\",
+    \"email\": \"rking@example.com\",
+    \"phone_number\": \"256XXXXXXXXX\",
+    \"age\": \"30\",
+    \"gender\": \"nihil\",
+    \"residence\": \"Kampala\",
+    \"referee_name\": \"Jane Doe\",
+    \"referee_phone_number\": \"08012345678\",
+    \"designation\": \"Agro Extension Worker\",
+    \"created_by\": 15,
+    \"fpo_id\": 20
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://farmer-pilot.test/api/agent/register"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "rking@example.com",
+    "phone_number": "256XXXXXXXXX",
+    "age": "30",
+    "gender": "nihil",
+    "residence": "Kampala",
+    "referee_name": "Jane Doe",
+    "referee_phone_number": "08012345678",
+    "designation": "Agro Extension Worker",
+    "created_by": 15,
+    "fpo_id": 20
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-agent-register">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Agent created successfully&quot;,
+    &quot;data&quot;: {
+        &quot;first_name&quot;: &quot;John&quot;,
+        &quot;last_name&quot;: &quot;Doe&quot;,
+        &quot;email&quot;: &quot;&quot;,
+        &quot;phone_number&quot;: &quot;256XXXXXXXXX&quot;,
+        &quot;age&quot;: &quot;30&quot;,
+        &quot;residence&quot;: &quot;Kampala&quot;,
+        &quot;referee_name&quot;: &quot;Jane Doe&quot;,
+        &quot;referee_phone_number&quot;: &quot;08012345678&quot;,
+        &quot;designation&quot;: &quot;Agro Extension Worker&quot;,
+        &quot;photo&quot;: &quot;http://localhost:8000/storage/agents/1624810572IMG_20210627_174358.jpg&quot;,
+        &quot;updated_at&quot;: &quot;2021-06-27T17:09:32.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2021-06-27T17:09:32.000000Z&quot;,
+        &quot;id&quot;: 1
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Validation error&quot;,
+    &quot;data&quot;: {
+        &quot;first_name&quot;: [
+            &quot;The first name field is required.&quot;
+        ],
+        &quot;last_name&quot;: [
+            &quot;The last name field is required.&quot;
+        ],
+        &quot;phone_number&quot;: [
+            &quot;The phone number field is required.&quot;
+        ],
+        &quot;age&quot;: [
+            &quot;The age field is required.&quot;
+        ],
+        &quot;residence&quot;: [
+            &quot;The residence field is required.&quot;
+        ],
+        &quot;referee_name&quot;: [
+            &quot;The referee name field is required.&quot;
+        ],
+        &quot;referee_phone_number&quot;: [
+            &quot;The referee phone number field is required.&quot;
+        ],
+        &quot;designation&quot;: [
+            &quot;The designation field is required.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Bad request&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Unauthorized&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Forbidden&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (405):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Method not allowed&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Server error&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-agent-register" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-agent-register"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-agent-register"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-agent-register" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-agent-register">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-agent-register" data-method="POST"
+      data-path="api/agent/register"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-agent-register', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-agent-register"
+                    onclick="tryItOut('POSTapi-agent-register');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-agent-register"
+                    onclick="cancelTryOut('POSTapi-agent-register');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-agent-register"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/agent/register</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="POSTapi-agent-register"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="POSTapi-agent-register"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>first_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="first_name"                data-endpoint="POSTapi-agent-register"
+               value="John"
+               data-component="body">
+    <br>
+<p>The first name of the agent. Example: <code>John</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>last_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="last_name"                data-endpoint="POSTapi-agent-register"
+               value="Doe"
+               data-component="body">
+    <br>
+<p>The last name of the agent. Example: <code>Doe</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="email"                data-endpoint="POSTapi-agent-register"
+               value="rking@example.com"
+               data-component="body">
+    <br>
+<p>The email of the agent. Example: Example: <code>rking@example.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="phone_number"                data-endpoint="POSTapi-agent-register"
+               value="256XXXXXXXXX"
+               data-component="body">
+    <br>
+<p>The phone number of the agent. Example: <code>256XXXXXXXXX</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>age</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="age"                data-endpoint="POSTapi-agent-register"
+               value="30"
+               data-component="body">
+    <br>
+<p>The age of the agent. Example: <code>30</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>gender</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="gender"                data-endpoint="POSTapi-agent-register"
+               value="nihil"
+               data-component="body">
+    <br>
+<p>Example: <code>nihil</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>residence</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="residence"                data-endpoint="POSTapi-agent-register"
+               value="Kampala"
+               data-component="body">
+    <br>
+<p>The residence of the agent. Example: <code>Kampala</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>referee_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="referee_name"                data-endpoint="POSTapi-agent-register"
+               value="Jane Doe"
+               data-component="body">
+    <br>
+<p>The referee name of the agent. Example: <code>Jane Doe</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>referee_phone_number</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="referee_phone_number"                data-endpoint="POSTapi-agent-register"
+               value="08012345678"
+               data-component="body">
+    <br>
+<p>The referee phone number of the agent. Example: <code>08012345678</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>designation</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="designation"                data-endpoint="POSTapi-agent-register"
+               value="Agro Extension Worker"
+               data-component="body">
+    <br>
+<p>The designation of the agent. Example: <code>Agro Extension Worker</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>created_by</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="created_by"                data-endpoint="POSTapi-agent-register"
+               value="15"
+               data-component="body">
+    <br>
+<p>Example: <code>15</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>fpo_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="fpo_id"                data-endpoint="POSTapi-agent-register"
+               value="20"
+               data-component="body">
+    <br>
+<p>Example: <code>20</code></p>
+        </div>
+        </form>
+
                     <h2 id="agent-management-GETapi-agent--id-">Get Agent</h2>
 
 <p>
@@ -324,14 +724,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://farmers.nauticaltech.ug/api/agent/excepturi" \
+    --get "https://farmer-pilot.test/api/agent/ut" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmers.nauticaltech.ug/api/agent/excepturi"
+    "https://farmer-pilot.test/api/agent/ut"
 );
 
 const headers = {
@@ -460,10 +860,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="id"                data-endpoint="GETapi-agent--id-"
-               value="excepturi"
+               value="ut"
                data-component="url">
     <br>
-<p>The ID of the agent. Example: <code>excepturi</code></p>
+<p>The ID of the agent. Example: <code>ut</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>agent</code></b>&nbsp;&nbsp;
@@ -477,6 +877,344 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>The id of the agent. Example: <code>1</code></p>
             </div>
                     </form>
+
+                    <h2 id="agent-management-POSTapi-agent--id--update">Update the Agent</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-agent--id--update">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://farmer-pilot.test/api/agent/1/update" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"first_name\": \"John\",
+    \"last_name\": \"Doe\",
+    \"email\": \"hackett.camila@example.com\",
+    \"phone_number\": \"256XXXXXXXXX\",
+    \"age\": \"30\",
+    \"residence\": \"Kampala\",
+    \"referee_name\": \"Jane Doe\",
+    \"referee_phone_number\": \"08012345678\",
+    \"designation\": \"Agro Extension Worker\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://farmer-pilot.test/api/agent/1/update"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "hackett.camila@example.com",
+    "phone_number": "256XXXXXXXXX",
+    "age": "30",
+    "residence": "Kampala",
+    "referee_name": "Jane Doe",
+    "referee_phone_number": "08012345678",
+    "designation": "Agro Extension Worker"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-agent--id--update">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Agent created successfully&quot;,
+    &quot;data&quot;: {
+        &quot;first_name&quot;: &quot;John&quot;,
+        &quot;last_name&quot;: &quot;Doe&quot;,
+        &quot;email&quot;: &quot;&quot;,
+        &quot;phone_number&quot;: &quot;256XXXXXXXXX&quot;,
+        &quot;age&quot;: &quot;30&quot;,
+        &quot;residence&quot;: &quot;Kampala&quot;,
+        &quot;referee_name&quot;: &quot;Jane Doe&quot;,
+        &quot;referee_phone_number&quot;: &quot;08012345678&quot;,
+        &quot;designation&quot;: &quot;Agro Extension Worker&quot;,
+        &quot;photo&quot;: &quot;http://localhost:8000/storage/agents/1624810572IMG_20210627_174358.jpg&quot;,
+        &quot;updated_at&quot;: &quot;2021-06-27T17:09:32.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2021-06-27T17:09:32.000000Z&quot;,
+        &quot;id&quot;: 1
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Validation error&quot;,
+    &quot;data&quot;: {
+        &quot;first_name&quot;: [
+            &quot;The first name field is required.&quot;
+        ],
+        &quot;last_name&quot;: [
+            &quot;The last name field is required.&quot;
+        ],
+        &quot;phone_number&quot;: [
+            &quot;The phone number field is required.&quot;
+        ],
+        &quot;age&quot;: [
+            &quot;The age field is required.&quot;
+        ],
+        &quot;residence&quot;: [
+            &quot;The residence field is required.&quot;
+        ],
+        &quot;referee_name&quot;: [
+            &quot;The referee name field is required.&quot;
+        ],
+        &quot;referee_phone_number&quot;: [
+            &quot;The referee phone number field is required.&quot;
+        ],
+        &quot;designation&quot;: [
+            &quot;The designation field is required.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Forbidden&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Agent not found&quot;,
+    &quot;data&quot;: null
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Server error&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-agent--id--update" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-agent--id--update"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-agent--id--update"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-agent--id--update" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-agent--id--update">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-agent--id--update" data-method="POST"
+      data-path="api/agent/{id}/update"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-agent--id--update', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-agent--id--update"
+                    onclick="tryItOut('POSTapi-agent--id--update');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-agent--id--update"
+                    onclick="cancelTryOut('POSTapi-agent--id--update');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-agent--id--update"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/agent/{id}/update</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="POSTapi-agent--id--update"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="POSTapi-agent--id--update"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="id"                data-endpoint="POSTapi-agent--id--update"
+               value="1"
+               data-component="url">
+    <br>
+<p>The id of the agent. Example: <code>1</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>first_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="first_name"                data-endpoint="POSTapi-agent--id--update"
+               value="John"
+               data-component="body">
+    <br>
+<p>The first name of the agent. Example: <code>John</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>last_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="last_name"                data-endpoint="POSTapi-agent--id--update"
+               value="Doe"
+               data-component="body">
+    <br>
+<p>The last name of the agent. Example: <code>Doe</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="email"                data-endpoint="POSTapi-agent--id--update"
+               value="hackett.camila@example.com"
+               data-component="body">
+    <br>
+<p>The email of the agent. Example: Example: <code>hackett.camila@example.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="phone_number"                data-endpoint="POSTapi-agent--id--update"
+               value="256XXXXXXXXX"
+               data-component="body">
+    <br>
+<p>The phone number of the agent. Example: <code>256XXXXXXXXX</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>age</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="age"                data-endpoint="POSTapi-agent--id--update"
+               value="30"
+               data-component="body">
+    <br>
+<p>The age of the agent. Example: <code>30</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>residence</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="residence"                data-endpoint="POSTapi-agent--id--update"
+               value="Kampala"
+               data-component="body">
+    <br>
+<p>The residence of the agent. Example: <code>Kampala</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>referee_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="referee_name"                data-endpoint="POSTapi-agent--id--update"
+               value="Jane Doe"
+               data-component="body">
+    <br>
+<p>The referee name of the agent. Example: <code>Jane Doe</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>referee_phone_number</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="referee_phone_number"                data-endpoint="POSTapi-agent--id--update"
+               value="08012345678"
+               data-component="body">
+    <br>
+<p>The referee phone number of the agent. Example: <code>08012345678</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>designation</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="designation"                data-endpoint="POSTapi-agent--id--update"
+               value="Agro Extension Worker"
+               data-component="body">
+    <br>
+<p>The designation of the agent. Example: <code>Agro Extension Worker</code></p>
+        </div>
+        </form>
 
                 <h1 id="data-management">Data Management</h1>
 
@@ -495,14 +1233,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://farmers.nauticaltech.ug/api/farmers" \
+    --get "https://farmer-pilot.test/api/farmers" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmers.nauticaltech.ug/api/farmers"
+    "https://farmer-pilot.test/api/farmers"
 );
 
 const headers = {
@@ -647,14 +1385,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://farmers.nauticaltech.ug/api/farmer/1" \
+    --get "https://farmer-pilot.test/api/farmer/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmers.nauticaltech.ug/api/farmer/1"
+    "https://farmer-pilot.test/api/farmer/1"
 );
 
 const headers = {
@@ -792,14 +1530,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://farmers.nauticaltech.ug/api/farmer/register" \
+    "https://farmer-pilot.test/api/farmer/register" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"first_name\": \"John\",
     \"last_name\": \"Doe\",
     \"dob\": \"1990-01-01\",
-    \"gender\": \"nesciunt\",
+    \"gender\": \"dolores\",
     \"education_level\": \"Primary\",
     \"phone_number\": \"0789123456\",
     \"id_number\": \"CM12345678\",
@@ -809,7 +1547,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"sub_county\": \"Kibuye\",
     \"parish\": \"Kibuye\",
     \"village\": \"Kibuye\",
-    \"fpo_name\": \"Kibuye Farmers Union\",
+    \"fpo_id\": 0,
     \"farmer_cordinates\": \"0.0000,0.0000\",
     \"next_of_kin\": \"Jane Doe\",
     \"next_of_kin_contact\": \"0789123456\",
@@ -838,7 +1576,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmers.nauticaltech.ug/api/farmer/register"
+    "https://farmer-pilot.test/api/farmer/register"
 );
 
 const headers = {
@@ -850,7 +1588,7 @@ let body = {
     "first_name": "John",
     "last_name": "Doe",
     "dob": "1990-01-01",
-    "gender": "nesciunt",
+    "gender": "dolores",
     "education_level": "Primary",
     "phone_number": "0789123456",
     "id_number": "CM12345678",
@@ -860,7 +1598,7 @@ let body = {
     "sub_county": "Kibuye",
     "parish": "Kibuye",
     "village": "Kibuye",
-    "fpo_name": "Kibuye Farmers Union",
+    "fpo_id": 0,
     "farmer_cordinates": "0.0000,0.0000",
     "next_of_kin": "Jane Doe",
     "next_of_kin_contact": "0789123456",
@@ -1100,10 +1838,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="gender"                data-endpoint="POSTapi-farmer-register"
-               value="nesciunt"
+               value="dolores"
                data-component="body">
     <br>
-<p>Farmer gender. Example Male/Female Example: <code>nesciunt</code></p>
+<p>Farmer gender. Example Male/Female Example: <code>dolores</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>education_level</code></b>&nbsp;&nbsp;
@@ -1205,15 +1943,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>The village of the farmer. Example: <code>Kibuye</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>fpo_name</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
+            <b style="line-height: 2;"><code>fpo_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
  &nbsp;
-                <input type="text" style="display: none"
-               name="fpo_name"                data-endpoint="POSTapi-farmer-register"
-               value="Kibuye Farmers Union"
+                <input type="number" style="display: none"
+               name="fpo_id"                data-endpoint="POSTapi-farmer-register"
+               value="0"
                data-component="body">
     <br>
-<p>The FPO name of the farmer. Example: <code>Kibuye Farmers Union</code></p>
+<p>The FPO name of the farmer. Example: <code>0</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>farmer_cordinates</code></b>&nbsp;&nbsp;

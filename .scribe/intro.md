@@ -3,7 +3,7 @@
 
 
 <aside>
-    <strong>Base URL</strong>: <code>https://farmers.nauticaltech.ug</code>
+    <strong>Base URL</strong>: <code>https://farmer-pilot.test</code>
 </aside>
 
 This documentation aims to provide all the information you need to work with our API.

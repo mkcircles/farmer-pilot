@@ -23,7 +23,7 @@ class FarmerProfile extends Model
         'sub_county',
         'parish',
         'village',
-        'fpo_name',
+        'fpo_id',
         'farmer_cordinates',
         'next_of_kin',
         'next_of_kin_contact',

@@ -5,12 +5,12 @@
             "key": "baseUrl",
             "type": "string",
             "name": "string",
-            "value": "https:\/\/farmers.nauticaltech.ug"
+            "value": "https:\/\/farmer-pilot.test"
         }
     ],
     "info": {
-        "name": "Laravel",
-        "_postman_id": "121ec601-ac6c-4728-8a2a-a2d285405dd8",
+        "name": "Farmer Registration Pilot",
+        "_postman_id": "a44d7608-6cf1-45f8-83ed-02194561752d",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -58,6 +58,83 @@
                     ]
                 },
                 {
+                    "name": "Create a new agent",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/agent\/register",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/agent\/register"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"rking@example.com\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"gender\":\"nihil\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\",\"created_by\":15,\"fpo_id\":20}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"success\": true,\n\"message\": \"Agent created successfully\",\n\"data\": {\n\"first_name\": \"John\",\n\"last_name\": \"Doe\",\n\"email\": \"\",\n\"phone_number\": \"256XXXXXXXXX\",\n\"age\": \"30\",\n\"residence\": \"Kampala\",\n\"referee_name\": \"Jane Doe\",\n\"referee_phone_number\": \"08012345678\",\n\"designation\": \"Agro Extension Worker\",\n\"photo\": \"http:\/\/localhost:8000\/storage\/agents\/1624810572IMG_20210627_174358.jpg\",\n\"updated_at\": \"2021-06-27T17:09:32.000000Z\",\n\"created_at\": \"2021-06-27T17:09:32.000000Z\",\n\"id\": 1\n}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n\"success\": false,\n\"message\": \"Validation error\",\n\"data\": {\n\"first_name\": [\n\"The first name field is required.\"\n],\n\"last_name\": [\n\"The last name field is required.\"\n],\n\"phone_number\": [\n\"The phone number field is required.\"\n],\n\"age\": [\n\"The age field is required.\"\n],\n\"residence\": [\n\"The residence field is required.\"\n],\n\"referee_name\": [\n\"The referee name field is required.\"\n],\n\"referee_phone_number\": [\n\"The referee phone number field is required.\"\n],\n\"designation\": [\n\"The designation field is required.\"\n]\n}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n\"success\": false,\n\"message\": \"Bad request\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n\"success\": false,\n\"message\": \"Unauthorized\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n\"success\": false,\n\"message\": \"Forbidden\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n\"success\": false,\n\"message\": \"Not found\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 405,
+                            "body": "{\n\"success\": false,\n\"message\": \"Method not allowed\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n\"success\": false,\n\"message\": \"Server error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
                     "name": "Get Agent",
                     "request": {
                         "url": {
@@ -69,7 +146,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "excepturi",
+                                    "value": "ut",
                                     "description": "The ID of the agent."
                                 },
                                 {
@@ -105,6 +182,73 @@
                             "header": [],
                             "code": 404,
                             "body": "{\n\"success\": false,\n\"message\": \"Agent not found\",\n\"data\": null\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the Agent",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/agent\/:id\/update",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/agent\/:id\/update",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The id of the agent."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"hackett.camila@example.com\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"success\": true,\n\"message\": \"Agent created successfully\",\n\"data\": {\n\"first_name\": \"John\",\n\"last_name\": \"Doe\",\n\"email\": \"\",\n\"phone_number\": \"256XXXXXXXXX\",\n\"age\": \"30\",\n\"residence\": \"Kampala\",\n\"referee_name\": \"Jane Doe\",\n\"referee_phone_number\": \"08012345678\",\n\"designation\": \"Agro Extension Worker\",\n\"photo\": \"http:\/\/localhost:8000\/storage\/agents\/1624810572IMG_20210627_174358.jpg\",\n\"updated_at\": \"2021-06-27T17:09:32.000000Z\",\n\"created_at\": \"2021-06-27T17:09:32.000000Z\",\n\"id\": 1\n}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n\"success\": false,\n\"message\": \"Validation error\",\n\"data\": {\n\"first_name\": [\n\"The first name field is required.\"\n],\n\"last_name\": [\n\"The last name field is required.\"\n],\n\"phone_number\": [\n\"The phone number field is required.\"\n],\n\"age\": [\n\"The age field is required.\"\n],\n\"residence\": [\n\"The residence field is required.\"\n],\n\"referee_name\": [\n\"The referee name field is required.\"\n],\n\"referee_phone_number\": [\n\"The referee phone number field is required.\"\n],\n\"designation\": [\n\"The designation field is required.\"\n]\n}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n\"success\": false,\n\"message\": \"Forbidden\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n\"success\": false,\n\"message\": \"Agent not found\",\n\"data\": null\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n\"success\": false,\n\"message\": \"Server error\"\n}",
                             "name": ""
                         }
                     ]
@@ -227,7 +371,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"dob\":\"1990-01-01\",\"gender\":\"nesciunt\",\"education_level\":\"Primary\",\"phone_number\":\"0789123456\",\"id_number\":\"CM12345678\",\"marital_status\":\"Married\",\"district\":\"Kampala\",\"county\":\"Makindye\",\"sub_county\":\"Kibuye\",\"parish\":\"Kibuye\",\"village\":\"Kibuye\",\"fpo_name\":\"Kibuye Farmers Union\",\"farmer_cordinates\":\"0.0000,0.0000\",\"next_of_kin\":\"Jane Doe\",\"next_of_kin_contact\":\"0789123456\",\"next_of_kin_relationship\":\"Wife\",\"male_members_in_household\":2,\"female_members_in_household\":4,\"members_above_18\":4,\"children_below_5\":2,\"school_going_children\":2,\"head_of_family\":\"John Doe\",\"how_much_do_you_earn_from_agricultural_activities\":\"100000\",\"how_much_do_you_earn_from_non_agricultural_activities\":\"100000\",\"do_you_have_an_account_with_an_FI\":\"Yes\",\"farm_size\":\"2\",\"farm_size_under_agriculture\":\"2\",\"land_ownership\":\"Owned\",\"type_of_farming\":\"Crop\",\"crops_grown\":\"Maize\",\"animals_kept\":\"Cattle\",\"estimated_produce_value_last_season\":\"100000\",\"estimated_produce_value_this_season\":\"100000\",\"data_captured_by\":\"1\"}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"dob\":\"1990-01-01\",\"gender\":\"dolores\",\"education_level\":\"Primary\",\"phone_number\":\"0789123456\",\"id_number\":\"CM12345678\",\"marital_status\":\"Married\",\"district\":\"Kampala\",\"county\":\"Makindye\",\"sub_county\":\"Kibuye\",\"parish\":\"Kibuye\",\"village\":\"Kibuye\",\"fpo_id\":0,\"farmer_cordinates\":\"0.0000,0.0000\",\"next_of_kin\":\"Jane Doe\",\"next_of_kin_contact\":\"0789123456\",\"next_of_kin_relationship\":\"Wife\",\"male_members_in_household\":2,\"female_members_in_household\":4,\"members_above_18\":4,\"children_below_5\":2,\"school_going_children\":2,\"head_of_family\":\"John Doe\",\"how_much_do_you_earn_from_agricultural_activities\":\"100000\",\"how_much_do_you_earn_from_non_agricultural_activities\":\"100000\",\"do_you_have_an_account_with_an_FI\":\"Yes\",\"farm_size\":\"2\",\"farm_size_under_agriculture\":\"2\",\"land_ownership\":\"Owned\",\"type_of_farming\":\"Crop\",\"crops_grown\":\"Maize\",\"animals_kept\":\"Cattle\",\"estimated_produce_value_last_season\":\"100000\",\"estimated_produce_value_this_season\":\"100000\",\"data_captured_by\":\"1\"}"
                         },
                         "description": "",
                         "auth": {

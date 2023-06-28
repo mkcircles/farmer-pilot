@@ -51,7 +51,7 @@ endpoints:
         name: gender
         description: 'Farmer gender. Example Male/Female'
         required: false
-        example: nesciunt
+        example: dolores
         type: string
         custom: []
       education_level:
@@ -117,12 +117,12 @@ endpoints:
         example: Kibuye
         type: string
         custom: []
-      fpo_name:
-        name: fpo_name
+      fpo_id:
+        name: fpo_id
         description: 'The FPO name of the farmer.'
         required: true
-        example: 'Kibuye Farmers Union'
-        type: string
+        example: 0
+        type: integer
         custom: []
       farmer_cordinates:
         name: farmer_cordinates
@@ -282,7 +282,7 @@ endpoints:
       first_name: John
       last_name: Doe
       dob: '1990-01-01'
-      gender: nesciunt
+      gender: dolores
       education_level: Primary
       phone_number: '0789123456'
       id_number: CM12345678
@@ -292,7 +292,7 @@ endpoints:
       sub_county: Kibuye
       parish: Kibuye
       village: Kibuye
-      fpo_name: 'Kibuye Farmers Union'
+      fpo_id: 0
       farmer_cordinates: '0.0000,0.0000'
       next_of_kin: 'Jane Doe'
       next_of_kin_contact: '0789123456'
