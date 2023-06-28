@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Farmer Registration Pilot",
-        "_postman_id": "18815801-ba14-4c4b-9bee-db749f330078",
+        "_postman_id": "dfed8ebc-aa3d-43d7-8c47-79ffa1119ea5",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -79,7 +79,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"merl.cole@example.com\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"gender\":\"id\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\",\"created_by\":10,\"fpo_id\":18}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"gianni34@example.net\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"gender\":\"rem\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\",\"created_by\":12,\"fpo_id\":10}"
                         },
                         "description": ""
                     },
@@ -146,7 +146,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "placeat",
+                                    "value": "enim",
                                     "description": "The ID of the agent."
                                 },
                                 {
@@ -216,7 +216,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"ttrantow@example.com\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\"}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"buckridge.darrion@example.com\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\"}"
                         },
                         "description": ""
                     },
@@ -252,6 +252,131 @@
                             "name": ""
                         }
                     ]
+                }
+            ]
+        },
+        {
+            "name": "Auth Management",
+            "description": "\nAPIs for managing authentication",
+            "item": [
+                {
+                    "name": "Login user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"mjaskolski@example.com\",\"password\":\"IT]rB^Th\"}"
+                        },
+                        "description": "This endpoint allows a user to login",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"success\": true,\n\"message\": \"User login successfully.\",\n\"data\": {\n\"id\": 1,\n\"name\": \"John Doe\",\n\"email\": \"john@test.com\",\n\"email_verified_at\": null,\n\"phone_number\": \"256700000000\",\n\"created_at\": \"2021-06-27T14:56:04.000000Z\",\n\"updated_at\": \"2021-06-27T14:56:04.000000Z\",\n}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n\"success\": false,\n\"message\": \"Unauthorised.\",\n\"data\": null\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n\"message\": \"The given data was invalid.\",\n\"errors\": {\n\"email\": [\n\"The email field is required.\"\n],\n\"password\": [\n\"The password field is required.\"\n]\n}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n\"message\": \"Server Error.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Logout user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/logout",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/logout"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint allows a user to logout"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"success\": true,\n\"message\": \"User logged out successfully.\",\n\"data\": null\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n\"success\": false,\n\"message\": \"Unauthorised.\",\n\"data\": null\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Refresh token",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/refresh",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/refresh"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint allows a user to refresh their token"
+                    },
+                    "response": []
                 }
             ]
         },
@@ -471,7 +596,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"fpo_name\":\"dolorem\",\"district\":\"debitis\",\"county\":\"qui\",\"sub_county\":\"eius\",\"parish\":\"sint\",\"village\":\"voluptates\",\"main_crop\":\"illum\",\"fpo_member_count\":15,\"fpo_contact_name\":\"dolore\",\"contact_phone_number\":\"dicta\",\"address\":\"ut\",\"created_by\":13}"
+                            "raw": "{\"fpo_name\":\"aut\",\"district\":\"neque\",\"county\":\"eaque\",\"sub_county\":\"consectetur\",\"parish\":\"aliquam\",\"village\":\"inventore\",\"main_crop\":\"provident\",\"fpo_member_count\":5,\"fpo_contact_name\":\"repellendus\",\"contact_phone_number\":\"molestiae\",\"address\":\"omnis\",\"created_by\":1}"
                         },
                         "description": "This endpoint allows you to create a new FPO."
                     },
@@ -520,7 +645,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "asperiores",
+                                    "value": "deleniti",
                                     "description": "The id of the FPO."
                                 }
                             ]
@@ -578,7 +703,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "enim",
+                                    "value": "perspiciatis",
                                     "description": "The id of the FPO."
                                 }
                             ]
@@ -596,7 +721,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"fpo_name\":\"ut\",\"district\":\"laudantium\",\"county\":\"aspernatur\",\"sub_county\":\"exercitationem\",\"parish\":\"consequatur\",\"village\":\"iure\",\"main_crop\":\"repellat\",\"fpo_member_count\":8,\"fpo_contact_name\":\"ut\",\"contact_phone_number\":\"ut\",\"created_by\":15}"
+                            "raw": "{\"fpo_name\":\"nobis\",\"district\":\"id\",\"county\":\"praesentium\",\"sub_county\":\"sit\",\"parish\":\"aut\",\"village\":\"totam\",\"main_crop\":\"enim\",\"fpo_member_count\":1,\"fpo_contact_name\":\"aspernatur\",\"contact_phone_number\":\"quaerat\",\"created_by\":18}"
                         },
                         "description": "This endpoint allows you to update a FPO by id."
                     },
@@ -661,7 +786,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"dob\":\"1990-01-01\",\"gender\":\"cum\",\"education_level\":\"Primary\",\"phone_number\":\"0789123456\",\"id_number\":\"CM12345678\",\"marital_status\":\"Married\",\"district\":\"Kampala\",\"county\":\"Makindye\",\"sub_county\":\"Kibuye\",\"parish\":\"Kibuye\",\"village\":\"Kibuye\",\"fpo_id\":0,\"farmer_cordinates\":\"0.0000,0.0000\",\"next_of_kin\":\"Jane Doe\",\"next_of_kin_contact\":\"0789123456\",\"next_of_kin_relationship\":\"Wife\",\"male_members_in_household\":2,\"female_members_in_household\":4,\"members_above_18\":4,\"children_below_5\":2,\"school_going_children\":2,\"head_of_family\":\"John Doe\",\"how_much_do_you_earn_from_agricultural_activities\":\"100000\",\"how_much_do_you_earn_from_non_agricultural_activities\":\"100000\",\"do_you_have_an_account_with_an_FI\":\"Yes\",\"farm_size\":\"2\",\"farm_size_under_agriculture\":\"2\",\"land_ownership\":\"Owned\",\"type_of_farming\":\"Crop\",\"crops_grown\":\"Maize\",\"animals_kept\":\"Cattle\",\"estimated_produce_value_last_season\":\"100000\",\"estimated_produce_value_this_season\":\"100000\",\"data_captured_by\":\"1\"}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"dob\":\"1990-01-01\",\"gender\":\"at\",\"education_level\":\"Primary\",\"phone_number\":\"0789123456\",\"id_number\":\"CM12345678\",\"marital_status\":\"Married\",\"district\":\"Kampala\",\"county\":\"Makindye\",\"sub_county\":\"Kibuye\",\"parish\":\"Kibuye\",\"village\":\"Kibuye\",\"fpo_id\":0,\"farmer_cordinates\":\"0.0000,0.0000\",\"next_of_kin\":\"Jane Doe\",\"next_of_kin_contact\":\"0789123456\",\"next_of_kin_relationship\":\"Wife\",\"male_members_in_household\":2,\"female_members_in_household\":4,\"members_above_18\":4,\"children_below_5\":2,\"school_going_children\":2,\"head_of_family\":\"John Doe\",\"how_much_do_you_earn_from_agricultural_activities\":\"100000\",\"how_much_do_you_earn_from_non_agricultural_activities\":\"100000\",\"do_you_have_an_account_with_an_FI\":\"Yes\",\"farm_size\":\"2\",\"farm_size_under_agriculture\":\"2\",\"land_ownership\":\"Owned\",\"type_of_farming\":\"Crop\",\"crops_grown\":\"Maize\",\"animals_kept\":\"Cattle\",\"estimated_produce_value_last_season\":\"100000\",\"estimated_produce_value_this_season\":\"100000\",\"data_captured_by\":\"1\"}"
                         },
                         "description": "",
                         "auth": {
