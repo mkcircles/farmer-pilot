@@ -147,7 +147,7 @@ endpoints:
         name: email
         description: 'The email of the agent. Example:'
         required: true
-        example: jhessel@example.net
+        example: merl.cole@example.com
         type: string
         custom: []
       phone_number:
@@ -168,7 +168,7 @@ endpoints:
         name: gender
         description: ''
         required: true
-        example: ducimus
+        example: id
         type: string
         custom: []
       residence:
@@ -203,29 +203,29 @@ endpoints:
         name: created_by
         description: ''
         required: true
-        example: 20
+        example: 10
         type: integer
         custom: []
       fpo_id:
         name: fpo_id
         description: ''
         required: true
-        example: 8
+        example: 18
         type: integer
         custom: []
     cleanBodyParameters:
       first_name: John
       last_name: Doe
-      email: jhessel@example.net
+      email: merl.cole@example.com
       phone_number: 256XXXXXXXXX
       age: '30'
-      gender: ducimus
+      gender: id
       residence: Kampala
       referee_name: 'Jane Doe'
       referee_phone_number: '08012345678'
       designation: 'Agro Extension Worker'
-      created_by: 20
-      fpo_id: 8
+      created_by: 10
+      fpo_id: 18
     fileParameters: []
     responses:
       -
@@ -378,7 +378,7 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: deleniti
+        example: placeat
         type: string
         custom: []
       agent:
@@ -389,7 +389,7 @@ endpoints:
         type: string
         custom: []
     cleanUrlParameters:
-      id: deleniti
+      id: placeat
       agent: '1'
     queryParameters: []
     cleanQueryParameters: []
@@ -488,7 +488,7 @@ endpoints:
         name: email
         description: 'The email of the agent. Example:'
         required: true
-        example: bernhard.stark@example.net
+        example: ttrantow@example.com
         type: string
         custom: []
       phone_number:
@@ -536,7 +536,7 @@ endpoints:
     cleanBodyParameters:
       first_name: John
       last_name: Doe
-      email: bernhard.stark@example.net
+      email: ttrantow@example.com
       phone_number: 256XXXXXXXXX
       age: '30'
       residence: Kampala
