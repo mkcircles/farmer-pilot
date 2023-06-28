@@ -26,5 +26,6 @@ class FPO extends Model
         'fpo_contact_name',
         'contact_phone_number',
         'Cert_of_Inc',
+        'created_by',
     ];
 }

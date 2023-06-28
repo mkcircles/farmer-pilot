@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Farmer Registration Pilot",
-        "_postman_id": "a44d7608-6cf1-45f8-83ed-02194561752d",
+        "_postman_id": "0a34acfd-3b3e-4bc3-9c3f-961148f35d15",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -79,7 +79,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"rking@example.com\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"gender\":\"nihil\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\",\"created_by\":15,\"fpo_id\":20}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"mhaag@example.com\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"gender\":\"omnis\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\",\"created_by\":17,\"fpo_id\":18}"
                         },
                         "description": ""
                     },
@@ -146,7 +146,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "ut",
+                                    "value": "atque",
                                     "description": "The ID of the agent."
                                 },
                                 {
@@ -216,7 +216,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"hackett.camila@example.com\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\"}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"alysha.haley@example.org\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\"}"
                         },
                         "description": ""
                     },
@@ -346,6 +346,246 @@
             ]
         },
         {
+            "name": "FPO management",
+            "description": "\nAPIs for managing FPOs",
+            "item": [
+                {
+                    "name": "Get all FPOs.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/fpos",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/fpos"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint allows you to fetch all FPOs."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"current_page\": 1,\n\"data\": [\n{\n\"id\": 1,\n\"fpo_name\": \"FPO 1\",\n\"district\": \"FPO 1 district\",\n\"county\": \"FPO 1 county\",\n\"sub_county\": \"FPO 1 sub county\",\n\"parish\": \"FPO 1 parish\",\n\"village\": \"FPO 1 village\",\n\"main_crop\": \"FPO 1 main crop\",\n\"fpo_member_count\": 1,\n\"fpo_contact_name\": \"FPO 1 contact name\",\n\"contact_phone_number\": \"FPO 1 contact phone number\",\n\"Cert_of_Inc\": \"FPO 1 cert of inc\",\n\"address\": \"FPO 1 address\",\n\"created_at\": \"2021-06-30T11:30:00.000000Z\",\n\"updated_at\": \"2021-06-30T11:30:00.000000Z\"\n},\n{\n\"id\": 2,\n\"fpo_name\": \"FPO 2\",\n\"district\": \"FPO 2 district\",\n\"county\": \"FPO 2 county\",\n\"sub_county\": \"FPO 2 sub county\",\n\"parish\": \"FPO 2 parish\",\n\"village\": \"FPO 2 village\",\n\"main_crop\": \"FPO 2 main crop\",\n\"fpo_member_count\": 2,\n\"fpo_contact_name\": \"FPO 2 contact name\",\n\"contact_phone_number\": \"FPO 2 contact phone number\",\n\"Cert_of_Inc\": \"FPO 2 cert of inc\",\n\"address\": \"FPO 2 address\",\n\"created_at\": \"2021-06-30T11:30:00.000000Z\",\n\"updated_at\": \"2021-06-30T11:30:00.000000Z\"\n}\n],\n\"first_page_url\": \"http:\/\/localhost:8000\/api\/fpos?page=1\",\n\"from\": 1,\n\"last_page\": 1,\n\"last_page_url\": \"http:\/\/localhost:8000\/api\/fpos?page=1\",\n\"links\": [\n{\n\"url\": null,\n\"label\": \"&laquo; Previous\",\n\"active\": false\n},\n{\n\"url\": \"http:\/\/localhost:8000\/api\/fpos?page=1\",\n\"label\": \"1\",\n\"active\": true\n},\n{\n\"url\": null,\n\"label\": \"Next &raquo;\",\n\"active\": false\n}\n],\n\"next_page_url\": null,\n\"path\": \"http:\/\/localhost:8000\/api\/fpos\",\n\"per_page\": 15,\n\"prev_page_url\": null,\n\"to\": 2,\n\"total\": 2\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n\"message\": \"Unauthenticated.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n\"message\": \"This action is unauthorized.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n\"message\": \"No query results for FPOs.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create FPO.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/fpo\/register",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/fpo\/register"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"fpo_name\":\"dolor\",\"district\":\"fugiat\",\"county\":\"et\",\"sub_county\":\"hic\",\"parish\":\"voluptate\",\"village\":\"excepturi\",\"main_crop\":\"voluptas\",\"fpo_member_count\":5,\"fpo_contact_name\":\"facere\",\"contact_phone_number\":\"dolor\",\"address\":\"doloribus\",\"created_by\":8}"
+                        },
+                        "description": "This endpoint allows you to create a new FPO."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\n\"success\": true,\n\"message\": \"FPO created successfully\",\n\"data\": {\n\"fpo_name\": \"FPO 1\",\n\"district\": \"FPO 1 district\",\n\"county\": \"FPO 1 county\",\n\"sub_county\": \"FPO 1 sub county\",\n\"parish\": \"FPO 1 parish\",\n\"village\": \"FPO 1 village\",\n\"main_crop\": \"FPO 1 main crop\",\n\"fpo_member_count\": 1,\n\"fpo_contact_name\": \"FPO 1 contact name\",\n\"contact_phone_number\": \"FPO 1 contact phone number\",\n\"Cert_of_Inc\": null,\n\"created_by\": 1,\n\"updated_at\": \"2021-06-30T11:30:00.000000Z\",\n\"created_at\": \"2021-06-30T11:30:00.000000Z\",\n\"id\": 1\n}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n\"success\": false,\n\"message\": \"Validation error\",\n\"data\": {\n\"fpo_name\": [\n\"The fpo name field is required.\"\n],\n\"district\": [\n\"The district field is required.\"\n],\n\"county\": [\n\"The county field is required.\"\n],\n\"sub_county\": [\n\"The sub county field is required.\"\n],\n\"parish\": [\n\"The parish field is required.\"\n],\n\"village\": [\n\"The village field is required.\"\n],\n\"main_crop\": [\n\"The main crop field is required.\"\n],\n\"fpo_member_count\": [\n\"The fpo member count field is required.\"\n],\n\"fpo_contact_name\": [\n\"The fpo contact name field is required.\"\n],\n\"contact_phone_number\": [\n\"The contact phone number field is required.\"\n],\n\"created_by\": [\n\"The created by field is required.\"\n]\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n\"message\": \"Unauthenticated.\"\n }",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n\"message\": \"This action is unauthorized.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n\"message\": \"No query results for FPOs.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get FPO by id.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/fpo\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/fpo\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "in",
+                                    "description": "The id of the FPO."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint allows you to fetch a FPO by id."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"success\": true,\n\"message\": \"FPO retrieved successfully\",\n\"data\": {\n\"id\": 1,\n\"fpo_name\": \"FPO 1\",\n\"district\": \"FPO 1 district\",\n\"county\": \"FPO 1 county\",\n\"sub_county\": \"FPO 1 sub county\",\n\"parish\": \"FPO 1 parish\",\n\"village\": \"FPO 1 village\",\n\"main_crop\": \"FPO 1 main crop\",\n\"fpo_member_count\": 1,\n\"fpo_contact_name\": \"FPO 1 contact name\",\n\"contact_phone_number\": \"FPO 1 contact phone number\",\n\"Cert_of_Inc\": \"FPO 1 cert of inc\",\n\"address\": \"FPO 1 address\",\n\"created_at\": \"2021-06-30T11:30:00.000000Z\",\n\"updated_at\": \"2021-06-30T11:30:00.000000Z\"\n}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n\"message\": \"Unauthenticated.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n\"message\": \"This action is unauthorized.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n\"message\": \"FPO not found\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update FPO by id.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/fpo\/:id\/update",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/fpo\/:id\/update",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "eligendi",
+                                    "description": "The id of the FPO."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"fpo_name\":\"aspernatur\",\"district\":\"nihil\",\"county\":\"repudiandae\",\"sub_county\":\"doloribus\",\"parish\":\"eos\",\"village\":\"voluptas\",\"main_crop\":\"animi\",\"fpo_member_count\":7,\"fpo_contact_name\":\"quod\",\"contact_phone_number\":\"sapiente\",\"created_by\":13}"
+                        },
+                        "description": "This endpoint allows you to update a FPO by id."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"success\": true,\n\"message\": \"FPO updated successfully\",\n\"data\": {\n\"id\": 1,\n\"fpo_name\": \"FPO 1\",\n\"district\": \"FPO 1 district\",\n\"county\": \"FPO 1 county\",\n\"sub_county\": \"FPO 1 sub county\",\n\"parish\": \"FPO 1 parish\",\n\"village\": \"FPO 1 village\",\n\"main_crop\": \"FPO 1 main crop\",\n\"fpo_member_count\": 1,\n\"fpo_contact_name\": \"FPO 1 contact name\",\n\"contact_phone_number\": \"FPO 1 contact phone number\",\n\"Cert_of_Inc\": \"FPO 1 cert of inc\",\n\"address\": \"FPO 1 address\",\n\"created_at\": \"2021-06-30T11:30:00.000000Z\",\n\"updated_at\": \"2021-06-30T11:30:00.000000Z\"\n}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n\"success\": false,\n\"message\": \"Validation error\",\n\"data\": {\n\"fpo_name\": [\n\"The fpo name field is required.\"\n],\n\"district\": [\n\"The district field is required.\"\n],\n\"county\": [\n\"The county field is required.\"\n],\n\"sub_county\": [\n\"The sub county field is required.\"\n],\n\"parish\": [\n\"The parish field is required.\"\n],\n\"village\": [\n\"The village field is required.\"\n],\n\"main_crop\": [\n\"The main crop field is required.\"\n],\n\"fpo_member_count\": [\n \"The fpo member count field is required.\"\n],\n\"fpo_contact_name\": [\n\"The fpo contact name field is required.\"\n],\n\"contact_phone_number\": [\n\"The contact phone number field is required.\"\n],\n\"created_by\": [\n\"The created by field is required.\"\n]\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n\"message\": \"Unauthenticated.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n\"message\": \"This action is unauthorized.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n\"message\": \"FPO not found\"\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "name": "Farmer Profile",
             "description": "\nAPIs for managing farmer profile",
             "item": [
@@ -371,7 +611,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"dob\":\"1990-01-01\",\"gender\":\"dolores\",\"education_level\":\"Primary\",\"phone_number\":\"0789123456\",\"id_number\":\"CM12345678\",\"marital_status\":\"Married\",\"district\":\"Kampala\",\"county\":\"Makindye\",\"sub_county\":\"Kibuye\",\"parish\":\"Kibuye\",\"village\":\"Kibuye\",\"fpo_id\":0,\"farmer_cordinates\":\"0.0000,0.0000\",\"next_of_kin\":\"Jane Doe\",\"next_of_kin_contact\":\"0789123456\",\"next_of_kin_relationship\":\"Wife\",\"male_members_in_household\":2,\"female_members_in_household\":4,\"members_above_18\":4,\"children_below_5\":2,\"school_going_children\":2,\"head_of_family\":\"John Doe\",\"how_much_do_you_earn_from_agricultural_activities\":\"100000\",\"how_much_do_you_earn_from_non_agricultural_activities\":\"100000\",\"do_you_have_an_account_with_an_FI\":\"Yes\",\"farm_size\":\"2\",\"farm_size_under_agriculture\":\"2\",\"land_ownership\":\"Owned\",\"type_of_farming\":\"Crop\",\"crops_grown\":\"Maize\",\"animals_kept\":\"Cattle\",\"estimated_produce_value_last_season\":\"100000\",\"estimated_produce_value_this_season\":\"100000\",\"data_captured_by\":\"1\"}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"dob\":\"1990-01-01\",\"gender\":\"ipsum\",\"education_level\":\"Primary\",\"phone_number\":\"0789123456\",\"id_number\":\"CM12345678\",\"marital_status\":\"Married\",\"district\":\"Kampala\",\"county\":\"Makindye\",\"sub_county\":\"Kibuye\",\"parish\":\"Kibuye\",\"village\":\"Kibuye\",\"fpo_id\":0,\"farmer_cordinates\":\"0.0000,0.0000\",\"next_of_kin\":\"Jane Doe\",\"next_of_kin_contact\":\"0789123456\",\"next_of_kin_relationship\":\"Wife\",\"male_members_in_household\":2,\"female_members_in_household\":4,\"members_above_18\":4,\"children_below_5\":2,\"school_going_children\":2,\"head_of_family\":\"John Doe\",\"how_much_do_you_earn_from_agricultural_activities\":\"100000\",\"how_much_do_you_earn_from_non_agricultural_activities\":\"100000\",\"do_you_have_an_account_with_an_FI\":\"Yes\",\"farm_size\":\"2\",\"farm_size_under_agriculture\":\"2\",\"land_ownership\":\"Owned\",\"type_of_farming\":\"Crop\",\"crops_grown\":\"Maize\",\"animals_kept\":\"Cattle\",\"estimated_produce_value_last_season\":\"100000\",\"estimated_produce_value_this_season\":\"100000\",\"data_captured_by\":\"1\"}"
                         },
                         "description": "",
                         "auth": {

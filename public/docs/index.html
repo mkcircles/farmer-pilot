@@ -98,6 +98,25 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-fpo-management" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="fpo-management">
+                    <a href="#fpo-management">FPO management</a>
+                </li>
+                                    <ul id="tocify-subheader-fpo-management" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="fpo-management-GETapi-fpos">
+                                <a href="#fpo-management-GETapi-fpos">Get all FPOs.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="fpo-management-POSTapi-fpo-register">
+                                <a href="#fpo-management-POSTapi-fpo-register">Create FPO.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="fpo-management-GETapi-fpo--id-">
+                                <a href="#fpo-management-GETapi-fpo--id-">Get FPO by id.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="fpo-management-POSTapi-fpo--id--update">
+                                <a href="#fpo-management-POSTapi-fpo--id--update">Update FPO by id.</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-farmer-profile" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="farmer-profile">
                     <a href="#farmer-profile">Farmer Profile</a>
@@ -336,16 +355,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"first_name\": \"John\",
     \"last_name\": \"Doe\",
-    \"email\": \"rking@example.com\",
+    \"email\": \"mhaag@example.com\",
     \"phone_number\": \"256XXXXXXXXX\",
     \"age\": \"30\",
-    \"gender\": \"nihil\",
+    \"gender\": \"omnis\",
     \"residence\": \"Kampala\",
     \"referee_name\": \"Jane Doe\",
     \"referee_phone_number\": \"08012345678\",
     \"designation\": \"Agro Extension Worker\",
-    \"created_by\": 15,
-    \"fpo_id\": 20
+    \"created_by\": 17,
+    \"fpo_id\": 18
 }"
 </code></pre></div>
 
@@ -363,16 +382,16 @@ const headers = {
 let body = {
     "first_name": "John",
     "last_name": "Doe",
-    "email": "rking@example.com",
+    "email": "mhaag@example.com",
     "phone_number": "256XXXXXXXXX",
     "age": "30",
-    "gender": "nihil",
+    "gender": "omnis",
     "residence": "Kampala",
     "referee_name": "Jane Doe",
     "referee_phone_number": "08012345678",
     "designation": "Agro Extension Worker",
-    "created_by": 15,
-    "fpo_id": 20
+    "created_by": 17,
+    "fpo_id": 18
 };
 
 fetch(url, {
@@ -604,10 +623,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="email"                data-endpoint="POSTapi-agent-register"
-               value="rking@example.com"
+               value="mhaag@example.com"
                data-component="body">
     <br>
-<p>The email of the agent. Example: Example: <code>rking@example.com</code></p>
+<p>The email of the agent. Example: Example: <code>mhaag@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
@@ -637,10 +656,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="gender"                data-endpoint="POSTapi-agent-register"
-               value="nihil"
+               value="omnis"
                data-component="body">
     <br>
-<p>Example: <code>nihil</code></p>
+<p>Example: <code>omnis</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>residence</code></b>&nbsp;&nbsp;
@@ -692,10 +711,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                name="created_by"                data-endpoint="POSTapi-agent-register"
-               value="15"
+               value="17"
                data-component="body">
     <br>
-<p>Example: <code>15</code></p>
+<p>Example: <code>17</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fpo_id</code></b>&nbsp;&nbsp;
@@ -703,10 +722,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                name="fpo_id"                data-endpoint="POSTapi-agent-register"
-               value="20"
+               value="18"
                data-component="body">
     <br>
-<p>Example: <code>20</code></p>
+<p>Example: <code>18</code></p>
         </div>
         </form>
 
@@ -724,14 +743,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://farmer-pilot.test/api/agent/ut" \
+    --get "https://farmer-pilot.test/api/agent/atque" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmer-pilot.test/api/agent/ut"
+    "https://farmer-pilot.test/api/agent/atque"
 );
 
 const headers = {
@@ -860,10 +879,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="id"                data-endpoint="GETapi-agent--id-"
-               value="ut"
+               value="atque"
                data-component="url">
     <br>
-<p>The ID of the agent. Example: <code>ut</code></p>
+<p>The ID of the agent. Example: <code>atque</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>agent</code></b>&nbsp;&nbsp;
@@ -898,7 +917,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"first_name\": \"John\",
     \"last_name\": \"Doe\",
-    \"email\": \"hackett.camila@example.com\",
+    \"email\": \"alysha.haley@example.org\",
     \"phone_number\": \"256XXXXXXXXX\",
     \"age\": \"30\",
     \"residence\": \"Kampala\",
@@ -922,7 +941,7 @@ const headers = {
 let body = {
     "first_name": "John",
     "last_name": "Doe",
-    "email": "hackett.camila@example.com",
+    "email": "alysha.haley@example.org",
     "phone_number": "256XXXXXXXXX",
     "age": "30",
     "residence": "Kampala",
@@ -1143,10 +1162,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="email"                data-endpoint="POSTapi-agent--id--update"
-               value="hackett.camila@example.com"
+               value="alysha.haley@example.org"
                data-component="body">
     <br>
-<p>The email of the agent. Example: Example: <code>hackett.camila@example.com</code></p>
+<p>The email of the agent. Example: Example: <code>alysha.haley@example.org</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
@@ -1513,6 +1532,1134 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+                <h1 id="fpo-management">FPO management</h1>
+
+    <p>APIs for managing FPOs</p>
+
+                                <h2 id="fpo-management-GETapi-fpos">Get all FPOs.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>This endpoint allows you to fetch all FPOs.</p>
+
+<span id="example-requests-GETapi-fpos">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://farmer-pilot.test/api/fpos" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://farmer-pilot.test/api/fpos"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-fpos">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;current_page&quot;: 1,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;fpo_name&quot;: &quot;FPO 1&quot;,
+            &quot;district&quot;: &quot;FPO 1 district&quot;,
+            &quot;county&quot;: &quot;FPO 1 county&quot;,
+            &quot;sub_county&quot;: &quot;FPO 1 sub county&quot;,
+            &quot;parish&quot;: &quot;FPO 1 parish&quot;,
+            &quot;village&quot;: &quot;FPO 1 village&quot;,
+            &quot;main_crop&quot;: &quot;FPO 1 main crop&quot;,
+            &quot;fpo_member_count&quot;: 1,
+            &quot;fpo_contact_name&quot;: &quot;FPO 1 contact name&quot;,
+            &quot;contact_phone_number&quot;: &quot;FPO 1 contact phone number&quot;,
+            &quot;Cert_of_Inc&quot;: &quot;FPO 1 cert of inc&quot;,
+            &quot;address&quot;: &quot;FPO 1 address&quot;,
+            &quot;created_at&quot;: &quot;2021-06-30T11:30:00.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2021-06-30T11:30:00.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;fpo_name&quot;: &quot;FPO 2&quot;,
+            &quot;district&quot;: &quot;FPO 2 district&quot;,
+            &quot;county&quot;: &quot;FPO 2 county&quot;,
+            &quot;sub_county&quot;: &quot;FPO 2 sub county&quot;,
+            &quot;parish&quot;: &quot;FPO 2 parish&quot;,
+            &quot;village&quot;: &quot;FPO 2 village&quot;,
+            &quot;main_crop&quot;: &quot;FPO 2 main crop&quot;,
+            &quot;fpo_member_count&quot;: 2,
+            &quot;fpo_contact_name&quot;: &quot;FPO 2 contact name&quot;,
+            &quot;contact_phone_number&quot;: &quot;FPO 2 contact phone number&quot;,
+            &quot;Cert_of_Inc&quot;: &quot;FPO 2 cert of inc&quot;,
+            &quot;address&quot;: &quot;FPO 2 address&quot;,
+            &quot;created_at&quot;: &quot;2021-06-30T11:30:00.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2021-06-30T11:30:00.000000Z&quot;
+        }
+    ],
+    &quot;first_page_url&quot;: &quot;http://localhost:8000/api/fpos?page=1&quot;,
+    &quot;from&quot;: 1,
+    &quot;last_page&quot;: 1,
+    &quot;last_page_url&quot;: &quot;http://localhost:8000/api/fpos?page=1&quot;,
+    &quot;links&quot;: [
+        {
+            &quot;url&quot;: null,
+            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+            &quot;active&quot;: false
+        },
+        {
+            &quot;url&quot;: &quot;http://localhost:8000/api/fpos?page=1&quot;,
+            &quot;label&quot;: &quot;1&quot;,
+            &quot;active&quot;: true
+        },
+        {
+            &quot;url&quot;: null,
+            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+            &quot;active&quot;: false
+        }
+    ],
+    &quot;next_page_url&quot;: null,
+    &quot;path&quot;: &quot;http://localhost:8000/api/fpos&quot;,
+    &quot;per_page&quot;: 15,
+    &quot;prev_page_url&quot;: null,
+    &quot;to&quot;: 2,
+    &quot;total&quot;: 2
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for FPOs.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-fpos" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-fpos"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-fpos"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-fpos" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-fpos">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-fpos" data-method="GET"
+      data-path="api/fpos"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-fpos', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-fpos"
+                    onclick="tryItOut('GETapi-fpos');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-fpos"
+                    onclick="cancelTryOut('GETapi-fpos');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-fpos"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/fpos</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="GETapi-fpos"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="GETapi-fpos"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="fpo-management-POSTapi-fpo-register">Create FPO.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>This endpoint allows you to create a new FPO.</p>
+
+<span id="example-requests-POSTapi-fpo-register">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://farmer-pilot.test/api/fpo/register" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"fpo_name\": \"dolor\",
+    \"district\": \"fugiat\",
+    \"county\": \"et\",
+    \"sub_county\": \"hic\",
+    \"parish\": \"voluptate\",
+    \"village\": \"excepturi\",
+    \"main_crop\": \"voluptas\",
+    \"fpo_member_count\": 5,
+    \"fpo_contact_name\": \"facere\",
+    \"contact_phone_number\": \"dolor\",
+    \"address\": \"doloribus\",
+    \"created_by\": 8
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://farmer-pilot.test/api/fpo/register"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "fpo_name": "dolor",
+    "district": "fugiat",
+    "county": "et",
+    "sub_county": "hic",
+    "parish": "voluptate",
+    "village": "excepturi",
+    "main_crop": "voluptas",
+    "fpo_member_count": 5,
+    "fpo_contact_name": "facere",
+    "contact_phone_number": "dolor",
+    "address": "doloribus",
+    "created_by": 8
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-fpo-register">
+            <blockquote>
+            <p>Example response (201):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;FPO created successfully&quot;,
+    &quot;data&quot;: {
+        &quot;fpo_name&quot;: &quot;FPO 1&quot;,
+        &quot;district&quot;: &quot;FPO 1 district&quot;,
+        &quot;county&quot;: &quot;FPO 1 county&quot;,
+        &quot;sub_county&quot;: &quot;FPO 1 sub county&quot;,
+        &quot;parish&quot;: &quot;FPO 1 parish&quot;,
+        &quot;village&quot;: &quot;FPO 1 village&quot;,
+        &quot;main_crop&quot;: &quot;FPO 1 main crop&quot;,
+        &quot;fpo_member_count&quot;: 1,
+        &quot;fpo_contact_name&quot;: &quot;FPO 1 contact name&quot;,
+        &quot;contact_phone_number&quot;: &quot;FPO 1 contact phone number&quot;,
+        &quot;Cert_of_Inc&quot;: null,
+        &quot;created_by&quot;: 1,
+        &quot;updated_at&quot;: &quot;2021-06-30T11:30:00.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2021-06-30T11:30:00.000000Z&quot;,
+        &quot;id&quot;: 1
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+&quot;success&quot;: false,
+&quot;message&quot;: &quot;Validation error&quot;,
+&quot;data&quot;: {
+&quot;fpo_name&quot;: [
+&quot;The fpo name field is required.&quot;
+],
+&quot;district&quot;: [
+&quot;The district field is required.&quot;
+],
+&quot;county&quot;: [
+&quot;The county field is required.&quot;
+],
+&quot;sub_county&quot;: [
+&quot;The sub county field is required.&quot;
+],
+&quot;parish&quot;: [
+&quot;The parish field is required.&quot;
+],
+&quot;village&quot;: [
+&quot;The village field is required.&quot;
+],
+&quot;main_crop&quot;: [
+&quot;The main crop field is required.&quot;
+],
+&quot;fpo_member_count&quot;: [
+&quot;The fpo member count field is required.&quot;
+],
+&quot;fpo_contact_name&quot;: [
+&quot;The fpo contact name field is required.&quot;
+],
+&quot;contact_phone_number&quot;: [
+&quot;The contact phone number field is required.&quot;
+],
+&quot;created_by&quot;: [
+&quot;The created by field is required.&quot;
+]
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for FPOs.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-fpo-register" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-fpo-register"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-fpo-register"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-fpo-register" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-fpo-register">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-fpo-register" data-method="POST"
+      data-path="api/fpo/register"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-fpo-register', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-fpo-register"
+                    onclick="tryItOut('POSTapi-fpo-register');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-fpo-register"
+                    onclick="cancelTryOut('POSTapi-fpo-register');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-fpo-register"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/fpo/register</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="POSTapi-fpo-register"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="POSTapi-fpo-register"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>fpo_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="fpo_name"                data-endpoint="POSTapi-fpo-register"
+               value="dolor"
+               data-component="body">
+    <br>
+<p>The name of the FPO. Example: <code>dolor</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>district</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="district"                data-endpoint="POSTapi-fpo-register"
+               value="fugiat"
+               data-component="body">
+    <br>
+<p>The district of the FPO. Example: <code>fugiat</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>county</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="county"                data-endpoint="POSTapi-fpo-register"
+               value="et"
+               data-component="body">
+    <br>
+<p>The county of the FPO. Example: <code>et</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>sub_county</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="sub_county"                data-endpoint="POSTapi-fpo-register"
+               value="hic"
+               data-component="body">
+    <br>
+<p>The sub county of the FPO. Example: <code>hic</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>parish</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="parish"                data-endpoint="POSTapi-fpo-register"
+               value="voluptate"
+               data-component="body">
+    <br>
+<p>The parish of the FPO. Example: <code>voluptate</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>village</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="village"                data-endpoint="POSTapi-fpo-register"
+               value="excepturi"
+               data-component="body">
+    <br>
+<p>The village of the FPO. Example: <code>excepturi</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>main_crop</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="main_crop"                data-endpoint="POSTapi-fpo-register"
+               value="voluptas"
+               data-component="body">
+    <br>
+<p>The main crop of the FPO. Example: <code>voluptas</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>fpo_member_count</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="fpo_member_count"                data-endpoint="POSTapi-fpo-register"
+               value="5"
+               data-component="body">
+    <br>
+<p>The number of FPO members. Example: <code>5</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>fpo_contact_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="fpo_contact_name"                data-endpoint="POSTapi-fpo-register"
+               value="facere"
+               data-component="body">
+    <br>
+<p>The contact name of the FPO. Example: <code>facere</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>contact_phone_number</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="contact_phone_number"                data-endpoint="POSTapi-fpo-register"
+               value="dolor"
+               data-component="body">
+    <br>
+<p>The contact phone number of the FPO. Example: <code>dolor</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>address</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="address"                data-endpoint="POSTapi-fpo-register"
+               value="doloribus"
+               data-component="body">
+    <br>
+<p>Example: <code>doloribus</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>created_by</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="created_by"                data-endpoint="POSTapi-fpo-register"
+               value="8"
+               data-component="body">
+    <br>
+<p>The userId  of the FPO creator. Example: <code>8</code></p>
+        </div>
+        </form>
+
+                    <h2 id="fpo-management-GETapi-fpo--id-">Get FPO by id.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>This endpoint allows you to fetch a FPO by id.</p>
+
+<span id="example-requests-GETapi-fpo--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://farmer-pilot.test/api/fpo/in" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://farmer-pilot.test/api/fpo/in"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-fpo--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;FPO retrieved successfully&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;fpo_name&quot;: &quot;FPO 1&quot;,
+        &quot;district&quot;: &quot;FPO 1 district&quot;,
+        &quot;county&quot;: &quot;FPO 1 county&quot;,
+        &quot;sub_county&quot;: &quot;FPO 1 sub county&quot;,
+        &quot;parish&quot;: &quot;FPO 1 parish&quot;,
+        &quot;village&quot;: &quot;FPO 1 village&quot;,
+        &quot;main_crop&quot;: &quot;FPO 1 main crop&quot;,
+        &quot;fpo_member_count&quot;: 1,
+        &quot;fpo_contact_name&quot;: &quot;FPO 1 contact name&quot;,
+        &quot;contact_phone_number&quot;: &quot;FPO 1 contact phone number&quot;,
+        &quot;Cert_of_Inc&quot;: &quot;FPO 1 cert of inc&quot;,
+        &quot;address&quot;: &quot;FPO 1 address&quot;,
+        &quot;created_at&quot;: &quot;2021-06-30T11:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2021-06-30T11:30:00.000000Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;FPO not found&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-fpo--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-fpo--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-fpo--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-fpo--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-fpo--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-fpo--id-" data-method="GET"
+      data-path="api/fpo/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-fpo--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-fpo--id-"
+                    onclick="tryItOut('GETapi-fpo--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-fpo--id-"
+                    onclick="cancelTryOut('GETapi-fpo--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-fpo--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/fpo/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="GETapi-fpo--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="GETapi-fpo--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="id"                data-endpoint="GETapi-fpo--id-"
+               value="in"
+               data-component="url">
+    <br>
+<p>The id of the FPO. Example: <code>in</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="fpo-management-POSTapi-fpo--id--update">Update FPO by id.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>This endpoint allows you to update a FPO by id.</p>
+
+<span id="example-requests-POSTapi-fpo--id--update">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://farmer-pilot.test/api/fpo/eligendi/update" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"fpo_name\": \"aspernatur\",
+    \"district\": \"nihil\",
+    \"county\": \"repudiandae\",
+    \"sub_county\": \"doloribus\",
+    \"parish\": \"eos\",
+    \"village\": \"voluptas\",
+    \"main_crop\": \"animi\",
+    \"fpo_member_count\": 7,
+    \"fpo_contact_name\": \"quod\",
+    \"contact_phone_number\": \"sapiente\",
+    \"created_by\": 13
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://farmer-pilot.test/api/fpo/eligendi/update"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "fpo_name": "aspernatur",
+    "district": "nihil",
+    "county": "repudiandae",
+    "sub_county": "doloribus",
+    "parish": "eos",
+    "village": "voluptas",
+    "main_crop": "animi",
+    "fpo_member_count": 7,
+    "fpo_contact_name": "quod",
+    "contact_phone_number": "sapiente",
+    "created_by": 13
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-fpo--id--update">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;FPO updated successfully&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;fpo_name&quot;: &quot;FPO 1&quot;,
+        &quot;district&quot;: &quot;FPO 1 district&quot;,
+        &quot;county&quot;: &quot;FPO 1 county&quot;,
+        &quot;sub_county&quot;: &quot;FPO 1 sub county&quot;,
+        &quot;parish&quot;: &quot;FPO 1 parish&quot;,
+        &quot;village&quot;: &quot;FPO 1 village&quot;,
+        &quot;main_crop&quot;: &quot;FPO 1 main crop&quot;,
+        &quot;fpo_member_count&quot;: 1,
+        &quot;fpo_contact_name&quot;: &quot;FPO 1 contact name&quot;,
+        &quot;contact_phone_number&quot;: &quot;FPO 1 contact phone number&quot;,
+        &quot;Cert_of_Inc&quot;: &quot;FPO 1 cert of inc&quot;,
+        &quot;address&quot;: &quot;FPO 1 address&quot;,
+        &quot;created_at&quot;: &quot;2021-06-30T11:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2021-06-30T11:30:00.000000Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+&quot;success&quot;: false,
+&quot;message&quot;: &quot;Validation error&quot;,
+&quot;data&quot;: {
+&quot;fpo_name&quot;: [
+&quot;The fpo name field is required.&quot;
+],
+&quot;district&quot;: [
+&quot;The district field is required.&quot;
+],
+&quot;county&quot;: [
+&quot;The county field is required.&quot;
+],
+&quot;sub_county&quot;: [
+&quot;The sub county field is required.&quot;
+],
+&quot;parish&quot;: [
+&quot;The parish field is required.&quot;
+],
+&quot;village&quot;: [
+&quot;The village field is required.&quot;
+],
+&quot;main_crop&quot;: [
+&quot;The main crop field is required.&quot;
+],
+&quot;fpo_member_count&quot;: [
+ &quot;The fpo member count field is required.&quot;
+],
+&quot;fpo_contact_name&quot;: [
+&quot;The fpo contact name field is required.&quot;
+],
+&quot;contact_phone_number&quot;: [
+&quot;The contact phone number field is required.&quot;
+],
+&quot;created_by&quot;: [
+&quot;The created by field is required.&quot;
+]
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;FPO not found&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-fpo--id--update" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-fpo--id--update"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-fpo--id--update"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-fpo--id--update" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-fpo--id--update">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-fpo--id--update" data-method="POST"
+      data-path="api/fpo/{id}/update"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-fpo--id--update', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-fpo--id--update"
+                    onclick="tryItOut('POSTapi-fpo--id--update');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-fpo--id--update"
+                    onclick="cancelTryOut('POSTapi-fpo--id--update');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-fpo--id--update"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/fpo/{id}/update</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="POSTapi-fpo--id--update"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="POSTapi-fpo--id--update"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="id"                data-endpoint="POSTapi-fpo--id--update"
+               value="eligendi"
+               data-component="url">
+    <br>
+<p>The id of the FPO. Example: <code>eligendi</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>fpo_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="fpo_name"                data-endpoint="POSTapi-fpo--id--update"
+               value="aspernatur"
+               data-component="body">
+    <br>
+<p>The name of the FPO. Example: <code>aspernatur</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>district</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="district"                data-endpoint="POSTapi-fpo--id--update"
+               value="nihil"
+               data-component="body">
+    <br>
+<p>The district of the FPO. Example: <code>nihil</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>county</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="county"                data-endpoint="POSTapi-fpo--id--update"
+               value="repudiandae"
+               data-component="body">
+    <br>
+<p>The county of the FPO. Example: <code>repudiandae</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>sub_county</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="sub_county"                data-endpoint="POSTapi-fpo--id--update"
+               value="doloribus"
+               data-component="body">
+    <br>
+<p>The sub county of the FPO. Example: <code>doloribus</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>parish</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="parish"                data-endpoint="POSTapi-fpo--id--update"
+               value="eos"
+               data-component="body">
+    <br>
+<p>The parish of the FPO. Example: <code>eos</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>village</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="village"                data-endpoint="POSTapi-fpo--id--update"
+               value="voluptas"
+               data-component="body">
+    <br>
+<p>The village of the FPO. Example: <code>voluptas</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>main_crop</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="main_crop"                data-endpoint="POSTapi-fpo--id--update"
+               value="animi"
+               data-component="body">
+    <br>
+<p>The main crop of the FPO. Example: <code>animi</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>fpo_member_count</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="fpo_member_count"                data-endpoint="POSTapi-fpo--id--update"
+               value="7"
+               data-component="body">
+    <br>
+<p>The number of FPO members. Example: <code>7</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>fpo_contact_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="fpo_contact_name"                data-endpoint="POSTapi-fpo--id--update"
+               value="quod"
+               data-component="body">
+    <br>
+<p>The contact name of the FPO. Example: <code>quod</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>contact_phone_number</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="contact_phone_number"                data-endpoint="POSTapi-fpo--id--update"
+               value="sapiente"
+               data-component="body">
+    <br>
+<p>The contact phone number of the FPO. Example: <code>sapiente</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>created_by</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="created_by"                data-endpoint="POSTapi-fpo--id--update"
+               value="13"
+               data-component="body">
+    <br>
+<p>The userId  of the FPO creator. Example: <code>13</code></p>
+        </div>
+        </form>
+
                 <h1 id="farmer-profile">Farmer Profile</h1>
 
     <p>APIs for managing farmer profile</p>
@@ -1537,7 +2684,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"first_name\": \"John\",
     \"last_name\": \"Doe\",
     \"dob\": \"1990-01-01\",
-    \"gender\": \"dolores\",
+    \"gender\": \"ipsum\",
     \"education_level\": \"Primary\",
     \"phone_number\": \"0789123456\",
     \"id_number\": \"CM12345678\",
@@ -1588,7 +2735,7 @@ let body = {
     "first_name": "John",
     "last_name": "Doe",
     "dob": "1990-01-01",
-    "gender": "dolores",
+    "gender": "ipsum",
     "education_level": "Primary",
     "phone_number": "0789123456",
     "id_number": "CM12345678",
@@ -1838,10 +2985,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="gender"                data-endpoint="POSTapi-farmer-register"
-               value="dolores"
+               value="ipsum"
                data-component="body">
     <br>
-<p>Farmer gender. Example Male/Female Example: <code>dolores</code></p>
+<p>Farmer gender. Example Male/Female Example: <code>ipsum</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>education_level</code></b>&nbsp;&nbsp;

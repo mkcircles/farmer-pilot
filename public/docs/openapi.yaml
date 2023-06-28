@@ -409,7 +409,7 @@ paths:
                 email:
                   type: string
                   description: 'The email of the agent. Example:'
-                  example: rking@example.com
+                  example: mhaag@example.com
                 phone_number:
                   type: string
                   description: 'The phone number of the agent.'
@@ -421,7 +421,7 @@ paths:
                 gender:
                   type: string
                   description: ''
-                  example: nihil
+                  example: omnis
                 residence:
                   type: string
                   description: 'The residence of the agent.'
@@ -441,11 +441,11 @@ paths:
                 created_by:
                   type: integer
                   description: ''
-                  example: 15
+                  example: 17
                 fpo_id:
                   type: integer
                   description: ''
-                  example: 20
+                  example: 18
               required:
                 - first_name
                 - last_name
@@ -565,7 +565,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the agent.'
-        example: ut
+        example: atque
         required: true
         schema:
           type: string
@@ -812,7 +812,7 @@ paths:
                 email:
                   type: string
                   description: 'The email of the agent. Example:'
-                  example: hackett.camila@example.com
+                  example: alysha.haley@example.org
                 phone_number:
                   type: string
                   description: 'The phone number of the agent.'
@@ -908,6 +908,797 @@ paths:
         name: id
         description: 'The ID of the farmer.'
         example: '1'
+        required: true
+        schema:
+          type: string
+  /api/fpos:
+    get:
+      summary: 'Get all FPOs.'
+      operationId: getAllFPOs
+      description: 'This endpoint allows you to fetch all FPOs.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  current_page: 1
+                  data:
+                    -
+                      id: 1
+                      fpo_name: 'FPO 1'
+                      district: 'FPO 1 district'
+                      county: 'FPO 1 county'
+                      sub_county: 'FPO 1 sub county'
+                      parish: 'FPO 1 parish'
+                      village: 'FPO 1 village'
+                      main_crop: 'FPO 1 main crop'
+                      fpo_member_count: 1
+                      fpo_contact_name: 'FPO 1 contact name'
+                      contact_phone_number: 'FPO 1 contact phone number'
+                      Cert_of_Inc: 'FPO 1 cert of inc'
+                      address: 'FPO 1 address'
+                      created_at: '2021-06-30T11:30:00.000000Z'
+                      updated_at: '2021-06-30T11:30:00.000000Z'
+                    -
+                      id: 2
+                      fpo_name: 'FPO 2'
+                      district: 'FPO 2 district'
+                      county: 'FPO 2 county'
+                      sub_county: 'FPO 2 sub county'
+                      parish: 'FPO 2 parish'
+                      village: 'FPO 2 village'
+                      main_crop: 'FPO 2 main crop'
+                      fpo_member_count: 2
+                      fpo_contact_name: 'FPO 2 contact name'
+                      contact_phone_number: 'FPO 2 contact phone number'
+                      Cert_of_Inc: 'FPO 2 cert of inc'
+                      address: 'FPO 2 address'
+                      created_at: '2021-06-30T11:30:00.000000Z'
+                      updated_at: '2021-06-30T11:30:00.000000Z'
+                  first_page_url: 'http://localhost:8000/api/fpos?page=1'
+                  from: 1
+                  last_page: 1
+                  last_page_url: 'http://localhost:8000/api/fpos?page=1'
+                  links:
+                    -
+                      url: null
+                      label: '&laquo; Previous'
+                      active: false
+                    -
+                      url: 'http://localhost:8000/api/fpos?page=1'
+                      label: '1'
+                      active: true
+                    -
+                      url: null
+                      label: 'Next &raquo;'
+                      active: false
+                  next_page_url: null
+                  path: 'http://localhost:8000/api/fpos'
+                  per_page: 15
+                  prev_page_url: null
+                  to: 2
+                  total: 2
+                properties:
+                  current_page:
+                    type: integer
+                    example: 1
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        fpo_name: 'FPO 1'
+                        district: 'FPO 1 district'
+                        county: 'FPO 1 county'
+                        sub_county: 'FPO 1 sub county'
+                        parish: 'FPO 1 parish'
+                        village: 'FPO 1 village'
+                        main_crop: 'FPO 1 main crop'
+                        fpo_member_count: 1
+                        fpo_contact_name: 'FPO 1 contact name'
+                        contact_phone_number: 'FPO 1 contact phone number'
+                        Cert_of_Inc: 'FPO 1 cert of inc'
+                        address: 'FPO 1 address'
+                        created_at: '2021-06-30T11:30:00.000000Z'
+                        updated_at: '2021-06-30T11:30:00.000000Z'
+                      -
+                        id: 2
+                        fpo_name: 'FPO 2'
+                        district: 'FPO 2 district'
+                        county: 'FPO 2 county'
+                        sub_county: 'FPO 2 sub county'
+                        parish: 'FPO 2 parish'
+                        village: 'FPO 2 village'
+                        main_crop: 'FPO 2 main crop'
+                        fpo_member_count: 2
+                        fpo_contact_name: 'FPO 2 contact name'
+                        contact_phone_number: 'FPO 2 contact phone number'
+                        Cert_of_Inc: 'FPO 2 cert of inc'
+                        address: 'FPO 2 address'
+                        created_at: '2021-06-30T11:30:00.000000Z'
+                        updated_at: '2021-06-30T11:30:00.000000Z'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        fpo_name:
+                          type: string
+                          example: 'FPO 1'
+                        district:
+                          type: string
+                          example: 'FPO 1 district'
+                        county:
+                          type: string
+                          example: 'FPO 1 county'
+                        sub_county:
+                          type: string
+                          example: 'FPO 1 sub county'
+                        parish:
+                          type: string
+                          example: 'FPO 1 parish'
+                        village:
+                          type: string
+                          example: 'FPO 1 village'
+                        main_crop:
+                          type: string
+                          example: 'FPO 1 main crop'
+                        fpo_member_count:
+                          type: integer
+                          example: 1
+                        fpo_contact_name:
+                          type: string
+                          example: 'FPO 1 contact name'
+                        contact_phone_number:
+                          type: string
+                          example: 'FPO 1 contact phone number'
+                        Cert_of_Inc:
+                          type: string
+                          example: 'FPO 1 cert of inc'
+                        address:
+                          type: string
+                          example: 'FPO 1 address'
+                        created_at:
+                          type: string
+                          example: '2021-06-30T11:30:00.000000Z'
+                        updated_at:
+                          type: string
+                          example: '2021-06-30T11:30:00.000000Z'
+                  first_page_url:
+                    type: string
+                    example: 'http://localhost:8000/api/fpos?page=1'
+                  from:
+                    type: integer
+                    example: 1
+                  last_page:
+                    type: integer
+                    example: 1
+                  last_page_url:
+                    type: string
+                    example: 'http://localhost:8000/api/fpos?page=1'
+                  links:
+                    type: array
+                    example:
+                      -
+                        url: null
+                        label: '&laquo; Previous'
+                        active: false
+                      -
+                        url: 'http://localhost:8000/api/fpos?page=1'
+                        label: '1'
+                        active: true
+                      -
+                        url: null
+                        label: 'Next &raquo;'
+                        active: false
+                    items:
+                      type: object
+                      properties:
+                        url:
+                          type: string
+                          example: null
+                        label:
+                          type: string
+                          example: '&laquo; Previous'
+                        active:
+                          type: boolean
+                          example: false
+                  next_page_url:
+                    type: string
+                    example: null
+                  path:
+                    type: string
+                    example: 'http://localhost:8000/api/fpos'
+                  per_page:
+                    type: integer
+                    example: 15
+                  prev_page_url:
+                    type: string
+                    example: null
+                  to:
+                    type: integer
+                    example: 2
+                  total:
+                    type: integer
+                    example: 2
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'No query results for FPOs.'
+                properties:
+                  message:
+                    type: string
+                    example: 'No query results for FPOs.'
+      tags:
+        - 'FPO management'
+  /api/fpo/register:
+    post:
+      summary: 'Create FPO.'
+      operationId: createFPO
+      description: 'This endpoint allows you to create a new FPO.'
+      parameters: []
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  message: 'FPO created successfully'
+                  data:
+                    fpo_name: 'FPO 1'
+                    district: 'FPO 1 district'
+                    county: 'FPO 1 county'
+                    sub_county: 'FPO 1 sub county'
+                    parish: 'FPO 1 parish'
+                    village: 'FPO 1 village'
+                    main_crop: 'FPO 1 main crop'
+                    fpo_member_count: 1
+                    fpo_contact_name: 'FPO 1 contact name'
+                    contact_phone_number: 'FPO 1 contact phone number'
+                    Cert_of_Inc: null
+                    created_by: 1
+                    updated_at: '2021-06-30T11:30:00.000000Z'
+                    created_at: '2021-06-30T11:30:00.000000Z'
+                    id: 1
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'FPO created successfully'
+                  data:
+                    type: object
+                    properties:
+                      fpo_name:
+                        type: string
+                        example: 'FPO 1'
+                      district:
+                        type: string
+                        example: 'FPO 1 district'
+                      county:
+                        type: string
+                        example: 'FPO 1 county'
+                      sub_county:
+                        type: string
+                        example: 'FPO 1 sub county'
+                      parish:
+                        type: string
+                        example: 'FPO 1 parish'
+                      village:
+                        type: string
+                        example: 'FPO 1 village'
+                      main_crop:
+                        type: string
+                        example: 'FPO 1 main crop'
+                      fpo_member_count:
+                        type: integer
+                        example: 1
+                      fpo_contact_name:
+                        type: string
+                        example: 'FPO 1 contact name'
+                      contact_phone_number:
+                        type: string
+                        example: 'FPO 1 contact phone number'
+                      Cert_of_Inc:
+                        type: string
+                        example: null
+                      created_by:
+                        type: integer
+                        example: 1
+                      updated_at:
+                        type: string
+                        example: '2021-06-30T11:30:00.000000Z'
+                      created_at:
+                        type: string
+                        example: '2021-06-30T11:30:00.000000Z'
+                      id:
+                        type: integer
+                        example: 1
+        400:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n\"success\": false,\n\"message\": \"Validation error\",\n\"data\": {\n\"fpo_name\": [\n\"The fpo name field is required.\"\n],\n\"district\": [\n\"The district field is required.\"\n],\n\"county\": [\n\"The county field is required.\"\n],\n\"sub_county\": [\n\"The sub county field is required.\"\n],\n\"parish\": [\n\"The parish field is required.\"\n],\n\"village\": [\n\"The village field is required.\"\n],\n\"main_crop\": [\n\"The main crop field is required.\"\n],\n\"fpo_member_count\": [\n\"The fpo member count field is required.\"\n],\n\"fpo_contact_name\": [\n\"The fpo contact name field is required.\"\n],\n\"contact_phone_number\": [\n\"The contact phone number field is required.\"\n],\n\"created_by\": [\n\"The created by field is required.\"\n]\n}"
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'No query results for FPOs.'
+                properties:
+                  message:
+                    type: string
+                    example: 'No query results for FPOs.'
+      tags:
+        - 'FPO management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fpo_name:
+                  type: string
+                  description: 'The name of the FPO.'
+                  example: dolor
+                district:
+                  type: string
+                  description: 'The district of the FPO.'
+                  example: fugiat
+                county:
+                  type: string
+                  description: 'The county of the FPO.'
+                  example: et
+                sub_county:
+                  type: string
+                  description: 'The sub county of the FPO.'
+                  example: hic
+                parish:
+                  type: string
+                  description: 'The parish of the FPO.'
+                  example: voluptate
+                village:
+                  type: string
+                  description: 'The village of the FPO.'
+                  example: excepturi
+                main_crop:
+                  type: string
+                  description: 'The main crop of the FPO.'
+                  example: voluptas
+                fpo_member_count:
+                  type: integer
+                  description: 'The number of FPO members.'
+                  example: 5
+                fpo_contact_name:
+                  type: string
+                  description: 'The contact name of the FPO.'
+                  example: facere
+                contact_phone_number:
+                  type: string
+                  description: 'The contact phone number of the FPO.'
+                  example: dolor
+                address:
+                  type: string
+                  description: ''
+                  example: doloribus
+                created_by:
+                  type: integer
+                  description: 'The userId  of the FPO creator.'
+                  example: 8
+              required:
+                - fpo_name
+                - district
+                - county
+                - sub_county
+                - parish
+                - village
+                - main_crop
+                - fpo_member_count
+                - fpo_contact_name
+                - contact_phone_number
+                - address
+                - created_by
+  '/api/fpo/{id}':
+    get:
+      summary: 'Get FPO by id.'
+      operationId: getFPOById
+      description: 'This endpoint allows you to fetch a FPO by id.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  message: 'FPO retrieved successfully'
+                  data:
+                    id: 1
+                    fpo_name: 'FPO 1'
+                    district: 'FPO 1 district'
+                    county: 'FPO 1 county'
+                    sub_county: 'FPO 1 sub county'
+                    parish: 'FPO 1 parish'
+                    village: 'FPO 1 village'
+                    main_crop: 'FPO 1 main crop'
+                    fpo_member_count: 1
+                    fpo_contact_name: 'FPO 1 contact name'
+                    contact_phone_number: 'FPO 1 contact phone number'
+                    Cert_of_Inc: 'FPO 1 cert of inc'
+                    address: 'FPO 1 address'
+                    created_at: '2021-06-30T11:30:00.000000Z'
+                    updated_at: '2021-06-30T11:30:00.000000Z'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'FPO retrieved successfully'
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      fpo_name:
+                        type: string
+                        example: 'FPO 1'
+                      district:
+                        type: string
+                        example: 'FPO 1 district'
+                      county:
+                        type: string
+                        example: 'FPO 1 county'
+                      sub_county:
+                        type: string
+                        example: 'FPO 1 sub county'
+                      parish:
+                        type: string
+                        example: 'FPO 1 parish'
+                      village:
+                        type: string
+                        example: 'FPO 1 village'
+                      main_crop:
+                        type: string
+                        example: 'FPO 1 main crop'
+                      fpo_member_count:
+                        type: integer
+                        example: 1
+                      fpo_contact_name:
+                        type: string
+                        example: 'FPO 1 contact name'
+                      contact_phone_number:
+                        type: string
+                        example: 'FPO 1 contact phone number'
+                      Cert_of_Inc:
+                        type: string
+                        example: 'FPO 1 cert of inc'
+                      address:
+                        type: string
+                        example: 'FPO 1 address'
+                      created_at:
+                        type: string
+                        example: '2021-06-30T11:30:00.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2021-06-30T11:30:00.000000Z'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'FPO not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'FPO not found'
+      tags:
+        - 'FPO management'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The id of the FPO.'
+        example: in
+        required: true
+        schema:
+          type: string
+  '/api/fpo/{id}/update':
+    post:
+      summary: 'Update FPO by id.'
+      operationId: updateFPOById
+      description: 'This endpoint allows you to update a FPO by id.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  message: 'FPO updated successfully'
+                  data:
+                    id: 1
+                    fpo_name: 'FPO 1'
+                    district: 'FPO 1 district'
+                    county: 'FPO 1 county'
+                    sub_county: 'FPO 1 sub county'
+                    parish: 'FPO 1 parish'
+                    village: 'FPO 1 village'
+                    main_crop: 'FPO 1 main crop'
+                    fpo_member_count: 1
+                    fpo_contact_name: 'FPO 1 contact name'
+                    contact_phone_number: 'FPO 1 contact phone number'
+                    Cert_of_Inc: 'FPO 1 cert of inc'
+                    address: 'FPO 1 address'
+                    created_at: '2021-06-30T11:30:00.000000Z'
+                    updated_at: '2021-06-30T11:30:00.000000Z'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'FPO updated successfully'
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      fpo_name:
+                        type: string
+                        example: 'FPO 1'
+                      district:
+                        type: string
+                        example: 'FPO 1 district'
+                      county:
+                        type: string
+                        example: 'FPO 1 county'
+                      sub_county:
+                        type: string
+                        example: 'FPO 1 sub county'
+                      parish:
+                        type: string
+                        example: 'FPO 1 parish'
+                      village:
+                        type: string
+                        example: 'FPO 1 village'
+                      main_crop:
+                        type: string
+                        example: 'FPO 1 main crop'
+                      fpo_member_count:
+                        type: integer
+                        example: 1
+                      fpo_contact_name:
+                        type: string
+                        example: 'FPO 1 contact name'
+                      contact_phone_number:
+                        type: string
+                        example: 'FPO 1 contact phone number'
+                      Cert_of_Inc:
+                        type: string
+                        example: 'FPO 1 cert of inc'
+                      address:
+                        type: string
+                        example: 'FPO 1 address'
+                      created_at:
+                        type: string
+                        example: '2021-06-30T11:30:00.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2021-06-30T11:30:00.000000Z'
+        400:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n\"success\": false,\n\"message\": \"Validation error\",\n\"data\": {\n\"fpo_name\": [\n\"The fpo name field is required.\"\n],\n\"district\": [\n\"The district field is required.\"\n],\n\"county\": [\n\"The county field is required.\"\n],\n\"sub_county\": [\n\"The sub county field is required.\"\n],\n\"parish\": [\n\"The parish field is required.\"\n],\n\"village\": [\n\"The village field is required.\"\n],\n\"main_crop\": [\n\"The main crop field is required.\"\n],\n\"fpo_member_count\": [\n \"The fpo member count field is required.\"\n],\n\"fpo_contact_name\": [\n\"The fpo contact name field is required.\"\n],\n\"contact_phone_number\": [\n\"The contact phone number field is required.\"\n],\n\"created_by\": [\n\"The created by field is required.\"\n]\n}"
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'FPO not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'FPO not found'
+      tags:
+        - 'FPO management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fpo_name:
+                  type: string
+                  description: 'The name of the FPO.'
+                  example: aspernatur
+                district:
+                  type: string
+                  description: 'The district of the FPO.'
+                  example: nihil
+                county:
+                  type: string
+                  description: 'The county of the FPO.'
+                  example: repudiandae
+                sub_county:
+                  type: string
+                  description: 'The sub county of the FPO.'
+                  example: doloribus
+                parish:
+                  type: string
+                  description: 'The parish of the FPO.'
+                  example: eos
+                village:
+                  type: string
+                  description: 'The village of the FPO.'
+                  example: voluptas
+                main_crop:
+                  type: string
+                  description: 'The main crop of the FPO.'
+                  example: animi
+                fpo_member_count:
+                  type: integer
+                  description: 'The number of FPO members.'
+                  example: 7
+                fpo_contact_name:
+                  type: string
+                  description: 'The contact name of the FPO.'
+                  example: quod
+                contact_phone_number:
+                  type: string
+                  description: 'The contact phone number of the FPO.'
+                  example: sapiente
+                created_by:
+                  type: integer
+                  description: 'The userId  of the FPO creator.'
+                  example: 13
+              required:
+                - fpo_name
+                - district
+                - county
+                - sub_county
+                - parish
+                - village
+                - main_crop
+                - fpo_member_count
+                - fpo_contact_name
+                - contact_phone_number
+                - created_by
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The id of the FPO.'
+        example: eligendi
         required: true
         schema:
           type: string
@@ -1081,7 +1872,7 @@ paths:
                 gender:
                   type: string
                   description: 'Farmer gender. Example Male/Female'
-                  example: dolores
+                  example: ipsum
                 education_level:
                   type: string
                   description: 'The education level of the farmer.'
@@ -1254,6 +2045,9 @@ tags:
   -
     name: 'Data Management'
     description: "\nAPIs for managing farmer profile"
+  -
+    name: 'FPO management'
+    description: "\nAPIs for managing FPOs"
   -
     name: 'Farmer Profile'
     description: "\nAPIs for managing farmer profile"
