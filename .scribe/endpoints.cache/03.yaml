@@ -138,6 +138,85 @@ endpoints:
     custom: []
   -
     httpMethods:
+      - GET
+    uri: api/fpos/summary
+    metadata:
+      groupName: 'FPO management'
+      groupDescription: |-
+
+        APIs for managing FPOs
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get FPOs summary.'
+      description: 'This endpoint allows you to fetch a summary of all FPOs.'
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+          "success": true,
+          "message": "FPOs retrieved successfully",
+          "data": [
+          {
+          "id": 1,
+          "fpo_name": "FPO 1"
+          },
+          {
+          "id": 2,
+          "fpo_name": "FPO 2"
+          }
+          ]
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+          "message": "Unauthenticated."
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+          "message": "This action is unauthorized."
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+          "message": "No FPOs found"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
       - POST
     uri: api/fpo/register
     metadata:
@@ -163,99 +242,99 @@ endpoints:
         name: fpo_name
         description: 'The name of the FPO.'
         required: true
-        example: dolor
+        example: laborum
         type: string
         custom: []
       district:
         name: district
         description: 'The district of the FPO.'
         required: true
-        example: fugiat
+        example: culpa
         type: string
         custom: []
       county:
         name: county
         description: 'The county of the FPO.'
         required: true
-        example: et
+        example: quo
         type: string
         custom: []
       sub_county:
         name: sub_county
         description: 'The sub county of the FPO.'
         required: true
-        example: hic
+        example: explicabo
         type: string
         custom: []
       parish:
         name: parish
         description: 'The parish of the FPO.'
         required: true
-        example: voluptate
+        example: debitis
         type: string
         custom: []
       village:
         name: village
         description: 'The village of the FPO.'
         required: true
-        example: excepturi
+        example: corporis
         type: string
         custom: []
       main_crop:
         name: main_crop
         description: 'The main crop of the FPO.'
         required: true
-        example: voluptas
+        example: hic
         type: string
         custom: []
       fpo_member_count:
         name: fpo_member_count
         description: 'The number of FPO members.'
         required: true
-        example: 5
+        example: 12
         type: integer
         custom: []
       fpo_contact_name:
         name: fpo_contact_name
         description: 'The contact name of the FPO.'
         required: true
-        example: facere
+        example: et
         type: string
         custom: []
       contact_phone_number:
         name: contact_phone_number
         description: 'The contact phone number of the FPO.'
         required: true
-        example: dolor
+        example: temporibus
         type: string
         custom: []
       address:
         name: address
         description: ''
         required: true
-        example: doloribus
+        example: et
         type: string
         custom: []
       created_by:
         name: created_by
         description: 'The userId  of the FPO creator.'
         required: true
-        example: 8
+        example: 18
         type: integer
         custom: []
     cleanBodyParameters:
-      fpo_name: dolor
-      district: fugiat
-      county: et
-      sub_county: hic
-      parish: voluptate
-      village: excepturi
-      main_crop: voluptas
-      fpo_member_count: 5
-      fpo_contact_name: facere
-      contact_phone_number: dolor
-      address: doloribus
-      created_by: 8
+      fpo_name: laborum
+      district: culpa
+      county: quo
+      sub_county: explicabo
+      parish: debitis
+      village: corporis
+      main_crop: hic
+      fpo_member_count: 12
+      fpo_contact_name: et
+      contact_phone_number: temporibus
+      address: et
+      created_by: 18
     fileParameters: []
     responses:
       -
@@ -385,11 +464,11 @@ endpoints:
         name: id
         description: 'The id of the FPO.'
         required: true
-        example: in
+        example: dolorem
         type: string
         custom: []
     cleanUrlParameters:
-      id: in
+      id: dolorem
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -479,11 +558,11 @@ endpoints:
         name: id
         description: 'The id of the FPO.'
         required: true
-        example: eligendi
+        example: esse
         type: string
         custom: []
     cleanUrlParameters:
-      id: eligendi
+      id: esse
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -491,91 +570,91 @@ endpoints:
         name: fpo_name
         description: 'The name of the FPO.'
         required: true
-        example: aspernatur
+        example: deleniti
         type: string
         custom: []
       district:
         name: district
         description: 'The district of the FPO.'
         required: true
-        example: nihil
+        example: eligendi
         type: string
         custom: []
       county:
         name: county
         description: 'The county of the FPO.'
         required: true
-        example: repudiandae
+        example: et
         type: string
         custom: []
       sub_county:
         name: sub_county
         description: 'The sub county of the FPO.'
         required: true
-        example: doloribus
+        example: consectetur
         type: string
         custom: []
       parish:
         name: parish
         description: 'The parish of the FPO.'
         required: true
-        example: eos
+        example: facilis
         type: string
         custom: []
       village:
         name: village
         description: 'The village of the FPO.'
         required: true
-        example: voluptas
+        example: aliquid
         type: string
         custom: []
       main_crop:
         name: main_crop
         description: 'The main crop of the FPO.'
         required: true
-        example: animi
+        example: qui
         type: string
         custom: []
       fpo_member_count:
         name: fpo_member_count
         description: 'The number of FPO members.'
         required: true
-        example: 7
+        example: 19
         type: integer
         custom: []
       fpo_contact_name:
         name: fpo_contact_name
         description: 'The contact name of the FPO.'
         required: true
-        example: quod
+        example: provident
         type: string
         custom: []
       contact_phone_number:
         name: contact_phone_number
         description: 'The contact phone number of the FPO.'
         required: true
-        example: sapiente
+        example: rerum
         type: string
         custom: []
       created_by:
         name: created_by
         description: 'The userId  of the FPO creator.'
         required: true
-        example: 13
+        example: 2
         type: integer
         custom: []
     cleanBodyParameters:
-      fpo_name: aspernatur
-      district: nihil
-      county: repudiandae
-      sub_county: doloribus
-      parish: eos
-      village: voluptas
-      main_crop: animi
-      fpo_member_count: 7
-      fpo_contact_name: quod
-      contact_phone_number: sapiente
-      created_by: 13
+      fpo_name: deleniti
+      district: eligendi
+      county: et
+      sub_county: consectetur
+      parish: facilis
+      village: aliquid
+      main_crop: qui
+      fpo_member_count: 19
+      fpo_contact_name: provident
+      contact_phone_number: rerum
+      created_by: 2
     fileParameters: []
     responses:
       -

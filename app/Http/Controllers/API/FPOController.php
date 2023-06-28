@@ -521,4 +521,57 @@ class FPOController extends Controller
             'data' => $fpo
         ], 200);
     }
+
+    /**
+     * Get FPOs summary.
+     * 
+     * This endpoint allows you to fetch a summary of all FPOs.
+     * @authenticated
+     * 
+     * @response 200 {
+     * "success": true,
+     * "message": "FPOs retrieved successfully",
+     * "data": [
+     * {
+     * "id": 1,
+     * "fpo_name": "FPO 1"
+     * },
+     * {
+     * "id": 2,
+     * "fpo_name": "FPO 2"
+     * }
+     * ]
+     * }
+     * 
+     * @response 401 {
+     * "message": "Unauthenticated."
+     * }
+     * 
+     * @response 403 {
+     * "message": "This action is unauthorized."
+     * }
+     * 
+     * @response 404 {
+     * "message": "No FPOs found"
+     * }
+     * 
+     * 
+     */
+    public function getFPOsSummary()
+    {
+        //Get id and name of all FPOs
+        $fpos = FPO::all('id', 'fpo_name');
+        if($fpos->isEmpty()){
+            return response()->json([
+                'success' => false,
+                'message' => 'No FPOs found',
+                'data' => null
+            ], 404);
+        }
+        return response()->json([
+            'success' => true,
+            'message' => 'FPOs retrieved successfully',
+            'data' => $fpos
+        ], 200);
+    }
 }

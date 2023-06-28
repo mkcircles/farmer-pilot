@@ -409,7 +409,7 @@ paths:
                 email:
                   type: string
                   description: 'The email of the agent. Example:'
-                  example: mhaag@example.com
+                  example: jhessel@example.net
                 phone_number:
                   type: string
                   description: 'The phone number of the agent.'
@@ -421,7 +421,7 @@ paths:
                 gender:
                   type: string
                   description: ''
-                  example: omnis
+                  example: ducimus
                 residence:
                   type: string
                   description: 'The residence of the agent.'
@@ -441,11 +441,11 @@ paths:
                 created_by:
                   type: integer
                   description: ''
-                  example: 17
+                  example: 20
                 fpo_id:
                   type: integer
                   description: ''
-                  example: 18
+                  example: 8
               required:
                 - first_name
                 - last_name
@@ -565,7 +565,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the agent.'
-        example: atque
+        example: deleniti
         required: true
         schema:
           type: string
@@ -812,7 +812,7 @@ paths:
                 email:
                   type: string
                   description: 'The email of the agent. Example:'
-                  example: alysha.haley@example.org
+                  example: bernhard.stark@example.net
                 phone_number:
                   type: string
                   description: 'The phone number of the agent.'
@@ -1164,6 +1164,92 @@ paths:
                     example: 'No query results for FPOs.'
       tags:
         - 'FPO management'
+  /api/fpos/summary:
+    get:
+      summary: 'Get FPOs summary.'
+      operationId: getFPOsSummary
+      description: 'This endpoint allows you to fetch a summary of all FPOs.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  message: 'FPOs retrieved successfully'
+                  data:
+                    -
+                      id: 1
+                      fpo_name: 'FPO 1'
+                    -
+                      id: 2
+                      fpo_name: 'FPO 2'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'FPOs retrieved successfully'
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        fpo_name: 'FPO 1'
+                      -
+                        id: 2
+                        fpo_name: 'FPO 2'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        fpo_name:
+                          type: string
+                          example: 'FPO 1'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'No FPOs found'
+                properties:
+                  message:
+                    type: string
+                    example: 'No FPOs found'
+      tags:
+        - 'FPO management'
   /api/fpo/register:
     post:
       summary: 'Create FPO.'
@@ -1306,51 +1392,51 @@ paths:
                 fpo_name:
                   type: string
                   description: 'The name of the FPO.'
-                  example: dolor
+                  example: laborum
                 district:
                   type: string
                   description: 'The district of the FPO.'
-                  example: fugiat
+                  example: culpa
                 county:
                   type: string
                   description: 'The county of the FPO.'
-                  example: et
+                  example: quo
                 sub_county:
                   type: string
                   description: 'The sub county of the FPO.'
-                  example: hic
+                  example: explicabo
                 parish:
                   type: string
                   description: 'The parish of the FPO.'
-                  example: voluptate
+                  example: debitis
                 village:
                   type: string
                   description: 'The village of the FPO.'
-                  example: excepturi
+                  example: corporis
                 main_crop:
                   type: string
                   description: 'The main crop of the FPO.'
-                  example: voluptas
+                  example: hic
                 fpo_member_count:
                   type: integer
                   description: 'The number of FPO members.'
-                  example: 5
+                  example: 12
                 fpo_contact_name:
                   type: string
                   description: 'The contact name of the FPO.'
-                  example: facere
+                  example: et
                 contact_phone_number:
                   type: string
                   description: 'The contact phone number of the FPO.'
-                  example: dolor
+                  example: temporibus
                 address:
                   type: string
                   description: ''
-                  example: doloribus
+                  example: et
                 created_by:
                   type: integer
                   description: 'The userId  of the FPO creator.'
-                  example: 8
+                  example: 18
               required:
                 - fpo_name
                 - district
@@ -1494,7 +1580,7 @@ paths:
         in: path
         name: id
         description: 'The id of the FPO.'
-        example: in
+        example: dolorem
         required: true
         schema:
           type: string
@@ -1640,47 +1726,47 @@ paths:
                 fpo_name:
                   type: string
                   description: 'The name of the FPO.'
-                  example: aspernatur
+                  example: deleniti
                 district:
                   type: string
                   description: 'The district of the FPO.'
-                  example: nihil
+                  example: eligendi
                 county:
                   type: string
                   description: 'The county of the FPO.'
-                  example: repudiandae
+                  example: et
                 sub_county:
                   type: string
                   description: 'The sub county of the FPO.'
-                  example: doloribus
+                  example: consectetur
                 parish:
                   type: string
                   description: 'The parish of the FPO.'
-                  example: eos
+                  example: facilis
                 village:
                   type: string
                   description: 'The village of the FPO.'
-                  example: voluptas
+                  example: aliquid
                 main_crop:
                   type: string
                   description: 'The main crop of the FPO.'
-                  example: animi
+                  example: qui
                 fpo_member_count:
                   type: integer
                   description: 'The number of FPO members.'
-                  example: 7
+                  example: 19
                 fpo_contact_name:
                   type: string
                   description: 'The contact name of the FPO.'
-                  example: quod
+                  example: provident
                 contact_phone_number:
                   type: string
                   description: 'The contact phone number of the FPO.'
-                  example: sapiente
+                  example: rerum
                 created_by:
                   type: integer
                   description: 'The userId  of the FPO creator.'
-                  example: 13
+                  example: 2
               required:
                 - fpo_name
                 - district
@@ -1698,7 +1784,7 @@ paths:
         in: path
         name: id
         description: 'The id of the FPO.'
-        example: eligendi
+        example: esse
         required: true
         schema:
           type: string
@@ -1872,7 +1958,7 @@ paths:
                 gender:
                   type: string
                   description: 'Farmer gender. Example Male/Female'
-                  example: ipsum
+                  example: reiciendis
                 education_level:
                   type: string
                   description: 'The education level of the farmer.'

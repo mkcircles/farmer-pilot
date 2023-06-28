@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Farmer Registration Pilot",
-        "_postman_id": "0a34acfd-3b3e-4bc3-9c3f-961148f35d15",
+        "_postman_id": "05e56ca9-863c-4219-95a8-4d5cb29e7789",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -79,7 +79,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"mhaag@example.com\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"gender\":\"omnis\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\",\"created_by\":17,\"fpo_id\":18}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"jhessel@example.net\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"gender\":\"ducimus\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\",\"created_by\":20,\"fpo_id\":8}"
                         },
                         "description": ""
                     },
@@ -146,7 +146,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "atque",
+                                    "value": "deleniti",
                                     "description": "The ID of the agent."
                                 },
                                 {
@@ -216,7 +216,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"alysha.haley@example.org\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\"}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"bernhard.stark@example.net\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\"}"
                         },
                         "description": ""
                     },
@@ -400,6 +400,56 @@
                     ]
                 },
                 {
+                    "name": "Get FPOs summary.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/fpos\/summary",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/fpos\/summary"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint allows you to fetch a summary of all FPOs."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"success\": true,\n\"message\": \"FPOs retrieved successfully\",\n\"data\": [\n{\n\"id\": 1,\n\"fpo_name\": \"FPO 1\"\n},\n{\n\"id\": 2,\n\"fpo_name\": \"FPO 2\"\n}\n]\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n\"message\": \"Unauthenticated.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n\"message\": \"This action is unauthorized.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n\"message\": \"No FPOs found\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
                     "name": "Create FPO.",
                     "request": {
                         "url": {
@@ -421,7 +471,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"fpo_name\":\"dolor\",\"district\":\"fugiat\",\"county\":\"et\",\"sub_county\":\"hic\",\"parish\":\"voluptate\",\"village\":\"excepturi\",\"main_crop\":\"voluptas\",\"fpo_member_count\":5,\"fpo_contact_name\":\"facere\",\"contact_phone_number\":\"dolor\",\"address\":\"doloribus\",\"created_by\":8}"
+                            "raw": "{\"fpo_name\":\"laborum\",\"district\":\"culpa\",\"county\":\"quo\",\"sub_county\":\"explicabo\",\"parish\":\"debitis\",\"village\":\"corporis\",\"main_crop\":\"hic\",\"fpo_member_count\":12,\"fpo_contact_name\":\"et\",\"contact_phone_number\":\"temporibus\",\"address\":\"et\",\"created_by\":18}"
                         },
                         "description": "This endpoint allows you to create a new FPO."
                     },
@@ -470,7 +520,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "in",
+                                    "value": "dolorem",
                                     "description": "The id of the FPO."
                                 }
                             ]
@@ -528,7 +578,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "eligendi",
+                                    "value": "esse",
                                     "description": "The id of the FPO."
                                 }
                             ]
@@ -546,7 +596,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"fpo_name\":\"aspernatur\",\"district\":\"nihil\",\"county\":\"repudiandae\",\"sub_county\":\"doloribus\",\"parish\":\"eos\",\"village\":\"voluptas\",\"main_crop\":\"animi\",\"fpo_member_count\":7,\"fpo_contact_name\":\"quod\",\"contact_phone_number\":\"sapiente\",\"created_by\":13}"
+                            "raw": "{\"fpo_name\":\"deleniti\",\"district\":\"eligendi\",\"county\":\"et\",\"sub_county\":\"consectetur\",\"parish\":\"facilis\",\"village\":\"aliquid\",\"main_crop\":\"qui\",\"fpo_member_count\":19,\"fpo_contact_name\":\"provident\",\"contact_phone_number\":\"rerum\",\"created_by\":2}"
                         },
                         "description": "This endpoint allows you to update a FPO by id."
                     },
@@ -611,7 +661,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"dob\":\"1990-01-01\",\"gender\":\"ipsum\",\"education_level\":\"Primary\",\"phone_number\":\"0789123456\",\"id_number\":\"CM12345678\",\"marital_status\":\"Married\",\"district\":\"Kampala\",\"county\":\"Makindye\",\"sub_county\":\"Kibuye\",\"parish\":\"Kibuye\",\"village\":\"Kibuye\",\"fpo_id\":0,\"farmer_cordinates\":\"0.0000,0.0000\",\"next_of_kin\":\"Jane Doe\",\"next_of_kin_contact\":\"0789123456\",\"next_of_kin_relationship\":\"Wife\",\"male_members_in_household\":2,\"female_members_in_household\":4,\"members_above_18\":4,\"children_below_5\":2,\"school_going_children\":2,\"head_of_family\":\"John Doe\",\"how_much_do_you_earn_from_agricultural_activities\":\"100000\",\"how_much_do_you_earn_from_non_agricultural_activities\":\"100000\",\"do_you_have_an_account_with_an_FI\":\"Yes\",\"farm_size\":\"2\",\"farm_size_under_agriculture\":\"2\",\"land_ownership\":\"Owned\",\"type_of_farming\":\"Crop\",\"crops_grown\":\"Maize\",\"animals_kept\":\"Cattle\",\"estimated_produce_value_last_season\":\"100000\",\"estimated_produce_value_this_season\":\"100000\",\"data_captured_by\":\"1\"}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"dob\":\"1990-01-01\",\"gender\":\"reiciendis\",\"education_level\":\"Primary\",\"phone_number\":\"0789123456\",\"id_number\":\"CM12345678\",\"marital_status\":\"Married\",\"district\":\"Kampala\",\"county\":\"Makindye\",\"sub_county\":\"Kibuye\",\"parish\":\"Kibuye\",\"village\":\"Kibuye\",\"fpo_id\":0,\"farmer_cordinates\":\"0.0000,0.0000\",\"next_of_kin\":\"Jane Doe\",\"next_of_kin_contact\":\"0789123456\",\"next_of_kin_relationship\":\"Wife\",\"male_members_in_household\":2,\"female_members_in_household\":4,\"members_above_18\":4,\"children_below_5\":2,\"school_going_children\":2,\"head_of_family\":\"John Doe\",\"how_much_do_you_earn_from_agricultural_activities\":\"100000\",\"how_much_do_you_earn_from_non_agricultural_activities\":\"100000\",\"do_you_have_an_account_with_an_FI\":\"Yes\",\"farm_size\":\"2\",\"farm_size_under_agriculture\":\"2\",\"land_ownership\":\"Owned\",\"type_of_farming\":\"Crop\",\"crops_grown\":\"Maize\",\"animals_kept\":\"Cattle\",\"estimated_produce_value_last_season\":\"100000\",\"estimated_produce_value_this_season\":\"100000\",\"data_captured_by\":\"1\"}"
                         },
                         "description": "",
                         "auth": {
