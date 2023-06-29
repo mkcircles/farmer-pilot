@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Agent;
+use App\Models\FarmerProfile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -573,6 +574,87 @@ class AgentController extends Controller
             'success' => true,
             'message' => 'Agent deleted successfully',
             'data' => $agent
+        ], 200);
+    }
+
+    //Get Agent Regered Farmers
+    /**
+     * Get Agent Registered Farmers
+     * 
+     * This endpoint allows a user to get all farmers registered by a specific agent
+     * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
+     * 
+     * @urlParam agent_id required The id of the agent. Example: 1
+     * 
+     * @response {
+     * "success": true,
+     * "message": "Farmers retrieved successfully",
+     * "data": {
+     * "current_page": 1,
+     * "data": [
+     * {
+     * "id": 1,
+     * "first_name": "John",
+     * "last_name": "Doe",
+     * "email": "",
+     * ...
+     * }
+     * ],
+     * "first_page_url": "http://localhost:8000/api/farmers?page=1",
+     * "from": 1,
+     * "last_page": 1,
+     * "last_page_url": "http://localhost:8000/api/farmers?page=1",
+     * "links": [
+     * {
+     * "url": null,
+     * "label": "&laquo; Previous",
+     * "active": false
+     * },
+     * {
+     * "url": "http://localhost:8000/api/farmers?page=1",
+     * "label": "1",
+     * "active": true
+     * },
+     * {
+     * "url": null,
+     * "label": "Next &raquo;",
+     * "active": false
+     * }
+     * ],
+     * "next_page_url": null,
+     * "path": "http://localhost:8000/api/farmers",
+     * "per_page": 10,
+     * "prev_page_url": null,
+     * "to": 1,
+     * "total": 1
+     * }
+     * }
+     * 
+     * @response 404 {
+     * "success": false,
+     * "message": "No farmers found",
+     * "data": null
+     * }
+     * 
+     */
+    public function getAgentFarmers(string $agent_id)
+    {
+        $farmers = FarmerProfile::where('agent_id', $agent_id)->paginate();
+        if(count($farmers) == 0){
+            return response()->json([
+                'success' => false,
+                'message' => 'No farmers found',
+                'data' => null
+            ], 404);
+        }
+            
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Farmers retrieved successfully',
+            'data' => $farmers
         ], 200);
     }
 }

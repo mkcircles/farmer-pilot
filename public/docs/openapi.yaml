@@ -423,7 +423,7 @@ paths:
                 email:
                   type: string
                   description: 'The email of the agent. Example:'
-                  example: ksteuber@example.net
+                  example: lurline64@example.com
                 phone_number:
                   type: string
                   description: 'The phone number of the agent.'
@@ -435,7 +435,7 @@ paths:
                 gender:
                   type: string
                   description: ''
-                  example: alias
+                  example: officia
                 residence:
                   type: string
                   description: 'The residence of the agent.'
@@ -455,11 +455,11 @@ paths:
                 created_by:
                   type: integer
                   description: ''
-                  example: 3
+                  example: 13
                 fpo_id:
                   type: integer
                   description: ''
-                  example: 5
+                  example: 15
               required:
                 - first_name
                 - last_name
@@ -586,7 +586,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the agent.'
-        example: et
+        example: fuga
         required: true
         schema:
           type: string
@@ -840,7 +840,7 @@ paths:
                 email:
                   type: string
                   description: 'The email of the agent. Example:'
-                  example: michaela.kling@example.org
+                  example: darius56@example.org
                 phone_number:
                   type: string
                   description: 'The phone number of the agent.'
@@ -879,6 +879,58 @@ paths:
       -
         in: path
         name: id
+        description: 'The id of the agent.'
+        example: '1'
+        required: true
+        schema:
+          type: string
+  '/api/agent/{agent_id}/farmers':
+    get:
+      summary: 'Get Agent Registered Farmers'
+      operationId: getAgentRegisteredFarmers
+      description: 'This endpoint allows a user to get all farmers registered by a specific agent'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'required The authorization token. Example: Bearer {token}'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n\"success\": true,\n\"message\": \"Farmers retrieved successfully\",\n\"data\": {\n\"current_page\": 1,\n\"data\": [\n{\n\"id\": 1,\n\"first_name\": \"John\",\n\"last_name\": \"Doe\",\n\"email\": \"\",\n...\n}\n],\n\"first_page_url\": \"http://localhost:8000/api/farmers?page=1\",\n\"from\": 1,\n\"last_page\": 1,\n\"last_page_url\": \"http://localhost:8000/api/farmers?page=1\",\n\"links\": [\n{\n\"url\": null,\n\"label\": \"&laquo; Previous\",\n\"active\": false\n},\n{\n\"url\": \"http://localhost:8000/api/farmers?page=1\",\n\"label\": \"1\",\n\"active\": true\n},\n{\n\"url\": null,\n\"label\": \"Next &raquo;\",\n\"active\": false\n}\n],\n\"next_page_url\": null,\n\"path\": \"http://localhost:8000/api/farmers\",\n\"per_page\": 10,\n\"prev_page_url\": null,\n\"to\": 1,\n\"total\": 1\n}\n}"
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'No farmers found'
+                  data: null
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'No farmers found'
+                  data:
+                    type: string
+                    example: null
+      tags:
+        - 'Agent management'
+    parameters:
+      -
+        in: path
+        name: agent_id
         description: 'The id of the agent.'
         example: '1'
         required: true
@@ -974,11 +1026,11 @@ paths:
                 email:
                   type: string
                   description: 'The email address or phone number of the user'
-                  example: tbeier@example.org
+                  example: felicity94@example.net
                 password:
                   type: string
                   description: 'The password of the user'
-                  example: 'lNCh<zxC#S37i6'
+                  example: akjNplh32X_Fv
               required:
                 - email
                 - password
@@ -1603,31 +1655,31 @@ paths:
                 fpo_name:
                   type: string
                   description: 'The name of the FPO.'
-                  example: voluptatem
+                  example: consequuntur
                 district:
                   type: string
                   description: 'The district of the FPO.'
-                  example: labore
+                  example: dolorem
                 county:
                   type: string
                   description: 'The county of the FPO.'
-                  example: optio
+                  example: ea
                 sub_county:
                   type: string
                   description: 'The sub county of the FPO.'
-                  example: et
+                  example: unde
                 parish:
                   type: string
                   description: 'The parish of the FPO.'
-                  example: nulla
+                  example: et
                 village:
                   type: string
                   description: 'The village of the FPO.'
-                  example: aut
+                  example: magni
                 main_crop:
                   type: string
                   description: 'The main crop of the FPO.'
-                  example: quis
+                  example: eum
                 fpo_member_count:
                   type: integer
                   description: 'The number of FPO members.'
@@ -1635,19 +1687,19 @@ paths:
                 fpo_contact_name:
                   type: string
                   description: 'The contact name of the FPO.'
-                  example: quia
+                  example: aut
                 contact_phone_number:
                   type: string
                   description: 'The contact phone number of the FPO.'
-                  example: excepturi
+                  example: in
                 address:
                   type: string
                   description: ''
-                  example: impedit
+                  example: alias
                 created_by:
                   type: integer
                   description: 'The userId  of the FPO creator.'
-                  example: 16
+                  example: 5
               required:
                 - fpo_name
                 - district
@@ -1798,7 +1850,7 @@ paths:
         in: path
         name: id
         description: 'The id of the FPO.'
-        example: distinctio
+        example: sit
         required: true
         schema:
           type: string
@@ -1955,43 +2007,43 @@ paths:
                 district:
                   type: string
                   description: 'The district of the FPO.'
-                  example: quibusdam
+                  example: repellendus
                 county:
                   type: string
                   description: 'The county of the FPO.'
-                  example: sed
+                  example: quisquam
                 sub_county:
                   type: string
                   description: 'The sub county of the FPO.'
-                  example: rerum
+                  example: qui
                 parish:
                   type: string
                   description: 'The parish of the FPO.'
-                  example: eos
+                  example: blanditiis
                 village:
                   type: string
                   description: 'The village of the FPO.'
-                  example: sequi
+                  example: ratione
                 main_crop:
                   type: string
                   description: 'The main crop of the FPO.'
-                  example: eos
+                  example: assumenda
                 fpo_member_count:
                   type: integer
                   description: 'The number of FPO members.'
-                  example: 1
+                  example: 12
                 fpo_contact_name:
                   type: string
                   description: 'The contact name of the FPO.'
-                  example: officiis
+                  example: sint
                 contact_phone_number:
                   type: string
                   description: 'The contact phone number of the FPO.'
-                  example: voluptas
+                  example: facere
                 created_by:
                   type: integer
                   description: 'The userId  of the FPO creator.'
-                  example: 3
+                  example: 17
               required:
                 - fpo_name
                 - district
@@ -2009,7 +2061,7 @@ paths:
         in: path
         name: id
         description: 'The id of the FPO.'
-        example: ut
+        example: voluptatem
         required: true
         schema:
           type: string
@@ -2190,7 +2242,7 @@ paths:
                 gender:
                   type: string
                   description: 'Farmer gender. Example Male/Female'
-                  example: velit
+                  example: facilis
                 education_level:
                   type: string
                   description: 'The education level of the farmer.'

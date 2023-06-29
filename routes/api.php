@@ -34,12 +34,14 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::post('/agent/register', [AgentController::class, 'store']);
     Route::get('/agent/{id}', [AgentController::class, 'show']);
     Route::post('/agent/{id}/update', [AgentController::class, 'update']);
+    Route::get('/agent/{agent_id}/farmers', [AgentController::class, 'getAgentFarmers']);
 
     Route::get('/fpos', [FPOController::class, 'index']);
     Route::get('/fpos/summary', [FPOController::class, 'getFPOsSummary']);
     Route::post('/fpo/register', [FPOController::class, 'store']);
     Route::get('/fpo/{id}', [FPOController::class, 'show']);
     Route::post('/fpo/{id}/update', [FPOController::class, 'update']);
+    Route::get('/fpo/{id}/agents', [FPOController::class, 'getFPOAgents']);
 });
 
 

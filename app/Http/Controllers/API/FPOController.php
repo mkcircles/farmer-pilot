@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Agent;
 use App\Models\FPO;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -514,10 +515,9 @@ class FPOController extends Controller
     * }
     *
     */
-    
+
     public function destroy(string $id)
     {
-        //Delete FPO by id
         $fpo = FPO::find($id);
         if(!$fpo){
             return response()->json([
@@ -571,7 +571,6 @@ class FPOController extends Controller
      */
     public function getFPOsSummary()
     {
-        //Get id and name of all FPOs
         $fpos = FPO::all('id', 'fpo_name');
         if($fpos->isEmpty()){
             return response()->json([
@@ -584,6 +583,94 @@ class FPOController extends Controller
             'success' => true,
             'message' => 'FPOs retrieved successfully',
             'data' => $fpos
+        ], 200);
+    }
+
+    //Get FPOs Agents
+    /**
+     * Get FPOs Agents.
+     * 
+     * This endpoint allows you to fetch all agents of a FPO.
+     * @authenticated
+     * 
+     * @response 200 {
+     * "current_page": 1,
+     * "data": [
+     * {
+     * "id": 1,
+     * "first_name": "John",
+     * "last_name": "Doe",
+     * "phone_number": "256700000000",
+     * "fpo_id": 1,
+     * "created_at": "2021-06-30T11:30:00.000000Z",
+     * "updated_at": "2021-06-30T11:30:00.000000Z"
+     * },
+     * {
+     * "id": 2,
+     * "first_name": "Jane",
+     * "last_name": "Doe",
+     * "phone_number": "256700000000",
+     * "fpo_id": 1,
+     * "created_at": "2021-06-30T11:30:00.000000Z",
+     * "updated_at": "2021-06-30T11:30:00.000000Z"
+     * }
+     * ],
+     * "first_page_url": "http://localhost:8000/api/fpos/1/agents?page=1",
+     * "from": 1,
+     * "last_page": 1,
+     * "last_page_url": "http://localhost:8000/api/fpos/1/agents?page=1",
+     * "links": [
+     * {
+     * "url": null,
+     * "label": "&laquo; Previous",
+     * "active": false
+     * },
+     * {
+     * "url": "http://localhost:8000/api/fpos/1/agents?page=1",
+     * "label": "1",
+     * "active": true
+     * },
+     * {
+     * "url": null,
+     * "label": "Next &raquo;",
+     * "active": false
+     * }
+     * ],
+     * "next_page_url": null,
+     * "path": "http://localhost:8000/api/fpos/1/agents",
+     * "per_page": 15,
+     * "prev_page_url": null,
+     * "to": 2,
+     * "total": 2
+     * }
+     * 
+     * @response 401 {
+     * "message": "Unauthenticated."
+     * }
+     * 
+     * @response 403 {
+     * "message": "This action is unauthorized."
+     * }
+     * 
+     * @response 404 {
+     * "message": "No agents found"
+     * }
+     * 
+     */
+    public function getFPOsAgents(string $id)
+    {
+        $agents = Agent::where('fpo_id', $id)->paginate();
+        if($agents->isEmpty()){
+            return response()->json([
+                'success' => false,
+                'message' => 'No agents found',
+                'data' => null
+            ], 404);
+        }
+        return response()->json([
+            'success' => true,
+            'message' => 'Agents retrieved successfully',
+            'data' => $agents
         ], 200);
     }
 }
