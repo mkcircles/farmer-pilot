@@ -99,6 +99,7 @@ class AuthController extends Controller
                     //Get agent details 
                     $agent = Agent::where('email', $email)->orWhere('phone_number', $email)->first();
                     $user['agent_id'] =  $agent->id;
+                    $user['fpo_id'] =  $agent->fpo_id;
                 }
                 $success['user'] =  $user;
 
