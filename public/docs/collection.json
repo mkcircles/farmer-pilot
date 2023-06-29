@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Farmer Registration Pilot",
-        "_postman_id": "f671b68e-b020-4719-8b52-9b86cac4fd5b",
+        "_postman_id": "3562be75-dd74-449d-806c-e193e1156a18",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -87,7 +87,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"lurline64@example.com\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"gender\":\"officia\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\",\"created_by\":13,\"fpo_id\":15}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"sklocko@example.org\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"gender\":\"consectetur\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\",\"created_by\":14,\"fpo_id\":2}"
                         },
                         "description": ""
                     },
@@ -154,7 +154,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "fuga",
+                                    "value": "alias",
                                     "description": "The ID of the agent."
                                 },
                                 {
@@ -232,7 +232,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"darius56@example.org\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\"}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"pgrant@example.com\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\"}"
                         },
                         "description": "This endpoint allows a user to update a specific agent"
                     },
@@ -347,7 +347,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"felicity94@example.net\",\"password\":\"akjNplh32X_Fv\"}"
+                            "raw": "{\"email\":\"haylee.koch@example.com\",\"password\":\",).J%mxR0Zmj<hz:WDW\"}"
                         },
                         "description": "This endpoint allows a user to login",
                         "auth": {
@@ -672,7 +672,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"fpo_name\":\"consequuntur\",\"district\":\"dolorem\",\"county\":\"ea\",\"sub_county\":\"unde\",\"parish\":\"et\",\"village\":\"magni\",\"main_crop\":\"eum\",\"fpo_member_count\":10,\"fpo_contact_name\":\"aut\",\"contact_phone_number\":\"in\",\"address\":\"alias\",\"created_by\":5}"
+                            "raw": "{\"fpo_name\":\"saepe\",\"district\":\"qui\",\"county\":\"voluptates\",\"sub_county\":\"et\",\"parish\":\"sint\",\"village\":\"eaque\",\"main_crop\":\"et\",\"fpo_member_count\":13,\"fpo_contact_name\":\"ea\",\"contact_phone_number\":\"ducimus\",\"address\":\"ut\",\"created_by\":14}"
                         },
                         "description": "This endpoint allows you to create a new FPO."
                     },
@@ -721,7 +721,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "sit",
+                                    "value": "debitis",
                                     "description": "The id of the FPO."
                                 }
                             ]
@@ -783,7 +783,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "voluptatem",
+                                    "value": "explicabo",
                                     "description": "The id of the FPO."
                                 }
                             ]
@@ -805,7 +805,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"fpo_name\":\"quo\",\"district\":\"repellendus\",\"county\":\"quisquam\",\"sub_county\":\"qui\",\"parish\":\"blanditiis\",\"village\":\"ratione\",\"main_crop\":\"assumenda\",\"fpo_member_count\":12,\"fpo_contact_name\":\"sint\",\"contact_phone_number\":\"facere\",\"created_by\":17}"
+                            "raw": "{\"fpo_name\":\"id\",\"district\":\"enim\",\"county\":\"sit\",\"sub_county\":\"voluptas\",\"parish\":\"aut\",\"village\":\"odio\",\"main_crop\":\"ab\",\"fpo_member_count\":5,\"fpo_contact_name\":\"pariatur\",\"contact_phone_number\":\"sunt\",\"created_by\":6}"
                         },
                         "description": "This endpoint allows you to update a FPO by id."
                     },
@@ -838,6 +838,64 @@
                             "header": [],
                             "code": 404,
                             "body": "{\n\"message\": \"FPO not found\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get FPOs Agents.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/fpo\/:id\/agents",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/fpo\/:id\/agents",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "repudiandae",
+                                    "description": "The ID of the fpo."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint allows you to fetch all agents of a FPO."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"current_page\": 1,\n\"data\": [\n{\n\"id\": 1,\n\"first_name\": \"John\",\n\"last_name\": \"Doe\",\n\"phone_number\": \"256700000000\",\n\"fpo_id\": 1,\n\"created_at\": \"2021-06-30T11:30:00.000000Z\",\n\"updated_at\": \"2021-06-30T11:30:00.000000Z\"\n},\n{\n\"id\": 2,\n\"first_name\": \"Jane\",\n\"last_name\": \"Doe\",\n\"phone_number\": \"256700000000\",\n\"fpo_id\": 1,\n\"created_at\": \"2021-06-30T11:30:00.000000Z\",\n\"updated_at\": \"2021-06-30T11:30:00.000000Z\"\n}\n],\n\"first_page_url\": \"http:\/\/localhost:8000\/api\/fpos\/1\/agents?page=1\",\n\"from\": 1,\n\"last_page\": 1,\n\"last_page_url\": \"http:\/\/localhost:8000\/api\/fpos\/1\/agents?page=1\",\n\"links\": [\n{\n\"url\": null,\n\"label\": \"&laquo; Previous\",\n\"active\": false\n},\n{\n\"url\": \"http:\/\/localhost:8000\/api\/fpos\/1\/agents?page=1\",\n\"label\": \"1\",\n\"active\": true\n},\n{\n\"url\": null,\n\"label\": \"Next &raquo;\",\n\"active\": false\n}\n],\n\"next_page_url\": null,\n\"path\": \"http:\/\/localhost:8000\/api\/fpos\/1\/agents\",\n\"per_page\": 15,\n\"prev_page_url\": null,\n\"to\": 2,\n\"total\": 2\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n\"message\": \"Unauthenticated.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n\"message\": \"This action is unauthorized.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n\"message\": \"No agents found\"\n}",
                             "name": ""
                         }
                     ]
@@ -874,7 +932,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"dob\":\"1990-01-01\",\"gender\":\"facilis\",\"education_level\":\"Primary\",\"phone_number\":\"0789123456\",\"id_number\":\"CM12345678\",\"marital_status\":\"Married\",\"district\":\"Kampala\",\"county\":\"Makindye\",\"sub_county\":\"Kibuye\",\"parish\":\"Kibuye\",\"village\":\"Kibuye\",\"fpo_id\":0,\"farmer_cordinates\":\"0.0000,0.0000\",\"next_of_kin\":\"Jane Doe\",\"next_of_kin_contact\":\"0789123456\",\"next_of_kin_relationship\":\"Wife\",\"male_members_in_household\":2,\"female_members_in_household\":4,\"members_above_18\":4,\"children_below_5\":2,\"school_going_children\":2,\"head_of_family\":\"John Doe\",\"how_much_do_you_earn_from_agricultural_activities\":\"100000\",\"how_much_do_you_earn_from_non_agricultural_activities\":\"100000\",\"do_you_have_an_account_with_an_FI\":\"Yes\",\"farm_size\":\"2\",\"farm_size_under_agriculture\":\"2\",\"land_ownership\":\"Owned\",\"type_of_farming\":\"Crop\",\"crops_grown\":\"Maize\",\"animals_kept\":\"Cattle\",\"estimated_produce_value_last_season\":\"100000\",\"estimated_produce_value_this_season\":\"100000\",\"data_captured_by\":\"1\",\"agent_id\":1}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"dob\":\"1990-01-01\",\"gender\":\"eum\",\"education_level\":\"Primary\",\"phone_number\":\"0789123456\",\"id_number\":\"CM12345678\",\"marital_status\":\"Married\",\"district\":\"Kampala\",\"county\":\"Makindye\",\"sub_county\":\"Kibuye\",\"parish\":\"Kibuye\",\"village\":\"Kibuye\",\"fpo_id\":0,\"farmer_cordinates\":\"0.0000,0.0000\",\"next_of_kin\":\"Jane Doe\",\"next_of_kin_contact\":\"0789123456\",\"next_of_kin_relationship\":\"Wife\",\"male_members_in_household\":2,\"female_members_in_household\":4,\"members_above_18\":4,\"children_below_5\":2,\"school_going_children\":2,\"head_of_family\":\"John Doe\",\"how_much_do_you_earn_from_agricultural_activities\":\"100000\",\"how_much_do_you_earn_from_non_agricultural_activities\":\"100000\",\"do_you_have_an_account_with_an_FI\":\"Yes\",\"farm_size\":\"2\",\"farm_size_under_agriculture\":\"2\",\"land_ownership\":\"Owned\",\"type_of_farming\":\"Crop\",\"crops_grown\":\"Maize\",\"animals_kept\":\"Cattle\",\"estimated_produce_value_last_season\":\"100000\",\"estimated_produce_value_this_season\":\"100000\",\"data_captured_by\":\"1\",\"agent_id\":1}"
                         },
                         "description": "This endpoint allows a user to register a farmer"
                     },

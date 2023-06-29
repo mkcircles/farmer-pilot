@@ -657,7 +657,7 @@ class FPOController extends Controller
      * }
      * 
      */
-    public function getFPOsAgents(string $id)
+    public function getFPOAgents(string $id)
     {
         $agents = Agent::where('fpo_id', $id)->paginate();
         if($agents->isEmpty()){

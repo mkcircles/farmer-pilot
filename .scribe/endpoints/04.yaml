@@ -242,99 +242,99 @@ endpoints:
         name: fpo_name
         description: 'The name of the FPO.'
         required: true
-        example: consequuntur
+        example: saepe
         type: string
         custom: []
       district:
         name: district
         description: 'The district of the FPO.'
         required: true
-        example: dolorem
+        example: qui
         type: string
         custom: []
       county:
         name: county
         description: 'The county of the FPO.'
         required: true
-        example: ea
+        example: voluptates
         type: string
         custom: []
       sub_county:
         name: sub_county
         description: 'The sub county of the FPO.'
         required: true
-        example: unde
+        example: et
         type: string
         custom: []
       parish:
         name: parish
         description: 'The parish of the FPO.'
         required: true
-        example: et
+        example: sint
         type: string
         custom: []
       village:
         name: village
         description: 'The village of the FPO.'
         required: true
-        example: magni
+        example: eaque
         type: string
         custom: []
       main_crop:
         name: main_crop
         description: 'The main crop of the FPO.'
         required: true
-        example: eum
+        example: et
         type: string
         custom: []
       fpo_member_count:
         name: fpo_member_count
         description: 'The number of FPO members.'
         required: true
-        example: 10
+        example: 13
         type: integer
         custom: []
       fpo_contact_name:
         name: fpo_contact_name
         description: 'The contact name of the FPO.'
         required: true
-        example: aut
+        example: ea
         type: string
         custom: []
       contact_phone_number:
         name: contact_phone_number
         description: 'The contact phone number of the FPO.'
         required: true
-        example: in
+        example: ducimus
         type: string
         custom: []
       address:
         name: address
         description: ''
         required: true
-        example: alias
+        example: ut
         type: string
         custom: []
       created_by:
         name: created_by
         description: 'The userId  of the FPO creator.'
         required: true
-        example: 5
+        example: 14
         type: integer
         custom: []
     cleanBodyParameters:
-      fpo_name: consequuntur
-      district: dolorem
-      county: ea
-      sub_county: unde
-      parish: et
-      village: magni
-      main_crop: eum
-      fpo_member_count: 10
-      fpo_contact_name: aut
-      contact_phone_number: in
-      address: alias
-      created_by: 5
+      fpo_name: saepe
+      district: qui
+      county: voluptates
+      sub_county: et
+      parish: sint
+      village: eaque
+      main_crop: et
+      fpo_member_count: 13
+      fpo_contact_name: ea
+      contact_phone_number: ducimus
+      address: ut
+      created_by: 14
     fileParameters: []
     responses:
       -
@@ -465,11 +465,11 @@ endpoints:
         name: id
         description: 'The id of the FPO.'
         required: true
-        example: sit
+        example: debitis
         type: string
         custom: []
     cleanUrlParameters:
-      id: sit
+      id: debitis
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -560,11 +560,11 @@ endpoints:
         name: id
         description: 'The id of the FPO.'
         required: true
-        example: voluptatem
+        example: explicabo
         type: string
         custom: []
     cleanUrlParameters:
-      id: voluptatem
+      id: explicabo
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -572,91 +572,91 @@ endpoints:
         name: fpo_name
         description: 'The name of the FPO.'
         required: true
-        example: quo
+        example: id
         type: string
         custom: []
       district:
         name: district
         description: 'The district of the FPO.'
         required: true
-        example: repellendus
+        example: enim
         type: string
         custom: []
       county:
         name: county
         description: 'The county of the FPO.'
         required: true
-        example: quisquam
+        example: sit
         type: string
         custom: []
       sub_county:
         name: sub_county
         description: 'The sub county of the FPO.'
         required: true
-        example: qui
+        example: voluptas
         type: string
         custom: []
       parish:
         name: parish
         description: 'The parish of the FPO.'
         required: true
-        example: blanditiis
+        example: aut
         type: string
         custom: []
       village:
         name: village
         description: 'The village of the FPO.'
         required: true
-        example: ratione
+        example: odio
         type: string
         custom: []
       main_crop:
         name: main_crop
         description: 'The main crop of the FPO.'
         required: true
-        example: assumenda
+        example: ab
         type: string
         custom: []
       fpo_member_count:
         name: fpo_member_count
         description: 'The number of FPO members.'
         required: true
-        example: 12
+        example: 5
         type: integer
         custom: []
       fpo_contact_name:
         name: fpo_contact_name
         description: 'The contact name of the FPO.'
         required: true
-        example: sint
+        example: pariatur
         type: string
         custom: []
       contact_phone_number:
         name: contact_phone_number
         description: 'The contact phone number of the FPO.'
         required: true
-        example: facere
+        example: sunt
         type: string
         custom: []
       created_by:
         name: created_by
         description: 'The userId  of the FPO creator.'
         required: true
-        example: 17
+        example: 6
         type: integer
         custom: []
     cleanBodyParameters:
-      fpo_name: quo
-      district: repellendus
-      county: quisquam
-      sub_county: qui
-      parish: blanditiis
-      village: ratione
-      main_crop: assumenda
-      fpo_member_count: 12
-      fpo_contact_name: sint
-      contact_phone_number: facere
-      created_by: 17
+      fpo_name: id
+      district: enim
+      county: sit
+      sub_county: voluptas
+      parish: aut
+      village: odio
+      main_crop: ab
+      fpo_member_count: 5
+      fpo_contact_name: pariatur
+      contact_phone_number: sunt
+      created_by: 6
     fileParameters: []
     responses:
       -
@@ -753,6 +753,129 @@ endpoints:
         content: |-
           {
           "message": "FPO not found"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/fpo/{id}/agents'
+    metadata:
+      groupName: 'FPO management'
+      groupDescription: |-
+
+        APIs for managing FPOs
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get FPOs Agents.'
+      description: 'This endpoint allows you to fetch all agents of a FPO.'
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the fpo.'
+        required: true
+        example: repudiandae
+        type: string
+        custom: []
+    cleanUrlParameters:
+      id: repudiandae
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+          "current_page": 1,
+          "data": [
+          {
+          "id": 1,
+          "first_name": "John",
+          "last_name": "Doe",
+          "phone_number": "256700000000",
+          "fpo_id": 1,
+          "created_at": "2021-06-30T11:30:00.000000Z",
+          "updated_at": "2021-06-30T11:30:00.000000Z"
+          },
+          {
+          "id": 2,
+          "first_name": "Jane",
+          "last_name": "Doe",
+          "phone_number": "256700000000",
+          "fpo_id": 1,
+          "created_at": "2021-06-30T11:30:00.000000Z",
+          "updated_at": "2021-06-30T11:30:00.000000Z"
+          }
+          ],
+          "first_page_url": "http://localhost:8000/api/fpos/1/agents?page=1",
+          "from": 1,
+          "last_page": 1,
+          "last_page_url": "http://localhost:8000/api/fpos/1/agents?page=1",
+          "links": [
+          {
+          "url": null,
+          "label": "&laquo; Previous",
+          "active": false
+          },
+          {
+          "url": "http://localhost:8000/api/fpos/1/agents?page=1",
+          "label": "1",
+          "active": true
+          },
+          {
+          "url": null,
+          "label": "Next &raquo;",
+          "active": false
+          }
+          ],
+          "next_page_url": null,
+          "path": "http://localhost:8000/api/fpos/1/agents",
+          "per_page": 15,
+          "prev_page_url": null,
+          "to": 2,
+          "total": 2
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+          "message": "Unauthenticated."
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+          "message": "This action is unauthorized."
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+          "message": "No agents found"
           }
         headers: []
         description: ''
