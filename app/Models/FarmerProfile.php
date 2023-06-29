@@ -9,6 +9,8 @@ class FarmerProfile extends Model
 {
     use HasFactory;
 
+    protected $with = ['agent'];
+
     protected $fillable = [
         'first_name',
         'last_name',
@@ -48,7 +50,13 @@ class FarmerProfile extends Model
         'rId',
         'consumerDeviceId',
         'data_captured_by',
+        'agent_id',
     ];
+
+    public function agent()
+    {
+        return $this->belongsTo(User::class, 'agent_id');
+    }
 
     
 }

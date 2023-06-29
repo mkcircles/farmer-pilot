@@ -21,6 +21,7 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
+      Authorization: 'required The authorization token. Example: Bearer {token}'
     urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
@@ -231,6 +232,7 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
+      Authorization: 'required The authorization token. Example: Bearer {token}'
     urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
@@ -240,99 +242,99 @@ endpoints:
         name: fpo_name
         description: 'The name of the FPO.'
         required: true
-        example: aut
+        example: voluptatem
         type: string
         custom: []
       district:
         name: district
         description: 'The district of the FPO.'
         required: true
-        example: neque
+        example: labore
         type: string
         custom: []
       county:
         name: county
         description: 'The county of the FPO.'
         required: true
-        example: eaque
+        example: optio
         type: string
         custom: []
       sub_county:
         name: sub_county
         description: 'The sub county of the FPO.'
         required: true
-        example: consectetur
+        example: et
         type: string
         custom: []
       parish:
         name: parish
         description: 'The parish of the FPO.'
         required: true
-        example: aliquam
+        example: nulla
         type: string
         custom: []
       village:
         name: village
         description: 'The village of the FPO.'
         required: true
-        example: inventore
+        example: aut
         type: string
         custom: []
       main_crop:
         name: main_crop
         description: 'The main crop of the FPO.'
         required: true
-        example: provident
+        example: quis
         type: string
         custom: []
       fpo_member_count:
         name: fpo_member_count
         description: 'The number of FPO members.'
         required: true
-        example: 5
+        example: 10
         type: integer
         custom: []
       fpo_contact_name:
         name: fpo_contact_name
         description: 'The contact name of the FPO.'
         required: true
-        example: repellendus
+        example: quia
         type: string
         custom: []
       contact_phone_number:
         name: contact_phone_number
         description: 'The contact phone number of the FPO.'
         required: true
-        example: molestiae
+        example: excepturi
         type: string
         custom: []
       address:
         name: address
         description: ''
         required: true
-        example: omnis
+        example: impedit
         type: string
         custom: []
       created_by:
         name: created_by
         description: 'The userId  of the FPO creator.'
         required: true
-        example: 1
+        example: 16
         type: integer
         custom: []
     cleanBodyParameters:
-      fpo_name: aut
-      district: neque
-      county: eaque
-      sub_county: consectetur
-      parish: aliquam
-      village: inventore
-      main_crop: provident
-      fpo_member_count: 5
-      fpo_contact_name: repellendus
-      contact_phone_number: molestiae
-      address: omnis
-      created_by: 1
+      fpo_name: voluptatem
+      district: labore
+      county: optio
+      sub_county: et
+      parish: nulla
+      village: aut
+      main_crop: quis
+      fpo_member_count: 10
+      fpo_contact_name: quia
+      contact_phone_number: excepturi
+      address: impedit
+      created_by: 16
     fileParameters: []
     responses:
       -
@@ -457,16 +459,17 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
+      Authorization: 'required The authorization token. Example: Bearer {token}'
     urlParameters:
       id:
         name: id
         description: 'The id of the FPO.'
         required: true
-        example: deleniti
+        example: distinctio
         type: string
         custom: []
     cleanUrlParameters:
-      id: deleniti
+      id: distinctio
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -551,16 +554,17 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
+      Authorization: 'required The authorization token. Example: Bearer {token}'
     urlParameters:
       id:
         name: id
         description: 'The id of the FPO.'
         required: true
-        example: perspiciatis
+        example: ut
         type: string
         custom: []
     cleanUrlParameters:
-      id: perspiciatis
+      id: ut
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -568,49 +572,49 @@ endpoints:
         name: fpo_name
         description: 'The name of the FPO.'
         required: true
-        example: nobis
+        example: quo
         type: string
         custom: []
       district:
         name: district
         description: 'The district of the FPO.'
         required: true
-        example: id
+        example: quibusdam
         type: string
         custom: []
       county:
         name: county
         description: 'The county of the FPO.'
         required: true
-        example: praesentium
+        example: sed
         type: string
         custom: []
       sub_county:
         name: sub_county
         description: 'The sub county of the FPO.'
         required: true
-        example: sit
+        example: rerum
         type: string
         custom: []
       parish:
         name: parish
         description: 'The parish of the FPO.'
         required: true
-        example: aut
+        example: eos
         type: string
         custom: []
       village:
         name: village
         description: 'The village of the FPO.'
         required: true
-        example: totam
+        example: sequi
         type: string
         custom: []
       main_crop:
         name: main_crop
         description: 'The main crop of the FPO.'
         required: true
-        example: enim
+        example: eos
         type: string
         custom: []
       fpo_member_count:
@@ -624,35 +628,35 @@ endpoints:
         name: fpo_contact_name
         description: 'The contact name of the FPO.'
         required: true
-        example: aspernatur
+        example: officiis
         type: string
         custom: []
       contact_phone_number:
         name: contact_phone_number
         description: 'The contact phone number of the FPO.'
         required: true
-        example: quaerat
+        example: voluptas
         type: string
         custom: []
       created_by:
         name: created_by
         description: 'The userId  of the FPO creator.'
         required: true
-        example: 18
+        example: 3
         type: integer
         custom: []
     cleanBodyParameters:
-      fpo_name: nobis
-      district: id
-      county: praesentium
-      sub_county: sit
-      parish: aut
-      village: totam
-      main_crop: enim
+      fpo_name: quo
+      district: quibusdam
+      county: sed
+      sub_county: rerum
+      parish: eos
+      village: sequi
+      main_crop: eos
       fpo_member_count: 1
-      fpo_contact_name: aspernatur
-      contact_phone_number: quaerat
-      created_by: 18
+      fpo_contact_name: officiis
+      contact_phone_number: voluptas
+      created_by: 3
     fileParameters: []
     responses:
       -

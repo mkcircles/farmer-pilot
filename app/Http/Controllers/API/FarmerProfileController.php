@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Api;
 use App\Models\FarmerProfile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * @group Farmer Profile
@@ -18,7 +19,10 @@ class FarmerProfileController extends Controller
     /**
      * Register Farmer
      * 
-     * @headerParam API_KEY string required The API key of the application. Example: 123456789
+     * This endpoint allows a user to register a farmer
+     * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
      * 
      * @bodyParam first_name string required The first name of the farmer. Example: John
      * @bodyParam last_name string required The last name of the farmer. Example: Doe
@@ -56,6 +60,7 @@ class FarmerProfileController extends Controller
      * @bodyParam estimated_produce_value_last_season string required The estimated produce value last season of the farmer. Example: 100000
      * @bodyParam estimated_produce_value_this_season string required The estimated produce value this season of the farmer. Example: 100000
      * @bodyParam data_captured_by string required The data captured by of the farmer. Example: 1
+     * @bodyParam agent_id integer required The agent id of the farmer. Example: 1
      * 
      * @response {
      * "status": "success",
@@ -114,21 +119,53 @@ class FarmerProfileController extends Controller
 
     public function registerFarmer(Request $request)
     {
-        # code...
-        //Validate API Key
-        $apiKey = $request->header('api-key');
-        //Check for API Key in DB
-        $key = Api::where('api_key', $apiKey)->first();
-        if (!$key) {
-            # code...
+        //Validate Request Data
+        $validate = Validator::make($request->all(),[
+            $request->first_name => 'required|string',
+            $request->last_name => 'required|string',
+            $request->dob => 'required|string',
+            $request->gender => 'required|string',
+            $request->education_level => 'required|string',
+            $request->id_number => 'required|string',
+            $request->marital_status => 'required|string',
+            $request->district => 'required|string',
+            $request->county => 'required|string',
+            $request->sub_county => 'required|string',
+            $request->parish => 'required|string',
+            $request->village => 'required|string',
+            $request->fpo_id => 'required|integer',
+            $request->farmer_cordinates => 'required|string',
+            $request->next_of_kin => 'required|string',
+            $request->next_of_kin_contact => 'required|string',
+            $request->next_of_kin_relationship => 'required|string',
+            $request->male_members_in_household => 'required|integer',
+            $request->female_members_in_household => 'required|integer',
+            $request->members_above_18 => 'required|integer',
+            $request->children_below_5 => 'required|integer',
+            $request->school_going_children => 'required|integer',
+            $request->head_of_family => 'required|string',
+            $request->how_much_do_you_earn_from_agricultural_activities => 'required',
+            $request->how_much_do_you_earn_from_non_agricultural_activities => 'required',
+            $request->do_you_have_an_account_with_an_FI => 'required',
+            $request->farm_size => 'required|string',
+            $request->farm_size_under_agriculture => 'required|string',
+            $request->land_ownership => 'required|string',
+            $request->type_of_farming => 'required|string',
+            $request->crops_grown => 'required|string',
+            $request->animals_kept => 'required|string',
+            $request->estimated_produce_value_last_season => 'required|string',
+            $request->estimated_produce_value_this_season => 'required|string',
+            $request->agent_id => 'required|integer',
+        ]);
+
+        if($validate->fails()){
             return response()->json([
                 'status' => 'error',
-                'message' => 'Unauthorized'
-            ], 401);
+                'message' => 'Validation error',
+                'errors' => $validate->errors()
+            ], 422);
         }
-        //Validate Request Data
         
-
         //Save Data
         $farmer = new FarmerProfile();
         $farmer->first_name = $request->first_name;
@@ -169,6 +206,7 @@ class FarmerProfileController extends Controller
         $farmer->rId = $request->rId;
         $farmer->consumerDeviceId = $request->consumerDeviceId;
         $farmer->data_captured_by = $request->data_captured_by;
+
         $farmer->save();
 
         //Return Response
@@ -177,7 +215,7 @@ class FarmerProfileController extends Controller
             'message' => 'Farmer profile created successfully',
             'data' => $farmer
         ], 201);
-
-
     }
+
+    //Get all farmers
 }

@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Farmer Registration Pilot",
-        "_postman_id": "dfed8ebc-aa3d-43d7-8c47-79ffa1119ea5",
+        "_postman_id": "ecff2533-264b-4c09-ac58-eb2b4529d349",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -37,10 +37,14 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "required The authorization token. Example: Bearer {token}"
                             }
                         ],
                         "body": null,
-                        "description": ""
+                        "description": "This endpoint allows a user to get all agents"
                     },
                     "response": [
                         {
@@ -75,11 +79,15 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "required The authorization token. Example: Bearer {token}"
                             }
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"gianni34@example.net\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"gender\":\"rem\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\",\"created_by\":12,\"fpo_id\":10}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"ksteuber@example.net\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"gender\":\"alias\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\",\"created_by\":3,\"fpo_id\":5}"
                         },
                         "description": ""
                     },
@@ -146,7 +154,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "enim",
+                                    "value": "et",
                                     "description": "The ID of the agent."
                                 },
                                 {
@@ -166,10 +174,14 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "required The authorization token. Example: Bearer {token}"
                             }
                         ],
                         "body": null,
-                        "description": ""
+                        "description": "This endpoint allows a user to get a specific agent"
                     },
                     "response": [
                         {
@@ -212,13 +224,17 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "required The authorization token. Example: Bearer {token}"
                             }
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"buckridge.darrion@example.com\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\"}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"michaela.kling@example.org\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\"}"
                         },
-                        "description": ""
+                        "description": "This endpoint allows a user to update a specific agent"
                     },
                     "response": [
                         {
@@ -281,7 +297,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"mjaskolski@example.com\",\"password\":\"IT]rB^Th\"}"
+                            "raw": "{\"email\":\"tbeier@example.org\",\"password\":\"lNCh<zxC#S37i6\"}"
                         },
                         "description": "This endpoint allows a user to login",
                         "auth": {
@@ -402,13 +418,14 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "required The authorization token. Example: Bearer {token}"
                             }
                         ],
                         "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
+                        "description": "This endpoint allows a user to get all farmers"
                     },
                     "response": [
                         {
@@ -445,19 +462,20 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "required The authorization token. Example: Bearer {token}"
                             }
                         ],
                         "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
+                        "description": "This endpoint allows a user to get a farmer"
                     },
                     "response": [
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n\"id\": 1,\n\"first_name\": \"John\",\n\"last_name\": \"Doe\",\n...\n}",
+                            "body": "{\n\"id\": 1,\n\"first_name\": \"John\",\n\"last_name\": \"Doe\",\n\n}",
                             "name": ""
                         },
                         {
@@ -492,6 +510,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "required The authorization token. Example: Bearer {token}"
                             }
                         ],
                         "body": null,
@@ -592,11 +614,15 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "required The authorization token. Example: Bearer {token}"
                             }
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"fpo_name\":\"aut\",\"district\":\"neque\",\"county\":\"eaque\",\"sub_county\":\"consectetur\",\"parish\":\"aliquam\",\"village\":\"inventore\",\"main_crop\":\"provident\",\"fpo_member_count\":5,\"fpo_contact_name\":\"repellendus\",\"contact_phone_number\":\"molestiae\",\"address\":\"omnis\",\"created_by\":1}"
+                            "raw": "{\"fpo_name\":\"voluptatem\",\"district\":\"labore\",\"county\":\"optio\",\"sub_county\":\"et\",\"parish\":\"nulla\",\"village\":\"aut\",\"main_crop\":\"quis\",\"fpo_member_count\":10,\"fpo_contact_name\":\"quia\",\"contact_phone_number\":\"excepturi\",\"address\":\"impedit\",\"created_by\":16}"
                         },
                         "description": "This endpoint allows you to create a new FPO."
                     },
@@ -645,7 +671,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "deleniti",
+                                    "value": "distinctio",
                                     "description": "The id of the FPO."
                                 }
                             ]
@@ -659,6 +685,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "required The authorization token. Example: Bearer {token}"
                             }
                         ],
                         "body": null,
@@ -703,7 +733,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "perspiciatis",
+                                    "value": "ut",
                                     "description": "The id of the FPO."
                                 }
                             ]
@@ -717,11 +747,15 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "required The authorization token. Example: Bearer {token}"
                             }
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"fpo_name\":\"nobis\",\"district\":\"id\",\"county\":\"praesentium\",\"sub_county\":\"sit\",\"parish\":\"aut\",\"village\":\"totam\",\"main_crop\":\"enim\",\"fpo_member_count\":1,\"fpo_contact_name\":\"aspernatur\",\"contact_phone_number\":\"quaerat\",\"created_by\":18}"
+                            "raw": "{\"fpo_name\":\"quo\",\"district\":\"quibusdam\",\"county\":\"sed\",\"sub_county\":\"rerum\",\"parish\":\"eos\",\"village\":\"sequi\",\"main_crop\":\"eos\",\"fpo_member_count\":1,\"fpo_contact_name\":\"officiis\",\"contact_phone_number\":\"voluptas\",\"created_by\":3}"
                         },
                         "description": "This endpoint allows you to update a FPO by id."
                     },
@@ -782,16 +816,17 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "required The authorization token. Example: Bearer {token}"
                             }
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"dob\":\"1990-01-01\",\"gender\":\"at\",\"education_level\":\"Primary\",\"phone_number\":\"0789123456\",\"id_number\":\"CM12345678\",\"marital_status\":\"Married\",\"district\":\"Kampala\",\"county\":\"Makindye\",\"sub_county\":\"Kibuye\",\"parish\":\"Kibuye\",\"village\":\"Kibuye\",\"fpo_id\":0,\"farmer_cordinates\":\"0.0000,0.0000\",\"next_of_kin\":\"Jane Doe\",\"next_of_kin_contact\":\"0789123456\",\"next_of_kin_relationship\":\"Wife\",\"male_members_in_household\":2,\"female_members_in_household\":4,\"members_above_18\":4,\"children_below_5\":2,\"school_going_children\":2,\"head_of_family\":\"John Doe\",\"how_much_do_you_earn_from_agricultural_activities\":\"100000\",\"how_much_do_you_earn_from_non_agricultural_activities\":\"100000\",\"do_you_have_an_account_with_an_FI\":\"Yes\",\"farm_size\":\"2\",\"farm_size_under_agriculture\":\"2\",\"land_ownership\":\"Owned\",\"type_of_farming\":\"Crop\",\"crops_grown\":\"Maize\",\"animals_kept\":\"Cattle\",\"estimated_produce_value_last_season\":\"100000\",\"estimated_produce_value_this_season\":\"100000\",\"data_captured_by\":\"1\"}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"dob\":\"1990-01-01\",\"gender\":\"velit\",\"education_level\":\"Primary\",\"phone_number\":\"0789123456\",\"id_number\":\"CM12345678\",\"marital_status\":\"Married\",\"district\":\"Kampala\",\"county\":\"Makindye\",\"sub_county\":\"Kibuye\",\"parish\":\"Kibuye\",\"village\":\"Kibuye\",\"fpo_id\":0,\"farmer_cordinates\":\"0.0000,0.0000\",\"next_of_kin\":\"Jane Doe\",\"next_of_kin_contact\":\"0789123456\",\"next_of_kin_relationship\":\"Wife\",\"male_members_in_household\":2,\"female_members_in_household\":4,\"members_above_18\":4,\"children_below_5\":2,\"school_going_children\":2,\"head_of_family\":\"John Doe\",\"how_much_do_you_earn_from_agricultural_activities\":\"100000\",\"how_much_do_you_earn_from_non_agricultural_activities\":\"100000\",\"do_you_have_an_account_with_an_FI\":\"Yes\",\"farm_size\":\"2\",\"farm_size_under_agriculture\":\"2\",\"land_ownership\":\"Owned\",\"type_of_farming\":\"Crop\",\"crops_grown\":\"Maize\",\"animals_kept\":\"Cattle\",\"estimated_produce_value_last_season\":\"100000\",\"estimated_produce_value_this_season\":\"100000\",\"data_captured_by\":\"1\",\"agent_id\":1}"
                         },
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
+                        "description": "This endpoint allows a user to register a farmer"
                     },
                     "response": [
                         {

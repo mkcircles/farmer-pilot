@@ -61,6 +61,9 @@ return new class extends Migration
             $table->string('consumerDeviceId')->nullable();
             $table->string('data_captured_by')->nullable();
 
+            //Registered By
+            $table->string('agent_id')->nullable();
+
             
             $table->timestamps();
         });

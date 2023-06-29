@@ -15,12 +15,13 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Register Farmer'
-      description: ''
-      authenticated: false
+      description: 'This endpoint allows a user to register a farmer'
+      authenticated: true
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
+      Authorization: 'required The authorization token. Example: Bearer {token}'
     urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
@@ -51,7 +52,7 @@ endpoints:
         name: gender
         description: 'Farmer gender. Example Male/Female'
         required: false
-        example: at
+        example: velit
         type: string
         custom: []
       education_level:
@@ -278,11 +279,18 @@ endpoints:
         example: '1'
         type: string
         custom: []
+      agent_id:
+        name: agent_id
+        description: 'The agent id of the farmer.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
     cleanBodyParameters:
       first_name: John
       last_name: Doe
       dob: '1990-01-01'
-      gender: at
+      gender: velit
       education_level: Primary
       phone_number: '0789123456'
       id_number: CM12345678
@@ -315,6 +323,7 @@ endpoints:
       estimated_produce_value_last_season: '100000'
       estimated_produce_value_this_season: '100000'
       data_captured_by: '1'
+      agent_id: 1
     fileParameters: []
     responses:
       -

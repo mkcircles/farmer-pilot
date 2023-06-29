@@ -9,6 +9,9 @@ class Agent extends Model
 {
     use HasFactory;
 
+    protected $with = ['fpo'];
+    protected $with_count = ['farmers'];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -29,6 +32,16 @@ class Agent extends Model
         'created_by',
         'fpo_id',
     ];
+
+    public function fpo()
+    {
+        return $this->belongsTo(FPO::class);
+    }
+
+    public function farmers()
+    {
+        return $this->belongsTo(FarmerProfile::class, 'agent_id');
+    }
 
    
 }

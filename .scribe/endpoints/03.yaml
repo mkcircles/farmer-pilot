@@ -15,12 +15,13 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Get all agents'
-      description: ''
+      description: 'This endpoint allows a user to get all agents'
       authenticated: true
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
+      Authorization: 'required The authorization token. Example: Bearer {token}'
     urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
@@ -122,6 +123,7 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
+      Authorization: 'required The authorization token. Example: Bearer {token}'
     urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
@@ -145,7 +147,7 @@ endpoints:
         name: email
         description: 'The email of the agent. Example:'
         required: true
-        example: gianni34@example.net
+        example: ksteuber@example.net
         type: string
         custom: []
       phone_number:
@@ -166,7 +168,7 @@ endpoints:
         name: gender
         description: ''
         required: true
-        example: rem
+        example: alias
         type: string
         custom: []
       residence:
@@ -201,29 +203,29 @@ endpoints:
         name: created_by
         description: ''
         required: true
-        example: 12
+        example: 3
         type: integer
         custom: []
       fpo_id:
         name: fpo_id
         description: ''
         required: true
-        example: 10
+        example: 5
         type: integer
         custom: []
     cleanBodyParameters:
       first_name: John
       last_name: Doe
-      email: gianni34@example.net
+      email: ksteuber@example.net
       phone_number: 256XXXXXXXXX
       age: '30'
-      gender: rem
+      gender: alias
       residence: Kampala
       referee_name: 'Jane Doe'
       referee_phone_number: '08012345678'
       designation: 'Agro Extension Worker'
-      created_by: 12
-      fpo_id: 10
+      created_by: 3
+      fpo_id: 5
     fileParameters: []
     responses:
       -
@@ -365,18 +367,19 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Get Agent'
-      description: ''
+      description: 'This endpoint allows a user to get a specific agent'
       authenticated: true
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
+      Authorization: 'required The authorization token. Example: Bearer {token}'
     urlParameters:
       id:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: enim
+        example: et
         type: string
         custom: []
       agent:
@@ -387,7 +390,7 @@ endpoints:
         type: string
         custom: []
     cleanUrlParameters:
-      id: enim
+      id: et
       agent: '1'
     queryParameters: []
     cleanQueryParameters: []
@@ -449,12 +452,13 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Update the Agent'
-      description: ''
+      description: 'This endpoint allows a user to update a specific agent'
       authenticated: true
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
+      Authorization: 'required The authorization token. Example: Bearer {token}'
     urlParameters:
       id:
         name: id
@@ -486,7 +490,7 @@ endpoints:
         name: email
         description: 'The email of the agent. Example:'
         required: true
-        example: buckridge.darrion@example.com
+        example: michaela.kling@example.org
         type: string
         custom: []
       phone_number:
@@ -534,7 +538,7 @@ endpoints:
     cleanBodyParameters:
       first_name: John
       last_name: Doe
-      email: buckridge.darrion@example.com
+      email: michaela.kling@example.org
       phone_number: 256XXXXXXXXX
       age: '30'
       residence: Kampala

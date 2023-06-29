@@ -20,7 +20,10 @@ class AgentController extends Controller
     /**
      * Get all agents
      * 
+     * This endpoint allows a user to get all agents
      * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
      * 
      * @response {
      * "success": true,
@@ -111,6 +114,8 @@ class AgentController extends Controller
      * Create a new agent
      * 
      * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
      * 
      * @bodyParam first_name string required The first name of the agent. Example: John
      * @bodyParam last_name string required The last name of the agent. Example: Doe
@@ -283,7 +288,10 @@ class AgentController extends Controller
     /**
      * Get Agent
      * 
+     * This endpoint allows a user to get a specific agent
      * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
      * 
      * @urlParam agent required The id of the agent. Example: 1
      * 
@@ -341,7 +349,10 @@ class AgentController extends Controller
     /**
      * Update the Agent
      * 
+     * This endpoint allows a user to update a specific agent
      * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
      * 
      * @urlParam id required The id of the agent. Example: 1
      * 
@@ -488,7 +499,10 @@ class AgentController extends Controller
     /**
      * Delete the agent
      * 
+     * This endpoint allows a user to delete a specific agent
      * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
      * 
      * @urlParam id required The id of the agent. Example: 1
      * 

@@ -20,6 +20,8 @@ class FPOController extends Controller
      * This endpoint allows you to fetch all FPOs.
      * @authenticated
      * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
+     * 
      * @response 200 {
      * "current_page": 1,
      * "data": [
@@ -131,6 +133,8 @@ class FPOController extends Controller
      * 
      * This endpoint allows you to create a new FPO.
      * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
      * 
      * @bodyParam fpo_name string required The name of the FPO.
      * @bodyParam district string required The district of the FPO.
@@ -258,6 +262,8 @@ class FPOController extends Controller
      * This endpoint allows you to fetch a FPO by id.
      * @authenticated
      * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
+     * 
      * @urlParam id string required The id of the FPO.
      * 
      * @response 200 {
@@ -327,6 +333,8 @@ class FPOController extends Controller
      * 
      * This endpoint allows you to update a FPO by id.
      * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
      * 
      * @urlParam id string required The id of the FPO.
      * 
@@ -467,6 +475,8 @@ class FPOController extends Controller
     * This endpoint allows you to remove a FPO by id.
     * @authenticated
     *
+    * @header Authorization required The authorization token. Example: Bearer {token}
+    *
     * @urlParam id string required The id of the FPO.
     *
     * @response 200 { 
@@ -504,6 +514,7 @@ class FPOController extends Controller
     * }
     *
     */
+    
     public function destroy(string $id)
     {
         //Delete FPO by id
