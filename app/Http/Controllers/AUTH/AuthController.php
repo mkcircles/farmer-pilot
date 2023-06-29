@@ -79,23 +79,19 @@ class AuthController extends Controller
             ], 422);
         }
 
-        dd($request->password);
-
-        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){ 
-            $user = Auth::user(); 
-            $success['token'] =  $user->createToken('token')->plainTextToken; 
-            $success['user'] =  $user;
-
+        $password = $request->password;
+        $email = $request->email;
+        
+        //Check if user exists with email or phone number
+        $user = User::where('email', $email)->orWhere('phone_number', $email)->first();
+        if(!$user){
             return response()->json([
-                'success' => true,
-                'message' => 'User login successfully.',
-                'data' => $success
-            ], 200);
-        } 
-        else{ 
-            //Check if user exists with phone number
-            $user = User::where('phone_number', $request->email)->first();
-            if(Hash::check($request->password, $user->password)){
+                'success' => false,
+                'message' => 'Unauthorised.',
+                'data' => null
+            ], 401);
+        }else{
+            if(Hash::check($password, $user->password)){
                 $success['token'] =  $user->createToken('token')->plainTextToken; 
                 $success['user'] =  $user;
 
@@ -112,12 +108,8 @@ class AuthController extends Controller
                     'data' => null
                 ], 401);
             }
-            return response()->json([
-                'success' => false,
-                'message' => 'Unauthorised.',
-                'data' => null
-            ], 401);
-        } 
+        }
+            
     }
 
     /**
