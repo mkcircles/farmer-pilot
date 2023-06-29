@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AUTH;
 
 use App\Http\Controllers\Controller;
+use App\Models\Agent;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -95,7 +96,9 @@ class AuthController extends Controller
                 $success['token'] =  $user->createToken('token')->plainTextToken; 
                 $success['user'] =  $user;
                 if($user->role == 'agent'){
-                    $success['agent'] =  $user->agent;
+                    //Get agent details 
+                    $agent = Agent::where('email', $email)->orWhere('phone_number', $email)->first();
+                    $success['agent'] =  $agent;
                 }
 
                 return response()->json([
