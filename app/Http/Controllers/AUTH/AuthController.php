@@ -94,6 +94,9 @@ class AuthController extends Controller
             if(Hash::check($password, $user->password)){
                 $success['token'] =  $user->createToken('token')->plainTextToken; 
                 $success['user'] =  $user;
+                if($user->role == 'agent'){
+                    $success['agent'] =  $user->agent;
+                }
 
                 return response()->json([
                     'success' => true,
