@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('fpo_contact_name');
             $table->string('contact_phone_number');
             $table->string('Cert_of_Inc')->nullable()->default(null);
-            $table->integer('created_by');
+            $table->integer('created_by')->nullable();
             $table->timestamps();
         });
 

@@ -232,6 +232,7 @@ class FPOController extends Controller
             'fpo_contact_name' => 'required|string',
             'contact_phone_number' => 'required|string',
             'address' => 'required|string',
+            'created_by' => 'required|integer',
         ]);
 
         if($validated->fails()){
