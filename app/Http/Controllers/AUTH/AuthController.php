@@ -78,7 +78,9 @@ class AuthController extends Controller
                 'errors' => $validate->errors()
             ], 422);
         }
-        
+
+        dd($request->all());
+
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){ 
             $user = Auth::user(); 
             $success['token'] =  $user->createToken('token')->plainTextToken; 
