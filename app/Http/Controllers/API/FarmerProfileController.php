@@ -69,6 +69,7 @@ class FarmerProfileController extends Controller
      * "first_name": "John",
      * "last_name": "Doe",
      * "dob": "1981-05-06", 
+     * 
      * }
      * }
      * 
@@ -120,7 +121,7 @@ class FarmerProfileController extends Controller
     public function registerFarmer(Request $request)
     {
         //Validate Request Data
-        $validate = Validator::make($request->all(),[
+        $validate = $request->validate([
             $request->first_name => 'required|string',
             $request->last_name => 'required|string',
             $request->dob => 'required|string',
