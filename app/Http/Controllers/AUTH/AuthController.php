@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 /**
 * @group Auth Management
@@ -65,6 +66,19 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
+        $validate = Validator::make($request->all(), [
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
+        if($validate->fails()){
+            return response()->json([
+                'success' => false,
+                'message' => 'The given data was invalid.',
+                'errors' => $validate->errors()
+            ], 422);
+        }
+        
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){ 
             $user = Auth::user(); 
             $success['token'] =  $user->createToken('token')->plainTextToken; 
@@ -109,6 +123,8 @@ class AuthController extends Controller
      * 
      * This endpoint allows a user to logout
      * @authenticated
+     * 
+     * 
      * 
      * @response {
      * "success": true,
