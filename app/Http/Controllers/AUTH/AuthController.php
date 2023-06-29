@@ -79,7 +79,7 @@ class AuthController extends Controller
             ], 422);
         }
 
-        dd($request->all());
+        dd($request->password);
 
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){ 
             $user = Auth::user(); 
