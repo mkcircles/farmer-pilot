@@ -18,6 +18,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { API_KEY, BASE_API_URL } from "../../env";
 import { AppContext } from "../../context/RootContext";
+import { useSelector } from "react-redux";
 
 const FarmerProfile = () => {
     const navigate = useNavigate();
