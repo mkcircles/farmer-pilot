@@ -1,0 +1,283 @@
+import React, { useContext } from "react";
+import { Title } from "@tremor/react";
+import Button from "../../base-components/Button";
+import { FormLabel, FormInput, FormHelp } from "../../base-components/Form";
+import { useNavigate } from "react-router-dom";
+import { AppContext } from "../../context/RootContext";
+import axios from "axios";
+import { BASE_API_URL } from "../../env";
+import { useSelector } from "react-redux";
+import { FPO_LIST } from "../../router/routes";
+
+const CreateFpo = () => {
+    const navigate = useNavigate();
+    const { updateAppContextState } = useContext(AppContext);
+    const token = useSelector(state => state.auth?.token);
+    const user = useSelector(state => state.auth?.user);
+    const [fpoData, setFpoData] = React.useState({
+        fpo_name: "",
+        district: "",
+        county: "",
+        sub_county: "",
+        parish: "",
+        village: "",
+        main_crop: "",
+        fpo_member_count: "",
+        fpo_contact_name: "",
+        contact_phone_number: "",
+        Cert_of_Inc: "",
+        address: "",
+        created_by: user.id,
+    });
+
+    const handleCreateFpo = () => {
+        updateAppContextState('loading', true);
+        axios.post(`${BASE_API_URL}/fpo/register`, fpoData, {
+            headers: {
+                "Authorization" : `Bearer 1|nBUsHNvT7SvDZpu1NvQMQSUVR6qiJjV5rmcf82Q6`
+            }
+        }).then(res => {
+            // TODO: Notify success
+            navigate(FPO_LIST);
+        }).catch(err => {
+            // TODO: Notify Error
+            console.log(err)
+        }).finally( () => {
+            updateAppContextState('loading', false);
+        })
+
+    }
+
+
+
+    return (
+        <form className="py-8 px-8" onSubmit={(e) => {
+            e.preventDefault();
+            handleCreateFpo();
+        }}>
+            <Title>Create New FPO</Title>
+
+            <div className="py-4">
+                <FormLabel htmlFor="regular-form-1">Name</FormLabel>
+                <FormInput
+                    id="fpo_name"
+                    required
+                    type="text"
+                    placeholder="FPO Name"
+                    value={fpoData.fpo_name}
+                    onChange={(e) =>
+                        setFpoData({ ...fpoData, fpo_name: e.target.value })
+                    }
+                />
+            </div>
+
+            <div className="py-4">
+                <FormLabel htmlFor="regular-form-1">
+                    Certificate of Incorporation
+                </FormLabel>
+                <FormInput
+                    id="Cert_of_Inc"
+                    required
+                    type="text"
+                    placeholder=""
+                    value={fpoData.Cert_of_Inc}
+                    onChange={(e) =>
+                        setFpoData({ ...fpoData, Cert_of_Inc: e.target.value })
+                    }
+                />
+            </div>
+
+            <div className="flex space-x-4 items-center py-4">
+                <div className="flex-1">
+                    <FormLabel htmlFor="regular-form-1">Main Crop</FormLabel>
+                    <FormInput
+                        id="main_crop"
+                        required
+                        type="text"
+                        placeholder="Main crop"
+                        value={fpoData.main_crop}
+                        onChange={(e) =>
+                            setFpoData({
+                                ...fpoData,
+                                main_crop: e.target.value,
+                            })
+                        }
+                    />
+                </div>
+
+                <div className="flex-1">
+                    <FormLabel htmlFor="regular-form-1">Member Count</FormLabel>
+                    <FormInput
+                        id="fpo_member_count"
+                        required
+                        type="text"
+                        placeholder=""
+                        value={fpoData.fpo_member_count}
+                        onChange={(e) =>
+                            setFpoData({
+                                ...fpoData,
+                                fpo_member_count: e.target.value,
+                            })
+                        }
+                    />
+                </div>
+            </div>
+
+            <div className="flex space-x-4 items-center py-4">
+                <div className="flex-1">
+                    <FormLabel htmlFor="regular-form-1">Contact Name</FormLabel>
+                    <FormInput
+                        id="fpo_contact_name"
+                        required
+                        type="text"
+                        placeholder="Contact Name"
+                        value={fpoData.fpo_contact_name}
+                        onChange={(e) =>
+                            setFpoData({
+                                ...fpoData,
+                                fpo_contact_name: e.target.value,
+                            })
+                        }
+                    />
+                </div>
+
+                <div className="flex-1">
+                    <FormLabel htmlFor="regular-form-1">Phone Number</FormLabel>
+                    <FormInput
+                        id="contact_phone_number"
+                        required
+                        type="text"
+                        placeholder="Phone number"
+                        value={fpoData.contact_phone_number}
+                        onChange={(e) =>
+                            setFpoData({
+                                ...fpoData,
+                                contact_phone_number: e.target.value,
+                            })
+                        }
+                    />
+                </div>
+            </div>
+
+            <div className="flex space-x-4 items-center py-4">
+                <div className="flex-1">
+                    <FormLabel htmlFor="regular-form-1">Address</FormLabel>
+                    <FormInput
+                        id="address"
+                        required
+                        type="text"
+                        placeholder=""
+                        value={fpoData.address}
+                        onChange={(e) =>
+                            setFpoData({
+                                ...fpoData,
+                                address: e.target.value,
+                            })
+                        }
+                    />
+                </div>
+
+                <div className="flex-1">
+                    <FormLabel htmlFor="regular-form-1">District</FormLabel>
+                    <FormInput
+                        id="district"
+                        required
+                        type="text"
+                        placeholder=""
+                        value={fpoData.district}
+                        onChange={(e) =>
+                            setFpoData({
+                                ...fpoData,
+                                district: e.target.value,
+                            })
+                        }
+                    />
+                </div>
+            </div>
+
+            <div className="flex space-x-4 items-center py-4">
+                <div className="flex-1">
+                    <FormLabel htmlFor="regular-form-1">County</FormLabel>
+                    <FormInput
+                        id="county"
+                        required
+                        type="text"
+                        placeholder=""
+                        value={fpoData.county}
+                        onChange={(e) =>
+                            setFpoData({
+                                ...fpoData,
+                                county: e.target.value,
+                            })
+                        }
+                    />
+                </div>
+
+                <div className="flex-1">
+                    <FormLabel htmlFor="regular-form-1">Sub-County</FormLabel>
+                    <FormInput
+                        id="sub_county"
+                        type="text"
+                        required
+                        placeholder=""
+                        value={fpoData.sub_county}
+                        onChange={(e) =>
+                            setFpoData({
+                                ...fpoData,
+                                sub_county: e.target.value,
+                            })
+                        }
+                    />
+                </div>
+            </div>
+
+            <div className="flex space-x-4 items-center py-4">
+                <div className="flex-1">
+                    <FormLabel htmlFor="regular-form-1">Parish</FormLabel>
+                    <FormInput
+                        id="parish"
+                        required
+                        type="text"
+                        placeholder=""
+                        value={fpoData.parish}
+                        onChange={(e) =>
+                            setFpoData({
+                                ...fpoData,
+                                parish: e.target.value,
+                            })
+                        }
+                    />
+                </div>
+
+                <div className="flex-1">
+                    <FormLabel htmlFor="regular-form-1">Village</FormLabel>
+                    <FormInput
+                        id="village"
+                        type="text"
+                        required
+                        placeholder=""
+                        value={fpoData.village}
+                        onChange={(e) =>
+                            setFpoData({
+                                ...fpoData,
+                                village: e.target.value,
+                            })
+                        }
+                    />
+                </div>
+            </div>
+
+            <div className="flex py-4">
+                <Button
+                    variant="primary"
+                    className="w-full xl:mr-3"
+                    onClick={() => {}}
+                >
+                    Save
+                </Button>
+            </div>
+        </form>
+    );
+};
+
+export default CreateFpo;
