@@ -17,6 +17,11 @@ class DataController extends Controller
     /**
      * Get all farmers
      * 
+     * This endpoint allows a user to get all farmers
+     * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
+     * 
      * @response {
      * "current_page": 1,
      * "data": [
@@ -66,13 +71,18 @@ class DataController extends Controller
     /**
      * Get farmer
      * 
+     * This endpoint allows a user to get a farmer
+     * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
+     * 
      * @urlParam id required The ID of the farmer. Example: 1
      * 
      * @response {
      * "id": 1,
      * "first_name": "John",
      * "last_name": "Doe",
-     * ...
+     * 
      * }
      * 
      * @response 404 {

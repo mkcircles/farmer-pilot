@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('sub_county');
             $table->string('parish');
             $table->string('village');
-            $table->string('fpo_name');
+            $table->string('fpo_id')->nullable();
             $table->string('farmer_cordinates')->nullable();
             $table->string('next_of_kin')->nullable();
             $table->string('next_of_kin_contact')->nullable();
@@ -47,7 +47,7 @@ return new class extends Migration
             //Farm Information
             $table->string('farm_size')->nullable();
             $table->string('farm_size_under_agriculture')->nullable();
-            $table->enum('land_ownership',['private','leased','rented','customary tenure'])->nullable();
+            $table->enum('land_ownership',['private','leased','rented','customary'])->nullable();
 
             //Crop Information
             $table->enum('type_of_farming',['crop','animals','mixed'])->nullable();
@@ -61,15 +61,18 @@ return new class extends Migration
             $table->string('consumerDeviceId')->nullable();
             $table->string('data_captured_by')->nullable();
 
+            //Registered By
+            $table->string('agent_id')->nullable();
+
             
             $table->timestamps();
         });
 
         //Call the seeder
-        Artisan::call('db:seed', [
-            '--class' => ApiFarmer::class,
-            '--force' => true,
-        ]);
+        // Artisan::call('db:seed', [
+        //     '--class' => ApiFarmer::class,
+        //     '--force' => true,
+        // ]);
 
     }
 

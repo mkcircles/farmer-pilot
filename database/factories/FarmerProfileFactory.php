@@ -46,7 +46,7 @@ class FarmerProfileFactory extends Factory
             'do_you_have_an_account_with_an_FI' => $this->faker->randomElement(['yes','no']),
             'farm_size' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 1000000),
             'farm_size_under_agriculture' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 1000000),
-            'land_ownership' => $this->faker->randomElement(['private','leased','rented','customary tenure']),
+            'land_ownership' => $this->faker->randomElement(['private','leased','rented','customary']),
             'type_of_farming' => $this->faker->randomElement(['crop','animals','mixed']),
             'crops_grown' => $this->faker->randomElement(['maize','beans','cassava','sweet potatoes','irish potatoes','millet','sorghum','rice','wheat','soya beans','ground nuts','sunflower','coffee','tea','bananas','cotton','tobacco','simsim','sugar cane','cocoa','vanilla','other']),
             'animals_kept' => $this->faker->randomElement(['cattle','goats','sheep','pigs','chicken','turkey','guinea fowl','rabbits','fish','bees','other']),

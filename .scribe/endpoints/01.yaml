@@ -1,126 +1,372 @@
-name: 'Data Management'
+name: 'Farmer Profile'
 description: |-
 
   APIs for managing farmer profile
 endpoints:
   -
     httpMethods:
-      - GET
-    uri: api/farmers
+      - POST
+    uri: api/farmer/register
     metadata:
-      groupName: 'Data Management'
+      groupName: 'Farmer Profile'
       groupDescription: |-
 
         APIs for managing farmer profile
       subgroup: ''
       subgroupDescription: ''
-      title: 'Get all farmers'
-      description: ''
-      authenticated: false
+      title: 'Register Farmer'
+      description: 'This endpoint allows a user to register a farmer'
+      authenticated: true
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
+      Authorization: 'required The authorization token. Example: Bearer {token}'
     urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-          "current_page": 1,
-          "data": [
-          {
-          "id": 1,
-          "first_name": "John",
-          "last_name": "Doe",
-
-          }
-          ],
-          "first_page_url": "http://localhost:8000/api/farmers?page=1",
-          "from": 1,
-          "last_page": 1,
-          "last_page_url": "http://localhost:8000/api/farmers?page=1",
-          "links": [
-          {
-          "url": null,
-          "label": "&laquo; Previous",
-          "active": false
-          },
-          {
-          "url": "http://localhost:8000/api/farmers?page=1",
-          "label": "1",
-          "active": true
-          },
-          {
-          "url": null,
-          "label": "Next &raquo;",
-          "active": false
-          }
-          ],
-          "next_page_url": null,
-          "path": "http://localhost:8000/api/farmers",
-          "per_page": 10,
-          "prev_page_url": null,
-          "to": 1,
-          "total": 1
-          }
-        headers: []
-        description: ''
+    bodyParameters:
+      first_name:
+        name: first_name
+        description: 'The first name of the farmer.'
+        required: true
+        example: John
+        type: string
         custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/farmer/{id}'
-    metadata:
-      groupName: 'Data Management'
-      groupDescription: |-
-
-        APIs for managing farmer profile
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Get farmer'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the farmer.'
+      last_name:
+        name: last_name
+        description: 'The last name of the farmer.'
+        required: true
+        example: Doe
+        type: string
+        custom: []
+      dob:
+        name: dob
+        description: 'The date of birth of the farmer.'
+        required: true
+        example: '1990-01-01'
+        type: date
+        custom: []
+      gender:
+        name: gender
+        description: 'Farmer gender. Example Male/Female'
+        required: false
+        example: eum
+        type: string
+        custom: []
+      education_level:
+        name: education_level
+        description: 'The education level of the farmer.'
+        required: true
+        example: Primary
+        type: string
+        custom: []
+      phone_number:
+        name: phone_number
+        description: 'The phone number of the farmer.'
+        required: true
+        example: '0789123456'
+        type: string
+        custom: []
+      id_number:
+        name: id_number
+        description: 'The national ID number of the farmer.'
+        required: true
+        example: CM12345678
+        type: string
+        custom: []
+      marital_status:
+        name: marital_status
+        description: 'The marital status of the farmer.'
+        required: true
+        example: Married
+        type: string
+        custom: []
+      district:
+        name: district
+        description: 'The district of the farmer.'
+        required: true
+        example: Kampala
+        type: string
+        custom: []
+      county:
+        name: county
+        description: 'The county of the farmer.'
+        required: true
+        example: Makindye
+        type: string
+        custom: []
+      sub_county:
+        name: sub_county
+        description: 'The sub county of the farmer.'
+        required: true
+        example: Kibuye
+        type: string
+        custom: []
+      parish:
+        name: parish
+        description: 'The parish of the farmer.'
+        required: true
+        example: Kibuye
+        type: string
+        custom: []
+      village:
+        name: village
+        description: 'The village of the farmer.'
+        required: true
+        example: Kibuye
+        type: string
+        custom: []
+      fpo_id:
+        name: fpo_id
+        description: 'The FPO name of the farmer.'
+        required: true
+        example: 0
+        type: integer
+        custom: []
+      farmer_cordinates:
+        name: farmer_cordinates
+        description: 'The farmer cordinates of the farmer.'
+        required: true
+        example: '0.0000,0.0000'
+        type: string
+        custom: []
+      next_of_kin:
+        name: next_of_kin
+        description: 'The next of kin of the farmer.'
+        required: true
+        example: 'Jane Doe'
+        type: string
+        custom: []
+      next_of_kin_contact:
+        name: next_of_kin_contact
+        description: 'The next of kin contact of the farmer.'
+        required: true
+        example: '0789123456'
+        type: string
+        custom: []
+      next_of_kin_relationship:
+        name: next_of_kin_relationship
+        description: 'The next of kin relationship of the farmer.'
+        required: true
+        example: Wife
+        type: string
+        custom: []
+      male_members_in_household:
+        name: male_members_in_household
+        description: 'Number of male members of the household.'
+        required: true
+        example: 2
+        type: integer
+        custom: []
+      female_members_in_household:
+        name: female_members_in_household
+        description: 'Number of male members of the household.'
+        required: true
+        example: 4
+        type: integer
+        custom: []
+      members_above_18:
+        name: members_above_18
+        description: 'Number of members above 18 years of age.'
+        required: true
+        example: 4
+        type: integer
+        custom: []
+      children_below_5:
+        name: children_below_5
+        description: 'Number of children below 5 years of age.'
+        required: true
+        example: 2
+        type: integer
+        custom: []
+      school_going_children:
+        name: school_going_children
+        description: 'Number of school going children.'
+        required: true
+        example: 2
+        type: integer
+        custom: []
+      head_of_family:
+        name: head_of_family
+        description: 'The head of family of the farmer.'
+        required: true
+        example: 'John Doe'
+        type: string
+        custom: []
+      how_much_do_you_earn_from_agricultural_activities:
+        name: how_much_do_you_earn_from_agricultural_activities
+        description: 'How much do you earn from agricultural activities.'
+        required: true
+        example: '100000'
+        type: string
+        custom: []
+      how_much_do_you_earn_from_non_agricultural_activities:
+        name: how_much_do_you_earn_from_non_agricultural_activities
+        description: 'How much do you earn from non agricultural activities.'
+        required: true
+        example: '100000'
+        type: string
+        custom: []
+      do_you_have_an_account_with_an_FI:
+        name: do_you_have_an_account_with_an_FI
+        description: 'Do you have an account with an FI.'
+        required: true
+        example: 'Yes'
+        type: string
+        custom: []
+      farm_size:
+        name: farm_size
+        description: 'The farm size of the farmer.'
+        required: true
+        example: '2'
+        type: string
+        custom: []
+      farm_size_under_agriculture:
+        name: farm_size_under_agriculture
+        description: 'The farm size under agriculture of the farmer.'
+        required: true
+        example: '2'
+        type: string
+        custom: []
+      land_ownership:
+        name: land_ownership
+        description: 'The land ownership of the farmer.'
+        required: true
+        example: Owned
+        type: string
+        custom: []
+      type_of_farming:
+        name: type_of_farming
+        description: 'The type of farming of the farmer.'
+        required: true
+        example: Crop
+        type: string
+        custom: []
+      crops_grown:
+        name: crops_grown
+        description: 'The crops grown of the farmer.'
+        required: true
+        example: Maize
+        type: string
+        custom: []
+      animals_kept:
+        name: animals_kept
+        description: 'The animals kept of the farmer.'
+        required: true
+        example: Cattle
+        type: string
+        custom: []
+      estimated_produce_value_last_season:
+        name: estimated_produce_value_last_season
+        description: 'The estimated produce value last season of the farmer.'
+        required: true
+        example: '100000'
+        type: string
+        custom: []
+      estimated_produce_value_this_season:
+        name: estimated_produce_value_this_season
+        description: 'The estimated produce value this season of the farmer.'
+        required: true
+        example: '100000'
+        type: string
+        custom: []
+      data_captured_by:
+        name: data_captured_by
+        description: 'The data captured by of the farmer.'
         required: true
         example: '1'
         type: string
         custom: []
-    cleanUrlParameters:
-      id: '1'
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
+      agent_id:
+        name: agent_id
+        description: 'The agent id of the farmer.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    cleanBodyParameters:
+      first_name: John
+      last_name: Doe
+      dob: '1990-01-01'
+      gender: eum
+      education_level: Primary
+      phone_number: '0789123456'
+      id_number: CM12345678
+      marital_status: Married
+      district: Kampala
+      county: Makindye
+      sub_county: Kibuye
+      parish: Kibuye
+      village: Kibuye
+      fpo_id: 0
+      farmer_cordinates: '0.0000,0.0000'
+      next_of_kin: 'Jane Doe'
+      next_of_kin_contact: '0789123456'
+      next_of_kin_relationship: Wife
+      male_members_in_household: 2
+      female_members_in_household: 4
+      members_above_18: 4
+      children_below_5: 2
+      school_going_children: 2
+      head_of_family: 'John Doe'
+      how_much_do_you_earn_from_agricultural_activities: '100000'
+      how_much_do_you_earn_from_non_agricultural_activities: '100000'
+      do_you_have_an_account_with_an_FI: 'Yes'
+      farm_size: '2'
+      farm_size_under_agriculture: '2'
+      land_ownership: Owned
+      type_of_farming: Crop
+      crops_grown: Maize
+      animals_kept: Cattle
+      estimated_produce_value_last_season: '100000'
+      estimated_produce_value_this_season: '100000'
+      data_captured_by: '1'
+      agent_id: 1
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
-          "id": 1,
+          "status": "success",
+          "message": "Farmer profile created successfully",
+          "data": {
           "first_name": "John",
           "last_name": "Doe",
-          ...
+          "dob": "1981-05-06",
+          }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+          "status": "error",
+          "message": "Bad request"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+          "status": "error",
+          "message": "Unauthorized"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+          "status": "error",
+          "message": "Forbidden"
           }
         headers: []
         description: ''
@@ -129,7 +375,50 @@ endpoints:
         status: 404
         content: |-
           {
-          "message": "Farmer not found"
+          "status": "error",
+          "message": "Not found"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 405
+        content: |-
+          {
+          "status": "error",
+          "message": "Method not allowed"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+          "status": "error",
+          "message": "Validation error",
+          "errors": {
+          }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 429
+        content: |-
+          {
+          "status": "error",
+          "message": "Too many requests"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+          "status": "error",
+          "message": "Server error"
           }
         headers: []
         description: ''

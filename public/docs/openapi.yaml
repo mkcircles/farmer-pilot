@@ -1,18 +1,1111 @@
 openapi: 3.0.3
 info:
-  title: Laravel
+  title: 'Farmer Registration Pilot'
   description: ''
   version: 1.0.0
 servers:
   -
-    url: 'https://farmers.nauticaltech.ug'
+    url: 'https://farmer-pilot.test'
 paths:
+  /api/agents:
+    get:
+      summary: 'Get all agents'
+      operationId: getAllAgents
+      description: 'This endpoint allows a user to get all agents'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'required The authorization token. Example: Bearer {token}'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  message: 'Agents retrieved successfully'
+                  data:
+                    current_page: 1
+                    data:
+                      -
+                        id: 1
+                        first_name: John
+                        last_name: Doe
+                        email: ''
+                        phone_number: '08012345678'
+                        age: '30'
+                        residence: Kampala
+                        referee_name: 'Jane Doe'
+                        referee_phone_number: '08012345678'
+                        designation: 'Agro Extension Worker'
+                        photo: null
+                        created_at: '2021-06-27T14:56:12.000000Z'
+                        updated_at: '2021-06-27T14:56:12.000000Z'
+                    first_page_url: 'http://localhost:8000/api/agents?page=1'
+                    from: 1
+                    last_page: 1
+                    last_page_url: 'http://localhost:8000/api/agents?page=1'
+                    links:
+                      -
+                        url: null
+                        label: '&laquo; Previous'
+                        active: false
+                      -
+                        url: 'http://localhost:8000/api/agents?page=1'
+                        label: '1'
+                        active: true
+                      -
+                        url: null
+                        label: 'Next &raquo;'
+                        active: false
+                    next_page_url: null
+                    path: 'http://localhost:8000/api/agents'
+                    per_page: 15
+                    prev_page_url: null
+                    to: 1
+                    total: 1
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Agents retrieved successfully'
+                  data:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 1
+                      data:
+                        type: array
+                        example:
+                          -
+                            id: 1
+                            first_name: John
+                            last_name: Doe
+                            email: ''
+                            phone_number: '08012345678'
+                            age: '30'
+                            residence: Kampala
+                            referee_name: 'Jane Doe'
+                            referee_phone_number: '08012345678'
+                            designation: 'Agro Extension Worker'
+                            photo: null
+                            created_at: '2021-06-27T14:56:12.000000Z'
+                            updated_at: '2021-06-27T14:56:12.000000Z'
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 1
+                            first_name:
+                              type: string
+                              example: John
+                            last_name:
+                              type: string
+                              example: Doe
+                            email:
+                              type: string
+                              example: ''
+                            phone_number:
+                              type: string
+                              example: '08012345678'
+                            age:
+                              type: string
+                              example: '30'
+                            residence:
+                              type: string
+                              example: Kampala
+                            referee_name:
+                              type: string
+                              example: 'Jane Doe'
+                            referee_phone_number:
+                              type: string
+                              example: '08012345678'
+                            designation:
+                              type: string
+                              example: 'Agro Extension Worker'
+                            photo:
+                              type: string
+                              example: null
+                            created_at:
+                              type: string
+                              example: '2021-06-27T14:56:12.000000Z'
+                            updated_at:
+                              type: string
+                              example: '2021-06-27T14:56:12.000000Z'
+                      first_page_url:
+                        type: string
+                        example: 'http://localhost:8000/api/agents?page=1'
+                      from:
+                        type: integer
+                        example: 1
+                      last_page:
+                        type: integer
+                        example: 1
+                      last_page_url:
+                        type: string
+                        example: 'http://localhost:8000/api/agents?page=1'
+                      links:
+                        type: array
+                        example:
+                          -
+                            url: null
+                            label: '&laquo; Previous'
+                            active: false
+                          -
+                            url: 'http://localhost:8000/api/agents?page=1'
+                            label: '1'
+                            active: true
+                          -
+                            url: null
+                            label: 'Next &raquo;'
+                            active: false
+                        items:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                              example: null
+                            label:
+                              type: string
+                              example: '&laquo; Previous'
+                            active:
+                              type: boolean
+                              example: false
+                      next_page_url:
+                        type: string
+                        example: null
+                      path:
+                        type: string
+                        example: 'http://localhost:8000/api/agents'
+                      per_page:
+                        type: integer
+                        example: 15
+                      prev_page_url:
+                        type: string
+                        example: null
+                      to:
+                        type: integer
+                        example: 1
+                      total:
+                        type: integer
+                        example: 1
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'No agents found'
+                  data: null
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'No agents found'
+                  data:
+                    type: string
+                    example: null
+      tags:
+        - 'Agent management'
+  /api/agent/register:
+    post:
+      summary: 'Create a new agent'
+      operationId: createANewAgent
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'required The authorization token. Example: Bearer {token}'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  message: 'Agent created successfully'
+                  data:
+                    first_name: John
+                    last_name: Doe
+                    email: ''
+                    phone_number: 256XXXXXXXXX
+                    age: '30'
+                    residence: Kampala
+                    referee_name: 'Jane Doe'
+                    referee_phone_number: '08012345678'
+                    designation: 'Agro Extension Worker'
+                    photo: 'http://localhost:8000/storage/agents/1624810572IMG_20210627_174358.jpg'
+                    updated_at: '2021-06-27T17:09:32.000000Z'
+                    created_at: '2021-06-27T17:09:32.000000Z'
+                    id: 1
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Agent created successfully'
+                  data:
+                    type: object
+                    properties:
+                      first_name:
+                        type: string
+                        example: John
+                      last_name:
+                        type: string
+                        example: Doe
+                      email:
+                        type: string
+                        example: ''
+                      phone_number:
+                        type: string
+                        example: 256XXXXXXXXX
+                      age:
+                        type: string
+                        example: '30'
+                      residence:
+                        type: string
+                        example: Kampala
+                      referee_name:
+                        type: string
+                        example: 'Jane Doe'
+                      referee_phone_number:
+                        type: string
+                        example: '08012345678'
+                      designation:
+                        type: string
+                        example: 'Agro Extension Worker'
+                      photo:
+                        type: string
+                        example: 'http://localhost:8000/storage/agents/1624810572IMG_20210627_174358.jpg'
+                      updated_at:
+                        type: string
+                        example: '2021-06-27T17:09:32.000000Z'
+                      created_at:
+                        type: string
+                        example: '2021-06-27T17:09:32.000000Z'
+                      id:
+                        type: integer
+                        example: 1
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'Bad request'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Bad request'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: Unauthorized
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Unauthorized
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: Forbidden
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Forbidden
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'Not found'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Not found'
+        405:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'Method not allowed'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Method not allowed'
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'Server error'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Server error'
+      tags:
+        - 'Agent management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  description: 'The first name of the agent.'
+                  example: John
+                last_name:
+                  type: string
+                  description: 'The last name of the agent.'
+                  example: Doe
+                email:
+                  type: string
+                  description: 'The email of the agent. Example:'
+                  example: sklocko@example.org
+                phone_number:
+                  type: string
+                  description: 'The phone number of the agent.'
+                  example: 256XXXXXXXXX
+                age:
+                  type: string
+                  description: 'The age of the agent.'
+                  example: '30'
+                gender:
+                  type: string
+                  description: ''
+                  example: consectetur
+                residence:
+                  type: string
+                  description: 'The residence of the agent.'
+                  example: Kampala
+                referee_name:
+                  type: string
+                  description: 'The referee name of the agent.'
+                  example: 'Jane Doe'
+                referee_phone_number:
+                  type: string
+                  description: 'The referee phone number of the agent.'
+                  example: '08012345678'
+                designation:
+                  type: string
+                  description: 'The designation of the agent.'
+                  example: 'Agro Extension Worker'
+                created_by:
+                  type: integer
+                  description: ''
+                  example: 14
+                fpo_id:
+                  type: integer
+                  description: ''
+                  example: 2
+              required:
+                - first_name
+                - last_name
+                - email
+                - phone_number
+                - age
+                - gender
+                - residence
+                - referee_name
+                - referee_phone_number
+                - designation
+                - created_by
+                - fpo_id
+  '/api/agent/{id}':
+    get:
+      summary: 'Get Agent'
+      operationId: getAgent
+      description: 'This endpoint allows a user to get a specific agent'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'required The authorization token. Example: Bearer {token}'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  message: 'Agent retrieved successfully'
+                  data:
+                    id: 1
+                    first_name: John
+                    last_name: Doe
+                    email: ''
+                    phone_number: 256XXXXXXXXX
+                    age: '30'
+                    residence: Kampala
+                    referee_name: 'Jane Doe'
+                    referee_phone_number: '08012345678'
+                    designation: 'Agro Extension Worker'
+                    photo: 'http://localhost:8000/storage/agents/1624810572IMG_20210627_174358.jpg'
+                    created_at: '2021-06-27T17:09:32.000000Z'
+                    updated_at: '2021-06-27T17:09:32.000000Z'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Agent retrieved successfully'
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      first_name:
+                        type: string
+                        example: John
+                      last_name:
+                        type: string
+                        example: Doe
+                      email:
+                        type: string
+                        example: ''
+                      phone_number:
+                        type: string
+                        example: 256XXXXXXXXX
+                      age:
+                        type: string
+                        example: '30'
+                      residence:
+                        type: string
+                        example: Kampala
+                      referee_name:
+                        type: string
+                        example: 'Jane Doe'
+                      referee_phone_number:
+                        type: string
+                        example: '08012345678'
+                      designation:
+                        type: string
+                        example: 'Agro Extension Worker'
+                      photo:
+                        type: string
+                        example: 'http://localhost:8000/storage/agents/1624810572IMG_20210627_174358.jpg'
+                      created_at:
+                        type: string
+                        example: '2021-06-27T17:09:32.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2021-06-27T17:09:32.000000Z'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'Agent not found'
+                  data: null
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Agent not found'
+                  data:
+                    type: string
+                    example: null
+      tags:
+        - 'Agent management'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the agent.'
+        example: alias
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: agent
+        description: 'The id of the agent.'
+        example: '1'
+        required: true
+        schema:
+          type: string
+  '/api/agent/{id}/update':
+    post:
+      summary: 'Update the Agent'
+      operationId: updateTheAgent
+      description: 'This endpoint allows a user to update a specific agent'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'required The authorization token. Example: Bearer {token}'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  message: 'Agent created successfully'
+                  data:
+                    first_name: John
+                    last_name: Doe
+                    email: ''
+                    phone_number: 256XXXXXXXXX
+                    age: '30'
+                    residence: Kampala
+                    referee_name: 'Jane Doe'
+                    referee_phone_number: '08012345678'
+                    designation: 'Agro Extension Worker'
+                    photo: 'http://localhost:8000/storage/agents/1624810572IMG_20210627_174358.jpg'
+                    updated_at: '2021-06-27T17:09:32.000000Z'
+                    created_at: '2021-06-27T17:09:32.000000Z'
+                    id: 1
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Agent created successfully'
+                  data:
+                    type: object
+                    properties:
+                      first_name:
+                        type: string
+                        example: John
+                      last_name:
+                        type: string
+                        example: Doe
+                      email:
+                        type: string
+                        example: ''
+                      phone_number:
+                        type: string
+                        example: 256XXXXXXXXX
+                      age:
+                        type: string
+                        example: '30'
+                      residence:
+                        type: string
+                        example: Kampala
+                      referee_name:
+                        type: string
+                        example: 'Jane Doe'
+                      referee_phone_number:
+                        type: string
+                        example: '08012345678'
+                      designation:
+                        type: string
+                        example: 'Agro Extension Worker'
+                      photo:
+                        type: string
+                        example: 'http://localhost:8000/storage/agents/1624810572IMG_20210627_174358.jpg'
+                      updated_at:
+                        type: string
+                        example: '2021-06-27T17:09:32.000000Z'
+                      created_at:
+                        type: string
+                        example: '2021-06-27T17:09:32.000000Z'
+                      id:
+                        type: integer
+                        example: 1
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'Validation error'
+                  data:
+                    first_name:
+                      - 'The first name field is required.'
+                    last_name:
+                      - 'The last name field is required.'
+                    phone_number:
+                      - 'The phone number field is required.'
+                    age:
+                      - 'The age field is required.'
+                    residence:
+                      - 'The residence field is required.'
+                    referee_name:
+                      - 'The referee name field is required.'
+                    referee_phone_number:
+                      - 'The referee phone number field is required.'
+                    designation:
+                      - 'The designation field is required.'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Validation error'
+                  data:
+                    type: object
+                    properties:
+                      first_name:
+                        type: array
+                        example:
+                          - 'The first name field is required.'
+                        items:
+                          type: string
+                      last_name:
+                        type: array
+                        example:
+                          - 'The last name field is required.'
+                        items:
+                          type: string
+                      phone_number:
+                        type: array
+                        example:
+                          - 'The phone number field is required.'
+                        items:
+                          type: string
+                      age:
+                        type: array
+                        example:
+                          - 'The age field is required.'
+                        items:
+                          type: string
+                      residence:
+                        type: array
+                        example:
+                          - 'The residence field is required.'
+                        items:
+                          type: string
+                      referee_name:
+                        type: array
+                        example:
+                          - 'The referee name field is required.'
+                        items:
+                          type: string
+                      referee_phone_number:
+                        type: array
+                        example:
+                          - 'The referee phone number field is required.'
+                        items:
+                          type: string
+                      designation:
+                        type: array
+                        example:
+                          - 'The designation field is required.'
+                        items:
+                          type: string
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: Forbidden
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Forbidden
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'Agent not found'
+                  data: null
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Agent not found'
+                  data:
+                    type: string
+                    example: null
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'Server error'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Server error'
+      tags:
+        - 'Agent management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  description: 'The first name of the agent.'
+                  example: John
+                last_name:
+                  type: string
+                  description: 'The last name of the agent.'
+                  example: Doe
+                email:
+                  type: string
+                  description: 'The email of the agent. Example:'
+                  example: pgrant@example.com
+                phone_number:
+                  type: string
+                  description: 'The phone number of the agent.'
+                  example: 256XXXXXXXXX
+                age:
+                  type: string
+                  description: 'The age of the agent.'
+                  example: '30'
+                residence:
+                  type: string
+                  description: 'The residence of the agent.'
+                  example: Kampala
+                referee_name:
+                  type: string
+                  description: 'The referee name of the agent.'
+                  example: 'Jane Doe'
+                referee_phone_number:
+                  type: string
+                  description: 'The referee phone number of the agent.'
+                  example: '08012345678'
+                designation:
+                  type: string
+                  description: 'The designation of the agent.'
+                  example: 'Agro Extension Worker'
+              required:
+                - first_name
+                - last_name
+                - email
+                - phone_number
+                - age
+                - residence
+                - referee_name
+                - referee_phone_number
+                - designation
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The id of the agent.'
+        example: '1'
+        required: true
+        schema:
+          type: string
+  '/api/agent/{agent_id}/farmers':
+    get:
+      summary: 'Get Agent Registered Farmers'
+      operationId: getAgentRegisteredFarmers
+      description: 'This endpoint allows a user to get all farmers registered by a specific agent'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'required The authorization token. Example: Bearer {token}'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n\"success\": true,\n\"message\": \"Farmers retrieved successfully\",\n\"data\": {\n\"current_page\": 1,\n\"data\": [\n{\n\"id\": 1,\n\"first_name\": \"John\",\n\"last_name\": \"Doe\",\n\"email\": \"\",\n...\n}\n],\n\"first_page_url\": \"http://localhost:8000/api/farmers?page=1\",\n\"from\": 1,\n\"last_page\": 1,\n\"last_page_url\": \"http://localhost:8000/api/farmers?page=1\",\n\"links\": [\n{\n\"url\": null,\n\"label\": \"&laquo; Previous\",\n\"active\": false\n},\n{\n\"url\": \"http://localhost:8000/api/farmers?page=1\",\n\"label\": \"1\",\n\"active\": true\n},\n{\n\"url\": null,\n\"label\": \"Next &raquo;\",\n\"active\": false\n}\n],\n\"next_page_url\": null,\n\"path\": \"http://localhost:8000/api/farmers\",\n\"per_page\": 10,\n\"prev_page_url\": null,\n\"to\": 1,\n\"total\": 1\n}\n}"
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'No farmers found'
+                  data: null
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'No farmers found'
+                  data:
+                    type: string
+                    example: null
+      tags:
+        - 'Agent management'
+    parameters:
+      -
+        in: path
+        name: agent_id
+        description: 'The id of the agent.'
+        example: '1'
+        required: true
+        schema:
+          type: string
+  /api/login:
+    post:
+      summary: 'Login user'
+      operationId: loginUser
+      description: 'This endpoint allows a user to login'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n\"success\": true,\n\"message\": \"User login successfully.\",\n\"data\": {\n\"id\": 1,\n\"name\": \"John Doe\",\n\"email\": \"john@test.com\",\n\"email_verified_at\": null,\n\"phone_number\": \"256700000000\",\n\"created_at\": \"2021-06-27T14:56:04.000000Z\",\n\"updated_at\": \"2021-06-27T14:56:04.000000Z\",\n}\n}"
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: Unauthorised.
+                  data: null
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Unauthorised.
+                  data:
+                    type: string
+                    example: null
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The given data was invalid.'
+                  errors:
+                    email:
+                      - 'The email field is required.'
+                    password:
+                      - 'The password field is required.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The given data was invalid.'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email field is required.'
+                        items:
+                          type: string
+                      password:
+                        type: array
+                        example:
+                          - 'The password field is required.'
+                        items:
+                          type: string
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Server Error.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Server Error.'
+      tags:
+        - 'Auth Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'The email address or phone number of the user'
+                  example: haylee.koch@example.com
+                password:
+                  type: string
+                  description: 'The password of the user'
+                  example: ',).J%mxR0Zmj<hz:WDW'
+              required:
+                - email
+                - password
+      security: []
+  /api/logout:
+    post:
+      summary: 'Logout user'
+      operationId: logoutUser
+      description: 'This endpoint allows a user to logout'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  message: 'User logged out successfully.'
+                  data: null
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'User logged out successfully.'
+                  data:
+                    type: string
+                    example: null
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: Unauthorised.
+                  data: null
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Unauthorised.
+                  data:
+                    type: string
+                    example: null
+      tags:
+        - 'Auth Management'
+  /api/refresh:
+    post:
+      summary: 'Refresh token'
+      operationId: refreshToken
+      description: 'This endpoint allows a user to refresh their token'
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Auth Management'
   /api/farmers:
     get:
       summary: 'Get all farmers'
       operationId: getAllFarmers
-      description: ''
-      parameters: []
+      description: 'This endpoint allows a user to get all farmers'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'required The authorization token. Example: Bearer {token}'
+          schema:
+            type: string
       responses:
         200:
           description: ''
@@ -23,13 +1116,19 @@ paths:
                 example: "{\n\"current_page\": 1,\n\"data\": [\n{\n\"id\": 1,\n\"first_name\": \"John\",\n\"last_name\": \"Doe\",\n\n}\n],\n\"first_page_url\": \"http://localhost:8000/api/farmers?page=1\",\n\"from\": 1,\n\"last_page\": 1,\n\"last_page_url\": \"http://localhost:8000/api/farmers?page=1\",\n\"links\": [\n{\n\"url\": null,\n\"label\": \"&laquo; Previous\",\n\"active\": false\n},\n{\n\"url\": \"http://localhost:8000/api/farmers?page=1\",\n\"label\": \"1\",\n\"active\": true\n},\n{\n\"url\": null,\n\"label\": \"Next &raquo;\",\n\"active\": false\n}\n],\n\"next_page_url\": null,\n\"path\": \"http://localhost:8000/api/farmers\",\n\"per_page\": 10,\n\"prev_page_url\": null,\n\"to\": 1,\n\"total\": 1\n}"
       tags:
         - 'Data Management'
-      security: []
   '/api/farmer/{id}':
     get:
       summary: 'Get farmer'
       operationId: getFarmer
-      description: ''
-      parameters: []
+      description: 'This endpoint allows a user to get a farmer'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'required The authorization token. Example: Bearer {token}'
+          schema:
+            type: string
       responses:
         200:
           description: ''
@@ -37,7 +1136,7 @@ paths:
             text/plain:
               schema:
                 type: string
-                example: "{\n\"id\": 1,\n\"first_name\": \"John\",\n\"last_name\": \"Doe\",\n...\n}"
+                example: "{\n\"id\": 1,\n\"first_name\": \"John\",\n\"last_name\": \"Doe\",\n\n}"
         404:
           description: ''
           content:
@@ -52,7 +1151,6 @@ paths:
                     example: 'Farmer not found'
       tags:
         - 'Data Management'
-      security: []
     parameters:
       -
         in: path
@@ -62,12 +1160,1130 @@ paths:
         required: true
         schema:
           type: string
+  /api/fpos:
+    get:
+      summary: 'Get all FPOs.'
+      operationId: getAllFPOs
+      description: 'This endpoint allows you to fetch all FPOs.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'required The authorization token. Example: Bearer {token}'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  current_page: 1
+                  data:
+                    -
+                      id: 1
+                      fpo_name: 'FPO 1'
+                      district: 'FPO 1 district'
+                      county: 'FPO 1 county'
+                      sub_county: 'FPO 1 sub county'
+                      parish: 'FPO 1 parish'
+                      village: 'FPO 1 village'
+                      main_crop: 'FPO 1 main crop'
+                      fpo_member_count: 1
+                      fpo_contact_name: 'FPO 1 contact name'
+                      contact_phone_number: 'FPO 1 contact phone number'
+                      Cert_of_Inc: 'FPO 1 cert of inc'
+                      address: 'FPO 1 address'
+                      created_at: '2021-06-30T11:30:00.000000Z'
+                      updated_at: '2021-06-30T11:30:00.000000Z'
+                    -
+                      id: 2
+                      fpo_name: 'FPO 2'
+                      district: 'FPO 2 district'
+                      county: 'FPO 2 county'
+                      sub_county: 'FPO 2 sub county'
+                      parish: 'FPO 2 parish'
+                      village: 'FPO 2 village'
+                      main_crop: 'FPO 2 main crop'
+                      fpo_member_count: 2
+                      fpo_contact_name: 'FPO 2 contact name'
+                      contact_phone_number: 'FPO 2 contact phone number'
+                      Cert_of_Inc: 'FPO 2 cert of inc'
+                      address: 'FPO 2 address'
+                      created_at: '2021-06-30T11:30:00.000000Z'
+                      updated_at: '2021-06-30T11:30:00.000000Z'
+                  first_page_url: 'http://localhost:8000/api/fpos?page=1'
+                  from: 1
+                  last_page: 1
+                  last_page_url: 'http://localhost:8000/api/fpos?page=1'
+                  links:
+                    -
+                      url: null
+                      label: '&laquo; Previous'
+                      active: false
+                    -
+                      url: 'http://localhost:8000/api/fpos?page=1'
+                      label: '1'
+                      active: true
+                    -
+                      url: null
+                      label: 'Next &raquo;'
+                      active: false
+                  next_page_url: null
+                  path: 'http://localhost:8000/api/fpos'
+                  per_page: 15
+                  prev_page_url: null
+                  to: 2
+                  total: 2
+                properties:
+                  current_page:
+                    type: integer
+                    example: 1
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        fpo_name: 'FPO 1'
+                        district: 'FPO 1 district'
+                        county: 'FPO 1 county'
+                        sub_county: 'FPO 1 sub county'
+                        parish: 'FPO 1 parish'
+                        village: 'FPO 1 village'
+                        main_crop: 'FPO 1 main crop'
+                        fpo_member_count: 1
+                        fpo_contact_name: 'FPO 1 contact name'
+                        contact_phone_number: 'FPO 1 contact phone number'
+                        Cert_of_Inc: 'FPO 1 cert of inc'
+                        address: 'FPO 1 address'
+                        created_at: '2021-06-30T11:30:00.000000Z'
+                        updated_at: '2021-06-30T11:30:00.000000Z'
+                      -
+                        id: 2
+                        fpo_name: 'FPO 2'
+                        district: 'FPO 2 district'
+                        county: 'FPO 2 county'
+                        sub_county: 'FPO 2 sub county'
+                        parish: 'FPO 2 parish'
+                        village: 'FPO 2 village'
+                        main_crop: 'FPO 2 main crop'
+                        fpo_member_count: 2
+                        fpo_contact_name: 'FPO 2 contact name'
+                        contact_phone_number: 'FPO 2 contact phone number'
+                        Cert_of_Inc: 'FPO 2 cert of inc'
+                        address: 'FPO 2 address'
+                        created_at: '2021-06-30T11:30:00.000000Z'
+                        updated_at: '2021-06-30T11:30:00.000000Z'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        fpo_name:
+                          type: string
+                          example: 'FPO 1'
+                        district:
+                          type: string
+                          example: 'FPO 1 district'
+                        county:
+                          type: string
+                          example: 'FPO 1 county'
+                        sub_county:
+                          type: string
+                          example: 'FPO 1 sub county'
+                        parish:
+                          type: string
+                          example: 'FPO 1 parish'
+                        village:
+                          type: string
+                          example: 'FPO 1 village'
+                        main_crop:
+                          type: string
+                          example: 'FPO 1 main crop'
+                        fpo_member_count:
+                          type: integer
+                          example: 1
+                        fpo_contact_name:
+                          type: string
+                          example: 'FPO 1 contact name'
+                        contact_phone_number:
+                          type: string
+                          example: 'FPO 1 contact phone number'
+                        Cert_of_Inc:
+                          type: string
+                          example: 'FPO 1 cert of inc'
+                        address:
+                          type: string
+                          example: 'FPO 1 address'
+                        created_at:
+                          type: string
+                          example: '2021-06-30T11:30:00.000000Z'
+                        updated_at:
+                          type: string
+                          example: '2021-06-30T11:30:00.000000Z'
+                  first_page_url:
+                    type: string
+                    example: 'http://localhost:8000/api/fpos?page=1'
+                  from:
+                    type: integer
+                    example: 1
+                  last_page:
+                    type: integer
+                    example: 1
+                  last_page_url:
+                    type: string
+                    example: 'http://localhost:8000/api/fpos?page=1'
+                  links:
+                    type: array
+                    example:
+                      -
+                        url: null
+                        label: '&laquo; Previous'
+                        active: false
+                      -
+                        url: 'http://localhost:8000/api/fpos?page=1'
+                        label: '1'
+                        active: true
+                      -
+                        url: null
+                        label: 'Next &raquo;'
+                        active: false
+                    items:
+                      type: object
+                      properties:
+                        url:
+                          type: string
+                          example: null
+                        label:
+                          type: string
+                          example: '&laquo; Previous'
+                        active:
+                          type: boolean
+                          example: false
+                  next_page_url:
+                    type: string
+                    example: null
+                  path:
+                    type: string
+                    example: 'http://localhost:8000/api/fpos'
+                  per_page:
+                    type: integer
+                    example: 15
+                  prev_page_url:
+                    type: string
+                    example: null
+                  to:
+                    type: integer
+                    example: 2
+                  total:
+                    type: integer
+                    example: 2
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'No query results for FPOs.'
+                properties:
+                  message:
+                    type: string
+                    example: 'No query results for FPOs.'
+      tags:
+        - 'FPO management'
+  /api/fpos/summary:
+    get:
+      summary: 'Get FPOs summary.'
+      operationId: getFPOsSummary
+      description: 'This endpoint allows you to fetch a summary of all FPOs.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  message: 'FPOs retrieved successfully'
+                  data:
+                    -
+                      id: 1
+                      fpo_name: 'FPO 1'
+                    -
+                      id: 2
+                      fpo_name: 'FPO 2'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'FPOs retrieved successfully'
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        fpo_name: 'FPO 1'
+                      -
+                        id: 2
+                        fpo_name: 'FPO 2'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        fpo_name:
+                          type: string
+                          example: 'FPO 1'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'No FPOs found'
+                properties:
+                  message:
+                    type: string
+                    example: 'No FPOs found'
+      tags:
+        - 'FPO management'
+  /api/fpo/register:
+    post:
+      summary: 'Create FPO.'
+      operationId: createFPO
+      description: 'This endpoint allows you to create a new FPO.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'required The authorization token. Example: Bearer {token}'
+          schema:
+            type: string
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  message: 'FPO created successfully'
+                  data:
+                    fpo_name: 'FPO 1'
+                    district: 'FPO 1 district'
+                    county: 'FPO 1 county'
+                    sub_county: 'FPO 1 sub county'
+                    parish: 'FPO 1 parish'
+                    village: 'FPO 1 village'
+                    main_crop: 'FPO 1 main crop'
+                    fpo_member_count: 1
+                    fpo_contact_name: 'FPO 1 contact name'
+                    contact_phone_number: 'FPO 1 contact phone number'
+                    Cert_of_Inc: null
+                    created_by: 1
+                    updated_at: '2021-06-30T11:30:00.000000Z'
+                    created_at: '2021-06-30T11:30:00.000000Z'
+                    id: 1
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'FPO created successfully'
+                  data:
+                    type: object
+                    properties:
+                      fpo_name:
+                        type: string
+                        example: 'FPO 1'
+                      district:
+                        type: string
+                        example: 'FPO 1 district'
+                      county:
+                        type: string
+                        example: 'FPO 1 county'
+                      sub_county:
+                        type: string
+                        example: 'FPO 1 sub county'
+                      parish:
+                        type: string
+                        example: 'FPO 1 parish'
+                      village:
+                        type: string
+                        example: 'FPO 1 village'
+                      main_crop:
+                        type: string
+                        example: 'FPO 1 main crop'
+                      fpo_member_count:
+                        type: integer
+                        example: 1
+                      fpo_contact_name:
+                        type: string
+                        example: 'FPO 1 contact name'
+                      contact_phone_number:
+                        type: string
+                        example: 'FPO 1 contact phone number'
+                      Cert_of_Inc:
+                        type: string
+                        example: null
+                      created_by:
+                        type: integer
+                        example: 1
+                      updated_at:
+                        type: string
+                        example: '2021-06-30T11:30:00.000000Z'
+                      created_at:
+                        type: string
+                        example: '2021-06-30T11:30:00.000000Z'
+                      id:
+                        type: integer
+                        example: 1
+        400:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n\"success\": false,\n\"message\": \"Validation error\",\n\"data\": {\n\"fpo_name\": [\n\"The fpo name field is required.\"\n],\n\"district\": [\n\"The district field is required.\"\n],\n\"county\": [\n\"The county field is required.\"\n],\n\"sub_county\": [\n\"The sub county field is required.\"\n],\n\"parish\": [\n\"The parish field is required.\"\n],\n\"village\": [\n\"The village field is required.\"\n],\n\"main_crop\": [\n\"The main crop field is required.\"\n],\n\"fpo_member_count\": [\n\"The fpo member count field is required.\"\n],\n\"fpo_contact_name\": [\n\"The fpo contact name field is required.\"\n],\n\"contact_phone_number\": [\n\"The contact phone number field is required.\"\n],\n\"created_by\": [\n\"The created by field is required.\"\n]\n}"
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'No query results for FPOs.'
+                properties:
+                  message:
+                    type: string
+                    example: 'No query results for FPOs.'
+      tags:
+        - 'FPO management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fpo_name:
+                  type: string
+                  description: 'The name of the FPO.'
+                  example: saepe
+                district:
+                  type: string
+                  description: 'The district of the FPO.'
+                  example: qui
+                county:
+                  type: string
+                  description: 'The county of the FPO.'
+                  example: voluptates
+                sub_county:
+                  type: string
+                  description: 'The sub county of the FPO.'
+                  example: et
+                parish:
+                  type: string
+                  description: 'The parish of the FPO.'
+                  example: sint
+                village:
+                  type: string
+                  description: 'The village of the FPO.'
+                  example: eaque
+                main_crop:
+                  type: string
+                  description: 'The main crop of the FPO.'
+                  example: et
+                fpo_member_count:
+                  type: integer
+                  description: 'The number of FPO members.'
+                  example: 13
+                fpo_contact_name:
+                  type: string
+                  description: 'The contact name of the FPO.'
+                  example: ea
+                contact_phone_number:
+                  type: string
+                  description: 'The contact phone number of the FPO.'
+                  example: ducimus
+                address:
+                  type: string
+                  description: ''
+                  example: ut
+                created_by:
+                  type: integer
+                  description: 'The userId  of the FPO creator.'
+                  example: 14
+              required:
+                - fpo_name
+                - district
+                - county
+                - sub_county
+                - parish
+                - village
+                - main_crop
+                - fpo_member_count
+                - fpo_contact_name
+                - contact_phone_number
+                - address
+                - created_by
+  '/api/fpo/{id}':
+    get:
+      summary: 'Get FPO by id.'
+      operationId: getFPOById
+      description: 'This endpoint allows you to fetch a FPO by id.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'required The authorization token. Example: Bearer {token}'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  message: 'FPO retrieved successfully'
+                  data:
+                    id: 1
+                    fpo_name: 'FPO 1'
+                    district: 'FPO 1 district'
+                    county: 'FPO 1 county'
+                    sub_county: 'FPO 1 sub county'
+                    parish: 'FPO 1 parish'
+                    village: 'FPO 1 village'
+                    main_crop: 'FPO 1 main crop'
+                    fpo_member_count: 1
+                    fpo_contact_name: 'FPO 1 contact name'
+                    contact_phone_number: 'FPO 1 contact phone number'
+                    Cert_of_Inc: 'FPO 1 cert of inc'
+                    address: 'FPO 1 address'
+                    created_at: '2021-06-30T11:30:00.000000Z'
+                    updated_at: '2021-06-30T11:30:00.000000Z'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'FPO retrieved successfully'
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      fpo_name:
+                        type: string
+                        example: 'FPO 1'
+                      district:
+                        type: string
+                        example: 'FPO 1 district'
+                      county:
+                        type: string
+                        example: 'FPO 1 county'
+                      sub_county:
+                        type: string
+                        example: 'FPO 1 sub county'
+                      parish:
+                        type: string
+                        example: 'FPO 1 parish'
+                      village:
+                        type: string
+                        example: 'FPO 1 village'
+                      main_crop:
+                        type: string
+                        example: 'FPO 1 main crop'
+                      fpo_member_count:
+                        type: integer
+                        example: 1
+                      fpo_contact_name:
+                        type: string
+                        example: 'FPO 1 contact name'
+                      contact_phone_number:
+                        type: string
+                        example: 'FPO 1 contact phone number'
+                      Cert_of_Inc:
+                        type: string
+                        example: 'FPO 1 cert of inc'
+                      address:
+                        type: string
+                        example: 'FPO 1 address'
+                      created_at:
+                        type: string
+                        example: '2021-06-30T11:30:00.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2021-06-30T11:30:00.000000Z'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'FPO not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'FPO not found'
+      tags:
+        - 'FPO management'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The id of the FPO.'
+        example: debitis
+        required: true
+        schema:
+          type: string
+  '/api/fpo/{id}/update':
+    post:
+      summary: 'Update FPO by id.'
+      operationId: updateFPOById
+      description: 'This endpoint allows you to update a FPO by id.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'required The authorization token. Example: Bearer {token}'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  message: 'FPO updated successfully'
+                  data:
+                    id: 1
+                    fpo_name: 'FPO 1'
+                    district: 'FPO 1 district'
+                    county: 'FPO 1 county'
+                    sub_county: 'FPO 1 sub county'
+                    parish: 'FPO 1 parish'
+                    village: 'FPO 1 village'
+                    main_crop: 'FPO 1 main crop'
+                    fpo_member_count: 1
+                    fpo_contact_name: 'FPO 1 contact name'
+                    contact_phone_number: 'FPO 1 contact phone number'
+                    Cert_of_Inc: 'FPO 1 cert of inc'
+                    address: 'FPO 1 address'
+                    created_at: '2021-06-30T11:30:00.000000Z'
+                    updated_at: '2021-06-30T11:30:00.000000Z'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'FPO updated successfully'
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      fpo_name:
+                        type: string
+                        example: 'FPO 1'
+                      district:
+                        type: string
+                        example: 'FPO 1 district'
+                      county:
+                        type: string
+                        example: 'FPO 1 county'
+                      sub_county:
+                        type: string
+                        example: 'FPO 1 sub county'
+                      parish:
+                        type: string
+                        example: 'FPO 1 parish'
+                      village:
+                        type: string
+                        example: 'FPO 1 village'
+                      main_crop:
+                        type: string
+                        example: 'FPO 1 main crop'
+                      fpo_member_count:
+                        type: integer
+                        example: 1
+                      fpo_contact_name:
+                        type: string
+                        example: 'FPO 1 contact name'
+                      contact_phone_number:
+                        type: string
+                        example: 'FPO 1 contact phone number'
+                      Cert_of_Inc:
+                        type: string
+                        example: 'FPO 1 cert of inc'
+                      address:
+                        type: string
+                        example: 'FPO 1 address'
+                      created_at:
+                        type: string
+                        example: '2021-06-30T11:30:00.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2021-06-30T11:30:00.000000Z'
+        400:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n\"success\": false,\n\"message\": \"Validation error\",\n\"data\": {\n\"fpo_name\": [\n\"The fpo name field is required.\"\n],\n\"district\": [\n\"The district field is required.\"\n],\n\"county\": [\n\"The county field is required.\"\n],\n\"sub_county\": [\n\"The sub county field is required.\"\n],\n\"parish\": [\n\"The parish field is required.\"\n],\n\"village\": [\n\"The village field is required.\"\n],\n\"main_crop\": [\n\"The main crop field is required.\"\n],\n\"fpo_member_count\": [\n \"The fpo member count field is required.\"\n],\n\"fpo_contact_name\": [\n\"The fpo contact name field is required.\"\n],\n\"contact_phone_number\": [\n\"The contact phone number field is required.\"\n],\n\"created_by\": [\n\"The created by field is required.\"\n]\n}"
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'FPO not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'FPO not found'
+      tags:
+        - 'FPO management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fpo_name:
+                  type: string
+                  description: 'The name of the FPO.'
+                  example: id
+                district:
+                  type: string
+                  description: 'The district of the FPO.'
+                  example: enim
+                county:
+                  type: string
+                  description: 'The county of the FPO.'
+                  example: sit
+                sub_county:
+                  type: string
+                  description: 'The sub county of the FPO.'
+                  example: voluptas
+                parish:
+                  type: string
+                  description: 'The parish of the FPO.'
+                  example: aut
+                village:
+                  type: string
+                  description: 'The village of the FPO.'
+                  example: odio
+                main_crop:
+                  type: string
+                  description: 'The main crop of the FPO.'
+                  example: ab
+                fpo_member_count:
+                  type: integer
+                  description: 'The number of FPO members.'
+                  example: 5
+                fpo_contact_name:
+                  type: string
+                  description: 'The contact name of the FPO.'
+                  example: pariatur
+                contact_phone_number:
+                  type: string
+                  description: 'The contact phone number of the FPO.'
+                  example: sunt
+                created_by:
+                  type: integer
+                  description: 'The userId  of the FPO creator.'
+                  example: 6
+              required:
+                - fpo_name
+                - district
+                - county
+                - sub_county
+                - parish
+                - village
+                - main_crop
+                - fpo_member_count
+                - fpo_contact_name
+                - contact_phone_number
+                - created_by
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The id of the FPO.'
+        example: explicabo
+        required: true
+        schema:
+          type: string
+  '/api/fpo/{id}/agents':
+    get:
+      summary: 'Get FPOs Agents.'
+      operationId: getFPOsAgents
+      description: 'This endpoint allows you to fetch all agents of a FPO.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  current_page: 1
+                  data:
+                    -
+                      id: 1
+                      first_name: John
+                      last_name: Doe
+                      phone_number: '256700000000'
+                      fpo_id: 1
+                      created_at: '2021-06-30T11:30:00.000000Z'
+                      updated_at: '2021-06-30T11:30:00.000000Z'
+                    -
+                      id: 2
+                      first_name: Jane
+                      last_name: Doe
+                      phone_number: '256700000000'
+                      fpo_id: 1
+                      created_at: '2021-06-30T11:30:00.000000Z'
+                      updated_at: '2021-06-30T11:30:00.000000Z'
+                  first_page_url: 'http://localhost:8000/api/fpos/1/agents?page=1'
+                  from: 1
+                  last_page: 1
+                  last_page_url: 'http://localhost:8000/api/fpos/1/agents?page=1'
+                  links:
+                    -
+                      url: null
+                      label: '&laquo; Previous'
+                      active: false
+                    -
+                      url: 'http://localhost:8000/api/fpos/1/agents?page=1'
+                      label: '1'
+                      active: true
+                    -
+                      url: null
+                      label: 'Next &raquo;'
+                      active: false
+                  next_page_url: null
+                  path: 'http://localhost:8000/api/fpos/1/agents'
+                  per_page: 15
+                  prev_page_url: null
+                  to: 2
+                  total: 2
+                properties:
+                  current_page:
+                    type: integer
+                    example: 1
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        first_name: John
+                        last_name: Doe
+                        phone_number: '256700000000'
+                        fpo_id: 1
+                        created_at: '2021-06-30T11:30:00.000000Z'
+                        updated_at: '2021-06-30T11:30:00.000000Z'
+                      -
+                        id: 2
+                        first_name: Jane
+                        last_name: Doe
+                        phone_number: '256700000000'
+                        fpo_id: 1
+                        created_at: '2021-06-30T11:30:00.000000Z'
+                        updated_at: '2021-06-30T11:30:00.000000Z'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        first_name:
+                          type: string
+                          example: John
+                        last_name:
+                          type: string
+                          example: Doe
+                        phone_number:
+                          type: string
+                          example: '256700000000'
+                        fpo_id:
+                          type: integer
+                          example: 1
+                        created_at:
+                          type: string
+                          example: '2021-06-30T11:30:00.000000Z'
+                        updated_at:
+                          type: string
+                          example: '2021-06-30T11:30:00.000000Z'
+                  first_page_url:
+                    type: string
+                    example: 'http://localhost:8000/api/fpos/1/agents?page=1'
+                  from:
+                    type: integer
+                    example: 1
+                  last_page:
+                    type: integer
+                    example: 1
+                  last_page_url:
+                    type: string
+                    example: 'http://localhost:8000/api/fpos/1/agents?page=1'
+                  links:
+                    type: array
+                    example:
+                      -
+                        url: null
+                        label: '&laquo; Previous'
+                        active: false
+                      -
+                        url: 'http://localhost:8000/api/fpos/1/agents?page=1'
+                        label: '1'
+                        active: true
+                      -
+                        url: null
+                        label: 'Next &raquo;'
+                        active: false
+                    items:
+                      type: object
+                      properties:
+                        url:
+                          type: string
+                          example: null
+                        label:
+                          type: string
+                          example: '&laquo; Previous'
+                        active:
+                          type: boolean
+                          example: false
+                  next_page_url:
+                    type: string
+                    example: null
+                  path:
+                    type: string
+                    example: 'http://localhost:8000/api/fpos/1/agents'
+                  per_page:
+                    type: integer
+                    example: 15
+                  prev_page_url:
+                    type: string
+                    example: null
+                  to:
+                    type: integer
+                    example: 2
+                  total:
+                    type: integer
+                    example: 2
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'No agents found'
+                properties:
+                  message:
+                    type: string
+                    example: 'No agents found'
+      tags:
+        - 'FPO management'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the fpo.'
+        example: repudiandae
+        required: true
+        schema:
+          type: string
   /api/farmer/register:
     post:
       summary: 'Register Farmer'
       operationId: registerFarmer
-      description: ''
-      parameters: []
+      description: 'This endpoint allows a user to register a farmer'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'required The authorization token. Example: Bearer {token}'
+          schema:
+            type: string
       responses:
         200:
           description: ''
@@ -232,7 +2448,7 @@ paths:
                 gender:
                   type: string
                   description: 'Farmer gender. Example Male/Female'
-                  example: architecto
+                  example: eum
                 education_level:
                   type: string
                   description: 'The education level of the farmer.'
@@ -269,10 +2485,10 @@ paths:
                   type: string
                   description: 'The village of the farmer.'
                   example: Kibuye
-                fpo_name:
-                  type: string
+                fpo_id:
+                  type: integer
                   description: 'The FPO name of the farmer.'
-                  example: 'Kibuye Farmers Union'
+                  example: 0
                 farmer_cordinates:
                   type: string
                   description: 'The farmer cordinates of the farmer.'
@@ -361,6 +2577,10 @@ paths:
                   type: string
                   description: 'The data captured by of the farmer.'
                   example: '1'
+                agent_id:
+                  type: integer
+                  description: 'The agent id of the farmer.'
+                  example: 1
               required:
                 - first_name
                 - last_name
@@ -374,7 +2594,7 @@ paths:
                 - sub_county
                 - parish
                 - village
-                - fpo_name
+                - fpo_id
                 - farmer_cordinates
                 - next_of_kin
                 - next_of_kin_contact
@@ -397,11 +2617,20 @@ paths:
                 - estimated_produce_value_last_season
                 - estimated_produce_value_this_season
                 - data_captured_by
-      security: []
+                - agent_id
 tags:
+  -
+    name: 'Agent management'
+    description: "\nAPIs for managing agents"
+  -
+    name: 'Auth Management'
+    description: "\nAPIs for managing authentication"
   -
     name: 'Data Management'
     description: "\nAPIs for managing farmer profile"
+  -
+    name: 'FPO management'
+    description: "\nAPIs for managing FPOs"
   -
     name: 'Farmer Profile'
     description: "\nAPIs for managing farmer profile"

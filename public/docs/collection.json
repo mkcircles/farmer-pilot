@@ -5,16 +5,447 @@
             "key": "baseUrl",
             "type": "string",
             "name": "string",
-            "value": "https:\/\/farmers.nauticaltech.ug"
+            "value": "https:\/\/farmer-pilot.test"
         }
     ],
     "info": {
-        "name": "Laravel",
-        "_postman_id": "1bf60f84-eecd-4b6a-87b7-25b9a3c2941f",
+        "name": "Farmer Registration Pilot",
+        "_postman_id": "3562be75-dd74-449d-806c-e193e1156a18",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
     "item": [
+        {
+            "name": "Agent management",
+            "description": "\nAPIs for managing agents",
+            "item": [
+                {
+                    "name": "Get all agents",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/agents",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/agents"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "required The authorization token. Example: Bearer {token}"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint allows a user to get all agents"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"success\": true,\n\"message\": \"Agents retrieved successfully\",\n\"data\": {\n\"current_page\": 1,\n\"data\": [\n{\n\"id\": 1,\n\"first_name\": \"John\",\n\"last_name\": \"Doe\",\n\"email\": \"\",\n\"phone_number\": \"08012345678\",\n\"age\": \"30\",\n\"residence\": \"Kampala\",\n\"referee_name\": \"Jane Doe\",\n\"referee_phone_number\": \"08012345678\",\n\"designation\": \"Agro Extension Worker\",\n\"photo\": null,\n\"created_at\": \"2021-06-27T14:56:12.000000Z\",\n\"updated_at\": \"2021-06-27T14:56:12.000000Z\"\n}\n],\n\"first_page_url\": \"http:\/\/localhost:8000\/api\/agents?page=1\",\n\"from\": 1,\n\"last_page\": 1,\n\"last_page_url\": \"http:\/\/localhost:8000\/api\/agents?page=1\",\n\"links\": [\n{\n\"url\": null,\n\"label\": \"&laquo; Previous\",\n\"active\": false\n},\n{\n\"url\": \"http:\/\/localhost:8000\/api\/agents?page=1\",\n\"label\": \"1\",\n\"active\": true\n},\n{\n\"url\": null,\n\"label\": \"Next &raquo;\",\n\"active\": false\n}\n],\n\"next_page_url\": null,\n\"path\": \"http:\/\/localhost:8000\/api\/agents\",\n\"per_page\": 15,\n\"prev_page_url\": null,\n\"to\": 1,\n\"total\": 1\n}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n\n\"success\": false,\n\"message\": \"No agents found\",\n\"data\": null\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create a new agent",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/agent\/register",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/agent\/register"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "required The authorization token. Example: Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"sklocko@example.org\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"gender\":\"consectetur\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\",\"created_by\":14,\"fpo_id\":2}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"success\": true,\n\"message\": \"Agent created successfully\",\n\"data\": {\n\"first_name\": \"John\",\n\"last_name\": \"Doe\",\n\"email\": \"\",\n\"phone_number\": \"256XXXXXXXXX\",\n\"age\": \"30\",\n\"residence\": \"Kampala\",\n\"referee_name\": \"Jane Doe\",\n\"referee_phone_number\": \"08012345678\",\n\"designation\": \"Agro Extension Worker\",\n\"photo\": \"http:\/\/localhost:8000\/storage\/agents\/1624810572IMG_20210627_174358.jpg\",\n\"updated_at\": \"2021-06-27T17:09:32.000000Z\",\n\"created_at\": \"2021-06-27T17:09:32.000000Z\",\n\"id\": 1\n}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n\"success\": false,\n\"message\": \"Validation error\",\n\"data\": {\n\"first_name\": [\n\"The first name field is required.\"\n],\n\"last_name\": [\n\"The last name field is required.\"\n],\n\"phone_number\": [\n\"The phone number field is required.\"\n],\n\"age\": [\n\"The age field is required.\"\n],\n\"residence\": [\n\"The residence field is required.\"\n],\n\"referee_name\": [\n\"The referee name field is required.\"\n],\n\"referee_phone_number\": [\n\"The referee phone number field is required.\"\n],\n\"designation\": [\n\"The designation field is required.\"\n]\n}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n\"success\": false,\n\"message\": \"Bad request\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n\"success\": false,\n\"message\": \"Unauthorized\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n\"success\": false,\n\"message\": \"Forbidden\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n\"success\": false,\n\"message\": \"Not found\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 405,
+                            "body": "{\n\"success\": false,\n\"message\": \"Method not allowed\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n\"success\": false,\n\"message\": \"Server error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get Agent",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/agent\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/agent\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "alias",
+                                    "description": "The ID of the agent."
+                                },
+                                {
+                                    "id": "agent",
+                                    "key": "agent",
+                                    "value": "1",
+                                    "description": "The id of the agent."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "required The authorization token. Example: Bearer {token}"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint allows a user to get a specific agent"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"success\": true,\n\"message\": \"Agent retrieved successfully\",\n\"data\": {\n\"id\": 1,\n\"first_name\": \"John\",\n\"last_name\": \"Doe\",\n\"email\": \"\",\n\"phone_number\": \"256XXXXXXXXX\",\n\"age\": \"30\",\n\"residence\": \"Kampala\",\n\"referee_name\": \"Jane Doe\",\n\"referee_phone_number\": \"08012345678\",\n\"designation\": \"Agro Extension Worker\",\n\"photo\": \"http:\/\/localhost:8000\/storage\/agents\/1624810572IMG_20210627_174358.jpg\",\n\"created_at\": \"2021-06-27T17:09:32.000000Z\",\n\"updated_at\": \"2021-06-27T17:09:32.000000Z\"\n}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n\"success\": false,\n\"message\": \"Agent not found\",\n\"data\": null\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the Agent",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/agent\/:id\/update",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/agent\/:id\/update",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The id of the agent."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "required The authorization token. Example: Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"pgrant@example.com\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\"}"
+                        },
+                        "description": "This endpoint allows a user to update a specific agent"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"success\": true,\n\"message\": \"Agent created successfully\",\n\"data\": {\n\"first_name\": \"John\",\n\"last_name\": \"Doe\",\n\"email\": \"\",\n\"phone_number\": \"256XXXXXXXXX\",\n\"age\": \"30\",\n\"residence\": \"Kampala\",\n\"referee_name\": \"Jane Doe\",\n\"referee_phone_number\": \"08012345678\",\n\"designation\": \"Agro Extension Worker\",\n\"photo\": \"http:\/\/localhost:8000\/storage\/agents\/1624810572IMG_20210627_174358.jpg\",\n\"updated_at\": \"2021-06-27T17:09:32.000000Z\",\n\"created_at\": \"2021-06-27T17:09:32.000000Z\",\n\"id\": 1\n}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n\"success\": false,\n\"message\": \"Validation error\",\n\"data\": {\n\"first_name\": [\n\"The first name field is required.\"\n],\n\"last_name\": [\n\"The last name field is required.\"\n],\n\"phone_number\": [\n\"The phone number field is required.\"\n],\n\"age\": [\n\"The age field is required.\"\n],\n\"residence\": [\n\"The residence field is required.\"\n],\n\"referee_name\": [\n\"The referee name field is required.\"\n],\n\"referee_phone_number\": [\n\"The referee phone number field is required.\"\n],\n\"designation\": [\n\"The designation field is required.\"\n]\n}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n\"success\": false,\n\"message\": \"Forbidden\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n\"success\": false,\n\"message\": \"Agent not found\",\n\"data\": null\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n\"success\": false,\n\"message\": \"Server error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get Agent Registered Farmers",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/agent\/:agent_id\/farmers",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/agent\/:agent_id\/farmers",
+                            "variable": [
+                                {
+                                    "id": "agent_id",
+                                    "key": "agent_id",
+                                    "value": "1",
+                                    "description": "The id of the agent."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "required The authorization token. Example: Bearer {token}"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint allows a user to get all farmers registered by a specific agent"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"success\": true,\n\"message\": \"Farmers retrieved successfully\",\n\"data\": {\n\"current_page\": 1,\n\"data\": [\n{\n\"id\": 1,\n\"first_name\": \"John\",\n\"last_name\": \"Doe\",\n\"email\": \"\",\n...\n}\n],\n\"first_page_url\": \"http:\/\/localhost:8000\/api\/farmers?page=1\",\n\"from\": 1,\n\"last_page\": 1,\n\"last_page_url\": \"http:\/\/localhost:8000\/api\/farmers?page=1\",\n\"links\": [\n{\n\"url\": null,\n\"label\": \"&laquo; Previous\",\n\"active\": false\n},\n{\n\"url\": \"http:\/\/localhost:8000\/api\/farmers?page=1\",\n\"label\": \"1\",\n\"active\": true\n},\n{\n\"url\": null,\n\"label\": \"Next &raquo;\",\n\"active\": false\n}\n],\n\"next_page_url\": null,\n\"path\": \"http:\/\/localhost:8000\/api\/farmers\",\n\"per_page\": 10,\n\"prev_page_url\": null,\n\"to\": 1,\n\"total\": 1\n}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n\"success\": false,\n\"message\": \"No farmers found\",\n\"data\": null\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Auth Management",
+            "description": "\nAPIs for managing authentication",
+            "item": [
+                {
+                    "name": "Login user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"haylee.koch@example.com\",\"password\":\",).J%mxR0Zmj<hz:WDW\"}"
+                        },
+                        "description": "This endpoint allows a user to login",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"success\": true,\n\"message\": \"User login successfully.\",\n\"data\": {\n\"id\": 1,\n\"name\": \"John Doe\",\n\"email\": \"john@test.com\",\n\"email_verified_at\": null,\n\"phone_number\": \"256700000000\",\n\"created_at\": \"2021-06-27T14:56:04.000000Z\",\n\"updated_at\": \"2021-06-27T14:56:04.000000Z\",\n}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n\"success\": false,\n\"message\": \"Unauthorised.\",\n\"data\": null\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n\"message\": \"The given data was invalid.\",\n\"errors\": {\n\"email\": [\n\"The email field is required.\"\n],\n\"password\": [\n\"The password field is required.\"\n]\n}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n\"message\": \"Server Error.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Logout user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/logout",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/logout"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint allows a user to logout"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"success\": true,\n\"message\": \"User logged out successfully.\",\n\"data\": null\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n\"success\": false,\n\"message\": \"Unauthorised.\",\n\"data\": null\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Refresh token",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/refresh",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/refresh"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint allows a user to refresh their token"
+                    },
+                    "response": []
+                }
+            ]
+        },
         {
             "name": "Data Management",
             "description": "\nAPIs for managing farmer profile",
@@ -37,13 +468,14 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "required The authorization token. Example: Bearer {token}"
                             }
                         ],
                         "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
+                        "description": "This endpoint allows a user to get all farmers"
                     },
                     "response": [
                         {
@@ -80,25 +512,390 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "required The authorization token. Example: Bearer {token}"
                             }
                         ],
                         "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
+                        "description": "This endpoint allows a user to get a farmer"
                     },
                     "response": [
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n\"id\": 1,\n\"first_name\": \"John\",\n\"last_name\": \"Doe\",\n...\n}",
+                            "body": "{\n\"id\": 1,\n\"first_name\": \"John\",\n\"last_name\": \"Doe\",\n\n}",
                             "name": ""
                         },
                         {
                             "header": [],
                             "code": 404,
                             "body": "{\n\"message\": \"Farmer not found\"\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "FPO management",
+            "description": "\nAPIs for managing FPOs",
+            "item": [
+                {
+                    "name": "Get all FPOs.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/fpos",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/fpos"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "required The authorization token. Example: Bearer {token}"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint allows you to fetch all FPOs."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"current_page\": 1,\n\"data\": [\n{\n\"id\": 1,\n\"fpo_name\": \"FPO 1\",\n\"district\": \"FPO 1 district\",\n\"county\": \"FPO 1 county\",\n\"sub_county\": \"FPO 1 sub county\",\n\"parish\": \"FPO 1 parish\",\n\"village\": \"FPO 1 village\",\n\"main_crop\": \"FPO 1 main crop\",\n\"fpo_member_count\": 1,\n\"fpo_contact_name\": \"FPO 1 contact name\",\n\"contact_phone_number\": \"FPO 1 contact phone number\",\n\"Cert_of_Inc\": \"FPO 1 cert of inc\",\n\"address\": \"FPO 1 address\",\n\"created_at\": \"2021-06-30T11:30:00.000000Z\",\n\"updated_at\": \"2021-06-30T11:30:00.000000Z\"\n},\n{\n\"id\": 2,\n\"fpo_name\": \"FPO 2\",\n\"district\": \"FPO 2 district\",\n\"county\": \"FPO 2 county\",\n\"sub_county\": \"FPO 2 sub county\",\n\"parish\": \"FPO 2 parish\",\n\"village\": \"FPO 2 village\",\n\"main_crop\": \"FPO 2 main crop\",\n\"fpo_member_count\": 2,\n\"fpo_contact_name\": \"FPO 2 contact name\",\n\"contact_phone_number\": \"FPO 2 contact phone number\",\n\"Cert_of_Inc\": \"FPO 2 cert of inc\",\n\"address\": \"FPO 2 address\",\n\"created_at\": \"2021-06-30T11:30:00.000000Z\",\n\"updated_at\": \"2021-06-30T11:30:00.000000Z\"\n}\n],\n\"first_page_url\": \"http:\/\/localhost:8000\/api\/fpos?page=1\",\n\"from\": 1,\n\"last_page\": 1,\n\"last_page_url\": \"http:\/\/localhost:8000\/api\/fpos?page=1\",\n\"links\": [\n{\n\"url\": null,\n\"label\": \"&laquo; Previous\",\n\"active\": false\n},\n{\n\"url\": \"http:\/\/localhost:8000\/api\/fpos?page=1\",\n\"label\": \"1\",\n\"active\": true\n},\n{\n\"url\": null,\n\"label\": \"Next &raquo;\",\n\"active\": false\n}\n],\n\"next_page_url\": null,\n\"path\": \"http:\/\/localhost:8000\/api\/fpos\",\n\"per_page\": 15,\n\"prev_page_url\": null,\n\"to\": 2,\n\"total\": 2\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n\"message\": \"Unauthenticated.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n\"message\": \"This action is unauthorized.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n\"message\": \"No query results for FPOs.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get FPOs summary.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/fpos\/summary",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/fpos\/summary"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint allows you to fetch a summary of all FPOs."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"success\": true,\n\"message\": \"FPOs retrieved successfully\",\n\"data\": [\n{\n\"id\": 1,\n\"fpo_name\": \"FPO 1\"\n},\n{\n\"id\": 2,\n\"fpo_name\": \"FPO 2\"\n}\n]\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n\"message\": \"Unauthenticated.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n\"message\": \"This action is unauthorized.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n\"message\": \"No FPOs found\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create FPO.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/fpo\/register",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/fpo\/register"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "required The authorization token. Example: Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"fpo_name\":\"saepe\",\"district\":\"qui\",\"county\":\"voluptates\",\"sub_county\":\"et\",\"parish\":\"sint\",\"village\":\"eaque\",\"main_crop\":\"et\",\"fpo_member_count\":13,\"fpo_contact_name\":\"ea\",\"contact_phone_number\":\"ducimus\",\"address\":\"ut\",\"created_by\":14}"
+                        },
+                        "description": "This endpoint allows you to create a new FPO."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\n\"success\": true,\n\"message\": \"FPO created successfully\",\n\"data\": {\n\"fpo_name\": \"FPO 1\",\n\"district\": \"FPO 1 district\",\n\"county\": \"FPO 1 county\",\n\"sub_county\": \"FPO 1 sub county\",\n\"parish\": \"FPO 1 parish\",\n\"village\": \"FPO 1 village\",\n\"main_crop\": \"FPO 1 main crop\",\n\"fpo_member_count\": 1,\n\"fpo_contact_name\": \"FPO 1 contact name\",\n\"contact_phone_number\": \"FPO 1 contact phone number\",\n\"Cert_of_Inc\": null,\n\"created_by\": 1,\n\"updated_at\": \"2021-06-30T11:30:00.000000Z\",\n\"created_at\": \"2021-06-30T11:30:00.000000Z\",\n\"id\": 1\n}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n\"success\": false,\n\"message\": \"Validation error\",\n\"data\": {\n\"fpo_name\": [\n\"The fpo name field is required.\"\n],\n\"district\": [\n\"The district field is required.\"\n],\n\"county\": [\n\"The county field is required.\"\n],\n\"sub_county\": [\n\"The sub county field is required.\"\n],\n\"parish\": [\n\"The parish field is required.\"\n],\n\"village\": [\n\"The village field is required.\"\n],\n\"main_crop\": [\n\"The main crop field is required.\"\n],\n\"fpo_member_count\": [\n\"The fpo member count field is required.\"\n],\n\"fpo_contact_name\": [\n\"The fpo contact name field is required.\"\n],\n\"contact_phone_number\": [\n\"The contact phone number field is required.\"\n],\n\"created_by\": [\n\"The created by field is required.\"\n]\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n\"message\": \"Unauthenticated.\"\n }",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n\"message\": \"This action is unauthorized.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n\"message\": \"No query results for FPOs.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get FPO by id.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/fpo\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/fpo\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "debitis",
+                                    "description": "The id of the FPO."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "required The authorization token. Example: Bearer {token}"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint allows you to fetch a FPO by id."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"success\": true,\n\"message\": \"FPO retrieved successfully\",\n\"data\": {\n\"id\": 1,\n\"fpo_name\": \"FPO 1\",\n\"district\": \"FPO 1 district\",\n\"county\": \"FPO 1 county\",\n\"sub_county\": \"FPO 1 sub county\",\n\"parish\": \"FPO 1 parish\",\n\"village\": \"FPO 1 village\",\n\"main_crop\": \"FPO 1 main crop\",\n\"fpo_member_count\": 1,\n\"fpo_contact_name\": \"FPO 1 contact name\",\n\"contact_phone_number\": \"FPO 1 contact phone number\",\n\"Cert_of_Inc\": \"FPO 1 cert of inc\",\n\"address\": \"FPO 1 address\",\n\"created_at\": \"2021-06-30T11:30:00.000000Z\",\n\"updated_at\": \"2021-06-30T11:30:00.000000Z\"\n}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n\"message\": \"Unauthenticated.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n\"message\": \"This action is unauthorized.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n\"message\": \"FPO not found\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update FPO by id.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/fpo\/:id\/update",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/fpo\/:id\/update",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "explicabo",
+                                    "description": "The id of the FPO."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "required The authorization token. Example: Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"fpo_name\":\"id\",\"district\":\"enim\",\"county\":\"sit\",\"sub_county\":\"voluptas\",\"parish\":\"aut\",\"village\":\"odio\",\"main_crop\":\"ab\",\"fpo_member_count\":5,\"fpo_contact_name\":\"pariatur\",\"contact_phone_number\":\"sunt\",\"created_by\":6}"
+                        },
+                        "description": "This endpoint allows you to update a FPO by id."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"success\": true,\n\"message\": \"FPO updated successfully\",\n\"data\": {\n\"id\": 1,\n\"fpo_name\": \"FPO 1\",\n\"district\": \"FPO 1 district\",\n\"county\": \"FPO 1 county\",\n\"sub_county\": \"FPO 1 sub county\",\n\"parish\": \"FPO 1 parish\",\n\"village\": \"FPO 1 village\",\n\"main_crop\": \"FPO 1 main crop\",\n\"fpo_member_count\": 1,\n\"fpo_contact_name\": \"FPO 1 contact name\",\n\"contact_phone_number\": \"FPO 1 contact phone number\",\n\"Cert_of_Inc\": \"FPO 1 cert of inc\",\n\"address\": \"FPO 1 address\",\n\"created_at\": \"2021-06-30T11:30:00.000000Z\",\n\"updated_at\": \"2021-06-30T11:30:00.000000Z\"\n}\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n\"success\": false,\n\"message\": \"Validation error\",\n\"data\": {\n\"fpo_name\": [\n\"The fpo name field is required.\"\n],\n\"district\": [\n\"The district field is required.\"\n],\n\"county\": [\n\"The county field is required.\"\n],\n\"sub_county\": [\n\"The sub county field is required.\"\n],\n\"parish\": [\n\"The parish field is required.\"\n],\n\"village\": [\n\"The village field is required.\"\n],\n\"main_crop\": [\n\"The main crop field is required.\"\n],\n\"fpo_member_count\": [\n \"The fpo member count field is required.\"\n],\n\"fpo_contact_name\": [\n\"The fpo contact name field is required.\"\n],\n\"contact_phone_number\": [\n\"The contact phone number field is required.\"\n],\n\"created_by\": [\n\"The created by field is required.\"\n]\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n\"message\": \"Unauthenticated.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n\"message\": \"This action is unauthorized.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n\"message\": \"FPO not found\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get FPOs Agents.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/fpo\/:id\/agents",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/fpo\/:id\/agents",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "repudiandae",
+                                    "description": "The ID of the fpo."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint allows you to fetch all agents of a FPO."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"current_page\": 1,\n\"data\": [\n{\n\"id\": 1,\n\"first_name\": \"John\",\n\"last_name\": \"Doe\",\n\"phone_number\": \"256700000000\",\n\"fpo_id\": 1,\n\"created_at\": \"2021-06-30T11:30:00.000000Z\",\n\"updated_at\": \"2021-06-30T11:30:00.000000Z\"\n},\n{\n\"id\": 2,\n\"first_name\": \"Jane\",\n\"last_name\": \"Doe\",\n\"phone_number\": \"256700000000\",\n\"fpo_id\": 1,\n\"created_at\": \"2021-06-30T11:30:00.000000Z\",\n\"updated_at\": \"2021-06-30T11:30:00.000000Z\"\n}\n],\n\"first_page_url\": \"http:\/\/localhost:8000\/api\/fpos\/1\/agents?page=1\",\n\"from\": 1,\n\"last_page\": 1,\n\"last_page_url\": \"http:\/\/localhost:8000\/api\/fpos\/1\/agents?page=1\",\n\"links\": [\n{\n\"url\": null,\n\"label\": \"&laquo; Previous\",\n\"active\": false\n},\n{\n\"url\": \"http:\/\/localhost:8000\/api\/fpos\/1\/agents?page=1\",\n\"label\": \"1\",\n\"active\": true\n},\n{\n\"url\": null,\n\"label\": \"Next &raquo;\",\n\"active\": false\n}\n],\n\"next_page_url\": null,\n\"path\": \"http:\/\/localhost:8000\/api\/fpos\/1\/agents\",\n\"per_page\": 15,\n\"prev_page_url\": null,\n\"to\": 2,\n\"total\": 2\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n\"message\": \"Unauthenticated.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n\"message\": \"This action is unauthorized.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n\"message\": \"No agents found\"\n}",
                             "name": ""
                         }
                     ]
@@ -127,16 +924,17 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "required The authorization token. Example: Bearer {token}"
                             }
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"dob\":\"1990-01-01\",\"gender\":\"architecto\",\"education_level\":\"Primary\",\"phone_number\":\"0789123456\",\"id_number\":\"CM12345678\",\"marital_status\":\"Married\",\"district\":\"Kampala\",\"county\":\"Makindye\",\"sub_county\":\"Kibuye\",\"parish\":\"Kibuye\",\"village\":\"Kibuye\",\"fpo_name\":\"Kibuye Farmers Union\",\"farmer_cordinates\":\"0.0000,0.0000\",\"next_of_kin\":\"Jane Doe\",\"next_of_kin_contact\":\"0789123456\",\"next_of_kin_relationship\":\"Wife\",\"male_members_in_household\":2,\"female_members_in_household\":4,\"members_above_18\":4,\"children_below_5\":2,\"school_going_children\":2,\"head_of_family\":\"John Doe\",\"how_much_do_you_earn_from_agricultural_activities\":\"100000\",\"how_much_do_you_earn_from_non_agricultural_activities\":\"100000\",\"do_you_have_an_account_with_an_FI\":\"Yes\",\"farm_size\":\"2\",\"farm_size_under_agriculture\":\"2\",\"land_ownership\":\"Owned\",\"type_of_farming\":\"Crop\",\"crops_grown\":\"Maize\",\"animals_kept\":\"Cattle\",\"estimated_produce_value_last_season\":\"100000\",\"estimated_produce_value_this_season\":\"100000\",\"data_captured_by\":\"1\"}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"dob\":\"1990-01-01\",\"gender\":\"eum\",\"education_level\":\"Primary\",\"phone_number\":\"0789123456\",\"id_number\":\"CM12345678\",\"marital_status\":\"Married\",\"district\":\"Kampala\",\"county\":\"Makindye\",\"sub_county\":\"Kibuye\",\"parish\":\"Kibuye\",\"village\":\"Kibuye\",\"fpo_id\":0,\"farmer_cordinates\":\"0.0000,0.0000\",\"next_of_kin\":\"Jane Doe\",\"next_of_kin_contact\":\"0789123456\",\"next_of_kin_relationship\":\"Wife\",\"male_members_in_household\":2,\"female_members_in_household\":4,\"members_above_18\":4,\"children_below_5\":2,\"school_going_children\":2,\"head_of_family\":\"John Doe\",\"how_much_do_you_earn_from_agricultural_activities\":\"100000\",\"how_much_do_you_earn_from_non_agricultural_activities\":\"100000\",\"do_you_have_an_account_with_an_FI\":\"Yes\",\"farm_size\":\"2\",\"farm_size_under_agriculture\":\"2\",\"land_ownership\":\"Owned\",\"type_of_farming\":\"Crop\",\"crops_grown\":\"Maize\",\"animals_kept\":\"Cattle\",\"estimated_produce_value_last_season\":\"100000\",\"estimated_produce_value_this_season\":\"100000\",\"data_captured_by\":\"1\",\"agent_id\":1}"
                         },
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
+                        "description": "This endpoint allows a user to register a farmer"
                     },
                     "response": [
                         {

@@ -14,7 +14,7 @@ class ApiFarmer extends Seeder
     public function run(): void
     {
         //Generate 100 farmer profiles
-        FarmerProfile::factory()->count(100)->create();
+       // FarmerProfile::factory()->count(100)->create();
         
     }
 }
