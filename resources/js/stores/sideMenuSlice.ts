@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "./store";
 import { icons } from "../base-components/Lucide";
-import { FARMERS_LIST, HOME, REPORTS } from "../router/routes";
+import { AGENTS_LIST, FARMERS_LIST, FPO_LIST, HOME, REPORTS } from "../router/routes";
 
 export interface Menu {
   icon: keyof typeof icons;
@@ -28,6 +28,16 @@ const initialState: SideMenuState = {
       icon: "Users",
       pathname: FARMERS_LIST,
       title: "Farmers",
+    },
+    {
+      icon: "Users",
+      pathname: FPO_LIST,
+      title: "FPOs",
+    },
+    {
+      icon: "Users",
+      pathname: AGENTS_LIST,
+      title: "Agents",
     },
     
     {

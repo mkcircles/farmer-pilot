@@ -8,14 +8,21 @@ import _ from "lodash";
 import clsx from "clsx";
 import { useFindPath } from "../../hooks";
 import {
+    AGENTS_LIST,
+    AGENT_PROFILE,
+    CREATE_FPO,
     DASHBOARD,
     FARMERS_LIST,
     FARMER_PROFILE,
+    FPO_LIST,
     HOME,
     REPORTS,
 } from "../../router/routes";
+import { useAppDispatch } from "../../stores/hooks";
+import { logOut } from "../../stores/authSlice";
 
 function Main(props: { toggleMobileMenu: (event: React.MouseEvent) => void }) {
+    const dispatch = useAppDispatch();
     const path = useFindPath();
     const [searchResultModal, setSearchResultModal] = useState(false);
     let pathName = "";
@@ -29,8 +36,16 @@ function Main(props: { toggleMobileMenu: (event: React.MouseEvent) => void }) {
             return "Dashboard";
         case FARMERS_LIST:
             return "Farmers List";
+        case AGENTS_LIST:
+            return "Agents List";
+        case FPO_LIST:
+            return "FPO List";
+        case CREATE_FPO:
+            return "Create FPO";
         case FARMER_PROFILE:
             return "Farmer Profile";
+        case AGENT_PROFILE:
+            return "Agent Profile";
         case REPORTS:
             return "Reports";
         default:
@@ -156,7 +171,9 @@ function Main(props: { toggleMobileMenu: (event: React.MouseEvent) => void }) {
                             Help
                         </Menu.Item>
                         <Menu.Divider />
-                        <Menu.Item>
+                        <Menu.Item onClick={() => {
+                            dispatch(logOut(''))
+                        }}>
                             <Lucide
                                 icon="ToggleRight"
                                 className="w-4 h-4 mr-2"

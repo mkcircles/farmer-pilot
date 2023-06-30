@@ -21,6 +21,7 @@ import { AppContext } from "../../context/RootContext";
 
 const FarmerProfile = () => {
     const navigate = useNavigate();
+    const token = useSelector((state) => state.auth.token);
     const { updateAppContextState } = useContext(AppContext);
     const [farmerData, setFarmerData] = useState({});
     let { id } = useParams();
@@ -31,6 +32,7 @@ const FarmerProfile = () => {
             .get(`${BASE_API_URL}/farmer/${id}`, {
                 headers: {
                     API_KEY: API_KEY,
+                    Authorization: `Bearer ${token}`,
                 },
             })
             .then((res) => {
@@ -374,7 +376,7 @@ const FarmerProfile = () => {
                                 <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
-                                        <Bold>Farm Size</Bold>
+                                        <Bold>Farm Size (Acres)</Bold>
                                     </Text>
                                 </div>
                             </Flex>
@@ -389,7 +391,9 @@ const FarmerProfile = () => {
                                 <span className="w-1 h-1 bg-secondary rounded-full"></span>
                                 <div className="truncate">
                                     <Text className="truncate">
-                                        <Bold>Farm Size under Agric</Bold>
+                                        <Bold>
+                                            Farm Size under Agric (Acres)
+                                        </Bold>
                                     </Text>
                                 </div>
                             </Flex>
