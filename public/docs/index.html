@@ -173,7 +173,7 @@
     <div class="content">
         <h1 id="introduction">Introduction</h1>
 <aside>
-    <strong>Base URL</strong>: <code>https://farmer-pilot.test</code>
+    <strong>Base URL</strong>: <code>https://farmers.nauticaltech.ug/</code>
 </aside>
 <p>This documentation aims to provide all the information you need to work with our API.</p>
 <aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
@@ -199,14 +199,14 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://farmer-pilot.test/api/agent/1" \
+    --get "https://farmers.nauticaltech.ug/api/agent/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmer-pilot.test/api/agent/1"
+    "https://farmers.nauticaltech.ug/api/agent/1"
 );
 
 const headers = {
@@ -354,7 +354,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://farmer-pilot.test/api/agents" \
+    --get "https://farmers.nauticaltech.ug/api/agents" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Authorization: required The authorization token. Example: Bearer {token}"</code></pre></div>
@@ -362,7 +362,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmer-pilot.test/api/agents"
+    "https://farmers.nauticaltech.ug/api/agents"
 );
 
 const headers = {
@@ -544,30 +544,30 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://farmer-pilot.test/api/agent/register" \
+    "https://farmers.nauticaltech.ug/api/agent/register" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Authorization: required The authorization token. Example: Bearer {token}" \
     --data "{
     \"first_name\": \"John\",
     \"last_name\": \"Doe\",
-    \"email\": \"elouise57@example.org\",
+    \"email\": \"danyka22@example.org\",
     \"phone_number\": \"256XXXXXXXXX\",
     \"age\": \"30\",
-    \"gender\": \"et\",
+    \"gender\": \"quo\",
     \"residence\": \"Kampala\",
     \"referee_name\": \"Jane Doe\",
     \"referee_phone_number\": \"08012345678\",
     \"designation\": \"Agro Extension Worker\",
-    \"created_by\": 1,
-    \"fpo_id\": 12
+    \"created_by\": 3,
+    \"fpo_id\": 20
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmer-pilot.test/api/agent/register"
+    "https://farmers.nauticaltech.ug/api/agent/register"
 );
 
 const headers = {
@@ -579,16 +579,16 @@ const headers = {
 let body = {
     "first_name": "John",
     "last_name": "Doe",
-    "email": "elouise57@example.org",
+    "email": "danyka22@example.org",
     "phone_number": "256XXXXXXXXX",
     "age": "30",
-    "gender": "et",
+    "gender": "quo",
     "residence": "Kampala",
     "referee_name": "Jane Doe",
     "referee_phone_number": "08012345678",
     "designation": "Agro Extension Worker",
-    "created_by": 1,
-    "fpo_id": 12
+    "created_by": 3,
+    "fpo_id": 20
 };
 
 fetch(url, {
@@ -831,10 +831,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="email"                data-endpoint="POSTapi-agent-register"
-               value="elouise57@example.org"
+               value="danyka22@example.org"
                data-component="body">
     <br>
-<p>The email of the agent. Example: Example: <code>elouise57@example.org</code></p>
+<p>The email of the agent. Example: Example: <code>danyka22@example.org</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
@@ -864,10 +864,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="gender"                data-endpoint="POSTapi-agent-register"
-               value="et"
+               value="quo"
                data-component="body">
     <br>
-<p>Example: <code>et</code></p>
+<p>Example: <code>quo</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>residence</code></b>&nbsp;&nbsp;
@@ -919,10 +919,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                name="created_by"                data-endpoint="POSTapi-agent-register"
-               value="1"
+               value="3"
                data-component="body">
     <br>
-<p>Example: <code>1</code></p>
+<p>Example: <code>3</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fpo_id</code></b>&nbsp;&nbsp;
@@ -930,10 +930,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                name="fpo_id"                data-endpoint="POSTapi-agent-register"
-               value="12"
+               value="20"
                data-component="body">
     <br>
-<p>Example: <code>12</code></p>
+<p>Example: <code>20</code></p>
         </div>
         </form>
 
@@ -951,7 +951,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://farmer-pilot.test/api/agent/qui" \
+    --get "https://farmers.nauticaltech.ug/api/agent/ut" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Authorization: required The authorization token. Example: Bearer {token}"</code></pre></div>
@@ -959,7 +959,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmer-pilot.test/api/agent/qui"
+    "https://farmers.nauticaltech.ug/api/agent/ut"
 );
 
 const headers = {
@@ -1100,10 +1100,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="id"                data-endpoint="GETapi-agent--id-"
-               value="qui"
+               value="ut"
                data-component="url">
     <br>
-<p>The ID of the agent. Example: <code>qui</code></p>
+<p>The ID of the agent. Example: <code>ut</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>agent</code></b>&nbsp;&nbsp;
@@ -1132,14 +1132,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://farmer-pilot.test/api/agent/1/update" \
+    "https://farmers.nauticaltech.ug/api/agent/1/update" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Authorization: required The authorization token. Example: Bearer {token}" \
     --data "{
     \"first_name\": \"John\",
     \"last_name\": \"Doe\",
-    \"email\": \"xheller@example.com\",
+    \"email\": \"ylesch@example.org\",
     \"phone_number\": \"256XXXXXXXXX\",
     \"age\": \"30\",
     \"residence\": \"Kampala\",
@@ -1152,7 +1152,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmer-pilot.test/api/agent/1/update"
+    "https://farmers.nauticaltech.ug/api/agent/1/update"
 );
 
 const headers = {
@@ -1164,7 +1164,7 @@ const headers = {
 let body = {
     "first_name": "John",
     "last_name": "Doe",
-    "email": "xheller@example.com",
+    "email": "ylesch@example.org",
     "phone_number": "256XXXXXXXXX",
     "age": "30",
     "residence": "Kampala",
@@ -1396,10 +1396,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="email"                data-endpoint="POSTapi-agent--id--update"
-               value="xheller@example.com"
+               value="ylesch@example.org"
                data-component="body">
     <br>
-<p>The email of the agent. Example: Example: <code>xheller@example.com</code></p>
+<p>The email of the agent. Example: Example: <code>ylesch@example.org</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
@@ -1483,7 +1483,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://farmer-pilot.test/api/agent/1/farmers" \
+    --get "https://farmers.nauticaltech.ug/api/agent/1/farmers" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Authorization: required The authorization token. Example: Bearer {token}"</code></pre></div>
@@ -1491,7 +1491,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmer-pilot.test/api/agent/1/farmers"
+    "https://farmers.nauticaltech.ug/api/agent/1/farmers"
 );
 
 const headers = {
@@ -1680,19 +1680,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://farmer-pilot.test/api/login" \
+    "https://farmers.nauticaltech.ug/api/login" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"abner.cartwright@example.org\",
-    \"password\": \"$Z%g$_]c1+\"
+    \"email\": \"maegan66@example.net\",
+    \"password\": \"0[SmI|L,.GxQl)(\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmer-pilot.test/api/login"
+    "https://farmers.nauticaltech.ug/api/login"
 );
 
 const headers = {
@@ -1701,8 +1701,8 @@ const headers = {
 };
 
 let body = {
-    "email": "abner.cartwright@example.org",
-    "password": "$Z%g$_]c1+"
+    "email": "maegan66@example.net",
+    "password": "0[SmI|L,.GxQl)("
 };
 
 fetch(url, {
@@ -1847,10 +1847,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="email"                data-endpoint="POSTapi-login"
-               value="abner.cartwright@example.org"
+               value="maegan66@example.net"
                data-component="body">
     <br>
-<p>The email address or phone number of the user Example: <code>abner.cartwright@example.org</code></p>
+<p>The email address or phone number of the user Example: <code>maegan66@example.net</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -1858,10 +1858,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="password"                data-endpoint="POSTapi-login"
-               value="$Z%g$_]c1+"
+               value="0[SmI|L,.GxQl)("
                data-component="body">
     <br>
-<p>The password of the user Example: <code>$Z%g$_]c1+</code></p>
+<p>The password of the user Example: <code>0[SmI|L,.GxQl)(</code></p>
         </div>
         </form>
 
@@ -1879,14 +1879,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://farmer-pilot.test/api/logout" \
+    "https://farmers.nauticaltech.ug/api/logout" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmer-pilot.test/api/logout"
+    "https://farmers.nauticaltech.ug/api/logout"
 );
 
 const headers = {
@@ -2010,14 +2010,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://farmer-pilot.test/api/refresh" \
+    "https://farmers.nauticaltech.ug/api/refresh" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmer-pilot.test/api/refresh"
+    "https://farmers.nauticaltech.ug/api/refresh"
 );
 
 const headers = {
@@ -2123,7 +2123,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://farmer-pilot.test/api/farmers" \
+    --get "https://farmers.nauticaltech.ug/api/farmers" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Authorization: required The authorization token. Example: Bearer {token}"</code></pre></div>
@@ -2131,7 +2131,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmer-pilot.test/api/farmers"
+    "https://farmers.nauticaltech.ug/api/farmers"
 );
 
 const headers = {
@@ -2289,7 +2289,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://farmer-pilot.test/api/farmer/1" \
+    --get "https://farmers.nauticaltech.ug/api/farmer/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Authorization: required The authorization token. Example: Bearer {token}"</code></pre></div>
@@ -2297,7 +2297,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmer-pilot.test/api/farmer/1"
+    "https://farmers.nauticaltech.ug/api/farmer/1"
 );
 
 const headers = {
@@ -2448,7 +2448,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://farmer-pilot.test/api/fpos" \
+    --get "https://farmers.nauticaltech.ug/api/fpos" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Authorization: required The authorization token. Example: Bearer {token}"</code></pre></div>
@@ -2456,7 +2456,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmer-pilot.test/api/fpos"
+    "https://farmers.nauticaltech.ug/api/fpos"
 );
 
 const headers = {
@@ -2669,14 +2669,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://farmer-pilot.test/api/fpos/summary" \
+    --get "https://farmers.nauticaltech.ug/api/fpos/summary" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmer-pilot.test/api/fpos/summary"
+    "https://farmers.nauticaltech.ug/api/fpos/summary"
 );
 
 const headers = {
@@ -2825,30 +2825,30 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://farmer-pilot.test/api/fpo/register" \
+    "https://farmers.nauticaltech.ug/api/fpo/register" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Authorization: required The authorization token. Example: Bearer {token}" \
     --data "{
-    \"fpo_name\": \"et\",
-    \"district\": \"odio\",
-    \"county\": \"facilis\",
-    \"sub_county\": \"perferendis\",
-    \"parish\": \"dolorum\",
-    \"village\": \"at\",
-    \"main_crop\": \"temporibus\",
-    \"fpo_member_count\": 1,
-    \"fpo_contact_name\": \"ut\",
-    \"contact_phone_number\": \"consequatur\",
-    \"address\": \"voluptas\",
-    \"created_by\": 6
+    \"fpo_name\": \"earum\",
+    \"district\": \"corporis\",
+    \"county\": \"facere\",
+    \"sub_county\": \"ea\",
+    \"parish\": \"quae\",
+    \"village\": \"nemo\",
+    \"main_crop\": \"tenetur\",
+    \"fpo_member_count\": 18,
+    \"fpo_contact_name\": \"facilis\",
+    \"contact_phone_number\": \"qui\",
+    \"address\": \"dolores\",
+    \"created_by\": 12
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmer-pilot.test/api/fpo/register"
+    "https://farmers.nauticaltech.ug/api/fpo/register"
 );
 
 const headers = {
@@ -2858,18 +2858,18 @@ const headers = {
 };
 
 let body = {
-    "fpo_name": "et",
-    "district": "odio",
-    "county": "facilis",
-    "sub_county": "perferendis",
-    "parish": "dolorum",
-    "village": "at",
-    "main_crop": "temporibus",
-    "fpo_member_count": 1,
-    "fpo_contact_name": "ut",
-    "contact_phone_number": "consequatur",
-    "address": "voluptas",
-    "created_by": 6
+    "fpo_name": "earum",
+    "district": "corporis",
+    "county": "facere",
+    "sub_county": "ea",
+    "parish": "quae",
+    "village": "nemo",
+    "main_crop": "tenetur",
+    "fpo_member_count": 18,
+    "fpo_contact_name": "facilis",
+    "contact_phone_number": "qui",
+    "address": "dolores",
+    "created_by": 12
 };
 
 fetch(url, {
@@ -3067,10 +3067,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="fpo_name"                data-endpoint="POSTapi-fpo-register"
-               value="et"
+               value="earum"
                data-component="body">
     <br>
-<p>The name of the FPO. Example: <code>et</code></p>
+<p>The name of the FPO. Example: <code>earum</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>district</code></b>&nbsp;&nbsp;
@@ -3078,10 +3078,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="district"                data-endpoint="POSTapi-fpo-register"
-               value="odio"
+               value="corporis"
                data-component="body">
     <br>
-<p>The district of the FPO. Example: <code>odio</code></p>
+<p>The district of the FPO. Example: <code>corporis</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>county</code></b>&nbsp;&nbsp;
@@ -3089,10 +3089,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="county"                data-endpoint="POSTapi-fpo-register"
-               value="facilis"
+               value="facere"
                data-component="body">
     <br>
-<p>The county of the FPO. Example: <code>facilis</code></p>
+<p>The county of the FPO. Example: <code>facere</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>sub_county</code></b>&nbsp;&nbsp;
@@ -3100,10 +3100,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="sub_county"                data-endpoint="POSTapi-fpo-register"
-               value="perferendis"
+               value="ea"
                data-component="body">
     <br>
-<p>The sub county of the FPO. Example: <code>perferendis</code></p>
+<p>The sub county of the FPO. Example: <code>ea</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>parish</code></b>&nbsp;&nbsp;
@@ -3111,10 +3111,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="parish"                data-endpoint="POSTapi-fpo-register"
-               value="dolorum"
+               value="quae"
                data-component="body">
     <br>
-<p>The parish of the FPO. Example: <code>dolorum</code></p>
+<p>The parish of the FPO. Example: <code>quae</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>village</code></b>&nbsp;&nbsp;
@@ -3122,10 +3122,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="village"                data-endpoint="POSTapi-fpo-register"
-               value="at"
+               value="nemo"
                data-component="body">
     <br>
-<p>The village of the FPO. Example: <code>at</code></p>
+<p>The village of the FPO. Example: <code>nemo</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>main_crop</code></b>&nbsp;&nbsp;
@@ -3133,10 +3133,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="main_crop"                data-endpoint="POSTapi-fpo-register"
-               value="temporibus"
+               value="tenetur"
                data-component="body">
     <br>
-<p>The main crop of the FPO. Example: <code>temporibus</code></p>
+<p>The main crop of the FPO. Example: <code>tenetur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fpo_member_count</code></b>&nbsp;&nbsp;
@@ -3144,10 +3144,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                name="fpo_member_count"                data-endpoint="POSTapi-fpo-register"
-               value="1"
+               value="18"
                data-component="body">
     <br>
-<p>The number of FPO members. Example: <code>1</code></p>
+<p>The number of FPO members. Example: <code>18</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fpo_contact_name</code></b>&nbsp;&nbsp;
@@ -3155,10 +3155,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="fpo_contact_name"                data-endpoint="POSTapi-fpo-register"
-               value="ut"
+               value="facilis"
                data-component="body">
     <br>
-<p>The contact name of the FPO. Example: <code>ut</code></p>
+<p>The contact name of the FPO. Example: <code>facilis</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>contact_phone_number</code></b>&nbsp;&nbsp;
@@ -3166,10 +3166,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="contact_phone_number"                data-endpoint="POSTapi-fpo-register"
-               value="consequatur"
+               value="qui"
                data-component="body">
     <br>
-<p>The contact phone number of the FPO. Example: <code>consequatur</code></p>
+<p>The contact phone number of the FPO. Example: <code>qui</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>address</code></b>&nbsp;&nbsp;
@@ -3177,10 +3177,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="address"                data-endpoint="POSTapi-fpo-register"
-               value="voluptas"
+               value="dolores"
                data-component="body">
     <br>
-<p>Example: <code>voluptas</code></p>
+<p>Example: <code>dolores</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>created_by</code></b>&nbsp;&nbsp;
@@ -3188,10 +3188,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                name="created_by"                data-endpoint="POSTapi-fpo-register"
-               value="6"
+               value="12"
                data-component="body">
     <br>
-<p>The userId  of the FPO creator. Example: <code>6</code></p>
+<p>The userId  of the FPO creator. Example: <code>12</code></p>
         </div>
         </form>
 
@@ -3209,7 +3209,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://farmer-pilot.test/api/fpo/dolore" \
+    --get "https://farmers.nauticaltech.ug/api/fpo/illum" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Authorization: required The authorization token. Example: Bearer {token}"</code></pre></div>
@@ -3217,7 +3217,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmer-pilot.test/api/fpo/dolore"
+    "https://farmers.nauticaltech.ug/api/fpo/illum"
 );
 
 const headers = {
@@ -3376,10 +3376,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="id"                data-endpoint="GETapi-fpo--id-"
-               value="dolore"
+               value="illum"
                data-component="url">
     <br>
-<p>The id of the FPO. Example: <code>dolore</code></p>
+<p>The id of the FPO. Example: <code>illum</code></p>
             </div>
                     </form>
 
@@ -3397,29 +3397,29 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://farmer-pilot.test/api/fpo/dolores/update" \
+    "https://farmers.nauticaltech.ug/api/fpo/perferendis/update" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Authorization: required The authorization token. Example: Bearer {token}" \
     --data "{
-    \"fpo_name\": \"voluptas\",
-    \"district\": \"velit\",
-    \"county\": \"pariatur\",
-    \"sub_county\": \"explicabo\",
-    \"parish\": \"officiis\",
-    \"village\": \"fugit\",
-    \"main_crop\": \"dicta\",
-    \"fpo_member_count\": 6,
-    \"fpo_contact_name\": \"sit\",
-    \"contact_phone_number\": \"voluptatum\",
-    \"created_by\": 17
+    \"fpo_name\": \"perferendis\",
+    \"district\": \"eius\",
+    \"county\": \"reprehenderit\",
+    \"sub_county\": \"ratione\",
+    \"parish\": \"dolores\",
+    \"village\": \"temporibus\",
+    \"main_crop\": \"impedit\",
+    \"fpo_member_count\": 10,
+    \"fpo_contact_name\": \"nam\",
+    \"contact_phone_number\": \"rerum\",
+    \"created_by\": 1
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmer-pilot.test/api/fpo/dolores/update"
+    "https://farmers.nauticaltech.ug/api/fpo/perferendis/update"
 );
 
 const headers = {
@@ -3429,17 +3429,17 @@ const headers = {
 };
 
 let body = {
-    "fpo_name": "voluptas",
-    "district": "velit",
-    "county": "pariatur",
-    "sub_county": "explicabo",
-    "parish": "officiis",
-    "village": "fugit",
-    "main_crop": "dicta",
-    "fpo_member_count": 6,
-    "fpo_contact_name": "sit",
-    "contact_phone_number": "voluptatum",
-    "created_by": 17
+    "fpo_name": "perferendis",
+    "district": "eius",
+    "county": "reprehenderit",
+    "sub_county": "ratione",
+    "parish": "dolores",
+    "village": "temporibus",
+    "main_crop": "impedit",
+    "fpo_member_count": 10,
+    "fpo_contact_name": "nam",
+    "contact_phone_number": "rerum",
+    "created_by": 1
 };
 
 fetch(url, {
@@ -3637,10 +3637,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="id"                data-endpoint="POSTapi-fpo--id--update"
-               value="dolores"
+               value="perferendis"
                data-component="url">
     <br>
-<p>The id of the FPO. Example: <code>dolores</code></p>
+<p>The id of the FPO. Example: <code>perferendis</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -3649,10 +3649,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="fpo_name"                data-endpoint="POSTapi-fpo--id--update"
-               value="voluptas"
+               value="perferendis"
                data-component="body">
     <br>
-<p>The name of the FPO. Example: <code>voluptas</code></p>
+<p>The name of the FPO. Example: <code>perferendis</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>district</code></b>&nbsp;&nbsp;
@@ -3660,10 +3660,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="district"                data-endpoint="POSTapi-fpo--id--update"
-               value="velit"
+               value="eius"
                data-component="body">
     <br>
-<p>The district of the FPO. Example: <code>velit</code></p>
+<p>The district of the FPO. Example: <code>eius</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>county</code></b>&nbsp;&nbsp;
@@ -3671,10 +3671,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="county"                data-endpoint="POSTapi-fpo--id--update"
-               value="pariatur"
+               value="reprehenderit"
                data-component="body">
     <br>
-<p>The county of the FPO. Example: <code>pariatur</code></p>
+<p>The county of the FPO. Example: <code>reprehenderit</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>sub_county</code></b>&nbsp;&nbsp;
@@ -3682,10 +3682,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="sub_county"                data-endpoint="POSTapi-fpo--id--update"
-               value="explicabo"
+               value="ratione"
                data-component="body">
     <br>
-<p>The sub county of the FPO. Example: <code>explicabo</code></p>
+<p>The sub county of the FPO. Example: <code>ratione</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>parish</code></b>&nbsp;&nbsp;
@@ -3693,10 +3693,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="parish"                data-endpoint="POSTapi-fpo--id--update"
-               value="officiis"
+               value="dolores"
                data-component="body">
     <br>
-<p>The parish of the FPO. Example: <code>officiis</code></p>
+<p>The parish of the FPO. Example: <code>dolores</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>village</code></b>&nbsp;&nbsp;
@@ -3704,10 +3704,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="village"                data-endpoint="POSTapi-fpo--id--update"
-               value="fugit"
+               value="temporibus"
                data-component="body">
     <br>
-<p>The village of the FPO. Example: <code>fugit</code></p>
+<p>The village of the FPO. Example: <code>temporibus</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>main_crop</code></b>&nbsp;&nbsp;
@@ -3715,10 +3715,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="main_crop"                data-endpoint="POSTapi-fpo--id--update"
-               value="dicta"
+               value="impedit"
                data-component="body">
     <br>
-<p>The main crop of the FPO. Example: <code>dicta</code></p>
+<p>The main crop of the FPO. Example: <code>impedit</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fpo_member_count</code></b>&nbsp;&nbsp;
@@ -3726,10 +3726,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                name="fpo_member_count"                data-endpoint="POSTapi-fpo--id--update"
-               value="6"
+               value="10"
                data-component="body">
     <br>
-<p>The number of FPO members. Example: <code>6</code></p>
+<p>The number of FPO members. Example: <code>10</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fpo_contact_name</code></b>&nbsp;&nbsp;
@@ -3737,10 +3737,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="fpo_contact_name"                data-endpoint="POSTapi-fpo--id--update"
-               value="sit"
+               value="nam"
                data-component="body">
     <br>
-<p>The contact name of the FPO. Example: <code>sit</code></p>
+<p>The contact name of the FPO. Example: <code>nam</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>contact_phone_number</code></b>&nbsp;&nbsp;
@@ -3748,10 +3748,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="contact_phone_number"                data-endpoint="POSTapi-fpo--id--update"
-               value="voluptatum"
+               value="rerum"
                data-component="body">
     <br>
-<p>The contact phone number of the FPO. Example: <code>voluptatum</code></p>
+<p>The contact phone number of the FPO. Example: <code>rerum</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>created_by</code></b>&nbsp;&nbsp;
@@ -3759,10 +3759,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                name="created_by"                data-endpoint="POSTapi-fpo--id--update"
-               value="17"
+               value="1"
                data-component="body">
     <br>
-<p>The userId  of the FPO creator. Example: <code>17</code></p>
+<p>The userId  of the FPO creator. Example: <code>1</code></p>
         </div>
         </form>
 
@@ -3780,14 +3780,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://farmer-pilot.test/api/fpo/omnis/agents" \
+    --get "https://farmers.nauticaltech.ug/api/fpo/atque/agents" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmer-pilot.test/api/fpo/omnis/agents"
+    "https://farmers.nauticaltech.ug/api/fpo/atque/agents"
 );
 
 const headers = {
@@ -3963,10 +3963,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="id"                data-endpoint="GETapi-fpo--id--agents"
-               value="omnis"
+               value="atque"
                data-component="url">
     <br>
-<p>The ID of the fpo. Example: <code>omnis</code></p>
+<p>The ID of the fpo. Example: <code>atque</code></p>
             </div>
                     </form>
 
@@ -3988,7 +3988,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://farmer-pilot.test/api/farmer/register" \
+    "https://farmers.nauticaltech.ug/api/farmer/register" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Authorization: required The authorization token. Example: Bearer {token}" \
@@ -3996,7 +3996,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"first_name\": \"John\",
     \"last_name\": \"Doe\",
     \"dob\": \"1990-01-01\",
-    \"gender\": \"omnis\",
+    \"gender\": \"at\",
     \"education_level\": \"Primary\",
     \"phone_number\": \"0789123456\",
     \"id_number\": \"CM12345678\",
@@ -4036,7 +4036,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmer-pilot.test/api/farmer/register"
+    "https://farmers.nauticaltech.ug/api/farmer/register"
 );
 
 const headers = {
@@ -4049,7 +4049,7 @@ let body = {
     "first_name": "John",
     "last_name": "Doe",
     "dob": "1990-01-01",
-    "gender": "omnis",
+    "gender": "at",
     "education_level": "Primary",
     "phone_number": "0789123456",
     "id_number": "CM12345678",
@@ -4312,10 +4312,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="gender"                data-endpoint="POSTapi-farmer-register"
-               value="omnis"
+               value="at"
                data-component="body">
     <br>
-<p>Farmer gender. Example Male/Female Example: <code>omnis</code></p>
+<p>Farmer gender. Example Male/Female Example: <code>at</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>education_level</code></b>&nbsp;&nbsp;
