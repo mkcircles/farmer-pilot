@@ -236,6 +236,7 @@ class AgentController extends Controller
         }
             
         $agent = new Agent();
+        $agent->agent_code = strtoupper(uniqid(6));
         $agent->first_name = $request->first_name;
         $agent->last_name = $request->last_name;
         $agent->email = $request->email;
@@ -655,6 +656,53 @@ class AgentController extends Controller
             'success' => true,
             'message' => 'Farmers retrieved successfully',
             'data' => $farmers
+        ], 200);
+    }
+
+    /**
+     * Search Agent
+     * 
+     * This endpoint allows a user to search for a specific agent by agent code
+     * 
+     * @urlParam agent_id required The id of the agent. Example: 1
+     * 
+     * @response {
+     * "status": "success",
+     * "data": {
+     * "id": 1,
+     * "first_name": "John",
+     * "last_name": "Doe",
+     * "email": "",
+     * "phone_number": "256XXXXXXXXX",
+     * "age": "30",
+     * "residence": "Kampala",
+     * "referee_name": "Jane Doe",
+     * "referee_phone_number": "08012345678",
+     * "designation": "Agro Extension Worker",
+     * "photo": "http://localhost:8000/storage/agents/1624810572IMG_20210627_174358.jpg",
+     * "created_at": "2021-06-27T17:09:32.000000Z",
+     * "updated_at": "2021-06-27T17:09:32.000000Z"
+     * }
+     * }
+     * 
+     * @response 404 {
+     * "status": "error",
+     * "message": "Agent not found"
+     * }
+     * 
+     */
+    public function getSearchAgent($agent_id)
+    {
+        $agent = Agent::where('agent_code',$agent_id)->first();
+        if(!$agent){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Agent not found'
+            ], 404);
+        }
+        return response()->json([
+            'status' => 'success',
+            'data' => $agent
         ], 200);
     }
 }

@@ -25,6 +25,8 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('/refresh', 'refresh');
 });
 
+Route::get('/agent/{agent_id}', [AgentController::class, 'getSearchAgent']);
+
 Route::middleware('auth:sanctum')->group( function () {
     Route::post('/farmer/register', [FarmerProfileController::class, 'registerFarmer']);
     Route::get('/farmers', [DataController::class, 'getAllFarmers']);

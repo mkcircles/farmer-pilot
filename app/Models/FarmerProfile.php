@@ -12,6 +12,7 @@ class FarmerProfile extends Model
     protected $with = ['agent'];
 
     protected $fillable = [
+        'farmer_id',
         'first_name',
         'last_name',
         'dob',

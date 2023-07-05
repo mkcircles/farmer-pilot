@@ -20,10 +20,12 @@ return new class extends Migration
             $table->string('sub_county');
             $table->string('parish');
             $table->string('village');
+            $table->string('fpo_cordinates')->nullable()->default(null);
             $table->string('main_crop');
             $table->integer('fpo_member_count');
             $table->string('fpo_contact_name');
             $table->string('contact_phone_number');
+            $table->string('contact_email')->nullable()->default(null);
             $table->string('Cert_of_Inc')->nullable()->default(null);
             $table->integer('created_by')->nullable();
             $table->timestamps();

@@ -7,6 +7,109 @@ servers:
   -
     url: 'https://farmer-pilot.test'
 paths:
+  '/api/agent/{agent_id}':
+    get:
+      summary: 'Search Agent'
+      operationId: searchAgent
+      description: 'This endpoint allows a user to search for a specific agent by agent code'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: success
+                  data:
+                    id: 1
+                    first_name: John
+                    last_name: Doe
+                    email: ''
+                    phone_number: 256XXXXXXXXX
+                    age: '30'
+                    residence: Kampala
+                    referee_name: 'Jane Doe'
+                    referee_phone_number: '08012345678'
+                    designation: 'Agro Extension Worker'
+                    photo: 'http://localhost:8000/storage/agents/1624810572IMG_20210627_174358.jpg'
+                    created_at: '2021-06-27T17:09:32.000000Z'
+                    updated_at: '2021-06-27T17:09:32.000000Z'
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      first_name:
+                        type: string
+                        example: John
+                      last_name:
+                        type: string
+                        example: Doe
+                      email:
+                        type: string
+                        example: ''
+                      phone_number:
+                        type: string
+                        example: 256XXXXXXXXX
+                      age:
+                        type: string
+                        example: '30'
+                      residence:
+                        type: string
+                        example: Kampala
+                      referee_name:
+                        type: string
+                        example: 'Jane Doe'
+                      referee_phone_number:
+                        type: string
+                        example: '08012345678'
+                      designation:
+                        type: string
+                        example: 'Agro Extension Worker'
+                      photo:
+                        type: string
+                        example: 'http://localhost:8000/storage/agents/1624810572IMG_20210627_174358.jpg'
+                      created_at:
+                        type: string
+                        example: '2021-06-27T17:09:32.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2021-06-27T17:09:32.000000Z'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: error
+                  message: 'Agent not found'
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  message:
+                    type: string
+                    example: 'Agent not found'
+      tags:
+        - 'Agent management'
+      security: []
+    parameters:
+      -
+        in: path
+        name: agent_id
+        description: 'The id of the agent.'
+        example: '1'
+        required: true
+        schema:
+          type: string
   /api/agents:
     get:
       summary: 'Get all agents'
@@ -423,7 +526,7 @@ paths:
                 email:
                   type: string
                   description: 'The email of the agent. Example:'
-                  example: sklocko@example.org
+                  example: elouise57@example.org
                 phone_number:
                   type: string
                   description: 'The phone number of the agent.'
@@ -435,7 +538,7 @@ paths:
                 gender:
                   type: string
                   description: ''
-                  example: consectetur
+                  example: et
                 residence:
                   type: string
                   description: 'The residence of the agent.'
@@ -455,11 +558,11 @@ paths:
                 created_by:
                   type: integer
                   description: ''
-                  example: 14
+                  example: 1
                 fpo_id:
                   type: integer
                   description: ''
-                  example: 2
+                  example: 12
               required:
                 - first_name
                 - last_name
@@ -586,7 +689,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the agent.'
-        example: alias
+        example: qui
         required: true
         schema:
           type: string
@@ -840,7 +943,7 @@ paths:
                 email:
                   type: string
                   description: 'The email of the agent. Example:'
-                  example: pgrant@example.com
+                  example: xheller@example.com
                 phone_number:
                   type: string
                   description: 'The phone number of the agent.'
@@ -1026,11 +1129,11 @@ paths:
                 email:
                   type: string
                   description: 'The email address or phone number of the user'
-                  example: haylee.koch@example.com
+                  example: abner.cartwright@example.org
                 password:
                   type: string
                   description: 'The password of the user'
-                  example: ',).J%mxR0Zmj<hz:WDW'
+                  example: '$Z%g$_]c1+'
               required:
                 - email
                 - password
@@ -1655,51 +1758,51 @@ paths:
                 fpo_name:
                   type: string
                   description: 'The name of the FPO.'
-                  example: saepe
+                  example: et
                 district:
                   type: string
                   description: 'The district of the FPO.'
-                  example: qui
+                  example: odio
                 county:
                   type: string
                   description: 'The county of the FPO.'
-                  example: voluptates
+                  example: facilis
                 sub_county:
                   type: string
                   description: 'The sub county of the FPO.'
-                  example: et
+                  example: perferendis
                 parish:
                   type: string
                   description: 'The parish of the FPO.'
-                  example: sint
+                  example: dolorum
                 village:
                   type: string
                   description: 'The village of the FPO.'
-                  example: eaque
+                  example: at
                 main_crop:
                   type: string
                   description: 'The main crop of the FPO.'
-                  example: et
+                  example: temporibus
                 fpo_member_count:
                   type: integer
                   description: 'The number of FPO members.'
-                  example: 13
+                  example: 1
                 fpo_contact_name:
                   type: string
                   description: 'The contact name of the FPO.'
-                  example: ea
+                  example: ut
                 contact_phone_number:
                   type: string
                   description: 'The contact phone number of the FPO.'
-                  example: ducimus
+                  example: consequatur
                 address:
                   type: string
                   description: ''
-                  example: ut
+                  example: voluptas
                 created_by:
                   type: integer
                   description: 'The userId  of the FPO creator.'
-                  example: 14
+                  example: 6
               required:
                 - fpo_name
                 - district
@@ -1850,7 +1953,7 @@ paths:
         in: path
         name: id
         description: 'The id of the FPO.'
-        example: debitis
+        example: dolore
         required: true
         schema:
           type: string
@@ -2003,47 +2106,47 @@ paths:
                 fpo_name:
                   type: string
                   description: 'The name of the FPO.'
-                  example: id
+                  example: voluptas
                 district:
                   type: string
                   description: 'The district of the FPO.'
-                  example: enim
+                  example: velit
                 county:
                   type: string
                   description: 'The county of the FPO.'
-                  example: sit
+                  example: pariatur
                 sub_county:
                   type: string
                   description: 'The sub county of the FPO.'
-                  example: voluptas
+                  example: explicabo
                 parish:
                   type: string
                   description: 'The parish of the FPO.'
-                  example: aut
+                  example: officiis
                 village:
                   type: string
                   description: 'The village of the FPO.'
-                  example: odio
+                  example: fugit
                 main_crop:
                   type: string
                   description: 'The main crop of the FPO.'
-                  example: ab
+                  example: dicta
                 fpo_member_count:
                   type: integer
                   description: 'The number of FPO members.'
-                  example: 5
+                  example: 6
                 fpo_contact_name:
                   type: string
                   description: 'The contact name of the FPO.'
-                  example: pariatur
+                  example: sit
                 contact_phone_number:
                   type: string
                   description: 'The contact phone number of the FPO.'
-                  example: sunt
+                  example: voluptatum
                 created_by:
                   type: integer
                   description: 'The userId  of the FPO creator.'
-                  example: 6
+                  example: 17
               required:
                 - fpo_name
                 - district
@@ -2061,7 +2164,7 @@ paths:
         in: path
         name: id
         description: 'The id of the FPO.'
-        example: explicabo
+        example: dolores
         required: true
         schema:
           type: string
@@ -2267,7 +2370,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the fpo.'
-        example: repudiandae
+        example: omnis
         required: true
         schema:
           type: string
@@ -2291,7 +2394,7 @@ paths:
             text/plain:
               schema:
                 type: string
-                example: "{\n\"status\": \"success\",\n\"message\": \"Farmer profile created successfully\",\n\"data\": {\n\"first_name\": \"John\",\n\"last_name\": \"Doe\",\n\"dob\": \"1981-05-06\",\n}\n}"
+                example: "{\n\"status\": \"success\",\n\"message\": \"Farmer profile created successfully\",\n\"data\": {\n\"first_name\": \"John\",\n\"last_name\": \"Doe\",\n\"dob\": \"1981-05-06\",\n\n}\n}"
         400:
           description: ''
           content:
@@ -2448,7 +2551,7 @@ paths:
                 gender:
                   type: string
                   description: 'Farmer gender. Example Male/Female'
-                  example: eum
+                  example: omnis
                 education_level:
                   type: string
                   description: 'The education level of the farmer.'

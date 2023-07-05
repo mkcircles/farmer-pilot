@@ -14,6 +14,7 @@ return new class extends Migration
     {
         Schema::create('farmer_profiles', function (Blueprint $table) {
             $table->id();
+            $table->string('farmer_id')->unique();
             $table->string('first_name');
             $table->string('last_name');
             $table->date('dob');
