@@ -1,11 +1,11 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-71db7a80.css",
+    "file": "assets/app-23695729.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
   "resources/js/app.css": {
-    "file": "assets/app-23cb2878.css",
+    "file": "assets/app-60ae2c38.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.jsx": {
@@ -13,14 +13,18 @@
       "assets/bg-main-c1a2ca01.png"
     ],
     "css": [
-      "assets/app-23cb2878.css"
+      "assets/app-60ae2c38.css"
     ],
-    "file": "assets/app-6a7f8a1a.js",
+    "file": "assets/app-a2fc3c3a.js",
     "isEntry": true,
     "src": "resources/js/app.jsx"
   },
   "resources/js/assets/images/backgrounds/bg-main.png": {
     "file": "assets/bg-main-c1a2ca01.png",
     "src": "resources/js/assets/images/backgrounds/bg-main.png"
+  },
+  "resources/js/assets/images/logo.svg": {
+    "file": "assets/logo-78fe9fb2.svg",
+    "src": "resources/js/assets/images/logo.svg"
   }
 }

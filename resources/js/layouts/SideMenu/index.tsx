@@ -18,9 +18,13 @@ import Lucide from "../../base-components/Lucide";
 import clsx from "clsx";
 import TopBar from "../../components/TopBar";
 import SimpleBar from "simplebar";
+import { useSelector } from "react-redux";
+import { LOGIN } from "../../router/routes";
 
 function Main() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const token = useSelector((state: any) => state.auth.token);
   const [formattedMenu, setFormattedMenu] = useState<
     Array<FormattedMenu | string>
   >([]);
@@ -28,6 +32,14 @@ function Main() {
   const sideMenu = () => nestedMenu(sideMenuStore, location);
   
   const TransitionAny = Transition as any;
+
+  useEffect(() => {
+
+    if(!token){
+      navigate(LOGIN);
+    }
+
+  }, [token])
 
   useEffect(() => {
     setFormattedMenu(sideMenu());

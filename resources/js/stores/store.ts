@@ -2,12 +2,16 @@ import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import darkModeReducer from "./darkModeSlice";
 import colorSchemeReducer from "./colorSchemeSlice";
 import sideMenuReducer from "./sideMenuSlice";
+import authReducer from "./authSlice";
+import fpoReducer from "./fpoSlice";
 
 export const store = configureStore({
   reducer: {
     darkMode: darkModeReducer,
     colorScheme: colorSchemeReducer,
     sideMenu: sideMenuReducer,
+    auth: authReducer,
+    fpo: fpoReducer,
   },
 });
 

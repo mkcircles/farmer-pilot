@@ -11,7 +11,7 @@ const Loading = () => {
         <div className=" flex bg-black justify-center items-center w-screen h-screen absolute inset-0 z-50 opacity-60">
             
             <div className="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-secondary rounded-full" role="status" aria-label="loading">
-        <span class="sr-only">Loading...</span>
+        <span className="sr-only">Loading...</span>
       </div>
 
         </div>

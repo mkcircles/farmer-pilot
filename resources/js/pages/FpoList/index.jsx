@@ -13,7 +13,7 @@ import {
     Button,
 } from "@tremor/react";
 import { useNavigate } from "react-router-dom";
-import { FARMER_PROFILE } from "../../router/routes";
+import { CREATE_FPO, FARMER_PROFILE } from "../../router/routes";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { API_KEY, BASE_API_URL } from "../../env";
@@ -21,90 +21,121 @@ import { numberFormatter } from "../../utils/numberFormatter";
 import { AppContext } from "../../context/RootContext";
 import { useContext } from "react";
 import { useSelector } from "react-redux";
+import { useAppDispatch } from "../../stores/hooks";
+import { setFpos } from "../../stores/fpoSlice";
 
-
-export default function FarmersList({agent_id}) {
+export default function fpoList() {
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const token = useSelector(state => state.auth.token);
+    const token = useSelector((state) => state.auth.token);
     const { updateAppContextState } = useContext(AppContext);
     const [currentPage, setCurrentPage] = useState(1);
     const [prevPageUrl, setPrevPageUrl] = useState("");
     const [nextPageUrl, setNextPageUrl] = useState("");
     const [profilesData, setProfilesData] = useState(null);
+    const [fpoData, setFpoData] = useState(null);
 
-    let farmers_api_url = `${BASE_API_URL}/farmers`;
-    if(agent_id) {
-        farmers_api_url = `${BASE_API_URL}/agent/${agent_id}/farmers`
-    }
-
-    const fetchProfiles = (url = farmers_api_url) => {
-        updateAppContextState('loading', true);
-        console.log(url);
+    const fetchFPOs = (url = `${BASE_API_URL}/fpos`) => {
+        updateAppContextState("loading", true);
         axios
             .get(url, {
                 headers: {
-                    'API_KEY': API_KEY,
-                    'Authorization': `Bearer ${token}`
-                }
-            },)
+                    API_KEY: API_KEY,
+                    Authorization: `Bearer ${token}`,
+                },
+            })
             .then((res) => {
-                console.log("Profiles", res.data);
+                console.log("FPO Data", res?.data?.data);
+                let resData = res?.data?.data;
                 if (res?.data) {
-                    setCurrentPage(res?.data?.current_page);
-                    setPrevPageUrl(res?.data?.prev_page_url);
-                    setNextPageUrl(res?.data?.next_page_url);
-                    setProfilesData(res.data);
+                    setCurrentPage(resData?.current_page);
+                    setPrevPageUrl(resData?.prev_page_url);
+                    setNextPageUrl(resData?.next_page_url);
+                    setFpoData(resData);
+                    // dispatch(setFpos(resData?.data));
                 }
             })
             .catch((err) => {
                 console.log(err);
             })
             .finally(() => {
-                updateAppContextState('loading', false);
+                updateAppContextState("loading", false);
             });
     };
 
     useEffect(() => {
-        fetchProfiles();
+        fetchFPOs();
     }, []);
 
     return (
         <div className="w-full h-full py-4">
             <Card className="bg-white h-full w-full">
                 <Flex justifyContent="start" className="space-x-2">
-                    <Title>Farmers</Title>
-                    <Badge color="gray">{numberFormatter(parseInt(profilesData?.total || 0))}</Badge>
+                    <Title>FPOs</Title>
+                    <Badge color="gray">
+                        {numberFormatter(parseInt(fpoData?.total || 0))}
+                    </Badge>
                 </Flex>
-                <Text className="mt-2">Overview of farmers profiled</Text>
+                <Flex justifyContent="between">
+                    <Text className="mt-2">Overview of FPOs</Text>
+                    <span onClick={() => {
+                        navigate(CREATE_FPO);
+                    }} className="inline-flex overflow-hidden rounded-md border bg-secondary shadow-sm">
+                        <button className="inline-block border-e px-4 py-2 text-sm font-medium text-white hover:bg-orange-500 focus:relative">
+                            Create FPO
+                        </button>
+
+                        <button
+                            className="inline-block px-4 py-2 text-white hover:bg-orange-500 focus:relative"
+                            title="Create FPO"
+                        >
+                            
+
+                            <svg
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="1.5"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                                aria-hidden="true"
+                                className="h-4 w-4"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M12 4.5v15m7.5-7.5h-15"
+                                ></path>
+                            </svg>
+                        </button>
+                    </span>
+                </Flex>
 
                 <Table className="mt-6">
                     <TableHead>
                         <TableRow>
-                            <TableHeaderCell>Farmer ID</TableHeaderCell>
+                            <TableHeaderCell>FPO ID</TableHeaderCell>
                             <TableHeaderCell>Name</TableHeaderCell>
                             <TableHeaderCell>Phone</TableHeaderCell>
-                            <TableHeaderCell>FPO</TableHeaderCell>
-                            <TableHeaderCell className="text-right">
-                                District
-                            </TableHeaderCell>
-                            <TableHeaderCell>Link</TableHeaderCell>
+                            <TableHeaderCell>District</TableHeaderCell>
+                            <TableHeaderCell>Address</TableHeaderCell>
+                            <TableHeaderCell>Member Count</TableHeaderCell>
+                            {/* <TableHeaderCell>Link</TableHeaderCell> */}
                         </TableRow>
                     </TableHead>
 
                     <TableBody>
-                        {profilesData?.data?.map((farmer) => (
-                            <TableRow key={farmer.id}>
-                                <TableCell>{farmer.id}</TableCell>
+                        {fpoData?.data?.map((fpo) => (
+                            <TableRow key={fpo.id}>
+                                <TableCell>{fpo.id}</TableCell>
+                                <TableCell>{fpo.fpo_name}</TableCell>
                                 <TableCell>
-                                    {farmer.first_name + " " + farmer.last_name}
+                                    {fpo.contact_phone_number}
                                 </TableCell>
-                                <TableCell>{farmer.phone_number}</TableCell>
-                                <TableCell>{farmer.fpo_name}</TableCell>
+                                <TableCell>{fpo.district}</TableCell>
+                                <TableCell>{fpo.address}</TableCell>
 
-                                <TableCell className="text-right">
-                                    {farmer.district}
-                                </TableCell>
-                                <TableCell>
+                                <TableCell>{fpo.fpo_member_count}</TableCell>
+                                {/* <TableCell>
                                     <Button
                                         size="xs"
                                         variant="secondary"
@@ -115,15 +146,15 @@ export default function FarmersList({agent_id}) {
                                     >
                                         See details
                                     </Button>
-                                </TableCell>
+                                </TableCell> */}
                             </TableRow>
                         ))}
                     </TableBody>
                 </Table>
 
                 <div className="w-full py-1 text-xs opacity-60">
-                    showing {currentPage} of {profilesData?.last_page} pages
-                    </div>
+                    showing {currentPage} of {fpoData?.last_page} pages
+                </div>
 
                 <div className="flex justify-start py-2 items-center">
                     <div className="inline-flex items-center justify-center rounded bg-primary py-1 text-white">
@@ -131,7 +162,7 @@ export default function FarmersList({agent_id}) {
                             href="#"
                             className="inline-flex h-8 w-8 items-center justify-center rtl:rotate-180"
                             onClick={() => {
-                                if (prevPageUrl) fetchProfiles(prevPageUrl);
+                                if (prevPageUrl) fetchFPOs(prevPageUrl);
                             }}
                         >
                             <span className="sr-only">Prev Page</span>
@@ -174,7 +205,7 @@ export default function FarmersList({agent_id}) {
                             href="#"
                             className="inline-flex h-8 w-8 items-center justify-center rtl:rotate-180"
                             onClick={() => {
-                                if (nextPageUrl) fetchProfiles(nextPageUrl);
+                                if (nextPageUrl) fetchFPOs(nextPageUrl);
                             }}
                         >
                             <span className="sr-only">Next Page</span>
