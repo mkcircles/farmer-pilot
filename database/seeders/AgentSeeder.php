@@ -16,6 +16,7 @@ class AgentSeeder extends Seeder
     {
         $agents = [
             [
+                'agent_code' => 'AGT001',
                 'first_name' => 'Dominic',
                 'last_name' => 'Wambugu',
                 'email' => 'dwambugu@innovationvillage.co.ug',
