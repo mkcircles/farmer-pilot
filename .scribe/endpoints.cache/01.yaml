@@ -28,11 +28,11 @@ endpoints:
         name: agent_id
         description: 'The id of the agent.'
         required: true
-        example: '1'
+        example: AGT001
         type: string
         custom: []
     cleanUrlParameters:
-      agent_id: '1'
+      agent_id: AGT001
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -223,7 +223,7 @@ endpoints:
         name: email
         description: 'The email of the agent. Example:'
         required: true
-        example: danyka22@example.org
+        example: imelda28@example.com
         type: string
         custom: []
       phone_number:
@@ -244,7 +244,7 @@ endpoints:
         name: gender
         description: ''
         required: true
-        example: quo
+        example: dolorem
         type: string
         custom: []
       residence:
@@ -279,29 +279,29 @@ endpoints:
         name: created_by
         description: ''
         required: true
-        example: 3
+        example: 9
         type: integer
         custom: []
       fpo_id:
         name: fpo_id
         description: ''
         required: true
-        example: 20
+        example: 18
         type: integer
         custom: []
     cleanBodyParameters:
       first_name: John
       last_name: Doe
-      email: danyka22@example.org
+      email: imelda28@example.com
       phone_number: 256XXXXXXXXX
       age: '30'
-      gender: quo
+      gender: dolorem
       residence: Kampala
       referee_name: 'Jane Doe'
       referee_phone_number: '08012345678'
       designation: 'Agro Extension Worker'
-      created_by: 3
-      fpo_id: 20
+      created_by: 9
+      fpo_id: 18
     fileParameters: []
     responses:
       -
@@ -455,7 +455,7 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: ut
+        example: sint
         type: string
         custom: []
       agent:
@@ -466,7 +466,7 @@ endpoints:
         type: string
         custom: []
     cleanUrlParameters:
-      id: ut
+      id: sint
       agent: '1'
     queryParameters: []
     cleanQueryParameters: []
@@ -566,7 +566,7 @@ endpoints:
         name: email
         description: 'The email of the agent. Example:'
         required: true
-        example: ylesch@example.org
+        example: swift.nicola@example.org
         type: string
         custom: []
       phone_number:
@@ -614,7 +614,7 @@ endpoints:
     cleanBodyParameters:
       first_name: John
       last_name: Doe
-      email: ylesch@example.org
+      email: swift.nicola@example.org
       phone_number: 256XXXXXXXXX
       age: '30'
       residence: Kampala
