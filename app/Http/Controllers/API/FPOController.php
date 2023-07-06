@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Agent;
+use App\Models\FarmerProfile;
 use App\Models\FPO;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -764,6 +765,147 @@ class FPOController extends Controller
             'success' => true,
             'message' => 'Agents retrieved successfully',
             'data' => $agents
+        ], 200);
+    }
+
+    /**
+     * Get FPO Farmers.
+     * 
+     * This endpoint allows you to fetch all farmers of a FPO.
+     * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
+     * 
+     * @urlParam id string required The id of the FPO.
+     * 
+     * @response 200 {
+     * "current_page": 1,
+     * "data": [
+     * {
+     * "id": 1,
+     * "first_name": "John",
+     * "last_name": "Doe",
+     * "phone_number": "256700000000",
+     * "fpo_id": 1,
+     * "created_at": "2021-06-30T11:30:00.000000Z",
+     * "updated_at": "2021-06-30T11:30:00.000000Z"
+     * },
+     * {
+     * "id": 2,
+     * "first_name": "Jane",
+     * "last_name": "Doe",
+     * "phone_number": "256700000000",
+     * "fpo_id": 1,
+     * "created_at": "2021-06-30T11:30:00.000000Z",
+     * "updated_at": "2021-06-30T11:30:00.000000Z"
+     * }
+     * ],
+     * "first_page_url": "http://localhost:8000/api/fpos/1/farmers?page=1",
+     * "from": 1,
+     * "last_page": 1,
+     * "last_page_url": "http://localhost:8000/api/fpos/1/farmers?page=1",
+     * "links": [
+     * {
+     * "url": null,
+     * "label": "&laquo; Previous",
+     * "active": false
+     * },
+     * {
+     * "url": "http://localhost:8000/api/fpos/1/farmers?page=1",
+     * "label": "1",
+     * "active": true
+     * },
+     * {
+     * "url": null,
+     * "label": "Next &raquo;",
+     * "active": false
+     * }
+     * ],
+     * "next_page_url": null,
+     * "path": "http://localhost:8000/api/fpos/1/farmers",
+     * "per_page": 15,
+     * "prev_page_url": null,
+     * "to": 2,
+     * "total": 2
+     * }
+     * }
+     * 
+     * @response 401 {
+     * "message": "Unauthenticated."
+     * }
+     * 
+     * @response 403 {
+     * "message": "This action is unauthorized."
+     * }
+     * 
+     * @response 404 {
+     * "message": "No farmers found"
+     * }
+     * 
+     * 
+     */
+    public function getFPOFarmers(string $id)
+    {
+        $farmers = FarmerProfile::where('fpo_id', $id)->paginate();
+        if($farmers->isEmpty()){
+            return response()->json([
+                'success' => false,
+                'message' => 'No farmers found',
+                'data' => null
+            ], 404);
+        }
+        return response()->json([
+            'success' => true,
+            'message' => 'Farmers retrieved successfully',
+            'data' => $farmers
+        ], 200);
+    }
+
+    /**
+     * Get FPO Coordinates
+     * 
+     * This endpoint allows you to fetch the coordinates of all FPOs.
+     * @authenticated
+     * 
+     * @response 200 {
+     * "success": true,
+     * "message": "FPOs coordinates retrieved successfully",
+     * "data": [
+     * {
+     * "id": 1,
+     * "fpo_name": "FPO 1",
+     * "fpo_cordinates": "0.347596,32.582520"
+     * },
+     * {
+     * "id": 2,
+     * "fpo_name": "FPO 2",
+     * "fpo_cordinates": "0.347596,32.582520"
+     * }
+     * ]
+     * }
+     * 
+     * @response 404 {
+     * "success": false,
+     * "message": "No FPOs found",
+     * "data": null
+     * }
+     * 
+     * 
+     */
+    public function getFPOCoordinates()
+    {
+        $fpos = FPO::all('id', 'fpo_name', 'fpo_cordinates');
+        if($fpos->isEmpty()){
+            return response()->json([
+                'success' => false,
+                'message' => 'No FPOs found',
+                'data' => null
+            ], 404);
+        }
+        return response()->json([
+            'success' => true,
+            'message' => 'FPOs coordinates retrieved successfully',
+            'data' => $fpos
         ], 200);
     }
 }
