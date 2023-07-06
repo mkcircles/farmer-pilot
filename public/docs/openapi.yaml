@@ -7,7 +7,7 @@ servers:
   -
     url: 'https://farmers.nauticaltech.ug'
 paths:
-  '/api/agent/{agent_id}/{first_name}':
+  '/api/agent/search/{agent_id}/{first_name}':
     get:
       summary: 'Search Agent'
       operationId: searchAgent
@@ -108,11 +108,11 @@ paths:
                 agent_id:
                   type: string
                   description: ''
-                  example: velit
+                  example: ratione
                 first_name:
                   type: string
                   description: ''
-                  example: pariatur
+                  example: voluptas
               required:
                 - agent_id
                 - first_name
@@ -550,7 +550,7 @@ paths:
                 email:
                   type: string
                   description: 'The email of the agent. Example:'
-                  example: jboehm@example.com
+                  example: mtreutel@example.com
                 phone_number:
                   type: string
                   description: 'The phone number of the agent.'
@@ -562,7 +562,7 @@ paths:
                 gender:
                   type: string
                   description: ''
-                  example: beatae
+                  example: facilis
                 residence:
                   type: string
                   description: 'The residence of the agent.'
@@ -582,11 +582,11 @@ paths:
                 created_by:
                   type: integer
                   description: ''
-                  example: 19
+                  example: 16
                 fpo_id:
                   type: integer
                   description: ''
-                  example: 7
+                  example: 11
               required:
                 - first_name
                 - last_name
@@ -713,7 +713,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the agent.'
-        example: quia
+        example: culpa
         required: true
         schema:
           type: string
@@ -967,7 +967,7 @@ paths:
                 email:
                   type: string
                   description: 'The email of the agent. Example:'
-                  example: fay06@example.net
+                  example: arlene.gerhold@example.net
                 phone_number:
                   type: string
                   description: 'The phone number of the agent.'
@@ -1153,11 +1153,11 @@ paths:
                 email:
                   type: string
                   description: 'The email address or phone number of the user'
-                  example: wsatterfield@example.org
+                  example: harmon.fay@example.org
                 password:
                   type: string
                   description: 'The password of the user'
-                  example: 'EC0lSOS#B38lc|MVc'
+                  example: '-\x82$'
               required:
                 - email
                 - password
@@ -1782,51 +1782,51 @@ paths:
                 fpo_name:
                   type: string
                   description: 'The name of the FPO.'
-                  example: fugiat
+                  example: dignissimos
                 district:
                   type: string
                   description: 'The district of the FPO.'
-                  example: ad
+                  example: assumenda
                 county:
                   type: string
                   description: 'The county of the FPO.'
-                  example: aperiam
+                  example: tempora
                 sub_county:
                   type: string
                   description: 'The sub county of the FPO.'
-                  example: tempore
+                  example: recusandae
                 parish:
                   type: string
                   description: 'The parish of the FPO.'
-                  example: vel
+                  example: fugit
                 village:
                   type: string
                   description: 'The village of the FPO.'
-                  example: et
+                  example: voluptatem
                 main_crop:
                   type: string
                   description: 'The main crop of the FPO.'
-                  example: voluptates
+                  example: qui
                 fpo_member_count:
                   type: integer
                   description: 'The number of FPO members.'
-                  example: 15
+                  example: 13
                 fpo_contact_name:
                   type: string
                   description: 'The contact name of the FPO.'
-                  example: voluptatem
+                  example: commodi
                 contact_phone_number:
                   type: string
                   description: 'The contact phone number of the FPO.'
-                  example: rem
+                  example: omnis
                 address:
                   type: string
                   description: ''
-                  example: eos
+                  example: velit
                 created_by:
                   type: integer
                   description: 'The userId  of the FPO creator.'
-                  example: 19
+                  example: 2
               required:
                 - fpo_name
                 - district
@@ -1977,7 +1977,7 @@ paths:
         in: path
         name: id
         description: 'The id of the FPO.'
-        example: iure
+        example: rerum
         required: true
         schema:
           type: string
@@ -2130,47 +2130,47 @@ paths:
                 fpo_name:
                   type: string
                   description: 'The name of the FPO.'
-                  example: et
+                  example: sapiente
                 district:
                   type: string
                   description: 'The district of the FPO.'
-                  example: provident
+                  example: et
                 county:
                   type: string
                   description: 'The county of the FPO.'
-                  example: omnis
+                  example: ut
                 sub_county:
                   type: string
                   description: 'The sub county of the FPO.'
-                  example: id
+                  example: odio
                 parish:
                   type: string
                   description: 'The parish of the FPO.'
-                  example: aspernatur
+                  example: nulla
                 village:
                   type: string
                   description: 'The village of the FPO.'
-                  example: aliquid
+                  example: quam
                 main_crop:
                   type: string
                   description: 'The main crop of the FPO.'
-                  example: incidunt
+                  example: aut
                 fpo_member_count:
                   type: integer
                   description: 'The number of FPO members.'
-                  example: 11
+                  example: 20
                 fpo_contact_name:
                   type: string
                   description: 'The contact name of the FPO.'
-                  example: unde
+                  example: autem
                 contact_phone_number:
                   type: string
                   description: 'The contact phone number of the FPO.'
-                  example: cumque
+                  example: vel
                 created_by:
                   type: integer
                   description: 'The userId  of the FPO creator.'
-                  example: 4
+                  example: 18
               required:
                 - fpo_name
                 - district
@@ -2188,7 +2188,7 @@ paths:
         in: path
         name: id
         description: 'The id of the FPO.'
-        example: accusantium
+        example: ipsum
         required: true
         schema:
           type: string
@@ -2401,7 +2401,7 @@ paths:
         in: path
         name: id
         description: 'The id of the FPO.'
-        example: facilis
+        example: expedita
         required: true
         schema:
           type: string
@@ -2582,7 +2582,7 @@ paths:
                 gender:
                   type: string
                   description: 'Farmer gender. Example Male/Female'
-                  example: sed
+                  example: deleniti
                 education_level:
                   type: string
                   description: 'The education level of the farmer.'

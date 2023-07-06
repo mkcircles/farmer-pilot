@@ -6,7 +6,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/agent/{agent_id}/{first_name}'
+    uri: 'api/agent/search/{agent_id}/{first_name}'
     metadata:
       groupName: 'Agent management'
       groupDescription: |-
@@ -46,19 +46,19 @@ endpoints:
         name: agent_id
         description: ''
         required: true
-        example: velit
+        example: ratione
         type: string
         custom: []
       first_name:
         name: first_name
         description: ''
         required: true
-        example: pariatur
+        example: voluptas
         type: string
         custom: []
     cleanBodyParameters:
-      agent_id: velit
-      first_name: pariatur
+      agent_id: ratione
+      first_name: voluptas
     fileParameters: []
     responses:
       -
@@ -268,7 +268,7 @@ endpoints:
         name: email
         description: 'The email of the agent. Example:'
         required: true
-        example: jboehm@example.com
+        example: mtreutel@example.com
         type: string
         custom: []
       phone_number:
@@ -289,7 +289,7 @@ endpoints:
         name: gender
         description: ''
         required: true
-        example: beatae
+        example: facilis
         type: string
         custom: []
       residence:
@@ -324,29 +324,29 @@ endpoints:
         name: created_by
         description: ''
         required: true
-        example: 19
+        example: 16
         type: integer
         custom: []
       fpo_id:
         name: fpo_id
         description: ''
         required: true
-        example: 7
+        example: 11
         type: integer
         custom: []
     cleanBodyParameters:
       first_name: John
       last_name: Doe
-      email: jboehm@example.com
+      email: mtreutel@example.com
       phone_number: 256XXXXXXXXX
       age: '30'
-      gender: beatae
+      gender: facilis
       residence: Kampala
       referee_name: 'Jane Doe'
       referee_phone_number: '08012345678'
       designation: 'Agro Extension Worker'
-      created_by: 19
-      fpo_id: 7
+      created_by: 16
+      fpo_id: 11
     fileParameters: []
     responses:
       -
@@ -500,7 +500,7 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: quia
+        example: culpa
         type: string
         custom: []
       agent:
@@ -511,7 +511,7 @@ endpoints:
         type: string
         custom: []
     cleanUrlParameters:
-      id: quia
+      id: culpa
       agent: '1'
     queryParameters: []
     cleanQueryParameters: []
@@ -611,7 +611,7 @@ endpoints:
         name: email
         description: 'The email of the agent. Example:'
         required: true
-        example: fay06@example.net
+        example: arlene.gerhold@example.net
         type: string
         custom: []
       phone_number:
@@ -659,7 +659,7 @@ endpoints:
     cleanBodyParameters:
       first_name: John
       last_name: Doe
-      email: fay06@example.net
+      email: arlene.gerhold@example.net
       phone_number: 256XXXXXXXXX
       age: '30'
       residence: Kampala
