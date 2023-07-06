@@ -665,6 +665,7 @@ class AgentController extends Controller
      * This endpoint allows a user to search for a specific agent by agent code
      * 
      * @urlParam agent_id required The id of the agent. Example: AGT001
+     * @urlParam first_name required The first name of the agent. Example: John
      * 
      * @response {
      * "status": "success",
@@ -691,7 +692,7 @@ class AgentController extends Controller
      * }
      * 
      */
-    public function getSearchAgent($agent_id)
+    public function getSearchAgent($agent_id, $first_name)
     {
         $agent = Agent::where('agent_code',$agent_id)->first();
         if(!$agent){
@@ -700,9 +701,18 @@ class AgentController extends Controller
                 'message' => 'Agent not found'
             ], 404);
         }
-        return response()->json([
-            'status' => 'success',
-            'data' => $agent
-        ], 200);
+        else{
+           if($agent->first_name != $first_name){
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Mismatched agent name'
+                ], 404);
+            }
+            return response()->json([
+                'status' => 'success',
+                'data' => $agent
+            ], 200);
+        }
+        
     }
 }

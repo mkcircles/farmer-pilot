@@ -7,7 +7,7 @@ servers:
   -
     url: 'https://farmers.nauticaltech.ug'
 paths:
-  '/api/agent/{agent_id}':
+  '/api/agent/{agent_id}/{first_name}':
     get:
       summary: 'Search Agent'
       operationId: searchAgent
@@ -107,6 +107,14 @@ paths:
         name: agent_id
         description: 'The id of the agent.'
         example: AGT001
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: first_name
+        description: 'The first name of the agent.'
+        example: John
         required: true
         schema:
           type: string
@@ -526,7 +534,7 @@ paths:
                 email:
                   type: string
                   description: 'The email of the agent. Example:'
-                  example: imelda28@example.com
+                  example: aboehm@example.com
                 phone_number:
                   type: string
                   description: 'The phone number of the agent.'
@@ -538,7 +546,7 @@ paths:
                 gender:
                   type: string
                   description: ''
-                  example: dolorem
+                  example: atque
                 residence:
                   type: string
                   description: 'The residence of the agent.'
@@ -558,11 +566,11 @@ paths:
                 created_by:
                   type: integer
                   description: ''
-                  example: 9
+                  example: 12
                 fpo_id:
                   type: integer
                   description: ''
-                  example: 18
+                  example: 1
               required:
                 - first_name
                 - last_name
@@ -689,7 +697,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the agent.'
-        example: sint
+        example: explicabo
         required: true
         schema:
           type: string
@@ -943,7 +951,7 @@ paths:
                 email:
                   type: string
                   description: 'The email of the agent. Example:'
-                  example: swift.nicola@example.org
+                  example: rafaela.bernier@example.com
                 phone_number:
                   type: string
                   description: 'The phone number of the agent.'
@@ -1129,11 +1137,11 @@ paths:
                 email:
                   type: string
                   description: 'The email address or phone number of the user'
-                  example: uwalter@example.net
+                  example: sauer.gilda@example.com
                 password:
                   type: string
                   description: 'The password of the user'
-                  example: '}wmI$=F'
+                  example: 'Vz0$W1G)QjP{|l'
               required:
                 - email
                 - password
@@ -1758,51 +1766,51 @@ paths:
                 fpo_name:
                   type: string
                   description: 'The name of the FPO.'
-                  example: quia
+                  example: quos
                 district:
                   type: string
                   description: 'The district of the FPO.'
-                  example: dolor
+                  example: aut
                 county:
                   type: string
                   description: 'The county of the FPO.'
-                  example: rerum
+                  example: amet
                 sub_county:
                   type: string
                   description: 'The sub county of the FPO.'
-                  example: qui
+                  example: ea
                 parish:
                   type: string
                   description: 'The parish of the FPO.'
-                  example: itaque
+                  example: eligendi
                 village:
                   type: string
                   description: 'The village of the FPO.'
-                  example: quibusdam
+                  example: dolor
                 main_crop:
                   type: string
                   description: 'The main crop of the FPO.'
-                  example: est
+                  example: omnis
                 fpo_member_count:
                   type: integer
                   description: 'The number of FPO members.'
-                  example: 10
+                  example: 4
                 fpo_contact_name:
                   type: string
                   description: 'The contact name of the FPO.'
-                  example: consequatur
+                  example: et
                 contact_phone_number:
                   type: string
                   description: 'The contact phone number of the FPO.'
-                  example: laudantium
+                  example: vitae
                 address:
                   type: string
                   description: ''
-                  example: rerum
+                  example: eligendi
                 created_by:
                   type: integer
                   description: 'The userId  of the FPO creator.'
-                  example: 2
+                  example: 13
               required:
                 - fpo_name
                 - district
@@ -1953,7 +1961,7 @@ paths:
         in: path
         name: id
         description: 'The id of the FPO.'
-        example: sed
+        example: molestiae
         required: true
         schema:
           type: string
@@ -2106,47 +2114,47 @@ paths:
                 fpo_name:
                   type: string
                   description: 'The name of the FPO.'
-                  example: doloremque
+                  example: quo
                 district:
                   type: string
                   description: 'The district of the FPO.'
-                  example: debitis
+                  example: qui
                 county:
                   type: string
                   description: 'The county of the FPO.'
-                  example: quae
+                  example: sunt
                 sub_county:
                   type: string
                   description: 'The sub county of the FPO.'
-                  example: quis
+                  example: ab
                 parish:
                   type: string
                   description: 'The parish of the FPO.'
-                  example: fuga
+                  example: quis
                 village:
                   type: string
                   description: 'The village of the FPO.'
-                  example: sed
+                  example: odit
                 main_crop:
                   type: string
                   description: 'The main crop of the FPO.'
-                  example: rerum
+                  example: commodi
                 fpo_member_count:
                   type: integer
                   description: 'The number of FPO members.'
-                  example: 13
+                  example: 12
                 fpo_contact_name:
                   type: string
                   description: 'The contact name of the FPO.'
-                  example: et
+                  example: ullam
                 contact_phone_number:
                   type: string
                   description: 'The contact phone number of the FPO.'
-                  example: aut
+                  example: est
                 created_by:
                   type: integer
                   description: 'The userId  of the FPO creator.'
-                  example: 1
+                  example: 17
               required:
                 - fpo_name
                 - district
@@ -2164,7 +2172,7 @@ paths:
         in: path
         name: id
         description: 'The id of the FPO.'
-        example: corporis
+        example: qui
         required: true
         schema:
           type: string
@@ -2173,7 +2181,14 @@ paths:
       summary: 'Get FPOs Agents.'
       operationId: getFPOsAgents
       description: 'This endpoint allows you to fetch all agents of a FPO.'
-      parameters: []
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'required The authorization token. Example: Bearer {token}'
+          schema:
+            type: string
       responses:
         200:
           description: ''
@@ -2369,8 +2384,8 @@ paths:
       -
         in: path
         name: id
-        description: 'The ID of the fpo.'
-        example: saepe
+        description: 'The id of the FPO.'
+        example: quidem
         required: true
         schema:
           type: string
@@ -2551,7 +2566,7 @@ paths:
                 gender:
                   type: string
                   description: 'Farmer gender. Example Male/Female'
-                  example: et
+                  example: incidunt
                 education_level:
                   type: string
                   description: 'The education level of the farmer.'

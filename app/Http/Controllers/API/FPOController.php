@@ -586,12 +586,15 @@ class FPOController extends Controller
         ], 200);
     }
 
-    //Get FPOs Agents
     /**
      * Get FPOs Agents.
      * 
      * This endpoint allows you to fetch all agents of a FPO.
      * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
+     * 
+     * @urlParam id string required The id of the FPO.
      * 
      * @response 200 {
      * "current_page": 1,
