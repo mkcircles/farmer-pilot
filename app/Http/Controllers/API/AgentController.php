@@ -349,92 +349,7 @@ class AgentController extends Controller
         //
     }
 
-    /**
-     * Update the Agent
-     * 
-     * This endpoint allows a user to update a specific agent
-     * @authenticated
-     * 
-     * @header Authorization required The authorization token. Example: Bearer {token}
-     * 
-     * @urlParam id required The id of the agent. Example: 1
-     * 
-     * @bodyParam first_name string required The first name of the agent. Example: John
-     * @bodyParam last_name string required The last name of the agent. Example: Doe
-     * @bodyParam email string required The email of the agent. Example:
-     * @bodyParam phone_number string required The phone number of the agent. Example: 256XXXXXXXXX
-     * @bodyParam age string required The age of the agent. Example: 30
-     * @bodyParam residence string required The residence of the agent. Example: Kampala
-     * @bodyParam referee_name string required The referee name of the agent. Example: Jane Doe
-     * @bodyParam referee_phone_number string required The referee phone number of the agent. Example: 08012345678
-     * @bodyParam designation string required The designation of the agent. Example: Agro Extension Worker
-     * 
-      * @response {
-     * "success": true,
-     * "message": "Agent created successfully",
-     * "data": {
-     * "first_name": "John",
-     * "last_name": "Doe",
-     * "email": "",
-     * "phone_number": "256XXXXXXXXX",
-     * "age": "30",
-     * "residence": "Kampala",
-     * "referee_name": "Jane Doe",
-     * "referee_phone_number": "08012345678",
-     * "designation": "Agro Extension Worker",
-     * "photo": "http://localhost:8000/storage/agents/1624810572IMG_20210627_174358.jpg",
-     * "updated_at": "2021-06-27T17:09:32.000000Z",
-     * "created_at": "2021-06-27T17:09:32.000000Z",
-     * "id": 1
-     * }
-     * }
-     * @response 400 {
-     * "success": false,
-     * "message": "Validation error",
-     * "data": {
-     * "first_name": [
-     * "The first name field is required."
-     * ],
-     * "last_name": [
-     * "The last name field is required."
-     * ],
-     * "phone_number": [
-     * "The phone number field is required."
-     * ],
-     * "age": [
-     * "The age field is required."
-     * ],
-     * "residence": [
-     * "The residence field is required."
-     * ],
-     * "referee_name": [
-     * "The referee name field is required."
-     * ],
-     * "referee_phone_number": [
-     * "The referee phone number field is required."
-     * ],
-     * "designation": [
-     * "The designation field is required."
-     * ]
-     * }
-     * }
-     * 
-     * @response 404 {
-     * "success": false,
-     * "message": "Agent not found",
-     * "data": null
-     * }
-     * 
-     * @response 500 {
-     * "success": false,
-     * "message": "Server error"
-     * }
-     * 
-     * @response 403 {
-     * "success": false,
-     * "message": "Forbidden"
-     * }
-     */
+   
     public function update(Request $request, $id)
     {
         //Update the agent
@@ -499,59 +414,7 @@ class AgentController extends Controller
     }
 
   
-    /**
-     * Delete the agent
-     * 
-     * This endpoint allows a user to delete a specific agent
-     * @authenticated
-     * 
-     * @header Authorization required The authorization token. Example: Bearer {token}
-     * 
-     * @urlParam id required The id of the agent. Example: 1
-     * 
-     * @response {
-     * "success": true,
-     * "message": "Agent deleted successfully",
-     * "data": {
-     * "id": 1,
-     * "first_name": "John",
-     * "last_name": "Doe",
-     * "email": "",
-     * "phone_number": "256XXXXXXXXX",
-     * "age": "30",
-     * "residence": "Kampala",
-     * "referee_name": "Jane Doe",
-     * "referee_phone_number": "08012345678",
-     * "designation": "Agro Extension Worker",
-     * "photo": "http://localhost:8000/storage/agents/1624810572IMG_20210627_174358.jpg",
-     * "created_at": "2021-06-27T17:09:32.000000Z",
-     * "updated_at": "2021-06-27T17:09:32.000000Z"
-     * }
-     * 
-     * @response 404 {
-     * "success": false,
-     * "message": "Agent not found",
-     * "data": null
-     * }
-     * 
-     * @response 500 {
-     * "success": false,
-     * "message": "Server error"
-     * }
-     * 
-     * @response 403 {
-     * "success": false,
-     * "message": "Forbidden"
-     * }
-     * 
-     * @response 400 {
-     * "success": false,
-     * "message": "Bad request"
-     * }
-     * 
-     * 
-     * 
-     */
+   
     public function destroy($id)
     {
         //Delete Agent
