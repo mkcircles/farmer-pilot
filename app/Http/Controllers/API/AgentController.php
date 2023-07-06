@@ -707,22 +707,23 @@ class AgentController extends Controller
      * @response 404 {
      * 
      */
-    public function getSearchAgent($agent_id, $first_name)
+    public function getSearchAgent(Request $request)
     {
-        $validate = Validator::make(['agent_id' => $agent_id, 'first_name' => $first_name],[
+
+        $validated = Validator::make($request->all(),[
             'agent_id' => 'required|string',
             'first_name' => 'required|string'
         ]);
 
-        if($validate->fails()){
+        if($validated->fails()){
             return response()->json([
                 'status' => 'error',
                 'message' => 'Validation error',
-                'data' => $validate->errors()
+                'data' => $validated->errors()
             ], 400);
         }
 
-        $agent = Agent::where('agent_code',$agent_id)->first();
+        $agent = Agent::where('agent_code',$request->agent_id)->first();
         if(!$agent){
             return response()->json([
                 'status' => 'error',
@@ -730,7 +731,7 @@ class AgentController extends Controller
             ], 404);
         }
         else{
-           if($agent->first_name != $first_name){
+           if($agent->first_name != $request->first_name){
                 return response()->json([
                     'status' => 'error',
                     'message' => 'Mismatched agent name'
