@@ -255,7 +255,7 @@ endpoints:
         name: email
         description: 'The email of the agent. Example:'
         required: true
-        example: rory.mraz@example.net
+        example: pjacobi@example.net
         type: string
         custom: []
       phone_number:
@@ -276,7 +276,7 @@ endpoints:
         name: gender
         description: ''
         required: true
-        example: libero
+        example: sit
         type: string
         custom: []
       residence:
@@ -311,29 +311,29 @@ endpoints:
         name: created_by
         description: ''
         required: true
-        example: 5
+        example: 14
         type: integer
         custom: []
       fpo_id:
         name: fpo_id
         description: ''
         required: true
-        example: 1
+        example: 11
         type: integer
         custom: []
     cleanBodyParameters:
       first_name: John
       last_name: Doe
-      email: rory.mraz@example.net
+      email: pjacobi@example.net
       phone_number: 256XXXXXXXXX
       age: '30'
-      gender: libero
+      gender: sit
       residence: Kampala
       referee_name: 'Jane Doe'
       referee_phone_number: '08012345678'
       designation: 'Agro Extension Worker'
-      created_by: 5
-      fpo_id: 1
+      created_by: 14
+      fpo_id: 11
     fileParameters: []
     responses:
       -
@@ -487,7 +487,7 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: facere
+        example: perspiciatis
         type: string
         custom: []
       agent:
@@ -498,7 +498,7 @@ endpoints:
         type: string
         custom: []
     cleanUrlParameters:
-      id: facere
+      id: perspiciatis
       agent: '1'
     queryParameters: []
     cleanQueryParameters: []
@@ -571,11 +571,11 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: quia
+        example: officiis
         type: string
         custom: []
     cleanUrlParameters:
-      id: quia
+      id: officiis
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

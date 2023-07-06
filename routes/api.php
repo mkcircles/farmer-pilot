@@ -4,6 +4,7 @@ use App\Http\Controllers\API\AgentController;
 use App\Http\Controllers\API\DataController;
 use App\Http\Controllers\API\FarmerProfileController;
 use App\Http\Controllers\API\FPOController;
+use App\Http\Controllers\API\SummaryController;
 use App\Http\Controllers\AUTH\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,9 @@ Route::controller(AuthController::class)->group(function () {
 
 
 Route::middleware('auth:sanctum')->group( function () {
+    //Summaries
+    Route::get('/summary', [SummaryController::class, 'DashboardSummary']);
+
     Route::post('/farmer/register', [FarmerProfileController::class, 'registerFarmer']);
     Route::get('/farmers', [DataController::class, 'getAllFarmers']);
     Route::get('/farmer/{id}', [DataController::class, 'getFarmer']);

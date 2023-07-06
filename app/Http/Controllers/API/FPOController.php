@@ -867,6 +867,8 @@ class FPOController extends Controller
      * This endpoint allows you to fetch the coordinates of all FPOs.
      * @authenticated
      * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
+     * 
      * @response 200 {
      * "success": true,
      * "message": "FPOs coordinates retrieved successfully",
