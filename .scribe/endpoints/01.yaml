@@ -41,8 +41,24 @@ endpoints:
       first_name: John
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
+    bodyParameters:
+      agent_id:
+        name: agent_id
+        description: ''
+        required: true
+        example: velit
+        type: string
+        custom: []
+      first_name:
+        name: first_name
+        description: ''
+        required: true
+        example: pariatur
+        type: string
+        custom: []
+    cleanBodyParameters:
+      agent_id: velit
+      first_name: pariatur
     fileParameters: []
     responses:
       -
@@ -70,12 +86,35 @@ endpoints:
         description: ''
         custom: []
       -
+        status: 400
+        content: |-
+          {
+          "status": "error",
+          "message": "Validation error",
+          "data": {
+          "agent_id": [
+          "The agent id field is required."
+          ],
+          "first_name": [
+          "The first name field is required."
+          ]
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
         status: 404
         content: |-
           {
           "status": "error",
           "message": "Agent not found"
           }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: '{'
         headers: []
         description: ''
         custom: []
@@ -229,7 +268,7 @@ endpoints:
         name: email
         description: 'The email of the agent. Example:'
         required: true
-        example: aboehm@example.com
+        example: jboehm@example.com
         type: string
         custom: []
       phone_number:
@@ -250,7 +289,7 @@ endpoints:
         name: gender
         description: ''
         required: true
-        example: atque
+        example: beatae
         type: string
         custom: []
       residence:
@@ -285,29 +324,29 @@ endpoints:
         name: created_by
         description: ''
         required: true
-        example: 12
+        example: 19
         type: integer
         custom: []
       fpo_id:
         name: fpo_id
         description: ''
         required: true
-        example: 1
+        example: 7
         type: integer
         custom: []
     cleanBodyParameters:
       first_name: John
       last_name: Doe
-      email: aboehm@example.com
+      email: jboehm@example.com
       phone_number: 256XXXXXXXXX
       age: '30'
-      gender: atque
+      gender: beatae
       residence: Kampala
       referee_name: 'Jane Doe'
       referee_phone_number: '08012345678'
       designation: 'Agro Extension Worker'
-      created_by: 12
-      fpo_id: 1
+      created_by: 19
+      fpo_id: 7
     fileParameters: []
     responses:
       -
@@ -461,7 +500,7 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: explicabo
+        example: quia
         type: string
         custom: []
       agent:
@@ -472,7 +511,7 @@ endpoints:
         type: string
         custom: []
     cleanUrlParameters:
-      id: explicabo
+      id: quia
       agent: '1'
     queryParameters: []
     cleanQueryParameters: []
@@ -572,7 +611,7 @@ endpoints:
         name: email
         description: 'The email of the agent. Example:'
         required: true
-        example: rafaela.bernier@example.com
+        example: fay06@example.net
         type: string
         custom: []
       phone_number:
@@ -620,7 +659,7 @@ endpoints:
     cleanBodyParameters:
       first_name: John
       last_name: Doe
-      email: rafaela.bernier@example.com
+      email: fay06@example.net
       phone_number: 256XXXXXXXXX
       age: '30'
       residence: Kampala

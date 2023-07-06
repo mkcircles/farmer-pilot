@@ -686,14 +686,42 @@ class AgentController extends Controller
      * }
      * }
      * 
+     * @response 400 {
+     * "status": "error",
+     * "message": "Validation error",
+     * "data": {
+     * "agent_id": [
+     * "The agent id field is required."
+     * ],
+     * "first_name": [
+     * "The first name field is required."
+     * ]
+     * }
+     * 
+     * 
      * @response 404 {
      * "status": "error",
      * "message": "Agent not found"
      * }
      * 
+     * @response 404 {
+     * 
      */
     public function getSearchAgent($agent_id, $first_name)
     {
+        $validate = Validator::make(['agent_id' => $agent_id, 'first_name' => $first_name],[
+            'agent_id' => 'required|string',
+            'first_name' => 'required|string'
+        ]);
+
+        if($validate->fails()){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation error',
+                'data' => $validate->errors()
+            ], 400);
+        }
+
         $agent = Agent::where('agent_code',$agent_id)->first();
         if(!$agent){
             return response()->json([

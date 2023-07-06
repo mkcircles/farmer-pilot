@@ -32,19 +32,19 @@ endpoints:
         name: email
         description: 'The email address or phone number of the user'
         required: true
-        example: sauer.gilda@example.com
+        example: wsatterfield@example.org
         type: string
         custom: []
       password:
         name: password
         description: 'The password of the user'
         required: true
-        example: 'Vz0$W1G)QjP{|l'
+        example: 'EC0lSOS#B38lc|MVc'
         type: string
         custom: []
     cleanBodyParameters:
-      email: sauer.gilda@example.com
-      password: 'Vz0$W1G)QjP{|l'
+      email: wsatterfield@example.org
+      password: 'EC0lSOS#B38lc|MVc'
     fileParameters: []
     responses:
       -
