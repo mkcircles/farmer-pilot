@@ -147,6 +147,7 @@ class AgentController extends Controller
      * "id": 1
      * }
      * }
+     * 
      * @response 400 {
      * "success": false,
      * "message": "Validation error",
@@ -696,6 +697,7 @@ class AgentController extends Controller
      * "first_name": [
      * "The first name field is required."
      * ]
+     * }
      * }
      * 
      * 

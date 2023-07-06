@@ -206,6 +206,8 @@ class FPOController extends Controller
      * }
      * }
      * 
+     * 
+     * 
      * @response 400 {
      * "success": false,
      * "message": "Validation error",
@@ -229,7 +231,7 @@ class FPOController extends Controller
      * "The village field is required."
      * ],
      * "main_crop": [
-     * ...
+     * "The main crop field is required."
      * ],
      * "fpo_contact_name": [
      * "The fpo contact name field is required."
@@ -345,8 +347,9 @@ class FPOController extends Controller
      * "created_by": 1,
      * "created_at": "2023-07-06T09:12:42.000000Z",
      * "updated_at": "2023-07-06T09:12:42.000000Z"
-     * },
      * }
+     * }
+     * 
      * 
      * @response 401 {
      * "message": "Unauthenticated."
@@ -446,9 +449,9 @@ class FPOController extends Controller
      * "created_by": 1,
      * "created_at": "2023-07-06T09:12:42.000000Z",
      * "updated_at": "2023-07-06T09:12:42.000000Z"
-     * },
      * }
      * }
+     * 
      * 
      * @response 400 {
      * "success": false,
@@ -487,6 +490,7 @@ class FPOController extends Controller
      * "created_by": [
      * "The created by field is required."
      * ]
+     * }
      * }
      * 
      * @response 401 {
@@ -601,7 +605,6 @@ class FPOController extends Controller
     * }
     *
     */
-
     public function destroy(string $id)
     {
         $fpo = FPO::find($id);
@@ -731,6 +734,7 @@ class FPOController extends Controller
      * "prev_page_url": null,
      * "to": 2,
      * "total": 2
+     * }
      * }
      * 
      * @response 401 {
