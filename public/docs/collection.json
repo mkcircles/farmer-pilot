@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Farmer Registration Pilot",
-        "_postman_id": "016126ec-98de-4ce2-a007-a5a93dacb040",
+        "_postman_id": "3c07fb6f-10fc-4cd4-aa77-35d559f37b6f",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -26,21 +26,7 @@
                             "host": "{{baseUrl}}",
                             "path": "api\/agent\/search",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/agent\/search",
-                            "variable": [
-                                {
-                                    "id": "agent_id",
-                                    "key": "agent_id",
-                                    "value": "AGT001",
-                                    "description": "The id of the agent."
-                                },
-                                {
-                                    "id": "first_name",
-                                    "key": "first_name",
-                                    "value": "John",
-                                    "description": "The first name of the agent."
-                                }
-                            ]
+                            "raw": "{{baseUrl}}\/api\/agent\/search"
                         },
                         "method": "POST",
                         "header": [
@@ -55,7 +41,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"agent_id\":\"sunt\",\"first_name\":\"eius\"}"
+                            "raw": "{\"agent_id\":\"AGT001\",\"first_name\":\"John\"}"
                         },
                         "description": "This endpoint allows a user to search for a specific agent by agent code",
                         "auth": {
@@ -157,7 +143,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"helen.labadie@example.org\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"gender\":\"quo\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\",\"created_by\":16,\"fpo_id\":6}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"carroll.abbigail@example.com\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"gender\":\"vel\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\",\"created_by\":9,\"fpo_id\":12}"
                         },
                         "description": ""
                     },
@@ -224,7 +210,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "maiores",
+                                    "value": "dignissimos",
                                     "description": "The ID of the agent."
                                 },
                                 {
@@ -302,7 +288,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"kovacek.haley@example.org\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\"}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"elenor.roob@example.net\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\"}"
                         },
                         "description": "This endpoint allows a user to update a specific agent"
                     },
@@ -417,7 +403,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"yesenia.maggio@example.com\",\"password\":\"uxfh>c'%r6Q4{2%Y=\"}"
+                            "raw": "{\"email\":\"ipurdy@example.org\",\"password\":\"u{=sjNnbOQsZN\\\/V\"}"
                         },
                         "description": "This endpoint allows a user to login",
                         "auth": {
@@ -742,7 +728,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"fpo_name\":\"ut\",\"district\":\"error\",\"county\":\"veniam\",\"sub_county\":\"amet\",\"parish\":\"asperiores\",\"village\":\"adipisci\",\"main_crop\":\"sed\",\"fpo_member_count\":16,\"fpo_contact_name\":\"et\",\"contact_phone_number\":\"voluptatum\",\"address\":\"voluptatem\",\"created_by\":13}"
+                            "raw": "{\"fpo_name\":\"omnis\",\"district\":\"mollitia\",\"county\":\"in\",\"sub_county\":\"officiis\",\"parish\":\"velit\",\"village\":\"consectetur\",\"main_crop\":\"sint\",\"fpo_member_count\":14,\"fpo_contact_name\":\"rerum\",\"contact_phone_number\":\"soluta\",\"address\":\"est\",\"created_by\":13}"
                         },
                         "description": "This endpoint allows you to create a new FPO."
                     },
@@ -791,7 +777,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "et",
+                                    "value": "sed",
                                     "description": "The id of the FPO."
                                 }
                             ]
@@ -853,7 +839,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "architecto",
+                                    "value": "soluta",
                                     "description": "The id of the FPO."
                                 }
                             ]
@@ -875,7 +861,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"fpo_name\":\"quod\",\"district\":\"cupiditate\",\"county\":\"nemo\",\"sub_county\":\"modi\",\"parish\":\"sunt\",\"village\":\"eligendi\",\"main_crop\":\"quaerat\",\"fpo_member_count\":5,\"fpo_contact_name\":\"ipsa\",\"contact_phone_number\":\"provident\",\"created_by\":6}"
+                            "raw": "{\"fpo_name\":\"voluptates\",\"district\":\"omnis\",\"county\":\"dolor\",\"sub_county\":\"doloremque\",\"parish\":\"nihil\",\"village\":\"officia\",\"main_crop\":\"earum\",\"fpo_member_count\":9,\"fpo_contact_name\":\"tempora\",\"contact_phone_number\":\"cum\",\"created_by\":2}"
                         },
                         "description": "This endpoint allows you to update a FPO by id."
                     },
@@ -924,7 +910,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "veniam",
+                                    "value": "aliquid",
                                     "description": "The id of the FPO."
                                 }
                             ]
@@ -1006,7 +992,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"dob\":\"1990-01-01\",\"gender\":\"recusandae\",\"education_level\":\"Primary\",\"phone_number\":\"0789123456\",\"id_number\":\"CM12345678\",\"marital_status\":\"Married\",\"district\":\"Kampala\",\"county\":\"Makindye\",\"sub_county\":\"Kibuye\",\"parish\":\"Kibuye\",\"village\":\"Kibuye\",\"fpo_id\":0,\"farmer_cordinates\":\"0.0000,0.0000\",\"next_of_kin\":\"Jane Doe\",\"next_of_kin_contact\":\"0789123456\",\"next_of_kin_relationship\":\"Wife\",\"male_members_in_household\":2,\"female_members_in_household\":4,\"members_above_18\":4,\"children_below_5\":2,\"school_going_children\":2,\"head_of_family\":\"John Doe\",\"how_much_do_you_earn_from_agricultural_activities\":\"100000\",\"how_much_do_you_earn_from_non_agricultural_activities\":\"100000\",\"do_you_have_an_account_with_an_FI\":\"Yes\",\"farm_size\":\"2\",\"farm_size_under_agriculture\":\"2\",\"land_ownership\":\"Owned\",\"type_of_farming\":\"Crop\",\"crops_grown\":\"Maize\",\"animals_kept\":\"Cattle\",\"estimated_produce_value_last_season\":\"100000\",\"estimated_produce_value_this_season\":\"100000\",\"data_captured_by\":\"1\",\"agent_id\":1}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"dob\":\"1990-01-01\",\"gender\":\"tempora\",\"education_level\":\"Primary\",\"phone_number\":\"0789123456\",\"id_number\":\"CM12345678\",\"marital_status\":\"Married\",\"district\":\"Kampala\",\"county\":\"Makindye\",\"sub_county\":\"Kibuye\",\"parish\":\"Kibuye\",\"village\":\"Kibuye\",\"fpo_id\":0,\"farmer_cordinates\":\"0.0000,0.0000\",\"next_of_kin\":\"Jane Doe\",\"next_of_kin_contact\":\"0789123456\",\"next_of_kin_relationship\":\"Wife\",\"male_members_in_household\":2,\"female_members_in_household\":4,\"members_above_18\":4,\"children_below_5\":2,\"school_going_children\":2,\"head_of_family\":\"John Doe\",\"how_much_do_you_earn_from_agricultural_activities\":\"100000\",\"how_much_do_you_earn_from_non_agricultural_activities\":\"100000\",\"do_you_have_an_account_with_an_FI\":\"Yes\",\"farm_size\":\"2\",\"farm_size_under_agriculture\":\"2\",\"land_ownership\":\"Owned\",\"type_of_farming\":\"Crop\",\"crops_grown\":\"Maize\",\"animals_kept\":\"Cattle\",\"estimated_produce_value_last_season\":\"100000\",\"estimated_produce_value_this_season\":\"100000\",\"data_captured_by\":\"1\",\"agent_id\":1}"
                         },
                         "description": "This endpoint allows a user to register a farmer"
                     },

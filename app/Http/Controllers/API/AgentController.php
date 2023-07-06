@@ -664,8 +664,8 @@ class AgentController extends Controller
      * 
      * This endpoint allows a user to search for a specific agent by agent code
      * 
-     * @urlParam agent_id required The id of the agent. Example: AGT001
-     * @urlParam first_name required The first name of the agent. Example: John
+     * @bodyParam agent_id required The id of the agent. Example: AGT001
+     * @bodyParam first_name required The first name of the agent. Example: John
      * 
      * @response {
      * "status": "success",
