@@ -530,7 +530,7 @@ paths:
                 email:
                   type: string
                   description: 'The email of the agent. Example:'
-                  example: wilfredo.thiel@example.org
+                  example: andre35@example.com
                 phone_number:
                   type: string
                   description: 'The phone number of the agent.'
@@ -542,7 +542,7 @@ paths:
                 gender:
                   type: string
                   description: ''
-                  example: quis
+                  example: voluptate
                 residence:
                   type: string
                   description: 'The residence of the agent.'
@@ -562,11 +562,11 @@ paths:
                 created_by:
                   type: integer
                   description: ''
-                  example: 10
+                  example: 6
                 fpo_id:
                   type: integer
                   description: ''
-                  example: 18
+                  example: 4
               required:
                 - first_name
                 - last_name
@@ -693,7 +693,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the agent.'
-        example: qui
+        example: eum
         required: true
         schema:
           type: string
@@ -947,7 +947,7 @@ paths:
                 email:
                   type: string
                   description: 'The email of the agent. Example:'
-                  example: uryan@example.net
+                  example: will.kyler@example.org
                 phone_number:
                   type: string
                   description: 'The phone number of the agent.'
@@ -1133,11 +1133,11 @@ paths:
                 email:
                   type: string
                   description: 'The email address or phone number of the user'
-                  example: lavinia.watsica@example.net
+                  example: uschmidt@example.org
                 password:
                   type: string
                   description: 'The password of the user'
-                  example: '\0T?UU\pv2''_ix=x4Rg'
+                  example: W;wYyjZg4v9qV;Sbrs-
               required:
                 - email
                 - password
@@ -1292,36 +1292,55 @@ paths:
                   data:
                     -
                       id: 1
-                      fpo_name: 'FPO 1'
-                      district: 'FPO 1 district'
-                      county: 'FPO 1 county'
-                      sub_county: 'FPO 1 sub county'
-                      parish: 'FPO 1 parish'
-                      village: 'FPO 1 village'
-                      main_crop: 'FPO 1 main crop'
-                      fpo_member_count: 1
-                      fpo_contact_name: 'FPO 1 contact name'
-                      contact_phone_number: 'FPO 1 contact phone number'
-                      Cert_of_Inc: 'FPO 1 cert of inc'
-                      address: 'FPO 1 address'
-                      created_at: '2021-06-30T11:30:00.000000Z'
-                      updated_at: '2021-06-30T11:30:00.000000Z'
+                      fpo_name: 'Root FPO'
+                      district: Kampala
+                      county: Kampala
+                      sub_county: Kampala
+                      parish: Kampala
+                      village: Kampala
+                      fpo_cordinates: null
+                      main_crop: Maize
+                      fpo_contact_name: 'Maurice Kamugisha'
+                      contact_phone_number: '256781456492'
+                      contact_email: maurice@innovationvillage.co.ug
+                      core_staff_count: '10'
+                      core_staff_positions: 'Chairman, Vice Chairman, Secretary, Treasurer, Accountant, Field Officer, Field Officer, Field Officer, Field Officer, Field Officer'
+                      registration_status: Registered
+                      fpo_membership_number: '495'
+                      fpo_female_membership: '295'
+                      fpo_male_youth: '120'
+                      fpo_female_youth: '175'
+                      fpo_field_agents: '10'
+                      Cert_of_Inc: null
+                      created_by: 1
+                      created_at: '2023-07-06T09:12:42.000000Z'
+                      updated_at: '2023-07-06T09:12:42.000000Z'
                     -
                       id: 2
-                      fpo_name: 'FPO 2'
-                      district: 'FPO 2 district'
-                      county: 'FPO 2 county'
-                      sub_county: 'FPO 2 sub county'
-                      parish: 'FPO 2 parish'
-                      village: 'FPO 2 village'
-                      main_crop: 'FPO 2 main crop'
-                      fpo_member_count: 2
-                      fpo_contact_name: 'FPO 2 contact name'
-                      contact_phone_number: 'FPO 2 contact phone number'
-                      Cert_of_Inc: 'FPO 2 cert of inc'
-                      address: 'FPO 2 address'
-                      created_at: '2021-06-30T11:30:00.000000Z'
-                      updated_at: '2021-06-30T11:30:00.000000Z'
+                      fpo_name: 'Ankole farmers cooperative'
+                      district: Sheema
+                      county: null
+                      sub_county: Sheema
+                      parish: Sheema
+                      village: Sheema
+                      fpo_cordinates: '0.3530341,32.6148231'
+                      main_crop: 'coffee maize beans bananas vegetable soya_beans'
+                      fpo_contact_name: 'Joseph wandera'
+                      contact_phone_number: ''
+                      contact_email: ''
+                      core_staff_count: '10'
+                      core_staff_positions: ''
+                      registration_status: 'no'
+                      fpo_membership_number: '1000'
+                      fpo_male_membership: '600'
+                      fpo_female_membership: '400'
+                      fpo_male_youth: ''
+                      fpo_female_youth: ''
+                      fpo_field_agents: '20'
+                      Cert_of_Inc: null
+                      created_by: 1
+                      created_at: '2023-07-06T09:12:42.000000Z'
+                      updated_at: '2023-07-06T09:12:42.000000Z'
                   first_page_url: 'http://localhost:8000/api/fpos?page=1'
                   from: 1
                   last_page: 1
@@ -1354,36 +1373,55 @@ paths:
                     example:
                       -
                         id: 1
-                        fpo_name: 'FPO 1'
-                        district: 'FPO 1 district'
-                        county: 'FPO 1 county'
-                        sub_county: 'FPO 1 sub county'
-                        parish: 'FPO 1 parish'
-                        village: 'FPO 1 village'
-                        main_crop: 'FPO 1 main crop'
-                        fpo_member_count: 1
-                        fpo_contact_name: 'FPO 1 contact name'
-                        contact_phone_number: 'FPO 1 contact phone number'
-                        Cert_of_Inc: 'FPO 1 cert of inc'
-                        address: 'FPO 1 address'
-                        created_at: '2021-06-30T11:30:00.000000Z'
-                        updated_at: '2021-06-30T11:30:00.000000Z'
+                        fpo_name: 'Root FPO'
+                        district: Kampala
+                        county: Kampala
+                        sub_county: Kampala
+                        parish: Kampala
+                        village: Kampala
+                        fpo_cordinates: null
+                        main_crop: Maize
+                        fpo_contact_name: 'Maurice Kamugisha'
+                        contact_phone_number: '256781456492'
+                        contact_email: maurice@innovationvillage.co.ug
+                        core_staff_count: '10'
+                        core_staff_positions: 'Chairman, Vice Chairman, Secretary, Treasurer, Accountant, Field Officer, Field Officer, Field Officer, Field Officer, Field Officer'
+                        registration_status: Registered
+                        fpo_membership_number: '495'
+                        fpo_female_membership: '295'
+                        fpo_male_youth: '120'
+                        fpo_female_youth: '175'
+                        fpo_field_agents: '10'
+                        Cert_of_Inc: null
+                        created_by: 1
+                        created_at: '2023-07-06T09:12:42.000000Z'
+                        updated_at: '2023-07-06T09:12:42.000000Z'
                       -
                         id: 2
-                        fpo_name: 'FPO 2'
-                        district: 'FPO 2 district'
-                        county: 'FPO 2 county'
-                        sub_county: 'FPO 2 sub county'
-                        parish: 'FPO 2 parish'
-                        village: 'FPO 2 village'
-                        main_crop: 'FPO 2 main crop'
-                        fpo_member_count: 2
-                        fpo_contact_name: 'FPO 2 contact name'
-                        contact_phone_number: 'FPO 2 contact phone number'
-                        Cert_of_Inc: 'FPO 2 cert of inc'
-                        address: 'FPO 2 address'
-                        created_at: '2021-06-30T11:30:00.000000Z'
-                        updated_at: '2021-06-30T11:30:00.000000Z'
+                        fpo_name: 'Ankole farmers cooperative'
+                        district: Sheema
+                        county: null
+                        sub_county: Sheema
+                        parish: Sheema
+                        village: Sheema
+                        fpo_cordinates: '0.3530341,32.6148231'
+                        main_crop: 'coffee maize beans bananas vegetable soya_beans'
+                        fpo_contact_name: 'Joseph wandera'
+                        contact_phone_number: ''
+                        contact_email: ''
+                        core_staff_count: '10'
+                        core_staff_positions: ''
+                        registration_status: 'no'
+                        fpo_membership_number: '1000'
+                        fpo_male_membership: '600'
+                        fpo_female_membership: '400'
+                        fpo_male_youth: ''
+                        fpo_female_youth: ''
+                        fpo_field_agents: '20'
+                        Cert_of_Inc: null
+                        created_by: 1
+                        created_at: '2023-07-06T09:12:42.000000Z'
+                        updated_at: '2023-07-06T09:12:42.000000Z'
                     items:
                       type: object
                       properties:
@@ -1392,46 +1430,73 @@ paths:
                           example: 1
                         fpo_name:
                           type: string
-                          example: 'FPO 1'
+                          example: 'Root FPO'
                         district:
                           type: string
-                          example: 'FPO 1 district'
+                          example: Kampala
                         county:
                           type: string
-                          example: 'FPO 1 county'
+                          example: Kampala
                         sub_county:
                           type: string
-                          example: 'FPO 1 sub county'
+                          example: Kampala
                         parish:
                           type: string
-                          example: 'FPO 1 parish'
+                          example: Kampala
                         village:
                           type: string
-                          example: 'FPO 1 village'
+                          example: Kampala
+                        fpo_cordinates:
+                          type: string
+                          example: null
                         main_crop:
                           type: string
-                          example: 'FPO 1 main crop'
-                        fpo_member_count:
-                          type: integer
-                          example: 1
+                          example: Maize
                         fpo_contact_name:
                           type: string
-                          example: 'FPO 1 contact name'
+                          example: 'Maurice Kamugisha'
                         contact_phone_number:
                           type: string
-                          example: 'FPO 1 contact phone number'
+                          example: '256781456492'
+                        contact_email:
+                          type: string
+                          example: maurice@innovationvillage.co.ug
+                        core_staff_count:
+                          type: string
+                          example: '10'
+                        core_staff_positions:
+                          type: string
+                          example: 'Chairman, Vice Chairman, Secretary, Treasurer, Accountant, Field Officer, Field Officer, Field Officer, Field Officer, Field Officer'
+                        registration_status:
+                          type: string
+                          example: Registered
+                        fpo_membership_number:
+                          type: string
+                          example: '495'
+                        fpo_female_membership:
+                          type: string
+                          example: '295'
+                        fpo_male_youth:
+                          type: string
+                          example: '120'
+                        fpo_female_youth:
+                          type: string
+                          example: '175'
+                        fpo_field_agents:
+                          type: string
+                          example: '10'
                         Cert_of_Inc:
                           type: string
-                          example: 'FPO 1 cert of inc'
-                        address:
-                          type: string
-                          example: 'FPO 1 address'
+                          example: null
+                        created_by:
+                          type: integer
+                          example: 1
                         created_at:
                           type: string
-                          example: '2021-06-30T11:30:00.000000Z'
+                          example: '2023-07-06T09:12:42.000000Z'
                         updated_at:
                           type: string
-                          example: '2021-06-30T11:30:00.000000Z'
+                          example: '2023-07-06T09:12:42.000000Z'
                   first_page_url:
                     type: string
                     example: 'http://localhost:8000/api/fpos?page=1'
@@ -1520,11 +1585,11 @@ paths:
               schema:
                 type: object
                 example:
-                  message: 'No query results for FPOs.'
+                  message: 'No FPOs found'
                 properties:
                   message:
                     type: string
-                    example: 'No query results for FPOs.'
+                    example: 'No FPOs found'
       tags:
         - 'FPO management'
   /api/fpos/summary:
@@ -1615,9 +1680,9 @@ paths:
         - 'FPO management'
   /api/fpo/register:
     post:
-      summary: 'Create FPO.'
-      operationId: createFPO
-      description: 'This endpoint allows you to create a new FPO.'
+      summary: 'Store a newly created FPO.'
+      operationId: storeANewlyCreatedFPO
+      description: 'This endpoint allows you to store a newly created FPO.'
       parameters:
         -
           in: header
@@ -1644,14 +1709,22 @@ paths:
                     parish: 'FPO 1 parish'
                     village: 'FPO 1 village'
                     main_crop: 'FPO 1 main crop'
-                    fpo_member_count: 1
                     fpo_contact_name: 'FPO 1 contact name'
                     contact_phone_number: 'FPO 1 contact phone number'
+                    contact_email: 'FPO 1 contact email'
+                    core_staff_count: 1
+                    core_staff_positions: 'FPO 1 core staff positions'
+                    registration_status: 'FPO 1 registration status'
+                    fpo_membership_number: 'FPO 1 membership number'
+                    fpo_male_membership: '600'
+                    fpo_female_membership: '400'
+                    fpo_male_youth: ''
+                    fpo_female_youth: ''
+                    fpo_field_agents: '20'
                     Cert_of_Inc: null
                     created_by: 1
-                    updated_at: '2021-06-30T11:30:00.000000Z'
-                    created_at: '2021-06-30T11:30:00.000000Z'
-                    id: 1
+                    created_at: '2023-07-06T09:12:42.000000Z'
+                    updated_at: '2023-07-06T09:12:42.000000Z'
                 properties:
                   success:
                     type: boolean
@@ -1683,37 +1756,61 @@ paths:
                       main_crop:
                         type: string
                         example: 'FPO 1 main crop'
-                      fpo_member_count:
-                        type: integer
-                        example: 1
                       fpo_contact_name:
                         type: string
                         example: 'FPO 1 contact name'
                       contact_phone_number:
                         type: string
                         example: 'FPO 1 contact phone number'
+                      contact_email:
+                        type: string
+                        example: 'FPO 1 contact email'
+                      core_staff_count:
+                        type: integer
+                        example: 1
+                      core_staff_positions:
+                        type: string
+                        example: 'FPO 1 core staff positions'
+                      registration_status:
+                        type: string
+                        example: 'FPO 1 registration status'
+                      fpo_membership_number:
+                        type: string
+                        example: 'FPO 1 membership number'
+                      fpo_male_membership:
+                        type: string
+                        example: '600'
+                      fpo_female_membership:
+                        type: string
+                        example: '400'
+                      fpo_male_youth:
+                        type: string
+                        example: ''
+                      fpo_female_youth:
+                        type: string
+                        example: ''
+                      fpo_field_agents:
+                        type: string
+                        example: '20'
                       Cert_of_Inc:
                         type: string
                         example: null
                       created_by:
                         type: integer
                         example: 1
-                      updated_at:
-                        type: string
-                        example: '2021-06-30T11:30:00.000000Z'
                       created_at:
                         type: string
-                        example: '2021-06-30T11:30:00.000000Z'
-                      id:
-                        type: integer
-                        example: 1
+                        example: '2023-07-06T09:12:42.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2023-07-06T09:12:42.000000Z'
         400:
           description: ''
           content:
             text/plain:
               schema:
                 type: string
-                example: "{\n\"success\": false,\n\"message\": \"Validation error\",\n\"data\": {\n\"fpo_name\": [\n\"The fpo name field is required.\"\n],\n\"district\": [\n\"The district field is required.\"\n],\n\"county\": [\n\"The county field is required.\"\n],\n\"sub_county\": [\n\"The sub county field is required.\"\n],\n\"parish\": [\n\"The parish field is required.\"\n],\n\"village\": [\n\"The village field is required.\"\n],\n\"main_crop\": [\n\"The main crop field is required.\"\n],\n\"fpo_member_count\": [\n\"The fpo member count field is required.\"\n],\n\"fpo_contact_name\": [\n\"The fpo contact name field is required.\"\n],\n\"contact_phone_number\": [\n\"The contact phone number field is required.\"\n],\n\"created_by\": [\n\"The created by field is required.\"\n]\n}"
+                example: "{\n\"success\": false,\n\"message\": \"Validation error\",\n\"data\": {\n\"fpo_name\": [\n\"The fpo name field is required.\"\n],\n\"district\": [\n\"The district field is required.\"\n],\n\"county\": [\n\"The county field is required.\"\n],\n\"sub_county\": [\n\"The sub county field is required.\"\n],\n\"parish\": [\n\"The parish field is required.\"\n],\n\"village\": [\n\"The village field is required.\"\n],\n\"main_crop\": [\n...\n],\n\"fpo_contact_name\": [\n\"The fpo contact name field is required.\"\n],\n\"contact_phone_number\": [\n\"The contact phone number field is required.\"\n],\n\"contact_email\": [\n\"The contact email field is required.\"\n],\n\"core_staff_count\": [\n\"The core staff count field is required.\"\n],\n\"core_staff_positions\": [\n\"The core staff positions field is required.\"\n],\n\"registration_status\": [\n\"The registration status field is required.\"\n],\n\"fpo_membership_number\": [\n\"The fpo membership number field is required.\"\n],\n}\n}"
         401:
           description: ''
           content:
@@ -1738,18 +1835,6 @@ paths:
                   message:
                     type: string
                     example: 'This action is unauthorized.'
-        404:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: 'No query results for FPOs.'
-                properties:
-                  message:
-                    type: string
-                    example: 'No query results for FPOs.'
       tags:
         - 'FPO management'
       requestBody:
@@ -1762,51 +1847,83 @@ paths:
                 fpo_name:
                   type: string
                   description: 'The name of the FPO.'
-                  example: mollitia
+                  example: culpa
                 district:
                   type: string
                   description: 'The district of the FPO.'
-                  example: fuga
+                  example: qui
                 county:
                   type: string
                   description: 'The county of the FPO.'
-                  example: quam
+                  example: et
                 sub_county:
                   type: string
                   description: 'The sub county of the FPO.'
-                  example: et
+                  example: repudiandae
                 parish:
                   type: string
                   description: 'The parish of the FPO.'
-                  example: deserunt
+                  example: mollitia
                 village:
                   type: string
                   description: 'The village of the FPO.'
-                  example: incidunt
+                  example: temporibus
                 main_crop:
                   type: string
                   description: 'The main crop of the FPO.'
-                  example: omnis
-                fpo_member_count:
-                  type: integer
-                  description: 'The number of FPO members.'
-                  example: 12
+                  example: non
                 fpo_contact_name:
                   type: string
                   description: 'The contact name of the FPO.'
-                  example: dolore
+                  example: nam
                 contact_phone_number:
                   type: string
                   description: 'The contact phone number of the FPO.'
-                  example: et
-                address:
+                  example: id
+                contact_email:
                   type: string
-                  description: ''
-                  example: omnis
+                  description: 'The contact email of the FPO.'
+                  example: justus.hamill@example.org
+                core_staff_count:
+                  type: integer
+                  description: 'The number of core staff of the FPO.'
+                  example: 15
+                core_staff_positions:
+                  type: string
+                  description: 'The positions of the core staff of the FPO.'
+                  example: aut
+                registration_status:
+                  type: string
+                  description: 'The registration status of the FPO.'
+                  example: eos
+                fpo_membership_number:
+                  type: string
+                  description: 'The membership number of the FPO.'
+                  example: quis
+                fpo_male_membership:
+                  type: string
+                  description: 'The male membership number of the FPO.'
+                  example: ducimus
+                fpo_female_membership:
+                  type: string
+                  description: 'The female membership number of the FPO.'
+                  example: ut
+                fpo_male_youth:
+                  type: string
+                  description: 'The male youth membership number of the FPO.'
+                  example: quia
+                fpo_female_youth:
+                  type: string
+                  description: 'The female youth membership number of the FPO.'
+                  example: molestias
+                fpo_field_agents:
+                  type: string
+                  description: 'The number of field agents of the FPO.'
+                  example: dolorum
                 created_by:
                   type: integer
-                  description: 'The userId  of the FPO creator.'
-                  example: 2
+                  description: ''
+                  example: 3
               required:
                 - fpo_name
                 - district
@@ -1815,10 +1932,18 @@ paths:
                 - parish
                 - village
                 - main_crop
-                - fpo_member_count
                 - fpo_contact_name
                 - contact_phone_number
-                - address
+                - contact_email
+                - core_staff_count
+                - core_staff_positions
+                - registration_status
+                - fpo_membership_number
+                - fpo_male_membership
+                - fpo_female_membership
+                - fpo_male_youth
+                - fpo_female_youth
+                - fpo_field_agents
                 - created_by
   '/api/fpo/{id}':
     get:
@@ -1837,83 +1962,10 @@ paths:
         200:
           description: ''
           content:
-            application/json:
+            text/plain:
               schema:
-                type: object
-                example:
-                  success: true
-                  message: 'FPO retrieved successfully'
-                  data:
-                    id: 1
-                    fpo_name: 'FPO 1'
-                    district: 'FPO 1 district'
-                    county: 'FPO 1 county'
-                    sub_county: 'FPO 1 sub county'
-                    parish: 'FPO 1 parish'
-                    village: 'FPO 1 village'
-                    main_crop: 'FPO 1 main crop'
-                    fpo_member_count: 1
-                    fpo_contact_name: 'FPO 1 contact name'
-                    contact_phone_number: 'FPO 1 contact phone number'
-                    Cert_of_Inc: 'FPO 1 cert of inc'
-                    address: 'FPO 1 address'
-                    created_at: '2021-06-30T11:30:00.000000Z'
-                    updated_at: '2021-06-30T11:30:00.000000Z'
-                properties:
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'FPO retrieved successfully'
-                  data:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                        example: 1
-                      fpo_name:
-                        type: string
-                        example: 'FPO 1'
-                      district:
-                        type: string
-                        example: 'FPO 1 district'
-                      county:
-                        type: string
-                        example: 'FPO 1 county'
-                      sub_county:
-                        type: string
-                        example: 'FPO 1 sub county'
-                      parish:
-                        type: string
-                        example: 'FPO 1 parish'
-                      village:
-                        type: string
-                        example: 'FPO 1 village'
-                      main_crop:
-                        type: string
-                        example: 'FPO 1 main crop'
-                      fpo_member_count:
-                        type: integer
-                        example: 1
-                      fpo_contact_name:
-                        type: string
-                        example: 'FPO 1 contact name'
-                      contact_phone_number:
-                        type: string
-                        example: 'FPO 1 contact phone number'
-                      Cert_of_Inc:
-                        type: string
-                        example: 'FPO 1 cert of inc'
-                      address:
-                        type: string
-                        example: 'FPO 1 address'
-                      created_at:
-                        type: string
-                        example: '2021-06-30T11:30:00.000000Z'
-                      updated_at:
-                        type: string
-                        example: '2021-06-30T11:30:00.000000Z'
+                type: string
+                example: "{\n\"success\": true,\n\"message\": \"FPO retrieved successfully\",\n {\n\"id\": 1,\n\"fpo_name\": \"Root FPO\",\n\"district\": \"Kampala\",\n\"county\": \"Kampala\",\n\"sub_county\": \"Kampala\",\n\"parish\": \"Kampala\",\n\"village\": \"Kampala\",\n\"fpo_cordinates\": null,\n\"main_crop\": \"Maize\",\n\"fpo_contact_name\": \"Maurice Kamugisha\",\n\"contact_phone_number\": \"256781456492\",\n\"contact_email\": \"maurice@innovationvillage.co.ug\",\n\"core_staff_count\": \"10\",\n\"core_staff_positions\": \"Chairman, Vice Chairman, Secretary, Treasurer, Accountant, Field Officer,r\",\n\"registration_status\": \"Registered\",\n\"fpo_membership_number\": \"495\",\n\"fpo_female_membership\": \"295\",\n\"fpo_male_youth\": \"120\",\n\"fpo_female_youth\": \"175\",\n\"fpo_field_agents\": \"10\",\n\"Cert_of_Inc\": null,\n\"created_by\": 1,\n\"created_at\": \"2023-07-06T09:12:42.000000Z\",\n\"updated_at\": \"2023-07-06T09:12:42.000000Z\"\n},\n}"
         401:
           description: ''
           content:
@@ -1957,7 +2009,7 @@ paths:
         in: path
         name: id
         description: 'The id of the FPO.'
-        example: qui
+        example: explicabo
         required: true
         schema:
           type: string
@@ -1978,83 +2030,10 @@ paths:
         200:
           description: ''
           content:
-            application/json:
+            text/plain:
               schema:
-                type: object
-                example:
-                  success: true
-                  message: 'FPO updated successfully'
-                  data:
-                    id: 1
-                    fpo_name: 'FPO 1'
-                    district: 'FPO 1 district'
-                    county: 'FPO 1 county'
-                    sub_county: 'FPO 1 sub county'
-                    parish: 'FPO 1 parish'
-                    village: 'FPO 1 village'
-                    main_crop: 'FPO 1 main crop'
-                    fpo_member_count: 1
-                    fpo_contact_name: 'FPO 1 contact name'
-                    contact_phone_number: 'FPO 1 contact phone number'
-                    Cert_of_Inc: 'FPO 1 cert of inc'
-                    address: 'FPO 1 address'
-                    created_at: '2021-06-30T11:30:00.000000Z'
-                    updated_at: '2021-06-30T11:30:00.000000Z'
-                properties:
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'FPO updated successfully'
-                  data:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                        example: 1
-                      fpo_name:
-                        type: string
-                        example: 'FPO 1'
-                      district:
-                        type: string
-                        example: 'FPO 1 district'
-                      county:
-                        type: string
-                        example: 'FPO 1 county'
-                      sub_county:
-                        type: string
-                        example: 'FPO 1 sub county'
-                      parish:
-                        type: string
-                        example: 'FPO 1 parish'
-                      village:
-                        type: string
-                        example: 'FPO 1 village'
-                      main_crop:
-                        type: string
-                        example: 'FPO 1 main crop'
-                      fpo_member_count:
-                        type: integer
-                        example: 1
-                      fpo_contact_name:
-                        type: string
-                        example: 'FPO 1 contact name'
-                      contact_phone_number:
-                        type: string
-                        example: 'FPO 1 contact phone number'
-                      Cert_of_Inc:
-                        type: string
-                        example: 'FPO 1 cert of inc'
-                      address:
-                        type: string
-                        example: 'FPO 1 address'
-                      created_at:
-                        type: string
-                        example: '2021-06-30T11:30:00.000000Z'
-                      updated_at:
-                        type: string
-                        example: '2021-06-30T11:30:00.000000Z'
+                type: string
+                example: "{\n\"success\": true,\n\"message\": \"FPO updated successfully\",\n\"data\": {\n\"id\": 1,\n\"fpo_name\": \"Root FPO\",\n\"district\": \"Kampala\",\n\"county\": \"Kampala\",\n\"sub_county\": \"Kampala\",\n\"parish\": \"Kampala\",\n\"village\": \"Kampala\",\n\"fpo_cordinates\": null,\n\"main_crop\": \"Maize\",\n\"fpo_contact_name\": \"Maurice Kamugisha\",\n\"contact_phone_number\": \"256781456492\",\n\"contact_email\": \"maurice@innovationvillage.co.ug\",\n\"core_staff_count\": \"10\",\n\"core_staff_positions\": \"Chairman, Vice Chairman, Secretary, Treasurer, Accountant, Field Officer,r\",\n\"registration_status\": \"Registered\",\n\"fpo_membership_number\": \"495\",\n\"fpo_female_membership\": \"295\",\n\"fpo_male_youth\": \"120\",\n\"fpo_female_youth\": \"175\",\n\"fpo_field_agents\": \"10\",\n\"Cert_of_Inc\": null,\n\"created_by\": 1,\n\"created_at\": \"2023-07-06T09:12:42.000000Z\",\n\"updated_at\": \"2023-07-06T09:12:42.000000Z\"\n},\n}\n}"
         400:
           description: ''
           content:
@@ -2110,47 +2089,83 @@ paths:
                 fpo_name:
                   type: string
                   description: 'The name of the FPO.'
-                  example: ratione
+                  example: quia
                 district:
                   type: string
                   description: 'The district of the FPO.'
-                  example: quibusdam
+                  example: qui
                 county:
                   type: string
                   description: 'The county of the FPO.'
-                  example: non
+                  example: iusto
                 sub_county:
                   type: string
                   description: 'The sub county of the FPO.'
-                  example: nostrum
+                  example: eius
                 parish:
                   type: string
                   description: 'The parish of the FPO.'
-                  example: quia
+                  example: provident
                 village:
                   type: string
                   description: 'The village of the FPO.'
-                  example: consectetur
+                  example: minima
                 main_crop:
                   type: string
                   description: 'The main crop of the FPO.'
-                  example: voluptatibus
-                fpo_member_count:
-                  type: integer
-                  description: 'The number of FPO members.'
-                  example: 15
+                  example: dolorem
                 fpo_contact_name:
                   type: string
                   description: 'The contact name of the FPO.'
-                  example: voluptatem
+                  example: quae
                 contact_phone_number:
                   type: string
                   description: 'The contact phone number of the FPO.'
-                  example: omnis
+                  example: veritatis
+                contact_email:
+                  type: string
+                  description: 'The contact email of the FPO.'
+                  example: weimann.irving@example.org
+                core_staff_count:
+                  type: integer
+                  description: 'The number of core staff of the FPO.'
+                  example: 18
+                core_staff_positions:
+                  type: string
+                  description: 'The positions of the core staff of the FPO.'
+                  example: laboriosam
+                registration_status:
+                  type: string
+                  description: 'The registration status of the FPO.'
+                  example: voluptas
+                fpo_membership_number:
+                  type: string
+                  description: 'The membership number of the FPO.'
+                  example: ex
+                fpo_male_membership:
+                  type: string
+                  description: 'The male membership number of the FPO.'
+                  example: est
+                fpo_female_membership:
+                  type: string
+                  description: 'The female membership number of the FPO.'
+                  example: corporis
+                fpo_male_youth:
+                  type: string
+                  description: 'The male youth membership number of the FPO.'
+                  example: quia
+                fpo_female_youth:
+                  type: string
+                  description: 'The female youth membership number of the FPO.'
+                  example: ratione
+                fpo_field_agents:
+                  type: string
+                  description: 'The number of field agents of the FPO.'
+                  example: sed
                 created_by:
                   type: integer
-                  description: 'The userId  of the FPO creator.'
-                  example: 5
+                  description: ''
+                  example: 9
               required:
                 - fpo_name
                 - district
@@ -2159,16 +2174,25 @@ paths:
                 - parish
                 - village
                 - main_crop
-                - fpo_member_count
                 - fpo_contact_name
                 - contact_phone_number
+                - contact_email
+                - core_staff_count
+                - core_staff_positions
+                - registration_status
+                - fpo_membership_number
+                - fpo_male_membership
+                - fpo_female_membership
+                - fpo_male_youth
+                - fpo_female_youth
+                - fpo_field_agents
                 - created_by
     parameters:
       -
         in: path
         name: id
         description: 'The id of the FPO.'
-        example: amet
+        example: consequatur
         required: true
         schema:
           type: string
@@ -2381,7 +2405,7 @@ paths:
         in: path
         name: id
         description: 'The id of the FPO.'
-        example: dolor
+        example: ea
         required: true
         schema:
           type: string
@@ -2562,7 +2586,7 @@ paths:
                 gender:
                   type: string
                   description: 'Farmer gender. Example Male/Female'
-                  example: enim
+                  example: alias
                 education_level:
                   type: string
                   description: 'The education level of the farmer.'

@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Farmer Registration Pilot",
-        "_postman_id": "7cce7236-a47e-4af9-adb4-8832cbfe5388",
+        "_postman_id": "eb4d1641-54c5-4fef-86ac-fceb06b3426e",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -143,7 +143,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"wilfredo.thiel@example.org\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"gender\":\"quis\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\",\"created_by\":10,\"fpo_id\":18}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"andre35@example.com\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"gender\":\"voluptate\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\",\"created_by\":6,\"fpo_id\":4}"
                         },
                         "description": ""
                     },
@@ -210,7 +210,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "qui",
+                                    "value": "eum",
                                     "description": "The ID of the agent."
                                 },
                                 {
@@ -288,7 +288,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"uryan@example.net\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\"}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"will.kyler@example.org\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\"}"
                         },
                         "description": "This endpoint allows a user to update a specific agent"
                     },
@@ -403,7 +403,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"lavinia.watsica@example.net\",\"password\":\"\\\\0T?UU\\\\pv2'_ix=x4Rg\"}"
+                            "raw": "{\"email\":\"uschmidt@example.org\",\"password\":\"W;wYyjZg4v9qV;Sbrs-\"}"
                         },
                         "description": "This endpoint allows a user to login",
                         "auth": {
@@ -629,7 +629,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n\"current_page\": 1,\n\"data\": [\n{\n\"id\": 1,\n\"fpo_name\": \"FPO 1\",\n\"district\": \"FPO 1 district\",\n\"county\": \"FPO 1 county\",\n\"sub_county\": \"FPO 1 sub county\",\n\"parish\": \"FPO 1 parish\",\n\"village\": \"FPO 1 village\",\n\"main_crop\": \"FPO 1 main crop\",\n\"fpo_member_count\": 1,\n\"fpo_contact_name\": \"FPO 1 contact name\",\n\"contact_phone_number\": \"FPO 1 contact phone number\",\n\"Cert_of_Inc\": \"FPO 1 cert of inc\",\n\"address\": \"FPO 1 address\",\n\"created_at\": \"2021-06-30T11:30:00.000000Z\",\n\"updated_at\": \"2021-06-30T11:30:00.000000Z\"\n},\n{\n\"id\": 2,\n\"fpo_name\": \"FPO 2\",\n\"district\": \"FPO 2 district\",\n\"county\": \"FPO 2 county\",\n\"sub_county\": \"FPO 2 sub county\",\n\"parish\": \"FPO 2 parish\",\n\"village\": \"FPO 2 village\",\n\"main_crop\": \"FPO 2 main crop\",\n\"fpo_member_count\": 2,\n\"fpo_contact_name\": \"FPO 2 contact name\",\n\"contact_phone_number\": \"FPO 2 contact phone number\",\n\"Cert_of_Inc\": \"FPO 2 cert of inc\",\n\"address\": \"FPO 2 address\",\n\"created_at\": \"2021-06-30T11:30:00.000000Z\",\n\"updated_at\": \"2021-06-30T11:30:00.000000Z\"\n}\n],\n\"first_page_url\": \"http:\/\/localhost:8000\/api\/fpos?page=1\",\n\"from\": 1,\n\"last_page\": 1,\n\"last_page_url\": \"http:\/\/localhost:8000\/api\/fpos?page=1\",\n\"links\": [\n{\n\"url\": null,\n\"label\": \"&laquo; Previous\",\n\"active\": false\n},\n{\n\"url\": \"http:\/\/localhost:8000\/api\/fpos?page=1\",\n\"label\": \"1\",\n\"active\": true\n},\n{\n\"url\": null,\n\"label\": \"Next &raquo;\",\n\"active\": false\n}\n],\n\"next_page_url\": null,\n\"path\": \"http:\/\/localhost:8000\/api\/fpos\",\n\"per_page\": 15,\n\"prev_page_url\": null,\n\"to\": 2,\n\"total\": 2\n}",
+                            "body": "{\n\"current_page\": 1,\n\"data\": [\n {\n\"id\": 1,\n\"fpo_name\": \"Root FPO\",\n\"district\": \"Kampala\",\n\"county\": \"Kampala\",\n\"sub_county\": \"Kampala\",\n\"parish\": \"Kampala\",\n\"village\": \"Kampala\",\n\"fpo_cordinates\": null,\n\"main_crop\": \"Maize\",\n\"fpo_contact_name\": \"Maurice Kamugisha\",\n\"contact_phone_number\": \"256781456492\",\n\"contact_email\": \"maurice@innovationvillage.co.ug\",\n\"core_staff_count\": \"10\",\n\"core_staff_positions\": \"Chairman, Vice Chairman, Secretary, Treasurer, Accountant, Field Officer, Field Officer, Field Officer, Field Officer, Field Officer\",\n\"registration_status\": \"Registered\",\n\"fpo_membership_number\": \"495\",\n\"fpo_female_membership\": \"295\",\n\"fpo_male_youth\": \"120\",\n\"fpo_female_youth\": \"175\",\n\"fpo_field_agents\": \"10\",\n\"Cert_of_Inc\": null,\n\"created_by\": 1,\n\"created_at\": \"2023-07-06T09:12:42.000000Z\",\n\"updated_at\": \"2023-07-06T09:12:42.000000Z\"\n},\n{\n\"id\": 2,\n\"fpo_name\": \"Ankole farmers cooperative\",\n\"district\": \"Sheema\",\n\"county\": null,\n\"sub_county\": \"Sheema\",\n\"parish\": \"Sheema\",\n\"village\": \"Sheema\",\n\"fpo_cordinates\": \"0.3530341,32.6148231\",\n\"main_crop\": \"coffee maize beans bananas vegetable soya_beans\",\n\"fpo_contact_name\": \"Joseph wandera\",\n\"contact_phone_number\": \"\",\n\"contact_email\": \"\",\n\"core_staff_count\": \"10\",\n\"core_staff_positions\": \"\",\n\"registration_status\": \"no\",\n\"fpo_membership_number\": \"1000\",\n\"fpo_male_membership\": \"600\",\n\"fpo_female_membership\": \"400\",\n\"fpo_male_youth\": \"\",\n\"fpo_female_youth\": \"\",\n\"fpo_field_agents\": \"20\",\n\"Cert_of_Inc\": null,\n\"created_by\": 1,\n\"created_at\": \"2023-07-06T09:12:42.000000Z\",\n\"updated_at\": \"2023-07-06T09:12:42.000000Z\"\n}\n],\n\"first_page_url\": \"http:\/\/localhost:8000\/api\/fpos?page=1\",\n\"from\": 1,\n\"last_page\": 1,\n\"last_page_url\": \"http:\/\/localhost:8000\/api\/fpos?page=1\",\n\"links\": [\n{\n\"url\": null,\n\"label\": \"&laquo; Previous\",\n\"active\": false\n},\n{\n\"url\": \"http:\/\/localhost:8000\/api\/fpos?page=1\",\n\"label\": \"1\",\n\"active\": true\n},\n{\n\"url\": null,\n\"label\": \"Next &raquo;\",\n\"active\": false\n}\n],\n\"next_page_url\": null,\n\"path\": \"http:\/\/localhost:8000\/api\/fpos\",\n\"per_page\": 15,\n\"prev_page_url\": null,\n\"to\": 2,\n\"total\": 2\n}",
                             "name": ""
                         },
                         {
@@ -647,7 +647,7 @@
                         {
                             "header": [],
                             "code": 404,
-                            "body": "{\n\"message\": \"No query results for FPOs.\"\n}",
+                            "body": "{\n\"message\": \"No FPOs found\"\n}",
                             "name": ""
                         }
                     ]
@@ -703,7 +703,7 @@
                     ]
                 },
                 {
-                    "name": "Create FPO.",
+                    "name": "Store a newly created FPO.",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -728,39 +728,33 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"fpo_name\":\"mollitia\",\"district\":\"fuga\",\"county\":\"quam\",\"sub_county\":\"et\",\"parish\":\"deserunt\",\"village\":\"incidunt\",\"main_crop\":\"omnis\",\"fpo_member_count\":12,\"fpo_contact_name\":\"dolore\",\"contact_phone_number\":\"et\",\"address\":\"omnis\",\"created_by\":2}"
+                            "raw": "{\"fpo_name\":\"culpa\",\"district\":\"qui\",\"county\":\"et\",\"sub_county\":\"repudiandae\",\"parish\":\"mollitia\",\"village\":\"temporibus\",\"main_crop\":\"non\",\"fpo_contact_name\":\"nam\",\"contact_phone_number\":\"id\",\"contact_email\":\"justus.hamill@example.org\",\"core_staff_count\":15,\"core_staff_positions\":\"aut\",\"registration_status\":\"eos\",\"fpo_membership_number\":\"quis\",\"fpo_male_membership\":\"ducimus\",\"fpo_female_membership\":\"ut\",\"fpo_male_youth\":\"quia\",\"fpo_female_youth\":\"molestias\",\"fpo_field_agents\":\"dolorum\",\"created_by\":3}"
                         },
-                        "description": "This endpoint allows you to create a new FPO."
+                        "description": "This endpoint allows you to store a newly created FPO."
                     },
                     "response": [
                         {
                             "header": [],
                             "code": 201,
-                            "body": "{\n\"success\": true,\n\"message\": \"FPO created successfully\",\n\"data\": {\n\"fpo_name\": \"FPO 1\",\n\"district\": \"FPO 1 district\",\n\"county\": \"FPO 1 county\",\n\"sub_county\": \"FPO 1 sub county\",\n\"parish\": \"FPO 1 parish\",\n\"village\": \"FPO 1 village\",\n\"main_crop\": \"FPO 1 main crop\",\n\"fpo_member_count\": 1,\n\"fpo_contact_name\": \"FPO 1 contact name\",\n\"contact_phone_number\": \"FPO 1 contact phone number\",\n\"Cert_of_Inc\": null,\n\"created_by\": 1,\n\"updated_at\": \"2021-06-30T11:30:00.000000Z\",\n\"created_at\": \"2021-06-30T11:30:00.000000Z\",\n\"id\": 1\n}\n}",
+                            "body": "{\n\"success\": true,\n\"message\": \"FPO created successfully\",\n\"data\": {\n\"fpo_name\": \"FPO 1\",\n\"district\": \"FPO 1 district\",\n\"county\": \"FPO 1 county\",\n\"sub_county\": \"FPO 1 sub county\",\n\"parish\": \"FPO 1 parish\",\n\"village\": \"FPO 1 village\",\n\"main_crop\": \"FPO 1 main crop\",\n\"fpo_contact_name\": \"FPO 1 contact name\",\n\"contact_phone_number\": \"FPO 1 contact phone number\",\n\"contact_email\": \"FPO 1 contact email\",\n\"core_staff_count\": 1,\n\"core_staff_positions\": \"FPO 1 core staff positions\",\n\"registration_status\": \"FPO 1 registration status\",\n\"fpo_membership_number\": \"FPO 1 membership number\",\n\"fpo_male_membership\": \"600\",\n\"fpo_female_membership\": \"400\",\n\"fpo_male_youth\": \"\",\n\"fpo_female_youth\": \"\",\n\"fpo_field_agents\": \"20\",\n\"Cert_of_Inc\": null,\n\"created_by\": 1,\n\"created_at\": \"2023-07-06T09:12:42.000000Z\",\n\"updated_at\": \"2023-07-06T09:12:42.000000Z\"\n}\n}",
                             "name": ""
                         },
                         {
                             "header": [],
                             "code": 400,
-                            "body": "{\n\"success\": false,\n\"message\": \"Validation error\",\n\"data\": {\n\"fpo_name\": [\n\"The fpo name field is required.\"\n],\n\"district\": [\n\"The district field is required.\"\n],\n\"county\": [\n\"The county field is required.\"\n],\n\"sub_county\": [\n\"The sub county field is required.\"\n],\n\"parish\": [\n\"The parish field is required.\"\n],\n\"village\": [\n\"The village field is required.\"\n],\n\"main_crop\": [\n\"The main crop field is required.\"\n],\n\"fpo_member_count\": [\n\"The fpo member count field is required.\"\n],\n\"fpo_contact_name\": [\n\"The fpo contact name field is required.\"\n],\n\"contact_phone_number\": [\n\"The contact phone number field is required.\"\n],\n\"created_by\": [\n\"The created by field is required.\"\n]\n}",
+                            "body": "{\n\"success\": false,\n\"message\": \"Validation error\",\n\"data\": {\n\"fpo_name\": [\n\"The fpo name field is required.\"\n],\n\"district\": [\n\"The district field is required.\"\n],\n\"county\": [\n\"The county field is required.\"\n],\n\"sub_county\": [\n\"The sub county field is required.\"\n],\n\"parish\": [\n\"The parish field is required.\"\n],\n\"village\": [\n\"The village field is required.\"\n],\n\"main_crop\": [\n...\n],\n\"fpo_contact_name\": [\n\"The fpo contact name field is required.\"\n],\n\"contact_phone_number\": [\n\"The contact phone number field is required.\"\n],\n\"contact_email\": [\n\"The contact email field is required.\"\n],\n\"core_staff_count\": [\n\"The core staff count field is required.\"\n],\n\"core_staff_positions\": [\n\"The core staff positions field is required.\"\n],\n\"registration_status\": [\n\"The registration status field is required.\"\n],\n\"fpo_membership_number\": [\n\"The fpo membership number field is required.\"\n],\n}\n}",
                             "name": ""
                         },
                         {
                             "header": [],
                             "code": 401,
-                            "body": "{\n\"message\": \"Unauthenticated.\"\n }",
+                            "body": "{\n\"message\": \"Unauthenticated.\"\n}",
                             "name": ""
                         },
                         {
                             "header": [],
                             "code": 403,
                             "body": "{\n\"message\": \"This action is unauthorized.\"\n}",
-                            "name": ""
-                        },
-                        {
-                            "header": [],
-                            "code": 404,
-                            "body": "{\n\"message\": \"No query results for FPOs.\"\n}",
                             "name": ""
                         }
                     ]
@@ -777,7 +771,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "qui",
+                                    "value": "explicabo",
                                     "description": "The id of the FPO."
                                 }
                             ]
@@ -804,7 +798,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n\"success\": true,\n\"message\": \"FPO retrieved successfully\",\n\"data\": {\n\"id\": 1,\n\"fpo_name\": \"FPO 1\",\n\"district\": \"FPO 1 district\",\n\"county\": \"FPO 1 county\",\n\"sub_county\": \"FPO 1 sub county\",\n\"parish\": \"FPO 1 parish\",\n\"village\": \"FPO 1 village\",\n\"main_crop\": \"FPO 1 main crop\",\n\"fpo_member_count\": 1,\n\"fpo_contact_name\": \"FPO 1 contact name\",\n\"contact_phone_number\": \"FPO 1 contact phone number\",\n\"Cert_of_Inc\": \"FPO 1 cert of inc\",\n\"address\": \"FPO 1 address\",\n\"created_at\": \"2021-06-30T11:30:00.000000Z\",\n\"updated_at\": \"2021-06-30T11:30:00.000000Z\"\n}\n}",
+                            "body": "{\n\"success\": true,\n\"message\": \"FPO retrieved successfully\",\n {\n\"id\": 1,\n\"fpo_name\": \"Root FPO\",\n\"district\": \"Kampala\",\n\"county\": \"Kampala\",\n\"sub_county\": \"Kampala\",\n\"parish\": \"Kampala\",\n\"village\": \"Kampala\",\n\"fpo_cordinates\": null,\n\"main_crop\": \"Maize\",\n\"fpo_contact_name\": \"Maurice Kamugisha\",\n\"contact_phone_number\": \"256781456492\",\n\"contact_email\": \"maurice@innovationvillage.co.ug\",\n\"core_staff_count\": \"10\",\n\"core_staff_positions\": \"Chairman, Vice Chairman, Secretary, Treasurer, Accountant, Field Officer,r\",\n\"registration_status\": \"Registered\",\n\"fpo_membership_number\": \"495\",\n\"fpo_female_membership\": \"295\",\n\"fpo_male_youth\": \"120\",\n\"fpo_female_youth\": \"175\",\n\"fpo_field_agents\": \"10\",\n\"Cert_of_Inc\": null,\n\"created_by\": 1,\n\"created_at\": \"2023-07-06T09:12:42.000000Z\",\n\"updated_at\": \"2023-07-06T09:12:42.000000Z\"\n},\n}",
                             "name": ""
                         },
                         {
@@ -839,7 +833,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "amet",
+                                    "value": "consequatur",
                                     "description": "The id of the FPO."
                                 }
                             ]
@@ -861,7 +855,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"fpo_name\":\"ratione\",\"district\":\"quibusdam\",\"county\":\"non\",\"sub_county\":\"nostrum\",\"parish\":\"quia\",\"village\":\"consectetur\",\"main_crop\":\"voluptatibus\",\"fpo_member_count\":15,\"fpo_contact_name\":\"voluptatem\",\"contact_phone_number\":\"omnis\",\"created_by\":5}"
+                            "raw": "{\"fpo_name\":\"quia\",\"district\":\"qui\",\"county\":\"iusto\",\"sub_county\":\"eius\",\"parish\":\"provident\",\"village\":\"minima\",\"main_crop\":\"dolorem\",\"fpo_contact_name\":\"quae\",\"contact_phone_number\":\"veritatis\",\"contact_email\":\"weimann.irving@example.org\",\"core_staff_count\":18,\"core_staff_positions\":\"laboriosam\",\"registration_status\":\"voluptas\",\"fpo_membership_number\":\"ex\",\"fpo_male_membership\":\"est\",\"fpo_female_membership\":\"corporis\",\"fpo_male_youth\":\"quia\",\"fpo_female_youth\":\"ratione\",\"fpo_field_agents\":\"sed\",\"created_by\":9}"
                         },
                         "description": "This endpoint allows you to update a FPO by id."
                     },
@@ -869,7 +863,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n\"success\": true,\n\"message\": \"FPO updated successfully\",\n\"data\": {\n\"id\": 1,\n\"fpo_name\": \"FPO 1\",\n\"district\": \"FPO 1 district\",\n\"county\": \"FPO 1 county\",\n\"sub_county\": \"FPO 1 sub county\",\n\"parish\": \"FPO 1 parish\",\n\"village\": \"FPO 1 village\",\n\"main_crop\": \"FPO 1 main crop\",\n\"fpo_member_count\": 1,\n\"fpo_contact_name\": \"FPO 1 contact name\",\n\"contact_phone_number\": \"FPO 1 contact phone number\",\n\"Cert_of_Inc\": \"FPO 1 cert of inc\",\n\"address\": \"FPO 1 address\",\n\"created_at\": \"2021-06-30T11:30:00.000000Z\",\n\"updated_at\": \"2021-06-30T11:30:00.000000Z\"\n}\n}",
+                            "body": "{\n\"success\": true,\n\"message\": \"FPO updated successfully\",\n\"data\": {\n\"id\": 1,\n\"fpo_name\": \"Root FPO\",\n\"district\": \"Kampala\",\n\"county\": \"Kampala\",\n\"sub_county\": \"Kampala\",\n\"parish\": \"Kampala\",\n\"village\": \"Kampala\",\n\"fpo_cordinates\": null,\n\"main_crop\": \"Maize\",\n\"fpo_contact_name\": \"Maurice Kamugisha\",\n\"contact_phone_number\": \"256781456492\",\n\"contact_email\": \"maurice@innovationvillage.co.ug\",\n\"core_staff_count\": \"10\",\n\"core_staff_positions\": \"Chairman, Vice Chairman, Secretary, Treasurer, Accountant, Field Officer,r\",\n\"registration_status\": \"Registered\",\n\"fpo_membership_number\": \"495\",\n\"fpo_female_membership\": \"295\",\n\"fpo_male_youth\": \"120\",\n\"fpo_female_youth\": \"175\",\n\"fpo_field_agents\": \"10\",\n\"Cert_of_Inc\": null,\n\"created_by\": 1,\n\"created_at\": \"2023-07-06T09:12:42.000000Z\",\n\"updated_at\": \"2023-07-06T09:12:42.000000Z\"\n},\n}\n}",
                             "name": ""
                         },
                         {
@@ -910,7 +904,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "dolor",
+                                    "value": "ea",
                                     "description": "The id of the FPO."
                                 }
                             ]
@@ -992,7 +986,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"dob\":\"1990-01-01\",\"gender\":\"enim\",\"education_level\":\"Primary\",\"phone_number\":\"0789123456\",\"id_number\":\"CM12345678\",\"marital_status\":\"Married\",\"district\":\"Kampala\",\"county\":\"Makindye\",\"sub_county\":\"Kibuye\",\"parish\":\"Kibuye\",\"village\":\"Kibuye\",\"fpo_id\":0,\"farmer_cordinates\":\"0.0000,0.0000\",\"next_of_kin\":\"Jane Doe\",\"next_of_kin_contact\":\"0789123456\",\"next_of_kin_relationship\":\"Wife\",\"male_members_in_household\":2,\"female_members_in_household\":4,\"members_above_18\":4,\"children_below_5\":2,\"school_going_children\":2,\"head_of_family\":\"John Doe\",\"how_much_do_you_earn_from_agricultural_activities\":\"100000\",\"how_much_do_you_earn_from_non_agricultural_activities\":\"100000\",\"do_you_have_an_account_with_an_FI\":\"Yes\",\"farm_size\":\"2\",\"farm_size_under_agriculture\":\"2\",\"land_ownership\":\"Owned\",\"type_of_farming\":\"Crop\",\"crops_grown\":\"Maize\",\"animals_kept\":\"Cattle\",\"estimated_produce_value_last_season\":\"100000\",\"estimated_produce_value_this_season\":\"100000\",\"data_captured_by\":\"1\",\"agent_id\":1}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"dob\":\"1990-01-01\",\"gender\":\"alias\",\"education_level\":\"Primary\",\"phone_number\":\"0789123456\",\"id_number\":\"CM12345678\",\"marital_status\":\"Married\",\"district\":\"Kampala\",\"county\":\"Makindye\",\"sub_county\":\"Kibuye\",\"parish\":\"Kibuye\",\"village\":\"Kibuye\",\"fpo_id\":0,\"farmer_cordinates\":\"0.0000,0.0000\",\"next_of_kin\":\"Jane Doe\",\"next_of_kin_contact\":\"0789123456\",\"next_of_kin_relationship\":\"Wife\",\"male_members_in_household\":2,\"female_members_in_household\":4,\"members_above_18\":4,\"children_below_5\":2,\"school_going_children\":2,\"head_of_family\":\"John Doe\",\"how_much_do_you_earn_from_agricultural_activities\":\"100000\",\"how_much_do_you_earn_from_non_agricultural_activities\":\"100000\",\"do_you_have_an_account_with_an_FI\":\"Yes\",\"farm_size\":\"2\",\"farm_size_under_agriculture\":\"2\",\"land_ownership\":\"Owned\",\"type_of_farming\":\"Crop\",\"crops_grown\":\"Maize\",\"animals_kept\":\"Cattle\",\"estimated_produce_value_last_season\":\"100000\",\"estimated_produce_value_this_season\":\"100000\",\"data_captured_by\":\"1\",\"agent_id\":1}"
                         },
                         "description": "This endpoint allows a user to register a farmer"
                     },

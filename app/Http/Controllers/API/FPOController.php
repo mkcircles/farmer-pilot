@@ -26,39 +26,58 @@ class FPOController extends Controller
      * @response 200 {
      * "current_page": 1,
      * "data": [
-     * {
+     *  {
      * "id": 1,
-     * "fpo_name": "FPO 1",
-     * "district": "FPO 1 district",
-     * "county": "FPO 1 county",
-     * "sub_county": "FPO 1 sub county",
-     * "parish": "FPO 1 parish",
-     * "village": "FPO 1 village",
-     * "main_crop": "FPO 1 main crop",
-     * "fpo_member_count": 1,
-     * "fpo_contact_name": "FPO 1 contact name",
-     * "contact_phone_number": "FPO 1 contact phone number",
-     * "Cert_of_Inc": "FPO 1 cert of inc",
-     * "address": "FPO 1 address",
-     * "created_at": "2021-06-30T11:30:00.000000Z",
-     * "updated_at": "2021-06-30T11:30:00.000000Z"
+     * "fpo_name": "Root FPO",
+     * "district": "Kampala",
+     * "county": "Kampala",
+     * "sub_county": "Kampala",
+     * "parish": "Kampala",
+     * "village": "Kampala",
+     * "fpo_cordinates": null,
+     * "main_crop": "Maize",
+     * "fpo_contact_name": "Maurice Kamugisha",
+     * "contact_phone_number": "256781456492",
+     * "contact_email": "maurice@innovationvillage.co.ug",
+     * "core_staff_count": "10",
+     * "core_staff_positions": "Chairman, Vice Chairman, Secretary, Treasurer, Accountant, Field Officer, Field Officer, Field Officer, Field Officer, Field Officer",
+     * "registration_status": "Registered",
+     * "fpo_membership_number": "495",
+     * "fpo_female_membership": "295",
+     * "fpo_male_youth": "120",
+     * "fpo_female_youth": "175",
+     * "fpo_field_agents": "10",
+     * "Cert_of_Inc": null,
+     * "created_by": 1,
+     * "created_at": "2023-07-06T09:12:42.000000Z",
+     * "updated_at": "2023-07-06T09:12:42.000000Z"
      * },
      * {
      * "id": 2,
-     * "fpo_name": "FPO 2",
-     * "district": "FPO 2 district",
-     * "county": "FPO 2 county",
-     * "sub_county": "FPO 2 sub county",
-     * "parish": "FPO 2 parish",
-     * "village": "FPO 2 village",
-     * "main_crop": "FPO 2 main crop",
-     * "fpo_member_count": 2,
-     * "fpo_contact_name": "FPO 2 contact name",
-     * "contact_phone_number": "FPO 2 contact phone number",
-     * "Cert_of_Inc": "FPO 2 cert of inc",
-     * "address": "FPO 2 address",
-     * "created_at": "2021-06-30T11:30:00.000000Z",
-     * "updated_at": "2021-06-30T11:30:00.000000Z"
+     * "fpo_name": "Ankole farmers cooperative",
+     * "district": "Sheema",
+     * "county": null,
+     * "sub_county": "Sheema",
+     * "parish": "Sheema",
+     * "village": "Sheema",
+     * "fpo_cordinates": "0.3530341,32.6148231",
+     * "main_crop": "coffee maize beans bananas vegetable soya_beans",
+     * "fpo_contact_name": "Joseph wandera",
+     * "contact_phone_number": "",
+     * "contact_email": "",
+     * "core_staff_count": "10",
+     * "core_staff_positions": "",
+     * "registration_status": "no",
+     * "fpo_membership_number": "1000",
+     * "fpo_male_membership": "600",
+     * "fpo_female_membership": "400",
+     * "fpo_male_youth": "",
+     * "fpo_female_youth": "",
+     * "fpo_field_agents": "20",
+     * "Cert_of_Inc": null,
+     * "created_by": 1,
+     * "created_at": "2023-07-06T09:12:42.000000Z",
+     * "updated_at": "2023-07-06T09:12:42.000000Z"
      * }
      * ],
      * "first_page_url": "http://localhost:8000/api/fpos?page=1",
@@ -99,7 +118,7 @@ class FPOController extends Controller
      * }
      * 
      * @response 404 {
-     * "message": "No query results for FPOs."
+     * "message": "No FPOs found"
      * }
      * 
      */
@@ -130,9 +149,9 @@ class FPOController extends Controller
     }
 
     /**
-     * Create FPO.
+     * Store a newly created FPO.
      * 
-     * This endpoint allows you to create a new FPO.
+     * This endpoint allows you to store a newly created FPO.
      * @authenticated
      * 
      * @header Authorization required The authorization token. Example: Bearer {token}
@@ -144,10 +163,18 @@ class FPOController extends Controller
      * @bodyParam parish string required The parish of the FPO.
      * @bodyParam village string required The village of the FPO.
      * @bodyParam main_crop string required The main crop of the FPO.
-     * @bodyParam fpo_member_count integer required The number of FPO members.
      * @bodyParam fpo_contact_name string required The contact name of the FPO.
      * @bodyParam contact_phone_number string required The contact phone number of the FPO.
-     * @bodyParam created_by integer required The userId  of the FPO creator.
+     * @bodyParam contact_email string required The contact email of the FPO.
+     * @bodyParam core_staff_count integer required The number of core staff of the FPO.
+     * @bodyParam core_staff_positions string required The positions of the core staff of the FPO.
+     * @bodyParam registration_status string required The registration status of the FPO.
+     * @bodyParam fpo_membership_number string required The membership number of the FPO.
+     * @bodyParam fpo_male_membership string required The male membership number of the FPO.
+     * @bodyParam fpo_female_membership string required The female membership number of the FPO.
+     * @bodyParam fpo_male_youth string required The male youth membership number of the FPO.
+     * @bodyParam fpo_female_youth string required The female youth membership number of the FPO.
+     * @bodyParam fpo_field_agents string required The number of field agents of the FPO.
      * 
      * @response 201 {
      * "success": true,
@@ -160,14 +187,22 @@ class FPOController extends Controller
      * "parish": "FPO 1 parish",
      * "village": "FPO 1 village",
      * "main_crop": "FPO 1 main crop",
-     * "fpo_member_count": 1,
      * "fpo_contact_name": "FPO 1 contact name",
      * "contact_phone_number": "FPO 1 contact phone number",
+     * "contact_email": "FPO 1 contact email",
+     * "core_staff_count": 1,
+     * "core_staff_positions": "FPO 1 core staff positions",
+     * "registration_status": "FPO 1 registration status",
+     * "fpo_membership_number": "FPO 1 membership number",
+     * "fpo_male_membership": "600",
+     * "fpo_female_membership": "400",
+     * "fpo_male_youth": "",
+     * "fpo_female_youth": "",
+     * "fpo_field_agents": "20",
      * "Cert_of_Inc": null,
      * "created_by": 1,
-     * "updated_at": "2021-06-30T11:30:00.000000Z",
-     * "created_at": "2021-06-30T11:30:00.000000Z",
-     * "id": 1
+     * "created_at": "2023-07-06T09:12:42.000000Z",
+     * "updated_at": "2023-07-06T09:12:42.000000Z"
      * }
      * }
      * 
@@ -194,10 +229,7 @@ class FPOController extends Controller
      * "The village field is required."
      * ],
      * "main_crop": [
-     * "The main crop field is required."
-     * ],
-     * "fpo_member_count": [
-     * "The fpo member count field is required."
+     * ...
      * ],
      * "fpo_contact_name": [
      * "The fpo contact name field is required."
@@ -205,24 +237,34 @@ class FPOController extends Controller
      * "contact_phone_number": [
      * "The contact phone number field is required."
      * ],
-     * "created_by": [
-     * "The created by field is required."
-     * ]
+     * "contact_email": [
+     * "The contact email field is required."
+     * ],
+     * "core_staff_count": [
+     * "The core staff count field is required."
+     * ],
+     * "core_staff_positions": [
+     * "The core staff positions field is required."
+     * ],
+     * "registration_status": [
+     * "The registration status field is required."
+     * ],
+     * "fpo_membership_number": [
+     * "The fpo membership number field is required."
+     * ],
+     * }
      * }
      * 
      * @response 401 {
      * "message": "Unauthenticated."
-     *  }
+     * }
+     * 
      * @response 403 {
      * "message": "This action is unauthorized."
      * }
      * 
-     * @response 404 {
-     * "message": "No query results for FPOs."
-     * }
      * 
      */
-    
     public function store(Request $request)
     {
         $validated = Validator::make($request->all(),[
@@ -233,11 +275,19 @@ class FPOController extends Controller
             'parish' => 'required|string',
             'village' => 'required|string',
             'main_crop' => 'required|string',
-            'fpo_member_count' => 'required|integer',
             'fpo_contact_name' => 'required|string',
             'contact_phone_number' => 'required|string',
-            'address' => 'required|string',
-            'created_by' => 'required|integer',
+            'contact_email' => 'required|string',
+            'core_staff_count' => 'required|integer',
+            'core_staff_positions' => 'required|string',
+            'registration_status' => 'required|string',
+            "fpo_membership_number" => "required|string",
+            "fpo_male_membership" => "required|string",
+            "fpo_female_membership" => "required|string",
+            "fpo_male_youth" => "required|string",
+            "fpo_female_youth" => "required|string",
+            "fpo_field_agents" => "required|string",
+            "created_by" => "required|integer",
         ]);
 
         if($validated->fails()){
@@ -270,23 +320,32 @@ class FPOController extends Controller
      * @response 200 {
      * "success": true,
      * "message": "FPO retrieved successfully",
-     * "data": {
+     *  {
      * "id": 1,
-     * "fpo_name": "FPO 1",
-     * "district": "FPO 1 district",
-     * "county": "FPO 1 county",
-     * "sub_county": "FPO 1 sub county",
-     * "parish": "FPO 1 parish",
-     * "village": "FPO 1 village",
-     * "main_crop": "FPO 1 main crop",
-     * "fpo_member_count": 1,
-     * "fpo_contact_name": "FPO 1 contact name",
-     * "contact_phone_number": "FPO 1 contact phone number",
-     * "Cert_of_Inc": "FPO 1 cert of inc",
-     * "address": "FPO 1 address",
-     * "created_at": "2021-06-30T11:30:00.000000Z",
-     * "updated_at": "2021-06-30T11:30:00.000000Z"
-     * }
+     * "fpo_name": "Root FPO",
+     * "district": "Kampala",
+     * "county": "Kampala",
+     * "sub_county": "Kampala",
+     * "parish": "Kampala",
+     * "village": "Kampala",
+     * "fpo_cordinates": null,
+     * "main_crop": "Maize",
+     * "fpo_contact_name": "Maurice Kamugisha",
+     * "contact_phone_number": "256781456492",
+     * "contact_email": "maurice@innovationvillage.co.ug",
+     * "core_staff_count": "10",
+     * "core_staff_positions": "Chairman, Vice Chairman, Secretary, Treasurer, Accountant, Field Officer,r",
+     * "registration_status": "Registered",
+     * "fpo_membership_number": "495",
+     * "fpo_female_membership": "295",
+     * "fpo_male_youth": "120",
+     * "fpo_female_youth": "175",
+     * "fpo_field_agents": "10",
+     * "Cert_of_Inc": null,
+     * "created_by": 1,
+     * "created_at": "2023-07-06T09:12:42.000000Z",
+     * "updated_at": "2023-07-06T09:12:42.000000Z"
+     * },
      * }
      * 
      * @response 401 {
@@ -346,30 +405,48 @@ class FPOController extends Controller
      * @bodyParam parish string required The parish of the FPO.
      * @bodyParam village string required The village of the FPO.
      * @bodyParam main_crop string required The main crop of the FPO.
-     * @bodyParam fpo_member_count integer required The number of FPO members.
      * @bodyParam fpo_contact_name string required The contact name of the FPO.
      * @bodyParam contact_phone_number string required The contact phone number of the FPO.
-     * @bodyParam created_by integer required The userId  of the FPO creator.
+     * @bodyParam contact_email string required The contact email of the FPO.
+     * @bodyParam core_staff_count integer required The number of core staff of the FPO.
+     * @bodyParam core_staff_positions string required The positions of the core staff of the FPO.
+     * @bodyParam registration_status string required The registration status of the FPO.
+     * @bodyParam fpo_membership_number string required The membership number of the FPO.
+     * @bodyParam fpo_male_membership string required The male membership number of the FPO.
+     * @bodyParam fpo_female_membership string required The female membership number of the FPO.
+     * @bodyParam fpo_male_youth string required The male youth membership number of the FPO.
+     * @bodyParam fpo_female_youth string required The female youth membership number of the FPO.
+     * @bodyParam fpo_field_agents string required The number of field agents of the FPO.
      * 
      * @response 200 {
      * "success": true,
      * "message": "FPO updated successfully",
      * "data": {
      * "id": 1,
-     * "fpo_name": "FPO 1",
-     * "district": "FPO 1 district",
-     * "county": "FPO 1 county",
-     * "sub_county": "FPO 1 sub county",
-     * "parish": "FPO 1 parish",
-     * "village": "FPO 1 village",
-     * "main_crop": "FPO 1 main crop",
-     * "fpo_member_count": 1,
-     * "fpo_contact_name": "FPO 1 contact name",
-     * "contact_phone_number": "FPO 1 contact phone number",
-     * "Cert_of_Inc": "FPO 1 cert of inc",
-     * "address": "FPO 1 address",
-     * "created_at": "2021-06-30T11:30:00.000000Z",
-     * "updated_at": "2021-06-30T11:30:00.000000Z"
+     * "fpo_name": "Root FPO",
+     * "district": "Kampala",
+     * "county": "Kampala",
+     * "sub_county": "Kampala",
+     * "parish": "Kampala",
+     * "village": "Kampala",
+     * "fpo_cordinates": null,
+     * "main_crop": "Maize",
+     * "fpo_contact_name": "Maurice Kamugisha",
+     * "contact_phone_number": "256781456492",
+     * "contact_email": "maurice@innovationvillage.co.ug",
+     * "core_staff_count": "10",
+     * "core_staff_positions": "Chairman, Vice Chairman, Secretary, Treasurer, Accountant, Field Officer,r",
+     * "registration_status": "Registered",
+     * "fpo_membership_number": "495",
+     * "fpo_female_membership": "295",
+     * "fpo_male_youth": "120",
+     * "fpo_female_youth": "175",
+     * "fpo_field_agents": "10",
+     * "Cert_of_Inc": null,
+     * "created_by": 1,
+     * "created_at": "2023-07-06T09:12:42.000000Z",
+     * "updated_at": "2023-07-06T09:12:42.000000Z"
+     * },
      * }
      * }
      * 
@@ -446,10 +523,19 @@ class FPOController extends Controller
             'parish' => 'required|string',
             'village' => 'required|string',
             'main_crop' => 'required|string',
-            'fpo_member_count' => 'required|integer',
             'fpo_contact_name' => 'required|string',
             'contact_phone_number' => 'required|string',
-            'created_by' => 'required|integer',
+            'contact_email' => 'required|string',
+            'core_staff_count' => 'required|integer',
+            'core_staff_positions' => 'required|string',
+            'registration_status' => 'required|string',
+            "fpo_membership_number" => "required|string",
+            "fpo_male_membership" => "required|string",
+            "fpo_female_membership" => "required|string",
+            "fpo_male_youth" => "required|string",
+            "fpo_female_youth" => "required|string",
+            "fpo_field_agents" => "required|string",
+            "created_by" => "required|integer",
         ]);
 
         if($validated->fails()){
