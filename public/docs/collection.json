@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Farmer Registration Pilot",
-        "_postman_id": "3c07fb6f-10fc-4cd4-aa77-35d559f37b6f",
+        "_postman_id": "2ccbb2c8-99d8-49fd-b95c-9285c1358d10",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -143,7 +143,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"carroll.abbigail@example.com\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"gender\":\"vel\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\",\"created_by\":9,\"fpo_id\":12}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"jade51@example.org\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"gender\":\"saepe\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\",\"created_by\":10,\"fpo_id\":4}"
                         },
                         "description": ""
                     },
@@ -210,7 +210,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "dignissimos",
+                                    "value": "ipsum",
                                     "description": "The ID of the agent."
                                 },
                                 {
@@ -288,7 +288,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"elenor.roob@example.net\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\"}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"gislason.steve@example.net\",\"phone_number\":\"256XXXXXXXXX\",\"age\":\"30\",\"residence\":\"Kampala\",\"referee_name\":\"Jane Doe\",\"referee_phone_number\":\"08012345678\",\"designation\":\"Agro Extension Worker\"}"
                         },
                         "description": "This endpoint allows a user to update a specific agent"
                     },
@@ -403,7 +403,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"ipurdy@example.org\",\"password\":\"u{=sjNnbOQsZN\\\/V\"}"
+                            "raw": "{\"email\":\"deshaun.hessel@example.com\",\"password\":\"`+(\\\/nZzGd\"}"
                         },
                         "description": "This endpoint allows a user to login",
                         "auth": {
@@ -728,7 +728,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"fpo_name\":\"omnis\",\"district\":\"mollitia\",\"county\":\"in\",\"sub_county\":\"officiis\",\"parish\":\"velit\",\"village\":\"consectetur\",\"main_crop\":\"sint\",\"fpo_member_count\":14,\"fpo_contact_name\":\"rerum\",\"contact_phone_number\":\"soluta\",\"address\":\"est\",\"created_by\":13}"
+                            "raw": "{\"fpo_name\":\"qui\",\"district\":\"suscipit\",\"county\":\"reiciendis\",\"sub_county\":\"omnis\",\"parish\":\"porro\",\"village\":\"et\",\"main_crop\":\"ut\",\"fpo_member_count\":8,\"fpo_contact_name\":\"neque\",\"contact_phone_number\":\"atque\",\"address\":\"ea\",\"created_by\":14}"
                         },
                         "description": "This endpoint allows you to create a new FPO."
                     },
@@ -777,7 +777,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "sed",
+                                    "value": "possimus",
                                     "description": "The id of the FPO."
                                 }
                             ]
@@ -839,7 +839,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "soluta",
+                                    "value": "adipisci",
                                     "description": "The id of the FPO."
                                 }
                             ]
@@ -861,7 +861,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"fpo_name\":\"voluptates\",\"district\":\"omnis\",\"county\":\"dolor\",\"sub_county\":\"doloremque\",\"parish\":\"nihil\",\"village\":\"officia\",\"main_crop\":\"earum\",\"fpo_member_count\":9,\"fpo_contact_name\":\"tempora\",\"contact_phone_number\":\"cum\",\"created_by\":2}"
+                            "raw": "{\"fpo_name\":\"error\",\"district\":\"perferendis\",\"county\":\"architecto\",\"sub_county\":\"dolores\",\"parish\":\"natus\",\"village\":\"aut\",\"main_crop\":\"et\",\"fpo_member_count\":8,\"fpo_contact_name\":\"voluptate\",\"contact_phone_number\":\"neque\",\"created_by\":10}"
                         },
                         "description": "This endpoint allows you to update a FPO by id."
                     },
@@ -910,7 +910,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "aliquid",
+                                    "value": "facere",
                                     "description": "The id of the FPO."
                                 }
                             ]
@@ -992,7 +992,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"dob\":\"1990-01-01\",\"gender\":\"tempora\",\"education_level\":\"Primary\",\"phone_number\":\"0789123456\",\"id_number\":\"CM12345678\",\"marital_status\":\"Married\",\"district\":\"Kampala\",\"county\":\"Makindye\",\"sub_county\":\"Kibuye\",\"parish\":\"Kibuye\",\"village\":\"Kibuye\",\"fpo_id\":0,\"farmer_cordinates\":\"0.0000,0.0000\",\"next_of_kin\":\"Jane Doe\",\"next_of_kin_contact\":\"0789123456\",\"next_of_kin_relationship\":\"Wife\",\"male_members_in_household\":2,\"female_members_in_household\":4,\"members_above_18\":4,\"children_below_5\":2,\"school_going_children\":2,\"head_of_family\":\"John Doe\",\"how_much_do_you_earn_from_agricultural_activities\":\"100000\",\"how_much_do_you_earn_from_non_agricultural_activities\":\"100000\",\"do_you_have_an_account_with_an_FI\":\"Yes\",\"farm_size\":\"2\",\"farm_size_under_agriculture\":\"2\",\"land_ownership\":\"Owned\",\"type_of_farming\":\"Crop\",\"crops_grown\":\"Maize\",\"animals_kept\":\"Cattle\",\"estimated_produce_value_last_season\":\"100000\",\"estimated_produce_value_this_season\":\"100000\",\"data_captured_by\":\"1\",\"agent_id\":1}"
+                            "raw": "{\"first_name\":\"John\",\"last_name\":\"Doe\",\"dob\":\"1990-01-01\",\"gender\":\"ullam\",\"education_level\":\"Primary\",\"phone_number\":\"0789123456\",\"id_number\":\"CM12345678\",\"marital_status\":\"Married\",\"district\":\"Kampala\",\"county\":\"Makindye\",\"sub_county\":\"Kibuye\",\"parish\":\"Kibuye\",\"village\":\"Kibuye\",\"fpo_id\":0,\"farmer_cordinates\":\"0.0000,0.0000\",\"next_of_kin\":\"Jane Doe\",\"next_of_kin_contact\":\"0789123456\",\"next_of_kin_relationship\":\"Wife\",\"male_members_in_household\":2,\"female_members_in_household\":4,\"members_above_18\":4,\"children_below_5\":2,\"school_going_children\":2,\"head_of_family\":\"John Doe\",\"how_much_do_you_earn_from_agricultural_activities\":\"100000\",\"how_much_do_you_earn_from_non_agricultural_activities\":\"100000\",\"do_you_have_an_account_with_an_FI\":\"Yes\",\"farm_size\":\"2\",\"farm_size_under_agriculture\":\"2\",\"land_ownership\":\"Owned\",\"type_of_farming\":\"Crop\",\"crops_grown\":\"Maize\",\"animals_kept\":\"Cattle\",\"estimated_produce_value_last_season\":\"100000\",\"estimated_produce_value_this_season\":\"100000\",\"data_captured_by\":\"1\",\"agent_id\":1}"
                         },
                         "description": "This endpoint allows a user to register a farmer"
                     },
