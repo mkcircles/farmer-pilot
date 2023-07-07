@@ -568,7 +568,7 @@ class AgentController extends Controller
         if($validated->fails()){
             return response()->json([
                 'status' => 'error',
-                'message' => $validated->errors()
+                'message' => $validated->errors()->first()
             ], 400);
         }
 
