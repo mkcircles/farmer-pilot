@@ -538,7 +538,7 @@ class AgentController extends Controller
      * "agent_code": "AGT001",
      * "first_name": "John",
      * "last_name": "Doe",
-     * "photo": "http://localhost:8000/storage/agents/1624810572IMG_20210627_174358.jpg",
+     * "photo": "http://url.test/storage/agents/1624810572IMG_20210627_174358.jpg",
      * "created_at": "2021-06-27T17:09:32.000000Z",
      * }
      * }
@@ -546,14 +546,6 @@ class AgentController extends Controller
      * @response 400 {
      * "status": "error",
      * "message": "Validation error",
-     * "data": {
-     * "agent_id": [
-     * "The agent id field is required."
-     * ],
-     * "first_name": [
-     * "The first name field is required."
-     * ]
-     * }
      * }
      * 
      * 
@@ -576,8 +568,7 @@ class AgentController extends Controller
         if($validated->fails()){
             return response()->json([
                 'status' => 'error',
-                'message' => 'Validation error',
-                'data' => $validated->errors()
+                'message' => $validated->errors()
             ], 400);
         }
 

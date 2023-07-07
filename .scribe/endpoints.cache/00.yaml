@@ -57,7 +57,7 @@ endpoints:
           "agent_code": "AGT001",
           "first_name": "John",
           "last_name": "Doe",
-          "photo": "http://localhost:8000/storage/agents/1624810572IMG_20210627_174358.jpg",
+          "photo": "http://url.test/storage/agents/1624810572IMG_20210627_174358.jpg",
           "created_at": "2021-06-27T17:09:32.000000Z",
           }
           }
@@ -70,14 +70,6 @@ endpoints:
           {
           "status": "error",
           "message": "Validation error",
-          "data": {
-          "agent_id": [
-          "The agent id field is required."
-          ],
-          "first_name": [
-          "The first name field is required."
-          ]
-          }
           }
         headers: []
         description: ''
@@ -248,7 +240,7 @@ endpoints:
         name: email
         description: 'The email of the agent. Example:'
         required: true
-        example: shields.maude@example.com
+        example: jbrown@example.net
         type: string
         custom: []
       phone_number:
@@ -269,7 +261,7 @@ endpoints:
         name: gender
         description: ''
         required: true
-        example: numquam
+        example: repellendus
         type: string
         custom: []
       residence:
@@ -304,29 +296,29 @@ endpoints:
         name: created_by
         description: ''
         required: true
-        example: 6
+        example: 11
         type: integer
         custom: []
       fpo_id:
         name: fpo_id
         description: ''
         required: true
-        example: 20
+        example: 3
         type: integer
         custom: []
     cleanBodyParameters:
       first_name: John
       last_name: Doe
-      email: shields.maude@example.com
+      email: jbrown@example.net
       phone_number: 256XXXXXXXXX
       age: '30'
-      gender: numquam
+      gender: repellendus
       residence: Kampala
       referee_name: 'Jane Doe'
       referee_phone_number: '08012345678'
       designation: 'Agro Extension Worker'
-      created_by: 6
-      fpo_id: 20
+      created_by: 11
+      fpo_id: 3
     fileParameters: []
     responses:
       -
@@ -480,7 +472,7 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: voluptatem
+        example: enim
         type: string
         custom: []
       agent:
@@ -491,7 +483,7 @@ endpoints:
         type: string
         custom: []
     cleanUrlParameters:
-      id: voluptatem
+      id: enim
       agent: '1'
     queryParameters: []
     cleanQueryParameters: []
@@ -564,11 +556,11 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: laborum
+        example: repudiandae
         type: string
         custom: []
     cleanUrlParameters:
-      id: laborum
+      id: repudiandae
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
