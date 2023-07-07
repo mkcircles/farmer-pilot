@@ -896,7 +896,7 @@ class FPOController extends Controller
      */
     public function getFPOCoordinates()
     {
-        $fpos = FPO::all('id', 'fpo_name', 'fpo_cordinates');
+        $fpos = FPO::select('id', 'fpo_name', 'fpo_cordinates')->get();
         if($fpos->isEmpty()){
             return response()->json([
                 'success' => false,
