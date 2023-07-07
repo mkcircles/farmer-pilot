@@ -238,7 +238,7 @@ endpoints:
         name: email
         description: 'The email of the agent. Example:'
         required: true
-        example: jbrown@example.net
+        example: ncorkery@example.net
         type: string
         custom: []
       phone_number:
@@ -259,7 +259,7 @@ endpoints:
         name: gender
         description: ''
         required: true
-        example: repellendus
+        example: aperiam
         type: string
         custom: []
       residence:
@@ -294,29 +294,29 @@ endpoints:
         name: created_by
         description: ''
         required: true
-        example: 11
+        example: 6
         type: integer
         custom: []
       fpo_id:
         name: fpo_id
         description: ''
         required: true
-        example: 3
+        example: 9
         type: integer
         custom: []
     cleanBodyParameters:
       first_name: John
       last_name: Doe
-      email: jbrown@example.net
+      email: ncorkery@example.net
       phone_number: 256XXXXXXXXX
       age: '30'
-      gender: repellendus
+      gender: aperiam
       residence: Kampala
       referee_name: 'Jane Doe'
       referee_phone_number: '08012345678'
       designation: 'Agro Extension Worker'
-      created_by: 11
-      fpo_id: 3
+      created_by: 6
+      fpo_id: 9
     fileParameters: []
     responses:
       -
@@ -470,7 +470,7 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: enim
+        example: optio
         type: string
         custom: []
       agent:
@@ -481,7 +481,7 @@ endpoints:
         type: string
         custom: []
     cleanUrlParameters:
-      id: enim
+      id: optio
       agent: '1'
     queryParameters: []
     cleanQueryParameters: []
@@ -554,11 +554,11 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: repudiandae
+        example: aut
         type: string
         custom: []
     cleanUrlParameters:
-      id: repudiandae
+      id: aut
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
