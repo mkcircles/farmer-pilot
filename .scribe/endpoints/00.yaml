@@ -52,18 +52,11 @@ endpoints:
           "status": "success",
           "data": {
           "id": 1,
+          "agent_code": "AGT001",
           "first_name": "John",
           "last_name": "Doe",
-          "email": "",
-          "phone_number": "256XXXXXXXXX",
-          "age": "30",
-          "residence": "Kampala",
-          "referee_name": "Jane Doe",
-          "referee_phone_number": "08012345678",
-          "designation": "Agro Extension Worker",
           "photo": "http://localhost:8000/storage/agents/1624810572IMG_20210627_174358.jpg",
           "created_at": "2021-06-27T17:09:32.000000Z",
-          "updated_at": "2021-06-27T17:09:32.000000Z"
           }
           }
         headers: []
@@ -253,7 +246,7 @@ endpoints:
         name: email
         description: 'The email of the agent. Example:'
         required: true
-        example: pjacobi@example.net
+        example: shields.maude@example.com
         type: string
         custom: []
       phone_number:
@@ -274,7 +267,7 @@ endpoints:
         name: gender
         description: ''
         required: true
-        example: sit
+        example: numquam
         type: string
         custom: []
       residence:
@@ -309,29 +302,29 @@ endpoints:
         name: created_by
         description: ''
         required: true
-        example: 14
+        example: 6
         type: integer
         custom: []
       fpo_id:
         name: fpo_id
         description: ''
         required: true
-        example: 11
+        example: 20
         type: integer
         custom: []
     cleanBodyParameters:
       first_name: John
       last_name: Doe
-      email: pjacobi@example.net
+      email: shields.maude@example.com
       phone_number: 256XXXXXXXXX
       age: '30'
-      gender: sit
+      gender: numquam
       residence: Kampala
       referee_name: 'Jane Doe'
       referee_phone_number: '08012345678'
       designation: 'Agro Extension Worker'
-      created_by: 14
-      fpo_id: 11
+      created_by: 6
+      fpo_id: 20
     fileParameters: []
     responses:
       -
@@ -485,7 +478,7 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: perspiciatis
+        example: voluptatem
         type: string
         custom: []
       agent:
@@ -496,7 +489,7 @@ endpoints:
         type: string
         custom: []
     cleanUrlParameters:
-      id: perspiciatis
+      id: voluptatem
       agent: '1'
     queryParameters: []
     cleanQueryParameters: []
@@ -569,11 +562,11 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: officiis
+        example: laborum
         type: string
         custom: []
     cleanUrlParameters:
-      id: officiis
+      id: laborum
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

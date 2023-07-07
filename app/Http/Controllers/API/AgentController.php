@@ -535,18 +535,11 @@ class AgentController extends Controller
      * "status": "success",
      * "data": {
      * "id": 1,
+     * "agent_code": "AGT001",
      * "first_name": "John",
      * "last_name": "Doe",
-     * "email": "",
-     * "phone_number": "256XXXXXXXXX",
-     * "age": "30",
-     * "residence": "Kampala",
-     * "referee_name": "Jane Doe",
-     * "referee_phone_number": "08012345678",
-     * "designation": "Agro Extension Worker",
      * "photo": "http://localhost:8000/storage/agents/1624810572IMG_20210627_174358.jpg",
      * "created_at": "2021-06-27T17:09:32.000000Z",
-     * "updated_at": "2021-06-27T17:09:32.000000Z"
      * }
      * }
      * 
@@ -604,7 +597,14 @@ class AgentController extends Controller
             }
             return response()->json([
                 'status' => 'success',
-                'data' => $agent
+                'data' => [
+                    'id' => $agent->id,
+                    'agent_code' => $agent->agent_code,
+                    'first_name' => $agent->first_name,
+                    'last_name' => $agent->last_name,
+                    'photo' => $agent->photo,
+                    'created_at' => $agent->created_at,
+                ]
             ], 200);
         }
         
