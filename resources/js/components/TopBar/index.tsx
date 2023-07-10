@@ -12,9 +12,12 @@ import {
     AGENT_PROFILE,
     CREATE_FPO,
     DASHBOARD,
+    EDIT_AGENT,
+    EDIT_FPO,
     FARMERS_LIST,
     FARMER_PROFILE,
     FPO_LIST,
+    FPO_PROFILE,
     HOME,
     REPORTS,
 } from "../../router/routes";
@@ -42,6 +45,12 @@ function Main(props: { toggleMobileMenu: (event: React.MouseEvent) => void }) {
             return "FPO List";
         case CREATE_FPO:
             return "Create FPO";
+        case EDIT_FPO:
+            return "Update FPO";
+        case EDIT_AGENT:
+            return "Update Agent";
+        case FPO_PROFILE:
+            return "FPO Profile";
         case FARMER_PROFILE:
             return "Farmer Profile";
         case AGENT_PROFILE:

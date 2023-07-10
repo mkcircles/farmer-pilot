@@ -23,7 +23,7 @@ import { useContext } from "react";
 import { useSelector } from "react-redux";
 
 
-export default function FarmersList({agent_id}) {
+export default function FarmersList({fpo_id}) {
     const navigate = useNavigate();
     const token = useSelector(state => state.auth.token);
     const { updateAppContextState } = useContext(AppContext);
@@ -33,8 +33,8 @@ export default function FarmersList({agent_id}) {
     const [profilesData, setProfilesData] = useState(null);
 
     let farmers_api_url = `${BASE_API_URL}/farmers`;
-    if(agent_id) {
-        farmers_api_url = `${BASE_API_URL}/agent/${agent_id}/farmers`
+    if(fpo_id) {
+        farmers_api_url = `${BASE_API_URL}/fpo/${fpo_id}/farmers`
     }
 
     const fetchProfiles = (url = farmers_api_url) => {
