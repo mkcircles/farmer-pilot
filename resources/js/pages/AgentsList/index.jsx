@@ -13,7 +13,7 @@ import {
     Button,
 } from "@tremor/react";
 import { useNavigate } from "react-router-dom";
-import { AGENT_PROFILE, CREATE_AGENT, CREATE_FPO, FARMER_PROFILE } from "../../router/routes";
+import { AGENT_PROFILE, CREATE_AGENT, CREATE_FPO, EDIT_AGENT, FARMER_PROFILE } from "../../router/routes";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { API_KEY, BASE_API_URL } from "../../env";
@@ -23,7 +23,7 @@ import { useContext } from "react";
 import { useSelector } from "react-redux";
 import { UserIcon } from "@heroicons/react/solid";
 
-export default function AgentsList({agent_id}) {
+export default function AgentsList({fpo_id}) {
     const navigate = useNavigate();
     const token = useSelector((state) => state.auth.token);
     const { updateAppContextState } = useContext(AppContext);
@@ -32,7 +32,12 @@ export default function AgentsList({agent_id}) {
     const [nextPageUrl, setNextPageUrl] = useState("");
     const [agentData, setAgentData] = useState(null);
 
-    const fetchAgents = (url = `${BASE_API_URL}/agents`) => {
+    let agents_api_url = `${BASE_API_URL}/agents`;
+    if(fpo_id) {
+        agents_api_url = `${BASE_API_URL}/fpo/${fpo_id}/agents`
+    }
+    // console.log("Agents URL:", agents_api_url)
+    const fetchAgents = (url = agents_api_url) => {
         updateAppContextState("loading", true);
         axios
             .get(url, {
@@ -147,6 +152,13 @@ export default function AgentsList({agent_id}) {
                                             </svg>
                                         </button>
                                         <button
+                                            onClick={() => {
+                                                navigate(EDIT_AGENT, {
+                                                    state: {
+                                                        agent,
+                                                    },
+                                                });
+                                            }}
                                             className="inline-block border-e p-3 text-gray-700 hover:bg-gray-50 focus:relative"
                                             title="Edit Agent"
                                         >
@@ -187,10 +199,6 @@ export default function AgentsList({agent_id}) {
                                         </button>
                                     </span>
                                 </TableCell>
-                                {/* <TableCell>{agent.residence}</TableCell>
-                                <TableCell>{agent.referee_name}</TableCell>
-                                <TableCell>{agent.referee_phone_number}</TableCell>
-                                <TableCell>{agent.address}</TableCell> */}
                             </TableRow>
                         ))}
                     </TableBody>

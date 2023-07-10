@@ -11,7 +11,6 @@ import { useNavigate } from "react-router-dom";
 import { FARMERS_LIST } from "../../router/routes";
 
 
-
 function Main() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();

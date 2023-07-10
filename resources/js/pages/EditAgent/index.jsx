@@ -7,45 +7,35 @@ import {
     FormHelp,
     FormSelect,
 } from "../../base-components/Form";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { AppContext } from "../../context/RootContext";
 import axios from "axios";
 import { BASE_API_URL } from "../../env";
 import { useSelector } from "react-redux";
-import { AGENTS_LIST, FPO_LIST } from "../../router/routes";
+import { AGENTS_LIST, AGENT_PROFILE, FPO_LIST } from "../../router/routes";
 
-const CreateAgent = () => {
+const EditAgent = () => {
     const navigate = useNavigate();
+    const {
+        state: { agent },
+    } = useLocation();
     const { updateAppContextState } = useContext(AppContext);
     const token = useSelector((state) => state.auth?.token);
     const user = useSelector((state) => state.auth?.user);
-    const [agentData, setAgentData] = React.useState({
-        first_name: "",
-        last_name: "",
-        email: "",
-        phone_number: "",
-        age: "",
-        gender: "",
-        residence: "",
-        referee_name: "",
-        referee_phone_number: "",
-        designation: "",
-        fpo_id: "",
-        created_by: user.id,
-    });
+    const [agentData, setAgentData] = React.useState(agent);
     const [fpos, setFpos] = React.useState([]);
 
-    const handleCreateAgent = () => {
+    const handleUpdateAgent = () => {
         updateAppContextState("loading", true);
         axios
-            .post(`${BASE_API_URL}/agent/register`, agentData, {
+            .post(`${BASE_API_URL}/agent/${agent?.id}/update`, agentData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
             })
             .then((res) => {
                 // TODO: Notify success
-                navigate(AGENTS_LIST);
+                navigate(`${AGENT_PROFILE}/${agent?.id}`);
             })
             .catch((err) => {
                 // TODO: Notify Error
@@ -81,13 +71,13 @@ const CreateAgent = () => {
             className="py-8 px-8"
             onSubmit={(e) => {
                 e.preventDefault();
-                handleCreateAgent();
+                handleUpdateAgent();
             }}
         >
-            <Title>Create New Agent</Title>
+            <Title>Update {agentData?.first_name}'s Profile</Title>
 
             <div className="py-4">
-                <FormLabel htmlFor="fpo_id">Select FPO</FormLabel>
+                <FormLabel htmlFor="regular-form-1">Select FPO</FormLabel>
 
                 <FormSelect
                     id="fpo_id"
@@ -310,4 +300,4 @@ const CreateAgent = () => {
     );
 };
 
-export default CreateAgent;
+export default EditAgent;

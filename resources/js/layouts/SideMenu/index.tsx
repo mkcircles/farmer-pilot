@@ -140,7 +140,7 @@ function Main() {
       {/* BEGIN: Side Menu */}
       <nav
         className={clsx([
-          "absolute z-[52] xl:z-auto -ml-[100%] xl:ml-0 transition-[width,margin-left] w-[270px] h-screen flex flex-col pl-6 pr-2 overflow-hidden bg-primary bg-gradient-to-b from-primary via-primary/70 to-black/30 duration-300 ease-in-out dark:bg-darkmode-800 dark:bg-none",
+          "absolute z-[52] xl:z-[52] -ml-[100%] xl:ml-0 transition-[width,margin-left] w-[270px] h-screen flex flex-col pl-6 pr-2 overflow-hidden bg-primary bg-gradient-to-b from-primary via-primary/70 to-black/30 duration-300 ease-in-out dark:bg-darkmode-800 dark:bg-none",
           "before:content-[''] before:ease-in-out xl:before:ease before:duration-300 xl:before:duration-[0s] before:transition-opacity xl:before:transition-none before:inset-0 xl:before:top-0 xl:before:left-0 before:bg-black/60 xl:before:bg-transparent before:z-[-2] xl:before:z-0 xl:before:visible before:bg-[length:270px_auto] before:bg-[right_3.5rem] xl:before:bg-[url('../../assets/images/backgrounds/bg-main.png')] before:animate-[0.4s_ease-in-out_0.3s_intro-divider] before:animate-fill-mode-forwards before:w-full before:h-screen before:fixed xl:before:absolute before:top-0 before:left-0 before:bg-no-repeat",
           "after:content-[''] after:dark:bg-darkmode-800 xl:after:dark:bg-transparent after:bg-primary xl:after:bg-transparent after:w-full after:h-screen after:absolute after:top-0 after:left-0 xl:after:mt-[3.5rem] after:bg-gradient-to-b after:from-primary after:via-primary/70 after:to-black/10 after:dark:from-darkmode-800 after:dark:via-darkmode-800/70",
           {
@@ -188,7 +188,7 @@ function Main() {
             </Link>
             <a
               href="#"
-              // onClick={toggleSimpleMenu}
+              onClick={toggleSimpleMenu}
               className={clsx([
                 "hidden pr-5 ml-auto text-white transition-all duration-300 ease-in-out z-[5] xl:block text-opacity-70 hover:text-opacity-100",
                 simpleMenu.active &&
@@ -206,7 +206,7 @@ function Main() {
             </a>
             <a
               href="#"
-              // onClick={toggleMobileMenu}
+              onClick={toggleMobileMenu}
               className="pr-5 ml-auto text-white transition-all duration-300 ease-in-out mobile-menu-toggler z-[5] xl:hidden text-opacity-70 hover:text-opacity-100"
             >
               <Lucide

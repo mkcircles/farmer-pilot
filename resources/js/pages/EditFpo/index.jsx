@@ -7,56 +7,34 @@ import {
     FormHelp,
     FormSelect,
 } from "../../base-components/Form";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AppContext } from "../../context/RootContext";
 import axios from "axios";
 import { BASE_API_URL } from "../../env";
 import { useSelector } from "react-redux";
-import { FPO_LIST } from "../../router/routes";
+import { FPO_LIST, FPO_PROFILE } from "../../router/routes";
 
-const CreateFpo = () => {
+const EditFpo = () => {
+    const {
+        state: { fpo },
+    } = useLocation();
     const navigate = useNavigate();
     const { updateAppContextState } = useContext(AppContext);
     const token = useSelector((state) => state.auth?.token);
     const user = useSelector((state) => state.auth?.user);
-    const [fpoData, setFpoData] = React.useState({
-        fpo_name: "",
-        district: "",
-        county: "",
-        sub_county: "",
-        parish: "",
-        village: "",
-        main_crop: "",
-        fpo_contact_name: "",
-        contact_phone_number: "",
-        contact_email: "",
-        core_staff_count: "",
-        core_staff_positions: "",
-        registration_status: "",
+    const [fpoData, setFpoData] = React.useState(fpo);
 
-        fpo_membership_number: "",
-        fpo_female_membership: "",
-        fpo_male_youth: "",
-        fpo_female_youth: "",
-        fpo_field_agents: "",
-
-        Cert_of_Inc: "",
-        address: "",
-        fpo_cordinates: "",
-        created_by: user.id,
-    });
-
-    const handleCreateFpo = () => {
+    const handleUpdateFpo = () => {
         updateAppContextState("loading", true);
         axios
-            .post(`${BASE_API_URL}/fpo/register`, fpoData, {
+            .post(`${BASE_API_URL}/fpo/${fpoData?.id}/update`, fpoData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
             })
             .then((res) => {
                 // TODO: Notify success
-                navigate(FPO_LIST);
+                navigate(`${FPO_PROFILE}/${fpoData?.id}`);
             })
             .catch((err) => {
                 // TODO: Notify Error
@@ -72,10 +50,10 @@ const CreateFpo = () => {
             className="py-8 px-8"
             onSubmit={(e) => {
                 e.preventDefault();
-                handleCreateFpo();
+                handleUpdateFpo();
             }}
         >
-            <Title>Create New FPO</Title>
+            <Title>Update {fpoData?.fpo_name}'s Data</Title>
 
             <div className="py-4">
                 <FormLabel htmlFor="regular-form-1">Name</FormLabel>
@@ -475,4 +453,4 @@ const CreateFpo = () => {
     );
 };
 
-export default CreateFpo;
+export default EditFpo;
