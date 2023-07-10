@@ -23,6 +23,8 @@ class SummaryController extends Controller
      * @response {
      * "system_stats": {
      * "total_farmers": 1,
+     * "male_farmers": 0,
+     * "female_farmers": 1,
      * "total_fpos": 1,
      * "total_agents": 10,
      * "male_agents": 4,
@@ -49,6 +51,8 @@ class SummaryController extends Controller
         $total_agents = \App\Models\Agent::count();
         $system_stats = [
             'total_farmers' => $total_farmers,
+            'male_farmers' => \App\Models\FarmerProfile::where('gender','male')->count(),
+            'female_farmers' => \App\Models\FarmerProfile::where('gender','female')->count(),
             'total_fpos' => $total_fpos,
             'total_agents' => $total_agents,
             'male_agents' => \App\Models\Agent::where('gender','male')->count(),

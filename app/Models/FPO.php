@@ -13,7 +13,7 @@ class FPO extends Model
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
-     */
+     */ 
     protected $fillable = [
         'fpo_name',
         'district',
@@ -37,4 +37,4 @@ class FPO extends Model
         'Cert_of_Inc',
         'created_by',
     ];
-}
+} 

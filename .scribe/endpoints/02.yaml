@@ -36,6 +36,8 @@ endpoints:
           {
           "system_stats": {
           "total_farmers": 1,
+          "male_farmers": 0,
+          "female_farmers": 1,
           "total_fpos": 1,
           "total_agents": 10,
           "male_agents": 4,
