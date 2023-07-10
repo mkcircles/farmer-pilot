@@ -87,7 +87,7 @@ const CreateAgent = () => {
             <Title>Create New Agent</Title>
 
             <div className="py-4">
-                <FormLabel htmlFor="regular-form-1">Select FPO</FormLabel>
+                <FormLabel htmlFor="fpo_id">Select FPO</FormLabel>
 
                 <FormSelect
                     id="fpo_id"
