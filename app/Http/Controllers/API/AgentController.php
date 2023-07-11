@@ -749,6 +749,13 @@ class AgentController extends Controller
      */
     public function getSearchAgentAuth(Request $request)
     {
+        //validate that Authorization header is present
+        if(!$request->header('Authorization')){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Authorization header missing'
+            ], 401);
+
          //Get Authourization token
          $token = $request->header('Authorization');
          $token = explode(' ', $token);
@@ -760,7 +767,7 @@ class AgentController extends Controller
                  'message' => 'Invalid token'
              ], 401);
  
-         
+        
 
         $validated = Validator::make($request->all(),[
             'agent_id' => 'required|string',
