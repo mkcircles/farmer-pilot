@@ -70,10 +70,10 @@ return new class extends Migration
         });
 
         //Call the seeder
-        // Artisan::call('db:seed', [
-        //     '--class' => ApiFarmer::class,
-        //     '--force' => true,
-        // ]);
+        Artisan::call('db:seed', [
+            '--class' => ApiFarmer::class,
+            '--force' => true,
+        ]);
 
     }
 
