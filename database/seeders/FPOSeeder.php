@@ -35,7 +35,30 @@ class FPOSeeder extends Seeder
                 'fpo_field_agents' => '10',
                 'Cert_of_Inc' => null,
                 'created_by' => 1,
-            ]
+            ],
+            [
+                'fpo_name' => 'SAMIA BUGWE CENTRAL DEVELOPMENT COOPERATIVE SOCIETY',
+                'district' => 'Busia',
+                'county' => 'Busia',
+                'sub_county' => 'Busia',
+                'parish' => 'Buhatuba',
+                'village' => 'Masafu',
+                'main_crop' => 'Maize',
+                'fpo_contact_name' => 'Maurice Kamugisha',
+                'contact_phone_number' => '256781456492',
+                'contact_email' => 'maurice@innovationvillage.co.ug',
+                'core_staff_count' => 10,
+                'core_staff_positions' => 'Chairman, Vice Chairman, Secretary',
+                'registration_status' => 'Registered',
+                'fpo_membership_number' => '459',
+                'fpo_male_membership' => '',
+                'fpo_female_membership' => '',
+                'fpo_male_youth' => '',
+                'fpo_female_youth' => '',
+                'fpo_field_agents' => '',
+                'Cert_of_Inc' => null,
+                'created_by' => 1,
+            ],
             ];
 
         foreach ($fpos as $fpo) {

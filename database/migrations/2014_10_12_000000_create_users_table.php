@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('phone_number')->nullable()->default(null);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('role',['admin','agent','user','fpo'])->default('user');
+            $table->enum('role',['admin','agent','user','fpo','fpo_user'])->default('user');
             $table->string('photo')->nullable();
             $table->string('entity_id')->nullable();
             $table->rememberToken();
