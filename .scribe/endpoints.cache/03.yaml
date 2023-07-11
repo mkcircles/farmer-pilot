@@ -54,7 +54,7 @@ endpoints:
         name: gender
         description: 'Farmer gender. Example Male/Female'
         required: false
-        example: aut
+        example: velit
         type: string
         custom: []
       education_level:
@@ -292,7 +292,7 @@ endpoints:
       first_name: John
       last_name: Doe
       dob: '1990-01-01'
-      gender: aut
+      gender: velit
       education_level: Primary
       phone_number: '0789123456'
       id_number: CM12345678

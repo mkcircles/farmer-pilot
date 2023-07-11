@@ -58,6 +58,16 @@ endpoints:
         description: ''
         custom: []
       -
+        status: 401
+        content: |-
+          {
+          "status": "error",
+          "message": "Invalid token"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
         status: 404
         content: |-
           {
@@ -144,18 +154,22 @@ endpoints:
         description: ''
         custom: []
       -
-        status: 404
+        status: 401
         content: |-
           {
           "status": "error",
-          "message": "Agent not found"
+          "message": "Invalid token"
           }
         headers: []
         description: ''
         custom: []
       -
         status: 404
-        content: '{'
+        content: |-
+          {
+          "status": "error",
+          "message": "Agent not found"
+          }
         headers: []
         description: ''
         custom: []
@@ -309,7 +323,7 @@ endpoints:
         name: email
         description: 'The email of the agent. Example:'
         required: true
-        example: yhilpert@example.net
+        example: mandy.herzog@example.org
         type: string
         custom: []
       phone_number:
@@ -330,7 +344,7 @@ endpoints:
         name: gender
         description: ''
         required: true
-        example: enim
+        example: repellat
         type: string
         custom: []
       residence:
@@ -365,29 +379,29 @@ endpoints:
         name: created_by
         description: ''
         required: true
-        example: 7
+        example: 4
         type: integer
         custom: []
       fpo_id:
         name: fpo_id
         description: ''
         required: true
-        example: 18
+        example: 17
         type: integer
         custom: []
     cleanBodyParameters:
       first_name: John
       last_name: Doe
-      email: yhilpert@example.net
+      email: mandy.herzog@example.org
       phone_number: 256XXXXXXXXX
       age: '30'
-      gender: enim
+      gender: repellat
       residence: Kampala
       referee_name: 'Jane Doe'
       referee_phone_number: '08012345678'
       designation: 'Agro Extension Worker'
-      created_by: 7
-      fpo_id: 18
+      created_by: 4
+      fpo_id: 17
     fileParameters: []
     responses:
       -
@@ -541,7 +555,7 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: sed
+        example: qui
         type: string
         custom: []
       agent:
@@ -552,7 +566,7 @@ endpoints:
         type: string
         custom: []
     cleanUrlParameters:
-      id: sed
+      id: qui
       agent: '1'
     queryParameters: []
     cleanQueryParameters: []
@@ -625,11 +639,11 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: reprehenderit
+        example: perferendis
         type: string
         custom: []
     cleanUrlParameters:
-      id: reprehenderit
+      id: perferendis
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

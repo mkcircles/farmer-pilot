@@ -557,7 +557,10 @@ class AgentController extends Controller
      * "message": "Agent not found"
      * }
      * 
-     * @response 404 {
+     * @response 401 {
+     * "status": "error",
+     * "message": "Invalid token"
+     * }
      * 
      */
     public function getSearchAgent(Request $request)
@@ -652,6 +655,10 @@ class AgentController extends Controller
      * "message": "No agents found"
      * }
      * 
+     * @response 401 {
+     * "status": "error",
+     * "message": "Invalid token"
+     * }
      * 
      */
     public function getAllAgents(Request $request)
