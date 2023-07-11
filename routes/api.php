@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return response()->json(['message' => 'Welcome to the Agri-Hub API']);
 });
-Route::get('/agents', [AgentController::class, 'getAllAgents']);
+Route::get('/agents/all', [AgentController::class, 'getAllAgents']);
 Route::post('/agent/search', [AgentController::class, 'getSearchAgent']);
 
 Route::controller(AuthController::class)->group(function () {
