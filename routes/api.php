@@ -24,6 +24,8 @@ Route::get('/', function () {
 });
 Route::get('/agents/all', [AgentController::class, 'getAllAgents']);
 Route::post('/agent/search', [AgentController::class, 'getSearchAgent']);
+Route::post('/agent/search/auth', [AgentController::class, 'getSearchAgentAuth']);
+
 
 Route::controller(AuthController::class)->group(function () {
     Route::post('/login', 'login');

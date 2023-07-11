@@ -707,4 +707,100 @@ class AgentController extends Controller
             ], 200);
         }
     }
+
+     /**
+     * Search Agent with Basic Auth
+     * 
+     * This endpoint allows a user to search for a specific agent by agent code
+     * 
+     * @header Authorization required The authorization token. Example: Basic {api_key}
+     * 
+     * @bodyParam agent_id required The id of the agent. Example: AGT001
+     * @bodyParam first_name required The first name of the agent. Example: John
+     * 
+     * @response {
+     * "status": "success",
+     * "data": {
+     * "id": 1,
+     * "agent_code": "AGT001",
+     * "first_name": "John",
+     * "last_name": "Doe",
+     * "photo": "http://url.test/storage/agents/1624810572IMG_20210627_174358.jpg",
+     * "created_at": "2021-06-27T17:09:32.000000Z",
+     * }
+     * }
+     * 
+     * @response 400 {
+     * "status": "error",
+     * "message": "Validation error",
+     * }
+     * 
+     * 
+     * @response 404 {
+     * "status": "error",
+     * "message": "Agent not found"
+     * }
+     * 
+     * @response 401 {
+     * "status": "error",
+     * "message": "Invalid token"
+     * }
+     * 
+     */
+    public function getSearchAgentAuth(Request $request)
+    {
+         //Get Authourization token
+         $token = $request->header('Authorization');
+         $token = explode(' ', $token);
+         $validate = $this->validateToken($token[1]);
+         //check if token is valid
+         if($validate->getStatusCode() == 401)
+             return response()->json([
+                 'status' => 'error',
+                 'message' => 'Invalid token'
+             ], 401);
+ 
+         
+
+        $validated = Validator::make($request->all(),[
+            'agent_id' => 'required|string',
+            'first_name' => 'required|string'
+        ]);
+
+        if($validated->fails()){
+            return response()->json([
+                'status' => 'error',
+                'message' => $validated->errors()->first()
+            ], 400);
+        }
+
+
+        $agent = Agent::where('agent_code',$request->agent_id)->first();
+        if(!$agent){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Agent not found'
+            ], 404);
+        }
+        else{
+           if($agent->first_name != $request->first_name){
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Mismatched agent name'
+                ], 404);
+            }
+            return response()->json([
+                'status' => 'success',
+                'data' => [
+                    'id' => $agent->id,
+                    'agent_code' => $agent->agent_code,
+                    'first_name' => $agent->first_name,
+                    'last_name' => $agent->last_name,
+                    'photo' => $agent->photo,
+                    'created_at' => $agent->created_at,
+                ]
+            ], 200);
+        }
+        
+    }
 }
