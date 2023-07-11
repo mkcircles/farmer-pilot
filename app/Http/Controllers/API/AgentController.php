@@ -565,7 +565,7 @@ class AgentController extends Controller
      */
     public function getSearchAgent(Request $request)
     {
-         //Get Authourization token
+        //Get Authourization token
         //  $token = $request->header('Authorization');
         //  $token = explode(' ', $token);
         //  $validate = $this->validateToken($token[1]);
@@ -663,6 +663,12 @@ class AgentController extends Controller
      */
     public function getAllAgents(Request $request)
     {
+        //validate that Authorization header is present
+        // if(!$request->header('Authorization')){
+        //     return response()->json([
+        //         'status' => 'error',
+        //         'message' => 'Authorization header missing'
+        //     ], 401);
         //Get Authourization token
         // $token = $request->header('Authorization');
         // $token = explode(' ', $token);
@@ -810,4 +816,5 @@ class AgentController extends Controller
         }
         
     }
+}
 }
