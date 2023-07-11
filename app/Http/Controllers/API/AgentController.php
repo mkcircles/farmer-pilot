@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Agent;
+use App\Models\Api;
 use App\Models\FarmerProfile;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -528,6 +529,8 @@ class AgentController extends Controller
      * 
      * This endpoint allows a user to search for a specific agent by agent code
      * 
+     * @header Authorization required The authorization token. Example: Basic {api_key}
+     * 
      * @bodyParam agent_id required The id of the agent. Example: AGT001
      * @bodyParam first_name required The first name of the agent. Example: John
      * 
@@ -559,6 +562,18 @@ class AgentController extends Controller
      */
     public function getSearchAgent(Request $request)
     {
+         //Get Authourization token
+         $token = $request->header('Authorization');
+         $token = explode(' ', $token);
+         $validate = $this->validateToken($token[1]);
+         //check if token is valid
+         if($validate->getStatusCode() == 401)
+             return response()->json([
+                 'status' => 'error',
+                 'message' => 'Invalid token'
+             ], 401);
+ 
+         
 
         $validated = Validator::make($request->all(),[
             'agent_id' => 'required|string',
@@ -571,6 +586,7 @@ class AgentController extends Controller
                 'message' => $validated->errors()->first()
             ], 400);
         }
+
 
         $agent = Agent::where('agent_code',$request->agent_id)->first();
         if(!$agent){
@@ -607,6 +623,8 @@ class AgentController extends Controller
      * 
      * This endpoint allows a user to get all agents
      * 
+     * @header Authorization required The authorization token. Example: Basic {api_key}
+     * 
      * @response {
      * "status": "success",
      * "data": [
@@ -636,8 +654,20 @@ class AgentController extends Controller
      * 
      * 
      */
-    public function getAllAgents()
+    public function getAllAgents(Request $request)
     {
+        //Get Authourization token
+        $token = $request->header('Authorization');
+        $token = explode(' ', $token);
+        $validate = $this->validateToken($token[1]);
+        //check if token is valid
+        if($validate->getStatusCode() == 401)
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Invalid token'
+            ], 401);
+
+        
         $agents = Agent::select('id','agent_code','first_name','last_name','photo','created_at')->get();
         if(!$agents){
             return response()->json([
@@ -649,6 +679,24 @@ class AgentController extends Controller
             return response()->json([
                 'status' => 'success',
                 'data' => $agents
+            ], 200);
+        }
+    }
+
+    //Validate Authorisation Token
+    public function validateToken($token)
+    {
+        $user = Api::where('api_key',$token)->first();
+        if(!$user){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Invalid token'
+            ], 401);
+        }
+        else{
+            return response()->json([
+                'status' => 'success',
+                'data' => $user
             ], 200);
         }
     }

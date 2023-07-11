@@ -16,11 +16,15 @@ class ApiSeeder extends Seeder
         $keys = [
             [
                 'name' => 'Farmer Profile App',
-                'api_key' => 'Hax2jJFkWf3eL4W7w85IC6Gd',
+                'api_key' => 'RgrgFd2muVBB107J5qZIpj3KX81HMutEaiPAi0qqdd4jjwPjsjRNNIbmioL81KzT',
             ],
             [
                 'name' => 'Farmer Profile Portal',
-                'api_key' => 'o0k39QuFPf4BM4mTNN9l874u',
+                'api_key' => 'HPCsebVEEpJ5JkrRsnqOEkgJKC9MrLP0IWrNxY016nxbJEBZr75JHjGip9XUQVXu',
+            ],
+            [
+                'name' => 'Mastercard Consumer App',
+                'api_key' => 'Baco7zr99CQkcYFMwyWoKkJWjh2ioiyGNQ6jYUGjH005vVTrb2qsTbRKHg26edCt',
             ],
         ];
 
