@@ -11,7 +11,6 @@ import { useNavigate } from "react-router-dom";
 import { FARMERS_LIST } from "../../router/routes";
 
 
-
 function Main() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -35,7 +34,7 @@ function Main() {
             if (res?.data?.data?.user?.role === 'admin') {
                 dispatch(setToken(res.data.data.token));
                 dispatch(setUser(res.data.data.user));
-                navigate(FARMERS_LIST);
+                navigate('/');
             }else {
               alert('You are not authorized to access this resource.')
             }

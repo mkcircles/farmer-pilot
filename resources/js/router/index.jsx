@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../pages/Dashboard";
 import FarmersList from "../pages/FarmersList";
-import { AGENTS_LIST, AGENT_PROFILE, CREATE_AGENT, CREATE_FPO, FARMERS_LIST, FARMER_PROFILE, FPO_LIST, HOME, LOGIN, REPORTS } from "./routes";
+import { AGENTS_LIST, AGENT_PROFILE, CREATE_AGENT, CREATE_FPO, EDIT_AGENT, EDIT_FPO, FARMERS_LIST, FARMER_PROFILE, FPO_LIST, FPO_MAP, FPO_PROFILE, HOME, LOGIN, REPORTS } from "./routes";
 import Reports from "../pages/Reports";
 import FarmerProfile from "../pages/FarmerProfile";
 import AgentProfile from "../pages/AgentProfile";
@@ -11,6 +11,10 @@ import CreateFpo from "../pages/CreateFpo";
 import CreateAgent from "../pages/CreateAgent";
 import AgentsList from "../pages/AgentsList";
 import Menu from "../layouts/SideMenu";
+import EditAgent from "../pages/EditAgent";
+import FpoProfile from "../pages/FpoProfile";
+import EditFpo from "../pages/EditFpo";
+import FpoMap from "../pages/FpoMap";
 
 const router = createBrowserRouter([
     {
@@ -35,6 +39,14 @@ const router = createBrowserRouter([
                 element: <FpoList />,
             },
             {
+                path: FPO_MAP,
+                element: <FpoMap />,
+            },
+            {
+                path: `${FPO_PROFILE}/:id`,
+                element: <FpoProfile />,
+            },
+            {
                 path: AGENTS_LIST,
                 element: <AgentsList />,
             },
@@ -45,6 +57,14 @@ const router = createBrowserRouter([
             {
                 path: CREATE_AGENT,
                 element: <CreateAgent />,
+            },
+            {
+                path: EDIT_AGENT,
+                element: <EditAgent />,
+            },
+            {
+                path: EDIT_FPO,
+                element: <EditFpo />,
             },
             {
                 path: `${FARMER_PROFILE}/:id`,
