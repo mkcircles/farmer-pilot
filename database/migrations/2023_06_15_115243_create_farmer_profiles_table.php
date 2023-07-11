@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('id_number')->nullable();
             $table->enum('marital_status',['single','married','divorced','widowed']);
             $table->string('district');
-            $table->string('county');
+            $table->string('county')->nullable();
             $table->string('sub_county');
             $table->string('parish');
             $table->string('village');

@@ -34,6 +34,7 @@ class UserSeeder extends Seeder
         ];
 
         foreach ($users as $user) {
+            $user['photo'] = 'https://ui-avatars.com/api/?name=' . urlencode($user['name']) . '&size=128';
             \App\Models\User::create($user);
         }
 

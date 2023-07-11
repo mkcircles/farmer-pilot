@@ -190,7 +190,7 @@ class FPODataSeeder extends Seeder
             ['Ayugi Pugwang Cooperative Society Ltd','Onyango Christopher','779713369','ayugipukwang@gmail.com','Amuru','Pabbo','Kal','Oguru','2.9980296','32.0969743','9','secretary finance','national','maize beans','511','300','150','211','70','12'],
             ['Otrevu Cooperative Society','Andabati Remijo','775832070','','Terego','Leju Town Council','Alia','Ngalabia','3.1808008','31.0808423','2','manager secretary','national','coffee maize beans training advisory_services','1200','1000','','200','','0'],
             ['Obo Cooperative Society','Andama Abakar','778515863','','Terego','Katrini','Okavu','Wanguru','3.1640343','31.0002769','Currently not staff','secretary','national','coffee beans advisory_services training','385','300','','58','','0'],
-            ['Namabeya Zibula Atudde Farmers Cooperative Society','"Ssemanda John',' Tonda Sarah"','782934100','','Gomba','Kyegonza','Namabeya','Namabeya B','0.1445205','31.8847879','9','manager finance secretary','no','coffee maize sorghum beans training advisory_services','150','60','6','90','10','5'],
+            ['Namabeya Zibula Atudde Farmers Cooperative Society','Ssemanda John','782934100','','','Gomba','Kyegonza','Namabeya','Namabeya B','0.1445205','31.8847879','9','manager finance secretary','no','coffee maize sorghum beans training advisory_services','150','60','6','90','10','5'],
             ['Kuteesa Kakubansiri Cooperative Society Ltd','Mbogo Edmon','752412205','edmonmbogo72@gmail.com','Gomba','Kabulasoke','Kalwanga','Kakubansiri','0.0901434','31.7994783','9','manager finance it secretary','national','coffee maize sorghum','163','72','27','91','20','5'],
             ['Onyungari tobacco and wood fuel growers cooperative society','Yabo Millian','776351000','Hannet@gmail.com','Terego','Omugo','Yidu','Elepi','3.2505588','31.1243761','3','secretary finance manager','national','beans training','320','305','','15','','9'],
             ['Bukandula Yuda Tadoe Tukolere wamu Cooperative society ltd','Kayumba Vincent','77400639','','Gomba','Kabulasoke','Bukandula','Bukandula','0.1683907','31.8428102','9','manager finance secretary','no','coffee maize sorghum beans advisory_services','200','120','','80','','5'],
@@ -408,7 +408,24 @@ class FPODataSeeder extends Seeder
                 'created_by' => 1,
             ];
 
-            \App\Models\FPO::create($m);
+            $fpo = \App\Models\FPO::create($m);
+
+            //Check if FPO has an email
+
+            if(!empty($fpo->contact_email) && !is_null($fpo->contact_email)){
+                //Create FPO User Account
+                $user = \App\Models\User::create([
+                    'name' => $fpo->fpo_name,
+                    'email' => $fpo->contact_email,
+                    'phone_number' => $fpo->contact_phone_number,
+                    'password' => bcrypt('12345678'),
+                    'role' => 'fpo',
+                    'entity_id' => $fpo->id,
+                    'photo' => 'https://ui-avatars.com/api/?name='.$fpo->fpo_name.'&size=128&background=007bff&color=fff',
+                ]);
+            }
+           
+            
         }
     }
 }

@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Agent;
 use App\Models\FarmerProfile;
 use App\Models\FPO;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 /**
@@ -302,6 +304,17 @@ class FPOController extends Controller
         }
 
         $fpo = FPO::create($validated->validated());
+
+        //Create FPO user account
+        $user = new User();
+        $user->name = $fpo->fpo_name;
+        $user->phone_number = $fpo->contact_phone_number;
+        $user->email = $fpo->contact_email;
+        $user->password = Hash::make('password');
+        $user->user_type = 'fpo';
+        $user->photo = 'https://ui-avatars.com/api/?name='.$fpo->fpo_name.'&size=128&background=007bff&color=fff';
+        $user->save();
+        
 
         return response()->json([
             'success' => true,
