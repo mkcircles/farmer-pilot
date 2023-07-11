@@ -600,4 +600,29 @@ class AgentController extends Controller
         }
         
     }
+
+    //Get all Agents
+    public function getAllAgents()
+    {
+        $agent = Agent::all();
+        if(!$agent){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'No agents found'
+            ], 404);
+        }
+        else{
+            return response()->json([
+                'status' => 'success',
+                'data' => [
+                    'id' => $agent->id,
+                    'agent_code' => $agent->agent_code,
+                    'first_name' => $agent->first_name,
+                    'last_name' => $agent->last_name,
+                    'photo' => $agent->photo,
+                    'created_at' => $agent->created_at,
+                ]
+            ], 200);
+        }
+    }
 }

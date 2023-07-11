@@ -19,7 +19,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
+Route::get('/', function () {
+    return response()->json(['message' => 'Welcome to the Agri-Hub API']);
+});
+Route::get('/agents', [AgentController::class, 'getAllAgents']);
 Route::post('/agent/search', [AgentController::class, 'getSearchAgent']);
 
 Route::controller(AuthController::class)->group(function () {
