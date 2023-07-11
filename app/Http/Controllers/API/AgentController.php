@@ -602,10 +602,44 @@ class AgentController extends Controller
     }
 
     //Get all Agents
+    /**
+     * Get all Agents
+     * 
+     * This endpoint allows a user to get all agents
+     * 
+     * @response {
+     * "status": "success",
+     * "data": [
+     * {
+     * "id": 1,
+     * "agent_code": "AGT001",
+     * "first_name": "John",
+     * "last_name": "Doe",
+     * "photo": "http://url.test/storage/agents/1624810572IMG_20210627_174358.jpg",
+     * "created_at": "2021-06-27T17:09:32.000000Z",
+     * },
+     * {
+     * "id": 2,
+     * "agent_code": "AGT002",
+     * "first_name": "Jane",
+     * "last_name": "Doe",
+     * "photo": "http://url.test/storage/agents/1624810572IMG_20210627_174358.jpg",
+     * "created_at": "2021-06-27T17:09:32.000000Z",
+     * }
+     * ]
+     * }
+     * 
+     * @response 404 {
+     * "status": "error",
+     * "message": "No agents found"
+     * }
+     * 
+     * 
+     */
     public function getAllAgents()
     {
-        $agent = Agent::all();
-        if(!$agent){
+        $agents = Agent::select('id','agent_code','first_name','last_name','photo','created_at')->get();
+        if(!$agents){
             return response()->json([
                 'status' => 'error',
                 'message' => 'No agents found'
@@ -614,14 +648,7 @@ class AgentController extends Controller
         else{
             return response()->json([
                 'status' => 'success',
-                'data' => [
-                    'id' => $agent->id,
-                    'agent_code' => $agent->agent_code,
-                    'first_name' => $agent->first_name,
-                    'last_name' => $agent->last_name,
-                    'photo' => $agent->photo,
-                    'created_at' => $agent->created_at,
-                ]
+                'data' => $agents
             ], 200);
         }
     }

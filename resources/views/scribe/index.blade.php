@@ -72,7 +72,7 @@
                 </li>
                                     <ul id="tocify-subheader-agent-management" class="tocify-subheader">
                                                     <li class="tocify-item level-2" data-unique="agent-management-GETapi-agents-all">
-                                <a href="#agent-management-GETapi-agents-all">GET api/agents/all</a>
+                                <a href="#agent-management-GETapi-agents-all">Get all Agents</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="agent-management-POSTapi-agent-search">
                                 <a href="#agent-management-POSTapi-agent-search">Search Agent</a>
@@ -205,12 +205,12 @@ You can switch the language used with the tabs at the top right (or from the nav
 
     <p>APIs for managing agents</p>
 
-                                <h2 id="agent-management-GETapi-agents-all">GET api/agents/all</h2>
+                                <h2 id="agent-management-GETapi-agents-all">Get all Agents</h2>
 
 <p>
 </p>
 
-
+<p>This endpoint allows a user to get all agents</p>
 
 <span id="example-requests-GETapi-agents-all">
 <blockquote>Example request:</blockquote>
@@ -242,495 +242,40 @@ fetch(url, {
 
 <span id="example-responses-GETapi-agents-all">
             <blockquote>
-            <p>Example response (500):</p>
+            <p>Example response (200):</p>
         </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 59
-access-control-allow-origin: *
- </code></pre></details>         <pre>
+                <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Property [id] does not exist on this collection instance.&quot;,
-    &quot;exception&quot;: &quot;Exception&quot;,
-    &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Collections/Traits/EnumeratesValues.php&quot;,
-    &quot;line&quot;: 959,
-    &quot;trace&quot;: [
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/app/Http/Controllers/API/AgentController.php&quot;,
-            &quot;line&quot;: 618,
-            &quot;function&quot;: &quot;__get&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Support\\Collection&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Routing/Controller.php&quot;,
-            &quot;line&quot;: 54,
-            &quot;function&quot;: &quot;getAllAgents&quot;,
-            &quot;class&quot;: &quot;App\\Http\\Controllers\\API\\AgentController&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php&quot;,
-            &quot;line&quot;: 43,
-            &quot;function&quot;: &quot;callAction&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Controller&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Routing/Route.php&quot;,
-            &quot;line&quot;: 259,
-            &quot;function&quot;: &quot;dispatch&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\ControllerDispatcher&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Routing/Route.php&quot;,
-            &quot;line&quot;: 205,
-            &quot;function&quot;: &quot;runController&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Route&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
-            &quot;line&quot;: 799,
-            &quot;function&quot;: &quot;run&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Route&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 141,
-            &quot;function&quot;: &quot;Illuminate\\Routing\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php&quot;,
-            &quot;line&quot;: 50,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\SubstituteBindings&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
-            &quot;line&quot;: 159,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
-            &quot;line&quot;: 125,
-            &quot;function&quot;: &quot;handleRequest&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
-            &quot;line&quot;: 87,
-            &quot;function&quot;: &quot;handleRequestUsingNamedLimiter&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/sanctum/src/Http/Middleware/EnsureFrontendRequestsAreStateful.php&quot;,
-            &quot;line&quot;: 25,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 141,
-            &quot;function&quot;: &quot;Laravel\\Sanctum\\Http\\Middleware\\{closure}&quot;,
-            &quot;class&quot;: &quot;Laravel\\Sanctum\\Http\\Middleware\\EnsureFrontendRequestsAreStateful&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 116,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/sanctum/src/Http/Middleware/EnsureFrontendRequestsAreStateful.php&quot;,
-            &quot;line&quot;: 24,
-            &quot;function&quot;: &quot;then&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Laravel\\Sanctum\\Http\\Middleware\\EnsureFrontendRequestsAreStateful&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 116,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
-            &quot;line&quot;: 798,
-            &quot;function&quot;: &quot;then&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
-            &quot;line&quot;: 777,
-            &quot;function&quot;: &quot;runRouteWithinStack&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
-            &quot;line&quot;: 741,
-            &quot;function&quot;: &quot;runRoute&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
-            &quot;line&quot;: 730,
-            &quot;function&quot;: &quot;dispatchToRoute&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
-            &quot;line&quot;: 200,
-            &quot;function&quot;: &quot;dispatch&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 141,
-            &quot;function&quot;: &quot;Illuminate\\Foundation\\Http\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
-            &quot;line&quot;: 21,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php&quot;,
-            &quot;line&quot;: 31,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
-            &quot;line&quot;: 21,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php&quot;,
-            &quot;line&quot;: 40,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TrimStrings&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php&quot;,
-            &quot;line&quot;: 27,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php&quot;,
-            &quot;line&quot;: 86,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php&quot;,
-            &quot;line&quot;: 62,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Http\\Middleware\\HandleCors&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php&quot;,
-            &quot;line&quot;: 39,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Http\\Middleware\\TrustProxies&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 116,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
-            &quot;line&quot;: 175,
-            &quot;function&quot;: &quot;then&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
-            &quot;line&quot;: 144,
-            &quot;function&quot;: &quot;sendRequestThroughRouter&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
-            &quot;line&quot;: 299,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
-            &quot;line&quot;: 287,
-            &quot;function&quot;: &quot;callLaravelOrLumenRoute&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
-            &quot;line&quot;: 92,
-            &quot;function&quot;: &quot;makeApiCall&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
-            &quot;line&quot;: 45,
-            &quot;function&quot;: &quot;makeResponseCall&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
-            &quot;line&quot;: 35,
-            &quot;function&quot;: &quot;makeResponseCallIfConditionsPass&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
-            &quot;line&quot;: 209,
-            &quot;function&quot;: &quot;__invoke&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
-            &quot;line&quot;: 163,
-            &quot;function&quot;: &quot;iterateThroughStrategies&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
-            &quot;line&quot;: 95,
-            &quot;function&quot;: &quot;fetchResponses&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
-            &quot;line&quot;: 124,
-            &quot;function&quot;: &quot;processRoute&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
-            &quot;line&quot;: 71,
-            &quot;function&quot;: &quot;extractEndpointsInfoFromLaravelApp&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
-            &quot;line&quot;: 49,
-            &quot;function&quot;: &quot;extractEndpointsInfoAndWriteToDisk&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php&quot;,
-            &quot;line&quot;: 51,
-            &quot;function&quot;: &quot;get&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
-            &quot;line&quot;: 36,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Commands\\GenerateDocumentation&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Container/Util.php&quot;,
-            &quot;line&quot;: 41,
-            &quot;function&quot;: &quot;Illuminate\\Container\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
-            &quot;type&quot;: &quot;::&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
-            &quot;line&quot;: 93,
-            &quot;function&quot;: &quot;unwrapIfClosure&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\Util&quot;,
-            &quot;type&quot;: &quot;::&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
-            &quot;line&quot;: 35,
-            &quot;function&quot;: &quot;callBoundMethod&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
-            &quot;type&quot;: &quot;::&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
-            &quot;line&quot;: 662,
-            &quot;function&quot;: &quot;call&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
-            &quot;type&quot;: &quot;::&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
-            &quot;line&quot;: 208,
-            &quot;function&quot;: &quot;call&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/symfony/console/Command/Command.php&quot;,
-            &quot;line&quot;: 326,
-            &quot;function&quot;: &quot;execute&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
-            &quot;line&quot;: 177,
-            &quot;function&quot;: &quot;run&quot;,
-            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Command\\Command&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/symfony/console/Application.php&quot;,
-            &quot;line&quot;: 1081,
-            &quot;function&quot;: &quot;run&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/symfony/console/Application.php&quot;,
-            &quot;line&quot;: 320,
-            &quot;function&quot;: &quot;doRunCommand&quot;,
-            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/symfony/console/Application.php&quot;,
-            &quot;line&quot;: 174,
-            &quot;function&quot;: &quot;doRun&quot;,
-            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php&quot;,
-            &quot;line&quot;: 200,
-            &quot;function&quot;: &quot;run&quot;,
-            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/Users/maurice_tiv/Sites/farmer-pilot/artisan&quot;,
-            &quot;line&quot;: 35,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Console\\Kernel&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        }
-    ]
+&quot;status&quot;: &quot;success&quot;,
+&quot;data&quot;: [
+{
+&quot;id&quot;: 1,
+&quot;agent_code&quot;: &quot;AGT001&quot;,
+&quot;first_name&quot;: &quot;John&quot;,
+&quot;last_name&quot;: &quot;Doe&quot;,
+&quot;photo&quot;: &quot;http://url.test/storage/agents/1624810572IMG_20210627_174358.jpg&quot;,
+&quot;created_at&quot;: &quot;2021-06-27T17:09:32.000000Z&quot;,
+},
+{
+&quot;id&quot;: 2,
+&quot;agent_code&quot;: &quot;AGT002&quot;,
+&quot;first_name&quot;: &quot;Jane&quot;,
+&quot;last_name&quot;: &quot;Doe&quot;,
+&quot;photo&quot;: &quot;http://url.test/storage/agents/1624810572IMG_20210627_174358.jpg&quot;,
+&quot;created_at&quot;: &quot;2021-06-27T17:09:32.000000Z&quot;,
+}
+]
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: &quot;error&quot;,
+    &quot;message&quot;: &quot;No agents found&quot;
 }</code>
  </pre>
     </span>
@@ -1202,16 +747,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"first_name\": \"John\",
     \"last_name\": \"Doe\",
-    \"email\": \"nelson.oconner@example.com\",
+    \"email\": \"crooks.annalise@example.net\",
     \"phone_number\": \"256XXXXXXXXX\",
     \"age\": \"30\",
-    \"gender\": \"ipsam\",
+    \"gender\": \"sed\",
     \"residence\": \"Kampala\",
     \"referee_name\": \"Jane Doe\",
     \"referee_phone_number\": \"08012345678\",
     \"designation\": \"Agro Extension Worker\",
-    \"created_by\": 20,
-    \"fpo_id\": 11
+    \"created_by\": 3,
+    \"fpo_id\": 18
 }"
 </code></pre></div>
 
@@ -1230,16 +775,16 @@ const headers = {
 let body = {
     "first_name": "John",
     "last_name": "Doe",
-    "email": "nelson.oconner@example.com",
+    "email": "crooks.annalise@example.net",
     "phone_number": "256XXXXXXXXX",
     "age": "30",
-    "gender": "ipsam",
+    "gender": "sed",
     "residence": "Kampala",
     "referee_name": "Jane Doe",
     "referee_phone_number": "08012345678",
     "designation": "Agro Extension Worker",
-    "created_by": 20,
-    "fpo_id": 11
+    "created_by": 3,
+    "fpo_id": 18
 };
 
 fetch(url, {
@@ -1482,10 +1027,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-agent-register"
-               value="nelson.oconner@example.com"
+               value="crooks.annalise@example.net"
                data-component="body">
     <br>
-<p>The email of the agent. Example: Example: <code>nelson.oconner@example.com</code></p>
+<p>The email of the agent. Example: Example: <code>crooks.annalise@example.net</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
@@ -1515,10 +1060,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="gender"                data-endpoint="POSTapi-agent-register"
-               value="ipsam"
+               value="sed"
                data-component="body">
     <br>
-<p>Example: <code>ipsam</code></p>
+<p>Example: <code>sed</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>residence</code></b>&nbsp;&nbsp;
@@ -1570,10 +1115,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="created_by"                data-endpoint="POSTapi-agent-register"
-               value="20"
+               value="3"
                data-component="body">
     <br>
-<p>Example: <code>20</code></p>
+<p>Example: <code>3</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fpo_id</code></b>&nbsp;&nbsp;
@@ -1581,10 +1126,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="fpo_id"                data-endpoint="POSTapi-agent-register"
-               value="11"
+               value="18"
                data-component="body">
     <br>
-<p>Example: <code>11</code></p>
+<p>Example: <code>18</code></p>
         </div>
         </form>
 
@@ -1602,7 +1147,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://farmers.nauticaltech.ug/api/agent/1" \
+    --get "https://farmers.nauticaltech.ug/api/agent/officia" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Authorization: required The authorization token. Example: Bearer {token}"</code></pre></div>
@@ -1610,7 +1155,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmers.nauticaltech.ug/api/agent/1"
+    "https://farmers.nauticaltech.ug/api/agent/officia"
 );
 
 const headers = {
@@ -1747,14 +1292,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
+<small>string</small>&nbsp;
  &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="GETapi-agent--id-"
-               value="1"
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="GETapi-agent--id-"
+               value="officia"
                data-component="url">
     <br>
-<p>The ID of the agent. Example: <code>1</code></p>
+<p>The ID of the agent. Example: <code>officia</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>agent</code></b>&nbsp;&nbsp;
@@ -1782,14 +1327,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://farmers.nauticaltech.ug/api/agent/1/update" \
+    "https://farmers.nauticaltech.ug/api/agent/adipisci/update" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmers.nauticaltech.ug/api/agent/1/update"
+    "https://farmers.nauticaltech.ug/api/agent/adipisci/update"
 );
 
 const headers = {
@@ -1878,14 +1423,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
+<small>string</small>&nbsp;
  &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="POSTapi-agent--id--update"
-               value="1"
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-agent--id--update"
+               value="adipisci"
                data-component="url">
     <br>
-<p>The ID of the agent. Example: <code>1</code></p>
+<p>The ID of the agent. Example: <code>adipisci</code></p>
             </div>
                     </form>
 
@@ -2104,8 +1649,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"hildegard51@example.com\",
-    \"password\": \"h`Xy4&amp;;u);%x{m)Q2\"
+    \"email\": \"bettye.schultz@example.com\",
+    \"password\": \"(LVm,cyfODMPJ3s\"
 }"
 </code></pre></div>
 
@@ -2121,8 +1666,8 @@ const headers = {
 };
 
 let body = {
-    "email": "hildegard51@example.com",
-    "password": "h`Xy4&amp;;u);%x{m)Q2"
+    "email": "bettye.schultz@example.com",
+    "password": "(LVm,cyfODMPJ3s"
 };
 
 fetch(url, {
@@ -2267,10 +1812,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-login"
-               value="hildegard51@example.com"
+               value="bettye.schultz@example.com"
                data-component="body">
     <br>
-<p>The email address or phone number of the user Example: <code>hildegard51@example.com</code></p>
+<p>The email address or phone number of the user Example: <code>bettye.schultz@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -2278,10 +1823,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-login"
-               value="h`Xy4&;u);%x{m)Q2"
+               value="(LVm,cyfODMPJ3s"
                data-component="body">
     <br>
-<p>The password of the user Example: <code>h</code>Xy4&amp;;u);%x{m)Q2`</p>
+<p>The password of the user Example: <code>(LVm,cyfODMPJ3s</code></p>
         </div>
         </form>
 
@@ -3269,26 +2814,26 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --header "Authorization: required The authorization token. Example: Bearer {token}" \
     --data "{
-    \"fpo_name\": \"ut\",
-    \"district\": \"odio\",
-    \"county\": \"eos\",
-    \"sub_county\": \"et\",
-    \"parish\": \"accusantium\",
-    \"village\": \"debitis\",
-    \"main_crop\": \"esse\",
-    \"fpo_contact_name\": \"consequatur\",
-    \"contact_phone_number\": \"sed\",
-    \"contact_email\": \"brau@example.net\",
-    \"core_staff_count\": 4,
-    \"core_staff_positions\": \"laudantium\",
-    \"registration_status\": \"dolorem\",
-    \"fpo_membership_number\": \"incidunt\",
-    \"fpo_male_membership\": \"sint\",
-    \"fpo_female_membership\": \"excepturi\",
-    \"fpo_male_youth\": \"natus\",
-    \"fpo_female_youth\": \"assumenda\",
-    \"fpo_field_agents\": \"quia\",
-    \"created_by\": 13
+    \"fpo_name\": \"minus\",
+    \"district\": \"dolorum\",
+    \"county\": \"provident\",
+    \"sub_county\": \"sunt\",
+    \"parish\": \"dolores\",
+    \"village\": \"ipsum\",
+    \"main_crop\": \"dolor\",
+    \"fpo_contact_name\": \"magnam\",
+    \"contact_phone_number\": \"non\",
+    \"contact_email\": \"tia.watsica@example.net\",
+    \"core_staff_count\": 17,
+    \"core_staff_positions\": \"culpa\",
+    \"registration_status\": \"quo\",
+    \"fpo_membership_number\": \"maxime\",
+    \"fpo_male_membership\": \"eum\",
+    \"fpo_female_membership\": \"ea\",
+    \"fpo_male_youth\": \"et\",
+    \"fpo_female_youth\": \"accusantium\",
+    \"fpo_field_agents\": \"dolor\",
+    \"created_by\": 17
 }"
 </code></pre></div>
 
@@ -3305,26 +2850,26 @@ const headers = {
 };
 
 let body = {
-    "fpo_name": "ut",
-    "district": "odio",
-    "county": "eos",
-    "sub_county": "et",
-    "parish": "accusantium",
-    "village": "debitis",
-    "main_crop": "esse",
-    "fpo_contact_name": "consequatur",
-    "contact_phone_number": "sed",
-    "contact_email": "brau@example.net",
-    "core_staff_count": 4,
-    "core_staff_positions": "laudantium",
-    "registration_status": "dolorem",
-    "fpo_membership_number": "incidunt",
-    "fpo_male_membership": "sint",
-    "fpo_female_membership": "excepturi",
-    "fpo_male_youth": "natus",
-    "fpo_female_youth": "assumenda",
-    "fpo_field_agents": "quia",
-    "created_by": 13
+    "fpo_name": "minus",
+    "district": "dolorum",
+    "county": "provident",
+    "sub_county": "sunt",
+    "parish": "dolores",
+    "village": "ipsum",
+    "main_crop": "dolor",
+    "fpo_contact_name": "magnam",
+    "contact_phone_number": "non",
+    "contact_email": "tia.watsica@example.net",
+    "core_staff_count": 17,
+    "core_staff_positions": "culpa",
+    "registration_status": "quo",
+    "fpo_membership_number": "maxime",
+    "fpo_male_membership": "eum",
+    "fpo_female_membership": "ea",
+    "fpo_male_youth": "et",
+    "fpo_female_youth": "accusantium",
+    "fpo_field_agents": "dolor",
+    "created_by": 17
 };
 
 fetch(url, {
@@ -3531,10 +3076,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="fpo_name"                data-endpoint="POSTapi-fpo-register"
-               value="ut"
+               value="minus"
                data-component="body">
     <br>
-<p>The name of the FPO. Example: <code>ut</code></p>
+<p>The name of the FPO. Example: <code>minus</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>district</code></b>&nbsp;&nbsp;
@@ -3542,10 +3087,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="district"                data-endpoint="POSTapi-fpo-register"
-               value="odio"
+               value="dolorum"
                data-component="body">
     <br>
-<p>The district of the FPO. Example: <code>odio</code></p>
+<p>The district of the FPO. Example: <code>dolorum</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>county</code></b>&nbsp;&nbsp;
@@ -3553,10 +3098,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="county"                data-endpoint="POSTapi-fpo-register"
-               value="eos"
+               value="provident"
                data-component="body">
     <br>
-<p>The county of the FPO. Example: <code>eos</code></p>
+<p>The county of the FPO. Example: <code>provident</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>sub_county</code></b>&nbsp;&nbsp;
@@ -3564,10 +3109,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="sub_county"                data-endpoint="POSTapi-fpo-register"
-               value="et"
+               value="sunt"
                data-component="body">
     <br>
-<p>The sub county of the FPO. Example: <code>et</code></p>
+<p>The sub county of the FPO. Example: <code>sunt</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>parish</code></b>&nbsp;&nbsp;
@@ -3575,10 +3120,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="parish"                data-endpoint="POSTapi-fpo-register"
-               value="accusantium"
+               value="dolores"
                data-component="body">
     <br>
-<p>The parish of the FPO. Example: <code>accusantium</code></p>
+<p>The parish of the FPO. Example: <code>dolores</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>village</code></b>&nbsp;&nbsp;
@@ -3586,10 +3131,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="village"                data-endpoint="POSTapi-fpo-register"
-               value="debitis"
+               value="ipsum"
                data-component="body">
     <br>
-<p>The village of the FPO. Example: <code>debitis</code></p>
+<p>The village of the FPO. Example: <code>ipsum</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>main_crop</code></b>&nbsp;&nbsp;
@@ -3597,10 +3142,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="main_crop"                data-endpoint="POSTapi-fpo-register"
-               value="esse"
+               value="dolor"
                data-component="body">
     <br>
-<p>The main crop of the FPO. Example: <code>esse</code></p>
+<p>The main crop of the FPO. Example: <code>dolor</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fpo_contact_name</code></b>&nbsp;&nbsp;
@@ -3608,10 +3153,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="fpo_contact_name"                data-endpoint="POSTapi-fpo-register"
-               value="consequatur"
+               value="magnam"
                data-component="body">
     <br>
-<p>The contact name of the FPO. Example: <code>consequatur</code></p>
+<p>The contact name of the FPO. Example: <code>magnam</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>contact_phone_number</code></b>&nbsp;&nbsp;
@@ -3619,10 +3164,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="contact_phone_number"                data-endpoint="POSTapi-fpo-register"
-               value="sed"
+               value="non"
                data-component="body">
     <br>
-<p>The contact phone number of the FPO. Example: <code>sed</code></p>
+<p>The contact phone number of the FPO. Example: <code>non</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>contact_email</code></b>&nbsp;&nbsp;
@@ -3630,10 +3175,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="contact_email"                data-endpoint="POSTapi-fpo-register"
-               value="brau@example.net"
+               value="tia.watsica@example.net"
                data-component="body">
     <br>
-<p>The contact email of the FPO. Example: <code>brau@example.net</code></p>
+<p>The contact email of the FPO. Example: <code>tia.watsica@example.net</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>core_staff_count</code></b>&nbsp;&nbsp;
@@ -3641,10 +3186,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="core_staff_count"                data-endpoint="POSTapi-fpo-register"
-               value="4"
+               value="17"
                data-component="body">
     <br>
-<p>The number of core staff of the FPO. Example: <code>4</code></p>
+<p>The number of core staff of the FPO. Example: <code>17</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>core_staff_positions</code></b>&nbsp;&nbsp;
@@ -3652,10 +3197,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="core_staff_positions"                data-endpoint="POSTapi-fpo-register"
-               value="laudantium"
+               value="culpa"
                data-component="body">
     <br>
-<p>The positions of the core staff of the FPO. Example: <code>laudantium</code></p>
+<p>The positions of the core staff of the FPO. Example: <code>culpa</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>registration_status</code></b>&nbsp;&nbsp;
@@ -3663,10 +3208,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="registration_status"                data-endpoint="POSTapi-fpo-register"
-               value="dolorem"
+               value="quo"
                data-component="body">
     <br>
-<p>The registration status of the FPO. Example: <code>dolorem</code></p>
+<p>The registration status of the FPO. Example: <code>quo</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fpo_membership_number</code></b>&nbsp;&nbsp;
@@ -3674,10 +3219,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="fpo_membership_number"                data-endpoint="POSTapi-fpo-register"
-               value="incidunt"
+               value="maxime"
                data-component="body">
     <br>
-<p>The membership number of the FPO. Example: <code>incidunt</code></p>
+<p>The membership number of the FPO. Example: <code>maxime</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fpo_male_membership</code></b>&nbsp;&nbsp;
@@ -3685,10 +3230,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="fpo_male_membership"                data-endpoint="POSTapi-fpo-register"
-               value="sint"
+               value="eum"
                data-component="body">
     <br>
-<p>The male membership number of the FPO. Example: <code>sint</code></p>
+<p>The male membership number of the FPO. Example: <code>eum</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fpo_female_membership</code></b>&nbsp;&nbsp;
@@ -3696,10 +3241,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="fpo_female_membership"                data-endpoint="POSTapi-fpo-register"
-               value="excepturi"
+               value="ea"
                data-component="body">
     <br>
-<p>The female membership number of the FPO. Example: <code>excepturi</code></p>
+<p>The female membership number of the FPO. Example: <code>ea</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fpo_male_youth</code></b>&nbsp;&nbsp;
@@ -3707,10 +3252,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="fpo_male_youth"                data-endpoint="POSTapi-fpo-register"
-               value="natus"
+               value="et"
                data-component="body">
     <br>
-<p>The male youth membership number of the FPO. Example: <code>natus</code></p>
+<p>The male youth membership number of the FPO. Example: <code>et</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fpo_female_youth</code></b>&nbsp;&nbsp;
@@ -3718,10 +3263,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="fpo_female_youth"                data-endpoint="POSTapi-fpo-register"
-               value="assumenda"
+               value="accusantium"
                data-component="body">
     <br>
-<p>The female youth membership number of the FPO. Example: <code>assumenda</code></p>
+<p>The female youth membership number of the FPO. Example: <code>accusantium</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fpo_field_agents</code></b>&nbsp;&nbsp;
@@ -3729,10 +3274,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="fpo_field_agents"                data-endpoint="POSTapi-fpo-register"
-               value="quia"
+               value="dolor"
                data-component="body">
     <br>
-<p>The number of field agents of the FPO. Example: <code>quia</code></p>
+<p>The number of field agents of the FPO. Example: <code>dolor</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>created_by</code></b>&nbsp;&nbsp;
@@ -3740,10 +3285,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="created_by"                data-endpoint="POSTapi-fpo-register"
-               value="13"
+               value="17"
                data-component="body">
     <br>
-<p>Example: <code>13</code></p>
+<p>Example: <code>17</code></p>
         </div>
         </form>
 
@@ -3761,7 +3306,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://farmers.nauticaltech.ug/api/fpo/blanditiis" \
+    --get "https://farmers.nauticaltech.ug/api/fpo/animi" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Authorization: required The authorization token. Example: Bearer {token}"</code></pre></div>
@@ -3769,7 +3314,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmers.nauticaltech.ug/api/fpo/blanditiis"
+    "https://farmers.nauticaltech.ug/api/fpo/animi"
 );
 
 const headers = {
@@ -3937,10 +3482,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETapi-fpo--id-"
-               value="blanditiis"
+               value="animi"
                data-component="url">
     <br>
-<p>The id of the FPO. Example: <code>blanditiis</code></p>
+<p>The id of the FPO. Example: <code>animi</code></p>
             </div>
                     </form>
 
@@ -3958,38 +3503,38 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://farmers.nauticaltech.ug/api/fpo/fugiat/update" \
+    "https://farmers.nauticaltech.ug/api/fpo/sapiente/update" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Authorization: required The authorization token. Example: Bearer {token}" \
     --data "{
-    \"fpo_name\": \"veritatis\",
-    \"district\": \"laudantium\",
-    \"county\": \"nobis\",
-    \"sub_county\": \"ratione\",
-    \"parish\": \"cumque\",
-    \"village\": \"ullam\",
-    \"main_crop\": \"quasi\",
-    \"fpo_contact_name\": \"corporis\",
-    \"contact_phone_number\": \"sapiente\",
-    \"contact_email\": \"warren.boehm@example.com\",
-    \"core_staff_count\": 10,
-    \"core_staff_positions\": \"fuga\",
-    \"registration_status\": \"nesciunt\",
-    \"fpo_membership_number\": \"excepturi\",
-    \"fpo_male_membership\": \"reiciendis\",
-    \"fpo_female_membership\": \"sapiente\",
-    \"fpo_male_youth\": \"in\",
-    \"fpo_female_youth\": \"inventore\",
-    \"fpo_field_agents\": \"dolore\",
-    \"created_by\": 7
+    \"fpo_name\": \"numquam\",
+    \"district\": \"aut\",
+    \"county\": \"non\",
+    \"sub_county\": \"alias\",
+    \"parish\": \"consequatur\",
+    \"village\": \"inventore\",
+    \"main_crop\": \"dicta\",
+    \"fpo_contact_name\": \"amet\",
+    \"contact_phone_number\": \"quia\",
+    \"contact_email\": \"vschultz@example.org\",
+    \"core_staff_count\": 20,
+    \"core_staff_positions\": \"sit\",
+    \"registration_status\": \"aut\",
+    \"fpo_membership_number\": \"id\",
+    \"fpo_male_membership\": \"enim\",
+    \"fpo_female_membership\": \"pariatur\",
+    \"fpo_male_youth\": \"fugiat\",
+    \"fpo_female_youth\": \"illo\",
+    \"fpo_field_agents\": \"libero\",
+    \"created_by\": 3
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmers.nauticaltech.ug/api/fpo/fugiat/update"
+    "https://farmers.nauticaltech.ug/api/fpo/sapiente/update"
 );
 
 const headers = {
@@ -3999,26 +3544,26 @@ const headers = {
 };
 
 let body = {
-    "fpo_name": "veritatis",
-    "district": "laudantium",
-    "county": "nobis",
-    "sub_county": "ratione",
-    "parish": "cumque",
-    "village": "ullam",
-    "main_crop": "quasi",
-    "fpo_contact_name": "corporis",
-    "contact_phone_number": "sapiente",
-    "contact_email": "warren.boehm@example.com",
-    "core_staff_count": 10,
-    "core_staff_positions": "fuga",
-    "registration_status": "nesciunt",
-    "fpo_membership_number": "excepturi",
-    "fpo_male_membership": "reiciendis",
-    "fpo_female_membership": "sapiente",
-    "fpo_male_youth": "in",
-    "fpo_female_youth": "inventore",
-    "fpo_field_agents": "dolore",
-    "created_by": 7
+    "fpo_name": "numquam",
+    "district": "aut",
+    "county": "non",
+    "sub_county": "alias",
+    "parish": "consequatur",
+    "village": "inventore",
+    "main_crop": "dicta",
+    "fpo_contact_name": "amet",
+    "contact_phone_number": "quia",
+    "contact_email": "vschultz@example.org",
+    "core_staff_count": 20,
+    "core_staff_positions": "sit",
+    "registration_status": "aut",
+    "fpo_membership_number": "id",
+    "fpo_male_membership": "enim",
+    "fpo_female_membership": "pariatur",
+    "fpo_male_youth": "fugiat",
+    "fpo_female_youth": "illo",
+    "fpo_field_agents": "libero",
+    "created_by": 3
 };
 
 fetch(url, {
@@ -4226,10 +3771,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="POSTapi-fpo--id--update"
-               value="fugiat"
+               value="sapiente"
                data-component="url">
     <br>
-<p>The id of the FPO. Example: <code>fugiat</code></p>
+<p>The id of the FPO. Example: <code>sapiente</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -4238,10 +3783,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="fpo_name"                data-endpoint="POSTapi-fpo--id--update"
-               value="veritatis"
+               value="numquam"
                data-component="body">
     <br>
-<p>The name of the FPO. Example: <code>veritatis</code></p>
+<p>The name of the FPO. Example: <code>numquam</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>district</code></b>&nbsp;&nbsp;
@@ -4249,10 +3794,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="district"                data-endpoint="POSTapi-fpo--id--update"
-               value="laudantium"
+               value="aut"
                data-component="body">
     <br>
-<p>The district of the FPO. Example: <code>laudantium</code></p>
+<p>The district of the FPO. Example: <code>aut</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>county</code></b>&nbsp;&nbsp;
@@ -4260,10 +3805,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="county"                data-endpoint="POSTapi-fpo--id--update"
-               value="nobis"
+               value="non"
                data-component="body">
     <br>
-<p>The county of the FPO. Example: <code>nobis</code></p>
+<p>The county of the FPO. Example: <code>non</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>sub_county</code></b>&nbsp;&nbsp;
@@ -4271,10 +3816,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="sub_county"                data-endpoint="POSTapi-fpo--id--update"
-               value="ratione"
+               value="alias"
                data-component="body">
     <br>
-<p>The sub county of the FPO. Example: <code>ratione</code></p>
+<p>The sub county of the FPO. Example: <code>alias</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>parish</code></b>&nbsp;&nbsp;
@@ -4282,10 +3827,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="parish"                data-endpoint="POSTapi-fpo--id--update"
-               value="cumque"
+               value="consequatur"
                data-component="body">
     <br>
-<p>The parish of the FPO. Example: <code>cumque</code></p>
+<p>The parish of the FPO. Example: <code>consequatur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>village</code></b>&nbsp;&nbsp;
@@ -4293,10 +3838,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="village"                data-endpoint="POSTapi-fpo--id--update"
-               value="ullam"
+               value="inventore"
                data-component="body">
     <br>
-<p>The village of the FPO. Example: <code>ullam</code></p>
+<p>The village of the FPO. Example: <code>inventore</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>main_crop</code></b>&nbsp;&nbsp;
@@ -4304,10 +3849,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="main_crop"                data-endpoint="POSTapi-fpo--id--update"
-               value="quasi"
+               value="dicta"
                data-component="body">
     <br>
-<p>The main crop of the FPO. Example: <code>quasi</code></p>
+<p>The main crop of the FPO. Example: <code>dicta</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fpo_contact_name</code></b>&nbsp;&nbsp;
@@ -4315,10 +3860,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="fpo_contact_name"                data-endpoint="POSTapi-fpo--id--update"
-               value="corporis"
+               value="amet"
                data-component="body">
     <br>
-<p>The contact name of the FPO. Example: <code>corporis</code></p>
+<p>The contact name of the FPO. Example: <code>amet</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>contact_phone_number</code></b>&nbsp;&nbsp;
@@ -4326,10 +3871,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="contact_phone_number"                data-endpoint="POSTapi-fpo--id--update"
-               value="sapiente"
+               value="quia"
                data-component="body">
     <br>
-<p>The contact phone number of the FPO. Example: <code>sapiente</code></p>
+<p>The contact phone number of the FPO. Example: <code>quia</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>contact_email</code></b>&nbsp;&nbsp;
@@ -4337,10 +3882,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="contact_email"                data-endpoint="POSTapi-fpo--id--update"
-               value="warren.boehm@example.com"
+               value="vschultz@example.org"
                data-component="body">
     <br>
-<p>The contact email of the FPO. Example: <code>warren.boehm@example.com</code></p>
+<p>The contact email of the FPO. Example: <code>vschultz@example.org</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>core_staff_count</code></b>&nbsp;&nbsp;
@@ -4348,10 +3893,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="core_staff_count"                data-endpoint="POSTapi-fpo--id--update"
-               value="10"
+               value="20"
                data-component="body">
     <br>
-<p>The number of core staff of the FPO. Example: <code>10</code></p>
+<p>The number of core staff of the FPO. Example: <code>20</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>core_staff_positions</code></b>&nbsp;&nbsp;
@@ -4359,10 +3904,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="core_staff_positions"                data-endpoint="POSTapi-fpo--id--update"
-               value="fuga"
+               value="sit"
                data-component="body">
     <br>
-<p>The positions of the core staff of the FPO. Example: <code>fuga</code></p>
+<p>The positions of the core staff of the FPO. Example: <code>sit</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>registration_status</code></b>&nbsp;&nbsp;
@@ -4370,10 +3915,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="registration_status"                data-endpoint="POSTapi-fpo--id--update"
-               value="nesciunt"
+               value="aut"
                data-component="body">
     <br>
-<p>The registration status of the FPO. Example: <code>nesciunt</code></p>
+<p>The registration status of the FPO. Example: <code>aut</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fpo_membership_number</code></b>&nbsp;&nbsp;
@@ -4381,10 +3926,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="fpo_membership_number"                data-endpoint="POSTapi-fpo--id--update"
-               value="excepturi"
+               value="id"
                data-component="body">
     <br>
-<p>The membership number of the FPO. Example: <code>excepturi</code></p>
+<p>The membership number of the FPO. Example: <code>id</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fpo_male_membership</code></b>&nbsp;&nbsp;
@@ -4392,10 +3937,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="fpo_male_membership"                data-endpoint="POSTapi-fpo--id--update"
-               value="reiciendis"
+               value="enim"
                data-component="body">
     <br>
-<p>The male membership number of the FPO. Example: <code>reiciendis</code></p>
+<p>The male membership number of the FPO. Example: <code>enim</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fpo_female_membership</code></b>&nbsp;&nbsp;
@@ -4403,10 +3948,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="fpo_female_membership"                data-endpoint="POSTapi-fpo--id--update"
-               value="sapiente"
+               value="pariatur"
                data-component="body">
     <br>
-<p>The female membership number of the FPO. Example: <code>sapiente</code></p>
+<p>The female membership number of the FPO. Example: <code>pariatur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fpo_male_youth</code></b>&nbsp;&nbsp;
@@ -4414,10 +3959,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="fpo_male_youth"                data-endpoint="POSTapi-fpo--id--update"
-               value="in"
+               value="fugiat"
                data-component="body">
     <br>
-<p>The male youth membership number of the FPO. Example: <code>in</code></p>
+<p>The male youth membership number of the FPO. Example: <code>fugiat</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fpo_female_youth</code></b>&nbsp;&nbsp;
@@ -4425,10 +3970,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="fpo_female_youth"                data-endpoint="POSTapi-fpo--id--update"
-               value="inventore"
+               value="illo"
                data-component="body">
     <br>
-<p>The female youth membership number of the FPO. Example: <code>inventore</code></p>
+<p>The female youth membership number of the FPO. Example: <code>illo</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fpo_field_agents</code></b>&nbsp;&nbsp;
@@ -4436,10 +3981,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="fpo_field_agents"                data-endpoint="POSTapi-fpo--id--update"
-               value="dolore"
+               value="libero"
                data-component="body">
     <br>
-<p>The number of field agents of the FPO. Example: <code>dolore</code></p>
+<p>The number of field agents of the FPO. Example: <code>libero</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>created_by</code></b>&nbsp;&nbsp;
@@ -4447,10 +3992,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="created_by"                data-endpoint="POSTapi-fpo--id--update"
-               value="7"
+               value="3"
                data-component="body">
     <br>
-<p>Example: <code>7</code></p>
+<p>Example: <code>3</code></p>
         </div>
         </form>
 
@@ -4468,7 +4013,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://farmers.nauticaltech.ug/api/fpo/hic/agents" \
+    --get "https://farmers.nauticaltech.ug/api/fpo/enim/agents" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Authorization: required The authorization token. Example: Bearer {token}"</code></pre></div>
@@ -4476,7 +4021,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmers.nauticaltech.ug/api/fpo/hic/agents"
+    "https://farmers.nauticaltech.ug/api/fpo/enim/agents"
 );
 
 const headers = {
@@ -4665,10 +4210,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETapi-fpo--id--agents"
-               value="hic"
+               value="enim"
                data-component="url">
     <br>
-<p>The id of the FPO. Example: <code>hic</code></p>
+<p>The id of the FPO. Example: <code>enim</code></p>
             </div>
                     </form>
 
@@ -4686,7 +4231,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://farmers.nauticaltech.ug/api/fpo/non/farmers" \
+    --get "https://farmers.nauticaltech.ug/api/fpo/officiis/farmers" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Authorization: required The authorization token. Example: Bearer {token}"</code></pre></div>
@@ -4694,7 +4239,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://farmers.nauticaltech.ug/api/fpo/non/farmers"
+    "https://farmers.nauticaltech.ug/api/fpo/officiis/farmers"
 );
 
 const headers = {
@@ -4883,10 +4428,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETapi-fpo--id--farmers"
-               value="non"
+               value="officiis"
                data-component="url">
     <br>
-<p>The id of the FPO. Example: <code>non</code></p>
+<p>The id of the FPO. Example: <code>officiis</code></p>
             </div>
                     </form>
 
@@ -5071,7 +4616,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"first_name\": \"John\",
     \"last_name\": \"Doe\",
     \"dob\": \"1990-01-01\",
-    \"gender\": \"sit\",
+    \"gender\": \"asperiores\",
     \"education_level\": \"Primary\",
     \"phone_number\": \"0789123456\",
     \"id_number\": \"CM12345678\",
@@ -5124,7 +4669,7 @@ let body = {
     "first_name": "John",
     "last_name": "Doe",
     "dob": "1990-01-01",
-    "gender": "sit",
+    "gender": "asperiores",
     "education_level": "Primary",
     "phone_number": "0789123456",
     "id_number": "CM12345678",
@@ -5387,10 +4932,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="gender"                data-endpoint="POSTapi-farmer-register"
-               value="sit"
+               value="asperiores"
                data-component="body">
     <br>
-<p>Farmer gender. Example Male/Female Example: <code>sit</code></p>
+<p>Farmer gender. Example Male/Female Example: <code>asperiores</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>education_level</code></b>&nbsp;&nbsp;
