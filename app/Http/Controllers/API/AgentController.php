@@ -566,15 +566,15 @@ class AgentController extends Controller
     public function getSearchAgent(Request $request)
     {
          //Get Authourization token
-         $token = $request->header('Authorization');
-         $token = explode(' ', $token);
-         $validate = $this->validateToken($token[1]);
-         //check if token is valid
-         if($validate->getStatusCode() == 401)
-             return response()->json([
-                 'status' => 'error',
-                 'message' => 'Invalid token'
-             ], 401);
+        //  $token = $request->header('Authorization');
+        //  $token = explode(' ', $token);
+        //  $validate = $this->validateToken($token[1]);
+        //  //check if token is valid
+        //  if($validate->getStatusCode() == 401)
+        //      return response()->json([
+        //          'status' => 'error',
+        //          'message' => 'Invalid token'
+        //      ], 401);
  
          
 
@@ -664,15 +664,15 @@ class AgentController extends Controller
     public function getAllAgents(Request $request)
     {
         //Get Authourization token
-        $token = $request->header('Authorization');
-        $token = explode(' ', $token);
-        $validate = $this->validateToken($token[1]);
-        //check if token is valid
-        if($validate->getStatusCode() == 401)
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Invalid token'
-            ], 401);
+        // $token = $request->header('Authorization');
+        // $token = explode(' ', $token);
+        // $validate = $this->validateToken($token[1]);
+        // //check if token is valid
+        // if($validate->getStatusCode() == 401)
+        //     return response()->json([
+        //         'status' => 'error',
+        //         'message' => 'Invalid token'
+        //     ], 401);
 
         
         $agents = Agent::select('id','agent_code','first_name','last_name','photo','created_at')->get();
