@@ -419,7 +419,7 @@ endpoints:
         name: email
         description: 'The email of the agent. Example:'
         required: true
-        example: estehr@example.org
+        example: hettie.mraz@example.com
         type: string
         custom: []
       phone_number:
@@ -440,7 +440,7 @@ endpoints:
         name: gender
         description: ''
         required: true
-        example: sed
+        example: voluptatem
         type: string
         custom: []
       residence:
@@ -475,29 +475,29 @@ endpoints:
         name: created_by
         description: ''
         required: true
-        example: 10
+        example: 5
         type: integer
         custom: []
       fpo_id:
         name: fpo_id
         description: ''
         required: true
-        example: 5
+        example: 6
         type: integer
         custom: []
     cleanBodyParameters:
       first_name: John
       last_name: Doe
-      email: estehr@example.org
+      email: hettie.mraz@example.com
       phone_number: 256XXXXXXXXX
       age: '30'
-      gender: sed
+      gender: voluptatem
       residence: Kampala
       referee_name: 'Jane Doe'
       referee_phone_number: '08012345678'
       designation: 'Agro Extension Worker'
-      created_by: 10
-      fpo_id: 5
+      created_by: 5
+      fpo_id: 6
     fileParameters: []
     responses:
       -
@@ -651,7 +651,7 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: maxime
+        example: est
         type: string
         custom: []
       agent:
@@ -662,7 +662,7 @@ endpoints:
         type: string
         custom: []
     cleanUrlParameters:
-      id: maxime
+      id: est
       agent: '1'
     queryParameters: []
     cleanQueryParameters: []
@@ -735,11 +735,11 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: non
+        example: assumenda
         type: string
         custom: []
     cleanUrlParameters:
-      id: non
+      id: assumenda
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

@@ -923,4 +923,38 @@ class FPOController extends Controller
             'data' => $fpos
         ], 200);
     }
+
+    //Create FPO user account
+    public function createFPOUserAccount(Request $request)
+    {
+        $validated = Validator::make($request->all(),[
+            'fpo_id' => 'required|integer',
+            'name' => 'required|string',
+            'phone_number' => 'required|string',
+            'email' => 'required|string',
+            
+        ]);
+
+        if($validated->fails()){
+            return response()->json([
+                'success' => false,
+                'message' => 'Validation error',
+                'data' => $validated->errors()
+            ], 400);
+        }
+        //add elements to the validated data
+        $validated->add([
+            'password' => Hash::make('password'),
+            'user_type' => 'fpo_user',
+            'photo' => 'https://ui-avatars.com/api/?name='.$validated->validated()['name'].'&size=128&background=007bff&color=fff'
+        ]);
+
+        $user = User::create($validated->validated());
+
+        return response()->json([
+            'success' => true,
+            'message' => 'User created successfully',
+            'data' => $user
+        ], 201);
+    }
 }
