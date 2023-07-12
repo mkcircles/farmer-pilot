@@ -60,6 +60,8 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::post('/fpo/{id}/user/add', [FPOController::class, 'createFPOUserAccount']);
     Route::get('/fpo/{id}/users', [FPOController::class, 'getFPOUserAccounts']);
     
+    Route::get('/user/{user_id}/{status}', [FPOController::class, 'changeUserAccountStatus']);
+    
 });
 
 
