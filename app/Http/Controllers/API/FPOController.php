@@ -997,15 +997,16 @@ class FPOController extends Controller
                 'data' => $validated->errors()
             ], 400);
         }
-        //add elements to the validated data
-        $validated->add([
-            'password' => Hash::make('password'),
-            'user_type' => 'fpo_user',
-            'photo' => 'https://ui-avatars.com/api/?name='.$validated->validated()['name'].'&size=128&background=007bff&color=fff'
-        ]);
-
-        $user = User::create($validated->validated());
-
+        
+        $user = new User();
+        $user->name = $validated->validated()['name'];
+        $user->phone_number = $validated->validated()['phone_number'];
+        $user->email = $validated->validated()['email'];
+        $user->password = Hash::make('password');
+        $user->user_type = 'fpo_user';
+        $user->photo = 'https://ui-avatars.com/api/?name='.$validated->validated()['name'].'&size=128&background=007bff&color=fff';
+        $user->save();
+        
         return response()->json([
             'success' => true,
             'message' => 'User created successfully',
