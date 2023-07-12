@@ -57,7 +57,7 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::get('/fpo/{id}/agents', [FPOController::class, 'getFPOAgents']);
     Route::get('/fpo/{id}/farmers', [FPOController::class, 'getFPOFarmers']);
     Route::get('/fpos/coordinates', [FPOController::class, 'getFPOCoordinates']);
-    Route::post('/fpos/{id}/user/add', [FPOController::class, 'createFPOUserAccount']);
+    Route::post('/fpo/{id}/user/add', [FPOController::class, 'createFPOUserAccount']);
 });
 
 
