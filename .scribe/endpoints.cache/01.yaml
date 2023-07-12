@@ -32,19 +32,19 @@ endpoints:
         name: email
         description: 'The email address or phone number of the user'
         required: true
-        example: braun.amalia@example.net
+        example: juvenal.moen@example.org
         type: string
         custom: []
       password:
         name: password
         description: 'The password of the user'
         required: true
-        example: '-ak`^\M}K|}wFKmwm'
+        example: eAG<ide
         type: string
         custom: []
     cleanBodyParameters:
-      email: braun.amalia@example.net
-      password: '-ak`^\M}K|}wFKmwm'
+      email: juvenal.moen@example.org
+      password: eAG<ide
     fileParameters: []
     responses:
       -
