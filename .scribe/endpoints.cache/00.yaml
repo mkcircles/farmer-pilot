@@ -421,7 +421,7 @@ endpoints:
         name: email
         description: 'The email of the agent. Example:'
         required: true
-        example: richard.keebler@example.org
+        example: jeremie92@example.com
         type: string
         custom: []
       phone_number:
@@ -442,7 +442,7 @@ endpoints:
         name: gender
         description: ''
         required: true
-        example: voluptatibus
+        example: maxime
         type: string
         custom: []
       residence:
@@ -477,29 +477,29 @@ endpoints:
         name: created_by
         description: ''
         required: true
-        example: 17
+        example: 2
         type: integer
         custom: []
       fpo_id:
         name: fpo_id
         description: ''
         required: true
-        example: 14
+        example: 3
         type: integer
         custom: []
     cleanBodyParameters:
       first_name: John
       last_name: Doe
-      email: richard.keebler@example.org
+      email: jeremie92@example.com
       phone_number: 256XXXXXXXXX
       age: '30'
-      gender: voluptatibus
+      gender: maxime
       residence: Kampala
       referee_name: 'Jane Doe'
       referee_phone_number: '08012345678'
       designation: 'Agro Extension Worker'
-      created_by: 17
-      fpo_id: 14
+      created_by: 2
+      fpo_id: 3
     fileParameters: []
     responses:
       -
@@ -653,7 +653,7 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: velit
+        example: rerum
         type: string
         custom: []
       agent:
@@ -664,7 +664,7 @@ endpoints:
         type: string
         custom: []
     cleanUrlParameters:
-      id: velit
+      id: rerum
       agent: '1'
     queryParameters: []
     cleanQueryParameters: []
@@ -737,11 +737,11 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: voluptates
+        example: voluptas
         type: string
         custom: []
     cleanUrlParameters:
-      id: voluptates
+      id: voluptas
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
