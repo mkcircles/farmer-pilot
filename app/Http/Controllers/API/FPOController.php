@@ -1004,6 +1004,7 @@ class FPOController extends Controller
         $user->email = $validated->validated()['email'];
         $user->password = Hash::make('password');
         $user->user_type = 'fpo_user';
+        $user->entity_id = $validated->validated()['fpo_id'];
         $user->photo = 'https://ui-avatars.com/api/?name='.$validated->validated()['name'].'&size=128&background=007bff&color=fff';
         $user->save();
         
@@ -1012,5 +1013,67 @@ class FPOController extends Controller
             'message' => 'User created successfully',
             'data' => $user
         ], 201);
+    }
+
+    //Fetch FPO user accounts
+    /**
+     * Fetch FPO user accounts.
+     * 
+     * This endpoint allows you to fetch all user accounts of a FPO.
+     * @authenticated
+     * 
+     * @urlParam id integer required The id of the FPO.
+     * 
+     * @response 200 {
+     * "success": true,
+     * "message": "FPO users retrieved successfully",
+     * "data": [
+     * {
+     * "id": 1,
+     * "name": "FPO 1",
+     * "phone_number": "256700000000",
+     * "email": "email@email.com",
+     * "user_type": "fpo_user",
+     * "entity_id":"1",
+     * "photo": "https://ui-avatars.com/api/?name=FPO+1&size=128&background=007bff&color=fff",
+     * "created_at": "2021-06-30T11:30:00.000000Z",
+     * "updated_at": "2021-06-30T11:30:00.000000Z"
+     * },
+     * {
+     * "id": 2,
+     * "name": "FPO 2",
+     * "phone_number": "256700000000",
+     * "user_type": "fpo_user",
+     * "entity_id":"2",
+     * "photo": "https://ui-avatars.com/api/?name=FPO+2&size=128&background=007bff&color=fff",
+     * "created_at": "2021-06-30T11:30:00.000000Z",
+     * "updated_at": "2021-06-30T11:30:00.000000Z"
+     * }
+     * ]
+     * }
+     * 
+     * @response 404 {
+     * "success": false,
+     * "message": "No FPO users found",
+     * "data": null
+     * }
+     * 
+     * 
+     */
+    public function getFPOUserAccounts(string $id)
+    {
+        $users = User::where('entity_id', $id)->whereIn('user_type', ['fpo_user','fpo'])->get();
+        if($users->isEmpty()){
+            return response()->json([
+                'success' => false,
+                'message' => 'No FPO users found',
+                'data' => null
+            ], 404);
+        }
+        return response()->json([
+            'success' => true,
+            'message' => 'FPO users retrieved successfully',
+            'data' => $users
+        ], 200);
     }
 }
