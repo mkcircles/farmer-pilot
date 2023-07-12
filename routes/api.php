@@ -30,12 +30,12 @@ Route::post('/agent/search/auth', [AgentController::class, 'getSearchAgentAuth']
 Route::controller(AuthController::class)->group(function () {
     Route::post('/login', 'login');
     Route::post('/logout', 'logout');
-    Route::post('/refresh', 'refresh');
 });
 
 
 
 Route::middleware('auth:sanctum')->group( function () {
+    Route::post('/refresh', [AuthController::class, 'refresh']);
     //Summaries
     Route::get('/summary', [SummaryController::class, 'DashboardSummary']);
 
@@ -59,7 +59,7 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::get('/fpos/coordinates', [FPOController::class, 'getFPOCoordinates']);
     Route::post('/fpo/{id}/user/add', [FPOController::class, 'createFPOUserAccount']);
     Route::get('/fpo/{id}/users', [FPOController::class, 'getFPOUserAccounts']);
-    
+
     Route::get('/user/{user_id}/{status}', [FPOController::class, 'changeUserAccountStatus']);
     
 });
