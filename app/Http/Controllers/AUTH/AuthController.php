@@ -179,7 +179,6 @@ class AuthController extends Controller
     public function refresh(Request $request)
     {
         $user = $request->user();
-        dd($user);
         $user->tokens()->delete();
         return response()->json(['token' => $user->createToken($user->name)->plainTextToken]);
     }

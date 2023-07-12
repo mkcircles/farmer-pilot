@@ -28,6 +28,7 @@ import FarmersList from "../FarmersList";
 import { EDIT_AGENT, EDIT_FPO } from "../../router/routes";
 import AgentsList from "../AgentsList";
 import { numberFormatter } from "../../utils/numberFormatter";
+import FpoAdminList from "../FpoAdminList";
 
 function Main() {
     const navigate = useNavigate();
@@ -88,7 +89,7 @@ function Main() {
                 {/* BEGIN: Profile Cover */}
                 <div className="col-span-12">
                     <div className="px-3 lg:pt-0 md:pt-3 box intro-y">
-                        <div className="lg:flex sm:block flex-col items-center justify-center lg:items-start lg:justify-start text-center lg:flex-row lg:text-left py-4 lg:py-6">
+                        <div className="lg:flex sm:block flex-col items-center justify-center lg:items-start lg:justify-between text-center lg:flex-row lg:text-left py-4 lg:py-6">
                             {/* <div className="lg:ml-5 col-span-4">
                                 <div className="flex justify-center mt-2 text-slate-500 lg:justify-start">
                                     <Lucide
@@ -751,9 +752,10 @@ function Main() {
                     {/* <Text>Total Sales</Text>
         <Metric>$ 442,276</Metric> */}
                     <TabGroup>
-                        <TabList className="mt-8">
+                        <TabList className="">
                             <Tab icon={UserGroupIcon}>Farmers</Tab>
                             <Tab icon={UserGroupIcon}>Agents</Tab>
+                            <Tab icon={UserIcon}>FPO Admins</Tab>
                         </TabList>
                         <TabPanels>
                             <TabPanel>
@@ -761,6 +763,9 @@ function Main() {
                             </TabPanel>
                             <TabPanel>
                                 <AgentsList fpo_id={id} />
+                            </TabPanel>
+                            <TabPanel>
+                                <FpoAdminList fpo_id={id} />
                             </TabPanel>
                         </TabPanels>
                     </TabGroup>
