@@ -31,24 +31,22 @@ function Main() {
         .then((res) => {
             console.log("login Response", res.data);
             console.log("Token", res.data.data.token);
-            if (res?.data?.data?.user?.role === 'admin') {
+            if (['admin', 'fpo_user'].includes(res?.data?.data?.user?.role)) {
                 dispatch(setToken(res.data.data.token));
                 dispatch(setUser(res.data.data.user));
                 navigate('/');
             }else {
-              alert('You are not authorized to access this resource.')
+              updateAppContextState('errorMessage', 'You are not authorized to access this resource.')
             }
         })
         .catch((err) => {
             console.log(err);
-            alert(err?.message || err.response?.data?.message);
+            //alert(err?.message || err.response?.data?.message);
         })
         .finally(() => {
             updateAppContextState('loading', false);
         });
 };
-
-
 
   return (
     <>
