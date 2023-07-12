@@ -272,36 +272,36 @@ class FPOController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = Validator::make($request->all(),[
-            'fpo_name' => 'required|string',
-            'district' => 'required|string',
-            'county' => 'required|string',
-            'sub_county' => 'required|string',
-            'parish' => 'required|string',
-            'village' => 'required|string',
-            'main_crop' => 'required|string',
-            'fpo_contact_name' => 'required|string',
-            'contact_phone_number' => 'required|string',
-            'contact_email' => 'required|string',
-            'core_staff_count' => 'required|integer',
-            'core_staff_positions' => 'required|string',
-            'registration_status' => 'required|string',
-            "fpo_membership_number" => "required|string",
-            "fpo_male_membership" => "required|string",
-            "fpo_female_membership" => "required|string",
-            "fpo_male_youth" => "required|string",
-            "fpo_female_youth" => "required|string",
-            "fpo_field_agents" => "required|string",
-            "created_by" => "required|integer",
-        ]);
+        // $validated = Validator::make($request->all(),[
+        //     'fpo_name' => 'required|string',
+        //     'district' => 'required|string',
+        //     'county' => 'required|string',
+        //     'sub_county' => 'required|string',
+        //     'parish' => 'required|string',
+        //     'village' => 'required|string',
+        //     'main_crop' => 'required|string',
+        //     'fpo_contact_name' => 'required|string',
+        //     'contact_phone_number' => 'required|string',
+        //     'contact_email' => 'required|string',
+        //     'core_staff_count' => 'required|integer',
+        //     'core_staff_positions' => 'required|string',
+        //     'registration_status' => 'required|string',
+        //     "fpo_membership_number" => "required|string",
+        //     "fpo_male_membership" => "required|string",
+        //     "fpo_female_membership" => "required|string",
+        //     "fpo_male_youth" => "required|string",
+        //     "fpo_female_youth" => "required|string",
+        //     "fpo_field_agents" => "required|string",
+        //     "created_by" => "required|integer",
+        // ]);
 
-        if($validated->fails()){
-            return response()->json([
-                'success' => false,
-                'message' => 'Validation error',
-                'data' => $validated->errors()
-            ], 400);
-        }
+        // if($validated->fails()){
+        //     return response()->json([
+        //         'success' => false,
+        //         'message' => 'Validation error',
+        //         'data' => $validated->errors()
+        //     ], 400);
+        // }
 
         $fpo = FPO::create($validated->validated());
 
@@ -997,7 +997,7 @@ class FPOController extends Controller
                 'data' => $validated->errors()
             ], 400);
         }
-        
+
         $user = new User();
         $user->name = $validated->validated()['name'];
         $user->phone_number = $validated->validated()['phone_number'];
