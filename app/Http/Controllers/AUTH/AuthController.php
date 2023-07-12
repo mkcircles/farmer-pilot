@@ -62,6 +62,12 @@ class AuthController extends Controller
      * "message": "Server Error."
      * }
      * 
+     * @response 401 {
+     * "success": false,
+     * "message": "Your account is inactive. Please contact the administrator..",
+     * "data": null
+     * }
+     * 
      * 
      * 
      */
@@ -93,6 +99,15 @@ class AuthController extends Controller
             ], 401);
         }else{
             if(Hash::check($password, $user->password)){
+                //Check if user is active
+                if($user->status == 'inactive'){
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Your account is inactive. Please contact the administrator.',
+                        'data' => null
+                    ], 401);
+                }
+
                 $success['token'] =  $user->createToken('token')->plainTextToken; 
                 
                 if($user->role == 'agent'){
