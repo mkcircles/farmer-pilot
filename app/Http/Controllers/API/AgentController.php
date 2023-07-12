@@ -761,6 +761,7 @@ class AgentController extends Controller
                 'status' => 'error',
                 'message' => 'Authorization header missing'
             ], 401);
+        }
 
          //Get Authourization token
          $token = $request->header('Authorization');
@@ -817,4 +818,4 @@ class AgentController extends Controller
         
     }
 }
-}
+

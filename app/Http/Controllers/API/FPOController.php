@@ -1004,6 +1004,7 @@ class FPOController extends Controller
         $user->email = $validated->validated()['email'];
         $user->password = Hash::make('password');
         $user->role = 'fpo_user';
+        $user->entity_type = 'fpo';
         $user->entity_id = $validated->validated()['fpo_id'];
         $user->photo = 'https://ui-avatars.com/api/?name='.$validated->validated()['name'].'&size=128&background=007bff&color=fff';
         $user->save();
