@@ -1,14 +1,14 @@
-import { useContext, useEffect, useState } from "react";
-import { AppContext } from "../../context/RootContext";
+import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../stores/hooks";
+import { setAppError, removeAppError } from "../../stores/appErrorSlice";
+import { v4 as uuidv4 } from "uuid";
+import { debounce } from "lodash";
 
 const AppError = () => {
-    const {
-        appContextState,
-        setNewAppErrorMessage,
-        removeAppErrorMessage,
-    } = useContext(AppContext);
-    const errorMessages = appContextState?.errorMessages;
-    const [axiosError, setAxiosError] = useState(null);
+    const appErrors = useAppSelector(state => state.app_error?.errorMessages);
+    const dispatch = useAppDispatch();
+
+    const  debounceErrorDispatch = debounce(dispatch, 500);
 
     useEffect(() => {
         axios.interceptors.response.use(
@@ -20,26 +20,19 @@ const AppError = () => {
                     error?.response?.data?.message ||
                     error?.response?.message ||
                     error?.message;
-                setAxiosError(message);
+                    debounceErrorDispatch(setAppError({message: message, id: uuidv4()})); 
                 return Promise.reject(error);
             }
         );
     }, []);
 
-    useEffect(() => {
-        if (axiosError) {
-            setNewAppErrorMessage(axiosError);
-            setAxiosError(null);
-        }
-    }, [axiosError]);
-
-    if (errorMessages?.length === 0) {
+    if (appErrors?.length === 0) {
         return null;
     }
 
     return (
-        <div className="absolute mx-16 top-1 flex flex-col  left-0 right-0 z-[999]">
-            {errorMessages?.map((err) => {
+        <div className="absolute mx-16 top-2 flex flex-col  left-0 right-0 z-[999]">
+            {appErrors?.map((err) => {
                 return (
                     <div
                     key={err?.id}
@@ -60,8 +53,9 @@ const AppError = () => {
                             {err?.message}
                         </div>
                         <button
-                            onClick={() =>
-                                removeAppErrorMessage(err)
+                            onClick={() => {
+                                dispatch(removeAppError(err));
+                            }
                             }
                             type="button"
                             class="ml-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-red-400 dark:hover:bg-gray-700"
