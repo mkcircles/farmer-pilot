@@ -925,6 +925,61 @@ class FPOController extends Controller
     }
 
     //Create FPO user account
+    /**
+     * Create FPO user account.
+     * 
+     * This endpoint allows you to create a user account for a FPO.
+     * @authenticated
+     * 
+     * @bodyParam fpo_id integer required The id of the FPO.
+     * @bodyParam name string required The name of the user.
+     * @bodyParam phone_number string required The phone number of the user.
+     * @bodyParam email string required The email of the user.
+     * 
+     * @response 201 {
+     * "success": true,
+     * "message": "User created successfully",
+     * "data": {
+     * "name": "FPO 1",
+     * "phone_number": "256700000000",
+     * "email": "email@email.com",
+     * "user_type": "fpo_user",
+     * "photo": "https://ui-avatars.com/api/?name=FPO+1&size=128&background=007bff&color=fff",
+     * }
+     * }
+     * 
+     * 
+     * @response 400 {
+     * "success": false,
+     * "message": "Validation error",
+     * "data": {
+     * "fpo_id": [
+     * "The fpo id field is required."
+     * ],
+     * "name": [
+     * "The name field is required."
+     * ],
+     * "phone_number": [
+     * "The phone number field is required."
+     * ],
+     * "email": [
+     * "The email field is required."
+     * ],
+     * }
+     * }
+     * 
+     * @response 401 {
+     * "message": "Unauthenticated."
+     * }
+     * 
+     * @response 403 {
+     * "message": "This action is unauthorized."
+     * }
+     * 
+     * 
+     * 
+     * 
+     */
     public function createFPOUserAccount(Request $request)
     {
         $validated = Validator::make($request->all(),[

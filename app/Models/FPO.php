@@ -37,4 +37,10 @@ class FPO extends Model
         'Cert_of_Inc',
         'created_by',
     ];
+
+    //get FPO Users
+    public function users()
+    {
+        return $this->hasMany(User::class, 'entity_id');
+    }
 } 

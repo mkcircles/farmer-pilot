@@ -419,7 +419,7 @@ endpoints:
         name: email
         description: 'The email of the agent. Example:'
         required: true
-        example: hettie.mraz@example.com
+        example: damion.fritsch@example.net
         type: string
         custom: []
       phone_number:
@@ -475,20 +475,20 @@ endpoints:
         name: created_by
         description: ''
         required: true
-        example: 5
+        example: 4
         type: integer
         custom: []
       fpo_id:
         name: fpo_id
         description: ''
         required: true
-        example: 6
+        example: 10
         type: integer
         custom: []
     cleanBodyParameters:
       first_name: John
       last_name: Doe
-      email: hettie.mraz@example.com
+      email: damion.fritsch@example.net
       phone_number: 256XXXXXXXXX
       age: '30'
       gender: voluptatem
@@ -496,8 +496,8 @@ endpoints:
       referee_name: 'Jane Doe'
       referee_phone_number: '08012345678'
       designation: 'Agro Extension Worker'
-      created_by: 5
-      fpo_id: 6
+      created_by: 4
+      fpo_id: 10
     fileParameters: []
     responses:
       -
@@ -651,7 +651,7 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: est
+        example: illum
         type: string
         custom: []
       agent:
@@ -662,7 +662,7 @@ endpoints:
         type: string
         custom: []
     cleanUrlParameters:
-      id: est
+      id: illum
       agent: '1'
     queryParameters: []
     cleanQueryParameters: []
@@ -735,11 +735,11 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: assumenda
+        example: at
         type: string
         custom: []
     cleanUrlParameters:
-      id: assumenda
+      id: at
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

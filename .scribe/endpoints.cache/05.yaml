@@ -263,163 +263,163 @@ endpoints:
         name: fpo_name
         description: 'The name of the FPO.'
         required: true
-        example: iste
+        example: error
         type: string
         custom: []
       district:
         name: district
         description: 'The district of the FPO.'
         required: true
-        example: consequatur
+        example: laborum
         type: string
         custom: []
       county:
         name: county
         description: 'The county of the FPO.'
         required: true
-        example: ducimus
+        example: cum
         type: string
         custom: []
       sub_county:
         name: sub_county
         description: 'The sub county of the FPO.'
         required: true
-        example: ducimus
+        example: sequi
         type: string
         custom: []
       parish:
         name: parish
         description: 'The parish of the FPO.'
         required: true
-        example: quos
+        example: sint
         type: string
         custom: []
       village:
         name: village
         description: 'The village of the FPO.'
         required: true
-        example: alias
+        example: reiciendis
         type: string
         custom: []
       main_crop:
         name: main_crop
         description: 'The main crop of the FPO.'
         required: true
-        example: officia
+        example: autem
         type: string
         custom: []
       fpo_contact_name:
         name: fpo_contact_name
         description: 'The contact name of the FPO.'
         required: true
-        example: autem
+        example: aspernatur
         type: string
         custom: []
       contact_phone_number:
         name: contact_phone_number
         description: 'The contact phone number of the FPO.'
         required: true
-        example: earum
+        example: hic
         type: string
         custom: []
       contact_email:
         name: contact_email
         description: 'The contact email of the FPO.'
         required: true
-        example: zlabadie@example.net
+        example: fadel.gust@example.net
         type: string
         custom: []
       core_staff_count:
         name: core_staff_count
         description: 'The number of core staff of the FPO.'
         required: true
-        example: 17
+        example: 15
         type: integer
         custom: []
       core_staff_positions:
         name: core_staff_positions
         description: 'The positions of the core staff of the FPO.'
         required: true
-        example: et
+        example: repellat
         type: string
         custom: []
       registration_status:
         name: registration_status
         description: 'The registration status of the FPO.'
         required: true
-        example: fugit
+        example: consequuntur
         type: string
         custom: []
       fpo_membership_number:
         name: fpo_membership_number
         description: 'The membership number of the FPO.'
         required: true
-        example: assumenda
+        example: excepturi
         type: string
         custom: []
       fpo_male_membership:
         name: fpo_male_membership
         description: 'The male membership number of the FPO.'
         required: true
-        example: vitae
+        example: eius
         type: string
         custom: []
       fpo_female_membership:
         name: fpo_female_membership
         description: 'The female membership number of the FPO.'
         required: true
-        example: quia
+        example: soluta
         type: string
         custom: []
       fpo_male_youth:
         name: fpo_male_youth
         description: 'The male youth membership number of the FPO.'
         required: true
-        example: quam
+        example: porro
         type: string
         custom: []
       fpo_female_youth:
         name: fpo_female_youth
         description: 'The female youth membership number of the FPO.'
         required: true
-        example: vitae
+        example: omnis
         type: string
         custom: []
       fpo_field_agents:
         name: fpo_field_agents
         description: 'The number of field agents of the FPO.'
         required: true
-        example: ullam
+        example: autem
         type: string
         custom: []
       created_by:
         name: created_by
         description: ''
         required: true
-        example: 12
+        example: 5
         type: integer
         custom: []
     cleanBodyParameters:
-      fpo_name: iste
-      district: consequatur
-      county: ducimus
-      sub_county: ducimus
-      parish: quos
-      village: alias
-      main_crop: officia
-      fpo_contact_name: autem
-      contact_phone_number: earum
-      contact_email: zlabadie@example.net
-      core_staff_count: 17
-      core_staff_positions: et
-      registration_status: fugit
-      fpo_membership_number: assumenda
-      fpo_male_membership: vitae
-      fpo_female_membership: quia
-      fpo_male_youth: quam
-      fpo_female_youth: vitae
-      fpo_field_agents: ullam
-      created_by: 12
+      fpo_name: error
+      district: laborum
+      county: cum
+      sub_county: sequi
+      parish: sint
+      village: reiciendis
+      main_crop: autem
+      fpo_contact_name: aspernatur
+      contact_phone_number: hic
+      contact_email: fadel.gust@example.net
+      core_staff_count: 15
+      core_staff_positions: repellat
+      registration_status: consequuntur
+      fpo_membership_number: excepturi
+      fpo_male_membership: eius
+      fpo_female_membership: soluta
+      fpo_male_youth: porro
+      fpo_female_youth: omnis
+      fpo_field_agents: autem
+      created_by: 5
     fileParameters: []
     responses:
       -
@@ -559,11 +559,11 @@ endpoints:
         name: id
         description: 'The id of the FPO.'
         required: true
-        example: necessitatibus
+        example: quisquam
         type: string
         custom: []
     cleanUrlParameters:
-      id: necessitatibus
+      id: quisquam
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -663,11 +663,11 @@ endpoints:
         name: id
         description: 'The id of the FPO.'
         required: true
-        example: cupiditate
+        example: nisi
         type: string
         custom: []
     cleanUrlParameters:
-      id: cupiditate
+      id: nisi
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -675,163 +675,163 @@ endpoints:
         name: fpo_name
         description: 'The name of the FPO.'
         required: true
-        example: expedita
+        example: neque
         type: string
         custom: []
       district:
         name: district
         description: 'The district of the FPO.'
         required: true
-        example: dolore
+        example: quos
         type: string
         custom: []
       county:
         name: county
         description: 'The county of the FPO.'
         required: true
-        example: quo
+        example: sit
         type: string
         custom: []
       sub_county:
         name: sub_county
         description: 'The sub county of the FPO.'
         required: true
-        example: omnis
+        example: eius
         type: string
         custom: []
       parish:
         name: parish
         description: 'The parish of the FPO.'
         required: true
-        example: dignissimos
+        example: est
         type: string
         custom: []
       village:
         name: village
         description: 'The village of the FPO.'
         required: true
-        example: vel
+        example: et
         type: string
         custom: []
       main_crop:
         name: main_crop
         description: 'The main crop of the FPO.'
         required: true
-        example: cupiditate
+        example: aspernatur
         type: string
         custom: []
       fpo_contact_name:
         name: fpo_contact_name
         description: 'The contact name of the FPO.'
         required: true
-        example: quod
+        example: ut
         type: string
         custom: []
       contact_phone_number:
         name: contact_phone_number
         description: 'The contact phone number of the FPO.'
         required: true
-        example: velit
+        example: tempore
         type: string
         custom: []
       contact_email:
         name: contact_email
         description: 'The contact email of the FPO.'
         required: true
-        example: roselyn10@example.com
+        example: annalise90@example.com
         type: string
         custom: []
       core_staff_count:
         name: core_staff_count
         description: 'The number of core staff of the FPO.'
         required: true
-        example: 12
+        example: 8
         type: integer
         custom: []
       core_staff_positions:
         name: core_staff_positions
         description: 'The positions of the core staff of the FPO.'
         required: true
-        example: odio
+        example: dolor
         type: string
         custom: []
       registration_status:
         name: registration_status
         description: 'The registration status of the FPO.'
         required: true
-        example: sed
+        example: nihil
         type: string
         custom: []
       fpo_membership_number:
         name: fpo_membership_number
         description: 'The membership number of the FPO.'
         required: true
-        example: numquam
+        example: et
         type: string
         custom: []
       fpo_male_membership:
         name: fpo_male_membership
         description: 'The male membership number of the FPO.'
         required: true
-        example: ipsum
+        example: excepturi
         type: string
         custom: []
       fpo_female_membership:
         name: fpo_female_membership
         description: 'The female membership number of the FPO.'
         required: true
-        example: sint
+        example: maxime
         type: string
         custom: []
       fpo_male_youth:
         name: fpo_male_youth
         description: 'The male youth membership number of the FPO.'
         required: true
-        example: repellendus
+        example: facere
         type: string
         custom: []
       fpo_female_youth:
         name: fpo_female_youth
         description: 'The female youth membership number of the FPO.'
         required: true
-        example: tempore
+        example: modi
         type: string
         custom: []
       fpo_field_agents:
         name: fpo_field_agents
         description: 'The number of field agents of the FPO.'
         required: true
-        example: sit
+        example: voluptas
         type: string
         custom: []
       created_by:
         name: created_by
         description: ''
         required: true
-        example: 17
+        example: 16
         type: integer
         custom: []
     cleanBodyParameters:
-      fpo_name: expedita
-      district: dolore
-      county: quo
-      sub_county: omnis
-      parish: dignissimos
-      village: vel
-      main_crop: cupiditate
-      fpo_contact_name: quod
-      contact_phone_number: velit
-      contact_email: roselyn10@example.com
-      core_staff_count: 12
-      core_staff_positions: odio
-      registration_status: sed
-      fpo_membership_number: numquam
-      fpo_male_membership: ipsum
-      fpo_female_membership: sint
-      fpo_male_youth: repellendus
-      fpo_female_youth: tempore
-      fpo_field_agents: sit
-      created_by: 17
+      fpo_name: neque
+      district: quos
+      county: sit
+      sub_county: eius
+      parish: est
+      village: et
+      main_crop: aspernatur
+      fpo_contact_name: ut
+      contact_phone_number: tempore
+      contact_email: annalise90@example.com
+      core_staff_count: 8
+      core_staff_positions: dolor
+      registration_status: nihil
+      fpo_membership_number: et
+      fpo_male_membership: excepturi
+      fpo_female_membership: maxime
+      fpo_male_youth: facere
+      fpo_female_youth: modi
+      fpo_field_agents: voluptas
+      created_by: 16
     fileParameters: []
     responses:
       -
@@ -972,11 +972,11 @@ endpoints:
         name: id
         description: 'The id of the FPO.'
         required: true
-        example: voluptatem
+        example: ut
         type: string
         custom: []
     cleanUrlParameters:
-      id: voluptatem
+      id: ut
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1097,11 +1097,11 @@ endpoints:
         name: id
         description: 'The id of the FPO.'
         required: true
-        example: atque
+        example: nemo
         type: string
         custom: []
     cleanUrlParameters:
-      id: atque
+      id: nemo
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1275,9 +1275,9 @@ endpoints:
         APIs for managing FPOs
       subgroup: ''
       subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
+      title: 'Create FPO user account.'
+      description: 'This endpoint allows you to create a user account for a FPO.'
+      authenticated: true
       custom: []
     headers:
       Content-Type: application/json
@@ -1287,49 +1287,108 @@ endpoints:
         name: id
         description: 'The ID of the fpo.'
         required: true
-        example: ad
+        example: sunt
         type: string
         custom: []
     cleanUrlParameters:
-      id: ad
+      id: sunt
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       fpo_id:
         name: fpo_id
-        description: ''
+        description: 'The id of the FPO.'
         required: true
-        example: 19
+        example: 5
         type: integer
         custom: []
       name:
         name: name
-        description: ''
+        description: 'The name of the user.'
         required: true
-        example: voluptas
+        example: eum
         type: string
         custom: []
       phone_number:
         name: phone_number
-        description: ''
+        description: 'The phone number of the user.'
         required: true
-        example: nulla
+        example: fuga
         type: string
         custom: []
       email:
         name: email
-        description: ''
+        description: 'The email of the user.'
         required: true
-        example: morton92@example.org
+        example: jhomenick@example.net
         type: string
         custom: []
     cleanBodyParameters:
-      fpo_id: 19
-      name: voluptas
-      phone_number: nulla
-      email: morton92@example.org
+      fpo_id: 5
+      name: eum
+      phone_number: fuga
+      email: jhomenick@example.net
     fileParameters: []
-    responses: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+          "success": true,
+          "message": "User created successfully",
+          "data": {
+          "name": "FPO 1",
+          "phone_number": "256700000000",
+          "email": "email@email.com",
+          "user_type": "fpo_user",
+          "photo": "https://ui-avatars.com/api/?name=FPO+1&size=128&background=007bff&color=fff",
+          }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+          "success": false,
+          "message": "Validation error",
+          "data": {
+          "fpo_id": [
+          "The fpo id field is required."
+          ],
+          "name": [
+          "The name field is required."
+          ],
+          "phone_number": [
+          "The phone number field is required."
+          ],
+          "email": [
+          "The email field is required."
+          ],
+          }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+          "message": "Unauthenticated."
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+          "message": "This action is unauthorized."
+          }
+        headers: []
+        description: ''
+        custom: []
     responseFields: []
     auth: []
     controller: null
