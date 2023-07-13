@@ -4,6 +4,7 @@ import colorSchemeReducer from "./colorSchemeSlice";
 import sideMenuReducer from "./sideMenuSlice";
 import authReducer from "./authSlice";
 import fpoReducer from "./fpoSlice";
+import appErrorReducer from "./appErrorSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     sideMenu: sideMenuReducer,
     auth: authReducer,
     fpo: fpoReducer,
+    app_error: appErrorReducer
   },
 });
 

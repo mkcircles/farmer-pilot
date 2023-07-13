@@ -7,8 +7,6 @@ import { useFindPath } from "../../hooks";
 const Menu = () => {
     const path = useFindPath();
 
-    // console.log("path =>", path);
-
     return (
         <Card className="h-full">
             <ul className="hidden md:block space-y-1">

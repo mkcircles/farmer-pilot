@@ -1063,7 +1063,7 @@ class FPOController extends Controller
      */
     public function getFPOUserAccounts(string $id)
     {
-        $users = User::where('entity_id', $id)->whereIn('user_type', ['fpo_user','fpo'])->get();
+        $users = User::where('entity_id', $id)->whereIn('role', ['fpo_user'])->whereIn('entity_type', ['fpo'])->get();
         if($users->isEmpty()){
             return response()->json([
                 'success' => false,
