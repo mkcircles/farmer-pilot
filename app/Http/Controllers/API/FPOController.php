@@ -389,6 +389,11 @@ class FPOController extends Controller
                 'data' => null
             ], 404);
         }
+        //Get FPO statistics
+        $fpo['stats'] = [
+            'farmers' => FarmerProfile::where('fpo_id', $fpo->id)->count(),
+            'agents' => Agent::where('fpo_id', $fpo->id)->count()
+        ];
         return response()->json([
             'success' => true,
             'message' => 'FPO retrieved successfully',
