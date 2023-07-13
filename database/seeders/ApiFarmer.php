@@ -3,19 +3,19 @@
 namespace Database\Seeders;
 
 use App\Models\FarmerProfile;
+use App\Traits\HelperTraits;
 use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class ApiFarmer extends Seeder
 {
+    use HelperTraits;
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        //Generate 100 farmer profiles
-       // FarmerProfile::factory()->count(100)->create();
 
         $farmers =[
             ['Nabwire Zainabu',' F','Maize,Cassava','1','Buhatuba',' MASAFU','256778789899','2'],
@@ -501,23 +501,9 @@ class ApiFarmer extends Seeder
                 'parish'=>$f[5],
                 'village'=>$f[4],
                 'fpo_id'=>$f[7],
-
             ]);
 
         }
     }
 
-    //TODO: Create a trait that handles these shared functions
-    private function generateFarmerId()
-    {
-        $farmerId = strtoupper(uniqid());
-        if($this->farmerIdExists($farmerId)){
-            $this->generateFarmerId();
-        }
-        return $farmerId;
-    }
-    private function farmerIdExists($farmerId)
-    {
-        return FarmerProfile::where('farmer_id', $farmerId)->exists();
-    }
 }

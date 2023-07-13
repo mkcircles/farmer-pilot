@@ -7,6 +7,7 @@ use App\Models\Agent;
 use App\Models\Api;
 use App\Models\FarmerProfile;
 use App\Models\User;
+use App\Traits\HelperTraits;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Validator;
 
 class AgentController extends Controller
 {
+    use HelperTraits;
     /**
      * Get all agents
      * 
@@ -238,7 +240,7 @@ class AgentController extends Controller
         }
             
         $agent = new Agent();
-        $agent->agent_code = strtoupper(uniqid(6));
+        $agent->agent_code = $this->generateAgentCode();
         $agent->first_name = $request->first_name;
         $agent->last_name = $request->last_name;
         $agent->email = $request->email;

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Api;
 use App\Models\FarmerProfile;
+use App\Traits\HelperTraits;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -18,6 +19,7 @@ use function PHPSTORM_META\type;
 class FarmerProfileController extends Controller
 {
 
+    use HelperTraits;
     /**
      * Register Farmer
      * 
@@ -260,19 +262,7 @@ class FarmerProfileController extends Controller
         ], 201);
     }
 
-    private function generateFarmerId()
-    {
-        $farmerId = strtoupper(uniqid());
-        if($this->farmerIdExists($farmerId)){
-            $this->generateFarmerId();
-        }
-        return $farmerId;
-    }
-
-    private function farmerIdExists($farmerId)
-    {
-        return FarmerProfile::where('farmer_id', $farmerId)->exists();
-    }
+    
 
 
     //Get all farmers
