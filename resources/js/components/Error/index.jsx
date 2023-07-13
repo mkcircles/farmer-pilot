@@ -20,7 +20,10 @@ const AppError = () => {
                     error?.response?.data?.message ||
                     error?.response?.message ||
                     error?.message;
-                    debounceErrorDispatch(setAppError({message: message, id: uuidv4()})); 
+                    if(![404].includes(error.response.status)) {
+                       debounceErrorDispatch(setAppError({message: message, id: uuidv4()})); 
+                    }
+                     
                 return Promise.reject(error);
             }
         );
