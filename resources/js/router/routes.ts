@@ -15,3 +15,4 @@ export const AGENTS_LIST = '/agents-list';
 export const FARMER_PROFILE = '/farmer-profile';
 export const AGENT_PROFILE = '/agent-profile';
 export const REPORTS = '/reports';
+export const LOGOUT = '/LOGOUT';

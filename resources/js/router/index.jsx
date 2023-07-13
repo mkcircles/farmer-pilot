@@ -1,7 +1,24 @@
 import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../pages/Dashboard";
 import FarmersList from "../pages/FarmersList";
-import { AGENTS_LIST, AGENT_PROFILE, CREATE_AGENT, CREATE_FPO, CREATE_FPO_ADMIN_USER_ACCOUNT, EDIT_AGENT, EDIT_FPO, FARMERS_LIST, FARMER_PROFILE, FPO_LIST, FPO_MAP, FPO_PROFILE, HOME, LOGIN, REPORTS } from "./routes";
+import {
+    AGENTS_LIST,
+    AGENT_PROFILE,
+    CREATE_AGENT,
+    CREATE_FPO,
+    CREATE_FPO_ADMIN_USER_ACCOUNT,
+    EDIT_AGENT,
+    EDIT_FPO,
+    FARMERS_LIST,
+    FARMER_PROFILE,
+    FPO_LIST,
+    FPO_MAP,
+    FPO_PROFILE,
+    HOME,
+    LOGIN,
+    LOGOUT,
+    REPORTS,
+} from "./routes";
 import Reports from "../pages/Reports";
 import FarmerProfile from "../pages/FarmerProfile";
 import AgentProfile from "../pages/AgentProfile";
@@ -16,13 +33,25 @@ import FpoProfile from "../pages/FpoProfile";
 import EditFpo from "../pages/EditFpo";
 import FpoMap from "../pages/FpoMap";
 import CreateFpoAdminUserAccount from "../pages/CreateFpoAdminUserAccount";
+import { useDispatch } from "react-redux";
+import { logOut } from "../stores/authSlice";
+import { useEffect } from "react";
+
+const Logout = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(logOut());
+    }, []);
+
+    return <></>;
+};
 
 const router = createBrowserRouter([
     {
         path: LOGIN,
-        element: <Login />
-    }
-    ,
+        element: <Login />,
+    },
     {
         path: "/",
         element: <Menu />,
@@ -82,6 +111,10 @@ const router = createBrowserRouter([
             {
                 path: REPORTS,
                 element: <Reports />,
+            },
+            {
+                path: LOGOUT,
+                element: <Logout />,
             },
         ],
     },
