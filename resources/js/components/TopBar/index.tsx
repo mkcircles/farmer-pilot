@@ -30,38 +30,36 @@ function Main(props: { toggleMobileMenu: (event: React.MouseEvent) => void }) {
     const [searchResultModal, setSearchResultModal] = useState(false);
     let pathName = "";
 
-    
     const getPathName = (): string => {
-      switch (path) {
-        case HOME:
-            return "Home";
-        case DASHBOARD:
-            return "Dashboard";
-        case FARMERS_LIST:
-            return "Farmers List";
-        case AGENTS_LIST:
-            return "Agents List";
-        case FPO_LIST:
-            return "FPO List";
-        case CREATE_FPO:
-            return "Create FPO";
-        case EDIT_FPO:
-            return "Update FPO";
-        case EDIT_AGENT:
-            return "Update Agent";
-        case FPO_PROFILE:
-            return "FPO Profile";
-        case FARMER_PROFILE:
-            return "Farmer Profile";
-        case AGENT_PROFILE:
-            return "Agent Profile";
-        case REPORTS:
-            return "Reports";
-        default:
-            return "Dashboard";
-    }
-    }
-   
+        switch (path) {
+            case HOME:
+                return "Home";
+            case DASHBOARD:
+                return "Dashboard";
+            case FARMERS_LIST:
+                return "Farmers List";
+            case AGENTS_LIST:
+                return "Agents List";
+            case FPO_LIST:
+                return "FPO List";
+            case CREATE_FPO:
+                return "Create FPO";
+            case EDIT_FPO:
+                return "Update FPO";
+            case EDIT_AGENT:
+                return "Update Agent";
+            case FPO_PROFILE:
+                return "FPO Profile";
+            case FARMER_PROFILE:
+                return "Farmer Profile";
+            case AGENT_PROFILE:
+                return "Agent Profile";
+            case REPORTS:
+                return "Reports";
+            default:
+                return "Dashboard";
+        }
+    };
 
     // Show search result modal
     const showSearchResultModal = () => {
@@ -160,7 +158,22 @@ function Main(props: { toggleMobileMenu: (event: React.MouseEvent) => void }) {
                 {/* BEGIN: Account Menu */}
                 <Menu className="h-10 intro-x">
                     <Menu.Button className="flex items-center h-full dropdown-toggle">
-                        <div className="hidden ml-3 md:block text-slate-200 rounded-full h-8 w-8 bg-white"></div>
+                        <div className="ml-3 md:block text-orange-500 rounded-full h-8 w-8 bg-white">
+                            <svg
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth={1.5}
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+                                />
+                            </svg>
+                        </div>
                     </Menu.Button>
                     <Menu.Items className="w-56 mt-px">
                         <Menu.Item>
@@ -180,9 +193,11 @@ function Main(props: { toggleMobileMenu: (event: React.MouseEvent) => void }) {
                             Help
                         </Menu.Item>
                         <Menu.Divider />
-                        <Menu.Item onClick={() => {
-                            dispatch(logOut(''))
-                        }}>
+                        <Menu.Item
+                            onClick={() => {
+                                dispatch(logOut(""));
+                            }}
+                        >
                             <Lucide
                                 icon="ToggleRight"
                                 className="w-4 h-4 mr-2"
