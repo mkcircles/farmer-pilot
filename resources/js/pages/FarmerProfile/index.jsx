@@ -50,6 +50,8 @@ const FarmerProfile = () => {
             });
     }, [id]);
 
+    
+
     return (
         <div className="w-full h-full mt-6">
             <div className="w-full flex items-center space-x-4">

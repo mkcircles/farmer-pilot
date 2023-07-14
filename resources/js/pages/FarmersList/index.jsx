@@ -30,7 +30,7 @@ export default function FarmersList({fpo_id}) {
     const [currentPage, setCurrentPage] = useState(1);
     const [prevPageUrl, setPrevPageUrl] = useState("");
     const [nextPageUrl, setNextPageUrl] = useState("");
-    const [profilesData, setProfilesData] = useState(null);
+    const [profilesData, setProfilesData] = useState({});
 
     let farmers_api_url = `${BASE_API_URL}/farmers`;
     if(fpo_id) {
@@ -48,12 +48,12 @@ export default function FarmersList({fpo_id}) {
                 }
             },)
             .then((res) => {
-                console.log("Profiles", res.data);
+                console.log("Profiles", res.data?.data);
                 if (res?.data) {
-                    setCurrentPage(res?.data?.current_page);
-                    setPrevPageUrl(res?.data?.prev_page_url);
-                    setNextPageUrl(res?.data?.next_page_url);
-                    setProfilesData(res.data);
+                    setCurrentPage(res.data?.data?.current_page);
+                    setPrevPageUrl(res.data?.data?.prev_page_url);
+                    setNextPageUrl(res.data?.data?.next_page_url);
+                    setProfilesData(res.data?.data);
                 }
             })
             .catch((err) => {
