@@ -716,7 +716,7 @@ class AgentController extends Controller
         }
     }
 
-     /**
+    /**
      * Search Agent with Basic Auth
      * 
      * This endpoint allows a user to search for a specific agent by agent code
@@ -819,5 +819,104 @@ class AgentController extends Controller
         }
         
     }
+
+    /**
+     * Add device to agent
+     * 
+     * This endpoint allows a user to add a device to an agent
+     * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
+     * 
+     * @bodyParam agent_id integer required The id of the agent. Example: 1
+     * @bodyParam brand string required The brand of the device. Example: Samsung
+     * @bodyParam device_id integer required The id of the device. Example: 123456
+     * 
+     * @response {
+     * "success": true,
+     * "message": "Device added to agent successfully",
+     * "data": {
+     * "id": 1,
+     * "agent_code": "AGT001",
+     * "first_name": "John",
+     * "last_name": "Doe",
+     * "photo": "http://url.test/storage/agents/1624810572IMG_20210627_174358.jpg",
+     * "created_at": "2021-06-27T17:09:32.000000Z",
+     * }
+     * }
+     * 
+     * @response 400 {
+     * "success": false,
+     * "message": "Validation error",
+     * "data": {
+     * "agent_id": [
+     * "The agent id field is required."
+     * ],
+     * "brand": [
+     * "The brand field is required."
+     * ],
+     * "device_id": [
+     * "The device id field is required."
+     * ]
+     * }
+     * 
+     * @response 404 {
+     * "success": false,
+     * "message": "Agent not found",
+     * "data": null
+     * }
+     * 
+     * @response 500 {
+     * "success": false,
+     * "message": "Device not added to agent",
+     * "data": null
+     * }
+     * 
+     * 
+     */
+    public function addDeviceToAgent(Request $request)
+    {
+        $validated = Validator::make($request->all(),[
+            'agent_id' => 'required|integer',
+            'brand' => 'required|string',
+            'device_id' => 'required|integer'
+        ]);
+
+        if($validated->fails()){
+            return response()->json([
+                'success' => false,
+                'message' => 'Validation error',
+                'data' => $validated->errors()
+            ], 400);
+        }
+
+        $agent = Agent::find($request->agent_id);
+        if(!$agent){
+            return response()->json([
+                'success' => false,
+                'message' => 'Agent not found',
+                'data' => null
+            ], 404);
+        }
+
+        $agent->device_id = $request->brand.'-'.$request->device_id;
+        $agent->save();
+
+        if(!$agent){
+            return response()->json([
+                'success' => false,
+                'message' => 'Device not added to agent',
+                'data' => null
+            ], 500);
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Device added to agent successfully',
+            'data' => $agent
+        ], 200);
+    }
+
+
 }
 

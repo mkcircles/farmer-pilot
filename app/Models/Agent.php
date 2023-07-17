@@ -32,6 +32,8 @@ class Agent extends Model
         'photo',
         'created_by',
         'fpo_id',
+        'device_id'
+
     ];
 
     public function fpo()

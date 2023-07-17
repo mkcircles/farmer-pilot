@@ -419,7 +419,7 @@ endpoints:
         name: email
         description: 'The email of the agent. Example:'
         required: true
-        example: conroy.cleora@example.org
+        example: dwaelchi@example.org
         type: string
         custom: []
       phone_number:
@@ -440,7 +440,7 @@ endpoints:
         name: gender
         description: ''
         required: true
-        example: laborum
+        example: magnam
         type: string
         custom: []
       residence:
@@ -475,29 +475,29 @@ endpoints:
         name: created_by
         description: ''
         required: true
-        example: 18
+        example: 12
         type: integer
         custom: []
       fpo_id:
         name: fpo_id
         description: ''
         required: true
-        example: 20
+        example: 5
         type: integer
         custom: []
     cleanBodyParameters:
       first_name: John
       last_name: Doe
-      email: conroy.cleora@example.org
+      email: dwaelchi@example.org
       phone_number: 256XXXXXXXXX
       age: '30'
-      gender: laborum
+      gender: magnam
       residence: Kampala
       referee_name: 'Jane Doe'
       referee_phone_number: '08012345678'
       designation: 'Agro Extension Worker'
-      created_by: 18
-      fpo_id: 20
+      created_by: 12
+      fpo_id: 5
     fileParameters: []
     responses:
       -
@@ -651,7 +651,7 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: optio
+        example: rerum
         type: string
         custom: []
       agent:
@@ -662,7 +662,7 @@ endpoints:
         type: string
         custom: []
     cleanUrlParameters:
-      id: optio
+      id: rerum
       agent: '1'
     queryParameters: []
     cleanQueryParameters: []
@@ -735,11 +735,11 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: quo
+        example: culpa
         type: string
         custom: []
     cleanUrlParameters:
-      id: quo
+      id: culpa
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -842,6 +842,123 @@ endpoints:
           {
           "success": false,
           "message": "No farmers found",
+          "data": null
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/agent/device/add
+    metadata:
+      groupName: 'Agent management'
+      groupDescription: |-
+
+        APIs for managing agents
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Add device to agent'
+      description: 'This endpoint allows a user to add a device to an agent'
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: 'required The authorization token. Example: Bearer {token}'
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      agent_id:
+        name: agent_id
+        description: 'The id of the agent.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+      brand:
+        name: brand
+        description: 'The brand of the device.'
+        required: true
+        example: Samsung
+        type: string
+        custom: []
+      device_id:
+        name: device_id
+        description: 'The id of the device.'
+        required: true
+        example: 123456
+        type: integer
+        custom: []
+    cleanBodyParameters:
+      agent_id: 1
+      brand: Samsung
+      device_id: 123456
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+          "success": true,
+          "message": "Device added to agent successfully",
+          "data": {
+          "id": 1,
+          "agent_code": "AGT001",
+          "first_name": "John",
+          "last_name": "Doe",
+          "photo": "http://url.test/storage/agents/1624810572IMG_20210627_174358.jpg",
+          "created_at": "2021-06-27T17:09:32.000000Z",
+          }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+          "success": false,
+          "message": "Validation error",
+          "data": {
+          "agent_id": [
+          "The agent id field is required."
+          ],
+          "brand": [
+          "The brand field is required."
+          ],
+          "device_id": [
+          "The device id field is required."
+          ]
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+          "success": false,
+          "message": "Agent not found",
+          "data": null
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+          "success": false,
+          "message": "Device not added to agent",
           "data": null
           }
         headers: []
