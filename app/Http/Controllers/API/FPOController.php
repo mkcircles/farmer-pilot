@@ -303,7 +303,7 @@ class FPOController extends Controller
         //     ], 400);
         // }
 
-        $fpo = FPO::create($validated->validated());
+        $fpo = FPO::create($request);
 
         //Create FPO user account
         $user = new User();
