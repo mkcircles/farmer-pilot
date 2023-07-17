@@ -48,12 +48,17 @@ export default function FarmersList({fpo_id}) {
                 }
             },)
             .then((res) => {
-                console.log("Profiles", res.data?.data);
+                let responseData = res?.data;
+
+                if(fpo_id) {
+                    responseData = res.data?.data
+                }
+                console.log("Profiles", responseData);
                 if (res?.data) {
-                    setCurrentPage(res.data?.data?.current_page);
-                    setPrevPageUrl(res.data?.data?.prev_page_url);
-                    setNextPageUrl(res.data?.data?.next_page_url);
-                    setProfilesData(res.data?.data);
+                    setCurrentPage(responseData?.current_page);
+                    setPrevPageUrl(responseData?.prev_page_url);
+                    setNextPageUrl(responseData?.next_page_url);
+                    setProfilesData(responseData);
                 }
             })
             .catch((err) => {
