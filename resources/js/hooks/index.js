@@ -1,3 +1,4 @@
 import useFindPath from "./useFindPath";
+import useFpos from "./useFpos";
 
-export {useFindPath}
+export {useFindPath, useFpos}

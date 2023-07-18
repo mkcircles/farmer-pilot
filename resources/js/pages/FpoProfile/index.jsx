@@ -325,11 +325,14 @@ function Main() {
                                     <Card>
                                         <Text>Members</Text>
                                         <Metric>
+                                            <span className="text-secondary">
                                             {numberFormatter(
                                                 parseInt(
                                                     fpo?.fpo_membership_number
                                                 )
                                             )}
+                                            </span>
+                                            
                                         </Metric>
                                         <Flex className="mt-6">
                                             <Text>
