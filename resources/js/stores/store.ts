@@ -12,7 +12,7 @@ export const store = configureStore({
     colorScheme: colorSchemeReducer,
     sideMenu: sideMenuReducer,
     auth: authReducer,
-    fpo: fpoReducer,
+    fpos: fpoReducer,
     app_error: appErrorReducer
   },
 });

@@ -1,21 +1,23 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-07e18f3a.css",
+    "file": "assets/app-0928c440.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
   "resources/js/app.css": {
-    "file": "assets/app-6d2fe4a7.css",
+    "file": "assets/app-ca7459a2.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.jsx": {
     "assets": [
+      "assets/male_avatar-ac4e6663.svg",
+      "assets/female_avatar-e6bdfdb4.svg",
       "assets/bg-main-c1a2ca01.png"
     ],
     "css": [
-      "assets/app-6d2fe4a7.css"
+      "assets/app-ca7459a2.css"
     ],
-    "file": "assets/app-9b68e258.js",
+    "file": "assets/app-624acc6e.js",
     "isEntry": true,
     "src": "resources/js/app.jsx"
   },
@@ -23,8 +25,16 @@
     "file": "assets/bg-main-c1a2ca01.png",
     "src": "resources/js/assets/images/backgrounds/bg-main.png"
   },
+  "resources/js/assets/images/female_avatar.svg": {
+    "file": "assets/female_avatar-e6bdfdb4.svg",
+    "src": "resources/js/assets/images/female_avatar.svg"
+  },
   "resources/js/assets/images/logo.svg": {
     "file": "assets/logo-78fe9fb2.svg",
     "src": "resources/js/assets/images/logo.svg"
+  },
+  "resources/js/assets/images/male_avatar.svg": {
+    "file": "assets/male_avatar-ac4e6663.svg",
+    "src": "resources/js/assets/images/male_avatar.svg"
   }
 }

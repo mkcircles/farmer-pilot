@@ -24,7 +24,7 @@ const initialState: FpoState = {
 };
 
 export const fpoSlice = createSlice({
-  name: "fpo",
+  name: "fpos",
   initialState,
   reducers: {
     setFpos: (state, action) => {
