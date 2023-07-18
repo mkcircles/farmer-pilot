@@ -9,6 +9,7 @@ import router from "./router";
 import { AppContextProvider } from "./context/RootContext";
 import Loading from "./components/Loading";
 import AppError from "./components/Error";
+import AppSuccessAlert from "./components/SuccessAlert";
 import "./assets/css/app.css";
 
 
@@ -18,7 +19,7 @@ ReactDOM.createRoot(document.getElementById("app")).render(
             <AppContextProvider>
                 <Loading />
                 <AppError />
-
+                <AppSuccessAlert />
                 <RouterProvider router={router} />
             </AppContextProvider>
         </Provider>

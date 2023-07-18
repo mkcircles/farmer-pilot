@@ -5,6 +5,7 @@ import sideMenuReducer from "./sideMenuSlice";
 import authReducer from "./authSlice";
 import fpoReducer from "./fpoSlice";
 import appErrorReducer from "./appErrorSlice";
+import appSuccessAlertReducer from "./appSuccessAlert";
 
 export const store = configureStore({
   reducer: {
@@ -13,7 +14,8 @@ export const store = configureStore({
     sideMenu: sideMenuReducer,
     auth: authReducer,
     fpos: fpoReducer,
-    app_error: appErrorReducer
+    app_error: appErrorReducer,
+    app_success_alerts: appSuccessAlertReducer,
   },
 });
 
