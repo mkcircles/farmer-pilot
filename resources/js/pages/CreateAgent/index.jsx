@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { Title } from "@tremor/react";
+import { SearchSelect, SearchSelectItem, Title } from "@tremor/react";
 import Button from "../../base-components/Button";
 import {
     FormLabel,
@@ -13,9 +13,13 @@ import axios from "axios";
 import { BASE_API_URL } from "../../env";
 import { useSelector } from "react-redux";
 import { AGENTS_LIST, FPO_LIST } from "../../router/routes";
+import { Home } from "react-feather";
+import { useAppDispatch } from "../../stores/hooks";
+import { setAppSuccessAlert } from "../../stores/appSuccessAlert";
 
 const CreateAgent = () => {
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
     const { updateAppContextState } = useContext(AppContext);
     const token = useSelector((state) => state.auth?.token);
     const user = useSelector((state) => state.auth?.user);
@@ -46,6 +50,7 @@ const CreateAgent = () => {
             .then((res) => {
                 // TODO: Notify success
                 navigate(AGENTS_LIST);
+                dispatch(setAppSuccessAlert({message: 'New Agent has been added successfully'}));
             })
             .catch((err) => {
                 // TODO: Notify Error
@@ -89,27 +94,24 @@ const CreateAgent = () => {
             <div className="py-4">
                 <FormLabel htmlFor="fpo_id">Select FPO</FormLabel>
 
-                <FormSelect
-                    id="fpo_id"
-                    required
-                    placeholder="Choose FPO"
-                    value={agentData.fpo_id}
-                    onChange={(e) =>
-                        setAgentData({ ...agentData, fpo_id: e.target.value })
+                <SearchSelect
+                    value={agentData?.fpo_id}
+                    onValueChange={(value) =>
+                        setAgentData({ ...agentData, fpo_id: value })
                     }
                 >
-                    <option selected value="">
-                        -- Select FPO --
-                    </option>
-
-                    {fpos?.map((fpo) => {
+                    {fpos?.map((fpo, index) => {
                         return (
-                            <option key={fpo.id} value={fpo.id}>
-                                {fpo.fpo_name}
-                            </option>
+                            <SearchSelectItem
+                                key={index}
+                                value={fpo?.id}
+                                icon={Home}
+                            >
+                                {fpo?.fpo_name}
+                            </SearchSelectItem>
                         );
                     })}
-                </FormSelect>
+                </SearchSelect>
             </div>
 
             <div className="flex space-x-4 items-center py-4">

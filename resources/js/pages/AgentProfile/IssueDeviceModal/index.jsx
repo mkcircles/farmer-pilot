@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 import { useContext, useState } from "react";
 import Lucide from "../../../base-components/Lucide";
 import { AppContext } from "../../../context/RootContext";
@@ -8,8 +9,11 @@ import { FormInput, FormLabel } from "../../../base-components/Form";
 import Button from "../../../base-components/Button";
 import { Tablet } from "react-feather";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../../stores/hooks";
+import { setAppSuccessAlert } from "../../../stores/appSuccessAlert";
 
 const IssueDeviceModal = ({ showModal, setShowModal, agent, setAgentData }) => {
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const { updateAppContextState } = useContext(AppContext);
     const token = useSelector((state) => state.auth?.token);
@@ -33,7 +37,11 @@ const IssueDeviceModal = ({ showModal, setShowModal, agent, setAgentData }) => {
             .then((res) => {
                 // TODO: Notify success
                 setShowModal(false);
-                setAgentData({...agent, device_id: `${deviceData?.brand}-${deviceData?.device_id}`})
+                setAgentData({...agent, device_id: `${deviceData?.brand}-${deviceData?.device_id}`});
+                dispatch(setAppSuccessAlert({
+                    id: uuidv4(),
+                    message: "Device has been Issued successfully",
+                }))
                 // navigate(0);
             })
             .catch((err) => {
