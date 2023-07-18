@@ -99,7 +99,7 @@ export default function FarmersList({fpo_id}) {
                     <TableBody>
                         {profilesData?.data?.map((farmer) => (
                             <TableRow key={farmer.id}>
-                                <TableCell>{farmer.id}</TableCell>
+                                <TableCell># {farmer.id}</TableCell>
                                 <TableCell>
                                     {farmer.first_name + " " + farmer.last_name}
                                 </TableCell>

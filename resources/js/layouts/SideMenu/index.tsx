@@ -21,6 +21,7 @@ import TopBar from "../../components/TopBar";
 import SimpleBar from "simplebar";
 import { LOGIN } from "../../router/routes";
 import { useSelector } from "react-redux";
+import {useFpos} from "../../hooks";
 import { AppContext } from "../../context/RootContext";
 import { setToken, logOut } from "../../stores/authSlice";
 import { BASE_API_URL } from "../../env";
@@ -28,6 +29,7 @@ import { debounce } from "lodash";
 
 function Main() {
     const dispatch = useAppDispatch();
+    const fpos = useFpos();
     const location = useLocation();
     const navigate = useNavigate();
     const { updateAppContextState } = useContext(AppContext);
