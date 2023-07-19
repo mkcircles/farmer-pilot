@@ -272,7 +272,7 @@ class FPOController extends Controller
      */
     public function store(Request $request)
     {
-
+     
         $validated = Validator::make($request->all(),[
             'fpo_name' => 'required|string',
             'district' => 'required|string',
@@ -304,7 +304,7 @@ class FPOController extends Controller
             ], 400);
         }
 
-        $fpo = FPO::create($request);
+        $fpo = FPO::create($validated->validated());
 
         //Create FPO user account
         $user = new User();
@@ -312,7 +312,7 @@ class FPOController extends Controller
         $user->phone_number = $fpo->contact_phone_number;
         $user->email = $fpo->contact_email;
         $user->password = Hash::make('password');
-        $user->user_type = 'fpo';
+        $user->role = 'fpo';
         $user->photo = 'https://ui-avatars.com/api/?name='.$fpo->fpo_name.'&size=128&background=007bff&color=fff';
         $user->save();
         
