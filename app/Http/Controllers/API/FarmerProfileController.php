@@ -175,6 +175,7 @@ class FarmerProfileController extends Controller
         //Check if request has image
         if($request->image){
             $image_64 = $request->image; //your base64 encoded data
+            dd($image_64);
             $extension = explode('/', explode(':', substr($image_64, 0, strpos($image_64, ';')))[1])[1];   // .jpg .png .pdf
             $replace = substr($image_64, 0, strpos($image_64, ',')+1); 
 
