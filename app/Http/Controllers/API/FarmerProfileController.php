@@ -182,10 +182,10 @@ class FarmerProfileController extends Controller
             $image = str_replace($replace, '', $image_64); 
             $image = str_replace(' ', '+', $image); 
 
-            $imageName = Str::random(10).'.png';
+            $imageName = Str::random(10).'.jpg';
             //Store image in public/farmers folder
             Storage::put('public/farmers/'.$imageName, base64_decode($image_64));
-            
+
         }else{
             $imageName = null;
         }
