@@ -7,6 +7,7 @@ use App\Models\Api;
 use App\Models\FarmerProfile;
 use App\Traits\HelperTraits;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -172,24 +173,6 @@ class FarmerProfileController extends Controller
             ], 422);
         }
         
-        //Check if request has image
-        if($request->image){
-            $image_64 = $request->image; //your base64 encoded data
-            //$extension = explode('/', explode(':', substr($image_64, 0, strpos($image_64, ';')))[1])[1];   // .jpg .png .pdf
-            $replace = substr($image_64, 0, strpos($image_64, ',')+1); 
-
-            // find substring fro replace here eg: data:image/png;base64,
-            $image = str_replace($replace, '', $image_64); 
-            $image = str_replace(' ', '+', $image); 
-
-            $imageName = Str::random(10).'.jpg';
-            //Store image in public/farmers folder
-            Storage::put('public/farmers/'.$imageName, base64_decode($image_64));
-
-        }else{
-            $imageName = null;
-        }
-
 
         //Save Data
         $farmer = new FarmerProfile();
@@ -245,11 +228,32 @@ class FarmerProfileController extends Controller
         ], 201);
     }
 
+
+    public function CreateFarmerPhoto(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'farmer_id' => 'required|string',
+            'image' => 'required'
+            ]);
+
+              //Check if request has image
+              if ($request->image) {
+                $folderPath = public_path() . '/farmers';
+                $base64Image = explode(";base64,", $request->image);
+                $explodeImage = explode("image/", $base64Image[0]);
+                $imageType = $explodeImage[1];
+                $image_base64 = base64_decode($base64Image[1]);
+                $file = $folderPath . uniqid() . '. '.$imageType;
+                file_put_contents($file, $image_base64);
+            }else{
+                $imageName = null;
+            }
+
+            $farmer = FarmerProfile::where('farmer_id', $request->farmer_id)->first();
+            $farmer->photo = $imageName;
+            $farmer->save();    
+    }
     
-
-
-    //Get all farmers
-
 
    
 }
