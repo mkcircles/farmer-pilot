@@ -17,4 +17,5 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-/cypress/videos/
+/cypress/videos
+/cypress/screenshots
