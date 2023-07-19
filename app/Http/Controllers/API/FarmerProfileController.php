@@ -172,7 +172,23 @@ class FarmerProfileController extends Controller
             ], 422);
         }
         
-       
+        //Check if request has image
+        if($request->image){
+            $image_64 = $request->image; //your base64 encoded data
+            $extension = explode('/', explode(':', substr($image_64, 0, strpos($image_64, ';')))[1])[1];   // .jpg .png .pdf
+            $replace = substr($image_64, 0, strpos($image_64, ',')+1); 
+
+            // find substring fro replace here eg: data:image/png;base64,
+            $image = str_replace($replace, '', $image_64); 
+            $image = str_replace(' ', '+', $image); 
+
+            $imageName = Str::random(10).'.'.$extension;
+
+            Storage::disk('public/farmers')->put($imageName, base64_decode($image));
+            
+        }else{
+            $imageName = null;
+        }
 
 
         //Save Data
@@ -216,6 +232,8 @@ class FarmerProfileController extends Controller
         $farmer->rId = $request->rId;
         $farmer->consumerDeviceId = $request->consumerDeviceId;
         $farmer->data_captured_by = $request->data_captured_by;
+        $farmer->agent_id = $request->agent_id;
+        $farmer->photo = $imageName;
 
         $farmer->save();
 
