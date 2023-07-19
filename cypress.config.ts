@@ -6,6 +6,7 @@ export default defineConfig({
     baseUrl: BASE_URL,
     experimentalRunAllSpecs: true,
     waitForAnimations: true,
+    chromeWebSecurity: false,
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
