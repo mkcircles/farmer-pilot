@@ -52,6 +52,7 @@ class FarmerProfile extends Model
         'consumerDeviceId',
         'data_captured_by',
         'agent_id',
+        'photo',
     ];
 
     public function agent()

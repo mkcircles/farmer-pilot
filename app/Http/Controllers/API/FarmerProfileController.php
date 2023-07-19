@@ -7,7 +7,9 @@ use App\Models\Api;
 use App\Models\FarmerProfile;
 use App\Traits\HelperTraits;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 
 /**
@@ -170,6 +172,9 @@ class FarmerProfileController extends Controller
             ], 422);
         }
         
+       
+
+
         //Save Data
         $farmer = new FarmerProfile();
         $farmer->farmer_id = $this->generateFarmerId();

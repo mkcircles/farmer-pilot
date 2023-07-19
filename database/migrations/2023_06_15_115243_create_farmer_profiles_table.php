@@ -64,7 +64,7 @@ return new class extends Migration
 
             //Registered By
             $table->string('agent_id')->nullable();
-
+            $table->string('photo')->nullable();
             
             $table->timestamps();
         });
