@@ -114,6 +114,7 @@ export default function fpoList() {
 
                     <div className="flex items-center">
                         <span
+                            role="btn-create-fpo"
                             onClick={() => {
                                 navigate(CREATE_FPO);
                             }}

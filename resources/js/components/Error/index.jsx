@@ -56,6 +56,7 @@ const AppError = () => {
                     key={err?.id}
                         className="flex items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
                         role="alert"
+                        data-error-alert="error-alert"
                     >
                         <svg
                             className="flex-shrink-0 w-4 h-4"

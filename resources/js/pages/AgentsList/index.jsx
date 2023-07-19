@@ -79,6 +79,7 @@ export default function AgentsList({fpo_id}) {
                 <Flex justifyContent="between">
                     <Text className="mt-2">Overview of Agents</Text>
                     <span
+                    role="btn-create-agent"
                         onClick={() => {
                             navigate(CREATE_AGENT);
                         }}

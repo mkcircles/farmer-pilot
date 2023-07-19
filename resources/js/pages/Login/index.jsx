@@ -60,6 +60,7 @@ function Main() {
             </div>
             <div className="box px-5 py-8 mt-10 max-w-[450px] relative before:content-[''] before:z-[-1] before:w-[95%] before:h-full before:bg-slate-200 before:border before:border-slate-200 before:-mt-5 before:absolute before:rounded-lg before:mx-auto before:inset-x-0 before:dark:bg-darkmode-600/70 before:dark:border-darkmode-500/60">
               <FormInput
+              name="email"
                 type="text"
                 className="block px-4 py-3"
                 placeholder="Email"
@@ -67,6 +68,7 @@ function Main() {
                 onChange={(e) => setEmail(e.target.value)}
               />
               <FormInput
+              name="password"
                 type="password"
                 className="block px-4 py-3 mt-4"
                 placeholder="Password"
