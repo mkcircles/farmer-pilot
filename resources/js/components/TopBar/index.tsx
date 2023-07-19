@@ -160,6 +160,7 @@ function Main(props: { toggleMobileMenu: (event: React.MouseEvent) => void }) {
                     <Menu.Button className="flex items-center h-full dropdown-toggle">
                         <div className="ml-3 md:block text-orange-500 rounded-full h-8 w-8 bg-white">
                             <svg
+                                role="account-menu-dropdown"
                                 fill="none"
                                 stroke="currentColor"
                                 strokeWidth={1.5}
@@ -194,6 +195,7 @@ function Main(props: { toggleMobileMenu: (event: React.MouseEvent) => void }) {
                         </Menu.Item>
                         <Menu.Divider />
                         <Menu.Item
+                            data-menu-item-role="log-out-menu-button"
                             onClick={() => {
                                 dispatch(logOut(""));
                             }}

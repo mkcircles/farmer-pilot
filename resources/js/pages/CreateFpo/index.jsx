@@ -13,9 +13,12 @@ import axios from "axios";
 import { BASE_API_URL } from "../../env";
 import { useSelector } from "react-redux";
 import { FPO_LIST } from "../../router/routes";
+import { useAppDispatch } from "../../stores/hooks";
+import { setAppSuccessAlert } from "../../stores/appSuccessAlert";
 
 const CreateFpo = () => {
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
     const { updateAppContextState } = useContext(AppContext);
     const token = useSelector((state) => state.auth?.token);
     const user = useSelector((state) => state.auth?.user);
@@ -36,6 +39,7 @@ const CreateFpo = () => {
 
         fpo_membership_number: "",
         fpo_female_membership: "",
+        fpo_male_membership: "",
         fpo_male_youth: "",
         fpo_female_youth: "",
         fpo_field_agents: "",
@@ -43,7 +47,7 @@ const CreateFpo = () => {
         Cert_of_Inc: "",
         address: "",
         fpo_cordinates: "",
-        created_by: user.id,
+        created_by: user?.id,
     });
 
     const handleCreateFpo = () => {
@@ -57,6 +61,7 @@ const CreateFpo = () => {
             .then((res) => {
                 // TODO: Notify success
                 navigate(FPO_LIST);
+                dispatch(setAppSuccessAlert({message: 'New FPO has been added successfully!'}));
             })
             .catch((err) => {
                 // TODO: Notify Error
@@ -356,7 +361,6 @@ const CreateFpo = () => {
                     <FormLabel htmlFor="fpo_cordinates">Coordinates</FormLabel>
                     <FormInput
                         id="fpo_cordinates"
-                        required
                         type="text"
                         placeholder=""
                         value={fpoData.fpo_cordinates}
@@ -402,6 +406,25 @@ const CreateFpo = () => {
                             setFpoData({
                                 ...fpoData,
                                 fpo_female_membership: e.target.value,
+                            })
+                        }
+                    />
+                </div>
+
+                <div className="">
+                    <FormLabel htmlFor="fpo_cordinates">
+                        Male membership
+                    </FormLabel>
+                    <FormInput
+                        id="fpo_male_membership"
+                        required
+                        type="number"
+                        placeholder=""
+                        value={fpoData?.fpo_male_membership}
+                        onChange={(e) =>
+                            setFpoData({
+                                ...fpoData,
+                                fpo_male_membership: e.target.value,
                             })
                         }
                     />
@@ -464,6 +487,7 @@ const CreateFpo = () => {
 
             <div className="flex py-4">
                 <Button
+                    data-btn-role="submit"
                     variant="primary"
                     className="w-full xl:mr-3"
                     onClick={() => {}}

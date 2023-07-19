@@ -50,7 +50,11 @@ const CreateAgent = () => {
             .then((res) => {
                 // TODO: Notify success
                 navigate(AGENTS_LIST);
-                dispatch(setAppSuccessAlert({message: 'New Agent has been added successfully'}));
+                dispatch(
+                    setAppSuccessAlert({
+                        message: "New Agent has been added successfully",
+                    })
+                );
             })
             .catch((err) => {
                 // TODO: Notify Error
@@ -95,6 +99,7 @@ const CreateAgent = () => {
                 <FormLabel htmlFor="fpo_id">Select FPO</FormLabel>
 
                 <SearchSelect
+                    id="fpo_id"
                     value={agentData?.fpo_id}
                     onValueChange={(value) =>
                         setAgentData({ ...agentData, fpo_id: value })
@@ -301,6 +306,7 @@ const CreateAgent = () => {
 
             <div className="flex py-4">
                 <Button
+                    data-btn-role="submit"
                     variant="primary"
                     className="w-full xl:mr-3"
                     onClick={() => {}}
