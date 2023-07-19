@@ -4,7 +4,8 @@
     "scripts": {
         "dev": "vite --force",
         "build": "vite build",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "test": "npx cypress run"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",
@@ -23,6 +24,7 @@
         "axios": "^1.1.2",
         "clsx": "^1.2.1",
         "cypress": "^12.17.1",
+        "husky": "^8.0.3",
         "laravel-vite-plugin": "^0.7.5",
         "lodash": "^4.17.21",
         "postcss": "^8.4.24",
