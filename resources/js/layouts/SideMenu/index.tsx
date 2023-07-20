@@ -3,7 +3,6 @@ import { Transition } from "react-transition-group";
 import {
     useState,
     useEffect,
-    useContext,
     Dispatch,
     SetStateAction,
     createRef,
@@ -15,24 +14,18 @@ import { selectSideMenu } from "../../stores/sideMenuSlice";
 import { useAppDispatch, useAppSelector } from "../../stores/hooks";
 import { FormattedMenu, linkTo, nestedMenu, enter, leave } from "./side-menu";
 import Lucide from "../../base-components/Lucide";
-// import logoUrl from "../../assets/images/logo.svg";
 import clsx from "clsx";
 import TopBar from "../../components/TopBar";
 import SimpleBar from "simplebar";
 import { LOGIN } from "../../router/routes";
 import { useSelector } from "react-redux";
-import {useFpos} from "../../hooks";
-import { AppContext } from "../../context/RootContext";
-import { setToken, logOut } from "../../stores/authSlice";
-import { BASE_API_URL } from "../../env";
-import { debounce } from "lodash";
+import {useFpos, useRefreshToken} from "../../hooks";
 
 function Main() {
-    const dispatch = useAppDispatch();
-    const fpos = useFpos();
+    useRefreshToken();
+    useFpos();
     const location = useLocation();
     const navigate = useNavigate();
-    const { updateAppContextState } = useContext(AppContext);
     const token = useSelector((state: any) => state.auth.token);
     const [formattedMenu, setFormattedMenu] = useState<
         Array<FormattedMenu | string>
@@ -51,43 +44,6 @@ function Main() {
     useEffect(() => {
         setFormattedMenu(sideMenu());
     }, [sideMenuStore, location.pathname]);
-
-    const refreshToken = (url = `${BASE_API_URL}/refresh`) => {
-        updateAppContextState("loading", true);
-        // @ts-ignore
-        axios
-            .post(
-                url,
-                {},
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                }
-            )
-            .then((res: any) => {
-                // console.log("New Token", res?.data);
-                let resData = res?.data;
-                if (res?.data) {
-                    dispatch(setToken(resData?.token));
-                }
-            })
-            .catch((err: any) => {
-                console.log(err);
-                if (err) {
-                    dispatch(logOut(""));
-                }
-            })
-            .finally(() => {
-                updateAppContextState("loading", false);
-            });
-    };
-
-    const debounceRefreshToken = debounce(refreshToken, 500);
-
-    useEffect(() => {
-        if (token) debounceRefreshToken();
-    }, []);
 
     const [simpleMenu, setSimpleMenu] = useCallbackState({
         active: false,

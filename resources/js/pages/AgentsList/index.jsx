@@ -23,7 +23,7 @@ import { useContext } from "react";
 import { useSelector } from "react-redux";
 import { UserIcon } from "@heroicons/react/solid";
 
-export default function AgentsList({fpo_id}) {
+export default function AgentsList({fpo_id, fpo_name}) {
     const navigate = useNavigate();
     const token = useSelector((state) => state.auth.token);
     const { updateAppContextState } = useContext(AppContext);
@@ -65,7 +65,7 @@ export default function AgentsList({fpo_id}) {
 
     useEffect(() => {
         fetchAgents();
-    }, []);
+    }, [token]);
 
     return (
         <div className="w-full h-full py-4">
@@ -81,7 +81,11 @@ export default function AgentsList({fpo_id}) {
                     <span
                     role="btn-create-agent"
                         onClick={() => {
-                            navigate(CREATE_AGENT);
+                            navigate(CREATE_AGENT, {
+                                state: {
+                                    fpo: {fpo_id: fpo_id, fpo_name: fpo_name}
+                                }
+                            });
                         }}
                         className="inline-flex overflow-hidden rounded-md border bg-secondary shadow-sm"
                     >

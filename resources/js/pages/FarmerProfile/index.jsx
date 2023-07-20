@@ -67,7 +67,7 @@ const FarmerProfile = () => {
             .finally(() => {
                 updateAppContextState("loading", false);
             });
-    }, [id]);
+    }, [id, token]);
 
     useEffect(() => {
         if (farmerData?.fpo_id) {
