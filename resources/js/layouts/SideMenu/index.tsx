@@ -83,7 +83,7 @@ function Main() {
             });
     };
 
-    const debounceRefreshToken = debounce(refreshToken, 5000);
+    const debounceRefreshToken = debounce(refreshToken, 500);
 
     useEffect(() => {
         if (token) debounceRefreshToken();
