@@ -21,13 +21,16 @@ import { numberFormatter } from "../../utils/numberFormatter";
 import { AppContext } from "../../context/RootContext";
 import { useContext } from "react";
 import { useSelector } from "react-redux";
+import { debounce } from "lodash";
 
 
-export default function FarmersList({fpo_id}) {
+export default function FarmersList({fpo_id, agent_id}) {
     const navigate = useNavigate();
     const token = useSelector(state => state.auth.token);
     const { updateAppContextState } = useContext(AppContext);
     const [currentPage, setCurrentPage] = useState(1);
+    const [moveToPage, setMoveToPage] = useState(1);
+    const [lastPage, setLastPage] = useState(1);
     const [prevPageUrl, setPrevPageUrl] = useState("");
     const [nextPageUrl, setNextPageUrl] = useState("");
     const [profilesData, setProfilesData] = useState({});
@@ -35,6 +38,9 @@ export default function FarmersList({fpo_id}) {
     let farmers_api_url = `${BASE_API_URL}/farmers`;
     if(fpo_id) {
         farmers_api_url = `${BASE_API_URL}/fpo/${fpo_id}/farmers`
+    }
+    if(agent_id) {
+        farmers_api_url = `${BASE_API_URL}/agent/${agent_id}/farmers`
     }
 
     const fetchProfiles = (url = farmers_api_url) => {
@@ -50,14 +56,16 @@ export default function FarmersList({fpo_id}) {
             .then((res) => {
                 let responseData = res?.data;
 
-                if(fpo_id) {
+                if(fpo_id || agent_id) {
                     responseData = res.data?.data
                 }
                 console.log("Profiles", responseData);
                 if (res?.data) {
-                    setCurrentPage(responseData?.current_page);
+                    setCurrentPage(parseInt(responseData?.current_page));
+                    //setMoveToPage(parseInt(responseData?.current_page));
                     setPrevPageUrl(responseData?.prev_page_url);
                     setNextPageUrl(responseData?.next_page_url);
+                    setLastPage(responseData?.last_page);
                     setProfilesData(responseData);
                 }
             })
@@ -69,9 +77,21 @@ export default function FarmersList({fpo_id}) {
             });
     };
 
+    const debounceFetchProfiles= debounce(fetchProfiles, 2000);
+
     useEffect(() => {
-        fetchProfiles();
+        debounceFetchProfiles();
     }, []);
+
+    useEffect(() => {
+        if(moveToPage == currentPage) return;
+        setMoveToPage(currentPage);
+    }, [currentPage]);
+
+    useEffect(() => {
+        if(moveToPage == currentPage) return;
+        debounceFetchProfiles(`${farmers_api_url}?page=${moveToPage}`);
+    }, [moveToPage]);
 
     return (
         <div className="w-full h-full py-4">
@@ -167,8 +187,14 @@ export default function FarmersList({fpo_id}) {
                             <input
                                 type="number"
                                 className="h-8 w-12 rounded border-none bg-transparent p-0 text-center text-xs font-medium [-moz-appearance:_textfield] focus:outline-none focus:ring-inset focus:ring-white [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
-                                min="1"
-                                value={currentPage}
+                                min="0"
+                                step={1}
+                                max={lastPage}
+                                value={moveToPage}
+                                onChange={(e) => {
+                                    if(parseInt(e.target.value) > lastPage) return;
+                                    setMoveToPage(parseInt(e.target.value));
+                                }}
                                 id="PaginationPage"
                             />
                         </div>
