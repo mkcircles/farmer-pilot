@@ -57,7 +57,7 @@ function Main() {
             .finally(() => {
                 updateAppContextState("loading", false);
             });
-    }, [id]);
+    }, [id, token]);
 
     return (
         <>
@@ -311,7 +311,7 @@ function Main() {
                                 <FarmersList fpo_id={id} />
                             </TabPanel>
                             <TabPanel>
-                                <AgentsList fpo_id={id} />
+                                <AgentsList fpo_id={id} fpo_name={fpo?.fpo_name} />
                             </TabPanel>
                             <TabPanel>
                                 <FpoAdminList fpo_id={id} />
@@ -396,113 +396,6 @@ function Main() {
                                             </ListItem>
                                         </List>
                                     </Card>
-                                    {/* <Card>
-                    <Text>Farmers</Text>
-                    <Metric>
-                        {numberFormatter(parseInt(fpo?.fpo_membership_number))}
-                    </Metric>
-                    <Flex className="mt-6">
-                        <Text>
-                            <Bold>Stats</Bold>
-                        </Text>
-                        <Text>
-                            <Bold></Bold>
-                        </Text>
-                    </Flex>
-                    <List className="mt-1">
-                        <ListItem>
-                            <Flex
-                                justifyContent="start"
-                                className="truncate space-x-2.5"
-                            >
-                                <Text className="truncate">Female</Text>
-                            </Flex>
-                            <Text>
-                                {numberFormatter(
-                                    parseInt(fpo?.fpo_female_membership)
-                                )}
-                            </Text>
-                        </ListItem>
-                        <ListItem>
-                            <Flex
-                                justifyContent="start"
-                                className="truncate space-x-2.5"
-                            >
-                                <Text className="truncate">Female Youth</Text>
-                            </Flex>
-                            <Text>
-                                {numberFormatter(
-                                    parseInt(fpo?.fpo_female_youth)
-                                )}
-                            </Text>
-                        </ListItem>
-                        <ListItem>
-                            <Flex
-                                justifyContent="start"
-                                className="truncate space-x-2.5"
-                            >
-                                <Text className="truncate">Male Youth</Text>
-                            </Flex>
-                            <Text>
-                                {numberFormatter(parseInt(fpo?.fpo_male_youth))}
-                            </Text>
-                        </ListItem>
-                    </List>
-                </Card> */}
-
-                                    {/* <Card>
-                    <Text>Agents</Text>
-                    <Metric>
-                        {numberFormatter(parseInt(fpo?.fpo_membership_number))}
-                    </Metric>
-                    <Flex className="mt-6">
-                        <Text>
-                            <Bold>Stats</Bold>
-                        </Text>
-                        <Text>
-                            <Bold></Bold>
-                        </Text>
-                    </Flex>
-                    <List className="mt-1">
-                        <ListItem>
-                            <Flex
-                                justifyContent="start"
-                                className="truncate space-x-2.5"
-                            >
-                                <Text className="truncate">Female</Text>
-                            </Flex>
-                            <Text>
-                                {numberFormatter(
-                                    parseInt(fpo?.fpo_female_membership)
-                                )}
-                            </Text>
-                        </ListItem>
-                        <ListItem>
-                            <Flex
-                                justifyContent="start"
-                                className="truncate space-x-2.5"
-                            >
-                                <Text className="truncate">Female Youth</Text>
-                            </Flex>
-                            <Text>
-                                {numberFormatter(
-                                    parseInt(fpo?.fpo_female_youth)
-                                )}
-                            </Text>
-                        </ListItem>
-                        <ListItem>
-                            <Flex
-                                justifyContent="start"
-                                className="truncate space-x-2.5"
-                            >
-                                <Text className="truncate">Male Youth</Text>
-                            </Flex>
-                            <Text>
-                                {numberFormatter(parseInt(fpo?.fpo_male_youth))}
-                            </Text>
-                        </ListItem>
-                    </List>
-                </Card> */}
                                 </Grid>
                             </TabPanel>
                         </TabPanels>

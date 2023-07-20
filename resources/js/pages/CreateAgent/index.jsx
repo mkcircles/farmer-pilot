@@ -7,7 +7,7 @@ import {
     FormHelp,
     FormSelect,
 } from "../../base-components/Form";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AppContext } from "../../context/RootContext";
 import axios from "axios";
 import { BASE_API_URL } from "../../env";
@@ -20,6 +20,9 @@ import { setAppSuccessAlert } from "../../stores/appSuccessAlert";
 const CreateAgent = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
+    const {
+        state: { fpo },
+    } = useLocation();
     const { updateAppContextState } = useContext(AppContext);
     const token = useSelector((state) => state.auth?.token);
     const user = useSelector((state) => state.auth?.user);
@@ -34,7 +37,7 @@ const CreateAgent = () => {
         referee_name: "",
         referee_phone_number: "",
         designation: "",
-        fpo_id: "",
+        fpo_id: fpo?.fpo_id || "",
         created_by: user.id,
     });
     const [fpos, setFpos] = React.useState([]);
@@ -66,6 +69,12 @@ const CreateAgent = () => {
     };
 
     useEffect(() => {
+        if (fpo) {
+            setAgentData({ ...agentData, fpo_id: fpo?.fpo_id });
+        }
+    }, [fpo]);
+
+    useEffect(() => {
         updateAppContextState("loading", true);
         axios
             .get(`${BASE_API_URL}/fpos/summary`, {
@@ -93,31 +102,33 @@ const CreateAgent = () => {
                 handleCreateAgent();
             }}
         >
-            <Title>Create New Agent</Title>
+            <Title>{`Create a new Agent for ${fpo?.fpo_name}` || 'Create New Agent'}</Title>
 
-            <div className="py-4">
-                <FormLabel htmlFor="fpo_id">Select FPO</FormLabel>
+            {fpo?.fpo_id ? null : (
+                <div className="py-4">
+                    <FormLabel htmlFor="fpo_id">Select FPO</FormLabel>
 
-                <SearchSelect
-                    id="fpo_id"
-                    value={agentData?.fpo_id}
-                    onValueChange={(value) =>
-                        setAgentData({ ...agentData, fpo_id: value })
-                    }
-                >
-                    {fpos?.map((fpo, index) => {
-                        return (
-                            <SearchSelectItem
-                                key={index}
-                                value={fpo?.id}
-                                icon={Home}
-                            >
-                                {fpo?.fpo_name}
-                            </SearchSelectItem>
-                        );
-                    })}
-                </SearchSelect>
-            </div>
+                    <SearchSelect
+                        id="fpo_id"
+                        value={agentData?.fpo_id}
+                        onValueChange={(value) =>
+                            setAgentData({ ...agentData, fpo_id: value })
+                        }
+                    >
+                        {fpos?.map((fpo, index) => {
+                            return (
+                                <SearchSelectItem
+                                    key={index}
+                                    value={fpo?.id}
+                                    icon={Home}
+                                >
+                                    {fpo?.fpo_name}
+                                </SearchSelectItem>
+                            );
+                        })}
+                    </SearchSelect>
+                </div>
+            )}
 
             <div className="flex space-x-4 items-center py-4">
                 <div className="flex-1">

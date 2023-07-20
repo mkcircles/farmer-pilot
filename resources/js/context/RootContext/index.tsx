@@ -1,3 +1,4 @@
+import { debounce } from "lodash";
 import React, { createContext, useEffect, useState } from "react";
 
 // Create the context
@@ -10,6 +11,17 @@ const AppContextProvider = ({ children }) => {
     });
 
     const updateAppContextState = (key: string, value: any) => {
+
+        if(key == 'loading' && value === false) {
+            setTimeout(() => {
+                setAppContextState({
+                    ...appContextState,
+                    [key]: value,
+                });
+            }, 1000);
+            return;
+        }
+
         setAppContextState({
             ...appContextState,
             [key]: value,

@@ -76,3 +76,18 @@
    color: var(--color-primary);
    text-decoration: none;
 }
+
+div:where(.swal2-container) div:where(.swal2-loader) {
+    align-items: center;
+    justify-content: center;
+    width: 2.2em;
+    height: 2.2em;
+    margin: 0 1.875em;
+    border-width: 0.25em;
+    border-style: solid;
+    border-radius: 100%;
+    border-top-color: var(--color-primary) !important;
+    border-right-color: rgba(0, 0, 0, 0);
+    border-bottom-color: var(--color-primary) !important;
+    border-left-color: rgba(0, 0, 0, 0);
+ }

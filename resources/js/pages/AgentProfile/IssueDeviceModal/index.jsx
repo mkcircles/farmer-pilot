@@ -35,14 +35,12 @@ const IssueDeviceModal = ({ showModal, setShowModal, agent, setAgentData }) => {
                 },
             })
             .then((res) => {
-                // TODO: Notify success
                 setShowModal(false);
                 setAgentData({...agent, device_id: `${deviceData?.brand}-${deviceData?.device_id}`});
                 dispatch(setAppSuccessAlert({
                     id: uuidv4(),
                     message: "Device has been Issued successfully",
                 }))
-                // navigate(0);
             })
             .catch((err) => {
                 // TODO: Notify Error
