@@ -34,4 +34,14 @@ trait HelperTraits
     {
         return Agent::where('agent_code', $agentCode)->exists();
     }
+
+    public function formatMobilePhoneNumber($phoneNumber){
+        if (preg_match("/^[256]+[0-9]{12,12}$/", $phoneNumber)) {
+            return $phoneNumber;
+        }elseif (preg_match("/^[07]+[0-9]{9,10}$/", $phoneNumber)){
+            return '256'.substr($phoneNumber,-9);
+        }
+        
+        return $phoneNumber;
+    }
 }
