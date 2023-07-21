@@ -244,7 +244,7 @@ class AgentController extends Controller
         $agent->first_name = $request->first_name;
         $agent->last_name = $request->last_name;
         $agent->email = $request->email;
-        $agent->phone_number = $request->phone_number;
+        $agent->phone_number = $this->formatMobilePhoneNumber($request->phone_number);
         $agent->age = $request->age;
         $agent->gender = $request->gender;
         $agent->residence = $request->residence;
@@ -389,7 +389,7 @@ class AgentController extends Controller
         $agent->first_name = $request->first_name;
         $agent->last_name = $request->last_name;
         $agent->email = $request->email;
-        $agent->phone_number = $request->phone_number;
+        $agent->phone_number = $this->formatMobilePhoneNumber($request->phone_number);
         $agent->age = $request->age;
         $agent->gender = $request->gender;
         $agent->residence = $request->residence;
