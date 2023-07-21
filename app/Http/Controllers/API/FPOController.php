@@ -127,7 +127,7 @@ class FPOController extends Controller
      */
     public function index()
     {
-        $fpos = FPO::paginate();
+        $fpos = FPO::orderBy('id', 'desc')->paginate();
         if($fpos->isEmpty()){
             return response()->json([
                 'success' => false,
@@ -772,7 +772,7 @@ class FPOController extends Controller
      */
     public function getFPOAgents(string $id)
     {
-        $agents = Agent::where('fpo_id', $id)->paginate();
+        $agents = Agent::where('fpo_id', $id)->orderBy('id', 'desc')->paginate();
         if($agents->isEmpty()){
             return response()->json([
                 'success' => false,
@@ -865,7 +865,7 @@ class FPOController extends Controller
      */
     public function getFPOFarmers(string $id)
     {
-        $farmers = FarmerProfile::where('fpo_id', $id)->paginate();
+        $farmers = FarmerProfile::where('fpo_id', $id)->orderBy('id', 'desc')->paginate();
         if($farmers->isEmpty()){
             return response()->json([
                 'success' => false,
