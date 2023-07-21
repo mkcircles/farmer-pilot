@@ -357,6 +357,16 @@ class AgentController extends Controller
     {
         //Update the agent
         $agent = Agent::find($id);
+        $user = User::where('phone_number', $agent->phone_number)->first();
+
+        if(!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Agent user account not found',
+                'data' => null
+            ], 404);
+        }
+        
         if(!$agent)
             return response()->json([
                 'success' => false,
@@ -400,6 +410,12 @@ class AgentController extends Controller
         $agent->created_by = $request->created_by;
         $agent->fpo_id = $request->fpo_id;
         $agent->save();
+
+        // Update a user account for the agent
+        $user->name = $agent->first_name.' '.$agent->last_name;
+        $user->email = $agent->email;
+        $user->phone_number = $agent->phone_number;
+        $user->save();
 
         if(!$agent)
             return response()->json([
