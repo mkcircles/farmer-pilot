@@ -216,7 +216,7 @@ class FarmerProfileController extends Controller
         $farmer->consumerDeviceId = $request->consumerDeviceId;
         $farmer->data_captured_by = $request->data_captured_by;
         $farmer->agent_id = $request->agent_id;
-        $farmer->photo = $imageName;
+        //$farmer->photo = $imageName;
 
         $farmer->save();
 
