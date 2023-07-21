@@ -30,7 +30,7 @@ import { useContext } from "react";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../stores/hooks";
 import { setFpos } from "../../stores/fpoSlice";
-import { isEqual } from "lodash";
+import { debounce, isEqual } from "lodash";
 import Pagination from "../../components/Pagination";
 
 export default function fpoList() {
@@ -86,6 +86,16 @@ export default function fpoList() {
     useEffect(() => {
         fetchFPOs();
     }, [token]);
+
+    useEffect(() => {
+        if (moveToPage == currentPage) return;
+        setMoveToPage(currentPage);
+    }, [currentPage]);
+
+    useEffect(() => {
+        if (moveToPage == currentPage) return;
+        debounce(fetchFPOs, 1000)(`${BASE_API_URL}/fpos?page=${moveToPage || 1}`);
+    }, [moveToPage]);
 
     return (
         <div className="w-full h-full py-4">
