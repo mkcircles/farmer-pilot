@@ -91,7 +91,7 @@ class AgentController extends Controller
     public function index()
     {
         //Get all agents
-        $agents = Agent::paginate();
+        $agents = Agent::orderBy('id', 'desc')->paginate();
         if(count($agents) == 0)
             return response()->json([
                 'success' => false,
@@ -366,7 +366,7 @@ class AgentController extends Controller
                 'data' => null
             ], 404);
         }
-        
+
         if(!$agent)
             return response()->json([
                 'success' => false,
@@ -525,7 +525,7 @@ class AgentController extends Controller
      */
     public function getAgentFarmers(string $agent_id)
     {
-        $farmers = FarmerProfile::where('agent_id', $agent_id)->paginate();
+        $farmers = FarmerProfile::where('agent_id', $agent_id)->orderBy('id', 'desc')->paginate();
         if(count($farmers) == 0){
             return response()->json([
                 'success' => false,

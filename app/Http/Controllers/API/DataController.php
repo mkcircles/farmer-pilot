@@ -64,7 +64,7 @@ class DataController extends Controller
      */
     public function getAllFarmers()
     {
-        $farmers = FarmerProfile::paginate(10)->toJson(JSON_PRETTY_PRINT);
+        $farmers = FarmerProfile::orderBy('id', 'desc')->paginate(10)->toJson(JSON_PRETTY_PRINT);
         return response($farmers, 200);
     }
 
