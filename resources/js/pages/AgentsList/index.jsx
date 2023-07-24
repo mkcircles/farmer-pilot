@@ -105,7 +105,7 @@ export default function AgentsList({fpo_id, fpo_name}) {
                 <Table className="mt-6">
                     <TableHead>
                         <TableRow>
-                            <TableHeaderCell>Agent ID</TableHeaderCell>
+                            <TableHeaderCell>Agent Code</TableHeaderCell>
                             <TableHeaderCell>Name</TableHeaderCell>
                             <TableHeaderCell>Designation</TableHeaderCell>
                             <TableHeaderCell>Phone</TableHeaderCell>
@@ -121,7 +121,7 @@ export default function AgentsList({fpo_id, fpo_name}) {
                     <TableBody>
                         {agentData?.data?.map((agent) => (
                             <TableRow key={agent.id}>
-                                <TableCell>{agent.id}</TableCell>
+                                <TableCell>{agent.agent_code}</TableCell>
                                 <TableCell>
                                     {agent.first_name + " " + agent.last_name}
                                 </TableCell>
