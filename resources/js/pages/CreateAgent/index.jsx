@@ -171,7 +171,6 @@ const CreateAgent = () => {
                     <FormLabel htmlFor="regular-form-1">Email</FormLabel>
                     <FormInput
                         id="email"
-                        required
                         type="email"
                         placeholder=""
                         value={agentData.email}
