@@ -36,6 +36,10 @@ return new class extends Migration
             '--class' => AgentSeeder::class,
             '--force' => true
         ]);
+        // Artisan::call('db:seed', [
+        //     '--class' => AgentDataSeeder::class,
+        //     '--force' => true
+        // ]);
     }
 
     /**

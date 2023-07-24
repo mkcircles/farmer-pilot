@@ -251,7 +251,8 @@ class AgentController extends Controller
         $agent->referee_name = $request->referee_name;
         $agent->referee_phone_number = $request->referee_phone_number;
         $agent->designation = $request->designation;
-        $agent->photo = null;
+        $agent->photo = 'https://ui-avatars.com/api/?background=random&size=128&name='.$request->first_name.'+'.$request->last_name;
+
         $agent->created_by = $request->created_by;
         $agent->fpo_id = $request->fpo_id;
         $agent->save();
