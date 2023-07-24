@@ -91,7 +91,7 @@ class AgentController extends Controller
     public function index()
     {
         //Get all agents
-        $agents = Agent::paginate();
+        $agents = Agent::orderBy('id', 'desc')->paginate();
         if(count($agents) == 0)
             return response()->json([
                 'success' => false,
@@ -244,7 +244,7 @@ class AgentController extends Controller
         $agent->first_name = $request->first_name;
         $agent->last_name = $request->last_name;
         $agent->email = $request->email;
-        $agent->phone_number = $request->phone_number;
+        $agent->phone_number = $this->formatMobilePhoneNumber($request->phone_number);
         $agent->age = $request->age;
         $agent->gender = $request->gender;
         $agent->residence = $request->residence;
@@ -358,6 +358,16 @@ class AgentController extends Controller
     {
         //Update the agent
         $agent = Agent::find($id);
+        $user = User::where('phone_number', $agent->phone_number)->first();
+
+        if(!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Agent user account not found',
+                'data' => null
+            ], 404);
+        }
+
         if(!$agent)
             return response()->json([
                 'success' => false,
@@ -390,7 +400,7 @@ class AgentController extends Controller
         $agent->first_name = $request->first_name;
         $agent->last_name = $request->last_name;
         $agent->email = $request->email;
-        $agent->phone_number = $request->phone_number;
+        $agent->phone_number = $this->formatMobilePhoneNumber($request->phone_number);
         $agent->age = $request->age;
         $agent->gender = $request->gender;
         $agent->residence = $request->residence;
@@ -401,6 +411,12 @@ class AgentController extends Controller
         $agent->created_by = $request->created_by;
         $agent->fpo_id = $request->fpo_id;
         $agent->save();
+
+        // Update a user account for the agent
+        $user->name = $agent->first_name.' '.$agent->last_name;
+        $user->email = $agent->email;
+        $user->phone_number = $agent->phone_number;
+        $user->save();
 
         if(!$agent)
             return response()->json([
@@ -510,7 +526,7 @@ class AgentController extends Controller
      */
     public function getAgentFarmers(string $agent_id)
     {
-        $farmers = FarmerProfile::where('agent_id', $agent_id)->paginate();
+        $farmers = FarmerProfile::where('agent_id', $agent_id)->orderBy('id', 'desc')->paginate();
         if(count($farmers) == 0){
             return response()->json([
                 'success' => false,

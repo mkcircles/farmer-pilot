@@ -13,7 +13,14 @@ import {
     Button,
 } from "@tremor/react";
 import { useNavigate } from "react-router-dom";
-import { AGENT_PROFILE, CREATE_AGENT, CREATE_FPO, CREATE_FPO_ADMIN_USER_ACCOUNT, EDIT_AGENT, FARMER_PROFILE } from "../../router/routes";
+import {
+    AGENT_PROFILE,
+    CREATE_AGENT,
+    CREATE_FPO,
+    CREATE_FPO_ADMIN_USER_ACCOUNT,
+    EDIT_AGENT,
+    FARMER_PROFILE,
+} from "../../router/routes";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { API_KEY, BASE_API_URL } from "../../env";
@@ -22,55 +29,19 @@ import { AppContext } from "../../context/RootContext";
 import { useContext } from "react";
 import { useSelector } from "react-redux";
 import { UserIcon } from "@heroicons/react/solid";
+import AddFpoUserAccountModal from "../FpoProfile/AddFpoUserAccountModal";
 
-export default function FpoAdminList({fpo_id}) {
+export default function FpoAdminList({ fpo_id }) {
     const navigate = useNavigate();
     const token = useSelector((state) => state.auth.token);
     const { updateAppContextState } = useContext(AppContext);
     const [currentPage, setCurrentPage] = useState(1);
     const [prevPageUrl, setPrevPageUrl] = useState("");
     const [nextPageUrl, setNextPageUrl] = useState("");
-    const [agentData, setAgentData] = useState(null);
     const [fpoAdmins, setFpoAdmins] = useState([]);
+    const [showModal, setShowModal] = useState(false);
 
-
-    let agents_api_url = `${BASE_API_URL}/agents`;
-    if(fpo_id) {
-        agents_api_url = `${BASE_API_URL}/fpo/${fpo_id}/agents`
-    }
-    // console.log("Agents URL:", agents_api_url)
-    const fetchAgents = (url = agents_api_url) => {
-        updateAppContextState("loading", true);
-        axios
-            .get(url, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            })
-            .then((res) => {
-                console.log("Agent Data", res?.data?.data);
-                let resData = res?.data?.data;
-                if (res?.data) {
-                    setCurrentPage(resData?.current_page);
-                    setPrevPageUrl(resData?.prev_page_url);
-                    setNextPageUrl(resData?.next_page_url);
-                    setAgentData(resData);
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-            .finally(() => {
-                updateAppContextState("loading", false);
-            });
-    };
-
-    useEffect(() => {
-        fetchAgents();
-    }, []);
-
-
-    useEffect(() => {
+    const fetchFpoUsers = () => {
         updateAppContextState("loading", true);
         axios
             .get(`${BASE_API_URL}/fpo/${fpo_id}/users`, {
@@ -90,7 +61,11 @@ export default function FpoAdminList({fpo_id}) {
             .finally(() => {
                 updateAppContextState("loading", false);
             });
-    }, [fpo_id]);
+    };
+
+    useEffect(() => {
+        fetchFpoUsers();
+    }, [fpo_id, token]);
 
     return (
         <div className="w-full h-full py-4">
@@ -105,7 +80,7 @@ export default function FpoAdminList({fpo_id}) {
                     <Text className="mt-2">Overview of Admins</Text>
                     <span
                         onClick={() => {
-                            navigate(CREATE_FPO_ADMIN_USER_ACCOUNT);
+                            setShowModal(true);
                         }}
                         className="inline-flex overflow-hidden rounded-md border bg-secondary shadow-sm"
                     >
@@ -141,20 +116,18 @@ export default function FpoAdminList({fpo_id}) {
                         {fpoAdmins?.map((admin) => (
                             <TableRow key={admin.id}>
                                 <TableCell>{admin.id}</TableCell>
-                                <TableCell>
-                                    {admin.name}
-                                </TableCell>
+                                <TableCell>{admin.name}</TableCell>
                                 <TableCell>{admin.phone_number}</TableCell>
                                 <TableCell>{admin.email}</TableCell>
                                 <TableCell>
                                     <span class="inline-flex overflow-hidden rounded-md border bg-white shadow-sm">
                                         <button
-                                        onClick={() => {}}
+                                            onClick={() => {}}
                                             className="inline-block border-e p-3 text-gray-700 hover:bg-gray-50 focus:relative"
                                             title="View"
                                         >
                                             <svg
-                                            className="h-4 w-4"
+                                                className="h-4 w-4"
                                                 fill="none"
                                                 stroke="currentColor"
                                                 strokeWidth={1.5}
@@ -226,81 +199,14 @@ export default function FpoAdminList({fpo_id}) {
                         ))}
                     </TableBody>
                 </Table>
-
-                {/* <div className="w-full py-1 text-xs opacity-60">
-                    showing {currentPage} of {agentData?.last_page} pages
-                </div>
-
-                <div className="flex justify-start py-2 items-center">
-                    <div className="inline-flex items-center justify-center rounded bg-primary py-1 text-white">
-                        <a
-                            href="#"
-                            className="inline-flex h-8 w-8 items-center justify-center rtl:rotate-180"
-                            onClick={() => {
-                                if (prevPageUrl) fetchAgents(prevPageUrl);
-                            }}
-                        >
-                            <span className="sr-only">Prev Page</span>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-3 w-3"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                            >
-                                <path
-                                    fillRule="evenodd"
-                                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                                    clipRule="evenodd"
-                                />
-                            </svg>
-                        </a>
-
-                        <span
-                            className="h-4 w-px bg-white/25"
-                            aria-hidden="true"
-                        ></span>
-
-                        <div>
-                            <label htmlFor="PaginationPage" className="sr-only">
-                                Page
-                            </label>
-
-                            <input
-                                type="number"
-                                className="h-8 w-12 rounded border-none bg-transparent p-0 text-center text-xs font-medium [-moz-appearance:_textfield] focus:outline-none focus:ring-inset focus:ring-white [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
-                                min="1"
-                                value={currentPage}
-                                id="PaginationPage"
-                            />
-                        </div>
-
-                        <span className="h-4 w-px bg-white/25"></span>
-
-                        <a
-                            href="#"
-                            className="inline-flex h-8 w-8 items-center justify-center rtl:rotate-180"
-                            onClick={() => {
-                                if (nextPageUrl) fetchAgents(nextPageUrl);
-                            }}
-                        >
-                            <span className="sr-only">Next Page</span>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-3 w-3"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                            >
-                                <path
-                                    fillRule="evenodd"
-                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                    clipRule="evenodd"
-                                />
-                            </svg>
-                        </a>
-                    </div>
-                </div> */}
-
             </Card>
+
+            <AddFpoUserAccountModal
+                showModal={showModal}
+                setShowModal={setShowModal}
+                fpo={{ fpo_id: fpo_id }}
+                fetchFpoUsers={fetchFpoUsers}
+            />
         </div>
     );
 }

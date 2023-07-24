@@ -386,6 +386,25 @@ const EditFpo = () => {
                 </div>
 
                 <div className="">
+                    <FormLabel htmlFor="fpo_cordinates">
+                        Male membership
+                    </FormLabel>
+                    <FormInput
+                        id="fpo_male_membership"
+                        required
+                        type="number"
+                        placeholder=""
+                        value={fpoData?.fpo_male_membership}
+                        onChange={(e) =>
+                            setFpoData({
+                                ...fpoData,
+                                fpo_male_membership: e.target.value,
+                            })
+                        }
+                    />
+                </div>
+
+                <div className="">
                     <FormLabel htmlFor="fpo_male_youth">Male Youth</FormLabel>
                     <FormInput
                         id="fpo_male_youth"
