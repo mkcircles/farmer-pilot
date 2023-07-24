@@ -3,9 +3,11 @@ import { useAppDispatch, useAppSelector } from "../../stores/hooks";
 import { setAppError, removeAppError } from "../../stores/appErrorSlice";
 import { v4 as uuidv4 } from "uuid";
 import { debounce } from "lodash";
+import { useRefreshTokenMutation } from "../../services/RefreshTokenAPI";
 
 const AppError = () => {
     const appErrors = useAppSelector(state => state.app_error?.errorMessages);
+    const token = useAppSelector(state => state.auth.token);
     const dispatch = useAppDispatch();
     const [dispatchedErrorMessages, setDispatchedErrorMessages] = useState([]);
 
@@ -21,8 +23,13 @@ const AppError = () => {
                     error?.response?.data?.message ||
                     error?.response?.message ||
                     error?.message;
+                    let msg = {message: message, id: uuidv4()};
+                    if([401].includes(error?.response?.status)) {
+                        if(token && token != 'null') {
+                            window.location.reload();
+                        }
+                    }
                     if(![404].includes(error.response.status)) {
-                        let msg = {message: message, id: uuidv4()};
                        debounceErrorDispatch(setAppError(msg)); 
                        setDispatchedErrorMessages([...dispatchedErrorMessages, msg]);
                     }
