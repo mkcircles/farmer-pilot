@@ -219,7 +219,7 @@ class AgentController extends Controller
         $validated =Validator::make($request->all(),[
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'email' => 'nullable|email',
+            //'email' => 'nullable|email',
             'phone_number' => 'required|string',
             'age' => 'required|integer',
             'gender' => 'required|string',
@@ -268,9 +268,10 @@ class AgentController extends Controller
             //Create a user account for the agent
             $user = new User();
             $user->name = $agent->first_name.' '.$agent->last_name;
-            $user->email = $agent->email;
+            $user->email = $agent->email? $agent->email : time().'@agent.com';
             $user->phone_number = $agent->phone_number;
             $user->password = Hash::make('password');
+            
             $user->role = 'agent';
             $user->save();
 
