@@ -62,6 +62,8 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::get('/fpo/{id}/users', [FPOController::class, 'getFPOUserAccounts']);
 
     Route::get('/user/{user_id}/{status}', [FPOController::class, 'changeUserAccountStatus']);
+
+    Route::post('/search', [DataController::class, 'search']);
     
 });
 

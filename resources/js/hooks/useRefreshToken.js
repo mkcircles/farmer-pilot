@@ -44,10 +44,8 @@ const useRefreshToken = () => {
     const debounceRefreshToken = debounce(refreshToken, 500);
 
     useEffect(() => {
-        if (token) {
+        if (!token || token === "null") {
             debounceRefreshToken();
-        } else {
-            dispatch(logOut(""));
         }
     }, []);
 };
