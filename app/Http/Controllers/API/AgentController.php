@@ -897,7 +897,7 @@ class AgentController extends Controller
         $validated = Validator::make($request->all(),[
             'agent_id' => 'required|integer',
             'brand' => 'required|string',
-            'device_id' => 'required|integer',
+            'device_id' => 'required|string',
             'assigned_phone_number' => 'required|string'
         ]);
 
