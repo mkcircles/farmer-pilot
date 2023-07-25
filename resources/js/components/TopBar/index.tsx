@@ -86,6 +86,7 @@ function Main(props: { toggleMobileMenu: (event: React.MouseEvent) => void }) {
     };
 
     const handleDataSearch = () => {
+        if(!searchText) return;
         updateAppContextState("loading", true);
         // @ts-ignore
         axios
@@ -206,7 +207,7 @@ function Main(props: { toggleMobileMenu: (event: React.MouseEvent) => void }) {
                                     e.key === "Enter" && handleDataSearch()
                                 }
                                 className="px-12 py-5 border-0 shadow-none focus:ring-0"
-                                placeholder="Quick Search..."
+                                placeholder="Search farmer name or agent name or code or FPO or phone number"
                             />
                             <div className="absolute inset-y-0 right-0 flex items-center h-6 px-2 my-auto mr-4 text-xs rounded-md bg-slate-200 text-slate-500">
                                 ESC
@@ -237,7 +238,9 @@ function Main(props: { toggleMobileMenu: (event: React.MouseEvent) => void }) {
                                             </div>
                                             <div className="ml-3 truncate">
                                                 {farmer?.first_name}{" "}
-                                                {farmer?.last_name}
+                                                {farmer?.last_name} |{" "}
+                                                {farmer?.farmer_id} |{" "}
+                                                {farmer?.phone_number}
                                             </div>
                                             <div className="flex items-center justify-end w-48 ml-auto text-xs truncate text-slate-500">
                                                 <Lucide
@@ -279,7 +282,9 @@ function Main(props: { toggleMobileMenu: (event: React.MouseEvent) => void }) {
                                             </div>
                                             <div className="ml-3 truncate">
                                                 {agent?.first_name}{" "}
-                                                {agent?.last_name}
+                                                {agent?.last_name} |{" "}
+                                                {agent?.agent_code} |{" "}
+                                                {agent?.phone_number}
                                             </div>
                                             <div className="flex items-center justify-end w-48 ml-auto text-xs truncate text-slate-500">
                                                 <Lucide
