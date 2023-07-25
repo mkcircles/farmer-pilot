@@ -143,13 +143,13 @@ function Main() {
 
                                 <div className="flex items-center justify-center col-span-2 lg:justify-start">
                                     <Lucide
-                                        icon="Tablet"
+                                        icon="SmartphoneCharging"
                                         className="w-4 h-4 mr-2"
                                     />
 
                                     {agent?.device_id ? (
-                                        <span className="text-primary font-bold">
-                                            {agent?.device_id}
+                                        <span className="text-primary font-thin">
+                                            {agent?.device_id} | {agent?.assigned_phone_number}
                                         </span>
                                     ) : (
                                         <span className="text-white bg-primary px-2 rounded">
@@ -157,6 +157,7 @@ function Main() {
                                         </span>
                                     )}
                                 </div>
+                                
                             </div>
                         </div>
                     </div>

@@ -21,6 +21,7 @@ const IssueDeviceModal = ({ showModal, setShowModal, agent, setAgentData }) => {
         agent_id: agent?.id,
         brand: "",
         device_id: "",
+        assigned_phone_number: "",
     });
 
     const handleIssueDeviceToAgent = () => {
@@ -115,6 +116,22 @@ const IssueDeviceModal = ({ showModal, setShowModal, agent, setAgentData }) => {
                                 setDeviceData({
                                     ...deviceData,
                                     device_id: e.target.value,
+                                })
+                            }
+                        />
+                    </div>
+                    <div className="py-4">
+                        <FormLabel htmlFor="name">Assigned Phone Number</FormLabel>
+                        <FormInput
+                            id="assigned_phone_number"
+                            required
+                            type="text"
+                            placeholder=""
+                            value={deviceData?.assigned_phone_number}
+                            onChange={(e) =>
+                                setDeviceData({
+                                    ...deviceData,
+                                    assigned_phone_number: e.target.value,
                                 })
                             }
                         />
