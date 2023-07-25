@@ -32,7 +32,8 @@ class Agent extends Model
         'photo',
         'created_by',
         'fpo_id',
-        'device_id'
+        'device_id',
+        'assigned_phone_number',
 
     ];
 

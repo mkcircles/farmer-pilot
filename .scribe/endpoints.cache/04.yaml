@@ -144,3 +144,56 @@ endpoints:
     method: null
     route: null
     custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/search
+    metadata:
+      groupName: 'Data Management'
+      groupDescription: |-
+
+        APIs for managing farmer profile
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Search Data'
+      description: 'This endpoint allows a user to search through FPOs, Agents and Farmers'
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: 'required The authorization token. Example: Bearer {token}'
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      search:
+        name: search
+        description: 'The FPO or Agent or Farmer name.'
+        required: true
+        example: John
+        type: string
+        custom: []
+    cleanBodyParameters:
+      search: John
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+          "fpos": [],
+          "agents": [],
+          farmers: [],
+
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

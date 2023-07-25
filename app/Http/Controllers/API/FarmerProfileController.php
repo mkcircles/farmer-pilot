@@ -233,14 +233,14 @@ class FarmerProfileController extends Controller
             $farmer->agent_id = $request->agent_id;
             //$farmer->photo = $imageName;
 
-        $farmer->save();
+            $farmer->save();
 
-        //Return Response
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Farmer profile created successfully',
-            'data' => $farmer
-        ], 201);
+            //Return Response
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Farmer profile created successfully',
+                'data' => $farmer
+            ], 201);
         }
         else{
             return response()->json([

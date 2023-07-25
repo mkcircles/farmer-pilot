@@ -417,13 +417,6 @@ endpoints:
         example: Doe
         type: string
         custom: []
-      email:
-        name: email
-        description: 'The email of the agent. Example:'
-        required: true
-        example: dwaelchi@example.org
-        type: string
-        custom: []
       phone_number:
         name: phone_number
         description: 'The phone number of the agent.'
@@ -442,7 +435,7 @@ endpoints:
         name: gender
         description: ''
         required: true
-        example: magnam
+        example: distinctio
         type: string
         custom: []
       residence:
@@ -477,29 +470,36 @@ endpoints:
         name: created_by
         description: ''
         required: true
-        example: 12
+        example: 15
         type: integer
         custom: []
       fpo_id:
         name: fpo_id
         description: ''
         required: true
-        example: 5
+        example: 10
         type: integer
+        custom: []
+      email:
+        name: email
+        description: 'The email of the agent. Example:'
+        required: true
+        example: morissette.hollie@example.net
+        type: string
         custom: []
     cleanBodyParameters:
       first_name: John
       last_name: Doe
-      email: dwaelchi@example.org
       phone_number: 256XXXXXXXXX
       age: '30'
-      gender: magnam
+      gender: distinctio
       residence: Kampala
       referee_name: 'Jane Doe'
       referee_phone_number: '08012345678'
       designation: 'Agro Extension Worker'
-      created_by: 12
-      fpo_id: 5
+      created_by: 15
+      fpo_id: 10
+      email: morissette.hollie@example.net
     fileParameters: []
     responses:
       -
@@ -653,7 +653,7 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: rerum
+        example: amet
         type: string
         custom: []
       agent:
@@ -664,7 +664,7 @@ endpoints:
         type: string
         custom: []
     cleanUrlParameters:
-      id: rerum
+      id: amet
       agent: '1'
     queryParameters: []
     cleanQueryParameters: []
@@ -737,11 +737,11 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: culpa
+        example: veniam
         type: string
         custom: []
     cleanUrlParameters:
-      id: culpa
+      id: veniam
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -900,10 +900,18 @@ endpoints:
         example: 123456
         type: integer
         custom: []
+      assigned_phone_number:
+        name: assigned_phone_number
+        description: ''
+        required: true
+        example: voluptatem
+        type: string
+        custom: []
     cleanBodyParameters:
       agent_id: 1
       brand: Samsung
       device_id: 123456
+      assigned_phone_number: voluptatem
     fileParameters: []
     responses:
       -

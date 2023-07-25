@@ -1083,4 +1083,37 @@ class FPOController extends Controller
             'data' => $users
         ], 200);
     }
+
+    //change User Account Status
+    /**
+     * Change User Account Status
+     * 
+     * This endpoint allows you to change the status of a user account.
+     * @authenticated
+     * 
+     * @urlParam user_id integer required The id of the user.
+     * @urlParam status string required The status of the user. Example: active, inactive
+     * 
+     * @response 200 {
+         
+     }
+     */
+    public function changeUserAccountStatus($user_id, $status)
+    {
+        $user = User::find($user_id);
+        if(!$user){
+            return response()->json([
+                'success' => false,
+                'message' => 'User not found',
+                'data' => null
+            ], 404);
+        }
+        $user->status = $status;
+        $user->save();
+        return response()->json([
+            'success' => true,
+            'message' => 'User account status changed successfully',
+            'data' => $user
+        ], 200);
+    }
 }
