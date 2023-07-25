@@ -4,6 +4,8 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\FarmerProfile;
+use App\Models\FPO;
+use App\Models\Agent;
 use Illuminate\Http\Request;
 
 /**
@@ -94,9 +96,57 @@ class DataController extends Controller
     public function getFarmer($id)
     {
         $farmer = FarmerProfile::where('id', $id)->first();
-        if($farmer == null){
+        if ($farmer == null) {
             return response(['message' => 'Farmer not found'], 404);
         }
         return response($farmer, 200);
+    }
+
+    /**
+     * Search Data
+     * 
+     * This endpoint allows a user to search through FPOs, Agents and Farmers
+     * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
+     * 
+     * @bodyParam search string required The FPO or Agent or Farmer name. Example: John
+     * 
+     * @response {
+     * "fpos": [],
+     * "agents": [],
+     * farmers: [],
+     * 
+     * }
+     * 
+     * 
+     */
+    public function search(Request $request)
+    {
+        $search = $request->search;
+        $fpos = FPO::where('fpo_name', 'like', '%' . $search . '%')->limit(4)->get();
+        $agents = Agent::where(function ($query) use ($search) {
+            $query->where('first_name', 'like', "%$search%")
+                ->orWhere('last_name', 'like', "%$search%")
+                ->orWhere('phone_number', 'like', "%$search%")
+                ->orWhere('agent_code', 'like', "%$search%");
+        })
+            ->limit(4)
+            ->get();
+        $farmers = FarmerProfile::where(function ($query) use ($search) {
+            $query->where('first_name', 'like', "%$search%")
+                ->orWhere('last_name', 'like', "%$search%")
+                ->orWhere('phone_number', 'like', "%$search%")
+                ->orWhere('farmer_id', 'like', "%$search%");
+        })
+            ->limit(4)
+            ->get();
+
+        return response()->json([
+            'fpos' => $fpos,
+            'agents' => $agents,
+            'farmers' => $farmers,
+        ]);
+
     }
 }
