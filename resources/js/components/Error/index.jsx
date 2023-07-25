@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../stores/hooks";
 import { setAppError, removeAppError } from "../../stores/appErrorSlice";
 import { v4 as uuidv4 } from "uuid";
 import { debounce } from "lodash";
-import { useRefreshTokenMutation } from "../../services/RefreshTokenAPI";
+// import { useRefreshTokenMutation } from "../../services/RefreshTokenAPI";
 
 const AppError = () => {
     const appErrors = useAppSelector(state => state.app_error?.errorMessages);
@@ -26,7 +26,7 @@ const AppError = () => {
                     let msg = {message: message, id: uuidv4()};
                     if([401].includes(error?.response?.status)) {
                         if(token && token != 'null') {
-                            window.location.reload();
+                            // window.location.reload();
                         }
                     }
                     if(![404].includes(error.response.status)) {
