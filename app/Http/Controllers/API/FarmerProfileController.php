@@ -172,51 +172,66 @@ class FarmerProfileController extends Controller
                 'errors' => $validator->errors()
             ], 422);
         }
-        
 
-        //Save Data
-        $farmer = new FarmerProfile();
-        $farmer->farmer_id = $this->generateFarmerId();
-        $farmer->first_name = $request->first_name;
-        $farmer->last_name = $request->last_name;
-        $farmer->dob = $request->dob;
-        $farmer->gender = $request->gender;
-        $farmer->education_level = $request->education_level;
-        $farmer->phone_number = $request->phone_number;
-        $farmer->id_number = $request->id_number;
-        $farmer->marital_status = $request->marital_status;
-        $farmer->district = $request->district;
-        $farmer->county = $request->county;
-        $farmer->sub_county = $request->sub_county;
-        $farmer->parish = $request->parish;
-        $farmer->village = $request->village;
-        $farmer->fpo_id = $request->fpo_id;
-        $farmer->farmer_cordinates = $request->farmer_cordinates;
-        $farmer->next_of_kin = $request->next_of_kin;
-        $farmer->next_of_kin_contact = $request->next_of_kin_contact;
-        $farmer->next_of_kin_relationship = $request->next_of_kin_relationship;
-        $farmer->male_members_in_household = $request->male_members_in_household;
-        $farmer->female_members_in_household = $request->female_members_in_household;
-        $farmer->members_above_18 = $request->members_above_18;
-        $farmer->children_below_5 = $request->children_below_5;
-        $farmer->school_going_children = $request->school_going_children;
-        $farmer->head_of_family = $request->head_of_family;
-        $farmer->how_much_do_you_earn_from_agricultural_activities = $request->how_much_do_you_earn_from_agricultural_activities;
-        $farmer->how_much_do_you_earn_from_non_agricultural_activities = $request->how_much_do_you_earn_from_non_agricultural_activities;
-        $farmer->do_you_have_an_account_with_an_FI = $request->do_you_have_an_account_with_an_FI;
-        $farmer->farm_size = $request->farm_size;
-        $farmer->farm_size_under_agriculture = $request->farm_size_under_agriculture;
-        $farmer->land_ownership = $request->land_ownership;
-        $farmer->type_of_farming = $request->type_of_farming;
-        $farmer->crops_grown = $request->crops_grown;
-        $farmer->animals_kept = $request->animals_kept;
-        $farmer->estimated_produce_value_last_season = $request->estimated_produce_value_last_season;
-        $farmer->estimated_produce_value_this_season = $request->estimated_produce_value_this_season;
-        $farmer->rId = $request->rId;
-        $farmer->consumerDeviceId = $request->consumerDeviceId;
-        $farmer->data_captured_by = $request->data_captured_by;
-        $farmer->agent_id = $request->agent_id;
-        //$farmer->photo = $imageName;
+        $check = FarmerProfile::where([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'dob' => $request->dob,
+            'gender' => $request->gender,
+            'education_level' => $request->education_level,
+            'phone_number' => $request->phone_number,
+            'id_number' => $request->id_number,
+            'marital_status' => $request->marital_status,
+            'district' => $request->district,
+            'county' => $request->county,
+            'sub_county' => $request->sub_county,
+            'parish' => $request->parish,
+            'village' => $request->village,
+            'fpo_id' => $request->fpo_id,
+        ]);
+        if(!$check){
+            $farmer = new FarmerProfile();
+            $farmer->farmer_id = $this->generateFarmerId();
+            $farmer->first_name = $request->first_name;
+            $farmer->last_name = $request->last_name;
+            $farmer->dob = $request->dob;
+            $farmer->gender = $request->gender;
+            $farmer->education_level = $request->education_level;
+            $farmer->phone_number = $request->phone_number;
+            $farmer->id_number = $request->id_number;
+            $farmer->marital_status = $request->marital_status;
+            $farmer->district = $request->district;
+            $farmer->county = $request->county;
+            $farmer->sub_county = $request->sub_county;
+            $farmer->parish = $request->parish;
+            $farmer->village = $request->village;
+            $farmer->fpo_id = $request->fpo_id;
+            $farmer->farmer_cordinates = $request->farmer_cordinates;
+            $farmer->next_of_kin = $request->next_of_kin;
+            $farmer->next_of_kin_contact = $request->next_of_kin_contact;
+            $farmer->next_of_kin_relationship = $request->next_of_kin_relationship;
+            $farmer->male_members_in_household = $request->male_members_in_household;
+            $farmer->female_members_in_household = $request->female_members_in_household;
+            $farmer->members_above_18 = $request->members_above_18;
+            $farmer->children_below_5 = $request->children_below_5;
+            $farmer->school_going_children = $request->school_going_children;
+            $farmer->head_of_family = $request->head_of_family;
+            $farmer->how_much_do_you_earn_from_agricultural_activities = $request->how_much_do_you_earn_from_agricultural_activities;
+            $farmer->how_much_do_you_earn_from_non_agricultural_activities = $request->how_much_do_you_earn_from_non_agricultural_activities;
+            $farmer->do_you_have_an_account_with_an_FI = $request->do_you_have_an_account_with_an_FI;
+            $farmer->farm_size = $request->farm_size;
+            $farmer->farm_size_under_agriculture = $request->farm_size_under_agriculture;
+            $farmer->land_ownership = $request->land_ownership;
+            $farmer->type_of_farming = $request->type_of_farming;
+            $farmer->crops_grown = $request->crops_grown;
+            $farmer->animals_kept = $request->animals_kept;
+            $farmer->estimated_produce_value_last_season = $request->estimated_produce_value_last_season;
+            $farmer->estimated_produce_value_this_season = $request->estimated_produce_value_this_season;
+            $farmer->rId = $request->rId;
+            $farmer->consumerDeviceId = $request->consumerDeviceId;
+            $farmer->data_captured_by = $request->data_captured_by;
+            $farmer->agent_id = $request->agent_id;
+            //$farmer->photo = $imageName;
 
         $farmer->save();
 
@@ -226,6 +241,15 @@ class FarmerProfileController extends Controller
             'message' => 'Farmer profile created successfully',
             'data' => $farmer
         ], 201);
+        }
+        else{
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Farmer profile already exists',
+                'data' => $check
+            ], 409);
+        }
+
     }
 
 
