@@ -244,10 +244,10 @@ class FarmerProfileController extends Controller
         }
         else{
             return response()->json([
-                'status' => 'error',
+                'status' => 'success',
                 'message' => 'Farmer profile already exists',
                 'data' => $check
-            ], 409);
+            ], 200);
         }
 
     }
