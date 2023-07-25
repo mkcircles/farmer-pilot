@@ -188,7 +188,7 @@ class FarmerProfileController extends Controller
             'parish' => $request->parish,
             'village' => $request->village,
             'fpo_id' => $request->fpo_id,
-        ]);
+        ])->first();
         if(!$check){
             $farmer = new FarmerProfile();
             $farmer->farmer_id = $this->generateFarmerId();
