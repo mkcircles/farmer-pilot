@@ -4,6 +4,7 @@ use App\Http\Controllers\API\AgentController;
 use App\Http\Controllers\API\DataController;
 use App\Http\Controllers\API\FarmerProfileController;
 use App\Http\Controllers\API\FPOController;
+use App\Http\Controllers\API\ReportController;
 use App\Http\Controllers\API\SummaryController;
 use App\Http\Controllers\AUTH\AuthController;
 use Illuminate\Http\Request;
@@ -68,8 +69,8 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::post('/search', [DataController::class, 'search']);
 
     //Reports Routes
-    Route::get('/reports', [ReportController::class, 'index']);
-    Route::post('/report/register', [ReportController::class, 'createReport']);
+    //Route::get('/reports/all', [ReportController::class, 'index']);
+    //Route::post('/report/register', [ReportController::class, 'createReport']);
     
 });
 

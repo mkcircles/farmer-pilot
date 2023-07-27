@@ -183,7 +183,7 @@ endpoints:
           {
           "fpos": [],
           "agents": [],
-          farmers: [],
+          "farmers": [],
 
           }
         headers: []
