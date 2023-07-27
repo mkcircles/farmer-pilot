@@ -1000,6 +1000,37 @@ class AgentController extends Controller
 
     }
 
+    /**
+     * Get agent graph Numbers
+     * 
+     * This endpoint allows a user to get the farmers count of an agent
+     * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
+     * 
+     * @response {
+     * "status": "success",
+     * "data": [
+     * {
+     * "id": 1,
+     * "agent_code": "AGT001",
+     * "name": "John Doe",
+     * "farmers_count": 1
+     * },
+     * {
+     * "id": 2,
+     * "agent_code": "AGT002",
+     * "name": "John Doe",
+     * "farmers_count": 1
+     * }
+     * ]
+     * }
+     * 
+     * @response 404 {
+     * "status": "error",
+     * "message": "Agent not found"
+     * }
+     */
     public function getAgentGraph()
     {
         //Get Agent Farmers Count for all agents
