@@ -937,6 +937,35 @@ class AgentController extends Controller
         ], 200);
     }
 
+    /**
+     * Get agent farmers count
+     * 
+     * This endpoint allows a user to get the farmers count of an agent
+     * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
+     * 
+     * @bodyParam agent_id integer required The id of the agent. Example: 1
+     * 
+     * @response {
+     * "status": "success",
+     * "data": {
+     * "id": 1,
+     * "agent_code": "AGT001",
+     * "first_name": "John",
+     * "last_name": "Doe",
+     * "photo": "http://url.test/storage/agents/1624810572IMG_20210627_174358.jpg",
+     * "created_at": "2021-06-27T17:09:32.000000Z",
+     * "farmers_count": 1
+     * }
+     * }
+     * }
+     * 
+     * @response 404 {
+     * "status": "error",
+     * "message": "Agent not found"
+     * }
+     */
     public function getAgentFarmersCount($agent_id)
     {
         if($agent_id){
@@ -957,7 +986,7 @@ class AgentController extends Controller
                         'last_name' => $agent->last_name,
                         'photo' => $agent->photo,
                         'created_at' => $agent->created_at,
-                        'farmers' => $agent->farmers()->count()
+                        'farmers_count' => $agent->farmers()->count()
                     ]
                 ], 200);
             }
