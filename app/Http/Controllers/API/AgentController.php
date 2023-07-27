@@ -937,6 +937,40 @@ class AgentController extends Controller
         ], 200);
     }
 
+    public function getAgentFarmersCount($agent_id)
+    {
+        if($agent_id){
+            $agent = Agent::find($agent_id);
+            if(!$agent){
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Agent not found'
+                ], 404);
+            }
+            else{
+                return response()->json([
+                    'status' => 'success',
+                    'data' => [
+                        'id' => $agent->id,
+                        'agent_code' => $agent->agent_code,
+                        'first_name' => $agent->first_name,
+                        'last_name' => $agent->last_name,
+                        'photo' => $agent->photo,
+                        'created_at' => $agent->created_at,
+                        'farmers' => $agent->farmers()->count()
+                    ]
+                ], 200);
+            }
+        }
+        else{
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Agent not found'
+            ], 404);
+        }
+
+    }
+
 
 }
 

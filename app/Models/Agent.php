@@ -42,10 +42,10 @@ class Agent extends Model
         return $this->belongsTo(FPO::class);
     }
 
-    public function farmers()
-    {
-        return $this->belongsTo(FarmerProfile::class, 'agent_id');
+    public function farmers(){
+        return $this->hasMany(FarmerProfile::class, 'agent_id');
     }
+
 
    
 }

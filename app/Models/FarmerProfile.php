@@ -9,7 +9,7 @@ class FarmerProfile extends Model
 {
     use HasFactory;
 
-    protected $with = ['agent'];
+    protected $with = ['agent', 'fpo'];
 
     protected $fillable = [
         'farmer_id',
@@ -59,6 +59,17 @@ class FarmerProfile extends Model
     {
         return $this->belongsTo(User::class, 'agent_id');
     }
+
+    public function fpo()
+    {
+        return $this->belongsTo(FPO::class, 'fpo_id');
+    }
+
+
+ 
+
+
+
 
     
 }
