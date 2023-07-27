@@ -115,7 +115,7 @@ class DataController extends Controller
      * @response {
      * "fpos": [],
      * "agents": [],
-     * farmers: [],
+     * "farmers": [],
      * 
      * }
      * 
