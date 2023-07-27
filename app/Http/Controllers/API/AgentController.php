@@ -1000,6 +1000,23 @@ class AgentController extends Controller
 
     }
 
+    public function getAgentGraph()
+    {
+        //Get Agent Farmers Count for all agents
+        $agents = Agent::select('id','agent_code','first_name','last_name')->get();
+        foreach($agents as $agent){
+            $agent->name = $agent->first_name.' '.$agent->last_name;
+            $agent->farmers_count = $agent->farmers()->count()?:0;
+            unset($agent->first_name);
+            unset($agent->last_name);
+            unset($agent->fpo);
+        }
+        return response()->json([
+            'data' => $agents
+        ], 200);
+    
+    }
+
 
 }
 
