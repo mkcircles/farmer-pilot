@@ -17,4 +17,13 @@ class Report extends Model
         'created_by',
         'report_url'
     ];
+
+    //Set download url for report
+
+    public function setReportUrlAttribute(){
+        if($this->report_url!=''){
+            $this->attributes['download_report_url'] = '/report/'.$this->report_url;
+            
+        }
+    }
 }

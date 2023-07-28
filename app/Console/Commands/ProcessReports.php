@@ -6,6 +6,7 @@ use App\Models\FarmerProfile;
 use App\Models\Report;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Str;
 
 class ProcessReports extends Command
 {
@@ -29,10 +30,10 @@ class ProcessReports extends Command
     public function handle()
     {
         //Get Pending reports
-        $reports = Report::where('report_status', 'pending')->get();
+        $reports = Report::where('report_status', 'pending')->limit(2)->get();
         foreach ($reports as $report) {
-            // $report->report_status = 'processing';
-            // $report->save();
+            $report->report_status = 'processing';
+            $report->save();
 
             //Check report type
             switch($report->report_type) {
@@ -70,108 +71,38 @@ class ProcessReports extends Command
             $qb->where($k, $v);
         }
         $farmers = $qb->get();
-        dd($farmers);
-        //Create excel report 
-        header('Content-Type: text/csv');
-        header('Content-Disposition: attachment; filename="sample.csv"');
 
-        $header = array(
-            'Farmer Id',
-            'First name',
-            'Last name',
-            'DoB',
-            'Gender',
-            'Education Level',
-            'Phone number',
-            'id number',
-            'Marital status',
-            'district',
-            'county',
-            'sub_county',
-            'parish',
-            'village',
-            'FPO',
-            'Farmer cordinates',
-            'Next of kin',
-            'Next of kin contact',
-            'Next of kin address',
-            'Male members in_household',
-            'Female members in_household',
-            'Members above 18',
-            'Children below 5',
-            'School going children',
-            'Head of family',
-            'Agricultural activities Earnings',
-            'Non-agricultural activities Earnings',
-            'Do you have an account with an FI',
-            'Farm size',
-            'Farm size under agriculture',
-            'Land ownership',
-            'Type of farming',
-            'Crops grown',
-            'Animals kept',
-            'Last season estimated produce value',
-            'This season estimated produce value',
-            'rId',
-            'Consumer Device Id',
-            'Data captured by',
-            'Agent code',
-            'Agent name',
-    );
-        $fp = fopen('php://output', 'wb');
-        fputcsv($fp, $header, ',');
+        
+        //Create excel report 
+       
+        $fileData = "Farmer Id,First name,Last name,DoB,Gender,Education Level,Phone number,id number,Marital status,district,county,sub_county,parish,village,FPO,Farmer cordinates,Next of kin,Next of kin contact,Next of kin address,Male members in_household,Female members in_household,Members above 18,Children below 5,School going children,Head of family,Agricultural activities Earnings,Non-agricultural activities Earnings,Do you have an account with an FI,Farm size,Farm size under agriculture,Land ownership,Type of farming,Crops grown,Animals kept,Last season estimated produce value,This season estimated produce value,rId,Consumer Device Id,Agent code,Agent name,Created At\n";
 
         foreach($farmers as $farmer) {
-            $line = array(
-                $farmer->farmer_id,
-                $farmer->first_name,
-                $farmer->last_name,
-                $farmer->dob,
-                $farmer->gender,
-                $farmer->education_level,
-                $farmer->phone_number,
-                $farmer->id_number,
-                $farmer->marital_status,
-                $farmer->district,
-                $farmer->county,
-                $farmer->sub_county,
-                $farmer->parish,
-                $farmer->village,
-                $farmer->fpo->fpo_name,
-                $farmer->farmer_cordinates,
-                $farmer->next_of_kin,
-                $farmer->next_of_kin_contact,
-                $farmer->next_of_kin_address,
-                $farmer->male_members_in_household,
-                $farmer->female_members_in_household,
-                $farmer->members_above_18,
-                $farmer->children_below_5,
-                $farmer->school_going_children,
-                $farmer->head_of_family,
-                $farmer->agricultural_activities_earnings,
-                $farmer->non_agricultural_activities_earnings,
-                $farmer->do_you_have_an_account_with_an_FI,
-                $farmer->farm_size,
-                $farmer->farm_size_under_agriculture,
-                $farmer->land_ownership,
-                $farmer->type_of_farming,
-                $farmer->crops_grown,
-                $farmer->animals_kept,
-                $farmer->last_season_estimated_produce_value,
-                $farmer->this_season_estimated_produce_value,
-                $farmer->rId,
-                $farmer->consumerDeviceId,
-                $farmer->data_captured_by,
-                $farmer->agent->agent_code,
-                $farmer->agent->first_name.' '.$farmer->agent->last_name,
-            );
-
-            fputcsv($fp, $line, ',');
+            
+            $fileData .= $farmer->farmer_id.",".$farmer->first_name.",".$farmer->last_name.",".$farmer->dob.",".$farmer->gender.",".$farmer->education_level.",".$farmer->phone_number.",".$farmer->id_number.",".$farmer->marital_status.",".$farmer->district.",".$farmer->county.",".$farmer->sub_county.",".$farmer->parish.",".$farmer->village.",".$farmer->fpo->fpo_name.",".$farmer->farmer_cordinates.",".$farmer->next_of_kin.",".$farmer->next_of_kin_contact.",".$farmer->next_of_kin_address.",".$farmer->male_members_in_household.",".$farmer->female_members_in_household.",".$farmer->members_above_18.",".$farmer->children_below_5.",".$farmer->school_going_children.",".$farmer->head_of_family.",".$farmer->agricultural_activities_earnings.",".$farmer->non_agricultural_activities_earnings.",".$farmer->do_you_have_an_account_with_an_FI.",".$farmer->farm_size.",".$farmer->farm_size_under_agriculture.",".$farmer->land_ownership.",".$farmer->type_of_farming.",".$farmer->crops_grown.",".$farmer->animals_kept.",".$farmer->last_season_estimated_produce_value.",".$farmer->this_season_estimated_produce_value.",".$farmer->rId.",".$farmer->consumerDeviceId;
+            if($farmer->agent){
+                $fileData .= $farmer->agent->agent_code.",".$farmer->agent->first_name.' '.$farmer->agent->last_name.",".$farmer->created_at."\n";
+            }
+            else{
+                $fileData .= ", , ,".$farmer->created_at."\n";
+            }
         }
-        
+        //dd($fileData);
+
+        /** Create Filname and Path to Store */
+        $fileName   = Str::slug($report->name, '-').'-'.time().'.csv';
+        $filePath   = public_path('reports/'.$fileName);
+       
+        // if(file_exists($filePath)){
+        //     unlink($filePath);
+        // }
+        $fp = fopen($filePath, 'w+');
+        fwrite($fp, $fileData); /** Once the data is written it will be saved in the path given */
         fclose($fp);
 
-        
+        $report->report_status = 'completed';
+        $report->report_url = $fileName;
+        $report->save();
 
     }
 
