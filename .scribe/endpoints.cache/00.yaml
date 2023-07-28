@@ -435,7 +435,7 @@ endpoints:
         name: gender
         description: ''
         required: true
-        example: autem
+        example: quo
         type: string
         custom: []
       residence:
@@ -470,21 +470,21 @@ endpoints:
         name: created_by
         description: ''
         required: true
-        example: 3
+        example: 4
         type: integer
         custom: []
       fpo_id:
         name: fpo_id
         description: ''
         required: true
-        example: 5
+        example: 19
         type: integer
         custom: []
       email:
         name: email
         description: 'The email of the agent. Example:'
         required: true
-        example: greenfelder.yoshiko@example.net
+        example: rbeier@example.org
         type: string
         custom: []
     cleanBodyParameters:
@@ -492,14 +492,14 @@ endpoints:
       last_name: Doe
       phone_number: 256XXXXXXXXX
       age: '30'
-      gender: autem
+      gender: quo
       residence: Kampala
       referee_name: 'Jane Doe'
       referee_phone_number: '08012345678'
       designation: 'Agro Extension Worker'
-      created_by: 3
-      fpo_id: 5
-      email: greenfelder.yoshiko@example.net
+      created_by: 4
+      fpo_id: 19
+      email: rbeier@example.org
     fileParameters: []
     responses:
       -
@@ -653,7 +653,7 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: reprehenderit
+        example: vel
         type: string
         custom: []
       agent:
@@ -664,7 +664,7 @@ endpoints:
         type: string
         custom: []
     cleanUrlParameters:
-      id: reprehenderit
+      id: vel
       agent: '1'
     queryParameters: []
     cleanQueryParameters: []
@@ -737,11 +737,11 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: dolore
+        example: asperiores
         type: string
         custom: []
     cleanUrlParameters:
-      id: dolore
+      id: asperiores
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -904,14 +904,14 @@ endpoints:
         name: assigned_phone_number
         description: ''
         required: true
-        example: aut
+        example: autem
         type: string
         custom: []
     cleanBodyParameters:
       agent_id: 1
       brand: Samsung
       device_id: 123456
-      assigned_phone_number: aut
+      assigned_phone_number: autem
     fileParameters: []
     responses:
       -
@@ -1004,11 +1004,11 @@ endpoints:
         name: agent_id
         description: 'The ID of the agent.'
         required: true
-        example: perspiciatis
+        example: cupiditate
         type: string
         custom: []
     cleanUrlParameters:
-      agent_id: perspiciatis
+      agent_id: cupiditate
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -1114,6 +1114,85 @@ endpoints:
           {
           "status": "error",
           "message": "Agent not found"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/agent/status/update
+    metadata:
+      groupName: 'Agent management'
+      groupDescription: |-
+
+        APIs for managing agents
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update agent status'
+      description: 'This endpoint allows a user to update the agent status'
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: 'required The authorization token. Example: Bearer {token}'
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      agent_id:
+        name: agent_id
+        description: 'The id of the agent.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+      status:
+        name: status
+        description: 'The status of the agent.'
+        required: true
+        example: active
+        type: string
+        custom: []
+    cleanBodyParameters:
+      agent_id: 1
+      status: active
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+          "success": true,
+          "message": "Agent status updated successfully",
+          "data": {
+          "id": 1,
+          "agent_code": "AGT001",
+          "first_name": "John",
+          "last_name": "Doe",
+          "photo": "http://url.test/storage/agents/1624810572IMG_20210627_174358.jpg",
+          "created_at": "2021-06-27T17:09:32.000000Z",
+          "farmers_count": 1
+          }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+          "success": false,
+          "message": "Agent not found",
+          "data": null
           }
         headers: []
         description: ''

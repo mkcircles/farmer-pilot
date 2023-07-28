@@ -272,8 +272,10 @@ class AgentController extends Controller
             $user->email = $agent->email? $agent->email : time().'@agent.com';
             $user->phone_number = $agent->phone_number;
             $user->password = Hash::make('password');
-            
             $user->role = 'agent';
+            $user->entity_type = 'Agent';
+            $user->entity_id = $agent->id;
+
             $user->save();
 
             if(!$user){
@@ -1048,7 +1050,79 @@ class AgentController extends Controller
     
     }
 
-    
+    /**
+     * Update agent status
+     * 
+     * This endpoint allows a user to update the agent status
+     * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
+     * 
+     * @bodyParam agent_id integer required The id of the agent. Example: 1
+     * @bodyParam status string required The status of the agent. Example: active
+     * 
+     * @response {
+     * "success": true,
+     * "message": "Agent status updated successfully",
+     * "data": {
+     * "id": 1,
+     * "agent_code": "AGT001",
+     * "first_name": "John",
+     * "last_name": "Doe",
+     * "photo": "http://url.test/storage/agents/1624810572IMG_20210627_174358.jpg",
+     * "created_at": "2021-06-27T17:09:32.000000Z",
+     * "farmers_count": 1
+     * }
+     * }
+     * 
+     * @response 404 {
+     * "success": false,
+     * "message": "Agent not found",
+     * "data": null
+     * }
+     * 
+     */
+
+    public function updateAgentStatus(Request $request)
+    {
+        $validate = Validator::make($request->all(),[
+            'agent_id' => 'required|integer',
+            'status' => 'required|string'
+        ]);
+        if($validate->fails()){
+            return response()->json([
+                'success' => false,
+                'message' => 'Validation error',
+                'data' => $validate->errors()
+            ], 400);
+        }
+
+        $agent = Agent::find($request->agent_id);
+        if(!$agent){
+            return response()->json([
+                'success' => false,
+                'message' => 'Agent not found',
+                'data' => null
+            ], 404);
+        }
+        $agent->status = $request->status;
+        if($agent->save()){
+            $user = User::where(['role'=>'agent','entity_type'=>'Agent','entity_id'=>$agent->id])->first();
+            if($request->status == 'active'){
+                $user->status = 'active';
+            }
+            else{
+                $user->status = 'inactive';
+            }
+            $user->save();
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Agent status updated successfully',
+            'data' => $agent
+        ], 200);
+    }
 
 }
 

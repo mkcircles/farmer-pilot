@@ -120,7 +120,7 @@ endpoints:
         name: name
         description: 'The name of the report'
         required: true
-        example: voluptatum
+        example: dolorem
         type: string
         custom: []
       report_type:
@@ -134,28 +134,28 @@ endpoints:
         name: from_date
         description: 'The from date for the report'
         required: true
-        example: voluptatem
+        example: rerum
         type: string
         custom: []
       to_date:
         name: to_date
         description: 'The to date for the report'
         required: true
-        example: necessitatibus
+        example: corporis
         type: string
         custom: []
       district:
         name: district
         description: 'optional The district of the report'
         required: false
-        example: qui
+        example: ut
         type: string
         custom: []
       agent_id:
         name: agent_id
         description: 'optional The agent id of the report'
         required: false
-        example: 18
+        example: 16
         type: integer
         custom: []
       crops_grown:
@@ -169,7 +169,7 @@ endpoints:
         name: farm_size
         description: 'optional The farm size of the report'
         required: false
-        example: 9
+        example: 14
         type: integer
         custom: []
       gender:
@@ -183,20 +183,20 @@ endpoints:
         name: fpo_id
         description: 'optional The fpo id of the report'
         required: false
-        example: 6
+        example: 12
         type: integer
         custom: []
     cleanBodyParameters:
-      name: voluptatum
+      name: dolorem
       report_type: 'farmer-report, crop-report'
-      from_date: voluptatem
-      to_date: necessitatibus
-      district: qui
-      agent_id: 18
+      from_date: rerum
+      to_date: corporis
+      district: ut
+      agent_id: 16
       crops_grown: 'Maize, Wheat, beans'
-      farm_size: 9
+      farm_size: 14
       gender: 'Male, Female'
-      fpo_id: 6
+      fpo_id: 12
     fileParameters: []
     responses:
       -

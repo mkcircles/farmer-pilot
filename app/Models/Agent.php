@@ -34,7 +34,7 @@ class Agent extends Model
         'fpo_id',
         'device_id',
         'assigned_phone_number',
-
+        'status',
     ];
 
     public function fpo()
