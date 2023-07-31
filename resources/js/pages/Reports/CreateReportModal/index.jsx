@@ -4,7 +4,12 @@ import Lucide from "../../../base-components/Lucide";
 import { AppContext } from "../../../context/RootContext";
 import { useSelector } from "react-redux";
 import { BASE_API_URL } from "../../../env";
-import { SearchSelect, SearchSelectItem, Title, DatePicker } from "@tremor/react";
+import {
+    SearchSelect,
+    SearchSelectItem,
+    Title,
+    DatePicker,
+} from "@tremor/react";
 import { FormInput, FormLabel } from "../../../base-components/Form";
 import Button from "../../../base-components/Button";
 import { Tablet } from "react-feather";
@@ -24,12 +29,12 @@ const CreateReportModal = ({ showModal, setShowModal }) => {
         report_type: "farmer-report",
         from_date: "2023-07-01",
         to_date: "2023-07-01",
-        "district": "",
-    "agent_id": "",
-    "crops_grown": "",
-    "farm_size": "",
-    "gender": "",
-    "fpo_id": ""
+        district: "",
+        agent_id: "",
+        crops_grown: "",
+        farm_size: "",
+        gender: "",
+        fpo_id: "",
     });
     const [agents, setAgents] = useState([]);
     const [fpos, setFpos] = useState([]);
@@ -113,8 +118,16 @@ const CreateReportModal = ({ showModal, setShowModal }) => {
     };
 
     const formatDate = (date) => {
-        return `${date?.getFullYear()}-${(date?.getMonth() + 1) < 10 ? `0${date?.getMonth() + 1}` : date?.getMonth() + 1}-${(date?.getDate() + 1) < 10 ? `0${date?.getDate() + 1}` : date?.getDate() + 1}`;
-    }
+        return `${date?.getFullYear()}-${
+            date?.getMonth() + 1 < 10
+                ? `0${date?.getMonth() + 1}`
+                : date?.getMonth() + 1
+        }-${
+            date?.getDate() < 10
+                ? `0${date?.getDate()}`
+                : date?.getDate()
+        }`;
+    };
 
     useEffect(() => {
         fetchAgents();
@@ -123,8 +136,8 @@ const CreateReportModal = ({ showModal, setShowModal }) => {
 
     return (
         <div
-            className={`z-[1000] my-3 absolute bg-primary rounded-md shadow-md transition-all h-full  right-0 left-0 w-full duration-1000  ${
-                showModal ? "w-full h-full top-0" : "-top-1/4 !w-full !h-0 overflow-hidden"
+            className={`z-[1000] my-3 fixed bg-primary rounded-md shadow-md transition-all h-full top-20 bottom-0 right-0 w-full lg:w-1/2 duration-700  ${
+                showModal ? "translate-x-0  " : "translate-x-full"
             }`}
         >
             <div className="flex w-full space-x-8 p-4 ">
@@ -144,100 +157,100 @@ const CreateReportModal = ({ showModal, setShowModal }) => {
                         handleCreateReport();
                     }}
                 >
-                     <div className=" grid grid-cols-1 md:grid-cols-2 gap-x-4 items-center">
-
-                     <div className="py-4">
-                        <FormLabel htmlFor="name">Report Name</FormLabel>
-                        <FormInput
-                            id="name"
-                            required
-                            type="text"
-                            placeholder=""
-                            value={reportData?.name}
-                            onChange={(e) =>
-                                setReportData({
-                                    ...reportData,
-                                    name: e.target.value,
-                                })
-                            }
-                        />
-                    </div>
-
-                    <div className="py-4">
-                        <FormLabel htmlFor="report_type">Report Type</FormLabel>
-                        <SearchSelect
-                            defaultValue="farmer-report"
-                            value={reportData?.report_type}
-                            onValueChange={(value) =>
-                                setReportData({
-                                    ...reportData,
-                                    report_type: value,
-                                })
-                            }
-                        >
-                            {["farmer-report", "crop-report"]?.map(
-                                (type, index) => {
-                                    return (
-                                        <SearchSelectItem
-                                            key={index}
-                                            value={type}
-                                            icon={File}
-                                        >
-                                            {type}
-                                        </SearchSelectItem>
-                                    );
+                    <div className=" grid grid-cols-1 md:grid-cols-2 gap-x-4 items-center">
+                        <div className="py-4">
+                            <FormLabel htmlFor="name">Report Name</FormLabel>
+                            <FormInput
+                                id="name"
+                                required
+                                type="text"
+                                placeholder=""
+                                value={reportData?.name}
+                                onChange={(e) =>
+                                    setReportData({
+                                        ...reportData,
+                                        name: e.target.value,
+                                    })
                                 }
-                            )}
-                        </SearchSelect>
+                            />
+                        </div>
+
+                        <div className="py-4">
+                            <FormLabel htmlFor="report_type">
+                                Report Type
+                            </FormLabel>
+                            <SearchSelect
+                                defaultValue="farmer-report"
+                                value={reportData?.report_type}
+                                onValueChange={(value) =>
+                                    setReportData({
+                                        ...reportData,
+                                        report_type: value,
+                                    })
+                                }
+                            >
+                                {["farmer-report", "crop-report"]?.map(
+                                    (type, index) => {
+                                        return (
+                                            <SearchSelectItem
+                                                key={index}
+                                                value={type}
+                                                icon={File}
+                                            >
+                                                {type}
+                                            </SearchSelectItem>
+                                        );
+                                    }
+                                )}
+                            </SearchSelect>
+                        </div>
                     </div>
 
-
-                     </div>
-
-                     <div className=" grid grid-cols-1 md:grid-cols-2 gap-x-4 items-center">
+                    <div className=" grid grid-cols-1 md:grid-cols-2 gap-x-4 items-center">
                         <div className="py-4 w-full">
-                            <FormLabel htmlFor="from_date">
-                                From
-                            </FormLabel>
-                            
-                            <DatePicker defaultValue={new Date(reportData?.from_date)} onValueChange={(value) => {
-                                setReportData({
-                                    ...reportData,
-                                    from_date: formatDate(value),
-                                })
-                            }} className="" />
+                            <FormLabel htmlFor="from_date">From</FormLabel>
+
+                            <DatePicker
+                                defaultValue={new Date(reportData?.from_date)}
+                                onValueChange={(value) => {
+                                    setReportData({
+                                        ...reportData,
+                                        from_date: formatDate(value),
+                                    });
+                                }}
+                                className=""
+                            />
                         </div>
                         <div className="py-4 w-full">
-                            <FormLabel htmlFor="to_date">
-                                To
-                            </FormLabel>
-                            <DatePicker defaultValue={new Date(reportData?.to_date)} onValueChange={(value) => {
-                                setReportData({
-                                    ...reportData,
-                                    to_date: formatDate(value),
-                                })
-                            }} className="" />
+                            <FormLabel htmlFor="to_date">To</FormLabel>
+                            <DatePicker
+                                defaultValue={new Date(reportData?.to_date)}
+                                onValueChange={(value) => {
+                                    setReportData({
+                                        ...reportData,
+                                        to_date: formatDate(value),
+                                    });
+                                }}
+                                className=""
+                            />
                         </div>
                     </div>
 
-                     <div className=" grid grid-cols-1 md:grid-cols-2 gap-x-4 items-center">
-
-                     <div className="py-4">
-                        <FormLabel htmlFor="fpo_id">FPO</FormLabel>
-                        <SearchSelect
-                            defaultValue=""
-                            value={reportData?.fpo_id}
-                            onValueChange={(value) =>
-                                setReportData({
-                                    ...reportData,
-                                    fpo_id: value,
-                                })
-                            }
-                        >
-                            {["All",...fpos]?.map(
-                                (fpo, index) => {
-                                    if(fpo === "All") {
-
+                    <div className=" grid grid-cols-1 md:grid-cols-2 gap-x-4 items-center">
+                        <div className="py-4">
+                            <FormLabel htmlFor="fpo_id">FPO</FormLabel>
+                            <SearchSelect
+                                defaultValue=""
+                                value={reportData?.fpo_id}
+                                onValueChange={(value) =>
+                                    setReportData({
+                                        ...reportData,
+                                        fpo_id: value,
+                                    })
+                                }
+                            >
+                                {["All", ...fpos]?.map((fpo, index) => {
+                                    if (fpo === "All") {
                                         return (
                                             <SearchSelectItem
                                                 key={index}
@@ -247,7 +260,6 @@ const CreateReportModal = ({ showModal, setShowModal }) => {
                                                 All FPOs
                                             </SearchSelectItem>
                                         );
-
                                     }
                                     return (
                                         <SearchSelectItem
@@ -258,27 +270,24 @@ const CreateReportModal = ({ showModal, setShowModal }) => {
                                             {fpo?.fpo_name}
                                         </SearchSelectItem>
                                     );
+                                })}
+                            </SearchSelect>
+                        </div>
+
+                        <div className="py-4">
+                            <FormLabel htmlFor="agent_id">Agent</FormLabel>
+                            <SearchSelect
+                                defaultValue=""
+                                value={reportData?.agent_id}
+                                onValueChange={(value) =>
+                                    setReportData({
+                                        ...reportData,
+                                        agent_id: value,
+                                    })
                                 }
-                            )}
-                        </SearchSelect>
-                    </div>
-
-                    <div className="py-4">
-                        <FormLabel htmlFor="agent_id">Agent</FormLabel>
-                        <SearchSelect
-                            defaultValue=""
-                            value={reportData?.agent_id}
-                            onValueChange={(value) =>
-                                setReportData({
-                                    ...reportData,
-                                    agent_id: value,
-                                })
-                            }
-                        >
-                            {["All", ...agents]?.map(
-                                (agent, index) => {
-                                    if(agent === "All") {
-
+                            >
+                                {["All", ...agents]?.map((agent, index) => {
+                                    if (agent === "All") {
                                         return (
                                             <SearchSelectItem
                                                 key={index}
@@ -288,7 +297,6 @@ const CreateReportModal = ({ showModal, setShowModal }) => {
                                                 All agents
                                             </SearchSelectItem>
                                         );
-
                                     }
                                     return (
                                         <SearchSelectItem
@@ -296,121 +304,106 @@ const CreateReportModal = ({ showModal, setShowModal }) => {
                                             value={agent?.id}
                                             icon={User}
                                         >
-                                            {agent?.first_name + " " + agent?.last_name}
+                                            {agent?.first_name +
+                                                " " +
+                                                agent?.last_name}
                                         </SearchSelectItem>
                                     );
+                                })}
+                            </SearchSelect>
+                        </div>
+                    </div>
+
+                    <div className=" grid grid-cols-1 md:grid-cols-2 gap-x-4 items-center">
+                        <div className="py-4">
+                            <FormLabel htmlFor="district">District</FormLabel>
+                            <FormInput
+                                id="district"
+                                type="text"
+                                placeholder="District"
+                                value={reportData?.district}
+                                onChange={(e) =>
+                                    setReportData({
+                                        ...reportData,
+                                        district: e.target.value,
+                                    })
                                 }
-                            )}
-                        </SearchSelect>
-                    </div>
+                            />
+                        </div>
 
-
-
-
-                     </div>
-                    
-                     <div className=" grid grid-cols-1 md:grid-cols-2 gap-x-4 items-center">
-
-                     <div className="py-4">
-                        <FormLabel htmlFor="district">
-                            District
-                        </FormLabel>
-                        <FormInput
-                            id="district"
-                            type="text"
-                            placeholder="District"
-                            value={reportData?.district}
-                            onChange={(e) =>
-                                setReportData({
-                                    ...reportData,
-                                    district: e.target.value,
-                                })
-                            }
-                        />
-                    </div>
-
-                    <div className="py-4">
-                        <FormLabel htmlFor="gender">Gender</FormLabel>
-                        <SearchSelect
-                            value={reportData?.gender}
-                            onValueChange={(value) =>
-                                setReportData({
-                                    ...reportData,
-                                    gender: value,
-                                })
-                            }
-                        >
-                            {["All",'Male', 'Female']?.map(
-                                (gender, index) => {
-                                    if(gender === "All") {
-
+                        <div className="py-4">
+                            <FormLabel htmlFor="gender">Gender</FormLabel>
+                            <SearchSelect
+                                value={reportData?.gender}
+                                onValueChange={(value) =>
+                                    setReportData({
+                                        ...reportData,
+                                        gender: value,
+                                    })
+                                }
+                            >
+                                {["All", "Male", "Female"]?.map(
+                                    (gender, index) => {
+                                        if (gender === "All") {
+                                            return (
+                                                <SearchSelectItem
+                                                    key={index}
+                                                    value={""}
+                                                    // icon={}
+                                                >
+                                                    {gender}
+                                                </SearchSelectItem>
+                                            );
+                                        }
                                         return (
                                             <SearchSelectItem
                                                 key={index}
-                                                value={""}
+                                                value={gender}
                                                 // icon={}
                                             >
                                                 {gender}
                                             </SearchSelectItem>
                                         );
-
                                     }
-                                    return (
-                                        <SearchSelectItem
-                                            key={index}
-                                            value={gender}
-                                            // icon={}
-                                        >
-                                            {gender}
-                                        </SearchSelectItem>
-                                    );
+                                )}
+                            </SearchSelect>
+                        </div>
+                    </div>
+
+                    <div className=" grid grid-cols-1 md:grid-cols-2 gap-x-4 items-center">
+                        <div className="py-4">
+                            <FormLabel htmlFor="product">Product</FormLabel>
+                            <FormInput
+                                id="product"
+                                type="text"
+                                placeholder="E.g Maize"
+                                value={reportData?.product}
+                                onChange={(e) =>
+                                    setReportData({
+                                        ...reportData,
+                                        product: e.target.value,
+                                    })
                                 }
-                            )}
-                        </SearchSelect>
+                            />
+                        </div>
+                        <div className="py-4">
+                            <FormLabel htmlFor="farm_size">
+                                Farm Size (Acres)
+                            </FormLabel>
+                            <FormInput
+                                id="farm_size"
+                                type="number"
+                                placeholder=""
+                                value={reportData?.farm_size}
+                                onChange={(e) =>
+                                    setReportData({
+                                        ...reportData,
+                                        farm_size: e.target.value,
+                                    })
+                                }
+                            />
+                        </div>
                     </div>
-
-
-                     </div>
-
-
-                     <div className=" grid grid-cols-1 md:grid-cols-2 gap-x-4 items-center">
-
-                     <div className="py-4">
-                        <FormLabel htmlFor="product">
-                            Product
-                        </FormLabel>
-                        <FormInput
-                            id="product"
-                            type="text"
-                            placeholder="E.g Maize"
-                            value={reportData?.product}
-                            onChange={(e) =>
-                                setReportData({
-                                    ...reportData,
-                                    product: e.target.value,
-                                })
-                            }
-                        />
-                    </div>
-                    <div className="py-4">
-                        <FormLabel htmlFor="farm_size">
-                            Farm Size (Acres)
-                        </FormLabel>
-                        <FormInput
-                            id="farm_size"
-                            type="number"
-                            placeholder=""
-                            value={reportData?.farm_size}
-                            onChange={(e) =>
-                                setReportData({
-                                    ...reportData,
-                                    farm_size: e.target.value,
-                                })
-                            }
-                        />
-                    </div>
-
-                     </div>
 
                     <div className="flex py-4">
                         <Button
