@@ -149,4 +149,33 @@ class DataController extends Controller
         ]);
 
     }
+
+    //Get Distinct Districts and number of farmers registered
+    /**
+     * Get Districts
+     * 
+     * Get Distinct Districts and number of farmers registered
+     * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
+     * 
+     * @response {
+     * "data":{
+     * "Amuru": 281,
+     * "Wakiso": 281,
+     * }
+     *
+     */
+    public function getDistricts()
+    {
+        $data = [];
+        $districts = FarmerProfile::distinct('district')->get();
+        foreach ($districts as $district) {
+            $data[$district->district] = FarmerProfile::where('district', $district->district)->count();
+        }
+        return response()->json([
+            'success'=>true,
+            'data'=>$data
+        ],200);
+    }
 }
