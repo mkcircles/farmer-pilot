@@ -182,7 +182,7 @@ export default function ReportsList() {
                                     </TableCell>
                                     <TableCell>
                                         <div className="flex items-center space-x-4">
-                                        {report?.report_status === "completed" ? <a title="Download" href={report?.report_url} className="text-secondary transition-all duration-700">
+                                        {report?.report_status === "completed" ? <a target="_blank" title="Download" href={`/reports/${report?.report_url}`} className="text-secondary transition-all duration-700">
                                             <Download className="h-5 w-5 hover:scale-125" />
                                         </a> : <Download className="h-5 w-5 text-tremor-brand-muted cursor-not-allowed" />}
                                         {/* <span title="Delete">
