@@ -93,7 +93,7 @@ import { BASE_API_URL } from "../../../env";
           <div className="block sm:flex sm:justify-between">
             <div>
               <Title>Agent Performance</Title>
-              <Text>Farmers Profiled Profiled</Text>
+              <Text>Farmers Profiled</Text>
             </div>
             <div className="mt-4 sm:mt-0">
               <TabList variant="solid">

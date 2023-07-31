@@ -25,13 +25,15 @@ import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../../stores/hooks";
 import { setFpos } from "../../../stores/fpoSlice";
 import { debounce, isEqual } from "lodash";
-import { Download } from "lucide-react";
+import { Download, FilePlus2, Trash, Trash2 } from "lucide-react";
+import CreateReportModal from "../CreateReportModal";
 
 export default function ReportsList() {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const token = useSelector((state) => state.auth.token);
     const { updateAppContextState } = useContext(AppContext);
+    const [showCreateReportModal, setShowCreateReportModal] = useState(false);
     const [reports, setReports] = useState([]);
 
     const [selectedNames, setSelectedNames] = useState([]);
@@ -71,12 +73,20 @@ export default function ReportsList() {
         fetchReports();
     }, [token]);
 
+    useEffect(() => {
+        if(!showCreateReportModal) fetchReports();
+    }, [showCreateReportModal]);
+
+    const formatDateString = (date) => {
+        return new Date(date).toLocaleDateString('en-us', { day: "numeric", year:"numeric", month:"short"});
+    }
+
     return (
         <div className="w-full h-full">
             <Card className=" px-0">
                 
 
-                <div className="flex space-x-4 items-center w-full lg:justify-between justify-start py-5">
+                <div className="flex space-x-4 items-center w-full lg:justify-between justify-start pb-4">
                     <div className="flex items-center w-52 lg:w-80">
                         <MultiSelect
                             onValueChange={setSelectedNames}
@@ -94,22 +104,39 @@ export default function ReportsList() {
                         </MultiSelect>
                     </div>
 
+                    <div className="flex">
+                                    <button
+                                        onClick={() =>
+                                            setShowCreateReportModal(true)
+                                        }
+                                        className="group flex space-x-2 px-4 py-3 border border-secondary rounded text-secondary"
+                                    >
+                                        <FilePlus2 className="w-5 h-5 group-hover:scale-125 " />
+                                        <span className="group-hover:scale-95">
+                                            New Report
+                                        </span>
+                                    </button>
+                                </div>
+                                <CreateReportModal
+                                    showModal={showCreateReportModal}
+                                    setShowModal={setShowCreateReportModal}
+                                />
+
                 </div>
 
                 <Table className="">
                     <TableHead>
-                        <TableRow className="uppercase">
+                        <TableRow className="">
                             <TableHeaderCell>Name</TableHeaderCell>
                             <TableHeaderCell>Type</TableHeaderCell>
-                            <TableHeaderCell>From Date</TableHeaderCell>
-                            <TableHeaderCell>To Date</TableHeaderCell>
+                            <TableHeaderCell>Date</TableHeaderCell>
                             <TableHeaderCell>District</TableHeaderCell>
                             <TableHeaderCell>Agent</TableHeaderCell>
                             <TableHeaderCell>Product</TableHeaderCell>
-                            <TableHeaderCell>Farm Size</TableHeaderCell>
+                            <TableHeaderCell>Farm Size (Acres)</TableHeaderCell>
                             <TableHeaderCell>Gender</TableHeaderCell>
                             <TableHeaderCell>Status</TableHeaderCell>
-                            <TableHeaderCell>Link</TableHeaderCell>
+                            <TableHeaderCell>Action</TableHeaderCell>
                         </TableRow>
                     </TableHead>
 
@@ -126,31 +153,42 @@ export default function ReportsList() {
                                     <TableCell>
                                         {report?.report_type}
                                     </TableCell>
-                                    <TableCell>{report?.from_date}</TableCell>
-                                    <TableCell>{report?.to_date}</TableCell>
-
+                                    <TableCell>{formatDateString(report?.from_date)} - {formatDateString(report?.to_date)}</TableCell>
                                     <TableCell>
-                                        {report?.district}
+                                        {report?.district || '-'}
                                     </TableCell>
                                     <TableCell>
-                                        {report?.agent_id}
+                                        {report?.agent_id || '-'}
                                     </TableCell>
                                     <TableCell>
-                                        {report?.product}
+                                        {report?.product || '-'}
                                     </TableCell>
                                     <TableCell>
-                                        {report?.farm_size}
+                                        {report?.farm_size || '-'}
                                     </TableCell>
                                     <TableCell>
-                                        {report?.gender}
+                                        {report?.gender || '-'}
                                     </TableCell>
                                     <TableCell>
-                                        {report?.status}
+                                        {report?.report_status === "pending" ? (
+                                            <Badge size="md" color="orange">pending</Badge>
+                                        ): (report?.report_status === "completed" ? (
+                                            (
+                                                <Badge size="md" color="green">completed</Badge>
+                                            )
+                                        ) : (
+                                            <Badge size="md" color="red">failed</Badge>
+                                        ))}
                                     </TableCell>
                                     <TableCell>
-                                        <a title="Download" href={report?.report_url} className="text-secondary transition-all duration-700">
+                                        <div className="flex items-center space-x-4">
+                                        {report?.report_status === "completed" ? <a title="Download" href={report?.report_url} className="text-secondary transition-all duration-700">
                                             <Download className="h-5 w-5 hover:scale-125" />
-                                        </a>
+                                        </a> : <Download className="h-5 w-5 text-tremor-brand-muted cursor-not-allowed" />}
+                                        {/* <span title="Delete">
+                                            <Trash2 className="h-5 w-5 text-danger cursor-pointer" />
+                                        </span> */}
+                                        </div>
                                     </TableCell>
                                     
                                 </TableRow>
