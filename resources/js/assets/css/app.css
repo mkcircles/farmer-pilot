@@ -91,3 +91,7 @@ div:where(.swal2-container) div:where(.swal2-loader) {
     border-bottom-color: var(--color-primary) !important;
     border-left-color: rgba(0, 0, 0, 0);
  }
+
+ *, ::before, ::after {
+   --tw-ring-color: var(--color-primary) !important;
+ }
