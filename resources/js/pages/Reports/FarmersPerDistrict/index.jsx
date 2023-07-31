@@ -22,17 +22,16 @@ import { BASE_API_URL } from "../../../env";
   const valueFormatterAbsolute = (number) =>
     Intl.NumberFormat("us").format(number).toString();
   
-  export default function AgentPerformance() {
+  export default function FarmersPerDistrict() {
     const token = useSelector((state) => state.auth.token);
     const { updateAppContextState } = useContext(AppContext);
-    const [agentsData, setAgentsData] = useState([]);
+    const [districtData, setDistrictData] = useState([]);
     const [stats, setStats] = useState({});
 
     const data = {
-      relative: agentsData.map(agent => ({agent_name: agent.name, "Farmers Profiled": ((agent.farmers_count/stats?.system_stats?.total_farmers)*100).toFixed(2)})),
-      absolute: agentsData.map(agent => ({agent_name: agent.name, "Farmers Profiled": agent.farmers_count})),
+      relative: districtData.map(district => ({district_name: district.name, "Farmers Profiled": ((district.farmers_count/stats?.system_stats?.total_farmers)*100).toFixed(2)})),
+      absolute: districtData.map(district => ({district_name: district.name, "Farmers Profiled": district.farmers_count})),
     };
-    
 
     const fetchStats = (url = `${BASE_API_URL}/summary`) => {
       updateAppContextState("loading", true);
@@ -57,7 +56,7 @@ import { BASE_API_URL } from "../../../env";
           });
   };
 
-    const fetchAgentGraph = (url = `${BASE_API_URL}/agents/graph`) => {
+    const fetchDistrictsData = (url = `${BASE_API_URL}/districts`) => {
         updateAppContextState("loading", true);
         axios
             .get(url, {
@@ -66,10 +65,10 @@ import { BASE_API_URL } from "../../../env";
                 },
             })
             .then((res) => {
-                console.log("Agent Graph Data", res?.data?.data);
+                console.log("District Data", res?.data?.data);
                 let resData = res?.data?.data;
                 if (res?.data) {
-                    setAgentsData(resData);
+                    setDistrictData(Object.keys(resData).map((key) => ({name: key, farmers_count: resData[key]})));
                 }
             })
             .catch((err) => {
@@ -81,9 +80,10 @@ import { BASE_API_URL } from "../../../env";
     };
 
     useEffect(() => {
-        fetchAgentGraph();
         fetchStats();
-    }, []);
+        fetchDistrictsData();
+        
+    }, [token]);
 
     // const { fpo_stats, system_stats } = stats;
 
@@ -92,7 +92,7 @@ import { BASE_API_URL } from "../../../env";
         <TabGroup>
           <div className="block sm:flex sm:justify-between">
             <div>
-              <Title>Agent Performance</Title>
+              <Title>District Performance</Title>
               <Text>Farmers Profiled</Text>
             </div>
             <div className="mt-4 sm:mt-0">
@@ -108,7 +108,7 @@ import { BASE_API_URL } from "../../../env";
               
                 className="mt-8 h-80"
                 data={data.relative}
-                index="agent_name"
+                index="district_name"
                 categories={["Farmers Profiled"]}
                 colors={["orange"]}
                 showLegend={true}
@@ -121,7 +121,7 @@ import { BASE_API_URL } from "../../../env";
               <LineChart
                 className="mt-8 h-80"
                 data={data.absolute}
-                index="agent_name"
+                index="district_name"
                 categories={["Farmers Profiled"]}
                 colors={["orange"]}
                 showLegend={true}
