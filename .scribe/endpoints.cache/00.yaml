@@ -435,7 +435,7 @@ endpoints:
         name: gender
         description: ''
         required: true
-        example: quo
+        example: consequatur
         type: string
         custom: []
       residence:
@@ -470,21 +470,21 @@ endpoints:
         name: created_by
         description: ''
         required: true
-        example: 4
+        example: 12
         type: integer
         custom: []
       fpo_id:
         name: fpo_id
         description: ''
         required: true
-        example: 19
+        example: 14
         type: integer
         custom: []
       email:
         name: email
         description: 'The email of the agent. Example:'
         required: true
-        example: rbeier@example.org
+        example: javonte35@example.org
         type: string
         custom: []
     cleanBodyParameters:
@@ -492,14 +492,14 @@ endpoints:
       last_name: Doe
       phone_number: 256XXXXXXXXX
       age: '30'
-      gender: quo
+      gender: consequatur
       residence: Kampala
       referee_name: 'Jane Doe'
       referee_phone_number: '08012345678'
       designation: 'Agro Extension Worker'
-      created_by: 4
-      fpo_id: 19
-      email: rbeier@example.org
+      created_by: 12
+      fpo_id: 14
+      email: javonte35@example.org
     fileParameters: []
     responses:
       -
@@ -653,7 +653,7 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: vel
+        example: voluptas
         type: string
         custom: []
       agent:
@@ -664,7 +664,7 @@ endpoints:
         type: string
         custom: []
     cleanUrlParameters:
-      id: vel
+      id: voluptas
       agent: '1'
     queryParameters: []
     cleanQueryParameters: []
@@ -737,11 +737,11 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: asperiores
+        example: mollitia
         type: string
         custom: []
     cleanUrlParameters:
-      id: asperiores
+      id: mollitia
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -904,14 +904,14 @@ endpoints:
         name: assigned_phone_number
         description: ''
         required: true
-        example: autem
+        example: omnis
         type: string
         custom: []
     cleanBodyParameters:
       agent_id: 1
       brand: Samsung
       device_id: 123456
-      assigned_phone_number: autem
+      assigned_phone_number: omnis
     fileParameters: []
     responses:
       -
@@ -1004,11 +1004,11 @@ endpoints:
         name: agent_id
         description: 'The ID of the agent.'
         required: true
-        example: cupiditate
+        example: aliquam
         type: string
         custom: []
     cleanUrlParameters:
-      agent_id: cupiditate
+      agent_id: aliquam
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:

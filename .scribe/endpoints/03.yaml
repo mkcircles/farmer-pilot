@@ -52,7 +52,7 @@ endpoints:
         name: gender
         description: 'Farmer gender. Example Male/Female'
         required: false
-        example: eligendi
+        example: atque
         type: string
         custom: []
       education_level:
@@ -290,7 +290,7 @@ endpoints:
       first_name: John
       last_name: Doe
       dob: '1990-01-01'
-      gender: eligendi
+      gender: atque
       education_level: Primary
       marital_status: Married
       district: Kampala

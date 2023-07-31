@@ -69,6 +69,9 @@ Route::middleware('auth:sanctum')->group( function () {
 
     Route::post('/search', [DataController::class, 'search']);
 
+    //Location Routes
+    Route::get('/districts',[DataController::class, 'getDistricts']);
+
     //Reports Routes
     Route::get('/reports', [ReportController::class, 'index']);
     Route::post('/report/register', [ReportController::class, 'createReport']);

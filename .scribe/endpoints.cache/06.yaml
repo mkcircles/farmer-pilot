@@ -122,7 +122,7 @@ endpoints:
         name: name
         description: 'The name of the report'
         required: true
-        example: dolorem
+        example: cupiditate
         type: string
         custom: []
       report_type:
@@ -136,28 +136,28 @@ endpoints:
         name: from_date
         description: 'The from date for the report'
         required: true
-        example: rerum
+        example: et
         type: string
         custom: []
       to_date:
         name: to_date
         description: 'The to date for the report'
         required: true
-        example: corporis
+        example: aut
         type: string
         custom: []
       district:
         name: district
         description: 'optional The district of the report'
         required: false
-        example: ut
+        example: temporibus
         type: string
         custom: []
       agent_id:
         name: agent_id
         description: 'optional The agent id of the report'
         required: false
-        example: 16
+        example: 12
         type: integer
         custom: []
       crops_grown:
@@ -171,7 +171,7 @@ endpoints:
         name: farm_size
         description: 'optional The farm size of the report'
         required: false
-        example: 14
+        example: 18
         type: integer
         custom: []
       gender:
@@ -185,20 +185,20 @@ endpoints:
         name: fpo_id
         description: 'optional The fpo id of the report'
         required: false
-        example: 12
+        example: 11
         type: integer
         custom: []
     cleanBodyParameters:
-      name: dolorem
+      name: cupiditate
       report_type: 'farmer-report, crop-report'
-      from_date: rerum
-      to_date: corporis
-      district: ut
-      agent_id: 16
+      from_date: et
+      to_date: aut
+      district: temporibus
+      agent_id: 12
       crops_grown: 'Maize, Wheat, beans'
-      farm_size: 14
+      farm_size: 18
       gender: 'Male, Female'
-      fpo_id: 12
+      fpo_id: 11
     fileParameters: []
     responses:
       -
