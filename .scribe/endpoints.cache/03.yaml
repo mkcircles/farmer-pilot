@@ -54,7 +54,7 @@ endpoints:
         name: gender
         description: 'Farmer gender. Example Male/Female'
         required: false
-        example: dolorum
+        example: aperiam
         type: string
         custom: []
       education_level:
@@ -292,7 +292,7 @@ endpoints:
       first_name: John
       last_name: Doe
       dob: '1990-01-01'
-      gender: dolorum
+      gender: aperiam
       education_level: Primary
       marital_status: Married
       district: Kampala
@@ -422,6 +422,134 @@ endpoints:
           {
           "status": "error",
           "message": "Server error"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/farmer/update/status
+    metadata:
+      groupName: 'Farmer Profile'
+      groupDescription: |-
+
+        APIs for managing farmer profile
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update Farmer Profile Status'
+      description: 'Update farmer profile status'
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      farmer_id:
+        name: farmer_id
+        description: 'Farmer id'
+        required: true
+        example: 15
+        type: integer
+        custom: []
+      status:
+        name: status
+        description: 'Farmer profile status'
+        required: true
+        example: 'pending,complete,valid,invalid,blacklisted,deceased'
+        type: string
+        custom: []
+    cleanBodyParameters:
+      farmer_id: 15
+      status: 'pending,complete,valid,invalid,blacklisted,deceased'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "status": "success",
+               "message": "Farmer profile status updated successfully",
+               "data": {
+                   "farmer_id": 1,
+                   "first_name": "John",
+                   "last_name": "Doe",
+                   "dob": "1981-05-06",
+                   "gender": "Male",
+                   "education_level": "High School",
+                   "phone_number": "1234567890",
+                   "id_number": "1234567890",
+                   "marital_status": "Single",
+                   "district": "1",
+                   "county": "1",
+                   "sub_county": "1",
+                   "parish": "1",
+                   "village": "1",
+                   "fpo_id": "1",
+                   "farmer_cordinates": "1",
+                   "next_of_kin": "1",
+                   "next_of_kin_contact": "1",
+                   "next_of_kin_relationship": "1",
+                   "male_members_in_household": "1",
+                   "female_members_in_household": "1",
+                   "members_above_18": "1",
+                   "children_below_5": "1",
+                   "school_going_children": "1",
+                   "head_of_family": "1",
+                   "how_much_do_you_earn_from_agricultural_activities": "1",
+                   "how_much_do_you_earn_from_non_agricultural_activities": "1",
+                   "do_you_have_an_account_with_an_FI": "1",
+                   "farm_size": "1",
+                   "farm_size_under_agriculture": "1",
+                   "land_ownership": "1",
+                   "type_of_farming": "1",
+                   "crops_grown": "1",
+                   "animals_kept": "1",
+                   "estimated_produce_value_last_season": "1",
+                   "estimated_produce_value_this_season": "1",
+                   "rId": "1",
+                   "consumerDeviceId": "1",
+                   "data_captured_by": "1",
+                   "agent_id": "1",
+                   "photo": "farmer.jpg"
+               }
+             }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+               "status": "error",
+               "message": "Farmer profile not found",
+               "errors": {
+                   "farmer_id": ["Farmer profile not found"]
+               }
+           }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+               "status": "error",
+               "message": "Validation error",
+               "errors": {
+                   "farmer_id": ["Farmer id is required"],
+                   "status": ["Status is required"]
+               }
           }
         headers: []
         description: ''

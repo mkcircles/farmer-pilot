@@ -120,7 +120,7 @@ endpoints:
         name: name
         description: 'The name of the report'
         required: true
-        example: expedita
+        example: autem
         type: string
         custom: []
       report_type:
@@ -134,28 +134,28 @@ endpoints:
         name: from_date
         description: 'The from date for the report'
         required: true
-        example: neque
+        example: veniam
         type: string
         custom: []
       to_date:
         name: to_date
         description: 'The to date for the report'
         required: true
-        example: laborum
+        example: quo
         type: string
         custom: []
       district:
         name: district
         description: 'optional The district of the report'
         required: false
-        example: voluptatem
+        example: aut
         type: string
         custom: []
       agent_id:
         name: agent_id
         description: 'optional The agent id of the report'
         required: false
-        example: 7
+        example: 4
         type: integer
         custom: []
       crops_grown:
@@ -169,7 +169,7 @@ endpoints:
         name: farm_size
         description: 'optional The farm size of the report'
         required: false
-        example: 13
+        example: 8
         type: integer
         custom: []
       gender:
@@ -183,20 +183,20 @@ endpoints:
         name: fpo_id
         description: 'optional The fpo id of the report'
         required: false
-        example: 10
+        example: 6
         type: integer
         custom: []
     cleanBodyParameters:
-      name: expedita
+      name: autem
       report_type: 'farmer-report, crop-report'
-      from_date: neque
-      to_date: laborum
-      district: voluptatem
-      agent_id: 7
+      from_date: veniam
+      to_date: quo
+      district: aut
+      agent_id: 4
       crops_grown: 'Maize, Wheat, beans'
-      farm_size: 13
+      farm_size: 8
       gender: 'Male, Female'
-      fpo_id: 10
+      fpo_id: 6
     fileParameters: []
     responses:
       -

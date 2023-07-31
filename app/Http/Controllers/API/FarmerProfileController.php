@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx\Rels;
 
 /**
  * @group Farmer Profile
@@ -22,6 +22,7 @@ class FarmerProfileController extends Controller
 {
 
     use HelperTraits;
+
     /**
      * Register Farmer
      * 
@@ -252,13 +253,95 @@ class FarmerProfileController extends Controller
 
     }
 
-
+    /**
+     * Create Farmer Photo
+     * 
+     * Add farmer photo
+     * @authenticated
+     * 
+     * @bodyParam farmer_id integer required Farmer id
+     * @bodyParam image string required Farmer photo
+     * 
+     * @response {
+     *      "status": "success",
+     *      "message": "Farmer photo created successfully",
+     *      "data": {
+     *          "farmer_id": 1,
+     *          "first_name": "John",
+     *          "last_name": "Doe",
+     *          "dob": "1981-05-06",
+     *          "gender": "Male",
+     *          "education_level": "High School",
+     *          "phone_number": "1234567890",
+     *          "id_number": "1234567890",
+     *          "marital_status": "Single",
+     *          "district": "1",
+     *          "county": "1",
+     *          "sub_county": "1",
+     *          "parish": "1",
+     *          "village": "1",
+     *          "fpo_id": "1",
+     *          "farmer_cordinates": "1",
+     *          "next_of_kin": "1",
+     *          "next_of_kin_contact": "1",
+     *          "next_of_kin_relationship": "1",
+     *          "male_members_in_household": "1",
+     *          "female_members_in_household": "1",
+     *          "members_above_18": "1",
+     *          "children_below_5": "1",
+     *          "school_going_children": "1",
+     *          "head_of_family": "1",
+     *          "how_much_do_you_earn_from_agricultural_activities": "1",
+     *          "how_much_do_you_earn_from_non_agricultural_activities": "1",
+     *          "do_you_have_an_account_with_an_FI": "1",
+     *          "farm_size": "1",
+     *          "farm_size_under_agriculture": "1",
+     *          "land_ownership": "1",
+     *          "type_of_farming": "1",
+     *          "crops_grown": "1",
+     *          "animals_kept": "1",
+     *          "estimated_produce_value_last_season": "1",
+     *          "estimated_produce_value_this_season": "1",
+     *          "rId": "1",
+     *          "consumerDeviceId": "1",
+     *          "data_captured_by": "1",
+     *          "agent_id": "1",
+     *          "photo": "farmer.jpg"
+     *      }
+     *    }
+     * 
+     * @response 422 {
+     *      "status": "error",
+     *      "message": "Validation error",
+     *      "errors": {
+     *          "farmer_id": ["Farmer id is required"],
+     *          "image": ["Image is required"]
+     *      }
+     * }
+     * 
+     * @response 404 {
+     *      "status": "error",
+     *      "message": "Farmer profile not found",
+     *      "errors": {
+     *          "farmer_id": ["Farmer profile not found"]
+     *      }
+     * }
+     * 
+     */
     public function CreateFarmerPhoto(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        $validate = Validator::make($request->all(), [
             'farmer_id' => 'required|string',
             'image' => 'required'
             ]);
+
+            if($validate->fails()){
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Validation error',
+                    'errors' => $validate->errors()
+                ], 422);
+            }
 
               //Check if request has image
               if ($request->image) {
@@ -274,8 +357,126 @@ class FarmerProfileController extends Controller
             }
 
             $farmer = FarmerProfile::where('farmer_id', $request->farmer_id)->first();
+            if(!$farmer){
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Farmer profile not found',
+                    'errors' => [
+                        'farmer_id' => ['Farmer profile not found']
+                    ]
+                ], 404);
+            }
+
             $farmer->photo = $imageName;
-            $farmer->save();    
+            $farmer->save();   
+            
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Farmer photo created successfully',
+                'data' => $farmer
+            ],200);
+    }
+
+
+    /**
+     * Update Farmer Profile Status
+     * 
+     * Update farmer profile status
+     * @authenticated
+     * 
+     * @bodyParam farmer_id integer required Farmer id
+     * @bodyParam status string required Farmer profile status Example: pending,complete,valid,invalid,blacklisted,deceased
+     * 
+     * @response {
+     *      "status": "success",
+     *      "message": "Farmer profile status updated successfully",
+     *      "data": {
+     *          "farmer_id": 1,
+     *          "first_name": "John",
+     *          "last_name": "Doe",
+     *          "dob": "1981-05-06",
+     *          "gender": "Male",
+     *          "education_level": "High School",
+     *          "phone_number": "1234567890",
+     *          "id_number": "1234567890",
+     *          "marital_status": "Single",
+     *          "district": "1",
+     *          "county": "1",
+     *          "sub_county": "1",
+     *          "parish": "1",
+     *          "village": "1",
+     *          "fpo_id": "1",
+     *          "farmer_cordinates": "1",
+     *          "next_of_kin": "1",
+     *          "next_of_kin_contact": "1",
+     *          "next_of_kin_relationship": "1",
+     *          "male_members_in_household": "1",
+     *          "female_members_in_household": "1",
+     *          "members_above_18": "1",
+     *          "children_below_5": "1",
+     *          "school_going_children": "1",
+     *          "head_of_family": "1",
+     *          "how_much_do_you_earn_from_agricultural_activities": "1",
+     *          "how_much_do_you_earn_from_non_agricultural_activities": "1",
+     *          "do_you_have_an_account_with_an_FI": "1",
+     *          "farm_size": "1",
+     *          "farm_size_under_agriculture": "1",
+     *          "land_ownership": "1",
+     *          "type_of_farming": "1",
+     *          "crops_grown": "1",
+     *          "animals_kept": "1",
+     *          "estimated_produce_value_last_season": "1",
+     *          "estimated_produce_value_this_season": "1",
+     *          "rId": "1",
+     *          "consumerDeviceId": "1",
+     *          "data_captured_by": "1",
+     *          "agent_id": "1",
+     *          "photo": "farmer.jpg"
+     *      }
+     *    }
+     * 
+     * @response 422 {
+     *      "status": "error",
+     *      "message": "Validation error",
+     *      "errors": {
+     *          "farmer_id": ["Farmer id is required"],
+     *          "status": ["Status is required"]
+     *      }
+     * }
+     * 
+     * @response 404 {
+     *      "status": "error",
+     *      "message": "Farmer profile not found",
+     *      "errors": {
+     *          "farmer_id": ["Farmer profile not found"]
+     *      }
+     *  }
+     * 
+     */
+    public function updateFarmerProfileStatus(Request $request)
+    {
+        $validate = Validator::make($request->all(), [
+            'farmer_id' => 'required|string',
+            'status' => 'required|string',
+        ]);
+
+        if($validate->fails()){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation error',
+                'errors' => $validate->errors()
+            ], 422);
+        }
+
+        $farmer = FarmerProfile::where('farmer_id', $request->farmer_id)->first();
+        $farmer->status = $request->status;
+        $farmer->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Farmer profile status updated successfully',
+            'data' => $farmer
+        ],200);
     }
     
 

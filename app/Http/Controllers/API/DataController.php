@@ -80,10 +80,11 @@ class DataController extends Controller
      * 
      * @urlParam id required The ID of the farmer. Example: 1
      * 
-     * @response {
+     * @response 200 {
      * "id": 1,
      * "first_name": "John",
      * "last_name": "Doe",
+     * 
      * 
      * }
      * 
@@ -193,7 +194,6 @@ class DataController extends Controller
      * "2022-06-01": 281,
      * "2022-06-02": 281,
      * }
-     * 
      */
     public function countFarmersByDate()
     {
