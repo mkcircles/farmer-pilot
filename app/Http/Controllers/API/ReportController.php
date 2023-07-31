@@ -63,7 +63,8 @@ class ReportController extends Controller
      */
     public function index()
     {
-        return Report::orderBy('id','desc')->paginate();
+        $reports = Report::where('created_by', auth()->user()->id)->paginate();
+        return $reports;
     }
 
     /**
@@ -170,6 +171,7 @@ class ReportController extends Controller
             'status' => 'success',
             'data' => $report
         ], 200);
-
     }
+
+    
 }

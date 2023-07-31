@@ -178,4 +178,40 @@ class DataController extends Controller
             'data'=>$data
         ],200);
     }
+
+    //Get Farmer registration by date
+    /**
+     * Get Farmer registration by date
+     * 
+     * Get Farmer registration by date
+     * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
+     * 
+     * @response {
+     * "data":{
+     * "2022-06-01": 281,
+     * "2022-06-02": 281,
+     * }
+     * 
+     */
+    public function countFarmersByDate()
+    {
+        $data = [];
+        $counts = FarmerProfile::orderBy('created_at')->get()->groupBy(function($item) {
+            return $item->created_at->format('Y-m-d');
+        });
+       foreach($counts as $key => $value){
+            $day = $key;
+            $totalCount = $value->count();
+            $data[$day] = $totalCount;
+        }
+
+        return response()->json([
+            'success'=>true,
+            'data'=>$data
+        ],200);
+    }
+
+
 }

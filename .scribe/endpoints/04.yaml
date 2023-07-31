@@ -198,6 +198,50 @@ endpoints:
   -
     httpMethods:
       - GET
+    uri: api/farmer/date/summary
+    metadata:
+      groupName: 'Data Management'
+      groupDescription: |-
+
+        APIs for managing farmer profile
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get Farmer registration by date'
+      description: 'Get Farmer registration by date'
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: 'required The authorization token. Example: Bearer {token}'
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+          "data":{
+          "2022-06-01": 281,
+          "2022-06-02": 281,
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
     uri: api/districts
     metadata:
       groupName: 'Data Management'
