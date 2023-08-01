@@ -43,7 +43,7 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::post('/farmer/register', [FarmerProfileController::class, 'registerFarmer']);
     Route::get('/farmers', [DataController::class, 'getAllFarmers']);
     Route::get('/farmer/{id}', [DataController::class, 'getFarmer']);
-    Route::post('/farmer/update/status', [FarmerProfileController::class, 'updateFarmerProfileStatus']);
+    Route::put('/farmer/update/status', [FarmerProfileController::class, 'updateFarmerProfileStatus']);
 
     Route::get('/agents', [AgentController::class, 'index']);
     Route::post('/agent/register', [AgentController::class, 'store']);
