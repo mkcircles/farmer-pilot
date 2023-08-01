@@ -110,8 +110,11 @@ export default function FarmersList({ fpo_id, agent_id }) {
                             <TableHeaderCell>Name</TableHeaderCell>
                             <TableHeaderCell>Phone</TableHeaderCell>
                             <TableHeaderCell>FPO</TableHeaderCell>
-                            <TableHeaderCell className="text-right">
+                            <TableHeaderCell className="">
                                 District
+                            </TableHeaderCell>
+                            <TableHeaderCell className="">
+                                Status
                             </TableHeaderCell>
                             <TableHeaderCell>Link</TableHeaderCell>
                         </TableRow>
@@ -127,8 +130,15 @@ export default function FarmersList({ fpo_id, agent_id }) {
                                 <TableCell>{farmer.phone_number}</TableCell>
                                 <TableCell>{farmer.fpo_name || farmer?.fpo?.fpo_name}</TableCell>
 
-                                <TableCell className="text-right">
+                                <TableCell className="">
                                     {farmer.district}
+                                </TableCell>
+                                <TableCell>
+                                    {farmer.status === "complete" ? (
+                                        <Badge className="capitalize" size="md" color="green">{farmer?.status}</Badge>
+                                    ): (
+                                        <Badge className="capitalize" size="md" color="red">{farmer?.status}</Badge>
+                                    )}
                                 </TableCell>
                                 <TableCell>
                                     <Button

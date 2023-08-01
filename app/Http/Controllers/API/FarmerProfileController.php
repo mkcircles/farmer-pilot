@@ -468,7 +468,7 @@ class FarmerProfileController extends Controller
             ], 422);
         }
 
-        $farmer = FarmerProfile::where('farmer_id', $request->id)->first();
+        $farmer = FarmerProfile::where('id', $request->id)->first();
         $farmer->status = $request->status;
         $farmer->save();
 
