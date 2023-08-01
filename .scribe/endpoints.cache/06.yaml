@@ -122,7 +122,7 @@ endpoints:
         name: name
         description: 'The name of the report'
         required: true
-        example: autem
+        example: excepturi
         type: string
         custom: []
       report_type:
@@ -136,28 +136,28 @@ endpoints:
         name: from_date
         description: 'The from date for the report'
         required: true
-        example: veniam
+        example: necessitatibus
         type: string
         custom: []
       to_date:
         name: to_date
         description: 'The to date for the report'
         required: true
-        example: quo
+        example: repellendus
         type: string
         custom: []
       district:
         name: district
         description: 'optional The district of the report'
         required: false
-        example: aut
+        example: exercitationem
         type: string
         custom: []
       agent_id:
         name: agent_id
         description: 'optional The agent id of the report'
         required: false
-        example: 4
+        example: 13
         type: integer
         custom: []
       crops_grown:
@@ -171,7 +171,7 @@ endpoints:
         name: farm_size
         description: 'optional The farm size of the report'
         required: false
-        example: 8
+        example: 1
         type: integer
         custom: []
       gender:
@@ -185,20 +185,20 @@ endpoints:
         name: fpo_id
         description: 'optional The fpo id of the report'
         required: false
-        example: 6
+        example: 13
         type: integer
         custom: []
     cleanBodyParameters:
-      name: autem
+      name: excepturi
       report_type: 'farmer-report, crop-report'
-      from_date: veniam
-      to_date: quo
-      district: aut
-      agent_id: 4
+      from_date: necessitatibus
+      to_date: repellendus
+      district: exercitationem
+      agent_id: 13
       crops_grown: 'Maize, Wheat, beans'
-      farm_size: 8
+      farm_size: 1
       gender: 'Male, Female'
-      fpo_id: 6
+      fpo_id: 13
     fileParameters: []
     responses:
       -

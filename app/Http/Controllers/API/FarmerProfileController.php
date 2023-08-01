@@ -384,7 +384,7 @@ class FarmerProfileController extends Controller
      * Update farmer profile status
      * @authenticated
      * 
-     * @bodyParam farmer_id integer required Farmer id
+     * @bodyParam id integer required Farmer id
      * @bodyParam status string required Farmer profile status Example: pending,complete,valid,invalid,blacklisted,deceased
      * 
      * @response {
@@ -456,7 +456,7 @@ class FarmerProfileController extends Controller
     public function updateFarmerProfileStatus(Request $request)
     {
         $validate = Validator::make($request->all(), [
-            'farmer_id' => 'required|string',
+            'id' => 'required|string',
             'status' => 'required|string',
         ]);
 
@@ -468,7 +468,7 @@ class FarmerProfileController extends Controller
             ], 422);
         }
 
-        $farmer = FarmerProfile::where('farmer_id', $request->farmer_id)->first();
+        $farmer = FarmerProfile::where('farmer_id', $request->id)->first();
         $farmer->status = $request->status;
         $farmer->save();
 
