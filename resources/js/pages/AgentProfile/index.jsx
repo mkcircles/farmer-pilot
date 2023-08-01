@@ -98,7 +98,7 @@ function Main() {
             />
             <div className="flex flex-col items-center mt-8 intro-y sm:flex-row">
                 <h2 className="flex items-center mr-auto text-lg font-medium">
-                    Profile
+                    Agent Profile
                 </h2>
                 <div className="flex w-full mt-4 space-x-2 sm:w-auto sm:mt-0">
 
@@ -132,11 +132,11 @@ function Main() {
                                     <span className="relative -top-1 -right-1">
                                         {
                                             agent?.status === 'active' ? (
-                                                <Badge size="sm" color="green">
+                                                <Badge className="capitalize shadow-md bg-green-300" size="sm" color="green">
                                             {agent?.status}
                                         </Badge>
                                             ) : (
-                                                <Badge size="sm" color="orange">
+                                                <Badge className="capitalize" size="sm" color="orange">
                                                     {agent?.status}
                                                 </Badge>
                                             )
