@@ -129,9 +129,9 @@ export default function AgentsList({fpo_id, fpo_name}) {
                                 <TableCell>{agent.email|| '-'}</TableCell>
                                 <TableCell>
                                     {agent.status === "active" ? (
-                                        <Badge size="md" color="green">active</Badge>
+                                        <Badge className="capitalize" size="md" color="green">active</Badge>
                                     ): (
-                                        <Badge size="md" color="gray">{agent?.status}</Badge>
+                                        <Badge className="capitalize" size="md" color="gray">{agent?.status}</Badge>
                                     )}
                                 </TableCell>
                                 <TableCell>

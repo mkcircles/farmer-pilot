@@ -7,7 +7,7 @@
 
 </head>
 <body>
-	<div id="app"></div>
+	<div style="min-width: 560px !important; height: 100%;" id="app"></div>
     @viteReactRefresh
     @vite('resources/js/app.jsx')       
 </body>

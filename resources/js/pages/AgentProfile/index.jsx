@@ -238,27 +238,31 @@ function Main() {
                         <Pencil className="w-5 h-5 text-secondary " />
                         <span className="text-primary">Edit Information</span>
                     </div>
-                    <div onClick={() => {
+
+                    {agent?.status !== "active" && <div onClick={() => {
                         WithConfirmAlert(() => UpdateAgentStatus("active"));
                         setShowManageAccountMenu(false);
                     }} className="flex border-b space-x-2 p-4 items-center cursor-pointer">
                         <UserCheck className="w-5 h-5 text-secondary " />
                         <span className="text-primary">Activate Account</span>
-                    </div>
-                    <div onClick={() => {
+                    </div>}
+
+                    {agent?.status !== "suspended" && <div onClick={() => {
                         WithConfirmAlert(() => UpdateAgentStatus("suspended"));
                         setShowManageAccountMenu(false);
                     }} className="flex border-b space-x-2 p-4 items-center cursor-pointer">
                         <UserX className="w-5 h-5 text-secondary " />
                         <span className="text-primary">Suspend Account</span>
-                    </div>
-                    <div onClick={() => {
+                    </div>}
+
+                    {agent?.status !== "blacklisted" && <div onClick={() => {
                         WithConfirmAlert(() => UpdateAgentStatus("blacklisted"));
                         setShowManageAccountMenu(false);
                     }} className="flex border-b space-x-2 p-4 items-center cursor-pointer">
                         <UserMinus className="w-5 h-5 text-secondary " />
                         <span className="text-primary">Blacklist Account</span>
-                    </div>
+                    </div>}
+
                 </div>
             </div>
 
