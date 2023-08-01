@@ -309,7 +309,7 @@ const FarmerProfile = () => {
                         setShowManageAccountMenu(false);
                     }} className="flex border-b space-x-2 p-4 items-center cursor-pointer">
                         <CheckSquare className="w-5 h-5 text-secondary " />
-                        <span className="text-primary">Mark as complete</span>
+                        <span className="text-primary">Mark as Complete</span>
                     </div>}
 
                     {farmerData?.status !== "pending" && <div onClick={() => {
@@ -317,7 +317,7 @@ const FarmerProfile = () => {
                         setShowManageAccountMenu(false);
                     }} className="flex border-b space-x-2 p-4 items-center cursor-pointer">
                         <BadgeAlert className="w-5 h-5 text-secondary " />
-                        <span className="text-primary">Mark as pending</span>
+                        <span className="text-primary">Mark as Pending</span>
                     </div>}
 
                     {farmerData?.status !== "valid" && <div onClick={() => {
@@ -325,7 +325,7 @@ const FarmerProfile = () => {
                         setShowManageAccountMenu(false);
                     }} className="flex border-b space-x-2 p-4 items-center cursor-pointer">
                         <BadgeCheckIcon className="w-5 h-5 text-secondary " />
-                        <span className="text-primary">Mark as valid</span>
+                        <span className="text-primary">Mark as Valid</span>
                     </div>}
 
                     {farmerData?.status !== "invalid" && <div onClick={() => {
