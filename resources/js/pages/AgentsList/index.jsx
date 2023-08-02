@@ -108,7 +108,7 @@ export default function AgentsList({fpo_id, fpo_name}) {
                             <TableHeaderCell>Agent Code</TableHeaderCell>
                             <TableHeaderCell>Name</TableHeaderCell>
                             <TableHeaderCell>Phone</TableHeaderCell>
-                            <TableHeaderCell>Email</TableHeaderCell>
+                            {/* <TableHeaderCell>Email</TableHeaderCell> */}
                             <TableHeaderCell>Status</TableHeaderCell>
                             <TableHeaderCell>Action</TableHeaderCell>
                             {/* <TableHeaderCell>Residence</TableHeaderCell>
@@ -126,12 +126,12 @@ export default function AgentsList({fpo_id, fpo_name}) {
                                     {agent.first_name + " " + agent.last_name}
                                 </TableCell>
                                 <TableCell>{agent.phone_number}</TableCell>
-                                <TableCell>{agent.email|| '-'}</TableCell>
+                                {/* <TableCell>{agent.email|| '-'}</TableCell> */}
                                 <TableCell>
                                     {agent.status === "active" ? (
-                                        <Badge size="md" color="green">active</Badge>
+                                        <Badge className="capitalize font-bold" size="md" color="green">active</Badge>
                                     ): (
-                                        <Badge size="md" color="gray">{agent?.status}</Badge>
+                                        <Badge className="capitalize font-bold" size="md" color="red">{agent?.status}</Badge>
                                     )}
                                 </TableCell>
                                 <TableCell>

@@ -18,6 +18,7 @@ import {
     Tab,
     TabPanels,
     TabPanel,
+    Badge,
 } from "@tremor/react";
 import FarmInfoCard from "./FarmInfoCard";
 import { HomeIcon, UserGroupIcon } from "@heroicons/react/solid";
@@ -37,6 +38,11 @@ import {
     Tablet as TabletIcon,
 } from "react-feather";
 import { numberFormatter } from "../../utils/numberFormatter";
+import Button from "../../base-components/Button";
+import Lucide from "../../base-components/Lucide";
+import { BadgeAlert, BadgeMinus, BadgeX, CheckSquare, Unplug, UserCheck, UserMinus, UserX } from "lucide-react";
+import { BadgeCheckIcon } from "@heroicons/react/outline";
+import WithConfirmAlert from "../../helpers/WithConfirmAlert";
 
 const FarmerProfile = () => {
     const navigate = useNavigate();
@@ -44,10 +50,52 @@ const FarmerProfile = () => {
     const fpos = useSelector((state) => state.fpos?.fpos);
     const { updateAppContextState } = useContext(AppContext);
     const [farmerData, setFarmerData] = useState({});
+    const [showManageAccountMenu, setShowManageAccountMenu] = useState(false);
     const [fpoName, setFpoName] = useState("");
     let { id } = useParams();
 
-    useEffect(() => {
+    const UpdateAgentStatus = (status) => {
+        return new Promise((resolve, reject) => {
+            updateAppContextState("loading", true);
+        axios
+            .put(`${BASE_API_URL}/farmer/update/status`,{
+                id: id,
+                status: status,
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then(({ data: res }) => {
+                console.log("Agent Data", res.data);
+                if (res?.data) {
+                    // setAgentData(res?.data);
+                    fetchFarmerData();
+                    return resolve({
+                        message: "Farmer profile status updated successfully",
+                        title: "success",
+                    });
+                };
+                reject({
+                    message: "Something went wrong",
+                    title: "error",
+                });
+            })
+            .catch((err) => {
+                console.log(err);
+                reject({
+                    message: "Something went wrong",
+                    title: "error",
+                });
+            })
+            .finally(() => {
+                updateAppContextState("loading", false);
+            });
+        })
+    }
+
+    const fetchFarmerData = () => {
+
         updateAppContextState("loading", true);
         axios
             .get(`${BASE_API_URL}/farmer/${id}`, {
@@ -67,6 +115,11 @@ const FarmerProfile = () => {
             .finally(() => {
                 updateAppContextState("loading", false);
             });
+
+    }
+
+    useEffect(() => {
+        fetchFarmerData();
     }, [id, token]);
 
     useEffect(() => {
@@ -79,15 +132,44 @@ const FarmerProfile = () => {
 
     return (
         <div className="w-full h-full mt-6">
-            <div className="w-full flex items-center space-x-4">
-                <ArrowLeft onClick={() => navigate(-1)} />
-                <Title>
-                    {farmerData?.first_name} {farmerData?.last_name} Profile
-                </Title>
+            <div className="flex justify-between items-center px-10 mx-auto">
+
+            <div className="flex items-center space-x-4">
+                    <ArrowLeft onClick={() => navigate(-1)} />
+                    <Title>
+                        {farmerData?.first_name} {farmerData?.last_name}
+                    </Title>
+                    <div className="flex items-center justify-between text-center py-2">
+                        {
+                            farmerData?.status === "complete" ? (
+                                <Badge className="capitalize shadow-md bg-green-300" size="sm" color="green">{farmerData?.status}</Badge>
+                            ) : (
+                                <Badge className="shadow-md capitalize" size="sm" color="red">{farmerData?.status || 'Not Verified'}</Badge>
+                            )
+                        }
+                    </div>
+                </div>
+
+                <div className="flex mt-4 sm:w-auto sm:mt-0">
+
+                    <Button
+                        onClick={() => {setShowManageAccountMenu(!showManageAccountMenu);}}
+                        variant="primary"
+                        className="mr-2 shadow-md space-x-2"
+                    >
+                        <Lucide icon="Settings" className="w-4 h-4" />{" "}
+                        <span className="hidden md:block">Manage Farmer Profile</span>
+                        
+                    </Button>
+                </div>
+
+                
+
             </div>
+            
 
             <div className="w-full h-fit relative py-4 grid grid-cols-12 px-10 gap-8 mx-auto">
-                <div className="flex justify-center items-center w-full col-span-12 lg:col-span-4 rounded-md bg-white">
+                <div className="flex flex-col justify-center items-center w-full col-span-12 lg:col-span-4 rounded-md bg-white">
                     {farmerData?.gender === "male" ? (
                         <img
                             className="h-40 w-auto"
@@ -101,6 +183,7 @@ const FarmerProfile = () => {
                             src={FemaleAvatar}
                         />
                     )}
+                    
                 </div>
                 <div className="border border-primary w-full flex space-x-4 col-span-12 lg:col-span-8 bg-white justify-center rounded-md">
                     <div className="h-full w-full flex flex-col space-y-5 justify-center bg-primary text-white border  lg:px-8 px-4 py-4 rounded-l-md shadow-sm">
@@ -217,6 +300,60 @@ const FarmerProfile = () => {
                             )}
                         </div>
                     </div>
+                </div>
+
+                <div className={`flex flex-col absolute transition-all duration-700 sm:end-0 end-auto w-48 mr-1 !right-8 ${showManageAccountMenu ? "top-2  z-50 h-fit box" : "top-8 z-50 h-0 overflow-hidden"}`}>
+
+                    {farmerData?.status !== "complete" && <div onClick={() => {
+                        WithConfirmAlert(() => UpdateAgentStatus("complete"));
+                        setShowManageAccountMenu(false);
+                    }} className="flex border-b space-x-2 p-4 items-center cursor-pointer">
+                        <CheckSquare className="w-5 h-5 text-secondary " />
+                        <span className="text-primary">Mark as Complete</span>
+                    </div>}
+
+                    {farmerData?.status !== "pending" && <div onClick={() => {
+                        WithConfirmAlert(() => UpdateAgentStatus("pending"));
+                        setShowManageAccountMenu(false);
+                    }} className="flex border-b space-x-2 p-4 items-center cursor-pointer">
+                        <BadgeAlert className="w-5 h-5 text-secondary " />
+                        <span className="text-primary">Mark as Pending</span>
+                    </div>}
+
+                    {farmerData?.status !== "valid" && <div onClick={() => {
+                        WithConfirmAlert(() => UpdateAgentStatus("valid"));
+                        setShowManageAccountMenu(false);
+                    }} className="flex border-b space-x-2 p-4 items-center cursor-pointer">
+                        <BadgeCheckIcon className="w-5 h-5 text-secondary " />
+                        <span className="text-primary">Mark as Valid</span>
+                    </div>}
+
+                    {farmerData?.status !== "invalid" && <div onClick={() => {
+                        WithConfirmAlert(() => UpdateAgentStatus("invalid"));
+                        setShowManageAccountMenu(false);
+                    }} className="flex border-b space-x-2 p-4 items-center cursor-pointer">
+                        <BadgeX className="w-5 h-5 text-secondary " />
+                        <span className="text-primary">Mark as Invalid</span>
+                    </div>}
+
+                    {farmerData?.status !== "invalid" && <div onClick={() => {
+                        WithConfirmAlert(() => UpdateAgentStatus("blacklisted"));
+                        setShowManageAccountMenu(false);
+                    }} className="flex border-b space-x-2 p-4 items-center cursor-pointer">
+                        <BadgeMinus className="w-5 h-5 text-secondary " />
+                        <span className="text-primary">Blacklist</span>
+                    </div>}
+
+                    {farmerData?.deceased !== "invalid" && <div onClick={() => {
+                        WithConfirmAlert(() => UpdateAgentStatus("deceased"));
+                        setShowManageAccountMenu(false);
+                    }} className="flex border-b space-x-2 p-4 items-center cursor-pointer">
+                        <UserX className="w-5 h-5 text-secondary " />
+                        <span className="text-primary">Mark as Deceased</span>
+                    </div>}
+
+                    
+
                 </div>
             </div>
 

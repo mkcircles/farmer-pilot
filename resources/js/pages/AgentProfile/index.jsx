@@ -98,7 +98,7 @@ function Main() {
             />
             <div className="flex flex-col items-center mt-8 intro-y sm:flex-row">
                 <h2 className="flex items-center mr-auto text-lg font-medium">
-                    Profile
+                    Agent Profile
                 </h2>
                 <div className="flex w-full mt-4 space-x-2 sm:w-auto sm:mt-0">
 
@@ -132,11 +132,11 @@ function Main() {
                                     <span className="relative -top-1 -right-1">
                                         {
                                             agent?.status === 'active' ? (
-                                                <Badge size="sm" color="green">
+                                                <Badge className="capitalize shadow-md bg-green-300" size="sm" color="green">
                                             {agent?.status}
                                         </Badge>
                                             ) : (
-                                                <Badge size="sm" color="orange">
+                                                <Badge className="capitalize" size="sm" color="orange">
                                                     {agent?.status}
                                                 </Badge>
                                             )
@@ -238,27 +238,31 @@ function Main() {
                         <Pencil className="w-5 h-5 text-secondary " />
                         <span className="text-primary">Edit Information</span>
                     </div>
-                    <div onClick={() => {
+
+                    {agent?.status !== "active" && <div onClick={() => {
                         WithConfirmAlert(() => UpdateAgentStatus("active"));
                         setShowManageAccountMenu(false);
                     }} className="flex border-b space-x-2 p-4 items-center cursor-pointer">
                         <UserCheck className="w-5 h-5 text-secondary " />
                         <span className="text-primary">Activate Account</span>
-                    </div>
-                    <div onClick={() => {
+                    </div>}
+
+                    {agent?.status !== "suspended" && <div onClick={() => {
                         WithConfirmAlert(() => UpdateAgentStatus("suspended"));
                         setShowManageAccountMenu(false);
                     }} className="flex border-b space-x-2 p-4 items-center cursor-pointer">
                         <UserX className="w-5 h-5 text-secondary " />
                         <span className="text-primary">Suspend Account</span>
-                    </div>
-                    <div onClick={() => {
+                    </div>}
+
+                    {agent?.status !== "blacklisted" && <div onClick={() => {
                         WithConfirmAlert(() => UpdateAgentStatus("blacklisted"));
                         setShowManageAccountMenu(false);
                     }} className="flex border-b space-x-2 p-4 items-center cursor-pointer">
                         <UserMinus className="w-5 h-5 text-secondary " />
                         <span className="text-primary">Blacklist Account</span>
-                    </div>
+                    </div>}
+
                 </div>
             </div>
 
