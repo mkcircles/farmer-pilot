@@ -63,7 +63,9 @@ class ProcessReports extends Command
        $to = Carbon::parse($data->to_date);
 
         $qb = (new FarmerProfile)->newQuery();
-        $qb->whereBetween('created_at', [$from, $to]);
+        $qb->where('created_at', '>=', date($from).' 00:00:00');
+        $qb->where('created_at', '<=', date($to).' 23:59:59');
+       // $qb->whereDate('created_at', [$from, $to]);
         unset($data->from_date);
         unset($data->to_date);
 
