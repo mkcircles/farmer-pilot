@@ -25,6 +25,6 @@ class AgentActivityReport extends Command
      */
     public function handle()
     {
-        
+        echo "Hello World";
     }
 }
