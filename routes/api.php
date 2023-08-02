@@ -4,6 +4,7 @@ use App\Http\Controllers\API\AgentController;
 use App\Http\Controllers\API\DataController;
 use App\Http\Controllers\API\FarmerProfileController;
 use App\Http\Controllers\API\FPOController;
+use App\Http\Controllers\API\LocationController;
 use App\Http\Controllers\API\ReportController;
 use App\Http\Controllers\API\SummaryController;
 use App\Http\Controllers\AUTH\AuthController;
@@ -26,6 +27,8 @@ Route::get('/', function () {
 Route::get('/agents/all', [AgentController::class, 'getAllAgents']);
 Route::post('/agent/search', [AgentController::class, 'getSearchAgent']);
 Route::post('/agent/search/auth', [AgentController::class, 'getSearchAgentAuth']);
+
+Route::get('/district',[LocationController::class, 'importDistrictSeeder']);
 
 
 Route::controller(AuthController::class)->group(function () {

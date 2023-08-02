@@ -63,7 +63,7 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $reports = Report::where('created_by', auth()->user()->id)->paginate();
+        $reports = Report::where('created_by', auth()->user()->id)->orderBy('id','desc')->paginate();
         return $reports;
     }
 
