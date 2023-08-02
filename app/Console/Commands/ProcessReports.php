@@ -132,7 +132,7 @@ class ProcessReports extends Command
 
 
             array_push($data, [
-                $farmer->id,
+                $farmer->farmer_id,
                 $farmer->first_name,
                 $farmer->last_name,
                 $farmer->dob,
