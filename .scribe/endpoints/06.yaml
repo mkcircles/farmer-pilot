@@ -1,21 +1,21 @@
-name: Reports
+name: 'Data Management'
 description: |-
 
-  APIs for generating and managing reports
+  APIs for managing farmer profile
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/reports
+    uri: api/farmers
     metadata:
-      groupName: Reports
+      groupName: 'Data Management'
       groupDescription: |-
 
-        APIs for generating and managing reports
+        APIs for managing farmer profile
       subgroup: ''
       subgroupDescription: ''
-      title: 'Get all reports'
-      description: 'Get a list of generated reports'
+      title: 'Get all farmers'
+      description: 'This endpoint allows a user to get all farmers'
       authenticated: true
       custom: []
     headers:
@@ -34,54 +34,105 @@ endpoints:
         status: 200
         content: |-
           {
-              "status": "success",
-              "data": {
-                  "reports": [
-                      {
-                          "id": 1,
-                          "name": "Report 1",
-                          "report_type": "2022-01-01",
-                          "report_params": {
-                              "from_date": "2022-01-01",
-                              "to_date": "2022-01-01",
-                              "district": "Kampala",
-                              "agent_id": 1,
-                              "product": "Maize",
-                              "farm_size": "1",
-                              "gender": "Male"
-                   },
-                          "created_by": 1,
-                          "status": "completed",
-                          "report_url": "http://127.0.0.1:8000/report/1.xls"
-                      }
-                  ]
-              }
+          "current_page": 1,
+          "data": [
+          {
+          "id": 1,
+          "first_name": "John",
+          "last_name": "Doe",
+
+          }
+          ],
+          "first_page_url": "http://localhost:8000/api/farmers?page=1",
+          "from": 1,
+          "last_page": 1,
+          "last_page_url": "http://localhost:8000/api/farmers?page=1",
+          "links": [
+          {
+          "url": null,
+          "label": "&laquo; Previous",
+          "active": false
+          },
+          {
+          "url": "http://localhost:8000/api/farmers?page=1",
+          "label": "1",
+          "active": true
+          },
+          {
+          "url": null,
+          "label": "Next &raquo;",
+          "active": false
+          }
+          ],
+          "next_page_url": null,
+          "path": "http://localhost:8000/api/farmers",
+          "per_page": 10,
+          "prev_page_url": null,
+          "to": 1,
+          "total": 1
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/farmer/{id}'
+    metadata:
+      groupName: 'Data Management'
+      groupDescription: |-
+
+        APIs for managing farmer profile
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get farmer'
+      description: 'This endpoint allows a user to get a farmer'
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: 'required The authorization token. Example: Bearer {token}'
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the farmer.'
+        required: true
+        example: '1'
+        type: string
+        custom: []
+    cleanUrlParameters:
+      id: '1'
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+          "id": 1,
+          "first_name": "John",
+          "last_name": "Doe",
+
+
           }
         headers: []
         description: ''
         custom: []
       -
-        status: 400
+        status: 404
         content: |-
           {
-              "status": "error",
-              "message": [
-                  "The given data was invalid."
-              ]
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-              "status": "error",
-              "message": [
-                  "Unauthenticated."
-              ]
-          }
-          ]
+          "message": "Farmer not found"
           }
         headers: []
         description: ''
@@ -95,16 +146,16 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/report/register
+    uri: api/search
     metadata:
-      groupName: Reports
+      groupName: 'Data Management'
       groupDescription: |-
 
-        APIs for generating and managing reports
+        APIs for managing farmer profile
       subgroup: ''
       subgroupDescription: ''
-      title: 'Create a report'
-      description: 'Create a report'
+      title: 'Search Data'
+      description: 'This endpoint allows a user to search through FPOs, Agents and Farmers'
       authenticated: true
       custom: []
     headers:
@@ -116,133 +167,113 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      name:
-        name: name
-        description: 'The name of the report'
+      search:
+        name: search
+        description: 'The FPO or Agent or Farmer name.'
         required: true
-        example: excepturi
+        example: John
         type: string
-        custom: []
-      report_type:
-        name: report_type
-        description: 'The report type of the report'
-        required: true
-        example: 'farmer-report, crop-report'
-        type: string
-        custom: []
-      from_date:
-        name: from_date
-        description: 'The from date for the report'
-        required: true
-        example: necessitatibus
-        type: string
-        custom: []
-      to_date:
-        name: to_date
-        description: 'The to date for the report'
-        required: true
-        example: repellendus
-        type: string
-        custom: []
-      district:
-        name: district
-        description: 'optional The district of the report'
-        required: false
-        example: exercitationem
-        type: string
-        custom: []
-      agent_id:
-        name: agent_id
-        description: 'optional The agent id of the report'
-        required: false
-        example: 13
-        type: integer
-        custom: []
-      crops_grown:
-        name: crops_grown
-        description: 'optional The product of the report'
-        required: false
-        example: 'Maize, Wheat, beans'
-        type: string
-        custom: []
-      farm_size:
-        name: farm_size
-        description: 'optional The farm size of the report'
-        required: false
-        example: 1
-        type: integer
-        custom: []
-      gender:
-        name: gender
-        description: 'optional The gender of the report'
-        required: false
-        example: 'Male, Female'
-        type: string
-        custom: []
-      fpo_id:
-        name: fpo_id
-        description: 'optional The fpo id of the report'
-        required: false
-        example: 13
-        type: integer
         custom: []
     cleanBodyParameters:
-      name: excepturi
-      report_type: 'farmer-report, crop-report'
-      from_date: necessitatibus
-      to_date: repellendus
-      district: exercitationem
-      agent_id: 13
-      crops_grown: 'Maize, Wheat, beans'
-      farm_size: 1
-      gender: 'Male, Female'
-      fpo_id: 13
+      search: John
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
-              "status": "success",
-              "message": "Report created successfully",
-              "data": {
-                  "id": 1,
-                  "name": "Report 1",
-                  "report_type": "2022-01-01",
-                  "report_params": {
-                      "from_date": "2022-01-01",
-                      "to_date": "2022-01-01",
-                      "district": "Kampala",
-                      "agent_id": 1,
-                      "product": "Maize",
-                      "farm_size": "1",
-                      "gender": "Male"
-                  }
-              }
+          "fpos": [],
+          "agents": [],
+          "farmers": [],
+
           }
         headers: []
         description: ''
         custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/farmer/date/summary
+    metadata:
+      groupName: 'Data Management'
+      groupDescription: |-
+
+        APIs for managing farmer profile
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get Farmer registration by date'
+      description: 'Get Farmer registration by date'
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: 'required The authorization token. Example: Bearer {token}'
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
       -
-        status: 400
+        status: 200
         content: |-
           {
-              "status": "error",
-              "message": [
-                  "The given data was invalid."
-              ]
+          "data":{
+          "2022-06-01": 281,
+          "2022-06-02": 281,
           }
         headers: []
         description: ''
         custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/districts
+    metadata:
+      groupName: 'Data Management'
+      groupDescription: |-
+
+        APIs for managing farmer profile
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get Districts'
+      description: 'Get Distinct Districts and number of farmers registered'
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: 'required The authorization token. Example: Bearer {token}'
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
       -
-        status: 401
+        status: 200
         content: |-
           {
-              "status": "error",
-              "message": [
-                  "Unauthenticated."
-              ]
+          "data":{
+          "Amuru": 281,
+          "Wakiso": 281,
           }
         headers: []
         description: ''

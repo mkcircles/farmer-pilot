@@ -173,5 +173,47 @@ class ReportController extends Controller
         ], 200);
     }
 
+    //Delete report
+    /**
+     * Delete a report
+     * 
+     * Delete a report
+     * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
+     * @headerParam id integer required The id of the report
+     * 
+     * @response 200 {
+     *     "status": "success",
+     *     "message": "Report deleted successfully",
+     *     "data": null
+     * }
+     * 
+     */
+    public function deleteReport($id)
+    {
+        $report = Report::find($id);
+        if(!$report) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Report not found'
+            ], 404);
+        }
+        else{
+            //check is user is the owner
+            if($report->created_by != auth()->user()->id){
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Unauthorized'
+                ], 401);
+            }
+            $report->delete();
+            return response()->json([
+                'status' => 'success',
+                'data' => $report
+            ], 200);
+        }
+    }
+
     
 }

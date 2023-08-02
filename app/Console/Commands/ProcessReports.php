@@ -56,10 +56,7 @@ class ProcessReports extends Command
     }
 
     private function processFarmerReport($report) {
-        $spreadsheet = new Spreadsheet();
-        $sheet = $spreadsheet->getActiveSheet();
-        $sheet->setTitle("Report");
-
+      
         $data = json_decode($report->report_params);
        // dd($data->from_date);
        $from = Carbon::parse($data->from_date);

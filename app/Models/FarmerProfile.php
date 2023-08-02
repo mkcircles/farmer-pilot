@@ -48,8 +48,6 @@ class FarmerProfile extends Model
         'animals_kept',
         'estimated_produce_value_last_season',
         'estimated_produce_value_this_season',
-        'rId',
-        'consumerDeviceId',
         'data_captured_by',
         'agent_id',
         'photo',

@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class MastercardProfileDetails extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'entityType',
+        'entityID',
+        'rID',
+        'consentGUID',
+        'subjectID',
+        'enrollmentStatus',
+        'biometricToken',
+        'consumerDeviceId',
+    ];
 }
