@@ -178,16 +178,16 @@ export default function ReportsList() {
                                         <TableCell>
                                             {report?.report_status ===
                                             "pending" ? (
-                                                <Badge size="md" color="orange">
+                                                <Badge className="capitalize" size="md" color="orange">
                                                     pending
                                                 </Badge>
                                             ) : report?.report_status ===
                                               "completed" ? (
-                                                <Badge size="md" color="green">
+                                                <Badge className="capitalize" size="md" color="green">
                                                     completed
                                                 </Badge>
                                             ) : (
-                                                <Badge size="md" color="red">
+                                                <Badge className="capitalize" size="md" color="red">
                                                     failed
                                                 </Badge>
                                             )}
