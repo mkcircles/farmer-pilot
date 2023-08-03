@@ -113,6 +113,8 @@ class AuthController extends Controller
                 if($user->role == 'agent'){
                     //Get agent details 
                     $agent = Agent::where('email', $email)->orWhere('phone_number', $email)->first();
+                    $agent['first_name'] = $agent->first_name;
+                    $agent['last_name'] = $agent->last_name;
                     $user['agent_id'] =  $agent->id;
                     $user['fpo_id'] =  $agent->fpo_id;
                 }

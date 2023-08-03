@@ -2,10 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Agent;
 use App\Models\FarmerProfile;
 use App\Models\Report;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 require "vendor/autoload.php";
@@ -48,6 +50,9 @@ class ProcessReports extends Command
                 case 'crop-report':
                     $this->processCropReport($report);
                     break;
+                case 'agent-summary-report':
+                    $this->processAgentSummaryReport($report);
+                    break;
                 default:
                     break;
             }
@@ -82,7 +87,6 @@ class ProcessReports extends Command
         
         //Create excel report 
         $data = [];
-
         array_push($data, [
             'Farmer Id',
             'First name',
@@ -125,11 +129,9 @@ class ProcessReports extends Command
             'Created At',
         ]);
        
-      
         foreach($farmers as $farmer) {
             $agent_code = $farmer->agent? $farmer->agent->agent_code : null;
             $agent_name = $farmer->agent? $farmer->agent->first_name.' '.$farmer->agent->last_name : null;
-
 
             array_push($data, [
                 $farmer->farmer_id,
@@ -183,8 +185,6 @@ class ProcessReports extends Command
          }
         fclose($file);
 
-        
-
         $report->report_status = 'completed';
         $report->report_url = $fileName;
         $report->save();
@@ -193,5 +193,74 @@ class ProcessReports extends Command
 
     private function processCropReport($report) {
         
+    }
+
+    private function processAgentSummaryReport($reportData) {
+
+        $data = json_decode($reportData->report_params);
+       // dd($data->from_date);
+       $from = Carbon::parse($data->from_date);
+       $to = Carbon::parse($data->to_date);
+
+       $report  = [];
+       array_push($report, [
+        'Agent Code',
+        'Agent Name',
+        'Phone Number',
+        'Device Name',
+        'TIV Allocated SIM',
+        'FPO',
+        'Start Date',
+        'End Date',
+        'Tally',
+       ]);
+        //Get all agents 
+        $agents = Agent::all();
+        foreach($agents as $agent) {
+            //Count the number of farmers in the agent 
+            $qb = (new FarmerProfile)->newQuery();
+            $qb->where('agent_id', $agent->id);
+            $qb->where('created_at', '>=', date($from).' 00:00:00');
+            $qb->where('created_at', '<=', date($to).' 23:59:59');
+           // $qb->whereDate('created_at', [$from, $to]);
+            unset($data->from_date);
+            unset($data->to_date);
+    
+            if(isset($data->crops_grown)) {
+                $qb->where('crops_grown', 'LIKE', '%'.$data->crops_grown.'%');
+                unset($data->crops_grown);
+            }
+            
+            foreach ($data as $k => $v) {
+                $qb->where($k, $v);
+            }
+            $count = $qb->count();
+
+            array_push($report, [
+                $agent->agent_code,
+                $agent->first_name.' '.$agent->last_name,
+                $agent->phone_number,
+                $agent->device_id,
+                $agent->assigned_phone_number,
+                $agent->fpo->fpo_name,
+                $from->format('d-m-Y'),
+                $to->format('d-m-Y'),
+                $count
+            ]);
+        }  
+        
+        $fileName   = Str::slug($reportData->name, '-').'-'.time().'.csv';
+
+        // (B) WRITE TO CSV FILE
+        $file = fopen(public_path('reports/'.$fileName), "w");
+        foreach ($report as $line) { 
+            fputcsv($file, $line);
+         }
+        fclose($file);
+
+        $reportData->report_status = 'completed';
+        $reportData->report_url = $fileName;
+        $reportData->save();
+
     }
 }

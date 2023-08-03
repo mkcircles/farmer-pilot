@@ -52,7 +52,7 @@ endpoints:
         name: gender
         description: 'Farmer gender. Example Male/Female'
         required: false
-        example: facere
+        example: omnis
         type: string
         custom: []
       education_level:
@@ -290,7 +290,7 @@ endpoints:
       first_name: John
       last_name: Doe
       dob: '1990-01-01'
-      gender: facere
+      gender: omnis
       education_level: Primary
       marital_status: Married
       district: Kampala
@@ -457,7 +457,7 @@ endpoints:
         name: id
         description: 'Farmer id'
         required: true
-        example: 8
+        example: 17
         type: integer
         custom: []
       status:
@@ -468,7 +468,7 @@ endpoints:
         type: string
         custom: []
     cleanBodyParameters:
-      id: 8
+      id: 17
       status: 'pending,complete,valid,invalid,blacklisted,deceased'
     fileParameters: []
     responses:
