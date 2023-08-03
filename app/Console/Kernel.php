@@ -13,7 +13,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
-        //$schedule->command('app:process-reports')->everyTwoMinutes();
+        $schedule->command('app:process-reports')->everyThirtySeconds()->withoutOverlapping();
+        $schedule->command('app:agent-activity-report')->everyFiveSeconds();
+        
     }
 
     /**

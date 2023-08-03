@@ -302,8 +302,6 @@ class FarmerProfileController extends Controller
      *          "animals_kept": "1",
      *          "estimated_produce_value_last_season": "1",
      *          "estimated_produce_value_this_season": "1",
-     *          "rId": "1",
-     *          "consumerDeviceId": "1",
      *          "data_captured_by": "1",
      *          "agent_id": "1",
      *          "photo": "farmer.jpg"
@@ -427,8 +425,6 @@ class FarmerProfileController extends Controller
      *          "animals_kept": "1",
      *          "estimated_produce_value_last_season": "1",
      *          "estimated_produce_value_this_season": "1",
-     *          "rId": "1",
-     *          "consumerDeviceId": "1",
      *          "data_captured_by": "1",
      *          "agent_id": "1",
      *          "photo": "farmer.jpg"

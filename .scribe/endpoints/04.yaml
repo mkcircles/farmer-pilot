@@ -1,21 +1,62 @@
-name: 'Data Management'
+name: 'Users Management'
 description: |-
 
-  APIs for managing farmer profile
+  APIs for generating and managing users
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/farmers
+    uri: api/users
     metadata:
-      groupName: 'Data Management'
+      groupName: 'Users Management'
       groupDescription: |-
 
-        APIs for managing farmer profile
+        APIs for generating and managing users
       subgroup: ''
       subgroupDescription: ''
-      title: 'Get all farmers'
-      description: 'This endpoint allows a user to get all farmers'
+      title: 'Get all users'
+      description: 'Get a list of all users'
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/user/register
+    metadata:
+      groupName: 'Users Management'
+      groupDescription: |-
+
+        APIs for generating and managing users
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create a new user'
+      description: 'Create a new user'
       authenticated: true
       custom: []
     headers:
@@ -26,50 +67,80 @@ endpoints:
     cleanUrlParameters: []
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'The name of the user.'
+        required: true
+        example: 'Maurice Kamugisha'
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'The email of the user.'
+        required: true
+        example: mF5uT@example.com
+        type: string
+        custom: []
+      phone_number:
+        name: phone_number
+        description: 'The phone number of the user.'
+        required: true
+        example: '256781456492'
+        type: string
+        custom: []
+      role:
+        name: role
+        description: 'The role of the user.'
+        required: true
+        example: 'admin,user'
+        type: string
+        custom: []
+    cleanBodyParameters:
+      name: 'Maurice Kamugisha'
+      email: mF5uT@example.com
+      phone_number: '256781456492'
+      role: 'admin,user'
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
-          "current_page": 1,
-          "data": [
-          {
-          "id": 1,
-          "first_name": "John",
-          "last_name": "Doe",
-
+              "status": "success",
+              "data": {
+                  "id": 1,
+                  "name": "Maurice Kamugisha",
+                  "email": "mF5uT@example.com",
+                  "phone_number": "256781456492",
+                  "role": "admin",
+                  "photo": "https://ui-avatars.com/api/?name=Maurice+Kamugisha&size=128",
+                  "created_at": "2022-01-01T00:00:00.000000Z",
+              }
           }
-          ],
-          "first_page_url": "http://localhost:8000/api/farmers?page=1",
-          "from": 1,
-          "last_page": 1,
-          "last_page_url": "http://localhost:8000/api/farmers?page=1",
-          "links": [
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
           {
-          "url": null,
-          "label": "&laquo; Previous",
-          "active": false
-          },
-          {
-          "url": "http://localhost:8000/api/farmers?page=1",
-          "label": "1",
-          "active": true
-          },
-          {
-          "url": null,
-          "label": "Next &raquo;",
-          "active": false
+              "status": "error",
+              "message": [
+                  "The given data was invalid."
+              ],
           }
-          ],
-          "next_page_url": null,
-          "path": "http://localhost:8000/api/farmers",
-          "per_page": 10,
-          "prev_page_url": null,
-          "to": 1,
-          "total": 1
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+              "status": "error",
+              "message": [
+                  "Unauthenticated."
+              ]
           }
         headers: []
         description: ''
@@ -83,16 +154,16 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/farmer/{id}'
+    uri: 'api/user/{id}'
     metadata:
-      groupName: 'Data Management'
+      groupName: 'Users Management'
       groupDescription: |-
 
-        APIs for managing farmer profile
+        APIs for generating and managing users
       subgroup: ''
       subgroupDescription: ''
-      title: 'Get farmer'
-      description: 'This endpoint allows a user to get a farmer'
+      title: 'Get User by id'
+      description: 'Fetch a user by id'
       authenticated: true
       custom: []
     headers:
@@ -102,13 +173,13 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the farmer.'
+        description: 'The ID of the user.'
         required: true
-        example: '1'
+        example: aut
         type: string
         custom: []
     cleanUrlParameters:
-      id: '1'
+      id: aut
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -119,11 +190,28 @@ endpoints:
         status: 200
         content: |-
           {
-          "id": 1,
-          "first_name": "John",
-          "last_name": "Doe",
-
-
+              "status": "success",
+              "data": {
+                  "id": 1,
+                  "name": "Maurice Kamugisha",
+                  "email": "mF5uT@example.com",
+                  "phone_number": "256781456492",
+                  "role": "admin",
+                  "photo": "https://ui-avatars.com/api/?name=Maurice+Kamugisha&size=128",
+                  "created_at": "2022-01-01T00:00:00.000000Z",
+              }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+              "status": "error",
+              "message": [
+                  "Unauthenticated."
+              ]
           }
         headers: []
         description: ''
@@ -132,7 +220,10 @@ endpoints:
         status: 404
         content: |-
           {
-          "message": "Farmer not found"
+              "status": "error",
+              "message": [
+                  "User not found."
+              ],
           }
         headers: []
         description: ''
@@ -146,16 +237,323 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/search
+    uri: 'api/user/{id}/update'
     metadata:
-      groupName: 'Data Management'
+      groupName: 'Users Management'
       groupDescription: |-
 
-        APIs for managing farmer profile
+        APIs for generating and managing users
       subgroup: ''
       subgroupDescription: ''
-      title: 'Search Data'
-      description: 'This endpoint allows a user to search through FPOs, Agents and Farmers'
+      title: 'Update user'
+      description: 'Update user details'
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: 'required The authorization token. Example: Bearer {token}'
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the user.'
+        required: true
+        example: modi
+        type: string
+        custom: []
+    cleanUrlParameters:
+      id: modi
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'The name of the user'
+        required: true
+        example: cumque
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'The email of the user'
+        required: true
+        example: wmonahan@example.com
+        type: string
+        custom: []
+      phone_number:
+        name: phone_number
+        description: 'The phone number of the user'
+        required: true
+        example: sint
+        type: string
+        custom: []
+      role:
+        name: role
+        description: 'The role of the user'
+        required: true
+        example: perspiciatis
+        type: string
+        custom: []
+    cleanBodyParameters:
+      name: cumque
+      email: wmonahan@example.com
+      phone_number: sint
+      role: perspiciatis
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+              "status": "success",
+              "data": {
+                  "id": 1,
+                  "name": "Maurice Kamugisha",
+                  "email": "mF5uT@example.com",
+                  "phone_number": "256781456492",
+                  "role": "admin",
+                  "photo": "https://ui-avatars.com/api/?name=Maurice+Kamugisha&size=128",
+                  "created_at": "2022-01-01T00:00:00.000000Z",
+              }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+              "status": "error",
+              "message": [
+                  "Unauthenticated."
+              ]
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+              "status": "error",
+              "message": [
+                  "User not found."
+              ],
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: api/user/status/update
+    metadata:
+      groupName: 'Users Management'
+      groupDescription: |-
+
+        APIs for generating and managing users
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update user status'
+      description: 'Update user status'
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      id:
+        name: id
+        description: 'The id of the user'
+        required: true
+        example: omnis
+        type: string
+        custom: []
+      status:
+        name: status
+        description: 'The status of the user'
+        required: true
+        example: enim
+        type: string
+        custom: []
+    cleanBodyParameters:
+      id: omnis
+      status: enim
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+              "status": "success",
+              "data": {
+                  "id": 1,
+                  "name": "Maurice Kamugisha",
+                  "email": "mF5uT@example.com",
+                  "phone_number": "256781456492",
+                  "role": "admin",
+                  "photo": "https://ui-avatars.com/api/?name=Maurice+Kamugisha&size=128",
+                  "created_at": "2022-01-01T00:00:00.000000Z",
+              }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+              "status": "error",
+              "message": [
+                  "The given data was invalid."
+              ],
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+              "status": "error",
+              "message": [
+                  "Unauthenticated."
+              ]
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/user/{id}/password/reset'
+    metadata:
+      groupName: 'Users Management'
+      groupDescription: |-
+
+        APIs for generating and managing users
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Reset user password'
+      description: 'Reset user password'
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the user.'
+        required: true
+        example: velit
+        type: string
+        custom: []
+    cleanUrlParameters:
+      id: velit
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      id:
+        name: id
+        description: 'The id of the user'
+        required: true
+        example: et
+        type: string
+        custom: []
+    cleanBodyParameters:
+      id: et
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+              "status": "success",
+              "data": {
+                  "id": 1,
+                  "name": "Maurice Kamugisha",
+                  "email": "mF5uT@example.com",
+                  "phone_number": "256781456492",
+                  "role": "admin",
+                  "photo": "https://ui-avatars.com/api/?name=Maurice+Kamugisha&size=128",
+                  "created_at": "2022-01-01T00:00:00.000000Z",
+              }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+              "status": "error",
+              "message": [
+                  "The given data was invalid."
+              ],
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+              "status": "error",
+              "message": [
+                  "Unauthenticated."
+              ]
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+              "status": "error",
+              "message": [
+                  "User not found."
+              ]
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: api/user/password/update
+    metadata:
+      groupName: 'Users Management'
+      groupDescription: |-
+
+        APIs for generating and managing users
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update user password'
+      description: 'Update user password'
       authenticated: true
       custom: []
     headers:
@@ -167,113 +565,75 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      search:
-        name: search
-        description: 'The FPO or Agent or Farmer name.'
+      id:
+        name: id
+        description: 'The id of the user'
         required: true
-        example: John
+        example: nisi
+        type: string
+        custom: []
+      password:
+        name: password
+        description: 'The password of the user'
+        required: true
+        example: ')]$L*E=k,!UtNcB'
         type: string
         custom: []
     cleanBodyParameters:
-      search: John
+      id: nisi
+      password: ')]$L*E=k,!UtNcB'
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
-          "fpos": [],
-          "agents": [],
-          "farmers": [],
-
+              "status": "success",
+              "data": {
+                  "id": 1,
+                  "name": "Maurice Kamugisha",
+                  "email": "mF5uT@example.com",
+                  "phone_number": "256781456492",
+                  "role": "admin",
+                  "photo": "https://ui-avatars.com/api/?name=Maurice+Kamugisha&size=128",
+                  "created_at": "2022-01-01T00:00:00.000000Z",
+              }
           }
         headers: []
         description: ''
         custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: api/farmer/date/summary
-    metadata:
-      groupName: 'Data Management'
-      groupDescription: |-
-
-        APIs for managing farmer profile
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Get Farmer registration by date'
-      description: 'Get Farmer registration by date'
-      authenticated: true
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Authorization: 'required The authorization token. Example: Bearer {token}'
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
       -
-        status: 200
+        status: 400
         content: |-
           {
-          "data":{
-          "2022-06-01": 281,
-          "2022-06-02": 281,
+              "status": "error",
+              "message": [
+                  "The given data was invalid."
+              ],
           }
         headers: []
         description: ''
         custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: api/districts
-    metadata:
-      groupName: 'Data Management'
-      groupDescription: |-
-
-        APIs for managing farmer profile
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Get Districts'
-      description: 'Get Distinct Districts and number of farmers registered'
-      authenticated: true
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Authorization: 'required The authorization token. Example: Bearer {token}'
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
       -
-        status: 200
+        status: 401
         content: |-
           {
-          "data":{
-          "Amuru": 281,
-          "Wakiso": 281,
+              "status": "error",
+              "message": [
+                  "Unauthenticated."
+              ]
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+              "status": "error",
+              "message": [
+                  "User not found."
+              ]
           }
         headers: []
         description: ''

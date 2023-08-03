@@ -4,9 +4,11 @@ use App\Http\Controllers\API\AgentController;
 use App\Http\Controllers\API\DataController;
 use App\Http\Controllers\API\FarmerProfileController;
 use App\Http\Controllers\API\FPOController;
+use App\Http\Controllers\API\LocationController;
 use App\Http\Controllers\API\ReportController;
 use App\Http\Controllers\API\SummaryController;
 use App\Http\Controllers\AUTH\AuthController;
+use App\Http\Controllers\API\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +29,8 @@ Route::get('/agents/all', [AgentController::class, 'getAllAgents']);
 Route::post('/agent/search', [AgentController::class, 'getSearchAgent']);
 Route::post('/agent/search/auth', [AgentController::class, 'getSearchAgentAuth']);
 
+Route::get('/district',[LocationController::class, 'importDistrictSeeder']);
+
 
 Route::controller(AuthController::class)->group(function () {
     Route::post('/login', 'login');
@@ -39,6 +43,15 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::post('/refresh', [AuthController::class, 'refresh']);
     //Summaries
     Route::get('/summary', [SummaryController::class, 'DashboardSummary']);
+    //Users Routes
+    Route::get('/users',[UserController::class, 'index']);
+    Route::post('/user/register', [UserController::class, 'store']);
+    Route::get('/user/{id}', [UserController::class, 'show']);
+    Route::post('/user/{id}/update', [UserController::class, 'update']);
+    Route::put('/user/status/update', [UserController::class, 'updateUserStatus']);
+    Route::get('/user/{id}/password/reset', [UserController::class, 'resetUserPassword']);
+    Route::put('/user/password/update', [UserController::class, 'updateUserPassword']);
+    
 
     Route::post('/farmer/register', [FarmerProfileController::class, 'registerFarmer']);
     Route::get('/farmers', [DataController::class, 'getAllFarmers']);
@@ -52,7 +65,7 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::get('/agent/{agent_id}/farmers', [AgentController::class, 'getAgentFarmers']);
     Route::post('/agent/device/add', [AgentController::class, 'addDeviceToAgent']);
     Route::get('/agent/{agent_id}/farmers/count', [AgentController::class, 'getAgentFarmersCount']);
-    Route::get('/agents/graph', [AgentController::class, 'getAgentGraph']);    
+    Route::get('/agents/graph', [AgentController::class, 'getAgentGraph']);
     Route::put('/agent/status/update', [AgentController::class, 'updateAgentStatus']);
 
     Route::get('/fpos', [FPOController::class, 'index']);
@@ -79,7 +92,8 @@ Route::middleware('auth:sanctum')->group( function () {
     //Reports Routes
     Route::get('/reports', [ReportController::class, 'index']);
     Route::post('/report/register', [ReportController::class, 'createReport']);
-    
+    Route::delete('/report/{id}', [ReportController::class, 'deleteReport']);
+
 });
 
 

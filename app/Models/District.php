@@ -11,5 +11,9 @@ class District extends Model
 
     protected $fillable = [
         'name',
-    ]
+        'region',
+        'size',
+        'size_units',
+        'townstatus'
+    ];
 }
