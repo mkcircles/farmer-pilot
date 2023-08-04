@@ -16,7 +16,7 @@ import {
 } from "@tremor/react";
 import { useNavigate } from "react-router-dom";
 import { FARMER_PROFILE } from "../../../router/routes";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { API_KEY, BASE_API_URL } from "../../../env";
 import { numberFormatter } from "../../../utils/numberFormatter";
@@ -46,6 +46,7 @@ import CreateUserModal from "../CreateUserModal";
 import EditUserModal from "../EditUserModal";
 import WithConfirmAlert from "../../../helpers/WithConfirmAlert";
 import UpdateUserPasswordModal from "../UpdateUserPasswordModal";
+
 const TableActionsModal = ({
     user,
     setSelectedUser,
@@ -53,10 +54,11 @@ const TableActionsModal = ({
     setShowEditUserModal,
     resetUserPassword,
     setShowUpdateUserPasswordModal,
+    actionsRef,
 }) => {
     if (!user) return null;
     return (
-        <div className="left-0 right-0 flex justify-center items-center  h-28 fixed bottom-32 lg:bottom-8  bg-transparent z-50">
+        <div ref={actionsRef} className="left-0 right-0 flex justify-center items-center  h-28 fixed bottom-32 lg:bottom-8  bg-transparent z-50">
             <div className="box mx-auto  h-full flex shadow-lg">
                 <div className="h-full w-52 px-2 space-y-2 bg-primary rounded-l text-white text-2xl font-bold flex flex-col justify-center items-center">
                     <UserSquare className="w-8 h-8" />
@@ -168,6 +170,7 @@ export default function UsersList() {
     const [showCreateNewUserModal, setShowCreateNewUserModal] = useState(false);
     const [showEditUserModal, setShowEditUserModal] = useState(false);
     const [showUpdateUserPasswordModal, setShowUpdateUserPasswordModal] = useState(false);
+    const actionsRef = useRef(null);
 
     const fetchUsers = (url = `${BASE_API_URL}/users`) => {
         updateAppContextState("loading", true);
@@ -301,6 +304,12 @@ export default function UsersList() {
         if (moveToPage == currentPage) return;
         debounceFetchUsers(`${BASE_API_URL}/users?page=${moveToPage}`);
     }, [moveToPage]);
+
+    useEffect(() => {
+        if(selectedUser) {
+            actionsRef?.current?.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [selectedUser]);
 
     const [selectedNames, setSelectedNames] = useState([]);
     const isUserSelected = (data) => {
@@ -474,6 +483,7 @@ export default function UsersList() {
                 setShowEditUserModal={setShowEditUserModal}
                 resetUserPassword={resetUserPassword}
                 setShowUpdateUserPasswordModal={setShowUpdateUserPasswordModal}
+                actionsRef={actionsRef}
             />
             <CreateUserModal
                 onSuccessCallback={fetchUsers}
