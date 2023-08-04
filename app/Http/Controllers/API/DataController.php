@@ -78,14 +78,17 @@ class DataController extends Controller
      * 
      * @header Authorization required The authorization token. Example: Bearer {token}
      * 
-     * @urlParam id required The ID of the farmer. Example: 1
+     * @urlParam farmer_id required The Farmer unique ID . Example: FAR_0001
      * 
      * @response 200 {
+     * "status": "success",
+     * "message": "Farmer profile ",
+     * "data": {
      * "id": 1,
      * "first_name": "John",
      * "last_name": "Doe",
-     * 
-     * 
+     * ...
+     * }
      * }
      * 
      * @response 404 {
@@ -94,13 +97,20 @@ class DataController extends Controller
      * 
      * 
      */
-    public function getFarmer($id)
+    public function getFarmer($farmer_id)
     {
-        $farmer = FarmerProfile::where('id', $id)->first();
-        if ($farmer == null) {
-            return response(['message' => 'Farmer not found'], 404);
+        $farmer = FarmerProfile::where('farmer_id', $farmer_id)->first();
+        if (!$farmer) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Farmer not found'
+            ], 404);
         }
-        return response($farmer, 200);
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Farmer profile ',
+            'data' => $farmer
+        ],200);
     }
 
     /**

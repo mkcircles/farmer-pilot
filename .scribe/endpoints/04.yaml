@@ -175,11 +175,11 @@ endpoints:
         name: id
         description: 'The ID of the user.'
         required: true
-        example: aut
+        example: voluptas
         type: string
         custom: []
     cleanUrlParameters:
-      id: aut
+      id: voluptas
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -258,11 +258,11 @@ endpoints:
         name: id
         description: 'The ID of the user.'
         required: true
-        example: modi
+        example: et
         type: string
         custom: []
     cleanUrlParameters:
-      id: modi
+      id: et
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -270,35 +270,35 @@ endpoints:
         name: name
         description: 'The name of the user'
         required: true
-        example: cumque
+        example: maxime
         type: string
         custom: []
       email:
         name: email
         description: 'The email of the user'
         required: true
-        example: wmonahan@example.com
+        example: dina89@example.com
         type: string
         custom: []
       phone_number:
         name: phone_number
         description: 'The phone number of the user'
         required: true
-        example: sint
+        example: est
         type: string
         custom: []
       role:
         name: role
         description: 'The role of the user'
         required: true
-        example: perspiciatis
+        example: ratione
         type: string
         custom: []
     cleanBodyParameters:
-      name: cumque
-      email: wmonahan@example.com
-      phone_number: sint
-      role: perspiciatis
+      name: maxime
+      email: dina89@example.com
+      phone_number: est
+      role: ratione
     fileParameters: []
     responses:
       -
@@ -376,19 +376,19 @@ endpoints:
         name: id
         description: 'The id of the user'
         required: true
-        example: omnis
+        example: id
         type: string
         custom: []
       status:
         name: status
         description: 'The status of the user'
         required: true
-        example: enim
+        example: illo
         type: string
         custom: []
     cleanBodyParameters:
-      id: omnis
-      status: enim
+      id: id
+      status: illo
     fileParameters: []
     responses:
       -
@@ -462,11 +462,11 @@ endpoints:
         name: id
         description: 'The ID of the user.'
         required: true
-        example: velit
+        example: commodi
         type: string
         custom: []
     cleanUrlParameters:
-      id: velit
+      id: commodi
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -474,11 +474,11 @@ endpoints:
         name: id
         description: 'The id of the user'
         required: true
-        example: et
+        example: illum
         type: string
         custom: []
     cleanBodyParameters:
-      id: et
+      id: illum
     fileParameters: []
     responses:
       -
@@ -569,19 +569,19 @@ endpoints:
         name: id
         description: 'The id of the user'
         required: true
-        example: nisi
+        example: enim
         type: string
         custom: []
       password:
         name: password
         description: 'The password of the user'
         required: true
-        example: ')]$L*E=k,!UtNcB'
+        example: "89Oh<~~P'$6co"
         type: string
         custom: []
     cleanBodyParameters:
-      id: nisi
-      password: ')]$L*E=k,!UtNcB'
+      id: enim
+      password: "89Oh<~~P'$6co"
     fileParameters: []
     responses:
       -

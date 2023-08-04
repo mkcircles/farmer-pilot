@@ -43,6 +43,7 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::post('/refresh', [AuthController::class, 'refresh']);
     //Summaries
     Route::get('/summary', [SummaryController::class, 'DashboardSummary']);
+
     //Users Routes
     Route::get('/users',[UserController::class, 'index']);
     Route::post('/user/register', [UserController::class, 'store']);
@@ -55,7 +56,7 @@ Route::middleware('auth:sanctum')->group( function () {
 
     Route::post('/farmer/register', [FarmerProfileController::class, 'registerFarmer']);
     Route::get('/farmers', [DataController::class, 'getAllFarmers']);
-    Route::get('/farmer/{id}', [DataController::class, 'getFarmer']);
+    Route::get('/farmer/{farmer_id}', [DataController::class, 'getFarmer']);
     Route::put('/farmer/update/status', [FarmerProfileController::class, 'updateFarmerProfileStatus']);
 
     Route::get('/agents', [AgentController::class, 'index']);
