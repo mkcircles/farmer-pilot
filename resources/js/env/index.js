@@ -1,4 +1,4 @@
-const dev_base_url = "http://127.0.0.1:8000";
+const dev_base_url = "https://farmers.nauticaltech.ug";
 const prod_base_url = "https://farmers.nauticaltech.ug";
 
 export const BASE_API_URL = process.env.NODE_ENV === 'production' ? `${prod_base_url}/api` : `${dev_base_url}/api`;

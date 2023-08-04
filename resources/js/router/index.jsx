@@ -1,6 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import Dashboard from "../pages/Dashboard";
-import FarmersList from "../pages/FarmersList";
 import {
     AGENTS_LIST,
     AGENT_PROFILE,
@@ -18,24 +16,32 @@ import {
     LOGIN,
     LOGOUT,
     REPORTS,
+    USERS_LIST,
 } from "./routes";
-import Reports from "../pages/Reports";
-import FarmerProfile from "../pages/FarmerProfile";
-import AgentProfile from "../pages/AgentProfile";
-import FpoList from "../pages/FpoList";
-import Login from "../pages/Login";
-import CreateFpo from "../pages/CreateFpo";
-import CreateAgent from "../pages/CreateAgent";
-import AgentsList from "../pages/AgentsList";
-import Menu from "../layouts/SideMenu";
-import EditAgent from "../pages/EditAgent";
-import FpoProfile from "../pages/FpoProfile";
-import EditFpo from "../pages/EditFpo";
-import FpoMap from "../pages/FpoMap";
-import CreateFpoAdminUserAccount from "../pages/CreateFpoAdminUserAccount";
 import { useDispatch } from "react-redux";
 import { logOut } from "../stores/authSlice";
-import { useEffect } from "react";
+import { Suspense, lazy, useEffect } from "react";
+import Loading from "../components/Loading";
+
+const Dashboard = lazy(() => import("../pages/Dashboard"));
+const FarmersList = lazy(() => import("../pages/FarmersList"));
+const Reports = lazy(() => import("../pages/Reports"));
+const FarmerProfile = lazy(() => import("../pages/FarmerProfile"));
+const AgentProfile = lazy(() => import("../pages/AgentProfile"));
+const FpoList = lazy(() => import("../pages/FpoList"));
+const Login = lazy(() => import("../pages/Login"));
+const CreateFpo = lazy(() => import("../pages/CreateFpo"));
+const CreateAgent = lazy(() => import("../pages/CreateAgent"));
+const AgentsList = lazy(() => import("../pages/AgentsList"));
+const Menu = lazy(() => import("../layouts/SideMenu"));
+const EditAgent = lazy(() => import("../pages/EditAgent"));
+const FpoProfile = lazy(() => import("../pages/FpoProfile"));
+const EditFpo = lazy(() => import("../pages/EditFpo"));
+const FpoMap = lazy(() => import("../pages/FpoMap"));
+const CreateFpoAdminUserAccount = lazy(() =>
+    import("../pages/CreateFpoAdminUserAccount")
+);
+const UsersList = lazy(() => import("../pages/Users/UsersList"));
 
 const Logout = () => {
     const dispatch = useDispatch();
@@ -50,67 +56,139 @@ const Logout = () => {
 const router = createBrowserRouter([
     {
         path: LOGIN,
-        element: <Login />,
+        element: (
+            <Suspense fallback={<Loading />}>
+                <Login />
+            </Suspense>
+        ),
     },
     {
         path: "/",
-        element: <Menu />,
+        element: (
+            <Suspense fallback={<Loading />}>
+                <Menu />
+            </Suspense>
+        ),
         children: [
             {
                 path: HOME,
-                element: <Dashboard />,
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <Dashboard />
+                    </Suspense>
+                ),
+            },
+            {
+                path: USERS_LIST,
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <UsersList />
+                    </Suspense>
+                ),
             },
             {
                 path: FARMERS_LIST,
-                element: <FarmersList />,
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <FarmersList />
+                    </Suspense>
+                ),
             },
             {
                 path: FPO_LIST,
-                element: <FpoList />,
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <FpoList />
+                    </Suspense>
+                ),
             },
             {
                 path: FPO_MAP,
-                element: <FpoMap />,
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <FpoMap />
+                    </Suspense>
+                ),
             },
             {
                 path: `${FPO_PROFILE}/:id`,
-                element: <FpoProfile />,
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <FpoProfile />
+                    </Suspense>
+                ),
             },
             {
                 path: AGENTS_LIST,
-                element: <AgentsList />,
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <AgentsList />
+                    </Suspense>
+                ),
             },
             {
                 path: CREATE_FPO,
-                element: <CreateFpo />,
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <CreateFpo />
+                    </Suspense>
+                ),
             },
             {
                 path: CREATE_AGENT,
-                element: <CreateAgent />,
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <CreateAgent />
+                    </Suspense>
+                ),
             },
             {
                 path: CREATE_FPO_ADMIN_USER_ACCOUNT,
-                element: <CreateFpoAdminUserAccount />,
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <CreateFpoAdminUserAccount />
+                    </Suspense>
+                ),
             },
             {
                 path: EDIT_AGENT,
-                element: <EditAgent />,
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <EditAgent />
+                    </Suspense>
+                ),
             },
             {
                 path: EDIT_FPO,
-                element: <EditFpo />,
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <EditFpo />
+                    </Suspense>
+                ),
             },
             {
                 path: `${FARMER_PROFILE}/:id`,
-                element: <FarmerProfile />,
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <FarmerProfile />
+                    </Suspense>
+                ),
             },
             {
                 path: `${AGENT_PROFILE}/:id`,
-                element: <AgentProfile />,
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <AgentProfile />
+                    </Suspense>
+                ),
             },
             {
                 path: REPORTS,
-                element: <Reports />,
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <Reports />
+                    </Suspense>
+                ),
             },
             {
                 path: LOGOUT,

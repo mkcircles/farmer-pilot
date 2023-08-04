@@ -114,6 +114,9 @@ export default function FarmersList({ fpo_id, agent_id }) {
                                 District
                             </TableHeaderCell>
                             <TableHeaderCell className="">
+                                Registered On
+                            </TableHeaderCell>
+                            <TableHeaderCell className="">
                                 Status
                             </TableHeaderCell>
                             <TableHeaderCell>Link</TableHeaderCell>
@@ -134,12 +137,16 @@ export default function FarmersList({ fpo_id, agent_id }) {
                                     {farmer.district}
                                 </TableCell>
                                 <TableCell>
+                                    {new Date(farmer?.created_at)?.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                                </TableCell>
+                                <TableCell>
                                     {farmer.status === "complete" ? (
                                         <Badge className="capitalize" size="md" color="green">{farmer?.status}</Badge>
                                     ): (
                                         <Badge className="capitalize" size="md" color="red">{farmer?.status}</Badge>
                                     )}
                                 </TableCell>
+                                
                                 <TableCell>
                                     <Button
                                         size="xs"
@@ -147,7 +154,7 @@ export default function FarmersList({ fpo_id, agent_id }) {
                                         color="orange"
                                         onClick={() => {
                                             navigate(
-                                                `${FARMER_PROFILE}/${farmer.id}`
+                                                `${FARMER_PROFILE}/${farmer?.farmer_id}`
                                             );
                                         }}
                                     >
