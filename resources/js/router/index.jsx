@@ -18,6 +18,7 @@ import {
     LOGIN,
     LOGOUT,
     REPORTS,
+    USERS_LIST,
 } from "./routes";
 import Reports from "../pages/Reports";
 import FarmerProfile from "../pages/FarmerProfile";
@@ -36,6 +37,7 @@ import CreateFpoAdminUserAccount from "../pages/CreateFpoAdminUserAccount";
 import { useDispatch } from "react-redux";
 import { logOut } from "../stores/authSlice";
 import { useEffect } from "react";
+import UsersList from "../pages/Users/UsersList";
 
 const Logout = () => {
     const dispatch = useDispatch();
@@ -59,6 +61,10 @@ const router = createBrowserRouter([
             {
                 path: HOME,
                 element: <Dashboard />,
+            },
+            {
+                path: USERS_LIST,
+                element: <UsersList />,
             },
             {
                 path: FARMERS_LIST,

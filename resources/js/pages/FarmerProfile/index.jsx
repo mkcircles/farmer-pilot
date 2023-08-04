@@ -104,9 +104,9 @@ const FarmerProfile = () => {
                 },
             })
             .then((res) => {
-                console.log("Farmer Data", res.data);
+                console.log("Farmer Data", res.data?.data);
                 if (res?.data) {
-                    setFarmerData(res?.data);
+                    setFarmerData(res?.data?.data);
                 }
             })
             .catch((err) => {
