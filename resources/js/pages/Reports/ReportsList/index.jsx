@@ -24,9 +24,11 @@ import { useContext } from "react";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../../stores/hooks";
 import { setFpos } from "../../../stores/fpoSlice";
-import { debounce, isEqual } from "lodash";
+import { debounce, isEqual, without } from "lodash";
 import { Download, FilePlus2, Trash, Trash2 } from "lucide-react";
 import CreateReportModal from "../CreateReportModal";
+import Pagination from "../../../components/Pagination";
+import WithConfirmAlert from "../../../helpers/WithConfirmAlert";
 
 export default function ReportsList() {
     const dispatch = useAppDispatch();
@@ -35,6 +37,11 @@ export default function ReportsList() {
     const { updateAppContextState } = useContext(AppContext);
     const [showCreateReportModal, setShowCreateReportModal] = useState(false);
     const [reports, setReports] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [moveToPage, setMoveToPage] = useState(1);
+    const [lastPage, setLastPage] = useState(1);
+    const [prevPageUrl, setPrevPageUrl] = useState("");
+    const [nextPageUrl, setNextPageUrl] = useState("");
 
     const [selectedNames, setSelectedNames] = useState([]);
     const isReportSelected = (data) => {
@@ -62,8 +69,11 @@ export default function ReportsList() {
                 console.log("Reports Data", res?.data?.data);
                 let resData = res?.data?.data;
                 if (res?.data) {
+                    setCurrentPage(resData?.current_page);
+                    setPrevPageUrl(resData?.prev_page_url);
+                    setNextPageUrl(resData?.next_page_url);
+                    setLastPage(resData?.last_page);
                     setReports(resData);
-                    // dispatch(setFpos(resData?.data));
                 }
             })
             .catch((err) => {
@@ -79,6 +89,19 @@ export default function ReportsList() {
     }, [token]);
 
     useEffect(() => {
+        if (moveToPage == currentPage) return;
+        setMoveToPage(currentPage);
+    }, [currentPage]);
+
+    useEffect(() => {
+        if (moveToPage == currentPage) return;
+        debounce(
+            fetchReports,
+            1000
+        )(`${BASE_API_URL}/reports?page=${moveToPage || 1}`);
+    }, [moveToPage]);
+
+    useEffect(() => {
         if (!showCreateReportModal) fetchReports({ showLoading: false });
     }, [showCreateReportModal]);
 
@@ -90,6 +113,48 @@ export default function ReportsList() {
         });
     };
 
+    const deleteReport = (id) => {
+        updateAppContextState("loading", true);
+        return new Promise((resolve, reject) => {
+            axios
+            .delete(`${BASE_API_URL}/report/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then(() => {
+                fetchReports();
+                resolve({
+                    title: "success",
+                    message: "Report deleted successfully",
+                })
+            })
+            .catch((err) => {
+                console.log(err);
+                reject({
+                    message: "Something went wrong. Report could not be deleted",
+                    title: "error",
+                })
+            })
+            .finally(() => {
+                updateAppContextState("loading", false);
+            });
+        })
+    }
+
+    const formatReportType = (type) => {
+        switch (type) {
+            case "crop-report":
+                return "Crops Report";
+            case "farmer-report":
+                return "Farmers Report";
+            case "custom-report":
+                return "Custom Report";
+            default:
+                return type;
+        }
+    }
+
     return (
         <div className="w-full h-full">
             <Card className=" px-0">
@@ -100,7 +165,7 @@ export default function ReportsList() {
                             placeholder="Search Reports..."
                             className="max-w-md"
                         >
-                            {reports?.map((report) => (
+                            {reports?.data?.map((report) => (
                                 <MultiSelectItem
                                     key={report?.id}
                                     value={report?.name}
@@ -140,7 +205,7 @@ export default function ReportsList() {
                     </TableHead>
 
                     <TableBody>
-                        {reports
+                        {reports?.data
                             ?.filter((report) => isReportSelected(report))
                             .map((report) => {
                                 report = {
@@ -151,7 +216,7 @@ export default function ReportsList() {
                                     <TableRow key={report?.id} className="m-0">
                                         <TableCell>{report?.name}</TableCell>
                                         <TableCell>
-                                            {report?.report_type}
+                                            {formatReportType(report?.report_type)}
                                         </TableCell>
                                         <TableCell>
                                             {formatDateString(
@@ -178,16 +243,28 @@ export default function ReportsList() {
                                         <TableCell>
                                             {report?.report_status ===
                                             "pending" ? (
-                                                <Badge className="capitalize" size="md" color="orange">
+                                                <Badge
+                                                    className="capitalize"
+                                                    size="md"
+                                                    color="orange"
+                                                >
                                                     pending
                                                 </Badge>
                                             ) : report?.report_status ===
                                               "completed" ? (
-                                                <Badge className="capitalize" size="md" color="green">
+                                                <Badge
+                                                    className="capitalize"
+                                                    size="md"
+                                                    color="green"
+                                                >
                                                     completed
                                                 </Badge>
                                             ) : (
-                                                <Badge className="capitalize" size="md" color="red">
+                                                <Badge
+                                                    className="capitalize"
+                                                    size="md"
+                                                    color="red"
+                                                >
                                                     failed
                                                 </Badge>
                                             )}
@@ -207,9 +284,11 @@ export default function ReportsList() {
                                                 ) : (
                                                     <Download className="h-5 w-5 text-tremor-brand-muted cursor-not-allowed" />
                                                 )}
-                                                {/* <span title="Delete">
-                                            <Trash2 className="h-5 w-5 text-danger cursor-pointer" />
-                                        </span> */}
+                                                <span onClick={() => {
+                                                    WithConfirmAlert(() => deleteReport(report?.id));
+                                                }} title="Delete">
+                                                    <Trash2 className="h-5 w-5 text-danger cursor-pointer" />
+                                                </span>
                                             </div>
                                         </TableCell>
                                     </TableRow>
@@ -217,6 +296,17 @@ export default function ReportsList() {
                             })}
                     </TableBody>
                 </Table>
+
+                <Pagination
+                    currentPage={currentPage}
+                    moveToPage={moveToPage}
+                    fetchPage={fetchReports}
+                    setMoveToPage={setMoveToPage}
+                    nextPageUrl={nextPageUrl}
+                    prevPageUrl={prevPageUrl}
+                    lastPage={lastPage}
+                    totalPages={reports?.last_page}
+                />
 
                 <CreateReportModal
                     showModal={showCreateReportModal}

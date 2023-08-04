@@ -39,6 +39,11 @@ const CreateReportModal = ({ showModal, setShowModal }) => {
     const [agents, setAgents] = useState([]);
     const [fpos, setFpos] = useState([]);
 
+    const reportTypes = [{name: "Farmers Report",
+    value: "farmer-report"}, {name: "Crops Report",
+    value: "crop-report"}, {name: "Custom Report",
+    value: "custom-report"}];
+
     const handleCreateReport = () => {
         updateAppContextState("loading", true);
         axios
@@ -189,15 +194,15 @@ const CreateReportModal = ({ showModal, setShowModal }) => {
                                     })
                                 }
                             >
-                                {["farmer-report", "crop-report"]?.map(
-                                    (type, index) => {
+                                {reportTypes?.map(
+                                    (reportType, index) => {
                                         return (
                                             <SearchSelectItem
                                                 key={index}
-                                                value={type}
+                                                value={reportType?.value}
                                                 icon={File}
                                             >
-                                                {type}
+                                                {reportType?.name}
                                             </SearchSelectItem>
                                         );
                                     }

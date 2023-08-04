@@ -44,7 +44,16 @@ import { setAppError } from "../../../stores/appErrorSlice";
 import { v4 as uuidv4 } from "uuid";
 import CreateUserModal from "../CreateUserModal";
 import EditUserModal from "../EditUserModal";
-const TableActionsModal = ({ user, setSelectedUser, changeUserStatus, setShowEditUserModal }) => {
+import WithConfirmAlert from "../../../helpers/WithConfirmAlert";
+import UpdateUserPasswordModal from "../UpdateUserPasswordModal";
+const TableActionsModal = ({
+    user,
+    setSelectedUser,
+    changeUserStatus,
+    setShowEditUserModal,
+    resetUserPassword,
+    setShowUpdateUserPasswordModal,
+}) => {
     if (!user) return null;
     return (
         <div className="left-0 right-0 flex justify-center items-center  h-28 fixed bottom-32 lg:bottom-8  bg-transparent z-50">
@@ -56,10 +65,13 @@ const TableActionsModal = ({ user, setSelectedUser, changeUserStatus, setShowEdi
                     </span>
                 </div>
                 <div className="flex w-full items-center justify-center space-x-10">
-                    <div onClick={() => {
-                                setShowEditUserModal(true);
-                                //setSelectedUser(null);
-                            }} className="flex flex-col px-2 items-center justify-center text-center font-thin cursor-pointer">
+                    <div
+                        onClick={() => {
+                            setShowEditUserModal(true);
+                            //setSelectedUser(null);
+                        }}
+                        className="flex flex-col px-2 items-center justify-center text-center font-thin cursor-pointer"
+                    >
                         <span className="font-thin text-center p-2">
                             <PenSquare
                                 strokeWidth={1}
@@ -102,31 +114,30 @@ const TableActionsModal = ({ user, setSelectedUser, changeUserStatus, setShowEdi
                             <span className="text-primary">De-activate</span>
                         </div>
                     )}
-                    
-                        <div
-                            
-                            className=" flex flex-col px-2 items-center justify-center text-center font-thin cursor-pointer"
-                        >
-                            <span className="font-thin text-center p-2">
-                                <KeyRound
-                                    strokeWidth={1}
-                                    className="w-8 h-8 text-secondary"
-                                />
-                            </span>
-                            <span className="text-primary">Reset Password</span>
-                        </div>
-                        <div
-                            
-                            className=" flex flex-col px-2 items-center justify-center text-center font-thin cursor-pointer"
-                        >
-                            <span className="font-thin text-center p-2">
-                                <UserCircle
-                                    strokeWidth={1}
-                                    className="w-8 h-8 text-secondary"
-                                />
-                            </span>
-                            <span className="text-primary">Update Password</span>
-                        </div>
+
+                    <div onClick={() => {
+                        WithConfirmAlert(() => {
+                            resetUserPassword(user);
+                            setSelectedUser(null);
+                        })
+                    }} className=" flex flex-col px-2 items-center justify-center text-center font-thin cursor-pointer">
+                        <span className="font-thin text-center p-2">
+                            <KeyRound
+                                strokeWidth={1}
+                                className="w-8 h-8 text-secondary"
+                            />
+                        </span>
+                        <span className="text-primary">Reset Password</span>
+                    </div>
+                    <div onClick={() => setShowUpdateUserPasswordModal(true)} className=" flex flex-col px-2 items-center justify-center text-center font-thin cursor-pointer">
+                        <span className="font-thin text-center p-2">
+                            <UserCircle
+                                strokeWidth={1}
+                                className="w-8 h-8 text-secondary"
+                            />
+                        </span>
+                        <span className="text-primary">Update Password</span>
+                    </div>
                 </div>
                 <div className=" w-32 h-full flex justify-center items-center border-l">
                     <X
@@ -156,6 +167,7 @@ export default function UsersList() {
     const [selectedUser, setSelectedUser] = useState(null);
     const [showCreateNewUserModal, setShowCreateNewUserModal] = useState(false);
     const [showEditUserModal, setShowEditUserModal] = useState(false);
+    const [showUpdateUserPasswordModal, setShowUpdateUserPasswordModal] = useState(false);
 
     const fetchUsers = (url = `${BASE_API_URL}/users`) => {
         updateAppContextState("loading", true);
@@ -225,6 +237,53 @@ export default function UsersList() {
             .finally(() => {
                 updateAppContextState("loading", false);
             });
+    };
+
+    const resetUserPassword = (user) => {
+        updateAppContextState("loading", true);
+        return new Promise((resolve, reject) => {
+            axios
+                .get(`${BASE_API_URL}/user/${user?.id}/password/reset`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                })
+                .then((res) => {
+                    fetchUsers();
+                    dispatch(
+                        setAppSuccessAlert({
+                            id: uuidv4(),
+                            message:
+                                user?.name +
+                                "'s password has been reset successfully!",
+                        })
+                    );
+                    resolve({
+                        message:
+                            user?.name +
+                            "'s password has been reset successfully!",
+                        title: "success",
+                    });
+                })
+                .catch((err) => {
+                    console.log(err);
+                    dispatch(
+                        setAppError({
+                            id: uuidv4(),
+                            message:
+                                "Something went wrong! User password could not be reset!",
+                        })
+                    );
+                    reject({
+                        message:
+                            "Something went wrong! User password could not be reset!",
+                        title: "error",
+                    });
+                })
+                .finally(() => {
+                    updateAppContextState("loading", false);
+                });
+        });
     };
 
     const debounceFetchUsers = debounce(fetchUsers, 1000);
@@ -362,7 +421,9 @@ export default function UsersList() {
                                     </TableCell>
                                     <TableCell>{user.name}</TableCell>
                                     <TableCell>{user.phone_number}</TableCell>
-                                    <TableCell className="capitalize">{user.role}</TableCell>
+                                    <TableCell className="capitalize">
+                                        {user.role}
+                                    </TableCell>
                                     <TableCell>
                                         {user.status === "active" ? (
                                             <Badge
@@ -411,21 +472,32 @@ export default function UsersList() {
                 setSelectedUser={setSelectedUser}
                 changeUserStatus={changeUserStatus}
                 setShowEditUserModal={setShowEditUserModal}
+                resetUserPassword={resetUserPassword}
+                setShowUpdateUserPasswordModal={setShowUpdateUserPasswordModal}
             />
-            <CreateUserModal 
-                onSuccessCallback={fetchUsers} 
+            <CreateUserModal
+                onSuccessCallback={fetchUsers}
                 showModal={showCreateNewUserModal}
                 setShowModal={setShowCreateNewUserModal}
-                  />
-            <EditUserModal 
+            />
+            <EditUserModal
                 userInfo={selectedUser}
                 onSuccessCallback={() => {
                     setSelectedUser(null);
                     fetchUsers();
-                }} 
+                }}
                 showModal={showEditUserModal}
                 setShowModal={setShowEditUserModal}
-                  />
+            />
+            <UpdateUserPasswordModal
+                user={selectedUser}
+                onSuccessCallback={() => {
+                    setSelectedUser(null);
+                    // fetchUsers();
+                }}
+                showModal={showUpdateUserPasswordModal}
+                setShowModal={setShowUpdateUserPasswordModal}
+            />
         </div>
     );
 }
