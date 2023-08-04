@@ -331,9 +331,9 @@ class AgentController extends Controller
      * }
      * 
      */
-    public function show($agent)
+    public function show($agent_code)
     {
-        $agent = Agent::find($agent);
+        $agent = Agent::where('agent_code',$agent_code)->first();
         if(!$agent)
             return response()->json([
                 'success' => false,

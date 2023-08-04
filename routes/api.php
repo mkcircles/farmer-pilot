@@ -61,7 +61,7 @@ Route::middleware('auth:sanctum')->group( function () {
 
     Route::get('/agents', [AgentController::class, 'index']);
     Route::post('/agent/register', [AgentController::class, 'store']);
-    Route::get('/agent/{id}', [AgentController::class, 'show']);
+    Route::get('/agent/{agent_code}', [AgentController::class, 'show']);
     Route::post('/agent/{id}/update', [AgentController::class, 'update']);
     Route::get('/agent/{agent_id}/farmers', [AgentController::class, 'getAgentFarmers']);
     Route::post('/agent/device/add', [AgentController::class, 'addDeviceToAgent']);
