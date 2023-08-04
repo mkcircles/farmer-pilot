@@ -109,6 +109,9 @@ export default function AgentsList({fpo_id, fpo_name}) {
                             <TableHeaderCell>Name</TableHeaderCell>
                             <TableHeaderCell>Phone</TableHeaderCell>
                             {/* <TableHeaderCell>Email</TableHeaderCell> */}
+                            <TableHeaderCell className="">
+                                Registered On
+                            </TableHeaderCell>
                             <TableHeaderCell>Status</TableHeaderCell>
                             <TableHeaderCell>Action</TableHeaderCell>
                             {/* <TableHeaderCell>Residence</TableHeaderCell>
@@ -127,6 +130,9 @@ export default function AgentsList({fpo_id, fpo_name}) {
                                 </TableCell>
                                 <TableCell>{agent.phone_number}</TableCell>
                                 {/* <TableCell>{agent.email|| '-'}</TableCell> */}
+                                <TableCell>
+                                    {new Date(agent?.created_at)?.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                                </TableCell>
                                 <TableCell>
                                     {agent.status === "active" ? (
                                         <Badge className="capitalize font-bold" size="md" color="green">active</Badge>
