@@ -142,6 +142,19 @@ export default function ReportsList() {
         })
     }
 
+    const formatReportType = (type) => {
+        switch (type) {
+            case "crop-report":
+                return "Crops Report";
+            case "farmer-report":
+                return "Farmers Report";
+            case "custom-report":
+                return "Custom Report";
+            default:
+                return type;
+        }
+    }
+
     return (
         <div className="w-full h-full">
             <Card className=" px-0">
@@ -203,7 +216,7 @@ export default function ReportsList() {
                                     <TableRow key={report?.id} className="m-0">
                                         <TableCell>{report?.name}</TableCell>
                                         <TableCell>
-                                            {report?.report_type}
+                                            {formatReportType(report?.report_type)}
                                         </TableCell>
                                         <TableCell>
                                             {formatDateString(
