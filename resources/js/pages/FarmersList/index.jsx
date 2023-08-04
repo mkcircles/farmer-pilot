@@ -126,12 +126,12 @@ export default function FarmersList({ fpo_id, agent_id }) {
                     <TableBody>
                         {profilesData?.data?.map((farmer) => (
                             <TableRow key={farmer.id}>
-                                <TableCell># {farmer.farmer_id}</TableCell>
+                                <TableCell>{farmer.farmer_id}</TableCell>
                                 <TableCell>
                                     {farmer.first_name + " " + farmer.last_name}
                                 </TableCell>
                                 <TableCell>{farmer.phone_number}</TableCell>
-                                <TableCell>{farmer.fpo_name || farmer?.fpo?.fpo_name}</TableCell>
+                                <TableCell>{farmer.fpo_name || farmer?.fpo?.fpo_name || farmer?.agent?.fpo?.fpo_name}</TableCell>
 
                                 <TableCell className="">
                                     {farmer.district}

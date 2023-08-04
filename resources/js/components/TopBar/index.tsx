@@ -267,7 +267,7 @@ function Main(props: { toggleMobileMenu: (event: React.MouseEvent) => void }) {
                                             onClick={(e) => {
                                                 e.preventDefault();
                                                 navigate(
-                                                    `${AGENT_PROFILE}/${agent.id}`
+                                                    `${AGENT_PROFILE}/${agent.agent_code}`
                                                 );
                                                 setSearchResultModal(false);
                                             }}

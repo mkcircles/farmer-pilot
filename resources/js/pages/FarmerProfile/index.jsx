@@ -23,7 +23,7 @@ import {
 import FarmInfoCard from "./FarmInfoCard";
 import { HomeIcon, UserGroupIcon } from "@heroicons/react/solid";
 import { useParams } from "react-router";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { API_KEY, BASE_API_URL } from "../../env";
 import { AppContext } from "../../context/RootContext";
@@ -43,15 +43,18 @@ import Lucide from "../../base-components/Lucide";
 import { BadgeAlert, BadgeMinus, BadgeX, CheckSquare, Unplug, UserCheck, UserMinus, UserX } from "lucide-react";
 import { BadgeCheckIcon } from "@heroicons/react/outline";
 import WithConfirmAlert from "../../helpers/WithConfirmAlert";
+import { AGENT_PROFILE } from "../../router/routes";
+import Loading from "../../components/Loading";
 
 const FarmerProfile = () => {
     const navigate = useNavigate();
     const token = useSelector((state) => state.auth.token);
     const fpos = useSelector((state) => state.fpos?.fpos);
     const { updateAppContextState } = useContext(AppContext);
-    const [farmerData, setFarmerData] = useState({});
+    const [farmerData, setFarmerData] = useState(null);
     const [showManageAccountMenu, setShowManageAccountMenu] = useState(false);
     const [fpoName, setFpoName] = useState("");
+    const scrollToTop = useRef(null);
     let { id } = useParams();
 
     const UpdateAgentStatus = (status) => {
@@ -119,6 +122,12 @@ const FarmerProfile = () => {
     }
 
     useEffect(() => {
+        scrollToTop?.current?.scrollIntoView({
+            behavior: "smooth",
+        });
+    }, []);
+
+    useEffect(() => {
         fetchFarmerData();
     }, [id, token]);
 
@@ -130,8 +139,10 @@ const FarmerProfile = () => {
         }
     }, [farmerData]);
 
+    if(!farmerData) return <Loading />;
+
     return (
-        <div className="w-full h-full mt-6">
+        <div ref={scrollToTop} className="w-full h-full mt-6">
             <div className="flex justify-between items-center px-10 mx-auto">
 
             <div className="flex items-center space-x-4">
@@ -907,15 +918,20 @@ const FarmerProfile = () => {
                                                         </div>
                                                     </Flex>
                                                     <Text className="text-secondary">
-                                                        {farmerData?.data_captured_by ? (
-                                                            <span>
+                                                    {
+                                                        farmerData?.data_captured_by ? (
+                                                            <span onClick={() => {
+                                                                navigate(`${AGENT_PROFILE}/${farmerData?.data_captured_by}`);
+                                                            }} className="cursor-pointer hover:text-primary">
                                                                 {
-                                                                    farmerData?.data_captured_by
+                                                                    farmerData?.agent?.first_name + ' ' + farmerData?.agent?.last_name
                                                                 }
                                                             </span>
                                                         ) : (
                                                             <span>_</span>
-                                                        )}
+                                                        )
+                                                        
+                                                    }
                                                     </Text>
                                                 </ListItem>
                                             </List>
@@ -1505,9 +1521,11 @@ const FarmerProfile = () => {
                                             <Text className="text-secondary">
                                                     {
                                                         farmerData?.data_captured_by ? (
-                                                            <span>
+                                                            <span onClick={() => {
+                                                                navigate(`${AGENT_PROFILE}/${farmerData?.data_captured_by}`);
+                                                            }} className="cursor-pointer hover:text-primary">
                                                                 {
-                                                                    farmerData?.data_captured_by
+                                                                    farmerData?.agent?.first_name + ' ' + farmerData?.agent?.last_name
                                                                 }
                                                             </span>
                                                         ) : (
