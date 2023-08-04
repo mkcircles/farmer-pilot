@@ -19,8 +19,10 @@ return new class extends Migration
             $table->string('consentGUID')->nullable();
             $table->string('subjectID')->nullable();
             $table->string('enrollmentStatus')->nullable();
+            $table->boolean('hasBiometricToken')->nullable();
             $table->longText('biometricToken')->nullable();
             $table->string('consumerDeviceId')->nullable();
+            $table->string('possible_duplicate')->nullable();
             $table->timestamps();
         });
     }

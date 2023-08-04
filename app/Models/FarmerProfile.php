@@ -9,7 +9,7 @@ class FarmerProfile extends Model
 {
     use HasFactory;
 
-    protected $with = ['agent', 'fpo'];
+    protected $with = ['agent', 'biometrics'];
 
     protected $fillable = [
         'farmer_id',
@@ -61,6 +61,10 @@ class FarmerProfile extends Model
     public function fpo()
     {
         return $this->belongsTo(FPO::class, 'fpo_id');
+    }
+
+    public function biometrics(){
+        return $this->hasOne(MastercardProfileDetails::class, 'entityID', 'farmer_id');
     }
 
 

@@ -16,7 +16,16 @@ class MastercardProfileDetails extends Model
         'consentGUID',
         'subjectID',
         'enrollmentStatus',
+        'hasBiometricToken',
         'biometricToken',
         'consumerDeviceId',
+        'possible_duplicate'
     ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
+
 }

@@ -3,15 +3,12 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Api;
 use App\Models\FarmerProfile;
+use App\Models\MastercardProfileDetails;
 use App\Traits\HelperTraits;
+use Illuminate\Database\Eloquent\MassAssignmentException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redis;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx\Rels;
 
 /**
  * @group Farmer Profile
@@ -132,7 +129,7 @@ class FarmerProfileController extends Controller
         'first_name' => 'required|string',
         'last_name' => 'required|string',
         'dob' => 'required|string',
-        'gender' => 'required|string',
+        'gender' => 'required|string|in:Male,Female',
         'education_level' => 'required|string',
        // 'id_number' => 'required|string|unique:farmer_profiles,id_number',
         'marital_status' => 'required|string',
@@ -235,6 +232,28 @@ class FarmerProfileController extends Controller
             //$farmer->photo = $imageName;
 
             $farmer->save();
+
+            if(isset($request->rID)){
+                //Check if user with this RID exists
+                $exists_check = MastercardProfileDetails::where([
+                    'rID' => $request->rID
+                ])->first();
+                $duplicate = $exists_check? $exists_check->entityID : null;
+                //Register Mastercard Profile Details
+                
+                MastercardProfileDetails::create([
+                    'entityType' => 'farmer',
+                    'entityID'=> $farmer->farmer_id,
+                    'rID' => $request->rID,
+                    'consentGUID' => $request->consentGUID,
+                    'subjectID' => $request->subjectID,
+                    'enrollmentStatus' => $request->enrollmentStatus,
+                    'hasBiometricToken' => !is_null($request->biometricToken)? 1 : 0,
+                    'biometricToken' => $request->biometricToken,
+                    'possible_duplicate' => $duplicate,
+                    'consumerDeviceId' => null,
+                ]);
+            }
 
             //Return Response
             return response()->json([
