@@ -147,7 +147,7 @@ export default function FarmersList({ fpo_id, agent_id }) {
                                         color="orange"
                                         onClick={() => {
                                             navigate(
-                                                `${FARMER_PROFILE}/${farmer.id}`
+                                                `${FARMER_PROFILE}/${farmer?.farmer_id}`
                                             );
                                         }}
                                     >

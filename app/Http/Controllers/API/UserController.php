@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 /**
  * @group Users Management
@@ -226,7 +227,7 @@ class UserController extends Controller
     {
         $validate = Validator::make($request->all(),[
             'name' => 'required',
-            'email' => 'required|unique:users',
+            'email' => 'required|unique:users,email,'.$request->id,
             'phone_number' => 'required',
             'role' => 'required|in:admin,user'
         ]);

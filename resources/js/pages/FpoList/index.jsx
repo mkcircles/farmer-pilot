@@ -103,7 +103,7 @@ export default function fpoList() {
                 <Flex justifyContent="start" className="space-x-2">
                     <Title>FPOs</Title>
                     <Badge color="gray">
-                        Showing {fpoData?.per_page || 0} of{" "}
+                        Showing {fpoData?.data?.length || 0} of{" "}
                         {numberFormatter(parseInt(fpoData?.total || 0))}
                     </Badge>
                 </Flex>

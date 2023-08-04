@@ -223,7 +223,7 @@ function Main(props: { toggleMobileMenu: (event: React.MouseEvent) => void }) {
                                             onClick={(e) => {
                                                 e.preventDefault();
                                                 navigate(
-                                                    `${FARMER_PROFILE}/${farmer.id}`
+                                                    `${FARMER_PROFILE}/${farmer.farmer_id}`
                                                 );
                                                 setSearchResultModal(false);
                                             }}
