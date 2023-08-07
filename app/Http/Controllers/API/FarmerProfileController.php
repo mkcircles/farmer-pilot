@@ -252,6 +252,7 @@ class FarmerProfileController extends Controller
                     'biometricToken' => $request->biometricToken,
                     'possible_duplicate' => $duplicate,
                     'consumerDeviceId' => null,
+                    'reason' => $request->reason
                 ]);
             }
 

@@ -31,7 +31,6 @@ Route::post('/agent/search/auth', [AgentController::class, 'getSearchAgentAuth']
 
 Route::get('/district',[LocationController::class, 'importDistrictSeeder']);
 
-
 Route::controller(AuthController::class)->group(function () {
     Route::post('/login', 'login');
     Route::post('/logout', 'logout');
@@ -43,6 +42,7 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::post('/refresh', [AuthController::class, 'refresh']);
     //Summaries
     Route::get('/summary', [SummaryController::class, 'DashboardSummary']);
+    Route::get('/bio/summary', [SummaryController::class, 'getBioSummary']);
 
     //Users Routes
     Route::get('/users',[UserController::class, 'index']);
@@ -56,6 +56,8 @@ Route::middleware('auth:sanctum')->group( function () {
 
     Route::post('/farmer/register', [FarmerProfileController::class, 'registerFarmer']);
     Route::get('/farmers', [DataController::class, 'getAllFarmers']);
+    Route::get('/farmers/bio', [DataController::class, 'getAllFarmerWithBiometrics']);
+    
     Route::get('/farmer/{farmer_id}', [DataController::class, 'getFarmer']);
     Route::put('/farmer/update/status', [FarmerProfileController::class, 'updateFarmerProfileStatus']);
 

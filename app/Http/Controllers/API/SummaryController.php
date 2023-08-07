@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\MastercardProfileDetails;
 use Illuminate\Http\Request;
 
 /**
@@ -69,9 +70,41 @@ class SummaryController extends Controller
             'total_female_youth_membership' => \App\Models\FPO::sum('fpo_female_youth'),
         ];
 
+
         return response()->json([
             'system_stats' => $system_stats,
             'fpo_stats' => $fpo_stats,
         ]);
+    }
+
+    /**
+     * Biometic Summary
+     * 
+     * This endpoint returns the summary of the system statistics
+     * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
+     * 
+     * @response {
+     * "success": true,
+     * "data": {
+     * "bio_summary": 1,
+     * "possible_duplicates": 1,
+     * "denied_captures": 1
+     * }
+     * }
+     * 
+     */
+    public function getBioSummary()
+    {
+        $data = [
+            "bio_summary" => MastercardProfileDetails::count(),
+            "possible_duplicates" => MastercardProfileDetails::whereNotNull('possible_duplicate')->count(),
+            "denied_captures" => MastercardProfileDetails::whereNull('rID')->count(),
+        ];
+        return response()->json([
+            'success' => true,
+            'data' => json_encode($data)
+        ], 200);
     }
 }

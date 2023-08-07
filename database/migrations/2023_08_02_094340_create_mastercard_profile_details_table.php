@@ -23,6 +23,7 @@ return new class extends Migration
             $table->longText('biometricToken')->nullable();
             $table->string('consumerDeviceId')->nullable();
             $table->string('possible_duplicate')->nullable();
+            $table->string('reason')->nullable();
             $table->timestamps();
         });
     }

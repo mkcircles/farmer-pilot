@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\FarmerProfile;
 use App\Models\FPO;
 use App\Models\Agent;
+use App\Models\MastercardProfileDetails;
 use Illuminate\Http\Request;
 
 /**
@@ -66,10 +67,36 @@ class DataController extends Controller
      */
     public function getAllFarmers()
     {
-        $farmers = FarmerProfile::orderBy('id', 'desc')->paginate(10)->toJson(JSON_PRETTY_PRINT);
+        $farmers = FarmerProfile::orderBy('id', 'desc')->paginate();
         return response($farmers, 200);
     }
 
+    /**
+     * Get all farmers with biometrics
+     * 
+     * This endpoint allows a user to get all farmers with biometrics
+     * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
+     * 
+     * @response {
+     * "current_page": 1,
+     * 
+     * 
+     * 
+     }
+     */
+    public function getAllFarmerWithBiometrics()
+    {
+        $biometics = MastercardProfileDetails::with('farmerProfile')
+                    ->where('entityType', 'FARMER')->orderBy('id', 'desc')->paginate();
+
+        return response([
+            'status' => 'success',
+            'data' => $biometics
+        ]);
+        
+    }
     /**
      * Get farmer
      * 

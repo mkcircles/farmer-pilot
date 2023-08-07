@@ -9,6 +9,7 @@ class MastercardProfileDetails extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
         'entityType',
         'entityID',
@@ -26,6 +27,21 @@ class MastercardProfileDetails extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function farmerProfile()
+    {
+        return $this->belongsTo(FarmerProfile::class, 'entityID', 'farmer_id');
+    }
+
+    public function agentProfile()
+    {
+        return $this->belongsTo(Agent::class, 'entityID', 'agent_code');
+    }
+
+    public function fpoProfile()
+    {
+        return $this->belongsTo(FPO::class, 'entityID');
+    }
 
 
 }

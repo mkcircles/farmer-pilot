@@ -12,7 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('farmer_profiles', function (Blueprint $table) {
-            //
+            $table->dropColumn('rId');
+            $table->dropColumn('consumerDeviceId');
+            
         });
     }
 
