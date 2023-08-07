@@ -64,3 +64,50 @@ endpoints:
     method: null
     route: null
     custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/bio/summary
+    metadata:
+      groupName: Statistics
+      groupDescription: |-
+
+        APIs for managing the system statistics
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Biometic Summary'
+      description: 'This endpoint returns the summary of the system statistics'
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: 'required The authorization token. Example: Bearer {token}'
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+          "success": true,
+          "data": {
+          "bio_summary": 1,
+          "possible_duplicates": 1,
+          "denied_captures": 1
+          }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
