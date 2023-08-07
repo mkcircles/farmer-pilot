@@ -57,6 +57,8 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::post('/farmer/register', [FarmerProfileController::class, 'registerFarmer']);
     Route::get('/farmers', [DataController::class, 'getAllFarmers']);
     Route::get('/farmers/bio', [DataController::class, 'getAllFarmerWithBiometrics']);
+    Route::get('/farmers/bio/failed', [DataController::class, 'getFailedBiometricCaptures']);
+    Route::get('/farmers/bio/duplicates', [DataController::class, 'getDuplicateBiometricCaptures']);
     
     Route::get('/farmer/{farmer_id}', [DataController::class, 'getFarmer']);
     Route::put('/farmer/update/status', [FarmerProfileController::class, 'updateFarmerProfileStatus']);
