@@ -102,6 +102,70 @@ class DataController extends Controller
         ]);
         
     }
+
+    /**
+     * Get all farmers with failed biometric captures
+     * 
+     * This endpoint allows a user to get all farmers with failed biometric captures
+     * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
+     * 
+     * @response {
+     * "current_page": 1,
+     * "data": [
+     * {
+     * 
+     * }
+     * ]
+     * 
+     * 
+     * 
+     }
+     */
+    public function getFailedBiometricCaptures()
+    {
+        $biometics = MastercardProfileDetails::with('farmerProfile')
+                    ->where('entityType', 'FARMER')->whereNull('rID')->orderBy('id', 'desc')->paginate();
+
+        return response([
+            'status' => 'success',
+            'data' => $biometics
+        ]);
+        
+    }
+
+    /**
+     * Get all farmers with duplicate biometric captures
+     * 
+     * This endpoint allows a user to get all farmers with duplicate biometric captures
+     * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
+     * 
+     * @response {
+     * "current_page": 1,
+     * "data": [
+     * {
+     * 
+     * }
+     * ]
+     * 
+     * 
+     * 
+     }
+     */
+    public function getDuplicateBiometricCaptures()
+    {
+        $biometics = MastercardProfileDetails::with('farmerProfile')
+                    ->where('entityType', 'FARMER')->whereNotNull('possible_duplicate')->orderBy('id', 'desc')->paginate();
+
+        return response([
+            'status' => 'success',
+            'data' => $biometics
+        ]);
+        
+    }
     /**
      * Get farmer
      * 
