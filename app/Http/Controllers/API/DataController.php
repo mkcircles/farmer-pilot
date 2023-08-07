@@ -81,6 +81,11 @@ class DataController extends Controller
      * 
      * @response {
      * "current_page": 1,
+     * "data": [
+     * {
+     * 
+     * }
+     * ]
      * 
      * 
      * 
@@ -248,6 +253,21 @@ class DataController extends Controller
             'success'=>true,
             'data'=>$data
         ],200);
+    }
+
+    public function countFarmersByFPO()
+    {
+       $data = [];
+       $fpos = FPO::all();
+       foreach($fpos as $fpo){
+           $totalCount = FarmerProfile::where('fpo_id', $fpo->id)->count();
+           $data[$fpo->fpo_name] = $totalCount;
+       }
+
+       return response()->json([
+           'success'=>true,
+           'data'=>json_encode($data)
+       ]);
     }
 
 

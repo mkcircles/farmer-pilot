@@ -42,7 +42,7 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::post('/refresh', [AuthController::class, 'refresh']);
     //Summaries
     Route::get('/summary', [SummaryController::class, 'DashboardSummary']);
-    Route::get('/bio/summary', [SummaryController::class, 'getBioSummary']);
+    
 
     //Users Routes
     Route::get('/users',[UserController::class, 'index']);
@@ -87,6 +87,8 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::post('/search', [DataController::class, 'search']);
 
     Route::get('/farmer/date/summary', [DataController::class, 'countFarmersByDate']);
+    Route::get('/farmer/fpo/summary', [DataController::class, 'countFarmersByFPO']);
+    Route::get('/bio/summary', [SummaryController::class, 'getBioSummary']);
 
     //Location Routes
     Route::get('/districts',[DataController::class, 'getDistricts']);
