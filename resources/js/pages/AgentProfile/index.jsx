@@ -1,7 +1,7 @@
 import Lucide from "../../base-components/Lucide";
 import Button from "../../base-components/Button";
 import _ from "lodash";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { AppContext } from "../../context/RootContext";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
@@ -13,6 +13,7 @@ import { Pencil, SmartphoneCharging, Trash2, UserCheck, UserX } from "lucide-rea
 import { UserMinus } from "lucide-react";
 import { Badge } from "@tremor/react";
 import WithConfirmAlert from "../../helpers/WithConfirmAlert";
+import Loading from "../../components/Loading";
 
 function Main() {
     const navigate = useNavigate();
@@ -21,6 +22,7 @@ function Main() {
     const [agent, setAgentData] = useState(null);
     const [showIssueDeviceModal, setShowIssueDeviceModal] = useState(false);
     const [showManageAccountMenu, setShowManageAccountMenu] = useState(false);
+    const scrollToTop = useRef(null);
     let { id } = useParams();
 
     useEffect(() => {
@@ -44,6 +46,14 @@ function Main() {
                 updateAppContextState("loading", false);
             });
     }, [id]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            scrollToTop?.current?.scrollIntoView({
+                behavior: "smooth",
+            });
+        }, 3000);
+    }, [scrollToTop]);
 
     const UpdateAgentStatus = (status) => {
         return new Promise((resolve, reject) => {
@@ -88,6 +98,8 @@ function Main() {
         })
     }
 
+    if(!agent) return <Loading />;
+
     return (
         <>
             <IssueDeviceModal
@@ -96,7 +108,7 @@ function Main() {
                 setShowModal={setShowIssueDeviceModal}
                 setAgentData={setAgentData}
             />
-            <div className="flex flex-col items-center mt-8 intro-y sm:flex-row">
+            <div ref={scrollToTop} className="flex flex-col items-center mt-8 intro-y sm:flex-row">
                 <h2 className="flex items-center mr-auto text-lg font-medium">
                     Agent Profile
                 </h2>

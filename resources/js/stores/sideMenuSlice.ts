@@ -23,12 +23,6 @@ const initialState: SideMenuState = {
       pathname: HOME,
       
     },
-    
-    {
-      icon: "LucideUserCog",
-      pathname: USERS_LIST,
-      title: "Users",
-    },
     {
       icon: "Users",
       pathname: FARMERS_LIST,
@@ -72,9 +66,32 @@ const initialState: SideMenuState = {
 export const sideMenuSlice = createSlice({
   name: "sideMenu",
   initialState,
-  reducers: {},
+  reducers: {
+    setAdminMenu: (state, action) => {
+      const adminRoutes: Array<Menu | string> = [
+        {
+          icon: "LucideUserCog",
+          pathname: USERS_LIST,
+          title: "Users",
+        },
+      ];
+
+      const user = action.payload?.user;
+      if(user?.role === "admin"){
+        let menu = [...initialState.menu];
+        menu.splice(1, 0, ...adminRoutes);
+        state.menu = menu;
+      }
+      if(user?.role === "user"){
+        state.menu = initialState.menu;
+      }
+
+    },
+  },
 });
 
 export const selectSideMenu = (state: RootState) => state.sideMenu.menu;
+export const { setAdminMenu } = sideMenuSlice.actions;
+
 
 export default sideMenuSlice.reducer;

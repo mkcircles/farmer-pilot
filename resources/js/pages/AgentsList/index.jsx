@@ -131,7 +131,7 @@ export default function AgentsList({fpo_id, fpo_name}) {
                                 <TableCell>{agent.phone_number}</TableCell>
                                 {/* <TableCell>{agent.email|| '-'}</TableCell> */}
                                 <TableCell>
-                                    {new Date(agent?.created_at)?.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                                    {new Date(agent?.created_at)?.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', })}
                                 </TableCell>
                                 <TableCell>
                                     {agent.status === "active" ? (
@@ -143,7 +143,7 @@ export default function AgentsList({fpo_id, fpo_name}) {
                                 <TableCell>
                                     <span class="inline-flex overflow-hidden rounded-md border bg-white shadow-sm">
                                         <button
-                                        onClick={() => navigate(`${AGENT_PROFILE}/${agent.id}`)}
+                                        onClick={() => navigate(`${AGENT_PROFILE}/${agent.agent_code}`)}
                                             className="inline-block border-e p-3 text-gray-700 hover:bg-gray-50 focus:relative"
                                             title="View Profile"
                                         >
