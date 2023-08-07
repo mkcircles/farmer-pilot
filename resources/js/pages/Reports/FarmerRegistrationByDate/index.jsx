@@ -36,7 +36,7 @@ export default function FarmerRegistrationByDate() {
     const [registrationData, setRegistrationData] = useState([]);
     const [stats, setStats] = useState({});
 
-    const data = Object.keys(registrationData).map((key) => ({date: key, farmers_count: registrationData[key]}));
+    const data = Object.keys(registrationData).map((key) => ({date: key, "Farmers Registered": registrationData[key]}));
 
     const fetchStats = (url = `${BASE_API_URL}/summary`) => {
       updateAppContextState("loading", true);
@@ -98,7 +98,7 @@ export default function FarmerRegistrationByDate() {
       <AreaChart
         className="mt-8 h-44"
         data={data}
-        categories={["farmers_count"]}
+        categories={["Farmers Registered"]}
         index="date"
         colors={["orange"]}
         valueFormatter={valueFormatter}

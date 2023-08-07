@@ -13,18 +13,18 @@ import {
     Button,
 } from "@tremor/react";
 import { useNavigate } from "react-router-dom";
-import { FARMER_PROFILE } from "../../router/routes";
+import { FARMER_PROFILE } from "../../../router/routes";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { API_KEY, BASE_API_URL } from "../../env";
-import { numberFormatter } from "../../utils/numberFormatter";
-import { AppContext } from "../../context/RootContext";
+import { API_KEY, BASE_API_URL } from "../../../env";
+import { numberFormatter } from "../../../utils/numberFormatter";
+import { AppContext } from "../../../context/RootContext";
 import { useContext } from "react";
 import { useSelector } from "react-redux";
 import { debounce } from "lodash";
-import Pagination from "../../components/Pagination";
+import Pagination from "../../../components/Pagination";
 
-export default function FarmersList({ fpo_id, agent_id, ...props }) {
+export default function BiometricsList(props) {
     const navigate = useNavigate();
     const token = useSelector((state) => state.auth.token);
     const { updateAppContextState } = useContext(AppContext);
@@ -35,20 +35,9 @@ export default function FarmersList({ fpo_id, agent_id, ...props }) {
     const [nextPageUrl, setNextPageUrl] = useState("");
     const [profilesData, setProfilesData] = useState({});
 
-    let farmers_api_url = `${BASE_API_URL}/farmers`;
-    if (fpo_id) {
-        farmers_api_url = `${BASE_API_URL}/fpo/${fpo_id}/farmers`;
-    }
-    if (agent_id) {
-        farmers_api_url = `${BASE_API_URL}/agent/${agent_id}/farmers`;
-    }
-
-    const fetchProfiles = (url = (farmers_api_url)) => {
+    const bio_api_url = `${BASE_API_URL}/farmers/bio`;
+    const fetchProfiles = (url = bio_api_url) => {
         updateAppContextState("loading", true);
-        if(props?.bio_url) {
-            url = props?.bio_url;
-        }
-        console.log(url);
         axios
             .get(url, {
                 headers: {
@@ -57,15 +46,7 @@ export default function FarmersList({ fpo_id, agent_id, ...props }) {
                 },
             })
             .then((res) => {
-                let responseData = res?.data;
-
-                if (fpo_id || agent_id) {
-                    responseData = res.data?.data;
-                }
-
-                if(props?.bio_url) {
-                    responseData = res.data?.data;
-                }
+                let responseData = res.data?.data;
 
                 console.log("Profiles", responseData);
                 if (res?.data) {
@@ -97,80 +78,85 @@ export default function FarmersList({ fpo_id, agent_id, ...props }) {
 
     useEffect(() => {
         if (moveToPage == currentPage) return;
-        debounceFetchProfiles(`${farmers_api_url}?page=${moveToPage}`);
+        debounceFetchProfiles(`${bio_api_url}?page=${moveToPage}`);
     }, [moveToPage]);
 
     return (
         <div className="w-full h-full py-4">
             <Card className="bg-white h-full w-full">
                 <Flex justifyContent="start" className="space-x-2">
-                    <Title>Farmers</Title>
+                    <Title>Biometrics</Title>
                     <Badge color="gray">
                         {numberFormatter(parseInt(profilesData?.total || 0))}
                     </Badge>
                 </Flex>
-                <Text className="mt-2">Overview of farmers profiled</Text>
+                <Text className="mt-2">Overview of Biometrics captured</Text>
 
                 <Table className="mt-6">
                     <TableHead>
                         <TableRow>
                             <TableHeaderCell>Farmer ID</TableHeaderCell>
                             <TableHeaderCell>Name</TableHeaderCell>
-                            <TableHeaderCell>Phone</TableHeaderCell>
-                            <TableHeaderCell>FPO</TableHeaderCell>
+                            <TableHeaderCell>Enrollment Status</TableHeaderCell>
+                            <TableHeaderCell>Possible Duplicate</TableHeaderCell>
                             <TableHeaderCell className="">
-                                District
+                                Has BioToken
+                            </TableHeaderCell>
+                            <TableHeaderCell className="">
+                                Reason
                             </TableHeaderCell>
                             <TableHeaderCell className="">
                                 Registered On
                             </TableHeaderCell>
                             <TableHeaderCell className="">
-                                Status
+                            Subject ID
                             </TableHeaderCell>
                             <TableHeaderCell>Link</TableHeaderCell>
                         </TableRow>
                     </TableHead>
 
                     <TableBody>
-                        {profilesData?.data?.map((farmer) => (
-                            <TableRow key={farmer.id}>
-                                <TableCell>{farmer.farmer_id}</TableCell>
-                                <TableCell>
-                                    {farmer.first_name + " " + farmer.last_name}
-                                </TableCell>
-                                <TableCell>{farmer.phone_number}</TableCell>
-                                <TableCell>{farmer.fpo_name || farmer?.fpo?.fpo_name || farmer?.agent?.fpo?.fpo_name}</TableCell>
-
-                                <TableCell className="">
-                                    {farmer.district}
-                                </TableCell>
-                                <TableCell>
-                                    {new Date(farmer?.created_at)?.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
-                                </TableCell>
-                                <TableCell>
-                                    {farmer.status === "complete" ? (
-                                        <Badge className="capitalize" size="md" color="green">{farmer?.status}</Badge>
-                                    ): (
-                                        <Badge className="capitalize" size="md" color="red">{farmer?.status}</Badge>
-                                    )}
-                                </TableCell>
-                                
-                                <TableCell>
-                                    <Button
-                                        size="xs"
-                                        variant="secondary"
-                                        color="orange"
-                                        onClick={() => {
-                                            navigate(
-                                                `${FARMER_PROFILE}/${farmer?.farmer_id}`
-                                            );
-                                        }}
-                                    >
-                                        See details
-                                    </Button>
-                                </TableCell>
-                            </TableRow>
-                        ))}
+                        {profilesData?.data?.map((data) => {
+                            let farmer = data.farmer_profile;
+                            return (
+                                <TableRow key={farmer.id}>
+                                    <TableCell>{farmer.farmer_id}</TableCell>
+                                    <TableCell>
+                                        {farmer.first_name + " " + farmer.last_name}
+                                    </TableCell>
+                                    <TableCell>{data?.enrollmentStatus}</TableCell>
+                                    <TableCell>{data?.possible_duplicate? 'Yes' : 'No'}</TableCell>
+    
+                                    <TableCell className="">
+                                        {data?.hasBiometricToken? 'Yes' : 'No'}
+                                    </TableCell>
+                                    <TableCell className="">
+                                        {data?.reason || 'No Reason'}
+                                    </TableCell>
+                                    <TableCell>
+                                        {new Date(farmer?.created_at)?.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                                    </TableCell>
+                                    <TableCell>
+                                        {data?.subjectID}
+                                    </TableCell>
+                                    
+                                    <TableCell>
+                                        <Button
+                                            size="xs"
+                                            variant="secondary"
+                                            color="orange"
+                                            onClick={() => {
+                                                navigate(
+                                                    `${FARMER_PROFILE}/${farmer?.farmer_id}`
+                                                );
+                                            }}
+                                        >
+                                            See details
+                                        </Button>
+                                    </TableCell>
+                                </TableRow>
+                            )
+                        })}
                     </TableBody>
                 </Table>
 

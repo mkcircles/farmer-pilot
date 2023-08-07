@@ -23,12 +23,12 @@ function Main() {
     const [showIssueDeviceModal, setShowIssueDeviceModal] = useState(false);
     const [showManageAccountMenu, setShowManageAccountMenu] = useState(false);
     const scrollToTop = useRef(null);
-    let { id } = useParams();
+    let { agent_code } = useParams();
 
     useEffect(() => {
         updateAppContextState("loading", true);
         axios
-            .get(`${BASE_API_URL}/agent/${id}`, {
+            .get(`${BASE_API_URL}/agent/${agent_code}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -45,7 +45,7 @@ function Main() {
             .finally(() => {
                 updateAppContextState("loading", false);
             });
-    }, [id]);
+    }, [agent_code]);
 
     useEffect(() => {
         setTimeout(() => {
@@ -279,7 +279,7 @@ function Main() {
             </div>
 
             <div className="w-full h-full">
-                <FarmersList agent_id={id} />
+                <FarmersList agent_id={agent?.id} />
             </div>
         </>
     );

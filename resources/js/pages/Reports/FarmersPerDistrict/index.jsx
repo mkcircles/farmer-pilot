@@ -13,6 +13,9 @@ import { useSelector } from "react-redux";
 import { AppContext } from "../../../context/RootContext";
 import { useContext, useEffect, useState } from "react";
 import { BASE_API_URL } from "../../../env";
+import Loading from "../../../components/Loading";
+import { useAppDispatch } from "../../../stores/hooks";
+import { saveReport } from "../../../stores/reportsSlice";
   
   
   
@@ -23,10 +26,13 @@ import { BASE_API_URL } from "../../../env";
     Intl.NumberFormat("us").format(number).toString();
   
   export default function FarmersPerDistrict() {
+    const dispatch = useAppDispatch();
     const token = useSelector((state) => state.auth.token);
+    const districtData = useSelector((state) => state.reports.farmersPerDistrict);
+    const stats = useSelector((state) => state.reports.stats);
     const { updateAppContextState } = useContext(AppContext);
-    const [districtData, setDistrictData] = useState([]);
-    const [stats, setStats] = useState({});
+    // const [districtData, setDistrictData] = useState([]);
+    // const [stats, setStats] = useState({});
 
     const data = {
       relative: districtData.map(district => ({district_name: district.name, "Farmers Profiled": ((district.farmers_count/stats?.system_stats?.total_farmers)*100).toFixed(2)})),
@@ -45,7 +51,13 @@ import { BASE_API_URL } from "../../../env";
               console.log("Stats Data", res?.data);
               let resData = res?.data;
               if (res?.data) {
-                  setStats(resData);
+                dispatch(saveReport(
+                  {
+                    reportType: "stats",
+                    reportData: resData
+                  }
+                ))
+                  //setStats(resData);
               }
           })
           .catch((err) => {
@@ -68,7 +80,13 @@ import { BASE_API_URL } from "../../../env";
                 console.log("District Data", res?.data?.data);
                 let resData = res?.data?.data;
                 if (res?.data) {
-                    setDistrictData(Object.keys(resData).map((key) => ({name: key, farmers_count: resData[key]})));
+                  dispatch(saveReport(
+                    {
+                      reportType: "farmersPerDistrict",
+                      reportData: Object.keys(resData).map((key) => ({name: key, farmers_count: resData[key]}))
+                    }
+                  ))
+                    //setDistrictData(Object.keys(resData).map((key) => ({name: key, farmers_count: resData[key]})));
                 }
             })
             .catch((err) => {
@@ -86,6 +104,7 @@ import { BASE_API_URL } from "../../../env";
     }, [token]);
 
     // const { fpo_stats, system_stats } = stats;
+    // if(districtData.length === 0) return <Loading />;
 
     return (
       <Card className="my-4">

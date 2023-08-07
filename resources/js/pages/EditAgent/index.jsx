@@ -35,7 +35,7 @@ const EditAgent = () => {
             })
             .then((res) => {
                 // TODO: Notify success
-                navigate(`${AGENT_PROFILE}/${agent?.id}`);
+                navigate(`${AGENT_PROFILE}/${agent?.agent_code}`);
             })
             .catch((err) => {
                 // TODO: Notify Error
