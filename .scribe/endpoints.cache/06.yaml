@@ -114,6 +114,11 @@ endpoints:
         content: |-
           {
           "current_page": 1,
+          "data": [
+          {
+
+          }
+          ]
 
 
 
@@ -280,6 +285,52 @@ endpoints:
           "data":{
           "2022-06-01": 281,
           "2022-06-02": 281,
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/farmer/fpo/summary
+    metadata:
+      groupName: 'Data Management'
+      groupDescription: |-
+
+        APIs for managing farmer profile
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get Farmers by FPO'
+      description: 'Get Farmers by FPO'
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: 'required The authorization token. Example: Bearer {token}'
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+          "success": true,
+          "data":{
+          "FPO 1": 281,
+          "FPO 2": 281,
+          }
           }
         headers: []
         description: ''
