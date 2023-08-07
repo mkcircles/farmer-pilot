@@ -10,7 +10,7 @@ import {
 } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import useCallbackState from "../../utils/callback-state";
-import { selectSideMenu } from "../../stores/sideMenuSlice";
+import { selectSideMenu, setAdminMenu } from "../../stores/sideMenuSlice";
 import { useAppDispatch, useAppSelector } from "../../stores/hooks";
 import { FormattedMenu, linkTo, nestedMenu, enter, leave } from "./side-menu";
 import Lucide from "../../base-components/Lucide";
@@ -27,6 +27,8 @@ function Main() {
     const location = useLocation();
     const navigate = useNavigate();
     const token = useSelector((state: any) => state.auth.token);
+    const user = useSelector((state: any) => state.auth?.user);
+    const dispatch = useAppDispatch();
     const [formattedMenu, setFormattedMenu] = useState<
         Array<FormattedMenu | string>
     >([]);
@@ -36,9 +38,16 @@ function Main() {
     const TransitionAny = Transition as any;
 
     useEffect(() => {
+        dispatch(setAdminMenu({
+            user: user
+        }));
+    }, []);
+
+    useEffect(() => {
         if (!token) {
             navigate(LOGIN);
         }
+        
     }, [token]);
 
     useEffect(() => {
