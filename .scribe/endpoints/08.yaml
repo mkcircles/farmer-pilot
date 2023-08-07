@@ -120,7 +120,7 @@ endpoints:
         name: name
         description: 'The name of the report'
         required: true
-        example: assumenda
+        example: qui
         type: string
         custom: []
       report_type:
@@ -134,28 +134,28 @@ endpoints:
         name: from_date
         description: 'The from date for the report'
         required: true
-        example: reprehenderit
+        example: amet
         type: string
         custom: []
       to_date:
         name: to_date
         description: 'The to date for the report'
         required: true
-        example: similique
+        example: dolores
         type: string
         custom: []
       district:
         name: district
         description: 'optional The district of the report'
         required: false
-        example: rerum
+        example: tempore
         type: string
         custom: []
       agent_id:
         name: agent_id
         description: 'optional The agent id of the report'
         required: false
-        example: 1
+        example: 17
         type: integer
         custom: []
       crops_grown:
@@ -169,7 +169,7 @@ endpoints:
         name: farm_size
         description: 'optional The farm size of the report'
         required: false
-        example: 15
+        example: 16
         type: integer
         custom: []
       gender:
@@ -187,14 +187,14 @@ endpoints:
         type: integer
         custom: []
     cleanBodyParameters:
-      name: assumenda
+      name: qui
       report_type: 'farmer-report, crop-report,agent-summary-report'
-      from_date: reprehenderit
-      to_date: similique
-      district: rerum
-      agent_id: 1
+      from_date: amet
+      to_date: dolores
+      district: tempore
+      agent_id: 17
       crops_grown: 'Maize, Wheat, beans'
-      farm_size: 15
+      farm_size: 16
       gender: 'Male, Female'
       fpo_id: 19
     fileParameters: []
@@ -277,11 +277,11 @@ endpoints:
         name: id
         description: 'The ID of the report.'
         required: true
-        example: modi
+        example: reprehenderit
         type: string
         custom: []
     cleanUrlParameters:
-      id: modi
+      id: reprehenderit
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

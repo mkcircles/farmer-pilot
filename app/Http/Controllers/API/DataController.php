@@ -255,6 +255,23 @@ class DataController extends Controller
         ],200);
     }
 
+    /**
+     * Get Farmers by FPO
+     * 
+     * Get Farmers by FPO
+     * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
+     * 
+     * @response {
+     * "success": true,
+     * "data":{
+     * "FPO 1": 281,
+     * "FPO 2": 281,
+     * }
+     * }
+     * 
+     */
     public function countFarmersByFPO()
     {
        $data = [];
