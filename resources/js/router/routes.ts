@@ -4,6 +4,7 @@ export const LOGIN = '/login';
 export const DASHBOARD = '/dashboard';
 export const USERS_LIST = '/users-list';
 export const FARMERS_LIST = '/farmers-list';
+export const FARMERS_BIOMETRICS = '/farmers-biometrics';
 export const FPO_LIST = '/fpos-list';
 export const FPO_MAP = '/fpos-map';
 export const FPO_PROFILE = '/fpo-profile';

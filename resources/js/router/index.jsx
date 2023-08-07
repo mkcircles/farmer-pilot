@@ -7,6 +7,7 @@ import {
     CREATE_FPO_ADMIN_USER_ACCOUNT,
     EDIT_AGENT,
     EDIT_FPO,
+    FARMERS_BIOMETRICS,
     FARMERS_LIST,
     FARMER_PROFILE,
     FPO_LIST,
@@ -38,6 +39,7 @@ const EditAgent = lazy(() => import("../pages/EditAgent"));
 const FpoProfile = lazy(() => import("../pages/FpoProfile"));
 const EditFpo = lazy(() => import("../pages/EditFpo"));
 const FpoMap = lazy(() => import("../pages/FpoMap"));
+const FarmerBiometrics = lazy(() => import("../pages/FarmerBiometrics"));
 const CreateFpoAdminUserAccount = lazy(() =>
     import("../pages/CreateFpoAdminUserAccount")
 );
@@ -91,6 +93,14 @@ const router = createBrowserRouter([
                 element: (
                     <Suspense fallback={<Loading />}>
                         <FarmersList />
+                    </Suspense>
+                ),
+            },
+            {
+                path: FARMERS_BIOMETRICS,
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <FarmerBiometrics />
                     </Suspense>
                 ),
             },
@@ -175,7 +185,7 @@ const router = createBrowserRouter([
                 ),
             },
             {
-                path: `${AGENT_PROFILE}/:id`,
+                path: `${AGENT_PROFILE}/:agent_code`,
                 element: (
                     <Suspense fallback={<Loading />}>
                         <AgentProfile />

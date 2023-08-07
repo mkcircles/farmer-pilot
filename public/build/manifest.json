@@ -1,26 +1,26 @@
 {
-  "_Tracker-7b8e620e.js": {
-    "file": "assets/Tracker-7b8e620e.js",
+  "_Tracker-81743c79.js": {
+    "file": "assets/Tracker-81743c79.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Transition-d5809df2.js",
+      "_Transition-927311f7.js",
       "_default-config-939e3be8.js"
     ]
   },
-  "_Transition-d5809df2.js": {
-    "file": "assets/Transition-d5809df2.js",
+  "_Transition-927311f7.js": {
+    "file": "assets/Transition-927311f7.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_UserGroupIcon-304112c1.js": {
-    "file": "assets/UserGroupIcon-304112c1.js",
+  "_UserGroupIcon-965cdbdc.js": {
+    "file": "assets/UserGroupIcon-965cdbdc.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_WithConfirmAlert-d1ce5510.js": {
-    "file": "assets/WithConfirmAlert-d1ce5510.js",
+  "_WithConfirmAlert-88a81f95.js": {
+    "file": "assets/WithConfirmAlert-88a81f95.js",
     "imports": [
       "resources/js/app.jsx"
     ]
@@ -28,73 +28,80 @@
   "_default-config-939e3be8.js": {
     "file": "assets/default-config-939e3be8.js"
   },
-  "_home-db45a7dd.js": {
-    "file": "assets/home-db45a7dd.js",
+  "_home-852b4b88.js": {
+    "file": "assets/home-852b4b88.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Tracker-7b8e620e.js"
+      "_Tracker-81743c79.js"
     ]
   },
-  "_index-2e79ae6c.js": {
-    "file": "assets/index-2e79ae6c.js",
-    "imports": [
-      "resources/js/app.jsx"
-    ]
-  },
-  "_index-7ecb442f.js": {
-    "file": "assets/index-7ecb442f.js",
+  "_index-233fac75.js": {
+    "file": "assets/index-233fac75.js",
     "imports": [
       "resources/js/app.jsx",
       "_tw-merge-fbb83fc6.js"
     ]
   },
-  "_index-8345b162.js": {
-    "file": "assets/index-8345b162.js",
+  "_index-5c500cc6.js": {
+    "file": "assets/index-5c500cc6.js",
     "imports": [
       "resources/js/app.jsx",
+      "_index-7563c26f.js",
       "_tw-merge-fbb83fc6.js"
     ]
   },
-  "_index-8580b4ae.js": {
-    "file": "assets/index-8580b4ae.js",
+  "_index-740f1832.js": {
+    "file": "assets/index-740f1832.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Tracker-7b8e620e.js",
+      "_Tracker-81743c79.js",
       "_numberFormatter-373bc269.js"
     ],
     "isDynamicEntry": true
   },
-  "_index-94eb3ee2.js": {
-    "file": "assets/index-94eb3ee2.js",
+  "_index-7563c26f.js": {
+    "file": "assets/index-7563c26f.js",
     "imports": [
       "resources/js/app.jsx",
-      "_index-7ecb442f.js",
       "_tw-merge-fbb83fc6.js"
     ]
   },
-  "_index-a4e59507.js": {
-    "file": "assets/index-a4e59507.js",
+  "_index-f14d0d44.js": {
+    "file": "assets/index-f14d0d44.js",
     "imports": [
       "resources/js/app.jsx",
-      "_index-7ecb442f.js",
+      "_index-7563c26f.js",
       "_tw-merge-fbb83fc6.js"
     ]
   },
-  "_index-b4cbe93c.js": {
-    "file": "assets/index-b4cbe93c.js",
+  "_index-f32d38b8.js": {
+    "file": "assets/index-f32d38b8.js",
     "imports": [
       "resources/js/app.jsx",
       "_numberFormatter-373bc269.js"
+    ]
+  },
+  "_index-fa709353.js": {
+    "file": "assets/index-fa709353.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_square-stack-5a5f3bcf.js"
     ]
   },
   "_numberFormatter-373bc269.js": {
     "file": "assets/numberFormatter-373bc269.js"
   },
-  "_tablet-bc0269c8.js": {
-    "file": "assets/tablet-bc0269c8.js",
+  "_square-stack-5a5f3bcf.js": {
+    "file": "assets/square-stack-5a5f3bcf.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_tablet-651e703d.js": {
+    "file": "assets/tablet-651e703d.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Tracker-7b8e620e.js"
+      "_Tracker-81743c79.js"
     ]
   },
   "_tw-merge-fbb83fc6.js": {
@@ -129,16 +136,17 @@
       "resources/js/pages/Login/index.jsx",
       "resources/js/pages/CreateFpo/index.jsx",
       "resources/js/pages/CreateAgent/index.jsx",
-      "_index-8580b4ae.js",
+      "_index-740f1832.js",
       "resources/js/layouts/SideMenu/index.tsx",
       "resources/js/pages/EditAgent/index.jsx",
       "resources/js/pages/FpoProfile/index.jsx",
       "resources/js/pages/EditFpo/index.jsx",
       "resources/js/pages/FpoMap/index.jsx",
+      "resources/js/pages/FarmerBiometrics/index.jsx",
       "resources/js/pages/CreateFpoAdminUserAccount/index.jsx",
       "resources/js/pages/Users/UsersList/index.jsx"
     ],
-    "file": "assets/app-9c2b694a.js",
+    "file": "assets/app-cf4561db.js",
     "isEntry": true,
     "src": "resources/js/app.jsx"
   },
@@ -159,50 +167,52 @@
     "src": "resources/js/assets/images/male_avatar.svg"
   },
   "resources/js/layouts/SideMenu/index.tsx": {
-    "file": "assets/index-e27fbb56.js",
+    "file": "assets/index-8558de1a.js",
     "imports": [
       "resources/js/app.jsx",
-      "_index-2e79ae6c.js",
-      "_index-7ecb442f.js",
-      "_Transition-d5809df2.js",
+      "_index-fa709353.js",
+      "_index-7563c26f.js",
+      "_Transition-927311f7.js",
       "_tw-merge-fbb83fc6.js",
+      "_square-stack-5a5f3bcf.js",
       "_default-config-939e3be8.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/layouts/SideMenu/index.tsx"
   },
   "resources/js/pages/AgentProfile/index.jsx": {
-    "file": "assets/index-1ccaac44.js",
+    "file": "assets/index-a607a742.js",
     "imports": [
       "resources/js/app.jsx",
-      "_index-2e79ae6c.js",
-      "_index-8345b162.js",
+      "_index-fa709353.js",
+      "_index-233fac75.js",
       "resources/js/pages/FarmersList/index.jsx",
-      "_Tracker-7b8e620e.js",
-      "_index-7ecb442f.js",
-      "_index-94eb3ee2.js",
-      "_tablet-bc0269c8.js",
-      "_WithConfirmAlert-d1ce5510.js",
+      "_Tracker-81743c79.js",
+      "_index-7563c26f.js",
+      "_index-5c500cc6.js",
+      "_tablet-651e703d.js",
+      "_WithConfirmAlert-88a81f95.js",
+      "_square-stack-5a5f3bcf.js",
       "_tw-merge-fbb83fc6.js",
       "_default-config-939e3be8.js",
       "_numberFormatter-373bc269.js",
-      "_index-b4cbe93c.js",
-      "_Transition-d5809df2.js"
+      "_index-f32d38b8.js",
+      "_Transition-927311f7.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/AgentProfile/index.jsx"
   },
   "resources/js/pages/CreateAgent/index.jsx": {
-    "file": "assets/index-b0ad6243.js",
+    "file": "assets/index-99eda66b.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Tracker-7b8e620e.js",
-      "_index-8345b162.js",
-      "_index-7ecb442f.js",
-      "_index-94eb3ee2.js",
-      "_index-a4e59507.js",
-      "_home-db45a7dd.js",
-      "_Transition-d5809df2.js",
+      "_Tracker-81743c79.js",
+      "_index-233fac75.js",
+      "_index-7563c26f.js",
+      "_index-5c500cc6.js",
+      "_index-f14d0d44.js",
+      "_home-852b4b88.js",
+      "_Transition-927311f7.js",
       "_default-config-939e3be8.js",
       "_tw-merge-fbb83fc6.js"
     ],
@@ -210,15 +220,15 @@
     "src": "resources/js/pages/CreateAgent/index.jsx"
   },
   "resources/js/pages/CreateFpo/index.jsx": {
-    "file": "assets/index-e5ef9544.js",
+    "file": "assets/index-1c8ab5cd.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Tracker-7b8e620e.js",
-      "_index-8345b162.js",
-      "_index-7ecb442f.js",
-      "_index-94eb3ee2.js",
-      "_index-a4e59507.js",
-      "_Transition-d5809df2.js",
+      "_Tracker-81743c79.js",
+      "_index-233fac75.js",
+      "_index-7563c26f.js",
+      "_index-5c500cc6.js",
+      "_index-f14d0d44.js",
+      "_Transition-927311f7.js",
       "_default-config-939e3be8.js",
       "_tw-merge-fbb83fc6.js"
     ],
@@ -226,14 +236,14 @@
     "src": "resources/js/pages/CreateFpo/index.jsx"
   },
   "resources/js/pages/CreateFpoAdminUserAccount/index.jsx": {
-    "file": "assets/index-b4a714fd.js",
+    "file": "assets/index-d1d78f29.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Tracker-7b8e620e.js",
-      "_index-8345b162.js",
-      "_index-7ecb442f.js",
-      "_index-94eb3ee2.js",
-      "_Transition-d5809df2.js",
+      "_Tracker-81743c79.js",
+      "_index-233fac75.js",
+      "_index-7563c26f.js",
+      "_index-5c500cc6.js",
+      "_Transition-927311f7.js",
       "_default-config-939e3be8.js",
       "_tw-merge-fbb83fc6.js"
     ],
@@ -241,28 +251,28 @@
     "src": "resources/js/pages/CreateFpoAdminUserAccount/index.jsx"
   },
   "resources/js/pages/Dashboard/index.jsx": {
-    "file": "assets/index-e77f65af.js",
+    "file": "assets/index-69e6b209.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Tracker-7b8e620e.js",
-      "_UserGroupIcon-304112c1.js",
+      "_Tracker-81743c79.js",
+      "_UserGroupIcon-965cdbdc.js",
       "_numberFormatter-373bc269.js",
-      "_Transition-d5809df2.js",
+      "_Transition-927311f7.js",
       "_default-config-939e3be8.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/Dashboard/index.jsx"
   },
   "resources/js/pages/EditAgent/index.jsx": {
-    "file": "assets/index-4caeac6f.js",
+    "file": "assets/index-1450eaf3.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Tracker-7b8e620e.js",
-      "_index-8345b162.js",
-      "_index-7ecb442f.js",
-      "_index-94eb3ee2.js",
-      "_index-a4e59507.js",
-      "_Transition-d5809df2.js",
+      "_Tracker-81743c79.js",
+      "_index-233fac75.js",
+      "_index-7563c26f.js",
+      "_index-5c500cc6.js",
+      "_index-f14d0d44.js",
+      "_Transition-927311f7.js",
       "_default-config-939e3be8.js",
       "_tw-merge-fbb83fc6.js"
     ],
@@ -270,64 +280,79 @@
     "src": "resources/js/pages/EditAgent/index.jsx"
   },
   "resources/js/pages/EditFpo/index.jsx": {
-    "file": "assets/index-75188a12.js",
+    "file": "assets/index-fedf0b6b.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Tracker-7b8e620e.js",
-      "_index-8345b162.js",
-      "_index-7ecb442f.js",
-      "_index-94eb3ee2.js",
-      "_index-a4e59507.js",
-      "_Transition-d5809df2.js",
+      "_Tracker-81743c79.js",
+      "_index-233fac75.js",
+      "_index-7563c26f.js",
+      "_index-5c500cc6.js",
+      "_index-f14d0d44.js",
+      "_Transition-927311f7.js",
       "_default-config-939e3be8.js",
       "_tw-merge-fbb83fc6.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/EditFpo/index.jsx"
   },
+  "resources/js/pages/FarmerBiometrics/index.jsx": {
+    "file": "assets/index-947427a2.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_Tracker-81743c79.js",
+      "_numberFormatter-373bc269.js",
+      "_index-f32d38b8.js",
+      "_square-stack-5a5f3bcf.js",
+      "_Transition-927311f7.js",
+      "_default-config-939e3be8.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/pages/FarmerBiometrics/index.jsx"
+  },
   "resources/js/pages/FarmerProfile/index.jsx": {
     "assets": [
       "assets/male_avatar-ac4e6663.svg",
       "assets/female_avatar-e6bdfdb4.svg"
     ],
-    "file": "assets/index-52a63239.js",
+    "file": "assets/index-6719f509.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Tracker-7b8e620e.js",
+      "_Tracker-81743c79.js",
       "_numberFormatter-373bc269.js",
-      "_index-8345b162.js",
-      "_index-2e79ae6c.js",
-      "_WithConfirmAlert-d1ce5510.js",
-      "_home-db45a7dd.js",
-      "_tablet-bc0269c8.js",
-      "_Transition-d5809df2.js",
+      "_index-233fac75.js",
+      "_index-fa709353.js",
+      "_WithConfirmAlert-88a81f95.js",
+      "_home-852b4b88.js",
+      "_tablet-651e703d.js",
+      "_Transition-927311f7.js",
       "_default-config-939e3be8.js",
-      "_tw-merge-fbb83fc6.js"
+      "_tw-merge-fbb83fc6.js",
+      "_square-stack-5a5f3bcf.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/FarmerProfile/index.jsx"
   },
   "resources/js/pages/FarmersList/index.jsx": {
-    "file": "assets/index-c3d69bb7.js",
+    "file": "assets/index-322f0e4c.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Tracker-7b8e620e.js",
+      "_Tracker-81743c79.js",
       "_numberFormatter-373bc269.js",
-      "_index-b4cbe93c.js",
-      "_Transition-d5809df2.js",
+      "_index-f32d38b8.js",
+      "_Transition-927311f7.js",
       "_default-config-939e3be8.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/FarmersList/index.jsx"
   },
   "resources/js/pages/FpoList/index.jsx": {
-    "file": "assets/index-71e17d75.js",
+    "file": "assets/index-c953e4de.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Tracker-7b8e620e.js",
+      "_Tracker-81743c79.js",
       "_numberFormatter-373bc269.js",
-      "_index-b4cbe93c.js",
-      "_Transition-d5809df2.js",
+      "_index-f32d38b8.js",
+      "_Transition-927311f7.js",
       "_default-config-939e3be8.js"
     ],
     "isDynamicEntry": true,
@@ -341,43 +366,44 @@
     "css": [
       "assets/index-22a139a9.css"
     ],
-    "file": "assets/index-29f1642c.js",
+    "file": "assets/index-a5596a16.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Tracker-7b8e620e.js",
-      "_Transition-d5809df2.js",
+      "_Tracker-81743c79.js",
+      "_Transition-927311f7.js",
       "_default-config-939e3be8.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/FpoMap/index.jsx"
   },
   "resources/js/pages/FpoProfile/index.jsx": {
-    "file": "assets/index-7ca7bf21.js",
+    "file": "assets/index-ca91acff.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Tracker-7b8e620e.js",
-      "_UserGroupIcon-304112c1.js",
-      "_index-8580b4ae.js",
-      "_index-2e79ae6c.js",
-      "_index-8345b162.js",
+      "_Tracker-81743c79.js",
+      "_UserGroupIcon-965cdbdc.js",
+      "_index-740f1832.js",
+      "_index-fa709353.js",
+      "_index-233fac75.js",
       "resources/js/pages/FarmersList/index.jsx",
       "_numberFormatter-373bc269.js",
-      "_index-7ecb442f.js",
-      "_index-94eb3ee2.js",
-      "_Transition-d5809df2.js",
+      "_index-7563c26f.js",
+      "_index-5c500cc6.js",
+      "_Transition-927311f7.js",
       "_default-config-939e3be8.js",
+      "_square-stack-5a5f3bcf.js",
       "_tw-merge-fbb83fc6.js",
-      "_index-b4cbe93c.js"
+      "_index-f32d38b8.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/FpoProfile/index.jsx"
   },
   "resources/js/pages/Login/index.jsx": {
-    "file": "assets/index-e4e648c2.js",
+    "file": "assets/index-a86e4d12.js",
     "imports": [
       "resources/js/app.jsx",
-      "_index-8345b162.js",
-      "_index-7ecb442f.js",
+      "_index-233fac75.js",
+      "_index-7563c26f.js",
       "_tw-merge-fbb83fc6.js",
       "_default-config-939e3be8.js"
     ],
@@ -385,39 +411,41 @@
     "src": "resources/js/pages/Login/index.jsx"
   },
   "resources/js/pages/Reports/index.jsx": {
-    "file": "assets/index-14fcaf01.js",
+    "file": "assets/index-c87d62c7.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Tracker-7b8e620e.js",
-      "_index-7ecb442f.js",
-      "_index-8345b162.js",
-      "_index-2e79ae6c.js",
-      "_index-94eb3ee2.js",
-      "_UserGroupIcon-304112c1.js",
-      "_index-b4cbe93c.js",
-      "_WithConfirmAlert-d1ce5510.js",
+      "_Tracker-81743c79.js",
+      "_index-7563c26f.js",
+      "_index-233fac75.js",
+      "_index-fa709353.js",
+      "_index-5c500cc6.js",
+      "_UserGroupIcon-965cdbdc.js",
+      "_index-f32d38b8.js",
+      "_WithConfirmAlert-88a81f95.js",
       "_numberFormatter-373bc269.js",
-      "_Transition-d5809df2.js",
+      "_Transition-927311f7.js",
       "_default-config-939e3be8.js",
-      "_tw-merge-fbb83fc6.js"
+      "_tw-merge-fbb83fc6.js",
+      "_square-stack-5a5f3bcf.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/Reports/index.jsx"
   },
   "resources/js/pages/Users/UsersList/index.jsx": {
-    "file": "assets/index-2d86bf7c.js",
+    "file": "assets/index-05df39db.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Tracker-7b8e620e.js",
+      "_Tracker-81743c79.js",
       "_numberFormatter-373bc269.js",
-      "_index-b4cbe93c.js",
-      "_index-2e79ae6c.js",
-      "_index-7ecb442f.js",
-      "_index-94eb3ee2.js",
-      "_index-8345b162.js",
-      "_WithConfirmAlert-d1ce5510.js",
-      "_Transition-d5809df2.js",
+      "_index-f32d38b8.js",
+      "_index-fa709353.js",
+      "_index-7563c26f.js",
+      "_index-5c500cc6.js",
+      "_index-233fac75.js",
+      "_WithConfirmAlert-88a81f95.js",
+      "_Transition-927311f7.js",
       "_default-config-939e3be8.js",
+      "_square-stack-5a5f3bcf.js",
       "_tw-merge-fbb83fc6.js"
     ],
     "isDynamicEntry": true,

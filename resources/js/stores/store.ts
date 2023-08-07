@@ -5,6 +5,7 @@ import sideMenuReducer from "./sideMenuSlice";
 import authReducer from "./authSlice";
 import fpoReducer from "./fpoSlice";
 import appErrorReducer from "./appErrorSlice";
+import reportsReducer from "./reportsSlice";
 import appSuccessAlertReducer from "./appSuccessAlert";
 import refreshTokenAPI from "../services/RefreshTokenAPI";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
@@ -18,6 +19,7 @@ export const store = configureStore({
     fpos: fpoReducer,
     app_error: appErrorReducer,
     app_success_alerts: appSuccessAlertReducer,
+    reports: reportsReducer,
     [refreshTokenAPI.reducerPath] : refreshTokenAPI.reducer,
   },
 

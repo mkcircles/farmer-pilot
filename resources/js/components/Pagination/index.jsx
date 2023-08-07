@@ -13,7 +13,7 @@ const Pagination = ({
     return (
         <>
             <div className="w-full py-1 text-xs opacity-60">
-                showing {currentPage} of {numberFormatter(parseInt(totalPages))} pages
+                showing {numberFormatter(currentPage)} of {numberFormatter(parseInt(totalPages))} pages
             </div>
 
             <div className="flex justify-start py-2 items-center">
