@@ -1182,7 +1182,7 @@ class AgentController extends Controller
             ], 400);
         }
 
-        $farmers = FarmerProfile::where(['agent_id'=>$request->agent_id,'status'=>$request->status])->get();
+        $farmers = FarmerProfile::where(['agent_id'=>$request->agent_id,'status'=>$request->status])->paginate();
 
         return response()->json([
             'success' => true,
