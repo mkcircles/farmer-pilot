@@ -135,6 +135,106 @@ endpoints:
   -
     httpMethods:
       - GET
+    uri: api/farmers/bio/failed
+    metadata:
+      groupName: 'Data Management'
+      groupDescription: |-
+
+        APIs for managing farmer profile
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get all farmers with failed biometric captures'
+      description: 'This endpoint allows a user to get all farmers with failed biometric captures'
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: 'required The authorization token. Example: Bearer {token}'
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+          "current_page": 1,
+          "data": [
+          {
+
+          }
+          ]
+
+
+
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/farmers/bio/duplicates
+    metadata:
+      groupName: 'Data Management'
+      groupDescription: |-
+
+        APIs for managing farmer profile
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get all farmers with duplicate biometric captures'
+      description: 'This endpoint allows a user to get all farmers with duplicate biometric captures'
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: 'required The authorization token. Example: Bearer {token}'
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+          "current_page": 1,
+          "data": [
+          {
+
+          }
+          ]
+
+
+
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
     uri: 'api/farmer/{farmer_id}'
     metadata:
       groupName: 'Data Management'

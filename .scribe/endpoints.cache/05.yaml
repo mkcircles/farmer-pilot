@@ -54,7 +54,7 @@ endpoints:
         name: gender
         description: 'Farmer gender. Example Male/Female'
         required: false
-        example: dolor
+        example: enim
         type: string
         custom: []
       education_level:
@@ -292,7 +292,7 @@ endpoints:
       first_name: John
       last_name: Doe
       dob: '1990-01-01'
-      gender: dolor
+      gender: enim
       education_level: Primary
       marital_status: Married
       district: Kampala
@@ -459,7 +459,7 @@ endpoints:
         name: id
         description: 'Farmer id'
         required: true
-        example: 10
+        example: 18
         type: integer
         custom: []
       status:
@@ -470,7 +470,7 @@ endpoints:
         type: string
         custom: []
     cleanBodyParameters:
-      id: 10
+      id: 18
       status: 'pending,complete,valid,invalid,blacklisted,deceased'
     fileParameters: []
     responses:
