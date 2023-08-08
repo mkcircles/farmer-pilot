@@ -34,23 +34,26 @@ class DataChecker extends Command
 
             //Check Duplicate NIN
             $duplicateNIN = is_null($farmer->id_number) ? null : $this->checkDuplicateNIN($farmer->id_number, $farmer->id);
-            is_null($duplicateNIN) ? null : array_push($validate,['duplicate_nin'=>$duplicateNIN]);
+            if(!is_null($duplicateNIN))
+                $validate['duplicate_nin']= $duplicateNIN;
 
             //Check for duplicate first_nae and last_name and dob and gender
             $duplicateName = $this->checkDuplicateName($farmer->first_name, $farmer->last_name, $farmer->dob, $farmer->gender, $farmer->id);
-            is_null($duplicateName)? null : array_push($validate,['duplicate_name'=>$duplicateName]);
+            if(!is_null($duplicateName))
+                $validate['duplicate_name']= $duplicateName;
 
             //Check for duplicate phone_number
             $duplicatePhone = is_null($farmer->phone_number) ? null : $this->checkDuplicatePhoneNumber($farmer->phone_number, $farmer->id);
-            is_null($duplicatePhone) ? null : array_push($validate,['duplicate_phone'=>$duplicatePhone]);
+            if(!is_null($duplicatePhone))
+                $validate['duplicate_phone']= $duplicatePhone;
             
             //Count size of array validate
             $size = count($validate);
             
             if($size > 0){
-                array_push($validate,['status'=>'error']);
+                $validate['status']='error';
             }else{
-                array_push($validate,['status'=>'valid']);
+                $validate['status']='valid';
             }
 
             $farmer->validation_reason = json_encode($validate);
