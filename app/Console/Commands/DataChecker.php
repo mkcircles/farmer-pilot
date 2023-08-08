@@ -51,6 +51,7 @@ class DataChecker extends Command
             $size = count($validate);
             
             if($size > 0){
+                $farmer->status = 'invalid';
                 $validate['status']='error';
             }else{
                 $validate['status']='valid';
