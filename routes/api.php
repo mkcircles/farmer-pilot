@@ -72,6 +72,7 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::get('/agent/{agent_id}/farmers/count', [AgentController::class, 'getAgentFarmersCount']);
     Route::get('/agents/graph', [AgentController::class, 'getAgentGraph']);
     Route::put('/agent/status/update', [AgentController::class, 'updateAgentStatus']);
+    Route::post('/agent/farmers/status', [AgentController::class, 'getAgentFarmersByStatus']);
 
     Route::get('/fpos', [FPOController::class, 'index']);
     Route::get('/fpos/summary', [FPOController::class, 'getFPOsSummary']);

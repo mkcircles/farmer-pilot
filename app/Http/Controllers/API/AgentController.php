@@ -1124,5 +1124,72 @@ class AgentController extends Controller
         ], 200);
     }
 
+
+    /**
+     * Get agent farmers by status
+     * 
+     * This endpoint allows a user to get the farmers count of an agent
+     * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
+     * 
+     * @bodyParam agent_id integer required The id of the agent. Example: 1
+     * @bodyParam status string required The status of the agent. Example: pending,complete,valid,invalid,blacklisted,deceased
+     * 
+     * @response {
+     * "success": true,
+     * "message": "Farmers found successfully",
+     * "data": [
+     * {
+     * "first_name": "John",
+     * "last_name": "Doe",
+     * "dob": "1981-05-06", 
+     * ...
+     * }
+     * ]
+     * }
+     * 
+     * @response 404 {
+     * "success": false,
+     * "message": "Agent not found",
+     * "data": null
+     * }
+     * 
+     * @response 500 {
+     * "success": false,
+     * "message": "Farmers not found",
+     * "data": null
+     * }
+     * 
+     * @response 400 {
+     * "success": false,
+     * "message": "Validation error",
+     * "data": null
+     * }
+     * 
+     */
+    public function getAgentFarmersByStatus(Request $request)
+    {
+        $validate = Validator::make($request->all(),[
+            'agent_id' => 'required|integer',
+            'status' => 'required|string|in:pending,complete,valid,invalid,blacklisted,deceased'
+        ]);
+        if($validate->fails()){
+            return response()->json([
+                'success' => false,
+                'message' => 'Validation error',
+                'data' => $validate->errors()
+            ], 400);
+        }
+
+        $farmers = FarmerProfile::where(['agent_id'=>$request->agent_id,'status'=>$request->status])->get();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Farmers found successfully',
+            'data' => $farmers
+        ], 200);
+    }
+
 }
 
