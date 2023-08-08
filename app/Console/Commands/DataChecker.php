@@ -32,5 +32,6 @@ class DataChecker extends Command
             $user->validation_reason = 'null';
             $user->save();
         }
+
     }
 }
