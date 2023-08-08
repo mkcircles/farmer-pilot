@@ -94,7 +94,9 @@ class DataController extends Controller
     public function getAllFarmerWithBiometrics()
     {
         $biometics = MastercardProfileDetails::with('farmerProfile')
-                    ->where('entityType', 'FARMER')->orderBy('id', 'desc')->paginate();
+                    ->where('entityType', 'FARMER')
+                    ->whereNotNull('rID')
+                    ->orderBy('id', 'desc')->paginate();
 
         return response([
             'status' => 'success',

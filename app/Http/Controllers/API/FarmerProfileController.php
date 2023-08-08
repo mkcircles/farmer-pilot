@@ -124,46 +124,46 @@ class FarmerProfileController extends Controller
 
     public function registerFarmer(Request $request)
     {
-      
-      $validator = Validator::make($request->all(), [
-        'first_name' => 'required|string',
-        'last_name' => 'required|string',
-        'dob' => 'required|string',
-        'gender' => 'required|string|in:Male,Female',
-        'education_level' => 'required|string',
-       // 'id_number' => 'required|string|unique:farmer_profiles,id_number',
-        'marital_status' => 'required|string',
-        'district' => 'required|string',
-        'county' => 'required|string',
-        'sub_county' => 'required|string',
-        'parish' => 'required|string',
-        'village' => 'required|string',
-        'fpo_id' => 'required|integer',
-        'farmer_cordinates' => 'required|string',
-        //'next_of_kin' => 'required|string',
-        //'next_of_kin_contact' => 'required|string',
-        //'next_of_kin_relationship' => 'required|string',
-        'male_members_in_household' => 'required|integer',
-        'female_members_in_household' => 'required|integer',
-        'members_above_18' => 'required|integer',
-        'children_below_5' => 'required|integer',
-        'school_going_children' => 'required|integer',
-        'head_of_family' => 'required|string',
-        'how_much_do_you_earn_from_agricultural_activities' => 'required',
-        'how_much_do_you_earn_from_non_agricultural_activities' => 'required',
-        'do_you_have_an_account_with_an_FI' => 'required',
-        'farm_size' => 'required|string',
-        'farm_size_under_agriculture' => 'required|string',
-        'land_ownership' => 'required|string',
-        'type_of_farming' => 'required|string',
-        'crops_grown' => 'required|string',
-        //'animals_kept' => 'required|string',
-        'estimated_produce_value_last_season' => 'required|string',
-        'estimated_produce_value_this_season' => 'required|string',
-        'agent_id' => 'required|integer',
-      ]);  
-   
-        if($validator->fails()){
+
+        $validator = Validator::make($request->all(), [
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'dob' => 'required|string',
+            'gender' => 'required|string|in:Male,Female',
+            'education_level' => 'required|string',
+            // 'id_number' => 'required|string|unique:farmer_profiles,id_number',
+            'marital_status' => 'required|string',
+            'district' => 'required|string',
+            'county' => 'required|string',
+            'sub_county' => 'required|string',
+            'parish' => 'required|string',
+            'village' => 'required|string',
+            'fpo_id' => 'required|integer',
+            'farmer_cordinates' => 'required|string',
+            //'next_of_kin' => 'required|string',
+            //'next_of_kin_contact' => 'required|string',
+            //'next_of_kin_relationship' => 'required|string',
+            'male_members_in_household' => 'required|integer',
+            'female_members_in_household' => 'required|integer',
+            'members_above_18' => 'required|integer',
+            'children_below_5' => 'required|integer',
+            'school_going_children' => 'required|integer',
+            'head_of_family' => 'required|string',
+            'how_much_do_you_earn_from_agricultural_activities' => 'required',
+            'how_much_do_you_earn_from_non_agricultural_activities' => 'required',
+            'do_you_have_an_account_with_an_FI' => 'required',
+            'farm_size' => 'required|string',
+            'farm_size_under_agriculture' => 'required|string',
+            'land_ownership' => 'required|string',
+            'type_of_farming' => 'required|string',
+            'crops_grown' => 'required|string',
+            //'animals_kept' => 'required|string',
+            'estimated_produce_value_last_season' => 'required|string',
+            'estimated_produce_value_this_season' => 'required|string',
+            'agent_id' => 'required|integer',
+        ]);
+
+        if ($validator->fails()) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Validation error',
@@ -187,7 +187,7 @@ class FarmerProfileController extends Controller
             'village' => $request->village,
             'fpo_id' => $request->fpo_id,
         ])->first();
-        if(!$check){
+        if (!$check) {
             $farmer = new FarmerProfile();
             $farmer->farmer_id = $this->generateFarmerId();
             $farmer->first_name = $request->first_name;
@@ -225,7 +225,7 @@ class FarmerProfileController extends Controller
             $farmer->animals_kept = $request->animals_kept;
             $farmer->estimated_produce_value_last_season = $request->estimated_produce_value_last_season;
             $farmer->estimated_produce_value_this_season = $request->estimated_produce_value_this_season;
-            $farmer->rId = $request->rId;
+            $farmer->rId = $request->rID;
             $farmer->consumerDeviceId = $request->consumerDeviceId;
             $farmer->data_captured_by = $request->data_captured_by;
             $farmer->agent_id = $request->agent_id;
@@ -233,28 +233,25 @@ class FarmerProfileController extends Controller
 
             $farmer->save();
 
-            if(isset($request->rID)){
-                //Check if user with this RID exists
-                $exists_check = MastercardProfileDetails::where([
-                    'rID' => $request->rID
-                ])->first();
-                $duplicate = $exists_check? $exists_check->entityID : null;
-                //Register Mastercard Profile Details
-                
-                MastercardProfileDetails::create([
-                    'entityType' => 'farmer',
-                    'entityID'=> $farmer->farmer_id,
-                    'rID' => $request->rID,
-                    'consentGUID' => $request->consentGUID,
-                    'subjectID' => $request->subjectID,
-                    'enrollmentStatus' => $request->enrollmentStatus,
-                    'hasBiometricToken' => !is_null($request->biometricToken)? 1 : 0,
-                    'biometricToken' => $request->biometricToken,
-                    'possible_duplicate' => $duplicate,
-                    'consumerDeviceId' => null,
-                    'reason' => $request->reason
-                ]);
-            }
+            $exists_check = MastercardProfileDetails::where([
+                'rID' => $request->rID
+            ])->first();
+            $duplicate = $exists_check ? $exists_check->entityID : null;
+            //Register Mastercard Profile Details
+
+            MastercardProfileDetails::create([
+                'entityType' => 'farmer',
+                'entityID' => $farmer->farmer_id,
+                'rID' => isset($request->rID) ? $request->rID : null,
+                'consentGUID' => isset($request->consentGUID) ? $request->consentGUID : null,
+                'subjectID' => isset($request->subjectID) ? $request->subjectID : null,
+                'enrollmentStatus' => isset($request->enrollmentStatus) ? $request->enrollmentStatus : null,
+                'hasBiometricToken' => !is_null($request->biometricToken) ? 1 : 0,
+                'biometricToken' => isset($request->biometricToken) ? $request->biometricToken : null,
+                'possible_duplicate' => $duplicate,
+                'consumerDeviceId' => null,
+                'reason' => $request->reason
+            ]);
 
             //Return Response
             return response()->json([
@@ -262,8 +259,7 @@ class FarmerProfileController extends Controller
                 'message' => 'Farmer profile created successfully',
                 'data' => $farmer
             ], 201);
-        }
-        else{
+        } else {
             return response()->json([
                 'status' => 'success',
                 'message' => 'Farmer profile already exists',
@@ -351,48 +347,48 @@ class FarmerProfileController extends Controller
         $validate = Validator::make($request->all(), [
             'farmer_id' => 'required|string',
             'image' => 'required'
-            ]);
+        ]);
 
-            if($validate->fails()){
-                return response()->json([
-                    'status' => 'error',
-                    'message' => 'Validation error',
-                    'errors' => $validate->errors()
-                ], 422);
-            }
-
-              //Check if request has image
-              if ($request->image) {
-                $folderPath = public_path() . '/farmers';
-                $base64Image = explode(";base64,", $request->image);
-                $explodeImage = explode("image/", $base64Image[0]);
-                $imageType = $explodeImage[1];
-                $image_base64 = base64_decode($base64Image[1]);
-                $file = $folderPath . uniqid() . '. '.$imageType;
-                file_put_contents($file, $image_base64);
-            }else{
-                $imageName = null;
-            }
-
-            $farmer = FarmerProfile::where('farmer_id', $request->farmer_id)->first();
-            if(!$farmer){
-                return response()->json([
-                    'status' => 'error',
-                    'message' => 'Farmer profile not found',
-                    'errors' => [
-                        'farmer_id' => ['Farmer profile not found']
-                    ]
-                ], 404);
-            }
-
-            $farmer->photo = $imageName;
-            $farmer->save();   
-            
+        if ($validate->fails()) {
             return response()->json([
-                'status' => 'success',
-                'message' => 'Farmer photo created successfully',
-                'data' => $farmer
-            ],200);
+                'status' => 'error',
+                'message' => 'Validation error',
+                'errors' => $validate->errors()
+            ], 422);
+        }
+
+        //Check if request has image
+        if ($request->image) {
+            $folderPath = public_path() . '/farmers';
+            $base64Image = explode(";base64,", $request->image);
+            $explodeImage = explode("image/", $base64Image[0]);
+            $imageType = $explodeImage[1];
+            $image_base64 = base64_decode($base64Image[1]);
+            $file = $folderPath . uniqid() . '. ' . $imageType;
+            file_put_contents($file, $image_base64);
+        } else {
+            $imageName = null;
+        }
+
+        $farmer = FarmerProfile::where('farmer_id', $request->farmer_id)->first();
+        if (!$farmer) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Farmer profile not found',
+                'errors' => [
+                    'farmer_id' => ['Farmer profile not found']
+                ]
+            ], 404);
+        }
+
+        $farmer->photo = $imageName;
+        $farmer->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Farmer photo created successfully',
+            'data' => $farmer
+        ], 200);
     }
 
 
@@ -476,7 +472,7 @@ class FarmerProfileController extends Controller
             'status' => 'required|string',
         ]);
 
-        if($validate->fails()){
+        if ($validate->fails()) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Validation error',
@@ -492,9 +488,9 @@ class FarmerProfileController extends Controller
             'status' => 'success',
             'message' => 'Farmer profile status updated successfully',
             'data' => $farmer
-        ],200);
+        ], 200);
     }
-    
 
-   
+
+
 }

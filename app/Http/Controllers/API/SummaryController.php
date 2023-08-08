@@ -98,7 +98,7 @@ class SummaryController extends Controller
     public function getBioSummary()
     {
         $data = [
-            "bio_summary" => MastercardProfileDetails::count(),
+            "bio_summary" => MastercardProfileDetails::whereNotNull('rID')->count(),
             "possible_duplicates" => MastercardProfileDetails::whereNotNull('possible_duplicate')->count(),
             "denied_captures" => MastercardProfileDetails::whereNull('rID')->count(),
         ];
