@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command('app:process-reports')->everyThirtySeconds()->withoutOverlapping();
-        $schedule->command('app:agent-activity-report')->everyFiveSeconds();
+       // $schedule->command('app:agent-activity-report')->everyFiveSeconds();
+        $schedule->command('app:data-checker')->everyTenSeconds();
         
     }
 

@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::table('farmer_profiles', function (Blueprint $table) {
             $table->dropColumn('rId');
             $table->dropColumn('consumerDeviceId');
-            
         });
     }
 
