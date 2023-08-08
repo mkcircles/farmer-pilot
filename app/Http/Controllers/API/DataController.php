@@ -268,12 +268,70 @@ class DataController extends Controller
      * 
      * @header Authorization required The authorization token. Example: Bearer {token}
      * 
-     * @response {
-     * "data":{
-     * "Amuru": 281,
-     * "Wakiso": 281,
+     * @response 200 {
+     * "current_page": 1,
+     * "data": [
+     * {
+     * "id": 1,
+     * "first_name": "John",
+     * "last_name": "Doe",
+     * "phone_number": "256700000000",
+     * "fpo_id": 1,
+     * "created_at": "2021-06-30T11:30:00.000000Z",
+     * "updated_at": "2021-06-30T11:30:00.000000Z"
+     * },
+     * {
+     * "id": 2,
+     * "first_name": "Jane",
+     * "last_name": "Doe",
+     * "phone_number": "256700000000",
+     * "fpo_id": 1,
+     * "created_at": "2021-06-30T11:30:00.000000Z",
+     * "updated_at": "2021-06-30T11:30:00.000000Z"
      * }
-     *
+     * ],
+     * "first_page_url": "http://localhost:8000/api/fpos/1/farmers?page=1",
+     * "from": 1,
+     * "last_page": 1,
+     * "last_page_url": "http://localhost:8000/api/fpos/1/farmers?page=1",
+     * "links": [
+     * {
+     * "url": null,
+     * "label": "&laquo; Previous",
+     * "active": false
+     * },
+     * {
+     * "url": "http://localhost:8000/api/fpos/1/farmers?page=1",
+     * "label": "1",
+     * "active": true
+     * },
+     * {
+     * "url": null,
+     * "label": "Next &raquo;",
+     * "active": false
+     * }
+     * ],
+     * "next_page_url": null,
+     * "path": "http://localhost:8000/api/fpos/1/farmers",
+     * "per_page": 15,
+     * "prev_page_url": null,
+     * "to": 2,
+     * "total": 2
+     * }
+     * }
+     * 
+     * @response 401 {
+     * "message": "Unauthenticated."
+     * }
+     * 
+     * @response 403 {
+     * "message": "This action is unauthorized."
+     * }
+     * 
+     * @response 404 {
+     * "message": "No farmers found"
+     * }
+     * 
      */
     public function getDistricts()
     {
