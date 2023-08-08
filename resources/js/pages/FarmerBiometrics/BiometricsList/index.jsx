@@ -35,7 +35,8 @@ export default function BiometricsList(props) {
     const [nextPageUrl, setNextPageUrl] = useState("");
     const [profilesData, setProfilesData] = useState({});
 
-    const bio_api_url = `${BASE_API_URL}/farmers/bio`;
+    const bio_api_url =
+        props?.biometrics_api_url || `${BASE_API_URL}/farmers/bio`;
     const fetchProfiles = (url = bio_api_url) => {
         updateAppContextState("loading", true);
         axios
@@ -83,95 +84,124 @@ export default function BiometricsList(props) {
 
     return (
         <div className="w-full h-full py-4">
-            <Card className="bg-white h-full w-full">
-                <Flex justifyContent="start" className="space-x-2">
-                    <Title>Biometrics</Title>
-                    <Badge color="gray">
-                        {numberFormatter(parseInt(profilesData?.total || 0))}
-                    </Badge>
-                </Flex>
-                <Text className="mt-2">Overview of Biometrics captured</Text>
+            {profilesData?.data?.length > 0 ? (
+                <Card className="bg-white h-full w-full">
+                    <Flex justifyContent="start" className="space-x-2">
+                        <Title>Biometrics</Title>
+                        <Badge color="gray">
+                            {numberFormatter(
+                                parseInt(profilesData?.total || 0)
+                            )}
+                        </Badge>
+                    </Flex>
+                    <Text className="mt-2">
+                        Overview of {props?.title || "Biometrics captured"}
+                    </Text>
 
-                <Table className="mt-6">
-                    <TableHead>
-                        <TableRow>
-                            <TableHeaderCell>Farmer ID</TableHeaderCell>
-                            <TableHeaderCell>Name</TableHeaderCell>
-                            <TableHeaderCell>Enrollment Status</TableHeaderCell>
-                            <TableHeaderCell>Possible Duplicate</TableHeaderCell>
-                            <TableHeaderCell className="">
-                                Has BioToken
-                            </TableHeaderCell>
-                            <TableHeaderCell className="">
-                                Reason
-                            </TableHeaderCell>
-                            <TableHeaderCell className="">
-                                Registered On
-                            </TableHeaderCell>
-                            <TableHeaderCell className="">
-                            Subject ID
-                            </TableHeaderCell>
-                            <TableHeaderCell>Link</TableHeaderCell>
-                        </TableRow>
-                    </TableHead>
+                    <Table className="mt-6">
+                        <TableHead>
+                            <TableRow>
+                                <TableHeaderCell>Farmer ID</TableHeaderCell>
+                                <TableHeaderCell>Name</TableHeaderCell>
+                                <TableHeaderCell>
+                                    Enrollment Status
+                                </TableHeaderCell>
+                                <TableHeaderCell>
+                                    Possible Duplicate
+                                </TableHeaderCell>
+                                <TableHeaderCell className="">
+                                    Has BioToken
+                                </TableHeaderCell>
+                                <TableHeaderCell className="">
+                                    Reason
+                                </TableHeaderCell>
+                                <TableHeaderCell className="">
+                                    Registered On
+                                </TableHeaderCell>
+                                <TableHeaderCell className="">
+                                    Subject ID
+                                </TableHeaderCell>
+                                <TableHeaderCell>Link</TableHeaderCell>
+                            </TableRow>
+                        </TableHead>
 
-                    <TableBody>
-                        {profilesData?.data?.map((data) => {
-                            let farmer = data.farmer_profile;
-                            return (
-                                <TableRow key={farmer.id}>
-                                    <TableCell>{farmer.farmer_id}</TableCell>
-                                    <TableCell>
-                                        {farmer.first_name + " " + farmer.last_name}
-                                    </TableCell>
-                                    <TableCell>{data?.enrollmentStatus}</TableCell>
-                                    <TableCell>{data?.possible_duplicate? 'Yes' : 'No'}</TableCell>
-    
-                                    <TableCell className="">
-                                        {data?.hasBiometricToken? 'Yes' : 'No'}
-                                    </TableCell>
-                                    <TableCell className="">
-                                        {data?.reason || 'No Reason'}
-                                    </TableCell>
-                                    <TableCell>
-                                        {new Date(farmer?.created_at)?.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
-                                    </TableCell>
-                                    <TableCell>
-                                        {data?.subjectID}
-                                    </TableCell>
-                                    
-                                    <TableCell>
-                                        <Button
-                                            size="xs"
-                                            variant="secondary"
-                                            color="orange"
-                                            onClick={() => {
-                                                navigate(
-                                                    `${FARMER_PROFILE}/${farmer?.farmer_id}`
-                                                );
-                                            }}
-                                        >
-                                            See details
-                                        </Button>
-                                    </TableCell>
-                                </TableRow>
-                            )
-                        })}
-                    </TableBody>
-                </Table>
+                        <TableBody>
+                            {profilesData?.data?.map((data) => {
+                                let farmer = data.farmer_profile;
+                                return (
+                                    <TableRow key={farmer.id}>
+                                        <TableCell>
+                                            {farmer.farmer_id}
+                                        </TableCell>
+                                        <TableCell>
+                                            {farmer.first_name +
+                                                " " +
+                                                farmer.last_name}
+                                        </TableCell>
+                                        <TableCell>
+                                            {data?.enrollmentStatus}
+                                        </TableCell>
+                                        <TableCell>
+                                            {data?.possible_duplicate
+                                                ? "Yes"
+                                                : "No"}
+                                        </TableCell>
 
-                <Pagination
-                    currentPage={currentPage}
-                    moveToPage={moveToPage}
-                    fetchPage={fetchProfiles}
-                    setMoveToPage={setMoveToPage}
-                    nextPageUrl={nextPageUrl}
-                    prevPageUrl={prevPageUrl}
-                    lastPage={lastPage}
-                    totalPages={profilesData?.last_page}
-                />
+                                        <TableCell className="">
+                                            {data?.hasBiometricToken
+                                                ? "Yes"
+                                                : "No"}
+                                        </TableCell>
+                                        <TableCell className="">
+                                            {data?.reason || "No Reason"}
+                                        </TableCell>
+                                        <TableCell>
+                                            {new Date(
+                                                farmer?.created_at
+                                            )?.toLocaleDateString("en-US", {
+                                                year: "numeric",
+                                                month: "short",
+                                                day: "numeric",
+                                            })}
+                                        </TableCell>
+                                        <TableCell>{data?.subjectID}</TableCell>
 
-            </Card>
+                                        <TableCell>
+                                            <Button
+                                                size="xs"
+                                                variant="secondary"
+                                                color="orange"
+                                                onClick={() => {
+                                                    navigate(
+                                                        `${FARMER_PROFILE}/${farmer?.farmer_id}`
+                                                    );
+                                                }}
+                                            >
+                                                See details
+                                            </Button>
+                                        </TableCell>
+                                    </TableRow>
+                                );
+                            })}
+                        </TableBody>
+                    </Table>
+
+                    <Pagination
+                        currentPage={currentPage}
+                        moveToPage={moveToPage}
+                        fetchPage={fetchProfiles}
+                        setMoveToPage={setMoveToPage}
+                        nextPageUrl={nextPageUrl}
+                        prevPageUrl={prevPageUrl}
+                        lastPage={lastPage}
+                        totalPages={profilesData?.last_page}
+                    />
+                </Card>
+            ) : (
+                <Card className="flex justify-center items-center border border-dashed p-16 border-gray-300">
+                    <Text>No data</Text>
+                </Card>
+            )}
         </div>
     );
 }

@@ -5,7 +5,6 @@ import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../context/RootContext";
 import { numberFormatter } from "../../utils/numberFormatter";
 import { CircleOff, ScanLine, SquareStack } from "lucide-react";
-import FarmersList from "../FarmersList";
 import BiometricsList from "./BiometricsList";
 
 const FarmerBiometrics = () => {
@@ -61,7 +60,7 @@ const FarmerBiometrics = () => {
                 updateAppContextState("loading", false);
             });
     };
-
+    
     useEffect(() => {
         fetchStats();
         fetchFarmersBiometricsSummary();
@@ -79,7 +78,7 @@ const FarmerBiometrics = () => {
                     </Metric>
                 </Card>
                 <Card>
-                    <Text>Denied Captures</Text>
+                    <Text>Failed Captures</Text>
                     <Metric>
                         {numberFormatter(bioSummaryData?.denied_captures)}
                     </Metric>
@@ -96,18 +95,18 @@ const FarmerBiometrics = () => {
                 <TabGroup>
                     <TabList className="">
                         <Tab icon={ScanLine}>Biometrics Captured</Tab>
-                        <Tab icon={CircleOff}>Denied Captures</Tab>
+                        <Tab icon={CircleOff}>Failed Captures</Tab>
                         <Tab icon={SquareStack}>Possible Duplicates</Tab>
                     </TabList>
                     <TabPanels>
                         <TabPanel>
-                            <BiometricsList  />
+                            <BiometricsList title="All Biometrics Captures" biometrics_api_url={`${BASE_API_URL}/farmers/bio`}></BiometricsList>
                         </TabPanel>
                         <TabPanel>
-                            <></>
+                            <BiometricsList title="Failed Captures" biometrics_api_url={`${BASE_API_URL}/farmers/bio/failed`}></BiometricsList>
                         </TabPanel>
                         <TabPanel>
-                            <></>
+                        <BiometricsList title="Possible Duplicates" biometrics_api_url={`${BASE_API_URL}/farmers/bio/duplicates`}></BiometricsList>
                         </TabPanel>
                         <TabPanel>
                             
