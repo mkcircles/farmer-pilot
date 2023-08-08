@@ -122,7 +122,7 @@ endpoints:
         name: name
         description: 'The name of the report'
         required: true
-        example: qui
+        example: animi
         type: string
         custom: []
       report_type:
@@ -136,28 +136,28 @@ endpoints:
         name: from_date
         description: 'The from date for the report'
         required: true
-        example: amet
+        example: porro
         type: string
         custom: []
       to_date:
         name: to_date
         description: 'The to date for the report'
         required: true
-        example: dolores
+        example: nisi
         type: string
         custom: []
       district:
         name: district
         description: 'optional The district of the report'
         required: false
-        example: tempore
+        example: excepturi
         type: string
         custom: []
       agent_id:
         name: agent_id
         description: 'optional The agent id of the report'
         required: false
-        example: 17
+        example: 8
         type: integer
         custom: []
       crops_grown:
@@ -171,7 +171,7 @@ endpoints:
         name: farm_size
         description: 'optional The farm size of the report'
         required: false
-        example: 16
+        example: 19
         type: integer
         custom: []
       gender:
@@ -185,20 +185,20 @@ endpoints:
         name: fpo_id
         description: 'optional The fpo id of the report'
         required: false
-        example: 19
+        example: 4
         type: integer
         custom: []
     cleanBodyParameters:
-      name: qui
+      name: animi
       report_type: 'farmer-report, crop-report,agent-summary-report'
-      from_date: amet
-      to_date: dolores
-      district: tempore
-      agent_id: 17
+      from_date: porro
+      to_date: nisi
+      district: excepturi
+      agent_id: 8
       crops_grown: 'Maize, Wheat, beans'
-      farm_size: 16
+      farm_size: 19
       gender: 'Male, Female'
-      fpo_id: 19
+      fpo_id: 4
     fileParameters: []
     responses:
       -
@@ -279,11 +279,11 @@ endpoints:
         name: id
         description: 'The ID of the report.'
         required: true
-        example: reprehenderit
+        example: incidunt
         type: string
         custom: []
     cleanUrlParameters:
-      id: reprehenderit
+      id: incidunt
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

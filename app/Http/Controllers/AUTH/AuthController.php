@@ -117,6 +117,7 @@ class AuthController extends Controller
                     $user['last_name'] = $agent->last_name;
                     $user['agent_id'] =  $agent->id;
                     $user['fpo_id'] =  $agent->fpo_id;
+                    $user['agent_code'] =  $agent->agent_code;
                 }
                 $success['user'] =  $user;
 
