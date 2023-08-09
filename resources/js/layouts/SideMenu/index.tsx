@@ -430,7 +430,11 @@ function Main() {
                         "after:content-[''] after:w-[92.5%] after:z-[-2] after:-mt-[1.76rem] after:rounded-[1.6rem] after:mx-auto after:h-20 after:bg-white/[0.15] after:absolute after:top-0 after:inset-x-0 after:dark:bg-darkmode-100/[0.15]",
                     ])}
                 >
-                    <Outlet />
+                    {/* <div className={clsx(["relative"], {["!ml-[110px]"]: simpleMenu.active})}>
+                    
+                    </div> */}
+                    <Outlet  />
+                    
                 </div>
             </div>
             {/* END: Content */}

@@ -1,11 +1,23 @@
-import { Card, Grid, Metric, Text, TabGroup, TabList, Tab, TabPanels, TabPanel } from "@tremor/react";
+import {
+    Card,
+    Grid,
+    Metric,
+    Text,
+    TabGroup,
+    TabList,
+    Tab,
+    TabPanels,
+    TabPanel,
+} from "@tremor/react";
 import { BASE_API_URL } from "../../env";
 import { useSelector } from "react-redux";
-import { useContext, useEffect, useState } from "react";
+import { Suspense, lazy, useContext, useEffect, useState } from "react";
 import { AppContext } from "../../context/RootContext";
 import { numberFormatter } from "../../utils/numberFormatter";
 import { CircleOff, ScanLine, SquareStack } from "lucide-react";
-import BiometricsList from "./BiometricsList";
+import Loading from "../../components/Loading";
+
+const BiometricsList = lazy(() => import("./BiometricsList"));
 
 const FarmerBiometrics = () => {
     const token = useSelector((state) => state.auth.token);
@@ -60,7 +72,7 @@ const FarmerBiometrics = () => {
                 updateAppContextState("loading", false);
             });
     };
-    
+
     useEffect(() => {
         fetchStats();
         fetchFarmersBiometricsSummary();
@@ -100,17 +112,30 @@ const FarmerBiometrics = () => {
                     </TabList>
                     <TabPanels>
                         <TabPanel>
-                            <BiometricsList title="All Biometrics Captures" biometrics_api_url={`${BASE_API_URL}/farmers/bio`}></BiometricsList>
+                            <Suspense fallback={<Loading />}>
+                                <BiometricsList
+                                    title="All Biometrics Captures"
+                                    biometrics_api_url={`${BASE_API_URL}/farmers/bio`}
+                                ></BiometricsList>
+                            </Suspense>
                         </TabPanel>
                         <TabPanel>
-                            <BiometricsList title="Failed Captures" biometrics_api_url={`${BASE_API_URL}/farmers/bio/failed`}></BiometricsList>
+                            <Suspense fallback={<Loading />}>
+                                <BiometricsList
+                                    title="Failed Captures"
+                                    biometrics_api_url={`${BASE_API_URL}/farmers/bio/failed`}
+                                ></BiometricsList>
+                            </Suspense>
                         </TabPanel>
                         <TabPanel>
-                        <BiometricsList title="Possible Duplicates" biometrics_api_url={`${BASE_API_URL}/farmers/bio/duplicates`}></BiometricsList>
+                            <Suspense fallback={<Loading />}>
+                                <BiometricsList
+                                    title="Possible Duplicates"
+                                    biometrics_api_url={`${BASE_API_URL}/farmers/bio/duplicates`}
+                                ></BiometricsList>
+                            </Suspense>
                         </TabPanel>
-                        <TabPanel>
-                            
-                        </TabPanel>
+                        <TabPanel></TabPanel>
                     </TabPanels>
                 </TabGroup>
             </Card>
