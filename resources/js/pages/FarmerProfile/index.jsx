@@ -439,7 +439,7 @@ const FarmerProfile = () => {
                 </div>
             </div>
 
-            {farmerData?.validation_reason && (
+            {farmerData?.validation_reason && (JSON?.parse(farmerData?.validation_reason)?.status !== 'valid') && (
                 <div className="w-full px-10 pb-4 ">
                     <Card className="h-full border-l-4 bg-orange-100 border-secondary shadow-md">
                         <div className="flex justify-between px-4">
