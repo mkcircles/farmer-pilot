@@ -544,7 +544,7 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span>_</span>
+                                                        <span className="text-primary">N/A</span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -568,7 +568,7 @@ const FarmerProfile = () => {
                                                             {farmerData?.dob}
                                                         </span>
                                                     ) : (
-                                                        <span>_</span>
+                                                        <span className="text-primary">N/A</span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -593,7 +593,7 @@ const FarmerProfile = () => {
                                                             {farmerData?.gender}
                                                         </span>
                                                     ) : (
-                                                        <span>_</span>
+                                                        <span className="text-primary">N/A</span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -620,7 +620,7 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span>_</span>
+                                                        <span className="text-primary">N/A</span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -647,7 +647,7 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span>_</span>
+                                                        <span className="text-primary">N/A</span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -674,7 +674,7 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span>_</span>
+                                                        <span className="text-primary">N/A</span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -700,7 +700,7 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span>_</span>
+                                                        <span className="text-primary">N/A</span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -727,7 +727,7 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span>_</span>
+                                                        <span className="text-primary">N/A</span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -754,7 +754,7 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span>_</span>
+                                                        <span className="text-primary">N/A</span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -781,7 +781,7 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span>_</span>
+                                                        <span className="text-primary">N/A</span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -818,7 +818,7 @@ const FarmerProfile = () => {
                                                                 }
                                                             </span>
                                                         ) : (
-                                                            <span>_</span>
+                                                            <span className="text-primary">N/A</span>
                                                         )}
                                                     </Text>
                                                 </ListItem>
@@ -844,7 +844,7 @@ const FarmerProfile = () => {
                                                                 }
                                                             </span>
                                                         ) : (
-                                                            <span>_</span>
+                                                            <span className="text-primary">N/A</span>
                                                         )}
                                                     </Text>
                                                 </ListItem>
@@ -873,7 +873,7 @@ const FarmerProfile = () => {
                                                                 }
                                                             </span>
                                                         ) : (
-                                                            <span>_</span>
+                                                            <span className="text-primary">N/A</span>
                                                         )}
                                                     </Text>
                                                 </ListItem>
@@ -900,7 +900,7 @@ const FarmerProfile = () => {
                                                                 }
                                                             </span>
                                                         ) : (
-                                                            <span>_</span>
+                                                            <span className="text-primary">N/A</span>
                                                         )}
                                                     </Text>
                                                 </ListItem>
@@ -927,7 +927,7 @@ const FarmerProfile = () => {
                                                                 }
                                                             </span>
                                                         ) : (
-                                                            <span>_</span>
+                                                            <span className="text-primary">N/A</span>
                                                         )}
                                                     </Text>
                                                 </ListItem>
@@ -954,7 +954,7 @@ const FarmerProfile = () => {
                                                                 }
                                                             </span>
                                                         ) : (
-                                                            <span>_</span>
+                                                            <span className="text-primary">N/A</span>
                                                         )}
                                                     </Text>
                                                 </ListItem>
@@ -994,7 +994,7 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span>_</span>
+                                                        <span className="text-primary">N/A</span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -1021,7 +1021,7 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span>_</span>
+                                                        <span className="text-primary">N/A</span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -1049,7 +1049,7 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span>_</span>
+                                                        <span className="text-primary">N/A</span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -1077,7 +1077,7 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span>_</span>
+                                                        <span className="text-primary">N/A</span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -1104,7 +1104,7 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span>_</span>
+                                                        <span className="text-primary">N/A</span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -1131,7 +1131,7 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span>_</span>
+                                                        <span className="text-primary">N/A</span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -1164,7 +1164,7 @@ const FarmerProfile = () => {
                                                                 )}
                                                             </span>
                                                         ) : (
-                                                            <span>_</span>
+                                                            <span className="text-primary">N/A</span>
                                                         )
                                                     }
                                                 </Text>
@@ -1198,7 +1198,7 @@ const FarmerProfile = () => {
                                                                 )}
                                                             </span>
                                                         ) : (
-                                                            <span>_</span>
+                                                            <span className="text-primary">N/A</span>
                                                         )
                                                     }
                                                 </Text>
@@ -1230,7 +1230,7 @@ const FarmerProfile = () => {
                                                             )}
                                                         </span>
                                                     ) : (
-                                                        <span>_</span>
+                                                        <span className="text-primary">N/A</span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -1261,7 +1261,7 @@ const FarmerProfile = () => {
                                                             )}
                                                         </span>
                                                     ) : (
-                                                        <span>_</span>
+                                                        <span className="text-primary">N/A</span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -1296,7 +1296,7 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span>_</span>
+                                                        <span className="text-primary">N/A</span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -1323,7 +1323,7 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span>_</span>
+                                                        <span className="text-primary">N/A</span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -1348,7 +1348,7 @@ const FarmerProfile = () => {
                                                             {farmerData?.county}
                                                         </span>
                                                     ) : (
-                                                        <span>_</span>
+                                                        <span className="text-primary">N/A</span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -1375,7 +1375,7 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span>_</span>
+                                                        <span className="text-primary">N/A</span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -1400,7 +1400,7 @@ const FarmerProfile = () => {
                                                             {farmerData?.parish}
                                                         </span>
                                                     ) : (
-                                                        <span>_</span>
+                                                        <span className="text-primary">N/A</span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -1427,7 +1427,7 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span>_</span>
+                                                        <span className="text-primary">N/A</span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -1462,7 +1462,7 @@ const FarmerProfile = () => {
                                                     ?.enrollmentStatus ? (
                                                     <span>Present</span>
                                                 ) : (
-                                                    <span>N/A</span>
+                                                    <span className="text-primary">N/A</span>
                                                 )}
                                             </Text>
                                         </ListItem>
@@ -1492,7 +1492,7 @@ const FarmerProfile = () => {
                                                         }
                                                     </span>
                                                 ) : (
-                                                    <span>N/A</span>
+                                                    <span className="text-primary">N/A</span>
                                                 )}
                                             </Text>
                                         </ListItem>
@@ -1522,7 +1522,7 @@ const FarmerProfile = () => {
                                                         }
                                                     </span>
                                                 ) : (
-                                                    <span>N/A</span>
+                                                    <span className="text-primary">N/A</span>
                                                 )}
                                             </Text>
                                         </ListItem>
@@ -1546,7 +1546,7 @@ const FarmerProfile = () => {
                                                     ?.consentGUID ? (
                                                     <span>Present</span>
                                                 ) : (
-                                                    <span>N/A</span>
+                                                    <span className="text-primary">N/A</span>
                                                 )}
                                             </Text>
                                         </ListItem>
@@ -1569,7 +1569,7 @@ const FarmerProfile = () => {
                                                 {farmerData?.biometrics?.rID ? (
                                                     <span>Present</span>
                                                 ) : (
-                                                    <span>N/A</span>
+                                                    <span className="text-primary">N/A</span>
                                                 )}
                                             </Text>
                                         </ListItem>
@@ -1638,7 +1638,7 @@ const FarmerProfile = () => {
                                                                 ?.last_name}
                                                     </span>
                                                 ) : (
-                                                    <span>_</span>
+                                                    <span className="text-primary">N/A</span>
                                                 )}
                                             </Text>
                                         </ListItem>

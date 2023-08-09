@@ -30,9 +30,7 @@ import { saveReport } from "../../../stores/reportsSlice";
     const agentsData = useSelector((state) => state.reports.agentsPerformance);
     const stats = useSelector((state) => state.reports.stats);
     const { updateAppContextState } = useContext(AppContext);
-    // const [agentsData, setAgentsData] = useState([]);
-    // const [stats, setStats] = useState({});
-
+   
     const data = {
       relative: agentsData?.map(agent => ({agent_name: agent.name, "Farmers Profiled": ((agent.farmers_count/stats?.system_stats?.total_farmers)*100).toFixed(2)})),
       absolute: agentsData?.map(agent => ({agent_name: agent.name, "Farmers Profiled": agent.farmers_count})),
