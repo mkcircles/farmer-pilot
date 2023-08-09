@@ -110,7 +110,13 @@ export default function BiometricsList(props) {
                                     Possible Duplicate
                                 </TableHeaderCell>
                                 <TableHeaderCell className="">
-                                    Has BioToken
+                                    BioToken
+                                </TableHeaderCell>
+                                <TableHeaderCell className="">
+                                    rID
+                                </TableHeaderCell>
+                                <TableHeaderCell className="">
+                                ConsentGUID
                                 </TableHeaderCell>
                                 <TableHeaderCell className="">
                                     Reason
@@ -127,33 +133,51 @@ export default function BiometricsList(props) {
 
                         <TableBody>
                             {profilesData?.data?.map((data) => {
-                                let farmer = data.farmer_profile;
+                                let farmer = data?.farmer_profile;
                                 return (
-                                    <TableRow key={farmer.id}>
+                                    <TableRow key={farmer?.id}>
                                         <TableCell>
-                                            {farmer.farmer_id}
+                                            {farmer?.farmer_id}
                                         </TableCell>
                                         <TableCell>
-                                            {farmer.first_name +
+                                            {farmer?.first_name +
                                                 " " +
-                                                farmer.last_name}
+                                                farmer?.last_name}
                                         </TableCell>
                                         <TableCell>
-                                            {data?.enrollmentStatus}
+                                            {data?.enrollmentStatus || '-'}
                                         </TableCell>
                                         <TableCell>
                                             {data?.possible_duplicate
-                                                ? "Yes"
+                                                ? (
+                                                    <span onClick={() => {
+                                                        navigate(
+                                                            `${FARMER_PROFILE}/${data?.possible_duplicate}`
+                                                        );
+                                                    }} className="text-secondary cursor-pointer">
+                                                        Link
+                                                    </span>
+                                                )
                                                 : "No"}
                                         </TableCell>
 
                                         <TableCell className="">
                                             {data?.hasBiometricToken
-                                                ? "Yes"
-                                                : "No"}
+                                                ? "Present"
+                                                : "N/A"}
                                         </TableCell>
                                         <TableCell className="">
-                                            {data?.reason || "No Reason"}
+                                            {data?.rID
+                                                ? "Present"
+                                                : "N/A"}
+                                        </TableCell>
+                                        <TableCell className="">
+                                            {data?.consentGUID
+                                                ? "Present"
+                                                : "N/A"}
+                                        </TableCell>
+                                        <TableCell className="">
+                                            {data?.reason || "N/A"}
                                         </TableCell>
                                         <TableCell>
                                             {new Date(
@@ -164,7 +188,7 @@ export default function BiometricsList(props) {
                                                 day: "numeric",
                                             })}
                                         </TableCell>
-                                        <TableCell>{data?.subjectID}</TableCell>
+                                        <TableCell>{data?.subjectID || '-'}</TableCell>
 
                                         <TableCell>
                                             <Button
