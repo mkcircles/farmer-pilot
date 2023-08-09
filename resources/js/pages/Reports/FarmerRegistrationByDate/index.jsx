@@ -5,28 +5,6 @@ import { AppContext } from "../../../context/RootContext";
 import { numberFormatter } from "../../../utils/numberFormatter";
 import { BASE_API_URL } from "../../../env";
 
-const data = [
-  {
-    Month: "Jan 21",
-    "Gross Volume": 2890,
-    "Successful Payments": 2400,
-    Customers: 4938,
-  },
-  {
-    Month: "Feb 21",
-    "Gross Volume": 1890,
-    "Successful Payments": 1398,
-    Customers: 2938,
-  },
-  // ...
-  {
-    Month: "Jan 22",
-    "Gross Volume": 3890,
-    "Successful Payments": 2980,
-    Customers: 2645,
-  },
-];
-
 const valueFormatter = (number) => `${numberFormatter(number)}`;
 
 export default function FarmerRegistrationByDate() {

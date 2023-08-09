@@ -1,5 +1,4 @@
-import { debounce } from "lodash";
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useState } from "react";
 
 // Create the context
 const AppContext = createContext(null);
