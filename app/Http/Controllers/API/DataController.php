@@ -273,24 +273,30 @@ class DataController extends Controller
      */
     public function search(Request $request)
     {
+        $user = auth()->user();
         $search = $request->search;
-        $fpos = FPO::where('fpo_name', 'like', '%' . $search . '%')->limit(4)->get();
+
+        $fpos = FPO::where('fpo_name', 'like', '%' . $search . '%');
+        if($user->role !== 'admin') $fpos = $fpos->where('id', $user->entity_id);
+        $fpos = $fpos->limit(8)->get();
+
         $agents = Agent::where(function ($query) use ($search) {
             $query->where('first_name', 'like', "%$search%")
                 ->orWhere('last_name', 'like', "%$search%")
                 ->orWhere('phone_number', 'like', "%$search%")
                 ->orWhere('agent_code', 'like', "%$search%");
-        })
-            ->limit(4)
-            ->get();
+        });
+        if($user->role !== 'admin') $agents = $agents->where('fpo_id', $user->entity_id);
+        $agents = $agents->limit(8)->get();
+
         $farmers = FarmerProfile::where(function ($query) use ($search) {
             $query->where('first_name', 'like', "%$search%")
                 ->orWhere('last_name', 'like', "%$search%")
                 ->orWhere('phone_number', 'like', "%$search%")
                 ->orWhere('farmer_id', 'like', "%$search%");
-        })
-            ->limit(4)
-            ->get();
+        });
+        if($user->role !== 'admin') $farmers = $farmers->where('fpo_id', $user->entity_id);
+        $farmers = $farmers->limit(8)->get();
 
         return response()->json([
             'fpos' => $fpos,

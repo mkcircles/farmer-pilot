@@ -26,6 +26,7 @@ import { UserIcon } from "@heroicons/react/solid";
 export default function AgentsList({fpo_id, fpo_name}) {
     const navigate = useNavigate();
     const token = useSelector((state) => state.auth.token);
+    const user = useSelector((state) => state.auth?.user);
     const { updateAppContextState } = useContext(AppContext);
     const [currentPage, setCurrentPage] = useState(1);
     const [prevPageUrl, setPrevPageUrl] = useState("");
@@ -33,6 +34,9 @@ export default function AgentsList({fpo_id, fpo_name}) {
     const [agentData, setAgentData] = useState(null);
 
     let agents_api_url = `${BASE_API_URL}/agents`;
+    if(user?.role !== "admin") {
+        agents_api_url = `${BASE_API_URL}/fpo/${user?.entity_id}/agents`;
+    }
     if(fpo_id) {
         agents_api_url = `${BASE_API_URL}/fpo/${fpo_id}/agents`
     }

@@ -27,6 +27,7 @@ import Pagination from "../../components/Pagination";
 export default function FarmersList({ fpo_id, agent_id, ...props }) {
     const navigate = useNavigate();
     const token = useSelector((state) => state.auth.token);
+    const user = useSelector((state) => state.auth.user);
     const { updateAppContextState } = useContext(AppContext);
     const [currentPage, setCurrentPage] = useState(1);
     const [moveToPage, setMoveToPage] = useState(1);
@@ -36,6 +37,11 @@ export default function FarmersList({ fpo_id, agent_id, ...props }) {
     const [profilesData, setProfilesData] = useState({});
 
     let farmers_api_url = `${BASE_API_URL}/farmers`;
+
+    if(user?.role !== "admin") {
+        farmers_api_url = `${BASE_API_URL}/fpo/${user?.entity_id}/farmers`;
+    }
+
     if (fpo_id) {
         farmers_api_url = `${BASE_API_URL}/fpo/${fpo_id}/farmers`;
     }

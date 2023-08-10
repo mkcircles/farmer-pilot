@@ -24,8 +24,9 @@ import {
 
 export default function FarmInfoCard(props) {
     const { title, subTitle } = props;
+    const cardProps = {...props, title: ''};
     return (
-        <Card {...props}>
+        <Card {...cardProps}>
             <Title>{title}</Title>
             <Text>{subTitle}</Text>
             {props.children}
