@@ -42,6 +42,7 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::post('/refresh', [AuthController::class, 'refresh']);
     //Summaries
     Route::get('/summary', [SummaryController::class, 'DashboardSummary']);
+    Route::get('/summary/fpo', [SummaryController::class, 'FPODashboardSumary']);
     
 
     //Users Routes

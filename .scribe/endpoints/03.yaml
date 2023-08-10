@@ -65,6 +65,55 @@ endpoints:
   -
     httpMethods:
       - GET
+    uri: api/summary/fpo
+    metadata:
+      groupName: Statistics
+      groupDescription: |-
+
+        APIs for managing the system statistics
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'FPO Dashboard Summary'
+      description: 'This endpoint returns the summary of the system statistics'
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: 'required The authorization token. Example: Bearer {token}'
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+          "success": true,
+          "data": {
+          "registered_farmers": 1,
+          "male_farmers": 0,
+          "female_farmers": 1,
+          "fpo_agents": 1,
+          "male_agents": 0,
+          "female_agents": 1
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
     uri: api/bio/summary
     metadata:
       groupName: Statistics

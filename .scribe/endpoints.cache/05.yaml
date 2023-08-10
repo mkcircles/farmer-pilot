@@ -54,7 +54,7 @@ endpoints:
         name: gender
         description: 'Farmer gender. Example Male/Female'
         required: false
-        example: dolore
+        example: et
         type: string
         custom: []
       education_level:
@@ -292,7 +292,7 @@ endpoints:
       first_name: John
       last_name: Doe
       dob: '1990-01-01'
-      gender: dolore
+      gender: et
       education_level: Primary
       marital_status: Married
       district: Kampala
@@ -459,7 +459,7 @@ endpoints:
         name: id
         description: 'Farmer id'
         required: true
-        example: 1
+        example: 19
         type: integer
         custom: []
       status:
@@ -470,7 +470,7 @@ endpoints:
         type: string
         custom: []
     cleanBodyParameters:
-      id: 1
+      id: 19
       status: 'pending,complete,valid,invalid,blacklisted,deceased'
     fileParameters: []
     responses:
@@ -551,6 +551,55 @@ endpoints:
           }
         headers: []
         description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/farmers/search/{keyword}'
+    metadata:
+      groupName: 'Farmer Profile'
+      groupDescription: |-
+
+        APIs for managing farmer profile
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Farmer Search'
+      description: 'Search all farmers'
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      keyword:
+        name: keyword
+        description: ''
+        required: true
+        example: et
+        type: string
+        custom: []
+    cleanUrlParameters:
+      keyword: et
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
         custom: []
     responseFields: []
     auth: []

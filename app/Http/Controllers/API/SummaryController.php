@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\FPO;
 use App\Models\MastercardProfileDetails;
 use Illuminate\Http\Request;
 
@@ -106,5 +107,43 @@ class SummaryController extends Controller
             'success' => true,
             'data' => json_encode($data)
         ], 200);
+    }
+
+    /**
+     * FPO Dashboard Summary
+     * 
+     * This endpoint returns the summary of the system statistics
+     * @authenticated
+     * 
+     * @header Authorization required The authorization token. Example: Bearer {token}
+     * 
+     * @response {
+     * "success": true,
+     * "data": {
+     * "registered_farmers": 1,
+     * "male_farmers": 0,
+     * "female_farmers": 1,
+     * "fpo_agents": 1,
+     * "male_agents": 0,
+     * "female_agents": 1
+     * }
+     */
+    public function FPODashboardSumary(Request $request)
+    {
+        $fpo_id = $request->user()->fpo_id;
+        $fpo = FPO::find($fpo_id);
+        $data = [
+            'registered_farmers' => $fpo->farmers->count(),
+            'male_farmers' => $fpo->farmers->where('gender', 'male')->count(),
+            'female_farmers' => $fpo->farmers->where('gender', 'female')->count(),
+            'fpo_agents' => $fpo->agents->count(),
+            'male_agents' => $fpo->agents->where('gender', 'male')->count(),
+            'female_agents' => $fpo->agents->where('gender', 'female')->count(),            
+        ];
+
+        return response()->json([
+            'success' => true,
+            'data' => $data
+        ]);
     }
 }

@@ -120,7 +120,7 @@ endpoints:
         name: name
         description: 'The name of the report'
         required: true
-        example: velit
+        example: accusamus
         type: string
         custom: []
       report_type:
@@ -134,28 +134,28 @@ endpoints:
         name: from_date
         description: 'The from date for the report'
         required: true
-        example: fugiat
+        example: pariatur
         type: string
         custom: []
       to_date:
         name: to_date
         description: 'The to date for the report'
         required: true
-        example: optio
+        example: iste
         type: string
         custom: []
       district:
         name: district
         description: 'optional The district of the report'
         required: false
-        example: similique
+        example: provident
         type: string
         custom: []
       agent_id:
         name: agent_id
         description: 'optional The agent id of the report'
         required: false
-        example: 14
+        example: 18
         type: integer
         custom: []
       crops_grown:
@@ -169,7 +169,7 @@ endpoints:
         name: farm_size
         description: 'optional The farm size of the report'
         required: false
-        example: 12
+        example: 14
         type: integer
         custom: []
       gender:
@@ -183,20 +183,20 @@ endpoints:
         name: fpo_id
         description: 'optional The fpo id of the report'
         required: false
-        example: 14
+        example: 11
         type: integer
         custom: []
     cleanBodyParameters:
-      name: velit
+      name: accusamus
       report_type: 'farmer-report, crop-report,agent-summary-report'
-      from_date: fugiat
-      to_date: optio
-      district: similique
-      agent_id: 14
+      from_date: pariatur
+      to_date: iste
+      district: provident
+      agent_id: 18
       crops_grown: 'Maize, Wheat, beans'
-      farm_size: 12
+      farm_size: 14
       gender: 'Male, Female'
-      fpo_id: 14
+      fpo_id: 11
     fileParameters: []
     responses:
       -
@@ -277,11 +277,11 @@ endpoints:
         name: id
         description: 'The ID of the report.'
         required: true
-        example: est
+        example: veniam
         type: string
         custom: []
     cleanUrlParameters:
-      id: est
+      id: veniam
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
