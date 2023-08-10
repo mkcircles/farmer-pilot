@@ -30,6 +30,8 @@ export const store = configureStore({
       refreshTokenAPI.middleware,
       );
   },
+
+  devTools: process.env.NODE_ENV !== "production",
 });
 
 setupListeners(store.dispatch);
