@@ -37,7 +37,7 @@ function Main() {
                 ) {
                     dispatch(setToken(res.data.data.token));
                     dispatch(setUser(res.data.data.user));
-                    navigate("/");
+                    if(["fpo"].includes(res?.data?.data?.user?.role)) navigate("/farmers-list");
                 } else {
                   dispatch(setAppError({
                     message: "You are not authorized to access this resource.",
