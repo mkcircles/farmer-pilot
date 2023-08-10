@@ -490,7 +490,6 @@ class FarmerProfileController extends Controller
             'data' => $farmer
         ], 200);
     }
-<<<<<<< HEAD
 
     /**
      * Farmer Search
@@ -560,8 +559,6 @@ class FarmerProfileController extends Controller
         ],200);
     }
      
-=======
->>>>>>> bfb95b9dd63e558e67a003c06f04395ba3ede3b2
 
 
 
