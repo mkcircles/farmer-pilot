@@ -91,7 +91,7 @@ class AgentController extends Controller
     public function index(Request $request)
     {
         $user = $request->user();
-        if($user->role=='fpo'){
+        if($user->role=='fpo_user'){
             $agents = Agent::where('fpo_id',$user->entity_id)->paginate();
         }else{
             $agents = Agent::orderBy('id', 'desc')->paginate();
