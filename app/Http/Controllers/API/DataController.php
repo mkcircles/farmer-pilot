@@ -138,10 +138,7 @@ class DataController extends Controller
     {
         $biometics = MastercardProfileDetails::with('farmerProfile')
                     ->where('entityType', 'FARMER')
-<<<<<<< HEAD
-=======
                     ->whereNotNull('rID')
->>>>>>> bfb95b9dd63e558e67a003c06f04395ba3ede3b2
                     ->orderBy('id', 'desc')->paginate();
 
         return response([
@@ -169,7 +166,6 @@ class DataController extends Controller
      * 
      * 
      * 
-     }
      */
     public function getFailedBiometricCaptures()
     {
