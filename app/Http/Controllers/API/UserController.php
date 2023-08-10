@@ -53,8 +53,8 @@ class UserController extends Controller
         if($user->role=='fpo'){
             $users = User::where('fpo_id',$user->entity_id)->paginate();
         }else
-            $users = User::orderBy('id', 'desc')->paginate();
-            
+            $users = User::whereIn('role',['admin','user'])->orderBy('id', 'desc')->paginate();
+
         return response()->json([
             'status' => 'success',
             'data' => $users
