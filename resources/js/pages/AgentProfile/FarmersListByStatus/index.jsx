@@ -13,18 +13,23 @@ import {
     Button,
 } from "@tremor/react";
 import { useNavigate } from "react-router-dom";
-import { FARMER_PROFILE } from "../../router/routes";
+import { FARMER_PROFILE } from "../../../router/routes";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { API_KEY, BASE_API_URL } from "../../env";
-import { numberFormatter } from "../../utils/numberFormatter";
-import { AppContext } from "../../context/RootContext";
+import { API_KEY, BASE_API_URL } from "../../../env";
+import { numberFormatter } from "../../../utils/numberFormatter";
+import { AppContext } from "../../../context/RootContext";
 import { useContext } from "react";
 import { useSelector } from "react-redux";
 import { debounce } from "lodash";
-import Pagination from "../../components/Pagination";
+import Pagination from "../../../components/Pagination";
 
-export default function FarmersList({ fpo_id, agent_id, ...props }) {
+export default function FarmersListByStatus({ 
+    data_src_url, 
+    status, 
+    agent_id, 
+    subTitle,
+    ...props }) {
     const navigate = useNavigate();
     const token = useSelector((state) => state.auth.token);
     const { updateAppContextState } = useContext(AppContext);
@@ -35,37 +40,22 @@ export default function FarmersList({ fpo_id, agent_id, ...props }) {
     const [nextPageUrl, setNextPageUrl] = useState("");
     const [profilesData, setProfilesData] = useState({});
 
-    let farmers_api_url = `${BASE_API_URL}/farmers`;
-    if (fpo_id) {
-        farmers_api_url = `${BASE_API_URL}/fpo/${fpo_id}/farmers`;
-    }
-    if (agent_id) {
-        farmers_api_url = `${BASE_API_URL}/agent/${agent_id}/farmers`;
-    }
-
-    const fetchProfiles = (url = (farmers_api_url)) => {
+    const farmers_api_url = data_src_url || `${BASE_API_URL}/agent/farmers/status`;
+    const fetchFarmerProfiles = (url = farmers_api_url) => {
         updateAppContextState("loading", true);
-        if(props?.bio_url) {
-            url = props?.bio_url;
-        }
         console.log(url);
         axios
-            .get(url, {
+            .post(url, {
+                status: status,
+                agent_id: agent_id,
+            }, {
                 headers: {
                     API_KEY: API_KEY,
                     Authorization: `Bearer ${token}`,
                 },
             })
             .then((res) => {
-                let responseData = res?.data;
-
-                if (fpo_id || agent_id) {
-                    responseData = res.data?.data;
-                }
-
-                if(props?.bio_url) {
-                    responseData = res.data?.data;
-                }
+                let responseData = res?.data?.data;
 
                 console.log("Profiles", responseData);
                 if (res?.data) {
@@ -84,10 +74,10 @@ export default function FarmersList({ fpo_id, agent_id, ...props }) {
             });
     };
 
-    const debounceFetchProfiles = debounce(fetchProfiles, 1000);
+    const debounceFetchFarmerProfiles = debounce(fetchFarmerProfiles, 1000);
 
     useEffect(() => {
-        fetchProfiles();
+        fetchFarmerProfiles();
     }, [token]);
 
     useEffect(() => {
@@ -97,11 +87,11 @@ export default function FarmersList({ fpo_id, agent_id, ...props }) {
 
     useEffect(() => {
         if (moveToPage == currentPage) return;
-        debounceFetchProfiles(`${farmers_api_url}?page=${moveToPage}`);
+        debounceFetchFarmerProfiles(`${farmers_api_url}?page=${moveToPage}`);
     }, [moveToPage]);
 
     return (
-        <div className="w-full h-full py-4" {...props}>
+        <div className="w-full h-full">
             <Card className="bg-white h-full w-full">
                 <Flex justifyContent="start" className="space-x-2">
                     <Title>Farmers</Title>
@@ -109,7 +99,7 @@ export default function FarmersList({ fpo_id, agent_id, ...props }) {
                         {numberFormatter(parseInt(profilesData?.total || 0))}
                     </Badge>
                 </Flex>
-                <Text className="mt-2">Overview of farmers profiled</Text>
+                <Text className="mt-2">{subTitle}</Text>
 
                 <Table className="mt-6">
                     <TableHead>
@@ -181,7 +171,7 @@ export default function FarmersList({ fpo_id, agent_id, ...props }) {
                 <Pagination
                     currentPage={currentPage}
                     moveToPage={moveToPage}
-                    fetchPage={fetchProfiles}
+                    fetchPage={fetchFarmerProfiles}
                     setMoveToPage={setMoveToPage}
                     nextPageUrl={nextPageUrl}
                     prevPageUrl={prevPageUrl}

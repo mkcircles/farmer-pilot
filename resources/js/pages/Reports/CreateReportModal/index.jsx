@@ -39,10 +39,12 @@ const CreateReportModal = ({ showModal, setShowModal }) => {
     const [agents, setAgents] = useState([]);
     const [fpos, setFpos] = useState([]);
 
-    const reportTypes = [{name: "Farmers Report",
-    value: "farmer-report"}, {name: "Crops Report",
-    value: "crop-report"}, {name: "Custom Report",
-    value: "custom-report"}];
+    const reportTypes = [
+        { name: "Farmers Report", value: "farmer-report" },
+        { name: "Crops Report", value: "crop-report" },
+        { name: "Agent Summary Report", value: "agent-summary-report" },
+        { name: "Custom Report", value: "custom-report" },
+    ];
 
     const handleCreateReport = () => {
         updateAppContextState("loading", true);
@@ -127,11 +129,7 @@ const CreateReportModal = ({ showModal, setShowModal }) => {
             date?.getMonth() + 1 < 10
                 ? `0${date?.getMonth() + 1}`
                 : date?.getMonth() + 1
-        }-${
-            date?.getDate() < 10
-                ? `0${date?.getDate()}`
-                : date?.getDate()
-        }`;
+        }-${date?.getDate() < 10 ? `0${date?.getDate()}` : date?.getDate()}`;
     };
 
     useEffect(() => {
@@ -194,19 +192,17 @@ const CreateReportModal = ({ showModal, setShowModal }) => {
                                     })
                                 }
                             >
-                                {reportTypes?.map(
-                                    (reportType, index) => {
-                                        return (
-                                            <SearchSelectItem
-                                                key={index}
-                                                value={reportType?.value}
-                                                icon={File}
-                                            >
-                                                {reportType?.name}
-                                            </SearchSelectItem>
-                                        );
-                                    }
-                                )}
+                                {reportTypes?.map((reportType, index) => {
+                                    return (
+                                        <SearchSelectItem
+                                            key={index}
+                                            value={reportType?.value}
+                                            icon={File}
+                                        >
+                                            {reportType?.name}
+                                        </SearchSelectItem>
+                                    );
+                                })}
                             </SearchSelect>
                         </div>
                     </div>

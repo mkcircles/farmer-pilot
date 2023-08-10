@@ -26,6 +26,7 @@ import { logOut } from "../../stores/authSlice";
 import { AppContext } from "../../context/RootContext";
 import { BASE_API_URL } from "../../env";
 import { useNavigate } from "react-router-dom";
+import Loading from "../Loading";
 
 function Main(props: { toggleMobileMenu: (event: React.MouseEvent) => void }) {
     const { updateAppContextState } = useContext(AppContext);
@@ -35,6 +36,7 @@ function Main(props: { toggleMobileMenu: (event: React.MouseEvent) => void }) {
     const path = useFindPath();
     const [searchResultModal, setSearchResultModal] = useState(false);
     const [searchText, setSearchText] = useState("");
+    const [searching, setSearching] = useState(false);
     const [searchResults, setSearchResults] = useState({
         fpos: [],
         agents: [],
@@ -86,7 +88,8 @@ function Main(props: { toggleMobileMenu: (event: React.MouseEvent) => void }) {
     };
 
     const handleDataSearch = () => {
-        if(!searchText) return;
+        if (!searchText) return;
+        setSearching(true);
         updateAppContextState("loading", true);
         // @ts-ignore
         axios
@@ -108,6 +111,7 @@ function Main(props: { toggleMobileMenu: (event: React.MouseEvent) => void }) {
                 // console.log(err);
             })
             .finally(() => {
+                setSearching(false);
                 updateAppContextState("loading", false);
             });
     };
@@ -203,9 +207,11 @@ function Main(props: { toggleMobileMenu: (event: React.MouseEvent) => void }) {
                                 onChange={(e) => {
                                     setSearchText(e.target.value);
                                 }}
-                                onKeyDown={(e) =>
-                                    e.key === "Enter" && handleDataSearch()
-                                }
+                                onKeyDown={(e) => {
+                                    if (e.key === "Enter") {
+                                        handleDataSearch();
+                                    }
+                                }}
                                 className="px-12 py-5 border-0 shadow-none focus:ring-0"
                                 placeholder="Search farmer name or agent name or code or FPO or phone number"
                             />
@@ -213,137 +219,151 @@ function Main(props: { toggleMobileMenu: (event: React.MouseEvent) => void }) {
                                 ESC
                             </div>
                         </div>
-                        <div className="p-5">
-                            <div className="mb-3 font-medium">Farmers</div>
-                            <div className="mb-5">
-                                {searchResults.farmers.map((farmer, index) => {
-                                    return (
-                                        <a
-                                            key={index}
-                                            onClick={(e) => {
-                                                e.preventDefault();
-                                                navigate(
-                                                    `${FARMER_PROFILE}/${farmer.farmer_id}`
-                                                );
-                                                setSearchResultModal(false);
-                                            }}
-                                            href=""
-                                            className="flex items-center mt-3 first:mt-0"
-                                        >
-                                            <div className="flex items-center justify-center rounded-full w-7 h-7 bg-secondary/20 dark:bg-secondary/10 text-secondary">
-                                                <Lucide
-                                                    icon="User"
-                                                    className="w-3.5 h-3.5"
-                                                />
-                                            </div>
-                                            <div className="ml-3 truncate">
-                                                {farmer?.first_name}{" "}
-                                                {farmer?.last_name} |{" "}
-                                                {farmer?.farmer_id} |{" "}
-                                                {farmer?.phone_number}
-                                            </div>
-                                            <div className="flex items-center justify-end w-48 ml-auto text-xs truncate text-slate-500">
-                                                <Lucide
-                                                    icon="Link"
-                                                    className="w-3.5 h-3.5 mr-2"
-                                                />{" "}
-                                                Quick Access
-                                            </div>
-                                        </a>
-                                    );
-                                })}
-                                {searchResults.farmers.length === 0 && (
-                                    <div className="text-start text-slate-400 font-thin">
-                                        No Results Found
-                                    </div>
-                                )}
+                        {searching ? (
+                            <div className="p-5 flex justify-center items-center text-secondary">
+                                Searching...
                             </div>
-                            <div className="mb-3 font-medium">Agents</div>
-                            <div className="mb-5">
-                                {searchResults.agents.map((agent, index) => {
-                                    return (
-                                        <a
-                                            key={index}
-                                            onClick={(e) => {
-                                                e.preventDefault();
-                                                navigate(
-                                                    `${AGENT_PROFILE}/${agent.agent_code}`
-                                                );
-                                                setSearchResultModal(false);
-                                            }}
-                                            href=""
-                                            className="flex items-center mt-3 first:mt-0"
-                                        >
-                                            <div className="flex items-center justify-center rounded-full w-7 h-7 bg-secondary/20 dark:bg-secondary/10 text-secondary">
-                                                <Lucide
-                                                    icon="User"
-                                                    className="w-3.5 h-3.5"
-                                                />
-                                            </div>
-                                            <div className="ml-3 truncate">
-                                                {agent?.first_name}{" "}
-                                                {agent?.last_name} |{" "}
-                                                {agent?.agent_code} |{" "}
-                                                {agent?.phone_number}
-                                            </div>
-                                            <div className="flex items-center justify-end w-48 ml-auto text-xs truncate text-slate-500">
-                                                <Lucide
-                                                    icon="Link"
-                                                    className="w-3.5 h-3.5 mr-2"
-                                                />{" "}
-                                                Quick Access
-                                            </div>
-                                        </a>
-                                    );
-                                })}
-                                {searchResults.agents.length === 0 && (
-                                    <div className="text-start text-slate-400 font-thin">
-                                        No Results Found
-                                    </div>
-                                )}
+                        ) : (
+                            <div className="p-5">
+                                <div className="mb-3 font-medium">Farmers</div>
+                                <div className="mb-5">
+                                    {searchResults.farmers.map(
+                                        (farmer, index) => {
+                                            return (
+                                                <a
+                                                    key={index}
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        navigate(
+                                                            `${FARMER_PROFILE}/${farmer.farmer_id}`
+                                                        );
+                                                        setSearchResultModal(
+                                                            false
+                                                        );
+                                                    }}
+                                                    href=""
+                                                    className="flex items-center mt-3 first:mt-0"
+                                                >
+                                                    <div className="flex items-center justify-center rounded-full w-7 h-7 bg-secondary/20 dark:bg-secondary/10 text-secondary">
+                                                        <Lucide
+                                                            icon="User"
+                                                            className="w-3.5 h-3.5"
+                                                        />
+                                                    </div>
+                                                    <div className="ml-3 truncate">
+                                                        {farmer?.first_name}{" "}
+                                                        {farmer?.last_name} |{" "}
+                                                        {farmer?.farmer_id} |{" "}
+                                                        {farmer?.phone_number}
+                                                    </div>
+                                                    <div className="flex items-center justify-end w-48 ml-auto text-xs truncate text-slate-500">
+                                                        <Lucide
+                                                            icon="Link"
+                                                            className="w-3.5 h-3.5 mr-2"
+                                                        />{" "}
+                                                        Quick Access
+                                                    </div>
+                                                </a>
+                                            );
+                                        }
+                                    )}
+                                    {searchResults.farmers.length === 0 && (
+                                        <div className="text-start text-slate-400 font-thin">
+                                            No Results Found
+                                        </div>
+                                    )}
+                                </div>
+                                <div className="mb-3 font-medium">Agents</div>
+                                <div className="mb-5">
+                                    {searchResults.agents.map(
+                                        (agent, index) => {
+                                            return (
+                                                <a
+                                                    key={index}
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        navigate(
+                                                            `${AGENT_PROFILE}/${agent.agent_code}`
+                                                        );
+                                                        setSearchResultModal(
+                                                            false
+                                                        );
+                                                    }}
+                                                    href=""
+                                                    className="flex items-center mt-3 first:mt-0"
+                                                >
+                                                    <div className="flex items-center justify-center rounded-full w-7 h-7 bg-secondary/20 dark:bg-secondary/10 text-secondary">
+                                                        <Lucide
+                                                            icon="User"
+                                                            className="w-3.5 h-3.5"
+                                                        />
+                                                    </div>
+                                                    <div className="ml-3 truncate">
+                                                        {agent?.first_name}{" "}
+                                                        {agent?.last_name} |{" "}
+                                                        {agent?.agent_code} |{" "}
+                                                        {agent?.phone_number}
+                                                    </div>
+                                                    <div className="flex items-center justify-end w-48 ml-auto text-xs truncate text-slate-500">
+                                                        <Lucide
+                                                            icon="Link"
+                                                            className="w-3.5 h-3.5 mr-2"
+                                                        />{" "}
+                                                        Quick Access
+                                                    </div>
+                                                </a>
+                                            );
+                                        }
+                                    )}
+                                    {searchResults.agents.length === 0 && (
+                                        <div className="text-start text-slate-400 font-thin">
+                                            No Results Found
+                                        </div>
+                                    )}
+                                </div>
+                                <div className="mb-3 font-medium">FPOs</div>
+                                <div className="mb-5">
+                                    {searchResults.fpos.map((fpo, index) => {
+                                        return (
+                                            <a
+                                                key={index}
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    navigate(
+                                                        `${FPO_PROFILE}/${fpo.id}`
+                                                    );
+                                                    setSearchResultModal(false);
+                                                }}
+                                                href=""
+                                                className="flex items-center mt-3 first:mt-0"
+                                            >
+                                                <div className="flex items-center justify-center rounded-full w-7 h-7 bg-secondary/20 dark:bg-secondary/10 text-secondary">
+                                                    <Lucide
+                                                        icon="Home"
+                                                        className="w-3.5 h-3.5"
+                                                    />
+                                                </div>
+                                                <div className="ml-3 truncate">
+                                                    {fpo?.fpo_name}
+                                                </div>
+                                                <div className="flex items-center justify-end w-48 ml-auto text-xs truncate text-slate-500">
+                                                    <Lucide
+                                                        icon="Link"
+                                                        className="w-3.5 h-3.5 mr-2"
+                                                    />{" "}
+                                                    Quick Access
+                                                </div>
+                                            </a>
+                                        );
+                                    })}
+                                    {searchResults.fpos.length === 0 && (
+                                        <div className="text-start text-slate-400 font-thin">
+                                            No Results Found
+                                        </div>
+                                    )}
+                                </div>
                             </div>
-                            <div className="mb-3 font-medium">FPOs</div>
-                            <div className="mb-5">
-                                {searchResults.fpos.map((fpo, index) => {
-                                    return (
-                                        <a
-                                            key={index}
-                                            onClick={(e) => {
-                                                e.preventDefault();
-                                                navigate(
-                                                    `${FPO_PROFILE}/${fpo.id}`
-                                                );
-                                                setSearchResultModal(false);
-                                            }}
-                                            href=""
-                                            className="flex items-center mt-3 first:mt-0"
-                                        >
-                                            <div className="flex items-center justify-center rounded-full w-7 h-7 bg-secondary/20 dark:bg-secondary/10 text-secondary">
-                                                <Lucide
-                                                    icon="Home"
-                                                    className="w-3.5 h-3.5"
-                                                />
-                                            </div>
-                                            <div className="ml-3 truncate">
-                                                {fpo?.fpo_name}
-                                            </div>
-                                            <div className="flex items-center justify-end w-48 ml-auto text-xs truncate text-slate-500">
-                                                <Lucide
-                                                    icon="Link"
-                                                    className="w-3.5 h-3.5 mr-2"
-                                                />{" "}
-                                                Quick Access
-                                            </div>
-                                        </a>
-                                    );
-                                })}
-                                {searchResults.fpos.length === 0 && (
-                                    <div className="text-start text-slate-400 font-thin">
-                                        No Results Found
-                                    </div>
-                                )}
-                            </div>
-                        </div>
+                        )}
                     </Dialog.Panel>
                 </Dialog>
 
