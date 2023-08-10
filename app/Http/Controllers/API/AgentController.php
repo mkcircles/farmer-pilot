@@ -88,10 +88,16 @@ class AgentController extends Controller
      * }
      */
     
-    public function index()
+    public function index(Request $request)
     {
+        $user = $request->user();
+        if($user->role=='fpo'){
+            $agents = Agent::where('fpo_id',$user->entity_id)->paginate();
+        }else{
+            $agents = Agent::orderBy('id', 'desc')->paginate();
+        }
+        
         //Get all agents
-        $agents = Agent::orderBy('id', 'desc')->paginate();
         if(count($agents) == 0)
             return response()->json([
                 'success' => false,
@@ -1141,32 +1147,14 @@ class AgentController extends Controller
      * "message": "Farmers found successfully",
      * "data": [
      * {
-     * "first_name": "John",
-     * "last_name": "Doe",
-     * "dob": "1981-05-06", 
-     * ...
-     * }
-     * ]
-     * }
-     * 
-     * @response 404 {
-     * "success": false,
-     * "message": "Agent not found",
-     * "data": null
-     * }
-     * 
-     * @response 500 {
-     * "success": false,
-     * "message": "Farmers not found",
-     * "data": null
-     * }
-     * 
-     * @response 400 {
-     * "success": false,
-     * "message": "Validation error",
-     * "data": null
-     * }
-     * 
+     * "current_page": 1,
+     * "data": [
+     * {
+     * "id": 1,
+     }
+     ]
+
+     }
      */
     public function getAgentFarmersByStatus(Request $request)
     {

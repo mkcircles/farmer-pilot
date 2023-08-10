@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx\Rels;
 
 /**
  * @group Users Management
@@ -46,9 +47,14 @@ class UserController extends Controller
      *
      *
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::whereIn('role',['admin','user'])->paginate();
+        $user = $request->user();
+        if($user->role=='fpo'){
+            $users = User::where('fpo_id',$user->entity_id)->paginate();
+        }else
+            $users = User::whereIn('role',['admin','user'])->orderBy('id', 'desc')->paginate();
+
         return response()->json([
             'status' => 'success',
             'data' => $users
