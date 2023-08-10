@@ -42,6 +42,8 @@ const CreateAgent = () => {
     });
     const [fpos, setFpos] = React.useState([]);
 
+    console.log("LOGGED IN USER : ", user.entity_id);
+
     const handleCreateAgent = () => {
         updateAppContextState("loading", true);
         axios
@@ -75,6 +77,12 @@ const CreateAgent = () => {
     }, [fpo]);
 
     useEffect(() => {
+        if((user?.role !== "admin" && !fpo?.fpo_id)) {
+            setAgentData({ ...agentData, fpo_id: user?.entity_id });
+        }
+    }, [user]);
+
+    useEffect(() => {
         updateAppContextState("loading", true);
         axios
             .get(`${BASE_API_URL}/fpos/summary`, {
@@ -102,9 +110,9 @@ const CreateAgent = () => {
                 handleCreateAgent();
             }}
         >
-            <Title>{`Create a new Agent for ${fpo?.fpo_name}` || 'Create New Agent'}</Title>
+            <Title>{ fpo?.fpo_name ? `Create a new Agent for ${fpo?.fpo_name}` : 'Create New Agent'}</Title>
 
-            {fpo?.fpo_id ? null : (
+            {(fpo?.fpo_id || (user?.role !== "admin")) ? null : (
                 <div className="py-4">
                     <FormLabel htmlFor="fpo_id">Select FPO</FormLabel>
 

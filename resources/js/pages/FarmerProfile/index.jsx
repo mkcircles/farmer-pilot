@@ -46,6 +46,7 @@ import {
     BadgeMinus,
     BadgeX,
     CheckSquare,
+    Copy,
     Unplug,
     UserCheck,
     UserMinus,
@@ -56,8 +57,11 @@ import WithConfirmAlert from "../../helpers/WithConfirmAlert";
 import { AGENT_PROFILE, FARMER_PROFILE } from "../../router/routes";
 import Loading from "../../components/Loading";
 import LocationOnMap from "./LocationOnMap";
+import { useAppDispatch } from "../../stores/hooks";
+import { setAppSuccessAlert } from "../../stores/appSuccessAlert";
 
 const FarmerProfile = () => {
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const token = useSelector((state) => state.auth.token);
     const fpos = useSelector((state) => state.fpos?.fpos);
@@ -1331,7 +1335,6 @@ const FarmerProfile = () => {
                                             className="col-1"
                                         >
                                             <List className="mt-4 space-y-2">
-
                                                 <ListItem className="">
                                                     <Flex
                                                         justifyContent="start"
@@ -1378,7 +1381,9 @@ const FarmerProfile = () => {
                                                     <Text className="text-secondary">
                                                         {farmerData?.county ? (
                                                             <span>
-                                                                {farmerData?.county}
+                                                                {
+                                                                    farmerData?.county
+                                                                }
                                                             </span>
                                                         ) : (
                                                             <span className="text-primary">
@@ -1434,7 +1439,9 @@ const FarmerProfile = () => {
                                                     <Text className="text-secondary">
                                                         {farmerData?.parish ? (
                                                             <span>
-                                                                {farmerData?.parish}
+                                                                {
+                                                                    farmerData?.parish
+                                                                }
                                                             </span>
                                                         ) : (
                                                             <span className="text-primary">
@@ -1475,11 +1482,21 @@ const FarmerProfile = () => {
                                             </List>
                                         </FarmInfoCard>
                                         <Card className="h-52 bottom-0  right-0 items-center justify-center bg-slate-50">
-                                            <LocationOnMap data={{
-                                                latitude: parseFloat(farmerData?.farmer_cordinates?.split(",")[0]?.trim()),
-                                                longitude: parseFloat(farmerData?.farmer_cordinates?.split(",")[1]?.trim()),
-                                                title: "Farm Location",
-                                            }} />
+                                            <LocationOnMap
+                                                data={{
+                                                    latitude: parseFloat(
+                                                        farmerData?.farmer_cordinates
+                                                            ?.split(",")[0]
+                                                            ?.trim()
+                                                    ),
+                                                    longitude: parseFloat(
+                                                        farmerData?.farmer_cordinates
+                                                            ?.split(",")[1]
+                                                            ?.trim()
+                                                    ),
+                                                    title: "Farm Location",
+                                                }}
+                                            />
                                         </Card>
                                     </div>
                                 </div>
@@ -1567,13 +1584,31 @@ const FarmerProfile = () => {
                                             <Text className="text-secondary">
                                                 {farmerData?.biometrics
                                                     ?.subjectID ? (
-                                                    <span>
-                                                        {
-                                                            farmerData
-                                                                ?.biometrics
-                                                                ?.subjectID
-                                                        }
-                                                    </span>
+                                                    <div className="flex items-center">
+                                                        <span title="Copy" className="px-2">
+                                                            <Copy
+                                                                onClick={() => {
+                                                                    navigator.clipboard.writeText(
+                                                                        farmerData
+                                                                            ?.biometrics
+                                                                            ?.subjectID
+                                                                    );
+                                                                    dispatch(
+                                                                        setAppSuccessAlert(
+                                                                            {
+                                                                                message:
+                                                                                    "Subject ID Copied to Clipboard",
+                                                                            }
+                                                                        )
+                                                                    );
+                                                                }}
+                                                                
+                                                                className="w-4 h-4 text-primary cursor-pointer hover:scale-125 "
+                                                            />
+                                                        </span>
+                                                        <span>Present</span>
+                                                        
+                                                    </div>
                                                 ) : (
                                                     <span className="text-primary">
                                                         N/A

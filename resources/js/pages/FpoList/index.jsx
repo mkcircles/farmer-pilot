@@ -37,6 +37,7 @@ export default function fpoList() {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const token = useSelector((state) => state.auth.token);
+    const user = useSelector((state) => state.auth.user);
     const { updateAppContextState } = useContext(AppContext);
     const [currentPage, setCurrentPage] = useState(1);
     const [moveToPage, setMoveToPage] = useState(1);
@@ -47,6 +48,7 @@ export default function fpoList() {
     const [fpoData, setFpoData] = useState(null);
 
     const [selectedNames, setSelectedNames] = useState([]);
+
     const isFpoSelected = (data) => {
         if (selectedNames.length === 0) return true;
         let fpo_name = selectedNames?.find((fpo_name) =>
@@ -55,7 +57,13 @@ export default function fpoList() {
         if (fpo_name) return true;
     };
 
-    const fetchFPOs = (url = `${BASE_API_URL}/fpos`) => {
+    let fpos_url = `${BASE_API_URL}/fpos`;
+
+    if(user?.role !== "admin") {
+        fpos_url = `${BASE_API_URL}/fpo/${user?.entity_id}/agents`;
+    }
+
+    const fetchFPOs = (url = fpos_url) => {
         updateAppContextState("loading", true);
         axios
             .get(url, {
@@ -94,7 +102,7 @@ export default function fpoList() {
 
     useEffect(() => {
         if (moveToPage == currentPage) return;
-        debounce(fetchFPOs, 1000)(`${BASE_API_URL}/fpos?page=${moveToPage || 1}`);
+        debounce(fetchFPOs, 1000)(`${fpos_url}?page=${moveToPage || 1}`);
     }, [moveToPage]);
 
     return (
