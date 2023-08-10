@@ -494,7 +494,75 @@ class FarmerProfileController extends Controller
             'data' => $farmer
         ],200);
     }
-    
+
+    /**
+     * Farmer Search
+     * 
+     * Search all farmers 
+     * @authenticated
+     * 
+     * 
+     * * @response {
+     * "current_page": 1,
+     * "data": [
+     * {
+     * "id": 1,
+     * "first_name": "John",
+     * "last_name": "Doe",
+     * 
+     * }
+     * ],
+     * "first_page_url": "http://localhost:8000/api/farmers?page=1",
+     * "from": 1,
+     * "last_page": 1,
+     * "last_page_url": "http://localhost:8000/api/farmers?page=1",
+     * "links": [
+     * {
+     * "url": null,
+     * "label": "&laquo; Previous",
+     * "active": false
+     * },
+     * {
+     * "url": "http://localhost:8000/api/farmers?page=1",
+     * "label": "1",
+     * "active": true
+     * },
+     * {
+     * "url": null,
+     * "label": "Next &raquo;",
+     * "active": false
+     * }
+     * ],
+     * "next_page_url": null,
+     * "path": "http://localhost:8000/api/farmers",
+     * "per_page": 10,
+     * "prev_page_url": null,
+     * "to": 1,
+     * "total": 1
+     * }
+     * 
+     */
+
+    public function searchFarmer($keyword)
+    {
+        $farmers = FarmerProfile::where('first_name', 'like', '%' . $keyword . '%')
+        ->orWhere('last_name', 'like', '%' . $keyword . '%')
+        ->orWhere('phone_number', 'like', '%' . $keyword . '%')
+        ->orWhere('id_number', 'like', '%' . $keyword . '%')
+        ->orWhere('district', 'like', '%' . $keyword . '%')
+        ->orWhere('county', 'like', '%' . $keyword . '%')
+        ->orWhere('sub_county', 'like', '%' . $keyword . '%')
+        ->orWhere('parish', 'like', '%' . $keyword . '%')
+        ->orWhere('village', 'like', '%' . $keyword . '%')
+        ->paginate();
+
+        return response()->json([
+            'status'=>'success',
+            'message'=>'Search results',
+            'data' => $farmers
+        ],200);
+    }
+     
 
    
 }
