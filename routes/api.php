@@ -4,7 +4,6 @@ use App\Http\Controllers\API\AgentController;
 use App\Http\Controllers\API\DataController;
 use App\Http\Controllers\API\FarmerProfileController;
 use App\Http\Controllers\API\FPOController;
-use App\Http\Controllers\API\FPODataManagementController;
 use App\Http\Controllers\API\LocationController;
 use App\Http\Controllers\API\ReportController;
 use App\Http\Controllers\API\SummaryController;
