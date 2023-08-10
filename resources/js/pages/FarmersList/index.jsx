@@ -45,10 +45,7 @@ export default function FarmersList({ fpo_id, agent_id, ...props }) {
 
     const fetchProfiles = (url = (farmers_api_url)) => {
         updateAppContextState("loading", true);
-        if(props?.bio_url) {
-            url = props?.bio_url;
-        }
-        console.log(url);
+        // console.log(url);
         axios
             .get(url, {
                 headers: {
@@ -57,14 +54,10 @@ export default function FarmersList({ fpo_id, agent_id, ...props }) {
                 },
             })
             .then((res) => {
-                let responseData = res?.data;
+                let responseData = res?.data?.data;
 
                 if (fpo_id || agent_id) {
-                    responseData = res.data?.data;
-                }
-
-                if(props?.bio_url) {
-                    responseData = res.data?.data;
+                    // responseData = res?.data?.data;
                 }
 
                 console.log("Profiles", responseData);
@@ -138,7 +131,7 @@ export default function FarmersList({ fpo_id, agent_id, ...props }) {
                                 <TableCell>
                                     {farmer.first_name + " " + farmer.last_name}
                                 </TableCell>
-                                <TableCell>{farmer.phone_number}</TableCell>
+                                <TableCell>{farmer.phone_number || "N/A"}</TableCell>
                                 <TableCell>{farmer.fpo_name || farmer?.fpo?.fpo_name || farmer?.agent?.fpo?.fpo_name}</TableCell>
 
                                 <TableCell className="">
