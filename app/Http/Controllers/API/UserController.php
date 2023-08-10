@@ -50,7 +50,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $user = $request->user();
-        if($user->role=='fpo_user'){
+        if($user->role=='fpo'){
             $users = User::where('fpo_id',$user->entity_id)->paginate();
         }else
             $users = User::whereIn('role',['admin','user'])->orderBy('id', 'desc')->paginate();
