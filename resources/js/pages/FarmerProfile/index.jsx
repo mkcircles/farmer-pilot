@@ -55,6 +55,7 @@ import { BadgeCheckIcon } from "@heroicons/react/outline";
 import WithConfirmAlert from "../../helpers/WithConfirmAlert";
 import { AGENT_PROFILE, FARMER_PROFILE } from "../../router/routes";
 import Loading from "../../components/Loading";
+import LocationOnMap from "./LocationOnMap";
 
 const FarmerProfile = () => {
     const navigate = useNavigate();
@@ -283,7 +284,7 @@ const FarmerProfile = () => {
                             </span>
 
                             {farmerData?.marital_status ? (
-                                <span className="flex items-center">
+                                <span className="flex items-center capitalize">
                                     {farmerData?.marital_status}
                                 </span>
                             ) : (
@@ -296,7 +297,7 @@ const FarmerProfile = () => {
                             </span>
 
                             {farmerData?.education_level ? (
-                                <span className="flex items-center">
+                                <span className="flex items-center capitalize">
                                     {farmerData?.education_level}
                                 </span>
                             ) : (
@@ -309,7 +310,7 @@ const FarmerProfile = () => {
                             </span>
 
                             {farmerData?.education_level ? (
-                                <span className="flex items-center">
+                                <span className="flex items-center capitalize">
                                     {farmerData?.next_of_kin}
                                 </span>
                             ) : (
@@ -439,52 +440,55 @@ const FarmerProfile = () => {
                 </div>
             </div>
 
-            {farmerData?.validation_reason && (JSON?.parse(farmerData?.validation_reason)?.status !== 'valid') && (
-                <div className="w-full px-10 pb-4 ">
-                    <Card className="h-full border-l-4 bg-orange-100 border-secondary shadow-md">
-                        <div className="flex justify-between px-4">
-                            <div className="text-lg text-primary">
-                                Data validation error
+            {farmerData?.validation_reason &&
+                JSON?.parse(farmerData?.validation_reason)?.status !==
+                    "valid" && (
+                    <div className="w-full px-10 pb-4 ">
+                        <Card className="h-full border-l-4 bg-orange-100 border-secondary shadow-md">
+                            <div className="flex justify-between px-4">
+                                <div className="text-lg text-primary">
+                                    Data validation error
+                                </div>
+                                <div>
+                                    <AlertTriangle className="w-8 h-8 text-primary" />
+                                </div>
                             </div>
-                            <div>
-                                <AlertTriangle className="w-8 h-8 text-primary" />
-                            </div>
-                        </div>
-                        <div className="flex flex-col p-4 ">
-                            {Object.keys(
-                                JSON.parse(farmerData?.validation_reason) || {}
-                            )?.map((key, index) => {
-                                let validation_reason = JSON.parse(
-                                    farmerData?.validation_reason
-                                )[key];
-                                if (key === "status") return;
-                                return (
-                                    <div
-                                        className="flex space-x-2 items-center"
-                                        key={index}
-                                    >
-                                        <span className="w-1 h-1 bg-secondary rounded-full"></span>
-                                        <span className="capitalize">
-                                            {key.split("_").join(" ")} :{" "}
-                                        </span>
-                                        <span
-                                            title="Duplicate farmer profile"
-                                            onClick={() => {
-                                                navigate(
-                                                    `${FARMER_PROFILE}/${validation_reason}`
-                                                );
-                                            }}
-                                            className="text-secondary cursor-pointer"
+                            <div className="flex flex-col p-4 ">
+                                {Object.keys(
+                                    JSON.parse(farmerData?.validation_reason) ||
+                                        {}
+                                )?.map((key, index) => {
+                                    let validation_reason = JSON.parse(
+                                        farmerData?.validation_reason
+                                    )[key];
+                                    if (key === "status") return;
+                                    return (
+                                        <div
+                                            className="flex space-x-2 items-center"
+                                            key={index}
                                         >
-                                            {validation_reason}
-                                        </span>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    </Card>
-                </div>
-            )}
+                                            <span className="w-1 h-1 bg-secondary rounded-full"></span>
+                                            <span className="capitalize">
+                                                {key.split("_").join(" ")} :{" "}
+                                            </span>
+                                            <span
+                                                title="Duplicate farmer profile"
+                                                onClick={() => {
+                                                    navigate(
+                                                        `${FARMER_PROFILE}/${validation_reason}`
+                                                    );
+                                                }}
+                                                className="text-secondary cursor-pointer"
+                                            >
+                                                {validation_reason}
+                                            </span>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </Card>
+                    </div>
+                )}
 
             <div className="w-full h-full px-10">
                 <Card>
@@ -544,7 +548,9 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span className="text-primary">N/A</span>
+                                                        <span className="text-primary">
+                                                            N/A
+                                                        </span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -568,7 +574,9 @@ const FarmerProfile = () => {
                                                             {farmerData?.dob}
                                                         </span>
                                                     ) : (
-                                                        <span className="text-primary">N/A</span>
+                                                        <span className="text-primary">
+                                                            N/A
+                                                        </span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -589,11 +597,13 @@ const FarmerProfile = () => {
                                                 </Flex>
                                                 <Text className="text-secondary">
                                                     {farmerData?.gender ? (
-                                                        <span>
+                                                        <span className="capitalize">
                                                             {farmerData?.gender}
                                                         </span>
                                                     ) : (
-                                                        <span className="text-primary">N/A</span>
+                                                        <span className="text-primary">
+                                                            N/A
+                                                        </span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -614,13 +624,15 @@ const FarmerProfile = () => {
                                                 </Flex>
                                                 <Text className="text-secondary">
                                                     {farmerData?.marital_status ? (
-                                                        <span>
+                                                        <span className="capitalize">
                                                             {
                                                                 farmerData?.marital_status
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span className="text-primary">N/A</span>
+                                                        <span className="text-primary">
+                                                            N/A
+                                                        </span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -647,7 +659,9 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span className="text-primary">N/A</span>
+                                                        <span className="text-primary">
+                                                            N/A
+                                                        </span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -674,7 +688,9 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span className="text-primary">N/A</span>
+                                                        <span className="text-primary">
+                                                            N/A
+                                                        </span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -700,7 +716,9 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span className="text-primary">N/A</span>
+                                                        <span className="text-primary">
+                                                            N/A
+                                                        </span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -727,7 +745,9 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span className="text-primary">N/A</span>
+                                                        <span className="text-primary">
+                                                            N/A
+                                                        </span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -754,7 +774,9 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span className="text-primary">N/A</span>
+                                                        <span className="text-primary">
+                                                            N/A
+                                                        </span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -781,7 +803,9 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span className="text-primary">N/A</span>
+                                                        <span className="text-primary">
+                                                            N/A
+                                                        </span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -818,7 +842,9 @@ const FarmerProfile = () => {
                                                                 }
                                                             </span>
                                                         ) : (
-                                                            <span className="text-primary">N/A</span>
+                                                            <span className="text-primary">
+                                                                N/A
+                                                            </span>
                                                         )}
                                                     </Text>
                                                 </ListItem>
@@ -844,7 +870,9 @@ const FarmerProfile = () => {
                                                                 }
                                                             </span>
                                                         ) : (
-                                                            <span className="text-primary">N/A</span>
+                                                            <span className="text-primary">
+                                                                N/A
+                                                            </span>
                                                         )}
                                                     </Text>
                                                 </ListItem>
@@ -873,7 +901,9 @@ const FarmerProfile = () => {
                                                                 }
                                                             </span>
                                                         ) : (
-                                                            <span className="text-primary">N/A</span>
+                                                            <span className="text-primary">
+                                                                N/A
+                                                            </span>
                                                         )}
                                                     </Text>
                                                 </ListItem>
@@ -900,7 +930,9 @@ const FarmerProfile = () => {
                                                                 }
                                                             </span>
                                                         ) : (
-                                                            <span className="text-primary">N/A</span>
+                                                            <span className="text-primary">
+                                                                N/A
+                                                            </span>
                                                         )}
                                                     </Text>
                                                 </ListItem>
@@ -927,7 +959,9 @@ const FarmerProfile = () => {
                                                                 }
                                                             </span>
                                                         ) : (
-                                                            <span className="text-primary">N/A</span>
+                                                            <span className="text-primary">
+                                                                N/A
+                                                            </span>
                                                         )}
                                                     </Text>
                                                 </ListItem>
@@ -954,7 +988,9 @@ const FarmerProfile = () => {
                                                                 }
                                                             </span>
                                                         ) : (
-                                                            <span className="text-primary">N/A</span>
+                                                            <span className="text-primary">
+                                                                N/A
+                                                            </span>
                                                         )}
                                                     </Text>
                                                 </ListItem>
@@ -988,13 +1024,15 @@ const FarmerProfile = () => {
                                                 </Flex>
                                                 <Text className="text-secondary">
                                                     {farmerData?.type_of_farming ? (
-                                                        <span>
+                                                        <span className="capitalize">
                                                             {
                                                                 farmerData?.type_of_farming
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span className="text-primary">N/A</span>
+                                                        <span className="text-primary">
+                                                            N/A
+                                                        </span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -1021,7 +1059,9 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span className="text-primary">N/A</span>
+                                                        <span className="text-primary">
+                                                            N/A
+                                                        </span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -1049,7 +1089,9 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span className="text-primary">N/A</span>
+                                                        <span className="text-primary">
+                                                            N/A
+                                                        </span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -1077,7 +1119,9 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span className="text-primary">N/A</span>
+                                                        <span className="text-primary">
+                                                            N/A
+                                                        </span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -1098,13 +1142,15 @@ const FarmerProfile = () => {
                                                 </Flex>
                                                 <Text className="text-secondary">
                                                     {farmerData?.land_ownership ? (
-                                                        <span>
+                                                        <span className="capitalize">
                                                             {
                                                                 farmerData?.land_ownership
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span className="text-primary">N/A</span>
+                                                        <span className="text-primary">
+                                                            N/A
+                                                        </span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -1131,7 +1177,9 @@ const FarmerProfile = () => {
                                                             }
                                                         </span>
                                                     ) : (
-                                                        <span className="text-primary">N/A</span>
+                                                        <span className="text-primary">
+                                                            N/A
+                                                        </span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -1164,7 +1212,9 @@ const FarmerProfile = () => {
                                                                 )}
                                                             </span>
                                                         ) : (
-                                                            <span className="text-primary">N/A</span>
+                                                            <span className="text-primary">
+                                                                N/A
+                                                            </span>
                                                         )
                                                     }
                                                 </Text>
@@ -1198,7 +1248,9 @@ const FarmerProfile = () => {
                                                                 )}
                                                             </span>
                                                         ) : (
-                                                            <span className="text-primary">N/A</span>
+                                                            <span className="text-primary">
+                                                                N/A
+                                                            </span>
                                                         )
                                                     }
                                                 </Text>
@@ -1230,7 +1282,9 @@ const FarmerProfile = () => {
                                                             )}
                                                         </span>
                                                     ) : (
-                                                        <span className="text-primary">N/A</span>
+                                                        <span className="text-primary">
+                                                            N/A
+                                                        </span>
                                                     )}
                                                 </Text>
                                             </ListItem>
@@ -1261,178 +1315,173 @@ const FarmerProfile = () => {
                                                             )}
                                                         </span>
                                                     ) : (
-                                                        <span className="text-primary">N/A</span>
+                                                        <span className="text-primary">
+                                                            N/A
+                                                        </span>
                                                     )}
                                                 </Text>
                                             </ListItem>
                                         </List>
                                     </FarmInfoCard>
 
-                                    <FarmInfoCard
-                                        title="Location Information"
-                                        subTitle="Location Info"
-                                        className="col-1"
-                                    >
-                                        <List className="mt-4 space-y-2">
-                                            <ListItem className="">
-                                                <Flex
-                                                    justifyContent="start"
-                                                    className="truncate space-x-4 px-2"
-                                                >
-                                                    <span className="w-1 h-1 bg-secondary rounded-full"></span>
-                                                    <div className="truncate">
-                                                        <Text className="truncate">
-                                                            <Bold className="uppercase text-primary">
-                                                                Farm Coordinates
-                                                            </Bold>
-                                                        </Text>
-                                                    </div>
-                                                </Flex>
-                                                <Text className="text-secondary">
-                                                    {farmerData?.farmer_cordinates ? (
-                                                        <span>
-                                                            {
-                                                                farmerData?.farmer_cordinates
-                                                            }
-                                                        </span>
-                                                    ) : (
-                                                        <span className="text-primary">N/A</span>
-                                                    )}
-                                                </Text>
-                                            </ListItem>
+                                    <div className="flex flex-col space-y-4 relative">
+                                        <FarmInfoCard
+                                            title="Location Information"
+                                            subTitle="Location Info"
+                                            className="col-1"
+                                        >
+                                            <List className="mt-4 space-y-2">
 
-                                            <ListItem className="">
-                                                <Flex
-                                                    justifyContent="start"
-                                                    className="truncate space-x-4 px-2"
-                                                >
-                                                    <span className="w-1 h-1 bg-secondary rounded-full"></span>
-                                                    <div className="truncate">
-                                                        <Text className="truncate">
-                                                            <Bold className="uppercase text-primary">
-                                                                District
-                                                            </Bold>
-                                                        </Text>
-                                                    </div>
-                                                </Flex>
-                                                <Text className="text-secondary">
-                                                    {farmerData?.district ? (
-                                                        <span>
-                                                            {
-                                                                farmerData?.district
-                                                            }
-                                                        </span>
-                                                    ) : (
-                                                        <span className="text-primary">N/A</span>
-                                                    )}
-                                                </Text>
-                                            </ListItem>
+                                                <ListItem className="">
+                                                    <Flex
+                                                        justifyContent="start"
+                                                        className="truncate space-x-4 px-2"
+                                                    >
+                                                        <span className="w-1 h-1 bg-secondary rounded-full"></span>
+                                                        <div className="truncate">
+                                                            <Text className="truncate">
+                                                                <Bold className="uppercase text-primary">
+                                                                    District
+                                                                </Bold>
+                                                            </Text>
+                                                        </div>
+                                                    </Flex>
+                                                    <Text className="text-secondary">
+                                                        {farmerData?.district ? (
+                                                            <span>
+                                                                {
+                                                                    farmerData?.district
+                                                                }
+                                                            </span>
+                                                        ) : (
+                                                            <span className="text-primary">
+                                                                N/A
+                                                            </span>
+                                                        )}
+                                                    </Text>
+                                                </ListItem>
 
-                                            <ListItem className="">
-                                                <Flex
-                                                    justifyContent="start"
-                                                    className="truncate space-x-4 px-2"
-                                                >
-                                                    <span className="w-1 h-1 bg-secondary rounded-full"></span>
-                                                    <div className="truncate">
-                                                        <Text className="truncate">
-                                                            <Bold className="uppercase text-primary">
-                                                                County
-                                                            </Bold>
-                                                        </Text>
-                                                    </div>
-                                                </Flex>
-                                                <Text className="text-secondary">
-                                                    {farmerData?.county ? (
-                                                        <span>
-                                                            {farmerData?.county}
-                                                        </span>
-                                                    ) : (
-                                                        <span className="text-primary">N/A</span>
-                                                    )}
-                                                </Text>
-                                            </ListItem>
+                                                <ListItem className="">
+                                                    <Flex
+                                                        justifyContent="start"
+                                                        className="truncate space-x-4 px-2"
+                                                    >
+                                                        <span className="w-1 h-1 bg-secondary rounded-full"></span>
+                                                        <div className="truncate">
+                                                            <Text className="truncate">
+                                                                <Bold className="uppercase text-primary">
+                                                                    County
+                                                                </Bold>
+                                                            </Text>
+                                                        </div>
+                                                    </Flex>
+                                                    <Text className="text-secondary">
+                                                        {farmerData?.county ? (
+                                                            <span>
+                                                                {farmerData?.county}
+                                                            </span>
+                                                        ) : (
+                                                            <span className="text-primary">
+                                                                N/A
+                                                            </span>
+                                                        )}
+                                                    </Text>
+                                                </ListItem>
 
-                                            <ListItem className="">
-                                                <Flex
-                                                    justifyContent="start"
-                                                    className="truncate space-x-4 px-2"
-                                                >
-                                                    <span className="w-1 h-1 bg-secondary rounded-full"></span>
-                                                    <div className="truncate">
-                                                        <Text className="truncate">
-                                                            <Bold className="uppercase text-primary">
-                                                                Sub County
-                                                            </Bold>
-                                                        </Text>
-                                                    </div>
-                                                </Flex>
-                                                <Text className="text-secondary">
-                                                    {farmerData?.sub_county ? (
-                                                        <span>
-                                                            {
-                                                                farmerData?.sub_county
-                                                            }
-                                                        </span>
-                                                    ) : (
-                                                        <span className="text-primary">N/A</span>
-                                                    )}
-                                                </Text>
-                                            </ListItem>
+                                                <ListItem className="">
+                                                    <Flex
+                                                        justifyContent="start"
+                                                        className="truncate space-x-4 px-2"
+                                                    >
+                                                        <span className="w-1 h-1 bg-secondary rounded-full"></span>
+                                                        <div className="truncate">
+                                                            <Text className="truncate">
+                                                                <Bold className="uppercase text-primary">
+                                                                    Sub County
+                                                                </Bold>
+                                                            </Text>
+                                                        </div>
+                                                    </Flex>
+                                                    <Text className="text-secondary">
+                                                        {farmerData?.sub_county ? (
+                                                            <span>
+                                                                {
+                                                                    farmerData?.sub_county
+                                                                }
+                                                            </span>
+                                                        ) : (
+                                                            <span className="text-primary">
+                                                                N/A
+                                                            </span>
+                                                        )}
+                                                    </Text>
+                                                </ListItem>
 
-                                            <ListItem className="">
-                                                <Flex
-                                                    justifyContent="start"
-                                                    className="truncate space-x-4 px-2"
-                                                >
-                                                    <span className="w-1 h-1 bg-secondary rounded-full"></span>
-                                                    <div className="truncate">
-                                                        <Text className="truncate">
-                                                            <Bold className="uppercase text-primary">
-                                                                Parish
-                                                            </Bold>
-                                                        </Text>
-                                                    </div>
-                                                </Flex>
-                                                <Text className="text-secondary">
-                                                    {farmerData?.parish ? (
-                                                        <span>
-                                                            {farmerData?.parish}
-                                                        </span>
-                                                    ) : (
-                                                        <span className="text-primary">N/A</span>
-                                                    )}
-                                                </Text>
-                                            </ListItem>
+                                                <ListItem className="">
+                                                    <Flex
+                                                        justifyContent="start"
+                                                        className="truncate space-x-4 px-2"
+                                                    >
+                                                        <span className="w-1 h-1 bg-secondary rounded-full"></span>
+                                                        <div className="truncate">
+                                                            <Text className="truncate">
+                                                                <Bold className="uppercase text-primary">
+                                                                    Parish
+                                                                </Bold>
+                                                            </Text>
+                                                        </div>
+                                                    </Flex>
+                                                    <Text className="text-secondary">
+                                                        {farmerData?.parish ? (
+                                                            <span>
+                                                                {farmerData?.parish}
+                                                            </span>
+                                                        ) : (
+                                                            <span className="text-primary">
+                                                                N/A
+                                                            </span>
+                                                        )}
+                                                    </Text>
+                                                </ListItem>
 
-                                            <ListItem className="">
-                                                <Flex
-                                                    justifyContent="start"
-                                                    className="truncate space-x-4 px-2"
-                                                >
-                                                    <span className="w-1 h-1 bg-secondary rounded-full"></span>
-                                                    <div className="truncate">
-                                                        <Text className="truncate">
-                                                            <Bold className="uppercase text-primary">
-                                                                Village
-                                                            </Bold>
-                                                        </Text>
-                                                    </div>
-                                                </Flex>
-                                                <Text className="text-secondary">
-                                                    {farmerData?.village ? (
-                                                        <span>
-                                                            {
-                                                                farmerData?.village
-                                                            }
-                                                        </span>
-                                                    ) : (
-                                                        <span className="text-primary">N/A</span>
-                                                    )}
-                                                </Text>
-                                            </ListItem>
-                                        </List>
-                                    </FarmInfoCard>
+                                                <ListItem className="">
+                                                    <Flex
+                                                        justifyContent="start"
+                                                        className="truncate space-x-4 px-2"
+                                                    >
+                                                        <span className="w-1 h-1 bg-secondary rounded-full"></span>
+                                                        <div className="truncate">
+                                                            <Text className="truncate">
+                                                                <Bold className="uppercase text-primary">
+                                                                    Village
+                                                                </Bold>
+                                                            </Text>
+                                                        </div>
+                                                    </Flex>
+                                                    <Text className="text-secondary">
+                                                        {farmerData?.village ? (
+                                                            <span>
+                                                                {
+                                                                    farmerData?.village
+                                                                }
+                                                            </span>
+                                                        ) : (
+                                                            <span className="text-primary">
+                                                                N/A
+                                                            </span>
+                                                        )}
+                                                    </Text>
+                                                </ListItem>
+                                            </List>
+                                        </FarmInfoCard>
+                                        <Card className="h-52 bottom-0  right-0 items-center justify-center bg-slate-50">
+                                            <LocationOnMap data={{
+                                                latitude: parseFloat(farmerData?.farmer_cordinates?.split(",")[0]?.trim()),
+                                                longitude: parseFloat(farmerData?.farmer_cordinates?.split(",")[1]?.trim()),
+                                                title: "Farm Location",
+                                            }} />
+                                        </Card>
+                                    </div>
                                 </div>
                             </TabPanel>
 
@@ -1462,7 +1511,9 @@ const FarmerProfile = () => {
                                                     ?.enrollmentStatus ? (
                                                     <span>Present</span>
                                                 ) : (
-                                                    <span className="text-primary">N/A</span>
+                                                    <span className="text-primary">
+                                                        N/A
+                                                    </span>
                                                 )}
                                             </Text>
                                         </ListItem>
@@ -1492,7 +1543,9 @@ const FarmerProfile = () => {
                                                         }
                                                     </span>
                                                 ) : (
-                                                    <span className="text-primary">N/A</span>
+                                                    <span className="text-primary">
+                                                        N/A
+                                                    </span>
                                                 )}
                                             </Text>
                                         </ListItem>
@@ -1522,7 +1575,9 @@ const FarmerProfile = () => {
                                                         }
                                                     </span>
                                                 ) : (
-                                                    <span className="text-primary">N/A</span>
+                                                    <span className="text-primary">
+                                                        N/A
+                                                    </span>
                                                 )}
                                             </Text>
                                         </ListItem>
@@ -1546,7 +1601,9 @@ const FarmerProfile = () => {
                                                     ?.consentGUID ? (
                                                     <span>Present</span>
                                                 ) : (
-                                                    <span className="text-primary">N/A</span>
+                                                    <span className="text-primary">
+                                                        N/A
+                                                    </span>
                                                 )}
                                             </Text>
                                         </ListItem>
@@ -1569,7 +1626,9 @@ const FarmerProfile = () => {
                                                 {farmerData?.biometrics?.rID ? (
                                                     <span>Present</span>
                                                 ) : (
-                                                    <span className="text-primary">N/A</span>
+                                                    <span className="text-primary">
+                                                        N/A
+                                                    </span>
                                                 )}
                                             </Text>
                                         </ListItem>
@@ -1638,7 +1697,9 @@ const FarmerProfile = () => {
                                                                 ?.last_name}
                                                     </span>
                                                 ) : (
-                                                    <span className="text-primary">N/A</span>
+                                                    <span className="text-primary">
+                                                        N/A
+                                                    </span>
                                                 )}
                                             </Text>
                                         </ListItem>

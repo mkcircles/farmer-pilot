@@ -1,0 +1,1 @@
+import{r as m,j as r}from"./app-f8751d23.js";import{f as s}from"./index-ab64e8f1.js";import{t as n}from"./tw-merge-fbb83fc6.js";function l(t){const e=m.useContext(s);return r.jsx("label",{...t,className:n(["inline-block mb-2",e&&"mb-2 sm:mb-0 sm:mr-5 sm:text-right",t.className]),children:t.children})}export{l as F};
