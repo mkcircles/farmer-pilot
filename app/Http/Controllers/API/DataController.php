@@ -68,8 +68,7 @@ class DataController extends Controller
     public function getAllFarmers(Request $request)
     {
         $user = $request->user();
-        if($user->role == 'fpo')
-        {
+        if($user->role == 'fpo_user'){
             $farmers = FarmerProfile::orderBy('id', 'desc')->where('fpo_id',$user->entity_id)->paginate();
         }else{
             $farmers = FarmerProfile::orderBy('id', 'desc')->paginate();
