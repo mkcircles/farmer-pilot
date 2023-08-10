@@ -33,7 +33,7 @@ function Main() {
                 //console.log("login Response", res.data);
                 //console.log("Token", res.data.data.token);
                 if (
-                    ["admin", "fpo_user"].includes(res?.data?.data?.user?.role)
+                    ["admin", "fpo"].includes(res?.data?.data?.user?.role)
                 ) {
                     dispatch(setToken(res.data.data.token));
                     dispatch(setUser(res.data.data.user));
