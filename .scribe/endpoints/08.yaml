@@ -120,42 +120,42 @@ endpoints:
         name: name
         description: 'The name of the report'
         required: true
-        example: laborum
+        example: numquam
         type: string
         custom: []
       report_type:
         name: report_type
         description: 'The report type of the report'
         required: true
-        example: 'farmer-report, crop-report,agent-summary-report'
+        example: 'farmer-report, crop-report,agent-summary-report,biometics-report'
         type: string
         custom: []
       from_date:
         name: from_date
         description: 'The from date for the report'
         required: true
-        example: labore
+        example: ut
         type: string
         custom: []
       to_date:
         name: to_date
         description: 'The to date for the report'
         required: true
-        example: ut
+        example: et
         type: string
         custom: []
       district:
         name: district
         description: 'optional The district of the report'
         required: false
-        example: omnis
+        example: magni
         type: string
         custom: []
       agent_id:
         name: agent_id
         description: 'optional The agent id of the report'
         required: false
-        example: 9
+        example: 10
         type: integer
         custom: []
       crops_grown:
@@ -169,7 +169,7 @@ endpoints:
         name: farm_size
         description: 'optional The farm size of the report'
         required: false
-        example: 12
+        example: 13
         type: integer
         custom: []
       gender:
@@ -183,20 +183,20 @@ endpoints:
         name: fpo_id
         description: 'optional The fpo id of the report'
         required: false
-        example: 7
+        example: 17
         type: integer
         custom: []
     cleanBodyParameters:
-      name: laborum
-      report_type: 'farmer-report, crop-report,agent-summary-report'
-      from_date: labore
-      to_date: ut
-      district: omnis
-      agent_id: 9
+      name: numquam
+      report_type: 'farmer-report, crop-report,agent-summary-report,biometics-report'
+      from_date: ut
+      to_date: et
+      district: magni
+      agent_id: 10
       crops_grown: 'Maize, Wheat, beans'
-      farm_size: 12
+      farm_size: 13
       gender: 'Male, Female'
-      fpo_id: 7
+      fpo_id: 17
     fileParameters: []
     responses:
       -
@@ -277,11 +277,11 @@ endpoints:
         name: id
         description: 'The ID of the report.'
         required: true
-        example: culpa
+        example: inventore
         type: string
         custom: []
     cleanUrlParameters:
-      id: culpa
+      id: inventore
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

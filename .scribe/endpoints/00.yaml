@@ -433,7 +433,7 @@ endpoints:
         name: gender
         description: ''
         required: true
-        example: explicabo
+        example: et
         type: string
         custom: []
       residence:
@@ -468,21 +468,21 @@ endpoints:
         name: created_by
         description: ''
         required: true
-        example: 14
+        example: 11
         type: integer
         custom: []
       fpo_id:
         name: fpo_id
         description: ''
         required: true
-        example: 2
+        example: 11
         type: integer
         custom: []
       email:
         name: email
         description: 'The email of the agent. Example:'
         required: true
-        example: tryan@example.net
+        example: julianne.mclaughlin@example.net
         type: string
         custom: []
     cleanBodyParameters:
@@ -490,14 +490,14 @@ endpoints:
       last_name: Doe
       phone_number: 256XXXXXXXXX
       age: '30'
-      gender: explicabo
+      gender: et
       residence: Kampala
       referee_name: 'Jane Doe'
       referee_phone_number: '08012345678'
       designation: 'Agro Extension Worker'
-      created_by: 14
-      fpo_id: 2
-      email: tryan@example.net
+      created_by: 11
+      fpo_id: 11
+      email: julianne.mclaughlin@example.net
     fileParameters: []
     responses:
       -
@@ -651,7 +651,7 @@ endpoints:
         name: agent_code
         description: ''
         required: true
-        example: fugiat
+        example: et
         type: string
         custom: []
       agent:
@@ -662,7 +662,7 @@ endpoints:
         type: string
         custom: []
     cleanUrlParameters:
-      agent_code: fugiat
+      agent_code: et
       agent: '1'
     queryParameters: []
     cleanQueryParameters: []
@@ -735,11 +735,11 @@ endpoints:
         name: id
         description: 'The ID of the agent.'
         required: true
-        example: et
+        example: tempore
         type: string
         custom: []
     cleanUrlParameters:
-      id: et
+      id: tempore
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1002,11 +1002,11 @@ endpoints:
         name: agent_id
         description: 'The ID of the agent.'
         required: true
-        example: repellat
+        example: laborum
         type: string
         custom: []
     cleanUrlParameters:
-      agent_id: repellat
+      agent_id: laborum
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:

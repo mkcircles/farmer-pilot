@@ -78,7 +78,7 @@ class ReportController extends Controller
      * 
      * @header Authorization required The authorization token. Example: Bearer {token}
      * @bodyParam name string required The name of the report
-     * @bodyParam report_type string required The report type of the report Example: farmer-report, crop-report,agent-summary-report
+     * @bodyParam report_type string required The report type of the report Example: farmer-report, crop-report,agent-summary-report,biometics-report
      * @bodyParam from_date string required The from date for the report
      * @bodyParam to_date string required The to date for the report
      * @bodyParam district string optional The district of the report

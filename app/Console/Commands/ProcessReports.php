@@ -54,7 +54,7 @@ class ProcessReports extends Command
                 case 'agent-summary-report':
                     $this->processAgentSummaryReport($report);
                     break;
-                case 'biometric-report':
+                case 'biometrics-report':
                     $this->processBiometricReport($report);
                     break;
                 default:

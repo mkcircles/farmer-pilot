@@ -54,7 +54,7 @@ endpoints:
         name: gender
         description: 'Farmer gender. Example Male/Female'
         required: false
-        example: alias
+        example: et
         type: string
         custom: []
       education_level:
@@ -292,7 +292,7 @@ endpoints:
       first_name: John
       last_name: Doe
       dob: '1990-01-01'
-      gender: alias
+      gender: et
       education_level: Primary
       marital_status: Married
       district: Kampala
@@ -459,7 +459,7 @@ endpoints:
         name: id
         description: 'Farmer id'
         required: true
-        example: 5
+        example: 14
         type: integer
         custom: []
       status:
@@ -470,7 +470,7 @@ endpoints:
         type: string
         custom: []
     cleanBodyParameters:
-      id: 5
+      id: 14
       status: 'pending,complete,valid,invalid,blacklisted,deceased'
     fileParameters: []
     responses:
@@ -581,11 +581,11 @@ endpoints:
         name: keyword
         description: ''
         required: true
-        example: repudiandae
+        example: totam
         type: string
         custom: []
     cleanUrlParameters:
-      keyword: repudiandae
+      keyword: totam
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
