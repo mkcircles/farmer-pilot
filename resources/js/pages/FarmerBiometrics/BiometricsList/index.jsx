@@ -20,11 +20,14 @@ import { API_KEY, BASE_API_URL } from "../../../env";
 import { numberFormatter } from "../../../utils/numberFormatter";
 import { AppContext } from "../../../context/RootContext";
 import { useContext } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { debounce } from "lodash";
 import Pagination from "../../../components/Pagination";
+import { setAppSuccessAlert } from "../../../stores/appSuccessAlert";
+import { Copy } from "lucide-react";
 
 export default function BiometricsList(props) {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const token = useSelector((state) => state.auth.token);
     const { updateAppContextState } = useContext(AppContext);
@@ -116,7 +119,7 @@ export default function BiometricsList(props) {
                                     rID
                                 </TableHeaderCell>
                                 <TableHeaderCell className="">
-                                ConsentGUID
+                                ConsentID
                                 </TableHeaderCell>
                                 <TableHeaderCell className="">
                                     Reason
@@ -188,7 +191,37 @@ export default function BiometricsList(props) {
                                                 day: "numeric",
                                             })}
                                         </TableCell>
-                                        <TableCell>{data?.subjectID || '-'}</TableCell>
+                                        <TableCell>
+                                            {data?.subjectID ? (
+                                                    <div className="flex items-center">
+                                                        <span title="Copy" className="px-2">
+                                                            <Copy
+                                                                onClick={() => {
+                                                                    navigator.clipboard.writeText(
+                                                                        data?.subjectID
+                                                                    );
+                                                                    dispatch(
+                                                                        setAppSuccessAlert(
+                                                                            {
+                                                                                message:
+                                                                                    "Subject ID Copied to Clipboard",
+                                                                            }
+                                                                        )
+                                                                    );
+                                                                }}
+                                                                
+                                                                className="w-4 h-4 text-primary cursor-pointer hover:scale-125 "
+                                                            />
+                                                        </span>
+                                                        <span>Present</span>
+                                                        
+                                                    </div>
+                                                ) : (
+                                                    <span className="text-primary">
+                                                        N/A
+                                                    </span>
+                                                )}
+                                            </TableCell>
 
                                         <TableCell>
                                             <Button
