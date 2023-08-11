@@ -1626,7 +1626,7 @@ const FarmerProfile = () => {
                                                 <div className="truncate">
                                                     <Text className="truncate">
                                                         <Bold className="uppercase text-primary">
-                                                            Consent GUID
+                                                            Consent-ID
                                                         </Bold>
                                                     </Text>
                                                 </div>
@@ -1691,7 +1691,7 @@ const FarmerProfile = () => {
                                                                 `${FARMER_PROFILE}/${farmerData?.biometrics?.possible_duplicate}`
                                                             );
                                                         }}
-                                                        className="text-secondary cursor-pointer border border-secondary rounded-lg px-2 py-1"
+                                                        className="text-secondary cursor-pointer border border-secondary rounded px-2 py-1"
                                                     >
                                                         Go to duplicate profile
                                                     </span>

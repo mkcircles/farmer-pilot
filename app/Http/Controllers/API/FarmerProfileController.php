@@ -230,28 +230,28 @@ class FarmerProfileController extends Controller
             $farmer->data_captured_by = $request->data_captured_by;
             $farmer->agent_id = $request->agent_id;
             //$farmer->photo = $imageName;
-
             $farmer->save();
 
-            $exists_check = MastercardProfileDetails::where([
-                'rID' => $request->rID
-            ])->first();
-            $duplicate = $exists_check ? $exists_check->entityID : null;
-            //Register Mastercard Profile Details
-
-            MastercardProfileDetails::create([
-                'entityType' => 'farmer',
-                'entityID' => $farmer->farmer_id,
-                'rID' => isset($request->rID) ? $request->rID : null,
-                'consentGUID' => isset($request->consentGUID) ? $request->consentGUID : null,
-                'subjectID' => isset($request->subjectID) ? $request->subjectID : null,
-                'enrollmentStatus' => isset($request->enrollmentStatus) ? $request->enrollmentStatus : null,
-                'hasBiometricToken' => !is_null($request->biometricToken) ? 1 : 0,
-                'biometricToken' => isset($request->biometricToken) ? $request->biometricToken : null,
-                'possible_duplicate' => $duplicate,
-                'consumerDeviceId' => null,
-                'reason' => $request->reason
-            ]);
+            if($request->has('rID')) {
+                $exists_check = MastercardProfileDetails::where([
+                    'rID' => $request->rID
+                ])->first();
+                $duplicate = $exists_check ? $exists_check->entityID : null;
+                //Register Mastercard Profile Details
+                MastercardProfileDetails::create([
+                    'entityType' => 'farmer',
+                    'entityID' => $farmer->farmer_id,
+                    'rID' => isset($request->rID) ? $request->rID : null,
+                    'consentGUID' => isset($request->consentGUID) ? $request->consentGUID : null,
+                    'subjectID' => isset($request->subjectID) ? $request->subjectID : null,
+                    'enrollmentStatus' => isset($request->enrollmentStatus) ? $request->enrollmentStatus : null,
+                    'hasBiometricToken' => isset($request->biometricToken) ? 1 : 0,
+                    'biometricToken' => isset($request->biometricToken) ? $request->biometricToken : null,
+                    'possible_duplicate' => $duplicate,
+                    'consumerDeviceId' => null,
+                    'reason' => $request->reason
+                ]);
+            }
 
             //Return Response
             return response()->json([
