@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Agent;
 use App\Models\FarmerProfile;
+use App\Models\MastercardProfileDetails;
 use App\Models\Report;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
@@ -52,6 +53,9 @@ class ProcessReports extends Command
                     break;
                 case 'agent-summary-report':
                     $this->processAgentSummaryReport($report);
+                    break;
+                case 'biometric-report':
+                    $this->processBiometricReport($report);
                     break;
                 default:
                     break;
@@ -262,5 +266,91 @@ class ProcessReports extends Command
         $reportData->report_url = $fileName;
         $reportData->save();
 
+    }
+
+    private function processBiometricReport($report)
+    {
+        $data = json_decode($report->report_params);
+        // dd($data->from_date);
+        $from = Carbon::parse($data->from_date);
+        $to = Carbon::parse($data->to_date);
+
+        $qb = (new MastercardProfileDetails)->newQuery();
+        $qb->where('created_at', '>=', date($from).' 00:00:00');
+        $qb->where('created_at', '<=', date($to).' 23:59:59');
+       // $qb->whereDate('created_at', [$from, $to]);
+        unset($data->from_date);
+        unset($data->to_date);
+
+        foreach ($data as $k => $v) {
+            $qb->where($k, $v);
+        }
+        $profiles = $qb->with('farmerProfile')->get();
+
+        //Create excel report 
+        $reportData = [];
+        array_push($reportData,[
+            'Profile Name',
+            'DoB',
+            'rID',
+            'Consent GUID',
+            'subject ID',
+            'Enrollment Status',
+            'Has Biometric Token',
+            'Agent name',
+        ]);
+
+        foreach($profiles as $profile){
+            $entityName = $this->getEntityName($profile->entityType, $profile->entityID);
+            array_push($reportData,[
+                $entityName['name'],
+                $entityName['dob'],
+                $profile->rID,
+                $profile->consent_guid,
+                $profile->subject_id,
+                $profile->enrollment_status,
+                $profile->has_biometric_token,
+                $entityName['agent_name'],
+            ]);
+        }
+
+        $fileName   = Str::slug($report->name, '-').'-'.time().'.csv';
+
+        // (B) WRITE TO CSV FILE
+        $file = fopen(public_path('reports/'.$fileName), "w");
+        foreach ($data as $line) { 
+            fputcsv($file, $line);
+         }
+        fclose($file);
+
+        $report->report_status = 'completed';
+        $report->report_url = $fileName;
+        $report->save();
+
+    }
+
+    private function getEntityName($type, $id)
+    {
+        $response = [];
+
+        if($type =='farmer') {
+            $entity = FarmerProfile::find($id);
+            $name = $entity->first_name.' '.$entity->last_name;
+            $dob = $entity->dob;
+            $agent_name = $entity->agent->first_name.' '.$entity->agent->last_name;
+        }
+        else{
+            $name = '';
+            $dob = '';
+            $agent_name = '';
+        }
+
+        array_push($response,[
+            'name' => $name,
+            'dob' => $dob,
+            'agent_name' => $agent_name
+        ]);
+
+        return $response;
     }
 }
