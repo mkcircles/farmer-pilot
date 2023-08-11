@@ -245,7 +245,7 @@ class FarmerProfileController extends Controller
                     'consentGUID' => isset($request->consentGUID) ? $request->consentGUID : null,
                     'subjectID' => isset($request->subjectID) ? $request->subjectID : null,
                     'enrollmentStatus' => isset($request->enrollmentStatus) ? $request->enrollmentStatus : null,
-                    'hasBiometricToken' => isset($request->biometricToken) ? 1 : 0,
+                    'hasBiometricToken' => (isset($request->biometricToken) && trim($request->biometricToken)) ? 1 : 0,
                     'biometricToken' => isset($request->biometricToken) ? $request->biometricToken : null,
                     'possible_duplicate' => $duplicate,
                     'consumerDeviceId' => null,
