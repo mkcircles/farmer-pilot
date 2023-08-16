@@ -1524,8 +1524,8 @@ const FarmerProfile = () => {
                                                 </div>
                                             </Flex>
                                             <Text className="text-secondary">
-                                                {farmerData?.biometrics
-                                                    ?.enrollmentStatus ? (
+                                                {parseInt(farmerData?.biometrics
+                                                    ?.hasBiometricToken) ? (
                                                     <span>Present</span>
                                                 ) : (
                                                     <span className="text-primary">
@@ -1750,92 +1750,6 @@ const FarmerProfile = () => {
         </div>
     );
 
-    return (
-        <>
-            <div className="w-full py-5 text-2xl font-bold">
-                {farmerData?.first_name + " " + farmerData?.last_name}
-            </div>
-            <Grid numItemsSm={1} numItemsLg={4} className="gap-6 my-4">
-                <div className="col-span-1 h-40 p-4 flex justify-center items-center bg-gray-200">
-                    {/* <img className="bg-slate-100" alt="Profile Photo" src={`https://ui-avatars.com/api/?background=random&size=128&name=${farmerData?.first_name}+${farmerData?.last_name}`} /> */}
-                    <UserIcon className="h-full w-auto p-2 rounded-full border-2 border-primary" />
-                </div>
-                <Grid
-                    numItemsSm={1}
-                    numItemsLg={2}
-                    className="gap-6 my-4 col-span-3"
-                >
-                    <div className="flex flex-col">
-                        <div className="w-full flex space-x-4">
-                            <span>FPO</span>
-                            <span>{farmerData?.fpo_name || "Not set"}</span>
-                        </div>
-                        <div className="w-full flex space-x-4">
-                            <span>FPO</span>
-                            <span>{farmerData?.fpo_name || "Not set"}</span>
-                        </div>
-                        <div className="w-full flex space-x-4">
-                            <span>SEX</span>
-                            <span>{farmerData?.gender || "Not set"}</span>
-                        </div>
-                        <div className="w-full flex space-x-4">
-                            <span>Marital status</span>
-                            <span>
-                                {farmerData?.marital_status || "Not set"}
-                            </span>
-                        </div>
-                        <div className="w-full flex space-x-4">
-                            <span>Education Level</span>
-                            <span>
-                                {farmerData?.marital_status || "Not set"}
-                            </span>
-                        </div>
-
-                        <div className="w-full flex space-x-4">
-                            <span>Next of Kin</span>
-                            <span>
-                                {farmerData?.marital_status || "Not set"}
-                            </span>
-                        </div>
-                    </div>
-                    <div className="flex flex-col">
-                        <div className="w-full flex space-x-4">
-                            <span>Phone Number</span>
-                            <span>
-                                {farmerData?.marital_status || "Not set"}
-                            </span>
-                        </div>
-                        <div className="w-full flex space-x-4">
-                            <span>Account with FI</span>
-                            <span>
-                                {farmerData?.marital_status || "Not set"}
-                            </span>
-                        </div>
-                    </div>
-                </Grid>
-            </Grid>
-
-            {/* <div className="w-full h-full">
-                <Card>
-                    
-                    <TabGroup>
-                        <TabList className="">
-                            <Tab icon={UserGroupIcon}>Info</Tab>
-                            <Tab icon={UserGroupIcon}>Farm</Tab>
-                            <Tab icon={UserIcon}>Family</Tab>
-                            <Tab icon={UserIcon}>Community Pass</Tab>
-                        </TabList>
-                        <TabPanels>
-                            <TabPanel></TabPanel>
-                            <TabPanel></TabPanel>
-                            <TabPanel></TabPanel>
-                            <TabPanel></TabPanel>
-                        </TabPanels>
-                    </TabGroup>
-                </Card>
-            </div> */}
-        </>
-    );
 };
 
 export default FarmerProfile;
