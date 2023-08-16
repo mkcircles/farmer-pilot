@@ -290,14 +290,14 @@ class ProcessReports extends Command
         //Create excel report 
         $reportData = [];
         array_push($reportData,[
-            'Profile Name',
-            'DoB',
+            
             'rID',
             'Consent GUID',
             'subject ID',
             'Enrollment Status',
             'Has Biometric Token',
-            'Agent name',
+            'Agent Code',
+            'Time stamp',
         ]);
 
         foreach($profiles as $profile){
@@ -337,7 +337,7 @@ class ProcessReports extends Command
             $entity = FarmerProfile::find($id);
             $name = $entity->first_name.' '.$entity->last_name;
             $dob = $entity->dob;
-            $agent_name = $entity->agent->first_name.' '.$entity->agent->last_name;
+            $agent_name = $entity->agent->agent_code;
         }
         else{
             $name = '';

@@ -9,8 +9,10 @@ use App\Http\Controllers\API\ReportController;
 use App\Http\Controllers\API\SummaryController;
 use App\Http\Controllers\AUTH\AuthController;
 use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\API\UnffeOutreachController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Seeder\FarmerSeederController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +24,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
+//Route::get('/import/unffe', [FarmerSeederController::class, 'importUnffeOutReach']);
+
 Route::get('/', function () {
     return response()->json(['message' => 'Welcome to the Agri-Hub API']);
 });
@@ -43,7 +48,7 @@ Route::middleware('auth:sanctum')->group( function () {
     //Summaries
     Route::get('/summary', [SummaryController::class, 'DashboardSummary']);
     Route::get('/summary/fpo', [SummaryController::class, 'FPODashboardSumary']);
-    
+
 
     //Users Routes
     Route::get('/users',[UserController::class, 'index']);
@@ -53,7 +58,7 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::put('/user/status/update', [UserController::class, 'updateUserStatus']);
     Route::get('/user/{id}/password/reset', [UserController::class, 'resetUserPassword']);
     Route::put('/user/password/update', [UserController::class, 'updateUserPassword']);
-    
+
 
     Route::post('/farmer/register', [FarmerProfileController::class, 'registerFarmer']);
     Route::get('/farmers', [DataController::class, 'getAllFarmers']);
@@ -96,6 +101,15 @@ Route::middleware('auth:sanctum')->group( function () {
 
     //Location Routes
     Route::get('/districts',[DataController::class, 'getDistricts']);
+
+    //UNFFE Routes
+    Route::group(['prefix' => 'unffe'], function () {
+        Route::get('/outreach', [UnffeOutreachController::class, 'getUnffeOutreach']);
+        Route::post('/outreach/register', [UnffeOutreachController::class, 'registerUnffeOutreach']);
+        Route::get('/outreach/{id}', [UnffeOutreachController::class, 'getUnffeOutreachById']);
+        Route::post('/outreach/{id}/update', [UnffeOutreachController::class, 'updateUnffeOutreach']);
+        Route::delete('/outreach/{id}', [UnffeOutreachController::class, 'deleteUnffeOutreach']);
+    });
 
 
     //Reports Routes

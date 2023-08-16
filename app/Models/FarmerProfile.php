@@ -51,6 +51,7 @@ class FarmerProfile extends Model
         'data_captured_by',
         'agent_id',
         'photo',
+        'group_id',
     ];
 
     public function agent()
@@ -67,11 +68,16 @@ class FarmerProfile extends Model
         return $this->hasOne(MastercardProfileDetails::class, 'entityID', 'farmer_id');
     }
 
+    public function group()
+    {
+        return $this->belongsTo(Group::class, 'group_id');
+    }
 
- 
 
 
 
 
-    
+
+
+
 }

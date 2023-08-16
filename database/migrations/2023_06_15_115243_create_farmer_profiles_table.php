@@ -65,15 +65,15 @@ return new class extends Migration
             //Registered By
             $table->string('agent_id')->nullable();
             $table->string('photo')->nullable();
-            
+
             $table->timestamps();
         });
 
         //Call the seeder
-        Artisan::call('db:seed', [
-            '--class' => ApiFarmer::class,
-            '--force' => true,
-        ]);
+//        Artisan::call('db:seed', [
+//            '--class' => ApiFarmer::class,
+//            '--force' => true,
+//        ]);
 
     }
 
