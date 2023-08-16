@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "./store";
 import { icons } from "../base-components/Lucide";
-import { AGENTS_LIST, FARMERS_BIOMETRICS, FARMERS_LIST, FPO_LIST, FPO_MAP, HOME, LOGOUT, REPORTS, USERS_LIST } from "../router/routes";
+import { AGENTS_LIST, FARMERS_BIOMETRICS, FARMERS_LIST, FPO_LIST, FPO_MAP, HOME, LOGOUT, REPORTS, UNFEE_OUTREACH, USERS_LIST } from "../router/routes";
 
 export interface Menu {
   icon: keyof typeof icons;
@@ -70,6 +70,11 @@ export const sideMenuSlice = createSlice({
           icon: "MapPin",
           pathname: FPO_MAP,
           title: "FPOs Map",
+        },
+        {
+          icon: "Users",
+          pathname: UNFEE_OUTREACH,
+          title: "Unfee Outreach",
         },
         {
           icon: "Activity",
