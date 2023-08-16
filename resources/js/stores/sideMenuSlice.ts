@@ -27,14 +27,7 @@ const initialState: SideMenuState = {
       icon: "Users",
       pathname: AGENTS_LIST,
       title: "Agents",
-    },
-
-    {
-      icon: "ArrowLeft",
-      title: "Logout",
-      pathname: LOGOUT,
-      
-    },    
+    },  
 
   ],
 };
@@ -74,7 +67,7 @@ export const sideMenuSlice = createSlice({
         {
           icon: "Users",
           pathname: UNFEE_OUTREACH,
-          title: "Unfee Outreach",
+          title: "UNFEE",
         },
         {
           icon: "Activity",
