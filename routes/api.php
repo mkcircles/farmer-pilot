@@ -109,6 +109,7 @@ Route::middleware('auth:sanctum')->group( function () {
         Route::get('/outreach/{id}', [UnffeOutreachController::class, 'getUnffeOutreachById']);
         Route::post('/outreach/{id}/update', [UnffeOutreachController::class, 'updateUnffeOutreach']);
         Route::delete('/outreach/{id}', [UnffeOutreachController::class, 'deleteUnffeOutreach']);
+        Route::post('/outreach/search', [UnffeOutreachController::class, 'searchUnffeOutreach']);
     });
 
 

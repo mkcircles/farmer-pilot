@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\UnffeOutreach;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 /**
@@ -337,6 +338,94 @@ class UnffeOutreachController extends Controller
             'message' => 'UNFFE Outreach deleted successfully'
         ]);
 
+    }
+
+    /**
+     * Search UNFFE Outreach
+     * @authenticated
+     *
+     * @bodyParam search string required The search term of the UNFFE Outreach.
+     *
+     * @response {
+     * "success": true,
+     * "message": "UNFFE Outreach search results",
+     * "data": [
+     * "current_page": 1,
+     * "data": [
+     * "first_name": "John",
+     * "last_name": "Doe",
+     * "dob": "2023/02/12",
+     * "gender" : "Male",
+     * "phone_number" : "0788888888",
+     * "id_number" : "CM/123456",
+     * "district" : "Kampala",
+     * "sub_county" : "Kampala",
+     * "parish" : "Kampala",
+     * "village" : "Kampala",
+     * "fpo_name" : "Kampala",
+     * "group_name" : "Kampala",
+     * "group_code" : "Kampala",
+     * "farm_size" : "4",
+     * "crops_grown" : "Matooke",
+     * "created_at": "2023/02/12",
+     * "updated_at": "2023/02/12",
+     * "id": 1
+     * }
+     *
+     * @response 422 {
+     * "success": false,
+     * "message": "Validation Error",
+     * "data": {
+     * "first_name": [
+     * "The first name field is required."
+     * ],
+     * "last_name": [
+     * "The last name field is required."
+     * ],
+     * "dob": [
+     * "The dob field is required."
+     * ],
+     *
+     * "district": [
+     * "The district field is required."
+     * ],
+     * }
+     *
+     */
+    public function searchUnffeOutreach(Request $request){
+        $validate = Validator::make($request->all(),[
+            'search' => 'required',
+        ]);
+
+        if ($validate->fails()){
+            return response()->json([
+                'success' => false,
+                'message' => 'Validation Error',
+                'data' => $validate->errors()
+            ]);
+        }
+
+        $search = $request->get('search');
+        $unffeOutreach = DB::table('unffe_outreaches')->where('first_name', 'like', '%'.$search.'%')
+            ->orWhere('last_name', 'like', '%'.$search.'%')
+            ->orWhere('phone_number', 'like', '%'.$search.'%')
+            ->orWhere('id_number', 'like', '%'.$search.'%')
+            ->orWhere('district', 'like', '%'.$search.'%')
+            ->orWhere('sub_county', 'like', '%'.$search.'%')
+            ->orWhere('parish', 'like', '%'.$search.'%')
+            ->orWhere('village', 'like', '%'.$search.'%')
+            ->orWhere('fpo_name', 'like', '%'.$search.'%')
+            ->orWhere('group_name', 'like', '%'.$search.'%')
+            ->orWhere('group_code', 'like', '%'.$search.'%')
+            ->orWhere('farm_size', 'like', '%'.$search.'%')
+            ->orWhere('crops_grown', 'like', '%'.$search.'%')
+            ->paginate();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'UNFFE Outreach search results',
+            'data' => $unffeOutreach
+        ]);
     }
 
 }

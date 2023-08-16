@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 /**
  * @group Data Management
- * 
+ *
  * APIs for managing farmer profile
  */
 class DataController extends Controller
@@ -19,12 +19,12 @@ class DataController extends Controller
 
     /**
      * Get all farmers
-     * 
+     *
      * This endpoint allows a user to get all farmers
      * @authenticated
-     * 
+     *
      * @header Authorization required The authorization token. Example: Bearer {token}
-     * 
+     *
      * @response {
      * "current_page": 1,
      * "data": [
@@ -32,7 +32,7 @@ class DataController extends Controller
      * "id": 1,
      * "first_name": "John",
      * "last_name": "Doe",
-     * 
+     *
      * }
      * ],
      * "first_page_url": "http://localhost:8000/api/farmers?page=1",
@@ -63,7 +63,7 @@ class DataController extends Controller
      * "to": 1,
      * "total": 1
      * }
-     * 
+     *
      */
     public function getAllFarmers(Request $request)
     {
@@ -83,12 +83,12 @@ class DataController extends Controller
 
     /**
      * Get all farmers with biometrics
-     * 
+     *
      * This endpoint allows a user to get all farmers with biometrics
      * @authenticated
-     * 
+     *
      * @header Authorization required The authorization token. Example: Bearer {token}
-     * 
+     *
   * @response {
      * "current_page": 1,
      * "data": [
@@ -96,7 +96,7 @@ class DataController extends Controller
      * "id": 1,
      * "first_name": "John",
      * "last_name": "Doe",
-     * 
+     *
      * }
      * ],
      * "first_page_url": "http://localhost:8000/api/farmers?page=1",
@@ -127,10 +127,10 @@ class DataController extends Controller
      * "to": 1,
      * "total": 1
      * }
-     * 
-     * 
-     * 
-     * 
+     *
+     *
+     *
+     *
      }
      */
     public function getAllFarmerWithBiometrics()
@@ -144,27 +144,27 @@ class DataController extends Controller
             'status' => 'success',
             'data' => $biometics
         ]);
-        
+
     }
 
     /**
      * Get all farmers with failed biometric captures
-     * 
+     *
      * This endpoint allows a user to get all farmers with failed biometric captures
      * @authenticated
-     * 
+     *
      * @header Authorization required The authorization token. Example: Bearer {token}
-     * 
+     *
      * @response {
      * "current_page": 1,
      * "data": [
      * {
-     * 
+     *
      * }
      * ]
-     * 
-     * 
-     * 
+     *
+     *
+     *
      */
     public function getFailedBiometricCaptures()
     {
@@ -175,27 +175,27 @@ class DataController extends Controller
             'status' => 'success',
             'data' => $biometics
         ]);
-        
+
     }
 
     /**
      * Get all farmers with duplicate biometric captures
-     * 
+     *
      * This endpoint allows a user to get all farmers with duplicate biometric captures
      * @authenticated
-     * 
+     *
      * @header Authorization required The authorization token. Example: Bearer {token}
-     * 
+     *
      * @response {
      * "current_page": 1,
      * "data": [
      * {
-     * 
+     *
      * }
      * ]
-     * 
-     * 
-     * 
+     *
+     *
+     *
      }
      */
     public function getDuplicateBiometricCaptures()
@@ -207,18 +207,18 @@ class DataController extends Controller
             'status' => 'success',
             'data' => $biometics
         ]);
-        
+
     }
     /**
      * Get farmer
-     * 
+     *
      * This endpoint allows a user to get a farmer
      * @authenticated
-     * 
+     *
      * @header Authorization required The authorization token. Example: Bearer {token}
-     * 
+     *
      * @urlParam farmer_id required The Farmer unique ID . Example: FAR_0001
-     * 
+     *
      * @response 200 {
      * "status": "success",
      * "message": "Farmer profile ",
@@ -229,12 +229,12 @@ class DataController extends Controller
      * ...
      * }
      * }
-     * 
+     *
      * @response 404 {
      * "message": "Farmer not found"
      * }
-     * 
-     * 
+     *
+     *
      */
     public function getFarmer($farmer_id)
     {
@@ -245,31 +245,36 @@ class DataController extends Controller
                 'message' => 'Farmer not found'
             ], 404);
         }
+
+        //Get Duplicate Biometric Captures
+        $duplicateBiometricCaptures = MastercardProfileDetails::where('rId', $farmer->biometrics->rId)->where('entityID','!=',$farmer_id)->get();
+
         return response()->json([
             'status' => 'success',
             'message' => 'Farmer profile ',
-            'data' => $farmer
+            'data' => $farmer,
+            'duplicateBiometricCaptures' => $duplicateBiometricCaptures
         ],200);
     }
 
     /**
      * Search Data
-     * 
+     *
      * This endpoint allows a user to search through FPOs, Agents and Farmers
      * @authenticated
-     * 
+     *
      * @header Authorization required The authorization token. Example: Bearer {token}
-     * 
+     *
      * @bodyParam search string required The FPO or Agent or Farmer name. Example: John
-     * 
+     *
      * @response {
      * "fpos": [],
      * "agents": [],
      * "farmers": [],
-     * 
+     *
      * }
-     * 
-     * 
+     *
+     *
      */
     public function search(Request $request)
     {
@@ -309,12 +314,12 @@ class DataController extends Controller
     //Get Distinct Districts and number of farmers registered
     /**
      * Get Districts
-     * 
+     *
      * Get Distinct Districts and number of farmers registered
      * @authenticated
-     * 
+     *
      * @header Authorization required The authorization token. Example: Bearer {token}
-     * 
+     *
      * @response 200 {
      * "current_page": 1,
      * "data": [
@@ -366,19 +371,19 @@ class DataController extends Controller
      * "total": 2
      * }
      * }
-     * 
+     *
      * @response 401 {
      * "message": "Unauthenticated."
      * }
-     * 
+     *
      * @response 403 {
      * "message": "This action is unauthorized."
      * }
-     * 
+     *
      * @response 404 {
      * "message": "No farmers found"
      * }
-     * 
+     *
      */
     public function getDistricts()
     {
@@ -396,12 +401,12 @@ class DataController extends Controller
     //Get Farmer registration by date
     /**
      * Get Farmer registration by date
-     * 
+     *
      * Get Farmer registration by date
      * @authenticated
-     * 
+     *
      * @header Authorization required The authorization token. Example: Bearer {token}
-     * 
+     *
      * @response {
      * "data":{
      * "2022-06-01": 281,
@@ -428,12 +433,12 @@ class DataController extends Controller
 
     /**
      * Get Farmers by FPO
-     * 
+     *
      * Get Farmers by FPO
      * @authenticated
-     * 
+     *
      * @header Authorization required The authorization token. Example: Bearer {token}
-     * 
+     *
      * @response {
      * "success": true,
      * "data":{
@@ -441,7 +446,7 @@ class DataController extends Controller
      * "FPO 2": 281,
      * }
      * }
-     * 
+     *
      */
     public function countFarmersByFPO()
     {
