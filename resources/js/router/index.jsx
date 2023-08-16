@@ -17,12 +17,14 @@ import {
     LOGIN,
     LOGOUT,
     REPORTS,
+    UNFEE_OUTREACH,
     USERS_LIST,
 } from "./routes";
 import { useDispatch } from "react-redux";
 import { logOut } from "../stores/authSlice";
 import { Suspense, lazy, useEffect } from "react";
 import Loading from "../components/Loading";
+import UnfeeOutreachList from "../pages/UnfeeOutreachList";
 
 const Dashboard = lazy(() => import("../pages/Dashboard"));
 const FarmersList = lazy(() => import("../pages/FarmersList"));
@@ -197,6 +199,14 @@ const router = createBrowserRouter([
                 element: (
                     <Suspense fallback={<Loading />}>
                         <Reports />
+                    </Suspense>
+                ),
+            },
+            {
+                path: UNFEE_OUTREACH,
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <UnfeeOutreachList />
                     </Suspense>
                 ),
             },
