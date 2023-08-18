@@ -23,12 +23,12 @@ import {
 } from "@heroicons/react/solid";
 
 export default function FarmInfoCard(props) {
-    const { title, subTitle } = props;
+    const { title, subtitle } = props;
     const cardProps = {...props, title: ''};
     return (
         <Card {...cardProps}>
             <Title>{title}</Title>
-            <Text>{subTitle}</Text>
+            <Text>{subtitle}</Text>
             {props.children}
         </Card>
     );

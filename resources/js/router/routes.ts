@@ -18,4 +18,5 @@ export const FARMER_PROFILE = '/farmer-profile';
 export const AGENT_PROFILE = '/agent-profile';
 export const REPORTS = '/reports-and-performance';
 export const UNFEE_OUTREACH = '/unfee-outreach';
+export const UNFEE_OUTREACH_FARMER_PROFILE = '/unfee-outreach-farmer-profile';
 export const LOGOUT = '/LOGOUT';
