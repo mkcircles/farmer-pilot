@@ -17,6 +17,8 @@ import {
     LOGIN,
     LOGOUT,
     REPORTS,
+    UNFEE_OUTREACH,
+    UNFEE_OUTREACH_FARMER_PROFILE,
     USERS_LIST,
 } from "./routes";
 import { useDispatch } from "react-redux";
@@ -44,6 +46,8 @@ const CreateFpoAdminUserAccount = lazy(() =>
     import("../pages/CreateFpoAdminUserAccount")
 );
 const UsersList = lazy(() => import("../pages/Users/UsersList"));
+const UnfeeOutreachList = lazy(() => import("../pages/UnfeeOutreachList"));
+const UnfeeFarmerProfile = lazy(() => import("../pages/UnfeeFarmerProfile"));
 
 const Logout = () => {
     const dispatch = useDispatch();
@@ -197,6 +201,22 @@ const router = createBrowserRouter([
                 element: (
                     <Suspense fallback={<Loading />}>
                         <Reports />
+                    </Suspense>
+                ),
+            },
+            {
+                path: UNFEE_OUTREACH,
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <UnfeeOutreachList />
+                    </Suspense>
+                ),
+            },
+            {
+                path: `${UNFEE_OUTREACH_FARMER_PROFILE}/:id`,
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <UnfeeFarmerProfile />
                     </Suspense>
                 ),
             },
