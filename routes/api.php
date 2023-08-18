@@ -25,7 +25,7 @@ use App\Http\Controllers\Seeder\FarmerSeederController;
 |
 */
 
-//Route::get('/import/unffe', [FarmerSeederController::class, 'importUnffeOutReach']);
+Route::get('/import/unffe', [FarmerSeederController::class, 'importUnffeOutReach']);
 
 Route::get('/', function () {
     return response()->json(['message' => 'Welcome to the Agri-Hub API']);
