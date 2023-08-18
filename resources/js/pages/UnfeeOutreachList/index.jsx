@@ -22,6 +22,7 @@ import {
     EDIT_FPO,
     FARMER_PROFILE,
     FPO_PROFILE,
+    UNFEE_OUTREACH_FARMER_PROFILE,
 } from "../../router/routes";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -272,7 +273,13 @@ export default function UnfeeOutreachList() {
                                         <span className="group relative flex items-center justify-end transition-all duration-700">
                                             <span className="hidden absolute z-10  group-hover:inline-flex overflow-hidden rounded-md border bg-white shadow-sm">
                                                 <button
-                                                    onClick={() => {}}
+                                                    onClick={() => {
+                                                        navigate(`${UNFEE_OUTREACH_FARMER_PROFILE}/${farmer.id}`, {
+                                                            state: {
+                                                                farmer: farmer,
+                                                            }
+                                                        });
+                                                    }}
                                                     className="inline-block border-e px-3 py-3 text-gray-700 hover:bg-gray-50 focus:relative"
                                                     title="View Unfee Farmer Profile"
                                                 >

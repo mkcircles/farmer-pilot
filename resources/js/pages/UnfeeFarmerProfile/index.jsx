@@ -20,9 +20,9 @@ import {
     TabPanel,
     Badge,
 } from "@tremor/react";
-import FarmInfoCard from "./FarmInfoCard";
+import FarmInfoCard from "../FarmerProfile/FarmInfoCard";
 import { HomeIcon, UserGroupIcon } from "@heroicons/react/solid";
-import { useParams } from "react-router";
+import { useParams, useLocation } from "react-router";
 import { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { API_KEY, BASE_API_URL } from "../../env";
@@ -56,20 +56,19 @@ import { BadgeCheckIcon } from "@heroicons/react/outline";
 import WithConfirmAlert from "../../helpers/WithConfirmAlert";
 import { AGENT_PROFILE, FARMER_PROFILE } from "../../router/routes";
 import Loading from "../../components/Loading";
-import LocationOnMap from "./LocationOnMap";
+import LocationOnMap from "../FarmerProfile/LocationOnMap";
 import { useAppDispatch } from "../../stores/hooks";
 import { setAppSuccessAlert } from "../../stores/appSuccessAlert";
 
-const FarmerProfile = () => {
+const UnfeeFarmerProfile = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const token = useSelector((state) => state.auth.token);
-    const fpos = useSelector((state) => state.fpos?.fpos);
     const { updateAppContextState } = useContext(AppContext);
     const [farmerData, setFarmerData] = useState(null);
     const [showManageAccountMenu, setShowManageAccountMenu] = useState(false);
-    const [fpoName, setFpoName] = useState("");
     const scrollToTop = useRef(null);
+    const {state : {farmer}} = useLocation()
     let { id } = useParams();
 
     const UpdateAgentStatus = (status) => {
@@ -120,7 +119,7 @@ const FarmerProfile = () => {
     const fetchFarmerData = () => {
         updateAppContextState("loading", true);
         axios
-            .get(`${BASE_API_URL}/farmer/${id}`, {
+            .get(`${BASE_API_URL}/outreach/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -146,16 +145,13 @@ const FarmerProfile = () => {
     }, []);
 
     useEffect(() => {
-        fetchFarmerData();
+        //fetchFarmerData();
     }, [id, token]);
 
     useEffect(() => {
-        if (farmerData?.fpo_id) {
-            setFpoName(
-                fpos?.find((fpo) => fpo?.id == farmerData?.fpo_id)?.fpo_name
-            );
-        }
-    }, [farmerData]);
+        setFarmerData(farmer);
+    }, [farmer]);
+
 
     if (!farmerData) return <Loading />;
 
@@ -230,8 +226,8 @@ const FarmerProfile = () => {
                                 <FpoIcon className="h-5 w-5" />
                             </span>
 
-                            {fpoName ? (
-                                <span>{fpoName}</span>
+                            {farmerData?.fpo_name ? (
+                                <span>{farmerData?.fpo_name}</span>
                             ) : (
                                 <span className="opacity-70">
                                     {"FPO Not set"}
@@ -344,103 +340,8 @@ const FarmerProfile = () => {
                             : "top-8 z-50 h-0 overflow-hidden"
                     }`}
                 >
-                    {farmerData?.status !== "complete" && (
-                        <div
-                            onClick={() => {
-                                WithConfirmAlert(() =>
-                                    UpdateAgentStatus("complete")
-                                );
-                                setShowManageAccountMenu(false);
-                            }}
-                            className="flex border-b space-x-2 p-4 items-center cursor-pointer"
-                        >
-                            <CheckSquare className="w-5 h-5 text-secondary " />
-                            <span className="text-primary">
-                                Mark as Complete
-                            </span>
-                        </div>
-                    )}
+                  
 
-                    {farmerData?.status !== "pending" && (
-                        <div
-                            onClick={() => {
-                                WithConfirmAlert(() =>
-                                    UpdateAgentStatus("pending")
-                                );
-                                setShowManageAccountMenu(false);
-                            }}
-                            className="flex border-b space-x-2 p-4 items-center cursor-pointer"
-                        >
-                            <BadgeAlert className="w-5 h-5 text-secondary " />
-                            <span className="text-primary">
-                                Mark as Pending
-                            </span>
-                        </div>
-                    )}
-
-                    {farmerData?.status !== "valid" && (
-                        <div
-                            onClick={() => {
-                                WithConfirmAlert(() =>
-                                    UpdateAgentStatus("valid")
-                                );
-                                setShowManageAccountMenu(false);
-                            }}
-                            className="flex border-b space-x-2 p-4 items-center cursor-pointer"
-                        >
-                            <BadgeCheckIcon className="w-5 h-5 text-secondary " />
-                            <span className="text-primary">Mark as Valid</span>
-                        </div>
-                    )}
-
-                    {farmerData?.status !== "invalid" && (
-                        <div
-                            onClick={() => {
-                                WithConfirmAlert(() =>
-                                    UpdateAgentStatus("invalid")
-                                );
-                                setShowManageAccountMenu(false);
-                            }}
-                            className="flex border-b space-x-2 p-4 items-center cursor-pointer"
-                        >
-                            <BadgeX className="w-5 h-5 text-secondary " />
-                            <span className="text-primary">
-                                Mark as Invalid
-                            </span>
-                        </div>
-                    )}
-
-                    {farmerData?.status !== "invalid" && (
-                        <div
-                            onClick={() => {
-                                WithConfirmAlert(() =>
-                                    UpdateAgentStatus("blacklisted")
-                                );
-                                setShowManageAccountMenu(false);
-                            }}
-                            className="flex border-b space-x-2 p-4 items-center cursor-pointer"
-                        >
-                            <BadgeMinus className="w-5 h-5 text-secondary " />
-                            <span className="text-primary">Blacklist</span>
-                        </div>
-                    )}
-
-                    {farmerData?.deceased !== "invalid" && (
-                        <div
-                            onClick={() => {
-                                WithConfirmAlert(() =>
-                                    UpdateAgentStatus("deceased")
-                                );
-                                setShowManageAccountMenu(false);
-                            }}
-                            className="flex border-b space-x-2 p-4 items-center cursor-pointer"
-                        >
-                            <UserX className="w-5 h-5 text-secondary " />
-                            <span className="text-primary">
-                                Mark as Deceased
-                            </span>
-                        </div>
-                    )}
                 </div>
             </div>
 
@@ -1481,7 +1382,7 @@ const FarmerProfile = () => {
                                                 </ListItem>
                                             </List>
                                         </FarmInfoCard>
-                                        <Card className="h-52 bottom-0  right-0 items-center justify-center bg-slate-50">
+                                        {/* <Card className="h-52 bottom-0  right-0 items-center justify-center bg-slate-50">
                                             <LocationOnMap
                                                 data={{
                                                     latitude: parseFloat(
@@ -1497,7 +1398,7 @@ const FarmerProfile = () => {
                                                     title: "Farm Location",
                                                 }}
                                             />
-                                        </Card>
+                                        </Card> */}
                                     </div>
                                 </div>
                             </TabPanel>
@@ -1752,4 +1653,4 @@ const FarmerProfile = () => {
 
 };
 
-export default FarmerProfile;
+export default UnfeeFarmerProfile;
