@@ -59,6 +59,8 @@ import Loading from "../../components/Loading";
 import LocationOnMap from "./LocationOnMap";
 import { useAppDispatch } from "../../stores/hooks";
 import { setAppSuccessAlert } from "../../stores/appSuccessAlert";
+import FarmersList from "../FarmersList";
+import BiometricsList from "../FarmerBiometrics/BiometricsList";
 
 const FarmerProfile = () => {
     const dispatch = useAppDispatch();
@@ -69,6 +71,7 @@ const FarmerProfile = () => {
     const [farmerData, setFarmerData] = useState(null);
     const [showManageAccountMenu, setShowManageAccountMenu] = useState(false);
     const [fpoName, setFpoName] = useState("");
+    const [bioDuplicates, setBioDuplicates] = useState([]);
     const scrollToTop = useRef(null);
     let { id } = useParams();
 
@@ -126,9 +129,12 @@ const FarmerProfile = () => {
                 },
             })
             .then((res) => {
-                console.log("Farmer Data", res.data?.data);
+                // console.log("Farmer Data", res.data?.data);
                 if (res?.data) {
                     setFarmerData(res?.data?.data);
+                }
+                if(res?.data?.duplicateBiometricCaptures) {
+                    setBioDuplicates(res?.data?.duplicateBiometricCaptures);
                 }
             })
             .catch((err) => {
@@ -1503,243 +1509,246 @@ const FarmerProfile = () => {
                             </TabPanel>
 
                             <TabPanel>
-                                <FarmInfoCard
-                                    title="Community Pass Information"
-                                    subtitle="CP Info"
-                                    className="col-1"
-                                >
-                                    <List className="mt-4 space-y-2">
-                                        <ListItem className="">
-                                            <Flex
-                                                justifyContent="start"
-                                                className="truncate space-x-4 px-2"
-                                            >
-                                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
-                                                <div className="truncate">
-                                                    <Text className="truncate">
-                                                        <Bold className="uppercase text-primary">
-                                                            Bio Token
-                                                        </Bold>
-                                                    </Text>
-                                                </div>
-                                            </Flex>
-                                            <Text className="text-secondary">
-                                                {parseInt(farmerData?.biometrics
-                                                    ?.hasBiometricToken) ? (
-                                                    <span>Present</span>
-                                                ) : (
-                                                    <span className="text-primary">
-                                                        N/A
-                                                    </span>
-                                                )}
-                                            </Text>
-                                        </ListItem>
-
-                                        <ListItem className="">
-                                            <Flex
-                                                justifyContent="start"
-                                                className="truncate space-x-4 px-2"
-                                            >
-                                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
-                                                <div className="truncate">
-                                                    <Text className="truncate">
-                                                        <Bold className="uppercase text-primary">
-                                                            Enrollment Status
-                                                        </Bold>
-                                                    </Text>
-                                                </div>
-                                            </Flex>
-                                            <Text className="text-secondary">
-                                                {farmerData?.biometrics
-                                                    ?.enrollmentStatus ? (
-                                                    <span>
-                                                        {
-                                                            farmerData
-                                                                ?.biometrics
-                                                                ?.enrollmentStatus
-                                                        }
-                                                    </span>
-                                                ) : (
-                                                    <span className="text-primary">
-                                                        N/A
-                                                    </span>
-                                                )}
-                                            </Text>
-                                        </ListItem>
-
-                                        <ListItem className="">
-                                            <Flex
-                                                justifyContent="start"
-                                                className="truncate space-x-4 px-2"
-                                            >
-                                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
-                                                <div className="truncate">
-                                                    <Text className="truncate">
-                                                        <Bold className="uppercase text-primary">
-                                                            Subject ID
-                                                        </Bold>
-                                                    </Text>
-                                                </div>
-                                            </Flex>
-                                            <Text className="text-secondary">
-                                                {farmerData?.biometrics
-                                                    ?.subjectID ? (
-                                                    <div className="flex items-center">
-                                                        <span title="Copy" className="px-2">
-                                                            <Copy
-                                                                onClick={() => {
-                                                                    navigator.clipboard.writeText(
-                                                                        farmerData
-                                                                            ?.biometrics
-                                                                            ?.subjectID
-                                                                    );
-                                                                    dispatch(
-                                                                        setAppSuccessAlert(
-                                                                            {
-                                                                                message:
-                                                                                    "Subject ID Copied to Clipboard",
-                                                                            }
-                                                                        )
-                                                                    );
-                                                                }}
-                                                                
-                                                                className="w-4 h-4 text-primary cursor-pointer hover:scale-125 "
-                                                            />
-                                                        </span>
-                                                        <span>Present</span>
-                                                        
+                            <FarmInfoCard
+                                        title="Community Pass Information"
+                                        subtitle="CP Info"
+                                        className="col-1"
+                                    >
+                                        <List className="mt-4 space-y-2">
+                                            <ListItem className="">
+                                                <Flex
+                                                    justifyContent="start"
+                                                    className="truncate space-x-4 px-2"
+                                                >
+                                                    <span className="w-1 h-1 bg-secondary rounded-full"></span>
+                                                    <div className="truncate">
+                                                        <Text className="truncate">
+                                                            <Bold className="uppercase text-primary">
+                                                                Bio Token
+                                                            </Bold>
+                                                        </Text>
                                                     </div>
-                                                ) : (
-                                                    <span className="text-primary">
-                                                        N/A
-                                                    </span>
-                                                )}
-                                            </Text>
-                                        </ListItem>
+                                                </Flex>
+                                                <Text className="text-secondary">
+                                                    {parseInt(farmerData?.biometrics
+                                                        ?.hasBiometricToken) ? (
+                                                        <span>Present</span>
+                                                    ) : (
+                                                        <span className="text-primary">
+                                                            N/A
+                                                        </span>
+                                                    )}
+                                                </Text>
+                                            </ListItem>
 
-                                        <ListItem className="">
-                                            <Flex
-                                                justifyContent="start"
-                                                className="truncate space-x-4 px-2"
-                                            >
-                                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
-                                                <div className="truncate">
-                                                    <Text className="truncate">
-                                                        <Bold className="uppercase text-primary">
-                                                            Consent-ID
-                                                        </Bold>
-                                                    </Text>
-                                                </div>
-                                            </Flex>
-                                            <Text className="text-secondary">
-                                                {farmerData?.biometrics
-                                                    ?.consentGUID ? (
-                                                    <span>Present</span>
-                                                ) : (
-                                                    <span className="text-primary">
-                                                        N/A
-                                                    </span>
-                                                )}
-                                            </Text>
-                                        </ListItem>
+                                            <ListItem className="">
+                                                <Flex
+                                                    justifyContent="start"
+                                                    className="truncate space-x-4 px-2"
+                                                >
+                                                    <span className="w-1 h-1 bg-secondary rounded-full"></span>
+                                                    <div className="truncate">
+                                                        <Text className="truncate">
+                                                            <Bold className="uppercase text-primary">
+                                                                Enrollment Status
+                                                            </Bold>
+                                                        </Text>
+                                                    </div>
+                                                </Flex>
+                                                <Text className="text-secondary">
+                                                    {farmerData?.biometrics
+                                                        ?.enrollmentStatus ? (
+                                                        <span>
+                                                            {
+                                                                farmerData
+                                                                    ?.biometrics
+                                                                    ?.enrollmentStatus
+                                                            }
+                                                        </span>
+                                                    ) : (
+                                                        <span className="text-primary">
+                                                            N/A
+                                                        </span>
+                                                    )}
+                                                </Text>
+                                            </ListItem>
 
-                                        <ListItem className="">
-                                            <Flex
-                                                justifyContent="start"
-                                                className="truncate space-x-4 px-2"
-                                            >
-                                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
-                                                <div className="truncate">
-                                                    <Text className="truncate">
-                                                        <Bold className="uppercase text-primary">
-                                                            R-ID
-                                                        </Bold>
-                                                    </Text>
-                                                </div>
-                                            </Flex>
-                                            <Text className="text-secondary">
-                                                {farmerData?.biometrics?.rID ? (
-                                                    <span>Present</span>
-                                                ) : (
-                                                    <span className="text-primary">
-                                                        N/A
-                                                    </span>
-                                                )}
-                                            </Text>
-                                        </ListItem>
+                                            <ListItem className="">
+                                                <Flex
+                                                    justifyContent="start"
+                                                    className="truncate space-x-4 px-2"
+                                                >
+                                                    <span className="w-1 h-1 bg-secondary rounded-full"></span>
+                                                    <div className="truncate">
+                                                        <Text className="truncate">
+                                                            <Bold className="uppercase text-primary">
+                                                                Subject ID
+                                                            </Bold>
+                                                        </Text>
+                                                    </div>
+                                                </Flex>
+                                                <Text className="text-secondary">
+                                                    {farmerData?.biometrics
+                                                        ?.subjectID ? (
+                                                        <div className="flex items-center">
+                                                            <span title="Copy" className="px-2">
+                                                                <Copy
+                                                                    onClick={() => {
+                                                                        navigator.clipboard.writeText(
+                                                                            farmerData
+                                                                                ?.biometrics
+                                                                                ?.subjectID
+                                                                        );
+                                                                        dispatch(
+                                                                            setAppSuccessAlert(
+                                                                                {
+                                                                                    message:
+                                                                                        "Subject ID Copied to Clipboard",
+                                                                                }
+                                                                            )
+                                                                        );
+                                                                    }}
+                                                                    
+                                                                    className="w-4 h-4 text-primary cursor-pointer hover:scale-125 "
+                                                                />
+                                                            </span>
+                                                            <span>Present</span>
+                                                            
+                                                        </div>
+                                                    ) : (
+                                                        <span className="text-primary">
+                                                            N/A
+                                                        </span>
+                                                    )}
+                                                </Text>
+                                            </ListItem>
 
-                                        <ListItem className="">
-                                            <Flex
-                                                justifyContent="start"
-                                                className="truncate space-x-4 px-2"
-                                            >
-                                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
-                                                <div className="truncate">
-                                                    <Text className="truncate">
-                                                        <Bold className="uppercase text-primary">
-                                                            Possible Duplicate
-                                                        </Bold>
-                                                    </Text>
-                                                </div>
-                                            </Flex>
-                                            <Text className="text-secondary">
-                                                {farmerData?.biometrics
-                                                    ?.possible_duplicate ? (
-                                                    <span
-                                                        onClick={() => {
-                                                            navigate(
-                                                                `${FARMER_PROFILE}/${farmerData?.biometrics?.possible_duplicate}`
-                                                            );
-                                                        }}
-                                                        className="text-secondary cursor-pointer border border-secondary rounded px-2 py-1"
-                                                    >
-                                                        Go to duplicate profile
-                                                    </span>
-                                                ) : (
-                                                    <span>No</span>
-                                                )}
-                                            </Text>
-                                        </ListItem>
+                                            <ListItem className="">
+                                                <Flex
+                                                    justifyContent="start"
+                                                    className="truncate space-x-4 px-2"
+                                                >
+                                                    <span className="w-1 h-1 bg-secondary rounded-full"></span>
+                                                    <div className="truncate">
+                                                        <Text className="truncate">
+                                                            <Bold className="uppercase text-primary">
+                                                                Consent-ID
+                                                            </Bold>
+                                                        </Text>
+                                                    </div>
+                                                </Flex>
+                                                <Text className="text-secondary">
+                                                    {farmerData?.biometrics
+                                                        ?.consentGUID ? (
+                                                        <span>Present</span>
+                                                    ) : (
+                                                        <span className="text-primary">
+                                                            N/A
+                                                        </span>
+                                                    )}
+                                                </Text>
+                                            </ListItem>
 
-                                        <ListItem className="">
-                                            <Flex
-                                                justifyContent="start"
-                                                className="truncate space-x-4 px-2"
-                                            >
-                                                <span className="w-1 h-1 bg-secondary rounded-full"></span>
-                                                <div className="truncate">
-                                                    <Text className="truncate">
-                                                        <Bold className="uppercase text-primary">
-                                                            Data Captured By
-                                                        </Bold>
-                                                    </Text>
-                                                </div>
-                                            </Flex>
-                                            <Text className="text-secondary">
-                                                {farmerData?.data_captured_by ? (
-                                                    <span
-                                                        onClick={() => {
-                                                            navigate(
-                                                                `${AGENT_PROFILE}/${farmerData?.agent?.agent_code}`
-                                                            );
-                                                        }}
-                                                        className="cursor-pointer hover:text-primary"
-                                                    >
-                                                        {farmerData?.agent
-                                                            ?.first_name +
-                                                            " " +
-                                                            farmerData?.agent
-                                                                ?.last_name}
-                                                    </span>
-                                                ) : (
-                                                    <span className="text-primary">
-                                                        N/A
-                                                    </span>
-                                                )}
-                                            </Text>
-                                        </ListItem>
-                                    </List>
-                                </FarmInfoCard>
+                                            <ListItem className="">
+                                                <Flex
+                                                    justifyContent="start"
+                                                    className="truncate space-x-4 px-2"
+                                                >
+                                                    <span className="w-1 h-1 bg-secondary rounded-full"></span>
+                                                    <div className="truncate">
+                                                        <Text className="truncate">
+                                                            <Bold className="uppercase text-primary">
+                                                                R-ID
+                                                            </Bold>
+                                                        </Text>
+                                                    </div>
+                                                </Flex>
+                                                <Text className="text-secondary">
+                                                    {farmerData?.biometrics?.rID ? (
+                                                        <span>Present</span>
+                                                    ) : (
+                                                        <span className="text-primary">
+                                                            N/A
+                                                        </span>
+                                                    )}
+                                                </Text>
+                                            </ListItem>
+
+                                            <ListItem className="">
+                                                <Flex
+                                                    justifyContent="start"
+                                                    className="truncate space-x-4 px-2"
+                                                >
+                                                    <span className="w-1 h-1 bg-secondary rounded-full"></span>
+                                                    <div className="truncate">
+                                                        <Text className="truncate">
+                                                            <Bold className="uppercase text-primary">
+                                                                Possible Duplicates
+                                                            </Bold>
+                                                        </Text>
+                                                    </div>
+                                                </Flex>
+                                                <Text className="text-secondary">
+                                                    {farmerData?.biometrics
+                                                        ?.possible_duplicate ? (<div className="flex space-x-2 flex-wrap justify-end items-center">
+                                                        {
+                                                            bioDuplicates?.map(duplicate => {
+                                                                return (
+                                                                    <span className="text-primary text-center cursor-pointer underline" onClick={() => {
+                                                                        navigate(
+                                                                            `${FARMER_PROFILE}/${duplicate?.entityID}`
+                                                                        );
+                                                                    }}>
+                                                                        {duplicate?.entityID}
+                                                                    </span>
+                                                                )
+                                                            })
+                                                        }</div>
+                                                    ) : (
+                                                        <span>No</span>
+                                                    )}
+                                                </Text>
+                                            </ListItem>
+
+                                            <ListItem className="">
+                                                <Flex
+                                                    justifyContent="start"
+                                                    className="truncate space-x-4 px-2"
+                                                >
+                                                    <span className="w-1 h-1 bg-secondary rounded-full"></span>
+                                                    <div className="truncate">
+                                                        <Text className="truncate">
+                                                            <Bold className="uppercase text-primary">
+                                                                Data Captured By
+                                                            </Bold>
+                                                        </Text>
+                                                    </div>
+                                                </Flex>
+                                                <Text className="text-secondary">
+                                                    {farmerData?.data_captured_by ? (
+                                                        <span
+                                                            onClick={() => {
+                                                                navigate(
+                                                                    `${AGENT_PROFILE}/${farmerData?.agent?.agent_code}`
+                                                                );
+                                                            }}
+                                                            className="cursor-pointer hover:text-primary"
+                                                        >
+                                                            {farmerData?.agent
+                                                                ?.first_name +
+                                                                " " +
+                                                                farmerData?.agent
+                                                                    ?.last_name}
+                                                        </span>
+                                                    ) : (
+                                                        <span className="text-primary">
+                                                            N/A
+                                                        </span>
+                                                    )}
+                                                </Text>
+                                            </ListItem>
+                                        </List>
+                                    </FarmInfoCard>
                             </TabPanel>
                         </TabPanels>
                     </TabGroup>

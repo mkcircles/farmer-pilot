@@ -1,6 +1,6 @@
 import mapboxgl from "mapbox-gl";
 import React, { useEffect, useRef, useState } from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import "mapbox-gl/dist/mapbox-gl.css";
 import {MAP_BOX_PUBLIC_KEY} from "../../../env";
 
@@ -42,7 +42,7 @@ const LocationOnMap = ({ data }) => {
         // Create a new DOM node and save it to the React ref
         ref.current = document.createElement("div");
         // Render a Marker Component on our new DOM node
-        ReactDOM.render(
+        /* ReactDOM.render(
             <Marker onClick={markerClicked} data={data}>
                 <svg
                 className="w-10 h-10"
@@ -66,7 +66,32 @@ const LocationOnMap = ({ data }) => {
                 </svg>
             </Marker>,
             ref.current
-        );
+        ); */
+
+        ReactDOM.createRoot(ref.current).render(
+            <Marker onClick={markerClicked} data={data}>
+                <svg
+                className="w-10 h-10"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={1.5}
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                >
+                    <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                    <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+                    />
+                </svg>
+            </Marker>
+        )
 
         // Create a Mapbox Marker at our new DOM node
         new mapboxgl.Marker(ref.current)
