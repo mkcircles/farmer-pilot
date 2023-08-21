@@ -72,7 +72,7 @@ export default function BiometricsList(props) {
     const debounceFetchProfiles = debounce(fetchProfiles, 1000);
 
     useEffect(() => {
-        fetchProfiles();
+        fetchProfiles(); 
     }, [token]);
 
     useEffect(() => {
@@ -90,7 +90,7 @@ export default function BiometricsList(props) {
             {profilesData?.data?.length > 0 ? (
                 <Card className="bg-white h-full w-full">
                     <Flex justifyContent="start" className="space-x-2">
-                        <Title>Biometrics</Title>
+                        <Title>{props?.title || "Biometrics"}</Title>
                         <Badge color="gray">
                             {numberFormatter(
                                 parseInt(profilesData?.total || 0)
@@ -98,7 +98,7 @@ export default function BiometricsList(props) {
                         </Badge>
                     </Flex>
                     <Text className="mt-2">
-                        Overview of {props?.title || "Biometrics captured"}
+                        Overview of {props?.subTitle || props?.title || "Biometrics captured"}
                     </Text>
 
                     <Table className="mt-6">
@@ -153,13 +153,7 @@ export default function BiometricsList(props) {
                                         <TableCell>
                                             {data?.possible_duplicate
                                                 ? (
-                                                    <span onClick={() => {
-                                                        navigate(
-                                                            `${FARMER_PROFILE}/${data?.possible_duplicate}`
-                                                        );
-                                                    }} className="text-secondary cursor-pointer">
-                                                        Link
-                                                    </span>
+                                                    "Yes"
                                                 )
                                                 : "No"}
                                         </TableCell>

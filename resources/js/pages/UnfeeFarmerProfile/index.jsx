@@ -1382,7 +1382,7 @@ const UnfeeFarmerProfile = () => {
                                                 </ListItem>
                                             </List>
                                         </FarmInfoCard>
-                                        {/* <Card className="h-52 bottom-0  right-0 items-center justify-center bg-slate-50">
+                                        {farmerData?.farmer_cordinates && <Card className="h-52 bottom-0  right-0 items-center justify-center bg-slate-50">
                                             <LocationOnMap
                                                 data={{
                                                     latitude: parseFloat(
@@ -1398,7 +1398,7 @@ const UnfeeFarmerProfile = () => {
                                                     title: "Farm Location",
                                                 }}
                                             />
-                                        </Card> */}
+                                        </Card> }
                                     </div>
                                 </div>
                             </TabPanel>
