@@ -12,7 +12,7 @@ class FarmerSeederController extends Controller
 
     public function importUnffeOutReach()
     {
-        $file = public_path('imports/csvjson-2.json');
+        $file = public_path('imports/farmer-6.json');
         $data = json_decode(file_get_contents($file), true);
         foreach ($data as $d){
             //dd($d);
