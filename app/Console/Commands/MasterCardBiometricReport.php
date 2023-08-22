@@ -66,7 +66,7 @@ class MasterCardBiometricReport extends Command
 
 
         $emails = ['mkamugisha@innovationvillage.co.ug', 'mkcircles@gmail.com'];
-        Mail::send('emails.biometric_report', [], function($message) use ($emails,$fileName)
+        Mail::send('mail.biometric_report', [], function($message) use ($emails,$fileName)
         {    
             $message->to($emails)
                 ->subject("Biometric Capture Report for ".date('Y-m-d'))
