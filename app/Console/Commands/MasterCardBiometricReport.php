@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\MastercardProfileDetails;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -37,7 +38,7 @@ class MasterCardBiometricReport extends Command
          */
 
         $this->info('Generating MasterCard Biometric Report...');
-        $records= MastercardProfileDetails::get();
+        $records= MastercardProfileDetails::whereDate('created_at', Carbon::today())->get();
         $data = [];
         $data [] = ['SubjectID', 'Agent ID', 'Time Stamp', 'Existing or New', 'Biotoken flag'];
 
