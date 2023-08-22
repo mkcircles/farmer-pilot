@@ -61,8 +61,8 @@ class MasterCardBiometricReport extends Command
         fclose($file);
 
         //Send email to Mastercard team
-        $data["email"] = "mkamugisha@innovationvillage.co.ug,mkcircles@gmail.com";
-        $data["title"] = "Bioetric Capture Report for ".date('Y-m-d');
+        $data["email"] = ['mkamugisha@innovationvillage.co.ug','mkcircles@gmail.com'];
+        $data["title"] = "Biometric Capture Report for ".date('Y-m-d');
 
         Mail::send('mail.biometric_report', $data, function($message)use($data, $fileName) {
             $message->to($data["email"])
