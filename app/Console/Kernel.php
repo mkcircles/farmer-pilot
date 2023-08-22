@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('app:process-reports')->everyThirtySeconds()->withoutOverlapping();
        // $schedule->command('app:agent-activity-report')->everyFiveSeconds();
         $schedule->command('app:data-checker')->everyTenSeconds();
+        $schedule->command('app:master-card-biometric-report')->dailyAt('20:00')->withoutOverlapping();
         
     }
 
