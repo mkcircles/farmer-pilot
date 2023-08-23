@@ -63,7 +63,7 @@ class MasterCardBiometricReport extends Command
 
         //Send email to Mastercard team
 
-        $emails = ['mkamugisha@de.innovationvillage.co.ug', 'cp.partnerprogram@mastercard.com'];
+        $emails = ['mkamugisha@de.innovationvillage.co.ug', 'cp.partnerprogram@mastercard.com','harrison.angonga@mastercard.com'];
         Mail::send('mail.biometric_report', [], function($message) use ($emails,$fileName)
         {    
             $message->to($emails)

@@ -48,6 +48,7 @@ Route::middleware('auth:sanctum')->group( function () {
     //Summaries
     Route::get('/summary', [SummaryController::class, 'DashboardSummary']);
     Route::get('/summary/fpo', [SummaryController::class, 'FPODashboardSumary']);
+    Route::get('/summary/unffe',[SummaryController::class,'UNFFESummary']);
 
 
     //Users Routes

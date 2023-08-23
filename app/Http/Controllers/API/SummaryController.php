@@ -5,7 +5,10 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\FPO;
 use App\Models\MastercardProfileDetails;
+use App\Models\UnffeOutreach;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * @group Statistics
@@ -145,5 +148,24 @@ class SummaryController extends Controller
             'success' => true,
             'data' => $data
         ]);
+    }
+
+
+    public function UNFFESummary()
+    {
+        
+        $expire = Carbon::now()->addMinutes(240);
+
+        $unffeSummary = Cache::remember('unffe_summary',$expire, function(){
+            $data = [];
+            $data['total_count'] = UnffeOutreach::count();
+            $data['total_men'] = UnffeOutreach::where('gender','M')->count();
+            $data['total_female'] = UnffeOutreach::where('gender','F')->count();
+            $data['total_count'] = UnffeOutreach::count();
+
+            return $data;
+
+        });
+
     }
 }
