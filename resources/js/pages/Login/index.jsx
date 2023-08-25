@@ -37,7 +37,7 @@ function Main() {
                 ) {
                     dispatch(setToken(res?.data?.data?.token));
                     dispatch(setUser(res?.data?.data?.user));
-                    if(["fpo"].includes(res?.data?.data?.user?.role)) navigate("/farmers-list");
+                    if(["fpo", "fpo_user"].includes(res?.data?.data?.user?.role)) navigate("/farmers-list");
                     else navigate("/");
                 } else {
                   dispatch(setAppError({

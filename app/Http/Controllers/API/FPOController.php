@@ -1009,7 +1009,7 @@ class FPOController extends Controller
         $user->phone_number = $validated->validated()['phone_number'];
         $user->email = $validated->validated()['email'];
         $user->password = Hash::make('password');
-        $user->role = 'fpo_user';
+        $user->role = 'fpo';
         $user->entity_type = 'fpo';
         $user->entity_id = $validated->validated()['fpo_id'];
         $user->photo = 'https://ui-avatars.com/api/?name='.$validated->validated()['name'].'&size=128&background=007bff&color=fff';
@@ -1069,7 +1069,7 @@ class FPOController extends Controller
      */
     public function getFPOUserAccounts(string $id)
     {
-        $users = User::where('entity_id', $id)->whereIn('role', ['fpo_user'])->whereIn('entity_type', ['fpo'])->get();
+        $users = User::where('entity_id', $id)->whereIn('role', ['fpo_user', 'fpo'])->whereIn('entity_type', ['fpo'])->get();
         if($users->isEmpty()){
             return response()->json([
                 'success' => false,
