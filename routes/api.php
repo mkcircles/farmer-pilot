@@ -54,7 +54,7 @@ Route::controller(AuthController::class)->group(function () {
 
 
 
-Route::middleware('auth:sanctum')->group( function () {
+Route::middleware('auth:sanctum','logrequest')->group( function () {
     Route::post('/refresh', [AuthController::class, 'refresh']);
     //Summaries
     Route::get('/summary', [SummaryController::class, 'DashboardSummary']);
