@@ -25,12 +25,12 @@ class LogRequestMiddleware
             'RESPONSE' => $response->getContent()
         ];
 
-        Log::info("==========================================\n\n\n");
-        Log::info("Request URI", $request->getUri()."\n");
-        Log::info("Request METHOD", $request->getMethod()."\n");
-        Log::info("Request REQUEST_BODY", $request->all()."\n");
-        Log::info("Request RESPONSE", $response->getContent()."\n");
-        Log::info("==========================================\n\n\n");
+//        Log::info("==========================================\n\n\n");
+//        Log::info("Request URI", $request->getUri()."\n");
+//        Log::info("Request METHOD", $request->getMethod()."\n");
+//        Log::info("Request REQUEST_BODY", $request->all()."\n");
+//        Log::info("Request RESPONSE", $response->getContent()."\n");
+//        Log::info("==========================================\n\n\n");
 
         return $response;
     }
