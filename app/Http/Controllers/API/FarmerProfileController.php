@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 
 /**
  * @group Farmer Profile
- * 
+ *
  * APIs for managing farmer profile
  */
 class FarmerProfileController extends Controller
@@ -22,12 +22,12 @@ class FarmerProfileController extends Controller
 
     /**
      * Register Farmer
-     * 
+     *
      * This endpoint allows a user to register a farmer
      * @authenticated
-     * 
+     *
      * @header Authorization required The authorization token. Example: Bearer {token}
-     * 
+     *
      * @bodyParam first_name string required The first name of the farmer. Example: John
      * @bodyParam last_name string required The last name of the farmer. Example: Doe
      * @bodyParam dob date required The date of birth of the farmer. Example: 1990-01-01
@@ -65,61 +65,61 @@ class FarmerProfileController extends Controller
      * @bodyParam estimated_produce_value_this_season string required The estimated produce value this season of the farmer. Example: 100000
      * @bodyParam data_captured_by string required The data captured by of the farmer. Example: 1
      * @bodyParam agent_id integer required The agent id of the farmer. Example: 1
-     * 
+     *
      * @response {
      * "status": "success",
      * "message": "Farmer profile created successfully",
      * "data": {
      * "first_name": "John",
      * "last_name": "Doe",
-     * "dob": "1981-05-06", 
-     * 
+     * "dob": "1981-05-06",
+     *
      * }
      * }
-     * 
+     *
      * @response 422 {
      * "status": "error",
      * "message": "Validation error",
      * "errors": {
      * }
      * }
-     * 
+     *
      * @response 401 {
      * "status": "error",
      * "message": "Unauthorized"
      * }
-     * 
+     *
      * @response 500 {
      * "status": "error",
      * "message": "Server error"
      * }
-     * 
+     *
      * @response 403 {
      * "status": "error",
      * "message": "Forbidden"
      * }
-     * 
+     *
      * @response 404 {
      * "status": "error",
      * "message": "Not found"
      * }
-     * 
+     *
      * @response 400 {
      * "status": "error",
      * "message": "Bad request"
      * }
-     * 
+     *
      * @response 405 {
      * "status": "error",
      * "message": "Method not allowed"
      * }
-     * 
+     *
      * @response 429 {
      * "status": "error",
      * "message": "Too many requests"
      * }
-     * 
-     * 
+     *
+     *
      */
 
     public function registerFarmer(Request $request)
@@ -237,20 +237,24 @@ class FarmerProfileController extends Controller
                     'rID' => $request->rID
                 ])->first();
                 $duplicate = $exists_check ? $exists_check->entityID : null;
-                //Register Mastercard Profile Details
-                MastercardProfileDetails::create([
-                    'entityType' => 'farmer',
-                    'entityID' => $farmer->farmer_id,
-                    'rID' => isset($request->rID) ? $request->rID : null,
-                    'consentGUID' => isset($request->consentGUID) ? $request->consentGUID : null,
-                    'subjectID' => isset($request->subjectID) ? $request->subjectID : null,
-                    'enrollmentStatus' => isset($request->enrollmentStatus) ? $request->enrollmentStatus : null,
-                    'hasBiometricToken' => (isset($request->biometricToken) && trim($request->biometricToken)) ? 1 : 0,
-                    'biometricToken' => isset($request->biometricToken) ? $request->biometricToken : null,
-                    'possible_duplicate' => $duplicate,
-                    'consumerDeviceId' => null,
-                    'reason' => $request->reason
-                ]);
+                //Check rID string length
+                if(strlen($request->rID) > 0){
+                    //Register Mastercard Profile Details
+                    MastercardProfileDetails::create([
+                        'entityType' => 'farmer',
+                        'entityID' => $farmer->farmer_id,
+                        'rID' => isset($request->rID) ? $request->rID : null,
+                        'consentGUID' => isset($request->consentGUID) ? $request->consentGUID : null,
+                        'subjectID' => isset($request->subjectID) ? $request->subjectID : null,
+                        'enrollmentStatus' => isset($request->enrollmentStatus) ? $request->enrollmentStatus : null,
+                        'hasBiometricToken' => (isset($request->biometricToken) && trim($request->biometricToken)) ? 1 : 0,
+                        'biometricToken' => isset($request->biometricToken) ? $request->biometricToken : null,
+                        'possible_duplicate' => $duplicate,
+                        'consumerDeviceId' => null,
+                        'reason' => $request->reason
+                    ]);
+                }
+
             }
 
             //Return Response
@@ -271,13 +275,13 @@ class FarmerProfileController extends Controller
 
     /**
      * Create Farmer Photo
-     * 
+     *
      * Add farmer photo
      * @authenticated
-     * 
+     *
      * @bodyParam farmer_id integer required Farmer id
      * @bodyParam image string required Farmer photo
-     * 
+     *
      * @response {
      *      "status": "success",
      *      "message": "Farmer photo created successfully",
@@ -323,7 +327,7 @@ class FarmerProfileController extends Controller
      *          "photo": "farmer.jpg"
      *      }
      *    }
-     * 
+     *
      * @response 422 {
      *      "status": "error",
      *      "message": "Validation error",
@@ -332,7 +336,7 @@ class FarmerProfileController extends Controller
      *          "image": ["Image is required"]
      *      }
      * }
-     * 
+     *
      * @response 404 {
      *      "status": "error",
      *      "message": "Farmer profile not found",
@@ -340,7 +344,7 @@ class FarmerProfileController extends Controller
      *          "farmer_id": ["Farmer profile not found"]
      *      }
      * }
-     * 
+     *
      */
     public function CreateFarmerPhoto(Request $request)
     {
@@ -394,13 +398,13 @@ class FarmerProfileController extends Controller
 
     /**
      * Update Farmer Profile Status
-     * 
+     *
      * Update farmer profile status
      * @authenticated
-     * 
+     *
      * @bodyParam id integer required Farmer id
      * @bodyParam status string required Farmer profile status Example: pending,complete,valid,invalid,blacklisted,deceased
-     * 
+     *
      * @response {
      *      "status": "success",
      *      "message": "Farmer profile status updated successfully",
@@ -446,7 +450,7 @@ class FarmerProfileController extends Controller
      *          "photo": "farmer.jpg"
      *      }
      *    }
-     * 
+     *
      * @response 422 {
      *      "status": "error",
      *      "message": "Validation error",
@@ -455,7 +459,7 @@ class FarmerProfileController extends Controller
      *          "status": ["Status is required"]
      *      }
      * }
-     * 
+     *
      * @response 404 {
      *      "status": "error",
      *      "message": "Farmer profile not found",
@@ -463,7 +467,7 @@ class FarmerProfileController extends Controller
      *          "farmer_id": ["Farmer profile not found"]
      *      }
      *  }
-     * 
+     *
      */
     public function updateFarmerProfileStatus(Request $request)
     {
@@ -493,11 +497,11 @@ class FarmerProfileController extends Controller
 
     /**
      * Farmer Search
-     * 
-     * Search all farmers 
+     *
+     * Search all farmers
      * @authenticated
-     * 
-     * 
+     *
+     *
      * * @response {
      * "current_page": 1,
      * "data": [
@@ -505,7 +509,7 @@ class FarmerProfileController extends Controller
      * "id": 1,
      * "first_name": "John",
      * "last_name": "Doe",
-     * 
+     *
      * }
      * ],
      * "first_page_url": "http://localhost:8000/api/farmers?page=1",
@@ -536,7 +540,7 @@ class FarmerProfileController extends Controller
      * "to": 1,
      * "total": 1
      * }
-     * 
+     *
      */
 
     public function searchFarmer($keyword)
@@ -558,7 +562,7 @@ class FarmerProfileController extends Controller
             'data' => $farmers
         ],200);
     }
-     
+
 
 
 
