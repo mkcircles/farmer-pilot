@@ -25,6 +25,8 @@ class LogRequestMiddleware
             'RESPONSE' => $response->getContent()
         ];
 
+        Log::info($log);
+
 //        Log::info("==========================================\n\n\n");
 //        Log::info("Request URI", $request->getUri()."\n");
 //        Log::info("Request METHOD", $request->getMethod()."\n");
