@@ -24,7 +24,13 @@ class LogRequestMiddleware
             'REQUEST_BODY' => $request->all(),
             'RESPONSE' => $response->getContent()
         ];
-        Log::info(json_encode($log));
+
+        Log::info("==========================================\n\n\n");
+        Log::info("Request URI", $request->getUri()."\n");
+        Log::info("Request METHOD", $request->getMethod()."\n");
+        Log::info("Request REQUEST_BODY", $request->all()."\n");
+        Log::info("Request RESPONSE", $response->getContent());
+        Log::info("==========================================\n\n\n");
 
         return $response;
     }
