@@ -40,12 +40,13 @@ class MasterCardBiometricReport extends Command
         $this->info('Generating MasterCard Biometric Report...');
         $records= MastercardProfileDetails::whereDate('created_at', Carbon::today())->get();
         $data = [];
-        $data [] = ['SubjectID', 'Agent ID', 'Time Stamp', 'Existing or New', 'Biotoken flag'];
+        $data [] = ['SubjectID', 'Agent ID', 'rID', 'Time Stamp', 'Existing or New', 'Biotoken flag'];
 
         foreach ($records as $record) {
             $data [] = [
                 $record->subjectID,
                 $record->farmerProfile->agent->agent_code ?? null,
+                $record->rID,
                 $record->created_at,
                 $record->enrollmentStatus,
                 $record->hasBiometricToken,

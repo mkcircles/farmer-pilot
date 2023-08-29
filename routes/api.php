@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Seeder\FarmerSeederController;
 
+use App\Http\Controllers\Migration\DataMigrationController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,6 +28,15 @@ use App\Http\Controllers\Seeder\FarmerSeederController;
 */
 
 Route::get('/import/unffe', [FarmerSeederController::class, 'importUnffeOutReach']);
+
+Route::group(['prefix' => 'migration'], function () {
+    Route::get('/agents/latest', [DataMigrationController::class, 'getLatestAgents']);
+    Route::get('/agents/{limit}', [DataMigrationController::class, 'getAgents']);
+    Route::get('/farmers/latest', [DataMigrationController::class, 'getLatestFarmers']);
+    Route::get('/farmers/{limit}', [DataMigrationController::class, 'getFarmers']);
+    Route::get('/unffe/outreach/{limit}', [DataMigrationController::class, 'getUnffeOutreach']);
+
+});
 
 Route::get('/', function () {
     return response()->json(['message' => 'Welcome to the Agri-Hub API']);
