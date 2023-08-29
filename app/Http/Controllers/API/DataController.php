@@ -247,7 +247,13 @@ class DataController extends Controller
         }
 
         //Get Duplicate Biometric Captures
-        $duplicateBiometricCaptures = MastercardProfileDetails::where('rId', $farmer->biometrics->rId)->where('entityID','!=',$farmer_id)->get();
+        if($farmer->biometrics->rId != null){
+            $duplicateBiometricCaptures = MastercardProfileDetails::where('rId', $farmer->biometrics->rId)->where('entityID','!=',$farmer_id)->get();
+        }
+        else{
+            $duplicateBiometricCaptures = [];
+        }
+
 
         return response()->json([
             'status' => 'success',

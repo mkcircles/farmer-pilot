@@ -238,7 +238,7 @@ class FarmerProfileController extends Controller
                 ])->first();
                 $duplicate = $exists_check ? $exists_check->entityID : null;
                 //Check rID string length
-                if(strlen($request->rID) > 0){
+                if(strlen($request->consentGUID) > 0){
                     //Register Mastercard Profile Details
                     MastercardProfileDetails::create([
                         'entityType' => 'farmer',
