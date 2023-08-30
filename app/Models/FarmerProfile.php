@@ -52,6 +52,9 @@ class FarmerProfile extends Model
         'agent_id',
         'photo',
         'group_id',
+        'validation_status',
+        'validation_reason',
+        'reg_type',
     ];
 
     public function agent()

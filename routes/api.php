@@ -53,14 +53,13 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 
-
-Route::middleware('auth:sanctum','logrequest')->group( function () {
+//,'logrequest'
+Route::middleware('auth:sanctum')->group( function () {
     Route::post('/refresh', [AuthController::class, 'refresh']);
     //Summaries
     Route::get('/summary', [SummaryController::class, 'DashboardSummary']);
     Route::get('/summary/fpo', [SummaryController::class, 'FPODashboardSumary']);
     Route::get('/summary/unffe',[SummaryController::class,'UNFFESummary']);
-
 
     //Users Routes
     Route::get('/users',[UserController::class, 'index']);

@@ -230,6 +230,7 @@ class FarmerProfileController extends Controller
             $farmer->data_captured_by = $request->data_captured_by;
             $farmer->agent_id = $request->agent_id;
             //$farmer->photo = $imageName;
+            //$farmer->reg_type = $request->regType;
             $farmer->save();
 
             if($request->has('rID')) {
