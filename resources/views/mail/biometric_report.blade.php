@@ -11,8 +11,8 @@
             <p>Hope you are doing fine. Below is a summary of the Biometric captures in the field today. Also attached are reports for your analysis and evaluation</p>
 
             <p>
-                <b>Profiles Captured:</b>{{ $data['biometrics']['count'] }}</br>
-                <b>Existing Count:</b>{{ $data['existing']['count'] }}</br>
+                <b>Profiles Captured:</b> {{ number_format($data['biometrics']['count']) }}</br>
+                <b>Existing Count:</b> {{ number_format($data['existing']['count']) }}</br>
             </p>
             <p>
             Regards,</br>
