@@ -8,7 +8,7 @@
         <td style="padding: 40px">
             <p>Hello Team,</p>
 
-            <p>Hope you are doing fine. Below is a summary of the Biometric captures in the field today. Also attached are reports for your analysis and evaluation</p>
+            <p>Hope you're doing great! I wanted to share a quick update on the Biometric captures that have happened in the field today. I've also attached some reports for your analysis and evaluation.</p>
 
             <p>
                 <b>Profiles Captured:</b> {{ number_format($data['biometrics']['count']) }}</br>
