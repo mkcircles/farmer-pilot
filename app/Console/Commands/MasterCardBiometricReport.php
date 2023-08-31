@@ -44,8 +44,8 @@ class MasterCardBiometricReport extends Command
         ];
 
         //Send email to Mastercard team
-        $emails = ['mkamugisha@de.innovationvillage.co.ug', 'cp.partnerprogram@mastercard.com','harrison.angonga@mastercard.com'];
-        //$emails = ['mkamugisha@de.innovationvillage.co.ug'];
+        //$emails = ['mkamugisha@de.innovationvillage.co.ug', 'cp.partnerprogram@mastercard.com','harrison.angonga@mastercard.com'];
+        $emails = ['mkamugisha@de.innovationvillage.co.ug'];
         Mail::send('mail.biometric_report', ['data'=>$reports], function($message) use ($emails,$reports)
         {
             $message->to($emails)
@@ -58,7 +58,11 @@ class MasterCardBiometricReport extends Command
 
     private function generateBiometricReport(): array
     {
-        $records= MastercardProfileDetails::whereDate('created_at', Carbon::today())->get();
+        $startDate = Carbon::createFromFormat('d/m/Y', '24/08/2023');
+        $endDate = Carbon::createFromFormat('d/m/Y', '28/08/2023');
+
+        $records = MastercardProfileDetails::whereBetween('created_at', [$startDate,$endDate])->get();
+        //$records= MastercardProfileDetails::whereDate('created_at', Carbon::today())->get();
         $data = [];
         $data [] = ['SubjectID', 'Agent ID', 'rID', 'Time Stamp', 'Existing or New', 'Biotoken flag'];
 
@@ -89,9 +93,15 @@ class MasterCardBiometricReport extends Command
     {
         $data = [];
         $data [] = ['SubjectID', 'Agent ID', 'rID', 'Time Stamp'];
-        $records= MastercardProfileDetails::whereDate('created_at', Carbon::today())
+        $startDate = Carbon::createFromFormat('d/m/Y', '24/08/2023');
+        $endDate = Carbon::createFromFormat('d/m/Y', '28/08/2023');
+
+        $records = MastercardProfileDetails::whereBetween('created_at', [$startDate,$endDate])
             ->where('enrollmentStatus','EXISTING')
             ->get();
+//        $records= MastercardProfileDetails::whereDate('created_at', Carbon::today())
+//            ->where('enrollmentStatus','EXISTING')
+//            ->get();
 
         foreach ($records as $record) {
             //Get Profile that have the same rID from MasterCardProfileDetails
