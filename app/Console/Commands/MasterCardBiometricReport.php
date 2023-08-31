@@ -61,7 +61,8 @@ class MasterCardBiometricReport extends Command
         $startDate = Carbon::createFromFormat('d/m/Y', '24/08/2023');
         $endDate = Carbon::createFromFormat('d/m/Y', '28/08/2023');
 
-        $records = MastercardProfileDetails::whereBetween('created_at', [$startDate,$endDate])->get();
+        $records = MastercardProfileDetails::where('created_at', '>=', $startDate)
+            ->where('created_at', '<=', $endDate)->get();
         //$records= MastercardProfileDetails::whereDate('created_at', Carbon::today())->get();
         $data = [];
         $data [] = ['SubjectID', 'Agent ID', 'rID', 'Time Stamp', 'Existing or New', 'Biotoken flag'];
@@ -96,7 +97,8 @@ class MasterCardBiometricReport extends Command
         $startDate = Carbon::createFromFormat('d/m/Y', '24/08/2023');
         $endDate = Carbon::createFromFormat('d/m/Y', '28/08/2023');
 
-        $records = MastercardProfileDetails::whereBetween('created_at', [$startDate,$endDate])
+        $records = MastercardProfileDetails::where('created_at', '>=', $startDate)
+            ->where('created_at', '<=', $endDate)
             ->where('enrollmentStatus','EXISTING')
             ->get();
 //        $records= MastercardProfileDetails::whereDate('created_at', Carbon::today())
