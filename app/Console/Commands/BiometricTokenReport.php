@@ -62,11 +62,11 @@ class BiometricTokenReport extends Command
     private function generateBiometricReport($startDate,$endDate): array
     {
 
-        $records = MastercardProfileDetails::whereDate('created_at', '>', $startDate)
-            ->whereDate('created_at', '<', $endDate)->get();
+        $records = MastercardProfileDetails::whereDate('created_at', '=>', $startDate)
+            ->whereDate('created_at', '<=', $endDate)->get();
 
         $data = [];
-        $data [] = ['SubjectID', 'Agent ID', 'rID', 'Time Stamp', 'Existing or New', 'Biotoken flag', 'Biometric Token'];
+        $data [] = ['SubjectID', 'Agent ID', 'rID', 'Time Stamp', 'Existing or New', 'Biotoken flag'];
 
         foreach ($records as $record) {
             $data [] = [
@@ -76,7 +76,6 @@ class BiometricTokenReport extends Command
                 $record->created_at,
                 $record->enrollmentStatus,
                 $record->hasBiometricToken,
-                $record->biometricToken,
             ];
         }
         $fileName   = 'BiometricCaptureReport-'.date('Y-m-d').'-'.time().'.csv';
