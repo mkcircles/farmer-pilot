@@ -6,16 +6,15 @@ use App\Models\MastercardProfileDetails;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Str;
 
-class MasterCardBiometricReport extends Command
+class BiometricTokenReport extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'app:master-card-biometric-report';
+    protected $signature = 'app:biometric-token-report';
 
     /**
      * The console command description.
@@ -29,6 +28,7 @@ class MasterCardBiometricReport extends Command
      */
     public function handle()
     {
+
         /**
          * SubjectID
          * Agent ID
@@ -36,17 +36,20 @@ class MasterCardBiometricReport extends Command
          * Existing or New
          * Biotoken flag
          */
+        $startDate = Carbon::createFromFormat('d/m/Y', date('29/08/2021'))->copy()->startOfDay();
+        $endDate = Carbon::createFromFormat('d/m/Y', date('29/08/2023'))->copy()->endOfDay();
+        //dd($startDate,$endDate);
 
         $this->info('Generating MasterCard Biometric Report...');
         $reports = [
-            'biometrics' => $this->generateBiometricReport(),
-            'existing' => $this->generateExistingUserReport(),
+            'biometrics' => $this->generateBiometricReport($startDate,$endDate),
+            'existing' => $this->generateExistingUserReport($startDate,$endDate),
         ];
 
         //Send email to Mastercard team
-        $emails = ['mkamugisha@de.innovationvillage.co.ug', 'cp.partnerprogram@mastercard.com','harrison.angonga@mastercard.com'];
-        //$emails = ['mkamugisha@de.innovationvillage.co.ug'];
-        Mail::send('mail.daily_biometric_report', ['data'=>$reports], function($message) use ($emails,$reports)
+        //$emails = ['mkamugisha@de.innovationvillage.co.ug', 'cp.partnerprogram@mastercard.com','harrison.angonga@mastercard.com','joachim.magoma@mastercard.com'];
+        $emails = ['mkamugisha@de.innovationvillage.co.ug'];
+        Mail::send('mail.biometric_report', ['data'=>$reports,'start'=>$startDate,'end'=>$endDate], function($message) use ($emails,$reports)
         {
             $message->to($emails)
                 ->subject("Biometric Capture Report for ".date('Y-m-d'))
@@ -56,13 +59,14 @@ class MasterCardBiometricReport extends Command
         $this->info('Email Sent');
     }
 
-    private function generateBiometricReport(): array
+    private function generateBiometricReport($startDate,$endDate): array
     {
 
-        $records= MastercardProfileDetails::whereDate('created_at', Carbon::today())->get();
+        $records = MastercardProfileDetails::whereDate('created_at', '>', $startDate)
+            ->whereDate('created_at', '<', $endDate)->get();
 
         $data = [];
-        $data [] = ['SubjectID', 'Agent ID', 'rID', 'Time Stamp', 'Existing or New', 'Biotoken flag'];
+        $data [] = ['SubjectID', 'Agent ID', 'rID', 'Time Stamp', 'Existing or New', 'Biotoken flag', 'Biometric Token'];
 
         foreach ($records as $record) {
             $data [] = [
@@ -72,9 +76,9 @@ class MasterCardBiometricReport extends Command
                 $record->created_at,
                 $record->enrollmentStatus,
                 $record->hasBiometricToken,
+                $record->biometricToken,
             ];
         }
-
         $fileName   = 'BiometricCaptureReport-'.date('Y-m-d').'-'.time().'.csv';
 
         // (B) WRITE TO CSV FILE
@@ -87,12 +91,13 @@ class MasterCardBiometricReport extends Command
         return ['count'=>count($records),'filename'=>$fileName];;
     }
 
-    private function generateExistingUserReport(): array
+    private function generateExistingUserReport($startDate,$endDate): array
     {
         $data = [];
         $data [] = ['SubjectID', 'Agent ID', 'rID', 'Time Stamp'];
 
-        $records= MastercardProfileDetails::whereDate('created_at', Carbon::today())
+        $records = MastercardProfileDetails::whereDate('created_at', '>', $startDate)
+            ->whereDate('created_at', '<', $endDate)
             ->where('enrollmentStatus','EXISTING')
             ->get();
 
