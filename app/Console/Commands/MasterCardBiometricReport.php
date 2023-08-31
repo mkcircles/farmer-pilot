@@ -58,8 +58,8 @@ class MasterCardBiometricReport extends Command
 
     private function generateBiometricReport(): array
     {
-        $startDate = Carbon::createFromFormat('d/m/Y', '23/08/2023 00:00:00');
-        $endDate = Carbon::createFromFormat('d/m/Y', '29/08/2023 00:00:00');
+        $startDate = Carbon::createFromFormat('d/m/Y', '23/08/2023');
+        $endDate = Carbon::createFromFormat('d/m/Y', '29/08/2023');
 
         $records = MastercardProfileDetails::whereDate('created_at', '>', $startDate)
             ->whereDate('created_at', '<', $endDate)->get();
@@ -94,8 +94,8 @@ class MasterCardBiometricReport extends Command
     {
         $data = [];
         $data [] = ['SubjectID', 'Agent ID', 'rID', 'Time Stamp'];
-        $startDate = Carbon::createFromFormat('d/m/Y', '23/08/2023 00:00:00');
-        $endDate = Carbon::createFromFormat('d/m/Y', '29/08/2023 00:00:00');
+        $startDate = Carbon::createFromFormat('d/m/Y', '23/08/2023');
+        $endDate = Carbon::createFromFormat('d/m/Y', '29/08/2023');
 
         $records = MastercardProfileDetails::whereDate('created_at', '>', $startDate)
             ->whereDate('created_at', '<', $endDate)
