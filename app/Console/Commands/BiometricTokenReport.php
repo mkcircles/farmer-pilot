@@ -36,8 +36,8 @@ class BiometricTokenReport extends Command
          * Existing or New
          * Biotoken flag
          */
-        $startDate = Carbon::createFromFormat('d/m/Y', date('29/08/2021'))->copy()->startOfDay();
-        $endDate = Carbon::createFromFormat('d/m/Y', date('29/08/2023'))->copy()->endOfDay();
+        $startDate = Carbon::createFromFormat('d/m/Y', date('22/08/2021'))->copy()->startOfDay();
+        $endDate = Carbon::createFromFormat('d/m/Y', date('30/08/2023'))->copy()->endOfDay();
         //dd($startDate,$endDate);
 
         $this->info('Generating MasterCard Biometric Report...');
