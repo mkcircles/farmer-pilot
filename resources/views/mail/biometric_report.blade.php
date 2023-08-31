@@ -13,6 +13,8 @@
             <p>
                 <b>Profiles Captured:</b> {{ number_format($data['biometrics']['count']) }}</br>
                 <b>Existing Count:</b> {{ number_format($data['existing']['count']) }}</br>
+                <b>Start Date:</b> 2023-08-23</br>
+                <b>End Date:</b> 2023-08-28</br>
             </p>
             <p>
             Regards,</br>
