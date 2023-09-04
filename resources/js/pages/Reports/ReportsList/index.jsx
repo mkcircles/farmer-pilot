@@ -194,11 +194,7 @@ export default function ReportsList() {
                             <TableHeaderCell>Name</TableHeaderCell>
                             <TableHeaderCell>Type</TableHeaderCell>
                             <TableHeaderCell>Date</TableHeaderCell>
-                            <TableHeaderCell>District</TableHeaderCell>
-                            <TableHeaderCell>Agent</TableHeaderCell>
-                            <TableHeaderCell>Product</TableHeaderCell>
-                            <TableHeaderCell>Farm Size (Acres)</TableHeaderCell>
-                            <TableHeaderCell>Gender</TableHeaderCell>
+                            <TableHeaderCell>Filters</TableHeaderCell>
                             <TableHeaderCell>Status</TableHeaderCell>
                             <TableHeaderCell>Action</TableHeaderCell>
                         </TableRow>
@@ -226,19 +222,24 @@ export default function ReportsList() {
                                             {formatDateString(report?.to_date)}
                                         </TableCell>
                                         <TableCell>
-                                            {report?.district || "-"}
-                                        </TableCell>
-                                        <TableCell>
-                                            {report?.agent_id || "-"}
-                                        </TableCell>
-                                        <TableCell>
-                                            {report?.product || "-"}
-                                        </TableCell>
-                                        <TableCell>
-                                            {report?.farm_size || "-"}
-                                        </TableCell>
-                                        <TableCell>
-                                            {report?.gender || "-"}
+                                            {report?.district && <Badge color="gray" className="capitalize">
+                                                District: {report?.district}
+                                            </Badge>}
+                                            {report?.gender && <Badge color="gray" className="capitalize">
+                                                Gender: {report?.gender}
+                                            </Badge>}
+                                            {report?.product && <Badge color="gray" className="capitalize">
+                                                Crop: {report?.product}
+                                            </Badge>}
+                                            {report?.farm_size && <Badge color="gray" className="capitalize">
+                                                Farm size: {report?.farm_size}
+                                            </Badge>}
+                                            {report?.agent_id && <Badge color="gray" className="capitalize">
+                                                Agent
+                                            </Badge>}
+                                            {report?.fpo_id && <Badge color="gray" className="capitalize">
+                                                FPO
+                                            </Badge>}
                                         </TableCell>
                                         <TableCell>
                                             {report?.report_status ===
