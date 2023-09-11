@@ -414,7 +414,7 @@ function Main() {
             <div
                 ref={wrapperRef}
                 className={clsx([
-                    "ml-0 xl:ml-auto pb-6 px-3 sm:px-4 xl:pl-0 xl:pr-6 max-w-full xl:max-w-none min-w-0 h-screen overflow-y-auto overflow-x-hidden flex-1",
+                    "ml-0 xl:ml-auto pb-6 px-3 sm:px-4 xl:pl-0 xl:pr-6 max-w-full xl:max-w-none min-w-0 lg:max-h-screen overflow-y-auto overflow-x-hidden flex-1",
                     "before:content-[''] before:w-full before:h-px before:block",
                     {
                         "xl:ml-[112px] px-3 sm:px-4 xl:pl-0":

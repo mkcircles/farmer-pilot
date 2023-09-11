@@ -69,7 +69,7 @@ export default function AgentsList({fpo_id, fpo_name}) {
 
     useEffect(() => {
         fetchAgents();
-    }, [token]);
+    }, [token, fpo_id]);
 
     return (
         <div className="w-full h-full py-4">

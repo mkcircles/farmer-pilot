@@ -87,7 +87,7 @@ export default function FarmersList({ fpo_id, agent_id, ...props }) {
 
     useEffect(() => {
         fetchProfiles();
-    }, [token]);
+    }, [token, fpo_id]);
 
     useEffect(() => {
         if (moveToPage == currentPage) return;
